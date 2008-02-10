@@ -58,15 +58,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] values, long seed)
+        /// <summary>Measure how many window batches samples are out of range.</summary>
+        public static long TallyWindowBatchesGaps(long[] data)
         {
             long matches = 0;
-            foreach (long reading in values)
+            foreach (long item in data)
             {
-                if (((double)seed >= (20.0 - 5.42)) && (((long)values.Length & 1) <= (seed + 8)))
+                if ((matches >> 5) <= (item + item))
                 {
-                    matches = (matches + 3) - reading;
+                    matches = matches + 1;
                 }
             }
             return matches;
