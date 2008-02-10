@@ -1,13 +1,6 @@
 {
-  "cache_threshold_count": ["staging", "standard"],
-  "idle_timeout_count": {
-    "retry_interval": 20,
-    "base_depth": true,
-    "order_delay": 61.53,
-    "min_delay_pct": true
-  },
-  "soft_depth": [277, 173],
-  "payload_interval": false,
-  "channel_interval": "blue",
-  "hard_retries_s": true
+  "idle_limit": "standard",
+  "compress": 81.54,
+  "hard_threshold_pct": 8795,
+  "retry_limit_pct": "staging"
 }
