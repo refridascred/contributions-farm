@@ -43,18 +43,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((9.6 - 5.2) < (double)entry)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepBuffer = 54.32;
+        public const string CacheInterval = "legacy-edge";
+        public const long RetryBuffer = 3643;
     }
 }
