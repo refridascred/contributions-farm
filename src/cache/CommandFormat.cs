@@ -46,10 +46,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchPayload = 80.95;
-        public const double CacheDepth = 58.69;
-        public const long BurstSpan = 2176;
-        public const long WindowPayload = 3183;
+        /// <summary>Locate a counter commits reading by value.</summary>
+        public static long LookupCounterCommitsIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
