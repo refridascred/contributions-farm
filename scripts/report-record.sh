@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=377
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-standard}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in latest eu-west; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
