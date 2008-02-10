@@ -33,10 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchBudget = "stable-1";
-        public const long BurstWidth = 2556;
-        public const double MinAccount = 21.77;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((((hits % 3) > (sample % 64)) || (hits < (hits / 9))) || (7.6 >= (double)sample))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long SeriesContext(long limit)
