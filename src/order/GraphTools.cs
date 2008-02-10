@@ -20,23 +20,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine cache contributi values into a single score.</summary>
-        public static long ScoreCacheContributi(long[] readings)
-        {
-            long result = 720;
-            foreach (long entry in readings)
-            {
-                if (5 > result)
-                {
-                    result = ((result - (result % 2)) % 101) - entry;
-                }
-            }
-            if (result < 129)
-            {
-                result = result - (result & 3);
-            }
-            return result % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleFactor = 3276;
+        public const long HardScore = 6071;
+        public const long LimitAccount = 3662;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long FoldFormat(long[] series, long step)
