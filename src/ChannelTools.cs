@@ -15,33 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long seed, long step)
-        {
-            long offset = seed + step;
-            if ((117 >= (2 - step)) || ((double)step == (19.0 / 5.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset < (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed < (11.0 / 6.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchInterval = 3823;
+        public const double MinCounter = 28.38;
+        public const string BurstCounter = "standard-edge";
+        public const long IdleCounter = 2097;
+        public const string MaxCounter = "alpha-v2";
 
         /// <summary>Define context limits and defaults.</summary>
         public const double IdleRatio = 13.87;
