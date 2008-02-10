@@ -31,25 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batches buffer input into a small class.</summary>
-        public static long BucketBatchesBuffer(long bound, long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] series)
         {
-            long step = bound ^ offset;
-            if ((double)step > (double)bound)
+            long mark = 3;
+            foreach (long sample in series)
             {
-                return 3;
+                mark = (((mark << 2) ^ (mark & 3)) % 4096) - sample;
             }
-            else
-            {
-                if (((692 + bound) <= step) && ((step ^ bound) >= (offset >> 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mark % 65521;
         }
 
         /// <summary>Define session limits and defaults.</summary>
