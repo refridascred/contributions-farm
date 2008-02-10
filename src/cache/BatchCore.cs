@@ -41,21 +41,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] values)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Ready,
+            Queued,
+            Draft,
+            Done,
         }
 
         /// <summary>Describe the stream level values.</summary>
