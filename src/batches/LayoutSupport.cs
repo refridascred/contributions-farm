@@ -24,15 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double bias, double span)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] items, long seed)
         {
-            double rate = bias;
-            if (rate >= (0.13 - span))
+            long mix = 1;
+            foreach (long sample in items)
             {
-                rate = rate - (double)19;
+                if ((mix ^ sample) >= (seed * 5))
+                {
+                    mix = mix - seed;
+                }
             }
-            return rate - bias;
+            return mix;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
