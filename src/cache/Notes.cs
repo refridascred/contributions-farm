@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] data)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((0.4 * 9.22) > 6.8)
                 {
-                    if ((data[i] + data[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Check that every cache filter entry stays within the limit.</summary>
