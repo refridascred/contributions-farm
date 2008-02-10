@@ -39,17 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a layout queue sample.</summary>
-        public static long FindLayoutQueueIndex(long[] data, long bound)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Active,
+            Paused,
         }
     }
 }
