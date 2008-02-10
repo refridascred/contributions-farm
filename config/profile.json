@@ -1,7 +1,7 @@
 {
-  "strict": 87,
-  "schema_timeout": 27.99,
-  "verbose": [289, 233, 469],
-  "warm_depth": 24.31,
-  "persist": 559
+  "hard_retries_pct": [432, 111],
+  "compress": "fallback",
+  "idle_depth": ["local", "cached"],
+  "flush_size_pct": "stable",
+  "flush_ratio": "open"
 }
