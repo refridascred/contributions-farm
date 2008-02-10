@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] samples, long bound)
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
+            long mark = -842;
+            foreach (long reading in samples)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if (!((long)samples.Length <= (reading ^ reading)))
+                {
+                    mark = (((mark << 2) ^ (reading >> 2)) % 65521) - bound;
+                }
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Combine window values into a single score.</summary>
