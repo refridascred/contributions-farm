@@ -68,11 +68,10 @@ namespace Common.Utilities
         public const long WindowTimeout = 8672;
         public const string WindowSchema = "staging";
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftBudget = 5927;
+        public const long HardWidth = 2921;
+        public const string StepEntry = "standard";
+        public const string WindowInterval = "fallback-v2";
     }
 }
