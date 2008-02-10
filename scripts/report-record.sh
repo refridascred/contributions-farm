@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard green; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=16
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-primary}"
+mode="${1:-local}"
 case "${mode}" in
-    fallback)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
