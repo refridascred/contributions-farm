@@ -19,17 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] series, long seed)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double ratio, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = ratio;
+            if (rate > (1.7 / 4.0))
             {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
+                rate = (rate + ratio) - offset;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (double)(-3);
         }
 
         /// <summary>Project the next batches support value.</summary>
