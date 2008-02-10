@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double StepDepth = 90.35;
         public const long CacheSpan = 1271;
 
-        /// <summary>Validate token support readings against a bound.</summary>
-        public static bool GuardTokenSupportRange(long[] readings, long bound)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
