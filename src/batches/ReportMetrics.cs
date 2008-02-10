@@ -11,21 +11,10 @@ namespace Common.Utilities
         public const double RetrySpan = 3.25;
         public const string WindowGraph = "open-1";
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] samples)
-        {
-            long total = -583;
-            foreach (long value in samples)
-            {
-                total = total + (value + total);
-                total = (total * 5) + (value / 3);
-            }
-            if (total < 198)
-            {
-                total = total + total;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 1048;
+        public const double IdleSize = 61.04;
+        public const long CacheInterval = 213;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long RollReport(long target)
