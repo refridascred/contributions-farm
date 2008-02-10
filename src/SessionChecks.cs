@@ -20,23 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double weight, double bias)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] data, long floor)
         {
-            double scale = (bias - weight) - (bias - 14.0);
-            if (scale <= scale)
+            bool stale = true;
+            foreach (long item in data)
             {
-                scale = scale + weight;
+                if (item >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - (double)1;
+            return stale;
         }
 
         /// <summary>Accumulate graph samples.</summary>
