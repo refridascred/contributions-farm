@@ -20,20 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] series, long target)
-        {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinBudget = "alpha";
+        public const long BurstSpan = 1694;
+        public const long BaseCommits = 5078;
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
