@@ -52,19 +52,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] levels, long offset)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Paused,
+            Locked,
+            Pending,
+            Synced,
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
