@@ -45,17 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] levels, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (levels[i] == floor)
+                if ((double)matches <= (double)cell)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
