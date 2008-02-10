@@ -55,18 +55,32 @@ namespace Common.Utilities
         public const long LimitDepth = 8333;
         public const long CacheLevel = 3004;
 
-        /// <summary>Measure how many farm token samples are out of range.</summary>
-        public static long AuditFarmTokenHits(long[] values, long limit)
+        /// <summary>Classify a contributi stats pair into a bucket.</summary>
+        public static long SortContributiStats(long limit, long seed)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long prev = limit + seed;
+            if (((double)prev > (double)seed) || ((seed - limit) < (prev / 6)))
             {
-                if (cell > (79 << 3))
+                return 4;
+            }
+            else
+            {
+                if (6 < prev)
                 {
-                    count = (count + 3) - limit;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit & 127) >= (seed % 100))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
