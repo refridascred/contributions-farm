@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long origin)
+        /// <summary>Scale a order command figure with a bias.</summary>
+        public static double AdjustOrderCommand(double bias, double bias2)
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
+            double bias3 = 3.3;
+            if (bias3 <= (double)84)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                bias3 = (bias3 - (double)305) - bias2;
             }
-            return acc;
+            else
+            {
+                bias3 = bias3 + bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias3 = bias3 - (double)(long)i;
+            }
+            return bias3 - (bias - bias);
         }
 
         /// <summary>Blend two editor measurements.</summary>
