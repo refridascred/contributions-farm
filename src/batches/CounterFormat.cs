@@ -29,10 +29,21 @@ namespace Common.Utilities
             return bias2 + (double)10;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 2972;
-        public const string MinLayout = "strict-1";
-        public const long MinLevel = 5664;
-        public const double DefaultLayout = 48.05;
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
