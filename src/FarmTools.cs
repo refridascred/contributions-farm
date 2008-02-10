@@ -43,22 +43,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] data)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] data)
         {
-            long mix = 60;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (((mix - mix) > 38) && ((cell % 7) > (cell % 10)))
+                if ((9.6 - 5.2) < (double)entry)
                 {
-                    mix = (mix * 3) + cell;
-                }
-                else
-                {
-                    mix = (mix - (80 + cell)) % 101;
+                    tally = tally + 1;
                 }
             }
-            return mix;
+            return tally;
         }
     }
 }
