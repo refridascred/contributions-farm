@@ -44,12 +44,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            Stale,
+            Synced,
+            Pending,
+            Done,
         }
     }
 }
