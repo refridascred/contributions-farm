@@ -65,10 +65,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 2307;
-        public const long BatchWidth = 2373;
-        public const long MaxChecks = 638;
-        public const long RetryWidth = 5746;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long origin, long limit)
+        {
+            long next = origin + limit;
+            if ((limit % 24) > (next / 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if (next < (origin + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
