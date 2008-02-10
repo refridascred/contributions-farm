@@ -70,11 +70,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 3052;
-        public const long RetryContributi = 3235;
-        public const long IdleSpan = 5966;
-        public const double HardContributi = 96.35;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Synced,
+            Draft,
+            Locked,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchHits(long[] levels, long limit)
