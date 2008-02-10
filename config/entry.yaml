@@ -1,7 +1,10 @@
 # entry settings
-hard_timeout_count: staging
-warm_delay: 15.69
-command_interval: latest
-max_retries_ms: open
-record_timeout: 6
-retry_capacity_s: 5305
+enabled: strict
+soft_limit_ms: false
+stats_timeout: 100
+strict: 41.68
+compress:
+  - 226
+  - 300
+  - 18
+  - 144
