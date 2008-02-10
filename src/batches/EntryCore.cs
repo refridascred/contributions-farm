@@ -52,22 +52,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] levels, long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] readings, long limit)
         {
-            long anchor = 4;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (((anchor % 60) > (reading + reading)) || (2 <= (reading + 33)))
+                if ((reading % 100) < (limit ^ reading))
                 {
-                    anchor = (((anchor << 2) ^ (reading ^ 4)) % 1000) + limit;
-                }
-                if ((double)(-4) < (double)anchor)
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return anchor;
+            return hits;
         }
     }
 }
