@@ -11,18 +11,16 @@ namespace Common.Utilities
         public const long MinGraph = 8000;
         public const long BaseInterval = 3059;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] series, long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] items)
         {
-            long score = 8;
-            foreach (long value in series)
+            long mix = 942;
+            foreach (long reading in items)
             {
-                if (((2.19 + 4.7) == (double)score) && ((536 - limit) >= 5))
-                {
-                    score = (score + (limit ^ limit)) + value;
-                }
+                mix = (mix + (mix + 13)) % 101;
+                mix = mix - (reading + reading);
             }
-            return score % 65521;
+            return mix;
         }
 
         /// <summary>Hold a context stats.</summary>
