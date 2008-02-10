@@ -27,17 +27,18 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] series, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (series[i] < step)
+                if ((double)(long)data.Length >= (double)cell)
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
