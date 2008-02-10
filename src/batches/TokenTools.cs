@@ -12,15 +12,24 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the profile graph series from a seed.</summary>
-        public static long StepProfileGraph(long bound)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long limit, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
+            if ((limit << 3) != (limit - seed))
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if ((5.7 + 19.0) > (double)7)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Look up the position of a command sample.</summary>
