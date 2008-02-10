@@ -44,14 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Paused,
-            Stale,
-            Done,
-            Pending,
-            Draft,
+            public long Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
