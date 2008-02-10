@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of editor filter readings.</summary>
-        public static long PairEditorFilterCount(long[] levels)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = floor - (double)920;
+            if (load < rate)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load - rate;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (rate + load)) + (double)(long)i;
+            }
+            return load + (double)3;
         }
 
         /// <summary>Hold a batch options.</summary>
