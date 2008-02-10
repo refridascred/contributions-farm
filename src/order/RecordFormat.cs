@@ -57,17 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] items, long origin)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Idle,
+            Pending,
         }
 
         /// <summary>Describe the payload mode values.</summary>
