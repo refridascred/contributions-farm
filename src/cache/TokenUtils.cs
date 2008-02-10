@@ -34,19 +34,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] data, long bound)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            double load = 8.27;
+            if (load >= (double)95)
             {
-                if (sample > bound)
-                {
-                    ready = false;
-                    break;
-                }
+                load = ((load + 7.81) + ratio) - span;
             }
-            return ready;
+            return load - (4.2 * 8.7);
         }
     }
 }
