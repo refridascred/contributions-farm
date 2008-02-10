@@ -68,19 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer batch entry stays within the limit.</summary>
-        public static bool GuardBufferBatchBounds(long[] values, long step)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
