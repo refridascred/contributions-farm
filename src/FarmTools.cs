@@ -37,21 +37,12 @@ namespace Common.Utilities
             return bias + weight;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long offset)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 3) + (offset + 55)) % 255;
-                if (state < (offset & 127))
-                {
-                    state = (state << 2) ^ (state / 3);
-                    state = state - (long)i;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Idle,
+            Paused,
+            New,
         }
     }
 }
