@@ -56,24 +56,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] levels, long step)
-        {
-            long score = 12;
-            foreach (long cell in levels)
-            {
-                if ((cell / 5) > cell)
-                {
-                    score = ((score << 3) ^ (cell - 9)) % 255;
-                    score = (score * 4) + (step ^ cell);
-                }
-                score = score ^ score;
-            }
-            if (score < 272)
-            {
-                score = (score + step) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultBudget = 1132;
+        public const long BurstCounter = 8256;
+        public const string SoftCounter = "fallback-1";
+        public const long WindowBudget = 8680;
     }
 }
