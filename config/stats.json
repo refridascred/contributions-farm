@@ -1,17 +1,6 @@
 {
-  "default_window": true,
-  "min_size_ms": 7950,
-  "cache_capacity_count": {
-    "compress": [53, 143, 38, 354],
-    "batch_size": false,
-    "base_retries_pct": {
-      "poll_delay_ms": 3612,
-      "poll_retries_s": true,
-      "enabled": "standard",
-      "min_retries_count": 2.57
-    },
-    "format_retries": 3451
-  },
-  "audit": 60,
-  "poll_timeout_s": "strict"
+  "warm_depth_pct": 70,
+  "compress": [145, 53, 21, 249],
+  "idle_limit_pct": "primary",
+  "sync_ttl_count": [52, 77, 55, 45]
 }
