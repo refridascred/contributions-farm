@@ -37,12 +37,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] levels, long target)
         {
-            New,
-            Dropped,
-            Synced,
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the channel state values.</summary>
