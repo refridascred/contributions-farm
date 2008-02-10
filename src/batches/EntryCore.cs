@@ -52,12 +52,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] levels, long limit)
         {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
+            long anchor = 4;
+            foreach (long reading in levels)
+            {
+                if (((anchor % 60) > (reading + reading)) || (2 <= (reading + 33)))
+                {
+                    anchor = (((anchor << 2) ^ (reading ^ 4)) % 1000) + limit;
+                }
+                if ((double)(-4) < (double)anchor)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
