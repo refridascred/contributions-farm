@@ -1,6 +1,9 @@
 # githubfarm settings
-graph_timeout: latest
-audit: 6067
-cache_delay_ms: 46.29
-retry_retries: cached
-githubfarm_depth: 27
+flush_timeout: 500
+sync_ttl: true
+min_threshold_count: 73.49
+max_delay:
+  - 42
+  - 485
+  - 29
+  - 75
