@@ -25,18 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a buffer layout reading by value.</summary>
-        public static long LocateBufferLayoutIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultCount = 463;
+        public const long BaseWidth = 9638;
+        public const string SoftRecord = "standard";
+        public const long LimitRecord = 9684;
+        public const double IdleRecord = 71.07;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportMatches(long[] levels, long floor)
