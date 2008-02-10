@@ -29,11 +29,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftCount = 8422;
-        public const long IdleBudget = 3031;
-        public const string LimitSize = "primary-edge";
-        public const long IdleScore = 9649;
-        public const string IdleCount = "fallback-v2";
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] series, long bound)
+        {
+            long mix = 66;
+            foreach (long datum in series)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    mix = (mix + (bound - datum)) + (long)i;
+                }
+                mix = mix - (datum + datum);
+            }
+            if (mix < 74)
+            {
+                mix = ((mix << 3) ^ (mix * 3)) % 4096;
+            }
+            return mix;
+        }
     }
 }
