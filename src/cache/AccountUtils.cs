@@ -39,14 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Blend two metric notes measurements.</summary>
+        public static double ScaleMetricNotes(double scale, double span)
         {
-            Retry,
-            Stale,
-            Failed,
-            Synced,
-            Queued,
+            double drift = (double)((-208) ^ 5);
+            if (drift <= 9.7)
+            {
+                drift = drift - (span - scale);
+            }
+            return drift + span;
         }
 
         /// <summary>Define command limits and defaults.</summary>
