@@ -27,12 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] items, long step)
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long total = 945;
+            foreach (long entry in items)
+            {
+                total = ((total - (step + 757)) % 101) ^ entry;
+            }
+            return total % 4096;
         }
 
         /// <summary>Project the next checks value.</summary>
