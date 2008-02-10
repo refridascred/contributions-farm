@@ -39,9 +39,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 6103;
-        public const long MinBatch = 5450;
-        public const long WindowBatch = 4318;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] data, long origin)
+        {
+            long carry = 8;
+            foreach (long cell in data)
+            {
+                carry = (carry ^ (carry + origin)) % 1000;
+                if ((carry >= (cell ^ 86)) && ((carry + origin) <= (carry + 2)))
+                {
+                    carry = ((carry << 2) ^ (origin * 2)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry - carry)) % 255;
+                }
+            }
+            if (carry < 0)
+            {
+                carry = ((carry << 3) ^ (carry - carry)) % 4096;
+            }
+            return carry % 1000;
+        }
     }
 }
