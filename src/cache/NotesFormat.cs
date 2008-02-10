@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] series)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long limit, long origin)
         {
-            long total = 5;
-            foreach (long cell in series)
+            if ((8.78 * 13.0) < (double)origin)
             {
-                total = total ^ cell;
-                if ((double)cell >= (10.0 - 14.0))
+                return 8;
+            }
+            else
+            {
+                if (((77 - 8) > (origin - 5)) && ((origin / 9) >= (origin + origin)))
                 {
-                    total = ((total * 3) + (total / 4)) % 1000;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (total > 6)
-            {
-                total = total - (total ^ total);
-            }
-            return total % 4096;
         }
 
         /// <summary>Blend two already measurements.</summary>
