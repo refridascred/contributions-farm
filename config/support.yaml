@@ -1,7 +1,5 @@
 # support settings
-dry_run: fallback
-poll_delay_pct: true
-batch_retries: 16.2
-sync_window_count: 42
-persist: cached
-hard_delay: 28
+warm_threshold_ms: 1229
+poll_capacity_count: true
+batch_capacity_s: 94.67
+cache_interval_pct: blue
