@@ -37,22 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] series)
+        /// <summary>Locate a metrics report reading by value.</summary>
+        public static long LookupMetricsReportIndex(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (tally <= reading)
+                if ((values[i] > target) && ((values[i] % 3) == 0))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
