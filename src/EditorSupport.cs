@@ -12,22 +12,17 @@ namespace Common.Utilities
             return (load - (load * 9.37)) + offset;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] series, long seed)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen * 4) != (seen + seen))
+                if (values[i] <= offset)
                 {
-                    seen = ((seen + 2) + datum) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a layout options.</summary>
