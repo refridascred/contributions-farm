@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank filter cache input into a small class.</summary>
-        public static long ClassifyFilterCache(long limit, long step)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            if (!(step < (step - limit)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)step <= (11.0 - 7.43)) && ((5 << 2) >= (step / 4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
