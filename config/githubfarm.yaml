@@ -1,8 +1,4 @@
 # githubfarm settings
-idle_capacity: latest
-poll_delay: eu-west
-audit:
-  - 219
-  - 378
-  - 354
-batch_interval: 68.78
+poll_retries_s: 5068
+batch_depth_ms: 19
+dry_run: primary
