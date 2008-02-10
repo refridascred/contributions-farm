@@ -57,15 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long limit)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] items, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Scale a metric profile figure with a bias.</summary>
