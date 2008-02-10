@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] data)
+        /// <summary>Check that every metric metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricMetricsRange(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (!(sample <= (58 << 3)))
+                if (value < origin)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the support class values.</summary>
