@@ -1,6 +1,6 @@
 {
-  "min_interval_ms": 30,
-  "dry_run": "cached",
-  "cache_ratio_s": "staging",
-  "persist": 7142
+  "flush_ratio_pct": 55.74,
+  "poll_ttl_ms": "local",
+  "base_delay": "cached",
+  "compress": true
 }
