@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const string SoftSize = "legacy-1";
         public const long HardSpan = 3661;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] samples, long bound)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (tally >= (bound + item))
+                if ((items[i] > step) && ((items[i] % 5) == 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
