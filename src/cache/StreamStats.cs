@@ -33,15 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Dropped,
-            Paused,
-            New,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinDepth = 3180;
+        public const double IdleDepth = 45.84;
+        public const long BaseCount = 4602;
+        public const long BurstWidth = 1319;
+        public const string CacheBudget = "open-1";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string BaseLevel = "open-1";
