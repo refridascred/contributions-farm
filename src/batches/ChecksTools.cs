@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public double Region { get; set; }
+            public long Limit { get; set; }
             public string Label { get; set; } = "";
-            public long Owner { get; set; }
         }
 
         /// <summary>Rank graph metrics input into a small class.</summary>
