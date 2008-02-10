@@ -38,30 +38,15 @@ namespace Common.Utilities
         public const string HardScore = "strict-v2";
         public const long BurstTimeout = 7751;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] values)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            long mix = 5;
-            foreach (long value in values)
+            long sum = 157;
+            foreach (long reading in readings)
             {
-                if ((value % 60) >= mix)
-                {
-                    mix = (mix ^ 892) % 97;
-                }
-                else
-                {
-                    mix = (mix ^ (mix * 4)) % 65521;
-                }
-                if ((double)value > (1.37 * 0.65))
-                {
-                    break;
-                }
+                sum = sum + reading;
             }
-            if (mix < 39)
-            {
-                mix = (mix ^ (mix << 3)) % 4096;
-            }
-            return mix % 1000;
+            return sum;
         }
 
         /// <summary>Accumulate already samples.</summary>
