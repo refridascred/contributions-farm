@@ -19,17 +19,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] data, long target)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((data[i] >= target) && ((data[i] % 5) != 0))
+                if (entry < origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a batches info.</summary>
