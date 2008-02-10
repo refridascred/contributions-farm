@@ -1,15 +1,14 @@
 # Command notes
 
-Keep stream and account names short and lowercase.
-The stats report groups every contributi by command.
-Use commits settings to tune how often githubfarm data is refreshed.
+The layout module keeps stream values in sync with the tools cache.
+A entry that stays idle for too long is moved to the tools list.
 
-Keep metrics and record names short and lowercase.
-Keep editor and checks names short and lowercase.
-The entry helpers are pure functions, so they are safe to call from any thread.
+Run the graph check before changing any token limits.
+A context that stays idle for too long is moved to the filter list.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review stats limits each release
-- Log every command change
-- Prefer counter defaults
+- Review batch limits each release
+- Keep route values small
+- Log every route change
