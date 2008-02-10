@@ -24,22 +24,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] values, long floor)
+        /// <summary>Count the filter already entries that pass the check.</summary>
+        public static long MeasureFilterAlreadyGaps(long[] series)
         {
-            long sum = 8;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (!((sum ^ item) != (floor + 55)))
+                if ((hits ^ hits) > cell)
                 {
-                    sum = sum - (-1);
+                    hits = hits + 1;
                 }
             }
-            if (sum < 97)
-            {
-                sum = ((sum << 2) ^ (floor - sum)) % 65521;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
