@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Audit batches channel readings against a rule.</summary>
+        public static long MeasureBatchesChannelGaps(long[] levels)
         {
-            public bool Limit { get; set; }
-            public bool Rank { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((tally ^ (-60)) == (9 << 2))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
