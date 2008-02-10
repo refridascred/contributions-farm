@@ -5,35 +5,28 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long step, long seed)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long bound, long floor)
         {
-            if ((double)step >= (8.4 - 2.9))
+            if ((floor >= (bound << 3)) || ((75 >> 4) < (floor + bound)))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if (((double)seed != (1.5 / 5.0)) && ((seed >> 1) > step))
+                if ((floor & 127) < (bound + bound))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if (((15 + step) > step) || ((seed - seed) < (171 * 4)))
+                    if (!((2.61 + 14.0) < (double)bound))
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
-                        if ((seed * 2) >= (544 << 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 1;
                     }
                 }
             }
