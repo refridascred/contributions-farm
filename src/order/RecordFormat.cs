@@ -57,13 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Dropped,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseWidth = "standard-1";
+        public const long BurstCount = 2264;
+        public const long LimitFormat = 3764;
+        public const string RetrySpan = "strict-edge";
+        public const long BurstSpan = 72;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileMatches(long[] levels)
