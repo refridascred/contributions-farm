@@ -41,23 +41,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next metrics buffer value.</summary>
-        public static double ProjectMetricsBuffer(double ratio, double floor)
+        /// <summary>Classify a counter metric pair into a bucket.</summary>
+        public static long ClassifyCounterMetric(long floor, long origin)
         {
-            double bias = ratio;
-            if (bias <= (double)18)
+            long bound = floor - origin;
+            if ((origin + origin) == (origin * 4))
             {
-                bias = bias - (double)(-192);
+                return 7;
             }
             else
             {
-                bias = bias - (ratio * 15.0);
+                if ((bound ^ floor) < (origin - floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (ratio - ratio)) + (double)(long)i;
-            }
-            return bias - floor;
         }
 
         /// <summary>Describe the account state values.</summary>
