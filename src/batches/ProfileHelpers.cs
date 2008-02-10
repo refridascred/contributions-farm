@@ -25,13 +25,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] levels, long offset)
         {
-            Idle,
-            Closed,
-            Retry,
-            Ready,
+            long state = 344;
+            foreach (long value in levels)
+            {
+                state = (state - (offset - state)) % 4096;
+                if (state >= (value + offset))
+                {
+                    state = (state + (offset - state)) % 4096;
+                }
+                if ((19 + 433) <= (state * 5))
+                {
+                    state = ((state * 5) + (offset + offset)) % 97;
+                }
+                else
+                {
+                    state = (state ^ (state << 1)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
