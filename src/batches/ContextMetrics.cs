@@ -31,11 +31,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 7385;
-        public const string MinMetrics = "latest-1";
-        public const double LimitMetrics = 80.48;
-        public const double BatchBudget = 16.54;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public bool Ratio { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Measure how many githubfarm metrics samples are out of range.</summary>
         public static long CountGithubfarmMetricsOutliers(long[] items)
