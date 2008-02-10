@@ -53,12 +53,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] readings)
         {
-            public double Rank { get; set; }
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
+            long acc = 993;
+            foreach (long cell in readings)
+            {
+                if (((27 >> 1) <= acc) && ((double)acc <= (4.7 / 8.0)))
+                {
+                    acc = ((acc * 5) + (cell + acc)) % 1000;
+                }
+                else
+                {
+                    acc = (acc - acc) % 101;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Match up metrics token samples.</summary>
