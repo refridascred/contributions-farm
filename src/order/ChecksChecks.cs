@@ -23,18 +23,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] levels, long offset)
+        /// <summary>Look up the position of a notes record sample.</summary>
+        public static long LocateNotesRecordIndex(long[] items, long target)
         {
-            long mark = 2;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((sample - sample) <= (33 % 2)))
+                if (items[i] == target)
                 {
-                    mark = (((mark * 2) + (mark * 3)) % 65521) - offset;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
     }
 }
