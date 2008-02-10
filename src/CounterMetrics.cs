@@ -44,17 +44,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] values, long offset)
+        /// <summary>Digest a series of cluster token entries.</summary>
+        public static long ScoreClusterToken(long[] readings, long bound)
         {
-            long anchor = 583;
-            foreach (long datum in values)
+            long anchor = 21;
+            foreach (long datum in readings)
             {
-                anchor = (anchor << 3) ^ (datum + 46);
-                if ((offset - datum) < (datum * 5))
-                {
-                    break;
-                }
+                anchor = ((anchor ^ (0 - anchor)) - datum) - bound;
+            }
+            if (anchor > 54)
+            {
+                anchor = ((anchor * 4) + (anchor >> 1)) % 65521;
             }
             return anchor;
         }
