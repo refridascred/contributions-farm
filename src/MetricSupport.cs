@@ -41,19 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every entry support entry stays within the limit.</summary>
-        public static bool CheckEntrySupportRange(long[] items, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (entry > seed)
+                if (value <= limit)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
