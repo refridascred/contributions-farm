@@ -48,13 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            New,
-            Retry,
-            Failed,
-            Synced,
+            public double Owner { get; set; }
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
     }
 }
