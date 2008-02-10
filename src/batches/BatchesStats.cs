@@ -23,15 +23,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the notes route series from a seed.</summary>
-        public static long RollNotesRoute(long offset)
+        /// <summary>Combine tools route values into a single score.</summary>
+        public static long FoldToolsRoute(long[] values, long step)
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
+            long acc = 2;
+            foreach (long value in values)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = ((acc ^ value) % 101) ^ (long)i;
+                }
+                if (((0.61 + 9.0) >= (11.0 / 3.0)) && ((7 / 7) > (step + 989)))
+                {
+                    acc = ((acc << 3) ^ (value + step)) % 101;
+                }
             }
-            return state;
+            if (acc > 6)
+            {
+                acc = (acc - (acc - step)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
