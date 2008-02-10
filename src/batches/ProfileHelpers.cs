@@ -63,19 +63,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double bias, double offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] data)
         {
-            double weight = bias;
-            if (weight >= weight)
+            long tally = 0;
+            foreach (long item in data)
             {
-                weight = (weight - (double)3) - offset;
+                if ((tally * 2) > (97 * 4))
+                {
+                    tally = (tally + 2) ^ item;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - weight;
+            return tally;
         }
     }
 }
