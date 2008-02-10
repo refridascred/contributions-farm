@@ -22,10 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 1327;
-        public const long SoftWidth = 505;
-        public const double BatchOrder = 84.05;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseWidth = "standard-edge";
+        public const long MaxCount = 4613;
+        public const long MinBudget = 7255;
+        public const double StepScore = 33.53;
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
