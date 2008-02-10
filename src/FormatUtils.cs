@@ -5,28 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of support commits readings.</summary>
-        public static long DigestSupportCommits(long[] readings, long target)
+        /// <summary>Grade a notes context value against two limits.</summary>
+        public static long SortNotesContext(long target, long floor)
         {
-            long score = 821;
-            foreach (long cell in readings)
+            if (!((floor % 12) >= (floor / 6)))
             {
-                score = (score - (7 + target)) % 97;
-                score = ((score * 3) + (cell << 2)) % 4096;
-                if (score < target)
+                return 3;
+            }
+            else
+            {
+                if (target <= (target ^ target))
                 {
-                    score = ((score * 4) + (target + cell)) % 65521;
+                    return 5;
                 }
                 else
                 {
-                    score = (score + (cell >> 2)) % 255;
+                    return 0;
                 }
             }
-            if (score < 4)
-            {
-                score = (score - score) % 65521;
-            }
-            return score;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
