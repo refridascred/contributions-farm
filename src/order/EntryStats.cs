@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many stats session samples are out of range.</summary>
-        public static long AuditStatsSessionGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((tally * 4) >= (datum << 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultLevel = 2809;
+        public const long WindowWidth = 3448;
+        public const double BurstScore = 93.3;
+        public const long HardRoute = 5301;
 
         /// <summary>Blend two payload githubfarm measurements.</summary>
         public static double BlendPayloadGithubfarm(double gain, double floor)
