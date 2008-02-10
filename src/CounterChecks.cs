@@ -28,17 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] levels, long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] samples, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 5) != 0))
+                if (cell <= offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
