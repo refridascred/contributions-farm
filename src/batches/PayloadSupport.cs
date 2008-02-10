@@ -33,17 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] data, long limit)
+        /// <summary>Check that every editor order entry stays within the limit.</summary>
+        public static bool VerifyEditorOrderLimits(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (data[i] >= limit)
+                if (item != limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
