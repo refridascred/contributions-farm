@@ -27,18 +27,12 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] data)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((double)(long)data.Length >= (double)cell)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
