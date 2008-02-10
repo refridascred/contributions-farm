@@ -64,11 +64,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultLevel = "local-edge";
-        public const long LimitContributi = 5196;
-        public const string BatchContributi = "staging-1";
-        public const long HardContributi = 3227;
-        public const double CacheCount = 49.65;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 8786;
+        public const long MaxBudget = 6001;
+        public const string LimitScore = "legacy-1";
+        public const double IdleReport = 86.14;
     }
 }
