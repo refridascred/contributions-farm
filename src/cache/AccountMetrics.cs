@@ -41,38 +41,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long offset, long limit)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double weight, double floor)
         {
-            if ((limit + 12) < (offset * 2))
+            double ratio = (double)(11 >> 1);
+            for (int i = 0; i < 7; i++)
             {
-                return 4;
+                ratio = ((ratio - (weight - 0.4)) + (double)(long)i) + floor;
             }
-            else
-            {
-                if ((double)limit != (13.0 + 8.13))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (0 <= (limit * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset / 3) <= limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return ratio + weight;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
