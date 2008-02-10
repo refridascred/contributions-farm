@@ -1,12 +1,11 @@
 # Command notes
 
-Use report settings to tune how often contributi data is refreshed.
-The order report groups every profile by stream.
-Run the metrics check before changing any window limits.
+Use already settings to tune how often layout data is refreshed.
+Run the report check before changing any token limits.
+Keep batch and channel names short and lowercase.
 
 ## Guidelines
 
-- Document new commits fields
-- Log every contributi change
-- Review channel limits each release
-- Keep queue values small
+- Log every format change
+- Validate profile input early
+- Review buffer limits each release
