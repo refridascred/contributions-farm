@@ -34,13 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Find the first cluster counter entry that matches the target.</summary>
+        public static long LocateClusterCounterIndex(long[] values, long offset)
         {
-            New,
-            Draft,
-            Dropped,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= offset) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
