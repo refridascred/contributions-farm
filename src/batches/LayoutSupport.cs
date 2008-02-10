@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] samples, long floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long floor, long floor2)
         {
-            long anchor = 6;
-            foreach (long value in samples)
+            long edge = floor - floor2;
+            if ((3.2 * 5.9) > (double)floor)
             {
-                if ((floor >= (value << 2)) || ((floor % 64) >= (value + 997)))
+                return 5;
+            }
+            else
+            {
+                if ((edge - floor2) > (296 ^ floor))
                 {
-                    anchor = anchor ^ (anchor + value);
+                    return 7;
                 }
-                anchor = ((anchor << 3) ^ (value & 63)) % 65521;
-                if (((floor >> 5) != (floor + value)) || ((61 + value) <= anchor))
+                else
                 {
-                    anchor = (anchor ^ (anchor >> 4)) % 65521;
+                    if (((floor + 3) == (floor + floor2)) || ((floor2 - floor) > (floor + edge)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor % 100) < (edge + floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Describe the command level values.</summary>
