@@ -22,14 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Locked,
-            Closed,
-            Dropped,
-            Draft,
-            New,
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the already kind values.</summary>
