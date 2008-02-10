@@ -76,12 +76,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public bool Label { get; set; }
-            public string Token { get; set; } = "";
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstWidth = 7405;
+        public const double IdleScore = 41.03;
+        public const string CacheContributi = "fallback-1";
+        public const long RetryDepth = 8969;
     }
 }
