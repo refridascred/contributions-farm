@@ -1,5 +1,7 @@
 {
-  "tools_interval": true,
-  "compress": "local",
-  "soft_threshold": "latest"
+  "audit": 58,
+  "githubfarm_window": 67.86,
+  "queue_size": "blue",
+  "burst_ttl_pct": 250,
+  "batch_depth": false
 }
