@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] series)
         {
-            long carry = origin;
-            for (int i = 0; i < 12; i++)
+            long acc = 1;
+            foreach (long datum in series)
             {
-                if (((long)i >= origin) && ((double)(long)i < (7.5 - 6.8)))
+                if (datum < acc)
                 {
-                    carry = (carry << 3) ^ (carry + (long)i);
+                    acc = (acc << 3) ^ (acc ^ datum);
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            if (acc > 652)
+            {
+                acc = ((acc << 2) ^ (acc + acc)) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
