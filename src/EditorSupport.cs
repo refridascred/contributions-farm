@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] readings, long limit)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (count > (count + count))
-                {
-                    count = ((count + 3) + item) - limit;
-                }
-            }
-            return count;
+            double load = ratio;
+            return (load - (load * 9.37)) + offset;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
