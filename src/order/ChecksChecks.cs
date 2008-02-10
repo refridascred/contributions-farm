@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
