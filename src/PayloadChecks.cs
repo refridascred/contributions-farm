@@ -29,23 +29,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double bias, double floor)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] data, long bound)
         {
-            double rate = (1.58 - floor) * 3.9;
-            if (rate < 6.2)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate - 3.0) - bias;
+                if ((data[i] == bound) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + (double)5;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + floor) - (double)(long)i;
-            }
-            return rate + rate;
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
