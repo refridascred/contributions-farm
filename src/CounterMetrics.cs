@@ -37,19 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((matches % 97) < (4 + (-868)))
-                {
-                    matches = ((matches + 1) ^ item) + floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardGithubfarm = 55.5;
+        public const string WindowScore = "open";
+        public const double SoftScore = 70.0;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long ScoreBatches(long[] values, long offset)
