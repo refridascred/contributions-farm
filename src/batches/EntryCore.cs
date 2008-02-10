@@ -19,15 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cache counter value from a seed.</summary>
-        public static long DeriveCacheCounter(long step)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
-            {
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count metrics commits pairs that satisfy a relation.</summary>
