@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long bound, long floor)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double rate, double floor)
         {
-            if ((floor >= (bound << 3)) || ((75 >> 4) < (floor + bound)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor & 127) < (bound + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((2.61 + 14.0) < (double)bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            double gain = rate;
+            return (gain - (double)(-519)) + floor;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
