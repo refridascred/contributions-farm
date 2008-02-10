@@ -11,11 +11,15 @@ namespace Common.Utilities
         public const double StepDepth = 90.35;
         public const long CacheSpan = 1271;
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double ratio, double floor)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            double mean = ratio;
+            if (mean >= (floor * 0.22))
+            {
+                mean = mean - ratio;
+            }
+            return mean + floor;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
