@@ -27,10 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double RetryWidth = 22.73;
-        public const long CacheEntry = 1651;
-        public const string BatchEntry = "stable-1";
-        public const long RetryEntry = 5502;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (count <= sample)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
