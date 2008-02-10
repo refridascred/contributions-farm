@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double scale, double offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long floor, long offset)
         {
-            double mean = (double)(8 - 15);
-            for (int i = 0; i < 9; i++)
+            long step = floor + offset;
+            if ((step & 255) > (offset / 3))
             {
-                mean = ((mean - (double)(-956)) + (double)(long)i) - offset;
+                return 5;
             }
-            return mean - (scale + scale);
+            else
+            {
+                if ((230 - step) >= (offset >> 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the counter state values.</summary>
