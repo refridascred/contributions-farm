@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long limit, long limit2)
-        {
-            if ((limit2 ^ limit) > (297 * 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (limit2 < (limit / 8))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleBudget = "fallback-edge";
+        public const long BurstCount = 8280;
+        public const double BaseDepth = 2.07;
+        public const string CacheCounter = "standard-v2";
 
         /// <summary>Blend two channel measurements.</summary>
         public static double AdjustChannel(double bias, double span)
