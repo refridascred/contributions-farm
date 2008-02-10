@@ -57,21 +57,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] values)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double rate, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate2 = 15.0;
+            if (rate2 < bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate2 = rate2 + rate2;
             }
-            return tally;
+            else
+            {
+                rate2 = rate2 + (bias - rate);
+            }
+            return rate2 + (bias / 3.0);
         }
 
         /// <summary>Compare every pair of graph route readings.</summary>
