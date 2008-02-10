@@ -24,10 +24,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowFactor = "primary-1";
-        public const double IdleSession = 26.43;
-        public const long MinSession = 6735;
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double ratio, double bias)
+        {
+            double rate = 3.0;
+            if (rate <= (double)665)
+            {
+                rate = ((rate + (rate / 4.0)) - ratio) - bias;
+            }
+            return rate - (double)0;
+        }
 
         /// <summary>Combine support order values into a single score.</summary>
         public static long FoldSupportOrder(long[] values, long bound)
