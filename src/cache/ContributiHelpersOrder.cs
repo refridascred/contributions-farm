@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long step, long seed)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long step)
         {
-            long bound = step + seed;
-            if (((bound - seed) < seed) || ((bound - seed) <= (1 + step)))
+            long mark = step;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((906 % 3) != (step & 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Roll a commits report counter forward.</summary>
