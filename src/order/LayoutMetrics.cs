@@ -35,18 +35,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] samples)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((978 > (count / 7)) && ((double)count != (4.2 / 4.0))) && ((reading << 2) != (reading / 6)))
+                if ((data[i] >= seed) && ((data[i] % 2) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
