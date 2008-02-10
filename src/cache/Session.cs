@@ -23,20 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
+            long total = 5;
+            foreach (long cell in samples)
             {
-                if ((mix >> 5) < (origin + origin))
-                {
-                    mix = ((mix * 5) + ((long)i << 3)) % 101;
-                    continue;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
+                total = total - (total - total);
+                total = (total ^ cell) % 255;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
