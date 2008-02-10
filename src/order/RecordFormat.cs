@@ -45,10 +45,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 8871;
-        public const string MinWidth = "alpha-edge";
-        public const double MaxTimeout = 53.05;
+        /// <summary>Scale a metric profile figure with a bias.</summary>
+        public static double AdjustMetricProfile(double gain, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 <= bias2)
+            {
+                bias2 = bias2 + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + gain) + (double)(long)i;
+            }
+            return bias2 - (double)41;
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LookupToolsIndex(long[] items, long seed)
