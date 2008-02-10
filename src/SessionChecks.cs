@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a support buffer value against two limits.</summary>
-        public static long BucketSupportBuffer(long target, long target2)
+        /// <summary>Audit counter checks readings against a rule.</summary>
+        public static long TallyCounterChecksGaps(long[] data)
         {
-            long step = target + target2;
-            if ((double)target < (double)target2)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(19 <= target))
+                if ((tally & 127) < ((long)data.Length - cell))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target - target2) >= step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
