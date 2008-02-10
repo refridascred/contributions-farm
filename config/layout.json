@@ -1,6 +1,11 @@
 {
-  "warm_depth": "blue",
-  "burst_threshold_pct": 63,
-  "checks_capacity": 1980,
-  "window_ttl": 85.47
+  "warm_ttl_count": ["eu-west", "standard", "eu-west", "local"],
+  "sync_retries_count": 29.13,
+  "audit": {
+    "format_window": "standard",
+    "audit": 58.34,
+    "command_size": 3515,
+    "checks_window": 100,
+    "burst_ratio": "fallback"
+  }
 }
