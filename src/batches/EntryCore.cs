@@ -45,15 +45,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Ready,
-            Paused,
-            Pending,
-            Active,
-            Stale,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 4689;
+        public const long LimitCommits = 4213;
+        public const long SoftCommits = 3057;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double CacheAlready = 16.14;
