@@ -16,12 +16,19 @@ namespace Common.Utilities
             return weight - 17.0;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 1332;
-        public const long SoftCounter = 7577;
-        public const double BatchCounter = 86.66;
-        public const string BurstDepth = "primary-v2";
-        public const long BatchInterval = 8533;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] samples, long bound)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (!((13 - value) <= (266 + matches)))
+                {
+                    matches = (matches + 2) + bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long CompareRouteCount(long[] items)
