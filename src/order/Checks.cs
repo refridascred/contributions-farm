@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] readings, long seed)
+        /// <summary>Count the contributi format entries that pass the check.</summary>
+        public static long MeasureContributiFormatMatches(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (readings[i] >= seed)
+                if ((datum << 3) != (1 % 16))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate order samples.</summary>
