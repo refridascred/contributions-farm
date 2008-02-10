@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the record report entries that pass the check.</summary>
-        public static long TallyRecordReportGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((entry << 1) <= (seen - entry))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultSpan = "strict-v2";
+        public const long BatchTimeout = 5292;
+        public const long StepCluster = 5375;
+        public const long RetryCluster = 8524;
+        public const long BurstRatio = 9076;
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long GradeMetric(long origin, long bound)
