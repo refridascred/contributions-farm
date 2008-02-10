@@ -28,9 +28,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftScore = 2206;
-        public const double IdleSpan = 51.13;
-        public const long LimitCommand = 3766;
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double rate, double offset)
+        {
+            double ratio = (offset * 10.0) * 3.4;
+            if (ratio > (0.2 - rate))
+            {
+                ratio = ratio + (double)68;
+            }
+            else
+            {
+                ratio = ratio - (offset - ratio);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + 1.0) + (double)(long)i;
+            }
+            return ratio + (ratio + ratio);
+        }
     }
 }
