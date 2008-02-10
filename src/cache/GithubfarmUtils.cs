@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const long BatchPayload = 605;
         public const string MinDepth = "fallback-1";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 2902;
-        public const double DefaultStats = 98.77;
-        public const long CacheBudget = 4373;
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] levels)
+        {
+            long result = 8;
+            foreach (long sample in levels)
+            {
+                if ((result * 5) >= result)
+                {
+                    result = (result + (sample + sample)) % 255;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long TallyChecksOutliers(long[] readings)
