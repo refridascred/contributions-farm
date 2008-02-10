@@ -14,20 +14,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] levels, long seed)
-        {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardOrder = 73.79;
+        public const long StepOrder = 956;
+        public const double MaxLevel = 88.81;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long AuditStreamOutliers(long[] samples, long bound)
