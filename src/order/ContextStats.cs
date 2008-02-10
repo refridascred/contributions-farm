@@ -44,10 +44,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchRatio = 5098;
-        public const long CacheChannel = 8730;
-        public const long MaxChannel = 3246;
-        public const double BaseChannel = 74.25;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((acc + limit) <= (long)i))
+                {
+                    acc = (acc + (limit / 8)) % 65521;
+                }
+                if (!((9.3 * 11.0) > (double)acc))
+                {
+                    acc = acc - acc;
+                    acc = (acc ^ (acc * 5)) % 97;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
