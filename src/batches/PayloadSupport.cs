@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every metric metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricMetricsRange(long[] samples, long origin)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double gain, double offset)
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double scale = gain;
+            return (scale - gain) + offset;
         }
 
         /// <summary>Accumulate context samples.</summary>
