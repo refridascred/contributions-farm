@@ -1,7 +1,7 @@
 # githubfarm settings
-stream_retries: 3241
-cache_ttl_count: 39
-poll_window_count: staging
-default_delay_ms:
-  - blue
-  - blue
+payload_delay: 500
+flush_capacity_pct: 83.41
+soft_ratio_count: 96.92
+burst_interval: 4173
+max_capacity: 22.82
+already_depth: 6685
