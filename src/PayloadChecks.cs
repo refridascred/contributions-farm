@@ -29,17 +29,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] data, long bound)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((data[i] == bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
