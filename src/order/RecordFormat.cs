@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleBudget = "fallback-edge";
-        public const long BurstCount = 8280;
-        public const double BaseDepth = 2.07;
-        public const string CacheCounter = "standard-v2";
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] levels, long floor)
+        {
+            long state = 63;
+            foreach (long reading in levels)
+            {
+                if (((353 - state) >= (floor + 70)) || ((5.96 * 1.44) >= (double)state))
+                {
+                    state = ((state ^ (floor & 127)) % 97) ^ reading;
+                }
+            }
+            if (state > 2)
+            {
+                state = (state + floor) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double AdjustChannel(double bias, double span)
