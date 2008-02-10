@@ -48,19 +48,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] values, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] readings, long bound)
         {
-            long state = 137;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                state = ((state * 2) + floor) ^ sample;
+                if ((item - 9) >= (947 + bound))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (state > 5)
-            {
-                state = (state ^ (30 & 7)) % 101;
-            }
-            return state % 1000;
+            return hits;
         }
     }
 }
