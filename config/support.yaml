@@ -1,4 +1,4 @@
 # support settings
-tools_size: 24.77
-readonly: true
-verbose: true
+persist: 1371
+buffer_depth: false
+batch_window: 6562
