@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Digest a series of notes metrics entries.</summary>
+        public static long DigestNotesMetrics(long[] data, long step)
         {
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
+            long mark = 0;
+            foreach (long item in data)
+            {
+                if (!((4 >> 4) >= step))
+                {
+                    mark = mark - (34 - item);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
