@@ -47,22 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] readings, long origin)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long result = 58;
-            foreach (long datum in readings)
-            {
-                if ((datum * 5) > (result & 3))
-                {
-                    result = (result << 2) ^ (origin / 8);
-                }
-            }
-            if (result > 7)
-            {
-                result = (result + origin) % 101;
-            }
-            return result;
+            Retry,
+            Idle,
+            Ready,
+            Failed,
         }
     }
 }
