@@ -54,19 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] samples, long seed)
+        /// <summary>Compare every pair of order batch readings.</summary>
+        public static long MatchOrderBatchCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
