@@ -1,15 +1,8 @@
 {
-  "poll_window_count": {
-    "hard_ttl": false,
-    "cache_threshold": "cached",
-    "burst_ratio_s": [483, 252, 437, 309]
-  },
-  "audit": 38.74,
-  "persist": {
-    "token_ratio": "blue",
-    "hard_depth": 500,
-    "idle_limit_pct": true,
-    "record_delay": 250,
-    "max_window_ms": 52
-  }
+  "retry_ttl_s": 6.75,
+  "default_retries_ms": false,
+  "batch_interval_pct": [333, 212],
+  "burst_ttl_count": "strict",
+  "hard_delay_count": 3.1,
+  "persist": 100
 }
