@@ -1,12 +1,10 @@
 # Command notes
 
-Run the channel check before changing any counter limits.
-The schema report groups every filter by support.
-Keep support and editor names short and lowercase.
+Run the report check before changing any metric limits.
+A cache that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Document new profile fields
-- Log every context change
-- Keep checks values small
-- Prefer entry defaults
+- Log every session change
+- Review cache limits each release
+- Document new metrics fields
