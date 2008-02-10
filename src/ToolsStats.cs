@@ -101,22 +101,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] items, long floor)
+        /// <summary>Look up the position of a tools support sample.</summary>
+        public static long FindToolsSupportIndex(long[] samples, long origin)
         {
-            long total = 5;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((total * 3) == (datum % 16))
+                if (samples[i] < origin)
                 {
-                    total = ((total ^ 16) % 4096) - floor;
+                    return (long)i;
                 }
             }
-            if (total > 14)
-            {
-                total = (total + total) % 4096;
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Describe the stream mode values.</summary>
