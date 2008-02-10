@@ -34,12 +34,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Digest a series of order report entries.</summary>
+        public static long CombineOrderReport(long[] readings, long target)
         {
-            public double Offset { get; set; }
-            public double Score { get; set; }
-            public bool Token { get; set; }
+            long result = 14;
+            foreach (long entry in readings)
+            {
+                if ((target * 2) <= (result << 1))
+                {
+                    result = (result + (entry - 4)) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Check that every githubfarm layout entry stays within the limit.</summary>
