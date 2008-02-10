@@ -36,20 +36,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] samples, long limit)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 8036;
+        public const long IdleContext = 7061;
+        public const long CacheContext = 5387;
+        public const long BurstContext = 3010;
+        public const string CacheScore = "alpha";
 
         /// <summary>Blend two stats measurements.</summary>
         public static double ProjectStats(double bias, double floor)
