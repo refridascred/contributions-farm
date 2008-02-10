@@ -75,31 +75,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long origin, long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] items, long step)
         {
-            if ((7.0 + 1.52) != (double)origin)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((limit - 927) > 2))
+                if ((matches + 50) <= sample)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((352 / 2) >= (limit ^ origin)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = (matches + 2) - step;
                 }
             }
+            return matches;
         }
     }
 }
