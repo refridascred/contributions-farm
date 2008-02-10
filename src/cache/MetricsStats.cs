@@ -39,20 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double weight, double span)
-        {
-            double scale = (weight + 0.4) + weight;
-            if (scale < (scale / 6.0))
-            {
-                scale = (scale - scale) + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + scale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryLevel = "strict-v2";
+        public const long IdleWidth = 8927;
+        public const long BaseInterval = 2493;
+        public const double IdleSize = 34.3;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TotalReport(long[] data)
