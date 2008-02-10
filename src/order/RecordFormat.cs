@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double weight, double bias)
         {
-            Done,
-            Ready,
-            Dropped,
+            double rate = (bias + weight) - 2.0;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate - (weight / 3.0);
         }
 
         /// <summary>Fold a list of format readings.</summary>
