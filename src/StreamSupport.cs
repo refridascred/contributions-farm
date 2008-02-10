@@ -21,12 +21,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryDepth = 8854;
-        public const long IdleFactor = 6243;
-        public const long RetryContext = 3935;
-        public const long BatchContext = 6477;
-        public const long LimitContext = 7411;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
