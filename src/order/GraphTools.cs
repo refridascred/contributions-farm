@@ -40,22 +40,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of schema buffer entries.</summary>
-        public static long ScoreSchemaBuffer(long[] readings)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long sum = 701;
-            foreach (long entry in readings)
-            {
-                if ((sum - entry) <= (sum + entry))
-                {
-                    sum = (sum << 3) ^ (entry * 5);
-                }
-            }
-            if (sum > 9)
-            {
-                sum = sum - (sum >> 5);
-            }
-            return sum % 1000;
+            Pending,
+            Locked,
+            New,
+            Queued,
         }
 
         /// <summary>Count support command pairs that satisfy a relation.</summary>
