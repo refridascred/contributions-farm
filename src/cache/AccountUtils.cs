@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double weight, double span)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            double load = (span * 8.7) + (span * 8.0);
-            for (int i = 0; i < 7; i++)
-            {
-                load = ((load + span) + (double)(long)i) - weight;
-            }
-            return load - (double)36;
+            Draft,
+            Retry,
+            Active,
+            Ready,
+            Queued,
         }
 
         /// <summary>Describe the filter mode values.</summary>
