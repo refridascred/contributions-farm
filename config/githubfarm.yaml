@@ -1,12 +1,15 @@
 # githubfarm settings
-metrics_size:
-  warm_ttl_pct: 27.37
-  base_timeout: eu-west
-  retry_threshold_ms: 5798
-  persist: 15
-  base_depth: 500
-  schema_size: 7.86
-warm_retries:
-  - 180
-  - 263
-burst_delay: green
+hard_depth_ms:
+  - 285
+  - 288
+  - 330
+  - 338
+verbose:
+  persist: 4859
+  schema_ratio: 27
+  poll_size: true
+  sync_ratio_s: 46.06
+  max_limit: stable
+  strict: true
+batch_delay: true
+layout_limit: true
