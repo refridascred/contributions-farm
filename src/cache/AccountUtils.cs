@@ -21,11 +21,13 @@ namespace Common.Utilities
             return load - (double)36;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseNotes = 20.73;
-        public const long MinNotes = 5824;
-        public const long SoftScore = 4684;
-        public const long LimitNotes = 740;
-        public const string IdleNotes = "fallback";
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
+        {
+            Done,
+            Retry,
+            Locked,
+            Stale,
+        }
     }
 }
