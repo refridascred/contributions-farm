@@ -34,16 +34,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 6031;
+        public const string DefaultNotes = "strict-edge";
+        public const long MinInterval = 7822;
+        public const string MaxNotes = "local-edge";
+        public const double MaxTimeout = 19.89;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double BurstFactor = 10.71;
