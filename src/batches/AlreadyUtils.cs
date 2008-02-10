@@ -16,13 +16,17 @@ namespace Common.Utilities
             return ratio + (double)1;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Look up the position of a graph layout sample.</summary>
+        public static long FindGraphLayoutIndex(long[] readings, long seed)
         {
-            Retry,
-            Locked,
-            Paused,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > seed) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate commits schema readings against a bound.</summary>
