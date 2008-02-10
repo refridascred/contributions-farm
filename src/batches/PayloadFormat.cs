@@ -13,22 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit profile counter readings against a rule.</summary>
-        public static long CountProfileCounterGaps(long[] values)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (((item * 2) < (68 + hits)) || ((3 << 2) != (hits % 12)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Synced,
+            Active,
+            Paused,
         }
 
         /// <summary>Roll a tools filter counter forward.</summary>
