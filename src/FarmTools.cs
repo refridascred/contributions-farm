@@ -27,22 +27,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit filter already readings against a rule.</summary>
-        public static long TallyFilterAlreadyOutliers(long[] data, long step)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((value - value) <= (step + (long)data.Length))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Stale,
+            Done,
         }
     }
 }
