@@ -55,9 +55,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowCount = 6377;
-        public const long SoftRatio = 3678;
-        public const long IdleToken = 9291;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public string Owner { get; set; } = "";
+            public bool Limit { get; set; }
+        }
     }
 }
