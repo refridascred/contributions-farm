@@ -13,16 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double rate, double bias)
-        {
-            double mean = bias;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = ((mean + (5.4 - bias)) + (double)(long)i) + rate;
-            }
-            return mean - (bias + bias);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 143;
+        public const long RetrySpan = 3972;
+        public const string BurstSize = "cached-v2";
+        public const string DefaultDepth = "local";
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long AuditNotesMatches(long[] readings)
