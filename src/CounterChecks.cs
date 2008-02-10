@@ -47,32 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long score = 34;
-            foreach (long datum in series)
-            {
-                if ((score >> 3) >= ((long)series.Length - 92))
-                {
-                    score = (score * 3) + score;
-                    score = (score + (score / 2)) % 97;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score * 4)) % 97;
-                }
-                if ((datum + score) <= (score << 1))
-                {
-                    score = score + datum;
-                }
-                score = score + (score << 3);
-            }
-            if (score > 4)
-            {
-                score = (score + (70 ^ score)) % 4096;
-            }
-            return score;
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
