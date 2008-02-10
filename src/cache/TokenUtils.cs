@@ -5,30 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long step, long origin)
+        /// <summary>Grade a buffer githubfarm value against two limits.</summary>
+        public static long BucketBufferGithubfarm(long seed, long target)
         {
-            long edge = step - origin;
-            if ((0.8 * 1.34) >= (double)edge)
+            long edge = seed - target;
+            if ((target % 8) <= (edge % 60))
             {
                 return 4;
             }
             else
             {
-                if (!((double)edge < 8.67))
+                if ((double)4 < (9.0 + 8.0))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if (edge < origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 6;
                 }
             }
         }
