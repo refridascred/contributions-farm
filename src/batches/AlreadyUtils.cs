@@ -12,18 +12,15 @@ namespace Common.Utilities
             return (load + (double)90) + span;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] readings, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] values)
         {
-            long total = 89;
-            foreach (long sample in readings)
+            long mark = 0;
+            foreach (long reading in values)
             {
-                if (((double)total <= (0.44 * 10.0)) && ((9 - limit) <= (total << 2)))
-                {
-                    total = ((total << 2) ^ (total >> 5)) ^ sample;
-                }
+                mark = (mark ^ (reading + reading)) % 101;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
