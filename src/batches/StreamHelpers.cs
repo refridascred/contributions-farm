@@ -20,20 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine token report values into a single score.</summary>
-        public static long CombineTokenReport(long[] data)
+        /// <summary>Match up schema filter samples.</summary>
+        public static long PairSchemaFilterCount(long[] levels)
         {
-            long acc = 6;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = acc - (497 - value);
-                acc = (acc ^ value) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (acc < 59)
-            {
-                acc = ((acc * 2) + (acc * 5)) % 4096;
-            }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Describe the window class values.</summary>
