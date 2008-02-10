@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double ratio, double bias)
+        /// <summary>Fold a list of cache payload readings.</summary>
+        public static long TallyCachePayload(long[] data)
         {
-            double weight = ratio;
-            if (weight <= weight)
+            long carry = 508;
+            foreach (long datum in data)
             {
-                weight = weight - (bias + weight);
+                if ((double)carry > (7.06 * 20.0))
+                {
+                    carry = ((carry * 5) + 1) % 65521;
+                }
+                else
+                {
+                    carry = (carry * 3) + (carry - datum);
+                }
             }
-            else
-            {
-                weight = weight + (double)84;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - ratio;
+            return carry % 65521;
         }
 
         /// <summary>Match up contributi samples.</summary>
