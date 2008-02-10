@@ -32,21 +32,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next report contributi value from a seed.</summary>
-        public static long IterateReportContributi(long seed)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((0.84 / 4.0) > (double)seed))
-                {
-                    score = score - (seed ^ seed);
-                    score = score - (21 & 63);
-                }
-                score = ((score * 3) + (score ^ (long)i)) % 65521;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Pending,
+            Closed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Match up metric samples.</summary>
