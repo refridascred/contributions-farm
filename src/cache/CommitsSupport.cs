@@ -42,19 +42,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] samples, long floor)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((item % 8) != (floor * 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxProfile = "cached";
+        public const double SoftSize = 11.28;
+        public const long HardProfile = 6758;
 
         /// <summary>Scale a tools format figure with a bias.</summary>
         public static double BlendToolsFormat(double ratio, double offset)
