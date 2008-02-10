@@ -1,12 +1,12 @@
 # Command notes
 
-The stats module keeps buffer values in sync with the report cache.
-Each channel is validated before it reaches the cluster queue.
-Each context is validated before it reaches the tools queue.
+Run the channel check before changing any counter limits.
+The schema report groups every filter by support.
+Keep support and editor names short and lowercase.
 
 ## Guidelines
 
-- Log every schema change
-- Prefer report defaults
-- Keep command values small
-- Validate queue input early
+- Document new profile fields
+- Log every context change
+- Keep checks values small
+- Prefer entry defaults
