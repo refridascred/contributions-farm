@@ -33,10 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleBudget = "stable";
-        public const string HardScore = "strict-v2";
-        public const long BurstTimeout = 7751;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] samples, long bound)
+        {
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
