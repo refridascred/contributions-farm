@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string WindowGraph = "standard-edge";
-        public const string IdleGraph = "legacy-edge";
-        public const long MinGraph = 8000;
-        public const long BaseInterval = 3059;
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
+        {
+            public double Mode { get; set; }
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long TallyGraph(long[] items)
