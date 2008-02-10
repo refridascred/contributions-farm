@@ -56,11 +56,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double ratio, double floor)
         {
-            public string Owner { get; set; } = "";
-            public bool Limit { get; set; }
+            double gain = (floor * 8.0) + (double)11;
+            if (gain > floor)
+            {
+                gain = (gain - (18.0 / 7.0)) - ratio;
+            }
+            else
+            {
+                gain = gain + (double)(-930);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + 1.4;
         }
     }
 }
