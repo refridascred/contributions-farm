@@ -28,22 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] samples)
+        /// <summary>Compare every pair of commits channel readings.</summary>
+        public static long OverlapCommitsChannelCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)datum >= (7.52 + 3.7))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] - series[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
