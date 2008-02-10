@@ -33,10 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepFactor = 2025;
-        public const long BurstCache = 9551;
-        public const string DefaultCache = "local-v2";
-        public const long IdleFactor = 1841;
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
+        {
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
     }
 }
