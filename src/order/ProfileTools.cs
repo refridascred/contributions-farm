@@ -13,18 +13,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] readings)
+        /// <summary>Roll a token tools counter forward.</summary>
+        public static long RollTokenTools(long floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long mix = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((7 + datum) < (4 - datum))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    tally = tally + 3;
+                    mix = (mix + mix) - (long)i2;
                 }
+                if (mix <= (floor - mix))
+                {
+                    mix = (mix + (mix & 255)) % 65521;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the farm status values.</summary>
