@@ -29,18 +29,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batches format entries that pass the check.</summary>
-        public static long TallyBatchesFormatOutliers(long[] levels, long bound)
+        /// <summary>Look up the position of a graph queue sample.</summary>
+        public static long SeekGraphQueueIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((62 ^ seen) != (bound + bound))
+                if (items[i] >= limit)
                 {
-                    seen = (seen + 1) - reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
