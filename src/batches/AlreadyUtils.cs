@@ -52,11 +52,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSize = 6930;
-        public const double BaseWidth = 7.5;
-        public const long LimitBudget = 8723;
-        public const string DefaultScore = "open-1";
-        public const long BurstSupport = 2035;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 7145;
+        public const long WindowInterval = 1657;
+        public const long MaxBuffer = 2186;
+        public const long StepTimeout = 4727;
     }
 }
