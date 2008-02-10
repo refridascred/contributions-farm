@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string CacheAlready = "open";
-        public const long DefaultAlready = 8611;
-        public const long CacheCount = 5504;
-        public const double MinTimeout = 85.84;
-        public const long RetryTimeout = 3819;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= offset) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
