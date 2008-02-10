@@ -53,15 +53,13 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] series)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long state = 58;
-            foreach (long item in series)
-            {
-                state = (state - (984 - item)) % 4096;
-            }
-            return state;
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
+            public double Label { get; set; }
+            public double Score { get; set; }
         }
     }
 }
