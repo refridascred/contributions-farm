@@ -54,25 +54,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long target, long limit)
-        {
-            long step = target ^ limit;
-            if (!((7.93 * 1.18) < (double)step))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((17.0 - 8.0) <= (double)step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowCount = 6377;
+        public const long SoftRatio = 3678;
+        public const long IdleToken = 9291;
     }
 }
