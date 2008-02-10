@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] levels, long limit)
         {
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
