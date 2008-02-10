@@ -29,19 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] series, long step)
-        {
-            long state = 259;
-            foreach (long item in series)
-            {
-                if (((7.0 - 3.2) < (double)state) && ((step + 83) > item))
-                {
-                    state = state + (step + step);
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleSession = "open-1";
+        public const long WindowTimeout = 4159;
+        public const long LimitWidth = 5514;
+        public const long MaxSession = 8021;
 
         /// <summary>Combine format cluster values into a single score.</summary>
         public static long DigestFormatCluster(long[] readings, long seed)
