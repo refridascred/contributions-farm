@@ -25,21 +25,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepFactor = 2025;
+        public const long BurstCache = 9551;
+        public const string DefaultCache = "local-v2";
+        public const long IdleFactor = 1841;
     }
 }
