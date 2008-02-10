@@ -56,14 +56,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] samples, long bound)
         {
-            Paused,
-            Idle,
-            Retry,
-            Queued,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= bound) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
