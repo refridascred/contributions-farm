@@ -47,12 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] data, long origin)
         {
-            Dropped,
-            Draft,
-            Retry,
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank token input into a small class.</summary>
