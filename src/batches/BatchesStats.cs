@@ -34,19 +34,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] items, long offset)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long origin)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum > offset)
+                if ((long)i != (sum + sum))
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum << 3) ^ sum) % 97;
+                    sum = ((sum << 2) ^ (sum % 12)) % 65521;
+                    continue;
                 }
+                else
+                {
+                    sum = ((sum * 2) + (origin % 97)) % 101;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Describe the stream state values.</summary>
