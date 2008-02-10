@@ -56,18 +56,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] samples)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long score = 12;
+            foreach (long cell in levels)
             {
-                if (4 < (seen + reading))
+                if ((cell / 5) > cell)
                 {
-                    seen = seen + 2;
+                    score = ((score << 3) ^ (cell - 9)) % 255;
+                    score = (score * 4) + (step ^ cell);
                 }
+                score = score ^ score;
             }
-            return seen;
+            if (score < 272)
+            {
+                score = (score + step) % 1000;
+            }
+            return score;
         }
     }
 }
