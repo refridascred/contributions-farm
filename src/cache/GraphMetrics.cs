@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] data)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum != step)
                 {
-                    if ((data[i] ^ data[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Hold a support header.</summary>
