@@ -39,12 +39,12 @@ namespace Common.Utilities
             return scale - (double)1;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            Retry,
-            Idle,
-            Closed,
+            Draft,
+            Failed,
+            Ready,
         }
 
         /// <summary>Describe the window state values.</summary>
