@@ -60,18 +60,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] samples)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (90 >= entry)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Rank channel input into a small class.</summary>
