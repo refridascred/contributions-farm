@@ -14,24 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the profile format series from a seed.</summary>
-        public static long SeriesProfileFormat(long target)
+        /// <summary>Find the first record context entry that matches the target.</summary>
+        public static long FindRecordContextIndex(long[] readings, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(acc <= (target + acc)))
+                if (readings[i] == bound)
                 {
-                    acc = (acc * 4) + (target ^ target);
+                    return (long)i;
                 }
-                if (acc < (long)i)
-                {
-                    acc = acc - (target - (long)i);
-                    acc = (acc ^ (340 - (long)i)) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a profile summary.</summary>
