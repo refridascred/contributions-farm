@@ -27,11 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleCommits = 36.18;
-        public const long BaseCommits = 1421;
-        public const long HardRatio = 3095;
-        public const double WindowFactor = 16.83;
+        /// <summary>Compare every pair of payload counter readings.</summary>
+        public static long ComparePayloadCounterCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
