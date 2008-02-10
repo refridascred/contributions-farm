@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 4662;
-        public const long LimitBatches = 1221;
-        public const long MaxBatches = 5994;
-        public const long BaseDepth = 5836;
-        public const long CacheDepth = 9953;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long SortReport(long floor, long offset)
