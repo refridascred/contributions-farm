@@ -19,15 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long bound)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long step, long step2)
         {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
+            if (step2 > (step2 + step))
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((step2 / 5) > step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step2 & 255) > (7 / 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step2 << 2) < (step2 + 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the context phase values.</summary>
