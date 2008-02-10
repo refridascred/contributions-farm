@@ -23,14 +23,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Done,
-            Retry,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepContext = 18.19;
+        public const long WindowDepth = 1419;
+        public const long MinInterval = 2583;
+        public const long BurstInterval = 8686;
+        public const string SoftContext = "latest";
 
         /// <summary>Define format limits and defaults.</summary>
         public const string IdleFormat = "staging-v2";
