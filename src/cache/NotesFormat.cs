@@ -16,10 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinTimeout = 462;
-        public const long HardAlready = 8990;
-        public const string MinAlready = "standard-v2";
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowReport = 32.6;
+        public const double HardReport = 4.23;
+        public const long LimitDepth = 8589;
+        public const double LimitWidth = 12.01;
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
