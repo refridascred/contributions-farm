@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine route report values into a single score.</summary>
-        public static long WeighRouteReport(long[] readings, long offset)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long sum = 887;
-            foreach (long datum in readings)
-            {
-                if (!(datum < ((-547) & 255)))
-                {
-                    sum = (sum << 2) ^ (offset & 127);
-                }
-                else
-                {
-                    sum = (sum ^ (datum + 963)) % 97;
-                }
-                if ((sum - 66) > (datum - datum))
-                {
-                    break;
-                }
-            }
-            if (sum < 73)
-            {
-                sum = sum + sum;
-            }
-            return sum % 65521;
+            public string Offset { get; set; } = "";
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
