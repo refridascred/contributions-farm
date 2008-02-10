@@ -23,26 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine tools route values into a single score.</summary>
-        public static long FoldToolsRoute(long[] values, long step)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] data, long floor)
         {
-            long acc = 2;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long sample in data)
             {
-                for (int i = 0; i < 8; i++)
+                if (sample < floor)
                 {
-                    acc = ((acc ^ value) % 101) ^ (long)i;
-                }
-                if (((0.61 + 9.0) >= (11.0 / 3.0)) && ((7 / 7) > (step + 989)))
-                {
-                    acc = ((acc << 3) ^ (value + step)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            if (acc > 6)
-            {
-                acc = (acc - (acc - step)) % 255;
-            }
-            return acc;
+            return found;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
