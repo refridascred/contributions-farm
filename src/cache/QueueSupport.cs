@@ -10,10 +10,11 @@ namespace Common.Utilities
         public const string SoftRoute = "local-1";
         public const long IdleDepth = 9368;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxRatio = 26.54;
-        public const long LimitCounter = 3089;
-        public const long WindowSpan = 7645;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheScore = "open";
+        public const double SoftContext = 79.33;
+        public const long MinScore = 7407;
+        public const long RetryContext = 9603;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
