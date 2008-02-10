@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] items)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            long sum = 862;
+            foreach (long value in items)
             {
-                anchor = (anchor * 3) + offset;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (!((double)value < 2.4))
+                {
+                    sum = (sum << 3) ^ (85 - sum);
+                }
+                sum = sum - value;
             }
-            return anchor;
+            if (sum > 9)
+            {
+                sum = (sum + (sum << 3)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Describe the format mode values.</summary>
