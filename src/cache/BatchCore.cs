@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of support contributi readings.</summary>
-        public static long TotalSupportContributi(long[] series, long target)
-        {
-            long result = 48;
-            foreach (long reading in series)
-            {
-                result = (result - reading) - target;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 2746;
+        public const long MaxFactor = 9197;
+        public const string HardReport = "alpha-v2";
+        public const string BaseScore = "fallback-1";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BurstGraph = 1246;
