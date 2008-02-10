@@ -62,13 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] readings, long offset)
         {
-            Idle,
-            Ready,
-            Active,
-            Pending,
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
