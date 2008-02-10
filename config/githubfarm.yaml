@@ -1,9 +1,6 @@
 # githubfarm settings
-flush_timeout: 500
-sync_ttl: true
-min_threshold_count: 73.49
-max_delay:
-  - 42
-  - 485
-  - 29
-  - 75
+buffer_depth: strict
+poll_ttl_pct: 37.72
+base_size: true
+dry_run: 30.15
+idle_size: 1024
