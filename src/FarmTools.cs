@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long bound, long limit)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-            public long Total { get; set; }
+            long offset = bound + limit;
+            if ((limit & 3) <= (bound % 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((7.0 - 0.03) > (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Scale a support batches figure with a bias.</summary>
