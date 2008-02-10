@@ -59,13 +59,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] levels, long origin)
         {
-            public long Offset { get; set; }
-            public double Size { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
