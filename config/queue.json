@@ -1,5 +1,20 @@
 {
-  "poll_ttl": 4528,
-  "soft_ratio_count": [448, 240],
-  "soft_threshold_pct": 7431
+  "channel_limit": 72,
+  "default_threshold_s": {
+    "default_window_s": 250,
+    "payload_size": 94.62,
+    "min_timeout_count": {
+      "hard_retries": 78.25,
+      "dry_run": "eu-west",
+      "idle_window_pct": 60,
+      "hard_threshold_count": 187,
+      "compress": 43.11,
+      "persist": "fallback"
+    },
+    "base_threshold": false,
+    "layout_capacity": "primary"
+  },
+  "queue_ratio": 44.27,
+  "context_delay": "staging",
+  "max_window": 7426
 }
