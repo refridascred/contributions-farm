@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long bound, long seed)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            if (seed > bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((seed & 63) < bound) && ((38 + 7) != (seed - bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound >= (bound / 4)) && ((3.58 + 8.52) != (double)seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
