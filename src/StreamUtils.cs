@@ -87,22 +87,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] items)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((reading > tally) || ((double)reading <= (6.12 * 0.13))) || (2.87 >= (5.9 + 2.61)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Stale,
+            New,
         }
 
         /// <summary>Adjust a tools reading.</summary>
