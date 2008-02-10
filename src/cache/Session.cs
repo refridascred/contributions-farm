@@ -50,17 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long floor)
+        /// <summary>Check that every buffer batch entry stays within the limit.</summary>
+        public static bool GuardBufferBatchBounds(long[] values, long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                carry = ((carry << 3) ^ (2 & 63)) % 1000;
-                carry = (carry ^ (floor + (long)i)) % 4096;
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (value > step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
     }
 }
