@@ -1,7 +1,6 @@
 {
-  "dry_run": true,
-  "base_retries_s": 65,
-  "min_depth_ms": 35.2,
-  "idle_timeout": 26.61,
-  "persist": 56
+  "token_threshold": ["fallback", "strict", "primary"],
+  "token_delay": 100,
+  "idle_retries_s": 100,
+  "enabled": "cached"
 }
