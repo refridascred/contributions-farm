@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] samples)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell < (17.0 - 7.56))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Draft,
+            New,
+            Synced,
+            Active,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
