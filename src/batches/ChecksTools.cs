@@ -40,19 +40,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] levels, long seed)
+        /// <summary>Look up the position of a report order sample.</summary>
+        public static long FindReportOrderIndex(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= seed)
+                if ((items[i] > target) && ((items[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
