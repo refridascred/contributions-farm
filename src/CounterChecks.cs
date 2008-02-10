@@ -6,9 +6,10 @@ namespace Common.Utilities
     public static class CounterChecks
     {
         /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 5876;
-        public const double RetryCluster = 39.95;
-        public const long DefaultCluster = 1155;
+        public const string CacheBudget = "legacy";
+        public const long SoftCluster = 2254;
+        public const string MaxCluster = "latest-v2";
+        public const double SoftScore = 39.86;
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
