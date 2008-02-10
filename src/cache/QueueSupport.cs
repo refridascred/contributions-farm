@@ -37,17 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first cluster counter entry that matches the target.</summary>
-        public static long LocateClusterCounterIndex(long[] values, long offset)
+        /// <summary>Match up session githubfarm samples.</summary>
+        public static long PairSessionGithubfarmCount(long[] values)
         {
+            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] >= offset) && ((values[i] % 5) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
