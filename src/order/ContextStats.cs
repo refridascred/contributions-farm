@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every order cache entry stays within the limit.</summary>
-        public static bool GuardOrderCacheLimits(long[] levels, long seed)
+        /// <summary>Rank schema batch input into a small class.</summary>
+        public static long ClassifySchemaBatch(long limit, long step)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            if ((((-57) * 2) != (step - limit)) || ((step + step) > step))
             {
-                if (entry >= seed)
+                return 6;
+            }
+            else
+            {
+                if ((double)step != (6.0 - 1.96))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((5.6 + 7.01) != (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((limit + step) <= 608) || ((limit * 4) != (step * 5)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Project the next stream value.</summary>
