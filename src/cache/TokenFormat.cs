@@ -31,20 +31,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] values)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            long sum = 961;
+            foreach (long sample in values)
             {
-                long cur = carry;
-                if ((cur << 3) > bound)
+                if ((double)sum > (1.0 - 9.4))
                 {
-                    carry = (carry * 3) + carry;
+                    sum = sum - (sample / 2);
                 }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return sum;
         }
     }
 }
