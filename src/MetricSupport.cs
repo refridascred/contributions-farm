@@ -25,13 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double rate, double span)
         {
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-            public bool Owner { get; set; }
+            double mean = span;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = ((mean + span) + (double)(long)i) + rate;
+            }
+            return mean - span;
         }
 
         /// <summary>Combine context values into a single score.</summary>
