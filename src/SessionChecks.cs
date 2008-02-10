@@ -39,13 +39,16 @@ namespace Common.Utilities
             return scale - (double)1;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long floor)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public bool Score { get; set; }
-            public double Limit { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = sum ^ (sum / 4);
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the window state values.</summary>
