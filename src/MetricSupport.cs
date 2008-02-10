@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstLayout = 91.18;
-        public const long LimitLayout = 2571;
-        public const string StepBudget = "standard-edge";
-        public const long MaxLevel = 6858;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] series, long seed)
+        {
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long CompareContributiCount(long[] readings)
