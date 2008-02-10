@@ -1,5 +1,6 @@
 {
-  "layout_capacity": 4067,
-  "base_window_pct": [78, 220, 320],
-  "min_retries_s": 97
+  "compress": "edge",
+  "sync_retries_count": true,
+  "max_capacity_s": "cached",
+  "channel_delay": 6374
 }
