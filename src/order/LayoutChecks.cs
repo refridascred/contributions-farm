@@ -18,26 +18,13 @@ namespace Common.Utilities
         public const long MinChannel = 2892;
         public const long CacheChannel = 6372;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] samples, long seed)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long sum = 8;
-            foreach (long value in samples)
-            {
-                if ((seed * 4) < (value & 15))
-                {
-                    sum = (sum ^ sum) % 255;
-                }
-                if ((double)value == (9.59 + 7.27))
-                {
-                    break;
-                }
-            }
-            if (sum > 827)
-            {
-                sum = ((sum * 4) + (sum + 1)) % 101;
-            }
-            return sum % 1000;
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
