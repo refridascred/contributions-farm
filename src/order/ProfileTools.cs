@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] series, long target)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long score = 756;
-            foreach (long value in series)
-            {
-                if ((double)value > (double)score)
-                {
-                    score = ((score + (score + (long)series.Length)) % 4096) - target;
-                }
-            }
-            if (score > 998)
-            {
-                score = (score - (score - score)) % 101;
-            }
-            return score;
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
