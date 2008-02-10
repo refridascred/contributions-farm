@@ -18,24 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a session filter pair into a bucket.</summary>
-        public static long SortSessionFilter(long offset, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] items, long bound)
         {
-            if ((double)bound <= (5.6 - 5.28))
+            long carry = 19;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset << 2) < bound)
+                if ((carry << 2) == (bound ^ (long)items.Length))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    carry = ((carry << 2) ^ (bound * 2)) - datum;
                 }
             }
+            if (carry > 13)
+            {
+                carry = ((carry * 4) + 799) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
