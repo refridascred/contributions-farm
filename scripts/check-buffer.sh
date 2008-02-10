@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green strict; do
+for item in open eu-west staging; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-green}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=103
+log "limit is ${BUFFER_LIMIT}"
