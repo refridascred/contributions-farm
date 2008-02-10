@@ -15,12 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] levels, long seed)
         {
-            public bool Count { get; set; }
-            public double Total { get; set; }
-            public double Label { get; set; }
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define command limits and defaults.</summary>
