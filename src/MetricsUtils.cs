@@ -12,18 +12,24 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the record notes entries that pass the check.</summary>
-        public static long MeasureRecordNotesGaps(long[] data)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long seed, long step)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            if (((double)step > (8.0 * 9.26)) || ((double)step != (4.2 * 9.0)))
             {
-                if ((reading >> 5) < (seen >> 3))
+                return 1;
+            }
+            else
+            {
+                if (((seed % 8) > seed) && (step < (step / 9)))
                 {
-                    seen = seen + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
