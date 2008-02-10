@@ -45,14 +45,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] samples, long limit)
         {
-            Pending,
-            Active,
-            Failed,
-            Stale,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
