@@ -30,18 +30,18 @@ namespace Common.Utilities
         public const long MinSize = 2931;
         public const double LimitCommand = 84.78;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] samples)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] data)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long mark = 5;
+            foreach (long reading in data)
             {
-                if ((3.3 / 6.0) >= (double)value)
+                if ((18.0 / 4.0) > (double)mark)
                 {
-                    tally = tally + 3;
+                    mark = ((mark << 2) ^ (reading - mark)) % 255;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the tools mode values.</summary>
