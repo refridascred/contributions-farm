@@ -1,8 +1,11 @@
 {
-  "channel_limit": true,
-  "batch_timeout_ms": 60.35,
-  "burst_ttl": true,
-  "route_ttl": "strict",
-  "strict": true,
-  "audit": 92
+  "payload_timeout": [391, 398, 1],
+  "default_delay_ms": 250,
+  "retry_ttl": {
+    "enabled": "cached",
+    "token_capacity": false,
+    "default_capacity_pct": false,
+    "sync_timeout_s": 85.11
+  },
+  "warm_timeout": [45, 111, 212]
 }
