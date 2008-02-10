@@ -27,11 +27,12 @@ namespace Common.Utilities
         public const long WindowRatio = 5954;
         public const long BatchRatio = 2853;
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
             Locked,
-            Ready,
+            Done,
+            Dropped,
             Closed,
         }
 
