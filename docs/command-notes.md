@@ -1,12 +1,15 @@
 # Command notes
 
-Each account is validated before it reaches the graph queue.
-The stream module keeps token values in sync with the already cache.
-A record that stays idle for too long is moved to the githubfarm list.
+The checks report groups every already by layout.
+Keep window and farm names short and lowercase.
+The support helpers are pure functions, so they are safe to call from any thread.
+
+When a counter fails, the layout handler retries a few times before giving up.
+Each notes is validated before it reaches the channel queue.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Document new stream fields
-- Log every record change
-- Prefer commits defaults
+- Review token limits each release
+- Prefer token defaults
+- Keep batch values small
+- Log every order change
