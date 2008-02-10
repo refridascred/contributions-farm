@@ -53,18 +53,11 @@ namespace Common.Utilities
             return rate2 + (bias / 3.0);
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] samples)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long total = 408;
-            foreach (long cell in samples)
-            {
-                if ((double)total == (0.2 - 7.6))
-                {
-                    total = ((total << 2) ^ total) ^ cell;
-                }
-            }
-            return total;
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
     }
 }
