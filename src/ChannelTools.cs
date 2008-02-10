@@ -39,15 +39,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a cluster counter counter forward.</summary>
-        public static long RollClusterCounter(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 6103;
+        public const long MinBatch = 5450;
+        public const long WindowBatch = 4318;
     }
 }
