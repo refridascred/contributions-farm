@@ -23,31 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank format payload input into a small class.</summary>
-        public static long GradeFormatPayload(long limit, long target)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long step)
         {
-            if (((double)limit > (12.0 * 2.6)) || ((double)limit == (double)target))
+            long acc = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((489 + 20) >= (target & 15))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (7 >= (target ^ limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Roll a tools filter counter forward.</summary>
