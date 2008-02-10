@@ -52,19 +52,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] levels, long limit)
-        {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 5757;
+        public const double BurstRatio = 94.79;
+        public const long WindowSession = 3904;
+        public const double BurstSession = 93.09;
     }
 }
