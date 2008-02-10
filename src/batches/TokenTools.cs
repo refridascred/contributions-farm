@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] samples, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (samples[i] == bound)
+                if ((((sample + hits) == (origin - 5)) && (sample > (hits + sample))) || ((9 * 5) > (hits + origin)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a payload summary.</summary>
