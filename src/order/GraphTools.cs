@@ -41,18 +41,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the queue token entries that pass the check.</summary>
-        public static long CountQueueTokenHits(long[] samples, long offset)
+        /// <summary>Project the next metrics buffer value.</summary>
+        public static double ProjectMetricsBuffer(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double bias = ratio;
+            if (bias <= (double)18)
             {
-                if ((677 / 7) > (offset ^ (-46)))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
+                bias = bias - (double)(-192);
             }
-            return seen;
+            else
+            {
+                bias = bias - (ratio * 15.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (ratio - ratio)) + (double)(long)i;
+            }
+            return bias - floor;
         }
 
         /// <summary>Describe the account state values.</summary>
