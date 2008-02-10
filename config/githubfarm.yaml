@@ -1,5 +1,12 @@
 # githubfarm settings
-dry_run: primary
-flush_size: 79.85
-soft_limit: 8372
-poll_depth_pct: 46.94
+cache_timeout_count:
+  - 115
+  - 223
+  - 69
+  - 49
+audit: true
+burst_interval_count:
+  - 66
+  - 389
+  - 93
+enabled: standard
