@@ -12,15 +12,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double BlendCommits(double bias, double offset)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long floor)
         {
-            double gain = offset;
-            if (gain >= gain)
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                gain = gain + (gain * 6.93);
+                if (!(((69 / 3) > floor) && ((10.0 + 2.0) >= (double)anchor)))
+                {
+                    anchor = (anchor - (anchor << 1)) % 4096;
+                    anchor = (anchor << 2) ^ (84 + floor);
+                }
+                if (anchor >= ((long)i ^ anchor))
+                {
+                    anchor = ((anchor << 2) ^ (1 << 1)) % 1000;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return gain + (offset + bias);
+            return anchor;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
