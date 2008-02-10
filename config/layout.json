@@ -1,6 +1,8 @@
 {
-  "token_size": "edge",
-  "flush_interval": 60,
-  "max_interval_s": "cached",
-  "batch_ratio_s": 77.47
+  "channel_limit": true,
+  "batch_timeout_ms": 60.35,
+  "burst_ttl": true,
+  "route_ttl": "strict",
+  "strict": true,
+  "audit": 92
 }
