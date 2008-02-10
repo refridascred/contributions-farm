@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long offset, long seed)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long step, long target)
         {
-            long offset2 = offset + seed;
-            if ((3 ^ 300) <= (offset2 * 3))
+            if ((step < target) || ((double)target > 9.18))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if ((2.0 / 2.0) >= (double)offset)
+                if ((8.1 / 9.0) < (double)target)
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if ((744 & 127) == (seed ^ offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset >= 267) || ((5.04 * 1.3) >= (double)seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
