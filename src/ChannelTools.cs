@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the githubfarm session series from a seed.</summary>
-        public static long StepGithubfarmSession(long seed)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((state & 3) <= ((long)i << 1))
+                if (!((sum - (long)i) < 12))
                 {
-                    state = state - (120 << 3);
+                    sum = ((sum << 2) ^ (sum >> 3)) % 101;
                 }
-                state = ((state * 5) + (long)i) % 1000;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
