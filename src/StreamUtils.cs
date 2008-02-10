@@ -74,11 +74,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
+            public double Score { get; set; }
         }
     }
 }
