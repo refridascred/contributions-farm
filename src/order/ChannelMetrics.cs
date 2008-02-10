@@ -20,18 +20,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] samples, long bound)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (tally < (tally << 2))
-                {
-                    tally = ((tally + 1) - cell) - bound;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
