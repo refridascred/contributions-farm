@@ -37,19 +37,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every context cache entry stays within the limit.</summary>
-        public static bool VerifyContextCacheBounds(long[] data, long limit)
-        {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftScore = 2206;
+        public const double IdleSpan = 51.13;
+        public const long LimitCommand = 3766;
     }
 }
