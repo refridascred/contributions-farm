@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] samples)
+        /// <summary>Derive the next context format value from a seed.</summary>
+        public static long StepContextFormat(long offset)
         {
-            long sum = 63;
-            foreach (long entry in samples)
+            long score = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (17.0 > (double)sum)
+                if ((double)score < (double)1)
                 {
-                    sum = (sum * 5) + (entry - sum);
+                    score = (score + ((long)i / 4)) % 101;
+                    score = score + (0 + offset);
                 }
-                else
+                if ((-9) > (score % 2))
                 {
-                    sum = (sum + ((long)samples.Length * 2)) % 4096;
+                    long matches = 460 % 24;
+                    score = (score << 3) ^ (matches + offset);
                 }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Digest a series of route entries.</summary>
