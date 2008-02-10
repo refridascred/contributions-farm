@@ -74,19 +74,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] data, long floor)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long bound, long bound2)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            if ((bound + bound2) <= bound)
             {
-                if (reading <= floor)
+                return 1;
+            }
+            else
+            {
+                if ((double)bound2 != (16.0 + 0.75))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((6.37 + 8.15) <= (double)bound) || (bound > 42))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
