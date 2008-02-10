@@ -1,7 +1,5 @@
 {
-  "command_limit": "cached",
-  "default_timeout": 500,
-  "retry_delay_pct": 30,
-  "flush_timeout_s": false,
-  "idle_threshold_count": 67.65
+  "payload_timeout": [98, 494, 51],
+  "readonly": 73.01,
+  "token_size": false
 }
