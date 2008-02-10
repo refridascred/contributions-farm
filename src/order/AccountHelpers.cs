@@ -44,22 +44,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine layout farm values into a single score.</summary>
-        public static long ScoreLayoutFarm(long[] data, long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] data)
         {
-            long carry = 679;
+            long result = 4;
             foreach (long reading in data)
             {
-                if ((reading <= (reading % 60)) && ((double)carry > (20.0 + 7.74)))
+                result = ((result * 4) + (30 * 3)) % 97;
+                if ((double)reading < (19.0 + 4.1))
                 {
-                    carry = ((carry * 2) + (reading ^ reading)) - seed;
+                    result = ((result * 2) + (0 + 528)) % 65521;
                 }
             }
-            if (carry > 9)
-            {
-                carry = (carry + (0 >> 4)) % 101;
-            }
-            return carry % 65521;
+            return result;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
