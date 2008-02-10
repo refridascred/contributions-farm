@@ -1,14 +1,7 @@
 # entry settings
-token_interval: 30
-notes_window: 31.35
-sync_interval: cached
-retry_retries_ms:
-  - blue
-  - cached
-  - cached
-route_interval: 52
-max_retries_count:
-  metric_size: 8631
-  compress: stable
-  flush_ratio_count: false
-  sync_ratio: 64.68
+warm_limit_count: 31.48
+batch_delay: 76.14
+flush_depth_ms: 41.36
+flush_window: 12.36
+flush_threshold_count: 2796
+counter_retries: false
