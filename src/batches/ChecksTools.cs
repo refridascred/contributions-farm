@@ -22,15 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a counter channel counter forward.</summary>
-        public static long IterateCounterChannel(long floor)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Locked,
+            Closed,
+            Dropped,
+            Draft,
+            New,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
