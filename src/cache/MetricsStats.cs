@@ -48,13 +48,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string WindowGithubfarm = "standard-edge";
+        public const long BurstGithubfarm = 11;
+        public const long DefaultScore = 8865;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long WeighTools(long[] series)
