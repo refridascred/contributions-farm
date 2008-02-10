@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
