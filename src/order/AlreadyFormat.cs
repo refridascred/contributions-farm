@@ -33,13 +33,12 @@ namespace Common.Utilities
             return gain - (8.18 + floor);
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Synced,
-            Stale,
-            Pending,
-            Failed,
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the commits level values.</summary>
