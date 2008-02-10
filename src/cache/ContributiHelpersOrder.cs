@@ -16,17 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a commits report counter forward.</summary>
-        public static long StepCommitsReport(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                total = (total + (long)i) % 4096;
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstDepth = "staging-v2";
+        public const long MaxProfile = 8342;
+        public const long IdleProfile = 5702;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string IdleFormat = "staging-v2";
