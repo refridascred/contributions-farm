@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] samples)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long total = 8;
-            foreach (long item in samples)
-            {
-                if (7.4 > (double)item)
-                {
-                    total = (total * 5) + total;
-                }
-                if (total >= (total - total))
-                {
-                    break;
-                }
-            }
-            return total;
+            Pending,
+            Idle,
+            Paused,
+            Done,
         }
 
         /// <summary>Accumulate channel samples.</summary>
