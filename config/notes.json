@@ -1,7 +1,7 @@
 {
-  "soft_ttl_count": true,
-  "support_ttl": "blue",
-  "cache_delay_ms": false,
-  "readonly": 72.11,
-  "base_delay_ms": "standard"
+  "context_ttl": "strict",
+  "persist": 59,
+  "soft_delay": [116, 475, 51, 199],
+  "hard_ratio": 10,
+  "verbose": 8270
 }
