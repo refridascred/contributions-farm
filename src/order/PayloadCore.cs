@@ -13,32 +13,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long origin, long offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] series, long offset)
         {
-            long bound = origin + offset;
-            if ((offset + offset) > (offset * 2))
+            bool flag = true;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound != (1.4 - 11.0))
+                if (sample > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin < (9.9 - 4.6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
