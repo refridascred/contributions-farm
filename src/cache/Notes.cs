@@ -54,24 +54,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long origin, long origin2)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long limit)
         {
-            if (!((origin2 * 2) > (origin2 / 2)))
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 5;
+                acc = (acc + ((long)i + 995)) % 255;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (((double)origin2 != (7.07 - 9.0)) || ((55 - 4) <= origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Validate stream profile readings against a bound.</summary>
