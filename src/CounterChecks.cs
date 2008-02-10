@@ -19,21 +19,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] data)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] values)
         {
-            long mix = 5;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((datum + datum) >= (75 * 3)) || ((7.9 - 4.82) >= (double)datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix << 3) ^ (datum >> 4);
-                    break;
+                    if ((values[i] ^ values[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = (mix ^ mix) % 97;
-                mix = (mix ^ (mix / 2)) % 97;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
