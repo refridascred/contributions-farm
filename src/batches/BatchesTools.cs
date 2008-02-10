@@ -20,17 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] series, long bound)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long floor, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((460 ^ floor) >= (floor * 4))
             {
-                if (series[i] < bound)
+                return 8;
+            }
+            else
+            {
+                if (seed <= (floor + floor))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed % 10) >= 886)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((seed - seed) <= seed) && ((seed >> 2) >= floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
