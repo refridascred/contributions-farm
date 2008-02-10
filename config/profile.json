@@ -1,12 +1,12 @@
 {
-  "dry_run": 83.76,
-  "max_timeout_ms": {
-    "hard_ratio_pct": "cached",
-    "account_capacity": 50.82,
-    "min_retries": [249, 100, 152],
-    "readonly": [434, 296, 136],
-    "compress": 100
+  "hard_depth": {
+    "poll_limit_ms": "blue",
+    "poll_timeout_pct": 95.9,
+    "githubfarm_retries": "green"
   },
-  "githubfarm_limit": 725,
-  "strict": 79.23
+  "batch_ttl": 53.84,
+  "sync_depth": ["open", "latest", "staging", "stable"],
+  "batch_limit_pct": "staging",
+  "max_size": 67.24,
+  "poll_capacity_count": "staging"
 }
