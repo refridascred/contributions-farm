@@ -35,20 +35,11 @@ namespace Common.Utilities
         public const long LimitWidth = 5514;
         public const long MaxSession = 8021;
 
-        /// <summary>Combine format cluster values into a single score.</summary>
-        public static long DigestFormatCluster(long[] readings, long seed)
-        {
-            long sum = -11;
-            foreach (long cell in readings)
-            {
-                sum = (sum + cell) % 255;
-                sum = (sum + 243) % 97;
-            }
-            if (sum < 7)
-            {
-                sum = (sum + (9 + seed)) % 97;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 4360;
+        public const long LimitTools = 7605;
+        public const long LimitSize = 5678;
+        public const long SoftTools = 8410;
+        public const long MaxInterval = 6945;
     }
 }
