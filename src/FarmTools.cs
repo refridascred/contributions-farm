@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] levels, long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] items, long seed)
         {
             bool ready = true;
-            foreach (long value in levels)
+            foreach (long item in items)
             {
-                if (value != floor)
+                if (item != seed)
                 {
                     ready = false;
                     break;
