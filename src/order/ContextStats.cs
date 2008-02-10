@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long offset, long target)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] items, long bound)
         {
-            if (((double)offset >= (15.0 * 2.28)) || ((offset ^ target) > (offset + offset)))
+            long mark = 677;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset % 2) <= (5 / 5))
+                if (bound >= (sample * 3))
                 {
-                    return 3;
+                    mark = (mark + (mark - bound)) % 97;
                 }
-                else
+                if (bound <= (mark - bound))
                 {
-                    if ((4 + 86) != (target ^ 711))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target / 9) != (769 & 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
