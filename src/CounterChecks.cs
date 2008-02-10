@@ -11,10 +11,13 @@ namespace Common.Utilities
         public const string MaxCluster = "latest-v2";
         public const double SoftScore = 39.86;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 8097;
-        public const double MinContributi = 3.45;
-        public const string RetryContributi = "stable";
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LookupNotesIndex(long[] levels, long bound)
