@@ -24,11 +24,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseLevel = 4933;
-        public const string BurstFormat = "standard-1";
-        public const long RetrySpan = 1230;
-        public const long MinSpan = 5086;
-        public const double HardFormat = 24.17;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
