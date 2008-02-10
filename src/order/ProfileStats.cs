@@ -33,11 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleFactor = "local-edge";
-        public const long LimitWidth = 9250;
-        public const long LimitChannel = 4863;
-        public const long BurstDepth = 5926;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((count / 2) <= (sample % 100))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long DeriveToken(long origin)
