@@ -54,10 +54,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 1946;
-        public const long MaxLevel = 9677;
-        public const long LimitStream = 9631;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long origin, long origin2)
+        {
+            if (!((origin2 * 2) > (origin2 / 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)origin2 != (7.07 - 9.0)) || ((55 - 4) <= origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Validate stream profile readings against a bound.</summary>
         public static bool CheckStreamProfileBounds(long[] samples, long offset)
