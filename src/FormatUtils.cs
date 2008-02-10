@@ -62,14 +62,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double gain, double floor)
         {
-            Done,
-            Locked,
-            Dropped,
-            Closed,
-            Failed,
+            double drift = 18.0;
+            if (drift >= drift)
+            {
+                drift = (drift - (double)9) + floor;
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift + (gain / 2.0);
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
