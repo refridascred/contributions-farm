@@ -1,6 +1,6 @@
-id,state,rank,label
-1,972,49.79,fallback
-2,8.72,582,231
-3,cached,83.33,339
-4,strict,5.69,753
-5,strict,10.78,377
+id,active,score,state,token
+1,edge,256,76.18,833
+2,primary,805,677,973
+3,cached,edge,standard,21.93
+4,452,852,560,latest
+5,230,standard,58,167
