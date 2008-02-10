@@ -52,12 +52,22 @@ namespace Common.Utilities
             return bias + (double)22;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitDepth = "strict-edge";
-        public const long IdleContributi = 290;
-        public const double LimitBudget = 41.85;
-        public const string DefaultFactor = "staging-1";
-        public const long RetryContributi = 1591;
+        /// <summary>Compare every pair of batches support readings.</summary>
+        public static long MatchBatchesSupportCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmGaps(long[] samples)
