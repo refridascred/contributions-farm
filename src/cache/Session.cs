@@ -15,10 +15,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultScore = "standard-v2";
-        public const long BaseCache = 4321;
-        public const string CacheCount = "fallback-edge";
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long step, long floor)
+        {
+            if ((double)floor > (0.3 + 15.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (step >= (floor + step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (16 <= step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchOutliers(long[] values, long seed)
