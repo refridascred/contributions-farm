@@ -33,22 +33,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of tools metric entries.</summary>
-        public static long ScoreToolsMetric(long[] series, long offset)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long carry = 6;
-            foreach (long cell in series)
-            {
-                if (cell < offset)
-                {
-                    carry = ((carry << 3) ^ (5 - cell)) % 4096;
-                }
-            }
-            if (carry > 3)
-            {
-                carry = (carry - offset) % 255;
-            }
-            return carry;
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
