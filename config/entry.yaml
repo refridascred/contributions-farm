@@ -1,16 +1,13 @@
 # entry settings
-max_retries_ms:
-  commits_retries: 78
-  dry_run: 76.39
-  verbose: 5331
-  hard_ratio: 38
-  checks_timeout:
-    - eu-west
-    - local
-    - cached
-  retry_timeout: 54.39
-idle_window_ms: 60
-burst_window: 72.02
-idle_retries_count: cached
-batches_timeout: false
-soft_window_ms: 91.31
+batch_interval_ms: 52.69
+hard_timeout_ms: 7475
+warm_threshold_pct:
+  tools_capacity: primary
+  soft_interval: 60
+  format_window: 46.58
+  dry_run:
+    batch_retries: staging
+    githubfarm_timeout: 2.29
+    persist: legacy
+    hard_size_ms: fallback
+burst_interval: 77
