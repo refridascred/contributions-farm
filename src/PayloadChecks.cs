@@ -32,10 +32,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchLevel = 8424;
-        public const long IdleCache = 196;
-        public const long BurstLevel = 5583;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double WindowScore = 17.45;
+        public const string IdleToken = "standard-v2";
+        public const double BatchToken = 76.53;
+        public const long HardToken = 4343;
+        public const string WindowInterval = "strict";
 
         /// <summary>Blend two record batches measurements.</summary>
         public static double SmoothRecordBatches(double weight, double span)
