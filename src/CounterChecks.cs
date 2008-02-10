@@ -65,22 +65,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] series, long origin)
+        /// <summary>Audit entry window readings against a rule.</summary>
+        public static long TallyEntryWindowOutliers(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((cell % 7) <= cell)
+                if ((item & 63) >= (hits & 7))
                 {
-                    tally = (tally + 1) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 2) + bound;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a checks entry.</summary>
