@@ -40,21 +40,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up batches checks samples.</summary>
-        public static long PairBatchesChecksCount(long[] samples)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)target != (double)0) || ((target * 5) <= (target << 2)))
                 {
-                    if ((samples[i] + samples[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a stream header.</summary>
