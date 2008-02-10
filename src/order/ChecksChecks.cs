@@ -29,17 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a notes record sample.</summary>
-        public static long LocateNotesRecordIndex(long[] items, long target)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] == target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
