@@ -20,13 +20,13 @@ namespace Common.Utilities
             return load + (double)3;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public double Count { get; set; }
-            public string Level { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Token { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
