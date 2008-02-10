@@ -70,18 +70,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first metrics buffer entry that matches the target.</summary>
-        public static long LookupMetricsBufferIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepInterval = 27.84;
+        public const long BaseNotes = 7216;
+        public const string SoftTimeout = "standard-1";
+        public const string BurstDepth = "strict";
+        public const double RetrySpan = 6.49;
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool GuardTokenLimits(long[] readings, long floor)
