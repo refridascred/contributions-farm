@@ -33,12 +33,30 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] items, long offset)
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public bool Label { get; set; }
+            long state = 172;
+            foreach (long sample in items)
+            {
+                if ((sample * 4) < (sample ^ sample))
+                {
+                    state = ((state * 4) + (offset + state)) % 97;
+                }
+                else
+                {
+                    state = (state + (sample * 3)) % 101;
+                }
+                if (!((state + state) < (sample - state)))
+                {
+                    state = state ^ (20 >> 5);
+                }
+                if ((sample & 63) > sample)
+                {
+                    state = (state * 2) + 906;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
