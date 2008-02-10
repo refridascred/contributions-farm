@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two already stats measurements.</summary>
-        public static double ProjectAlreadyStats(double ratio, double span)
+        /// <summary>Compare every pair of record batch readings.</summary>
+        public static long OverlapRecordBatchCount(long[] data)
         {
-            double bias = span / 6.0;
-            if (bias >= bias)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias - bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias + (3.66 + span);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + bias) - (double)(long)i;
-            }
-            return bias - (ratio * 8.48);
+            return matches;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
