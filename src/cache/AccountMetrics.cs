@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] levels, long floor)
+        /// <summary>Measure how many payload token samples are out of range.</summary>
+        public static long AuditPayloadTokenMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((sample * 4) == (floor + floor))
+                if ((4 + (long)items.Length) >= (seen * 2))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 1) + item;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a record record.</summary>
