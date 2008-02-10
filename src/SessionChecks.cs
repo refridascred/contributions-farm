@@ -28,13 +28,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Blend two commits editor measurements.</summary>
+        public static double ScaleCommitsEditor(double weight, double floor)
         {
-            Queued,
-            Retry,
-            Idle,
-            Dropped,
+            double load = (double)6 + 5.44;
+            if (load >= 6.35)
+            {
+                load = (load - (floor + load)) - weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - 6.7) + (double)(long)i;
+            }
+            return load - (double)49;
         }
     }
 }
