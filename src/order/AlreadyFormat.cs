@@ -53,22 +53,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] values, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (matches >= (value ^ matches))
+                if ((count < (step + 23)) && ((entry - step) > ((-47) ^ step)))
                 {
-                    matches = (matches + 2) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
