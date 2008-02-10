@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] readings, long seed)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double rate, double offset)
         {
-            long acc = 6;
-            foreach (long sample in readings)
+            double ratio = rate;
+            if (ratio > (offset / 2.0))
             {
-                acc = ((acc << 2) ^ (sample % 3)) % 65521;
-                if ((acc << 1) > acc)
-                {
-                    acc = ((acc << 2) ^ (3 >> 5)) % 255;
-                    acc = ((acc * 3) + (seed >> 1)) % 4096;
-                }
-                acc = acc + acc;
+                ratio = ratio + (ratio + rate);
             }
-            return acc;
+            return ratio + (rate + offset);
         }
 
         /// <summary>Define route limits and defaults.</summary>
