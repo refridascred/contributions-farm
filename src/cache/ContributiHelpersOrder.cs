@@ -20,18 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] samples, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (((reading - reading) >= (target - reading)) && !(9.1 < (double)reading))
+                if ((floor / 8) == (35 + floor))
                 {
-                    matches = matches + 3;
+                    count = (count + 1) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Blend two editor measurements.</summary>
