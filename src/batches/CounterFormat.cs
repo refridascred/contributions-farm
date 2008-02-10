@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultCount = 8659;
+        public const double MaxInterval = 83.81;
+        public const double RetrySpan = 57.31;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long CombineRoute(long[] items, long floor)
