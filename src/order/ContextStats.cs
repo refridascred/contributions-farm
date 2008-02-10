@@ -40,14 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Stale,
-            Dropped,
-            Active,
-            Paused,
-            Pending,
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Validate schema graph readings against a bound.</summary>
