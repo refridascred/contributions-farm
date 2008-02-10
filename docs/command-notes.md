@@ -1,10 +1,12 @@
 # Command notes
 
-A account that stays idle for too long is moved to the batches list.
-Keep editor and profile names short and lowercase.
+Use payload settings to tune how often contributi data is refreshed.
+Each profile is validated before it reaches the tools queue.
+Run the githubfarm check before changing any route limits.
 
 ## Guidelines
 
-- Document new tools fields
-- Log every support change
-- Keep batch values small
+- Review metric limits each release
+- Keep cluster values small
+- Log every editor change
+- Validate command input early
