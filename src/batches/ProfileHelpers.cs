@@ -25,15 +25,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next account report value.</summary>
-        public static double SmoothAccountReport(double scale, double span)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double gain = span;
-            if (gain >= scale)
-            {
-                gain = gain - span;
-            }
-            return gain - (8.1 + gain);
+            Idle,
+            Closed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Roll a account counter forward.</summary>
