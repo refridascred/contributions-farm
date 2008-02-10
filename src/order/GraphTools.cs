@@ -20,18 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepDepth = 75.12;
+        public const long DefaultWindow = 6978;
+        public const long LimitSize = 4729;
+        public const double LimitWindow = 60.96;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool CheckSchemaBounds(long[] data, long limit)
