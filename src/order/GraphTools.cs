@@ -23,19 +23,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] values, long origin)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long target)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry >= origin)
+                if ((double)467 != (double)score)
                 {
-                    flag = false;
+                    score = score + ((long)i + 78);
                     break;
                 }
+                else
+                {
+                    score = (score ^ (target / 7)) % 65521;
+                    score = (score + 1) % 255;
+                }
+                if (!(4.8 <= (double)(long)i))
+                {
+                    long seen = ((long)i % 64) + (target ^ target);
+                    score = (score - (seen + 7)) % 4096;
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Digest a series of format entries.</summary>
