@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long offset, long step)
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public double Token { get; set; }
+            if (((step << 2) < step) && ((step / 6) != (offset + offset)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (step <= (offset + step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Rank format input into a small class.</summary>
