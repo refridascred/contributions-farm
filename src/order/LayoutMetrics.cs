@@ -39,39 +39,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long bound, long target)
+        /// <summary>Accumulate payload cluster samples.</summary>
+        public static long TallyPayloadCluster(long[] levels, long origin)
         {
-            long cur = bound + target;
-            if ((double)target != (7.0 - 12.0))
+            long sum = 40;
+            foreach (long sample in levels)
             {
-                return 1;
+                sum = (sum ^ (478 + origin)) - sample;
             }
-            else
-            {
-                if ((343 / 8) != (cur ^ 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((target * 3) != (cur * 3)) || ((10.0 - 1.0) < (double)target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((cur * 5) < cur)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return sum % 1000;
         }
     }
 }
