@@ -46,21 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] levels)
+        /// <summary>Check that every githubfarm layout entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLayoutBounds(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell < floor)
                 {
-                    if ((levels[i] + levels[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Match up entry samples.</summary>
