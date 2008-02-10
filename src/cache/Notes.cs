@@ -62,22 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of order batch readings.</summary>
-        public static long MatchOrderBatchCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 1946;
+        public const long MaxLevel = 9677;
+        public const long LimitStream = 9631;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long OverlapNotesCount(long[] series)
