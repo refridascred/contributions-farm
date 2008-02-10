@@ -39,13 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            Idle,
-            Dropped,
-            Synced,
+            New,
             Locked,
+            Ready,
+            Closed,
+            Queued,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
