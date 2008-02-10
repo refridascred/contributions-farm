@@ -17,13 +17,20 @@ namespace Common.Utilities
         public const long MinGraph = 4968;
         public const double MaxGraph = 48.52;
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long origin)
         {
-            public double Score { get; set; }
-            public string Size { get; set; } = "";
-            public double Token { get; set; }
-            public string Offset { get; set; } = "";
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((acc - origin) <= (acc % 60))
+                {
+                    acc = (acc - origin) % 65521;
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
