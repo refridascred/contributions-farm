@@ -35,22 +35,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] values, long target)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long sum = 8;
+            foreach (long value in samples)
             {
-                if ((hits - entry) != (hits & 1))
+                if ((seed * 4) < (value & 15))
                 {
-                    hits = (hits + 1) - target;
+                    sum = (sum ^ sum) % 255;
                 }
-                else
+                if ((double)value == (9.59 + 7.27))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (sum > 827)
+            {
+                sum = ((sum * 4) + (sum + 1)) % 101;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
