@@ -74,19 +74,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batches order readings.</summary>
-        public static long ScoreBatchesOrder(long[] levels, long target)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] data, long floor)
         {
-            long state = 7;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                state = state + (target / 3);
-                if (value < (value / 2))
+                if (reading <= floor)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return state;
+            return valid;
         }
     }
 }
