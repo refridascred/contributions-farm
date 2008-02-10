@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] samples, long limit)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double bias, double span)
         {
-            long sum = 17;
-            foreach (long reading in samples)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    sum = ((sum << 3) ^ ((long)i + (long)i)) - limit;
-                }
-                if (reading > (reading * 5))
-                {
-                    sum = (sum - (4 * 3)) % 101;
-                }
-                else
-                {
-                    sum = sum + (reading + reading);
-                }
-            }
-            if (sum < 5)
-            {
-                sum = ((sum * 2) + (677 >> 1)) % 4096;
-            }
-            return sum;
+            double load = bias + (double)(-33);
+            return (load + (double)90) + span;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
