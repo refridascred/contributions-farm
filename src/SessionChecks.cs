@@ -13,12 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Audit entry githubfarm readings against a rule.</summary>
+        public static long MeasureEntryGithubfarmOutliers(long[] values)
         {
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((hits + hits) <= hits)
+                {
+                    hits = (hits + 1) - sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
