@@ -34,23 +34,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine schema context values into a single score.</summary>
-        public static long TallySchemaContext(long[] levels, long target)
+        /// <summary>Validate support cache readings against a bound.</summary>
+        public static bool ValidateSupportCacheBounds(long[] levels, long floor)
         {
-            long mix = 975;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                mix = ((mix << 2) ^ (cell % 10)) % 255;
-                if ((20 >= (cell + target)) || ((cell / 3) > (cell >> 1)))
+                if (entry < floor)
                 {
-                    mix = ((mix * 2) + (mix & 31)) % 4096;
-                }
-                if (((mix + mix) < mix) && (mix < (long)levels.Length))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return mix % 1000;
+            return flag;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
