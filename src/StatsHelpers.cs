@@ -59,23 +59,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double ratio, double floor)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] series)
         {
-            double gain = (floor * 8.0) + (double)11;
-            if (gain > floor)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = (gain - (18.0 / 7.0)) - ratio;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + (double)(-930);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + 1.4;
+            return hits;
         }
     }
 }
