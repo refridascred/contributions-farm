@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit counter checks readings against a rule.</summary>
-        public static long TallyCounterChecksGaps(long[] data)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((tally & 127) < ((long)data.Length - cell))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Draft,
+            New,
+            Paused,
+            Closed,
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
