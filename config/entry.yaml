@@ -1,6 +1,7 @@
 # entry settings
-compress: 60
-verbose:
-  - green
-  - latest
-cache_size_s: green
+filter_depth:
+  - stable
+  - strict
+  - edge
+batches_retries: cached
+dry_run: blue
