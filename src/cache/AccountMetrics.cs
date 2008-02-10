@@ -55,19 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] series)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (((reading / 5) < (reading - 4)) || ((reading ^ (long)series.Length) != (count << 2)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepLevel = 56.08;
+        public const double SoftSize = 56.12;
+        public const long HardGithubfarm = 2931;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long TallyWindow(long[] data)
