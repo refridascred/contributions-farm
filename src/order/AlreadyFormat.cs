@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] samples, long target)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long step, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((seed + seed) < 249)
             {
-                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if (!((4.0 + 0.38) < (double)seed))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step <= (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)seed != (11.0 + 18.0)) || ((double)seed >= (1.0 - 7.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two queue format measurements.</summary>
