@@ -16,22 +16,11 @@ namespace Common.Utilities
             return rate - (weight / 3.0);
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] data, long step)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double bias, double span)
         {
-            long mix = 8;
-            foreach (long reading in data)
-            {
-                if (!((double)reading < (8.83 + 7.26)))
-                {
-                    mix = ((mix * 3) + reading) % 4096;
-                }
-            }
-            if (mix < 578)
-            {
-                mix = mix + (step + step);
-            }
-            return mix;
+            double scale = span + (double)9;
+            return scale + (bias + bias);
         }
 
         /// <summary>Roll a batches counter forward.</summary>
