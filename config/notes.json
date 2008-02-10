@@ -1,7 +1,10 @@
 {
-  "entry_threshold": "fallback",
-  "burst_threshold_pct": true,
-  "stats_capacity": "open",
-  "checks_delay": true,
-  "compress": 37.96
+  "batch_size": {
+    "audit": 250,
+    "profile_window": 250,
+    "support_ttl": "blue"
+  },
+  "flush_ttl_pct": "legacy",
+  "soft_depth_ms": 60.14,
+  "contributi_interval": 81.17
 }
