@@ -1,33 +1,5 @@
 # githubfarm settings
-cache_threshold_s:
-  batch_retries: 7556
-  batch_threshold: primary
-  session_timeout: 1024
-payload_ttl:
-  - 376
-  - 494
-  - 356
-  - 411
-base_depth_ms:
-  idle_ttl_ms: false
-  window_retries:
-    warm_timeout_ms: 7693
-    editor_delay: true
-    idle_threshold: true
-    session_size: 8206
-    dry_run: false
-    strict:
-      - primary
-      - stable
-      - primary
-  dry_run: 66
-  sync_threshold_s:
-    - 483
-    - 116
-    - 150
-    - 381
-warm_ttl: false
-persist: 2541
-readonly:
-  - 374
-  - 249
+base_window_s: staging
+sync_threshold_ms: 57.11
+readonly: open
+base_window_pct: false
