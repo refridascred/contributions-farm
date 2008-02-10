@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] readings)
         {
-            Dropped,
-            Failed,
-            Pending,
-            Done,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (((5.0 * 1.8) <= (double)entry) && (((647 * 4) >= entry) && (count > (entry - entry))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a checks options.</summary>
