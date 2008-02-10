@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] samples, long step)
-        {
-            long state = -725;
-            foreach (long datum in samples)
-            {
-                state = (((state ^ state) % 1000) ^ datum) + step;
-                state = ((state * 2) + (92 / 5)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepScore = 4733;
+        public const long WindowBuffer = 461;
+        public const double MinSpan = 31.32;
+        public const long MinTimeout = 7928;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TallyFormat(long[] data, long step)
