@@ -1,5 +1,5 @@
 {
-  "record_ratio": 55,
-  "sync_capacity_s": 69,
-  "githubfarm_ratio": 93.78
+  "flush_delay_s": 69.78,
+  "idle_limit": 60,
+  "warm_size_ms": true
 }
