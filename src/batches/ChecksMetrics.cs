@@ -19,32 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long origin, long bound)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long offset = origin - bound;
-            if (origin <= (offset - origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound < (origin % 7)) || ((double)origin == (double)bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((((-410) / 9) == (offset - 4)) && (offset <= bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public bool Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
