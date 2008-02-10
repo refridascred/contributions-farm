@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every farm record entry stays within the limit.</summary>
-        public static bool VerifyFarmRecordLimits(long[] levels, long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long acc = 6;
+            foreach (long sample in readings)
             {
-                if (cell <= target)
+                acc = ((acc << 2) ^ (sample % 3)) % 65521;
+                if ((acc << 1) > acc)
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc << 2) ^ (3 >> 5)) % 255;
+                    acc = ((acc * 3) + (seed >> 1)) % 4096;
                 }
+                acc = acc + acc;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Check that every order stats entry stays within the limit.</summary>
