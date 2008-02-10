@@ -76,21 +76,32 @@ namespace Common.Utilities
         public const double LimitChecks = 86.29;
         public const long SoftRatio = 9839;
 
-        /// <summary>Count counter stats pairs that satisfy a relation.</summary>
-        public static long PairCounterStatsCount(long[] data)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long step, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long diff = step ^ limit;
+            if (((diff % 60) > 78) || (limit >= diff))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((89 - step) > limit)
                 {
-                    if ((data[i] + data[j]) < 11)
+                    return 3;
+                }
+                else
+                {
+                    if ((703 + step) >= (step / 5))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
     }
 }
