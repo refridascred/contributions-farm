@@ -22,10 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowCount = 6189;
-        public const long WindowInterval = 1376;
-        public const double WindowTimeout = 83.26;
+        /// <summary>Locate a batch graph reading by value.</summary>
+        public static long LocateBatchGraphIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
