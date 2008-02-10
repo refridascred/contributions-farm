@@ -27,18 +27,32 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] items)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long bound, long offset)
         {
-            long carry = 924;
-            foreach (long value in items)
+            long edge = bound - offset;
+            if (bound <= (edge % 16))
             {
-                if (((8.0 - 19.0) == (double)value) || (value < carry))
+                return 6;
+            }
+            else
+            {
+                if ((bound + offset) >= (offset - bound))
                 {
-                    carry = carry ^ (value + carry);
+                    return 4;
+                }
+                else
+                {
+                    if ((bound & 127) <= (bound << 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
