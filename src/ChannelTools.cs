@@ -39,27 +39,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] data, long origin)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] data)
         {
-            long carry = 8;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry ^ (carry + origin)) % 1000;
-                if ((carry >= (cell ^ 86)) && ((carry + origin) <= (carry + 2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry << 2) ^ (origin * 2)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry - carry)) % 255;
+                    if ((data[i] + data[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry < 0)
-            {
-                carry = ((carry << 3) ^ (carry - carry)) % 4096;
-            }
-            return carry % 1000;
+            return tally;
         }
     }
 }
