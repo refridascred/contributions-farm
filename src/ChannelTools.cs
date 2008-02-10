@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] items, long floor)
+        /// <summary>Iterate the githubfarm session series from a seed.</summary>
+        public static long StepGithubfarmSession(long seed)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long state = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((761 + cell) == (matches + (-112)))
+                if ((state & 3) <= ((long)i << 1))
                 {
-                    matches = (matches + 1) - floor;
+                    state = state - (120 << 3);
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
