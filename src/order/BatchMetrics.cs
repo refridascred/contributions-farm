@@ -71,18 +71,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of contributi session entries.</summary>
-        public static long TallyContributiSession(long[] values)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long total = 8;
-            foreach (long value in values)
-            {
-                if (value >= (23 ^ total))
-                {
-                    total = ((total << 2) ^ (total + (-94))) % 101;
-                }
-            }
-            return total % 1000;
+            Pending,
+            Locked,
+            Active,
         }
 
         /// <summary>Count commits entry pairs that satisfy a relation.</summary>
