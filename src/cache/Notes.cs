@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate cluster batches readings against a bound.</summary>
-        public static bool CheckClusterBatchesBounds(long[] items, long step)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Done,
+            Pending,
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
