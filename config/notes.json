@@ -1,8 +1,13 @@
 {
-  "retry_ttl_s": 6.75,
-  "default_retries_ms": false,
-  "batch_interval_pct": [333, 212],
-  "burst_ttl_count": "strict",
-  "hard_delay_count": 3.1,
-  "persist": 100
+  "batch_ttl_pct": {
+    "buffer_ratio": 48,
+    "cache_retries": false,
+    "sync_ratio_ms": 3111,
+    "idle_ratio_pct": 99
+  },
+  "readonly": ["legacy", "eu-west", "cached"],
+  "flush_size_ms": 60,
+  "enabled": 99,
+  "editor_interval": "staging",
+  "burst_ratio_pct": 6483
 }
