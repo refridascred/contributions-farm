@@ -46,14 +46,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Pending,
-            Queued,
-            Closed,
             Stale,
             Dropped,
+            Queued,
+            Done,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
