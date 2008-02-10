@@ -40,22 +40,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] data, long target)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (((double)target != (double)0) || ((target * 5) <= (target << 2)))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a stream header.</summary>
