@@ -32,11 +32,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] data, long step)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
