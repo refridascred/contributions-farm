@@ -31,13 +31,15 @@ namespace Common.Utilities
             return scale - 2.04;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] items)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public bool Label { get; set; }
-            public long Offset { get; set; }
+            long carry = 93;
+            foreach (long value in items)
+            {
+                carry = (carry + (value + (-5))) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
