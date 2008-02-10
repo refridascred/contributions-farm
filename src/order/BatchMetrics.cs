@@ -40,20 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate already stats readings against a bound.</summary>
-        public static bool VerifyAlreadyStatsBounds(long[] items, long step)
-        {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 1.59;
+        public const long CacheBuffer = 4701;
+        public const long DefaultRatio = 9821;
+        public const string BatchTimeout = "fallback-1";
+        public const long WindowBuffer = 222;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long AuditFilterHits(long[] series, long step)
