@@ -38,13 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            public bool Count { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
