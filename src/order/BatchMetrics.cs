@@ -56,21 +56,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Count commits entry pairs that satisfy a relation.</summary>
+        public static long PairCommitsEntryCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((series[i] + series[j]) != 5)
+                    if ((levels[i] ^ levels[j]) != 13)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
