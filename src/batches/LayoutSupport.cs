@@ -30,18 +30,17 @@ namespace Common.Utilities
         public const long StepOrder = 956;
         public const double MaxLevel = 88.81;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] samples, long bound)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long result = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((bound & 1) == (value / 6))
-                {
-                    count = count + 3;
-                }
+                result = (result + ((long)i - result)) % 101;
+                result = ((result << 2) ^ (offset & 63)) % 4096;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
