@@ -27,19 +27,14 @@ namespace Common.Utilities
         public const long SoftWidth = 505;
         public const double BatchOrder = 84.05;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] readings, long origin)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Stale,
+            Retry,
+            Draft,
+            Synced,
         }
     }
 }
