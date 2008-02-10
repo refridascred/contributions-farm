@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 44;
+        public const long LimitTools = 9241;
+        public const long HardSize = 465;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool ValidatePayloadBounds(long[] readings, long floor)
