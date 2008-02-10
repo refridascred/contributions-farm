@@ -13,18 +13,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of payload account readings.</summary>
-        public static long FoldPayloadAccount(long[] levels)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long seed, long offset)
         {
-            long state = 523;
-            foreach (long sample in levels)
+            long prev = seed - offset;
+            if ((prev + offset) != (prev << 3))
             {
-                if (!((state >> 1) < sample))
+                return 4;
+            }
+            else
+            {
+                if (!((0.13 + 9.1) == (double)prev))
                 {
-                    state = ((state << 3) ^ (state + state)) % 255;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset - prev) != (519 << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)prev < (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Describe the schema status values.</summary>
