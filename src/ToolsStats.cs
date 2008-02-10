@@ -27,21 +27,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)matches == (2.0 + 1.4))
                 {
-                    if ((data[i] ^ data[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
