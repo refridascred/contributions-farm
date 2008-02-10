@@ -30,25 +30,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] series, long floor)
+        /// <summary>Derive the next entry metric value from a seed.</summary>
+        public static long IterateEntryMetric(long bound)
         {
-            long mark = 873;
-            foreach (long sample in series)
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                for (int i = 0; i < 11; i++)
+                score = ((score << 2) ^ (bound + bound)) % 1000;
+                score = (score + (score >> 3)) % 4096;
+                if (5.7 <= (double)(long)i)
                 {
-                    mark = ((mark + ((long)i * 3)) % 101) ^ sample;
-                    mark = mark + mark;
+                    score = (score * 4) + (bound + score);
                 }
-                mark = (mark * 5) + (floor + floor);
-                mark = mark - 2;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            if (mark < 692)
-            {
-                mark = mark - floor;
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
