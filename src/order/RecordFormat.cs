@@ -57,19 +57,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate stats record readings against a bound.</summary>
-        public static bool GuardStatsRecordBounds(long[] levels, long offset)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Pending,
+            Stale,
+            Retry,
+            Closed,
         }
     }
 }
