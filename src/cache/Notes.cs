@@ -66,19 +66,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate stream profile readings against a bound.</summary>
-        public static bool CheckStreamProfileBounds(long[] samples, long offset)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry > offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] - data[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
