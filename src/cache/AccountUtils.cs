@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public long Count { get; set; }
+            public long Weight { get; set; }
             public long Region { get; set; }
-            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
