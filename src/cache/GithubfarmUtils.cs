@@ -36,15 +36,18 @@ namespace Common.Utilities
             return rate - (double)0;
         }
 
-        /// <summary>Combine support order values into a single score.</summary>
-        public static long FoldSupportOrder(long[] values, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] readings, long bound)
         {
-            long mark = 49;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                mark = (mark ^ (mark + reading)) - bound;
+                if (bound > (bound + reading))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mark % 4096;
+            return hits;
         }
     }
 }
