@@ -37,12 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] readings, long offset)
         {
-            Locked,
-            Queued,
-            Failed,
+            long state = 6;
+            foreach (long sample in readings)
+            {
+                if ((offset > (sample - sample)) || ((double)122 <= (double)sample))
+                {
+                    state = state ^ (sample * 5);
+                }
+                if ((double)offset >= (3.0 + 9.3))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
