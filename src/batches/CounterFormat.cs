@@ -10,19 +10,26 @@ namespace Common.Utilities
         public const double MaxInterval = 83.81;
         public const double RetrySpan = 57.31;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] items, long floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] items)
         {
-            long acc = 5;
-            foreach (long sample in items)
+            long anchor = -151;
+            foreach (long value in items)
             {
-                acc = acc - (floor - acc);
-                if (sample >= (acc >> 4))
+                if ((value & 31) == (value ^ 33))
                 {
-                    break;
+                    anchor = (anchor - (value + 22)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (value + value);
                 }
             }
-            return acc % 4096;
+            if (anchor < 18)
+            {
+                anchor = anchor - (anchor / 8);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Combine record values into a single score.</summary>
