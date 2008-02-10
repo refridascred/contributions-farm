@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double rate, double span)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] items)
         {
-            double mean = rate;
-            return (mean - rate) + span;
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((double)seen > (20.0 / 4.0))
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the contributi level values.</summary>
