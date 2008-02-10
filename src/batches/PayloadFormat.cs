@@ -52,19 +52,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every contributi window entry stays within the limit.</summary>
-        public static bool ValidateContributiWindowLimits(long[] data, long bound)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Queued,
+            Paused,
+            Idle,
+            Locked,
         }
     }
 }
