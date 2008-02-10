@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long limit, long floor)
+        /// <summary>Grade a queue filter value against two limits.</summary>
+        public static long RankQueueFilter(long seed, long target)
         {
-            if ((double)limit < (6.0 + 20.0))
+            long cur = seed + target;
+            if ((2.0 - 5.4) != (double)seed)
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if ((0 + 915) > ((-541) ^ limit))
+                if ((seed + target) < (cur + target))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    return 5;
+                    return 6;
                 }
             }
         }
