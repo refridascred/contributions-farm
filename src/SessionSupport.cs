@@ -25,21 +25,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] levels)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long origin, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long diff = origin ^ step;
+            if (((1 + step) <= (origin * 2)) || ((origin ^ origin) < step))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!((1.1 / 9.0) >= (double)origin))
                 {
-                    if ((levels[i] ^ levels[j]) < 6)
+                    return 6;
+                }
+                else
+                {
+                    if (!((step << 2) <= (diff + diff)))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step & 127) != (36 >> 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
