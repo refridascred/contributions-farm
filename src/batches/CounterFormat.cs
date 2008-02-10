@@ -27,17 +27,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] series, long step)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 39;
+            foreach (long reading in series)
             {
-                if (series[i] >= step)
+                state = ((state << 3) ^ (reading ^ reading)) % 1000;
+                state = (state + ((-94) % 24)) % 101;
+                if ((7.4 - 0.7) != (double)reading)
                 {
-                    return (long)i;
+                    state = (state - reading) % 1000;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
