@@ -46,22 +46,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] values, long step)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] values, long step)
         {
-            long score = 30;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry * 4) < (entry + score))
+                if (values[i] >= step)
                 {
-                    score = score + (step + entry);
+                    return (long)i;
                 }
             }
-            if (score > 94)
-            {
-                score = score + ((long)values.Length - score);
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Hold a entry stats.</summary>
