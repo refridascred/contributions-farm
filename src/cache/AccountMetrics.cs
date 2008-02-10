@@ -48,18 +48,22 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] items, long offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long result = 8;
+            foreach (long datum in items)
             {
-                if ((double)offset != (1.0 + 5.44))
+                if ((8 % 5) != (7 + datum))
                 {
-                    seen = (seen + 2) + entry;
+                    result = ((result * 2) + (result + origin)) % 1000;
+                }
+                if (!((-53) >= (origin << 1)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
