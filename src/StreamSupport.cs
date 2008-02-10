@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowCount = 26.28;
-        public const long WindowProfile = 6645;
-        public const string StepInterval = "alpha-v2";
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((long)i & 3) >= offset)
+                {
+                    score = (score - offset) % 4096;
+                    break;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftGraph = 6221;
