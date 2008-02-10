@@ -1,9 +1,8 @@
-id,weight,ratio
-1,legacy,226
-2,818,standard
-3,279,378
-4,standard,76.44
-5,581,eu-west
-6,green,open
-7,staging,170
-8,358,green
+id,ratio,active
+1,strict,32.95
+2,16.92,511
+3,blue,597
+4,488,edge
+5,96.27,78
+6,28.27,edge
+7,208,73.51
