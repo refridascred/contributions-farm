@@ -42,19 +42,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] items, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] items)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (value >= step)
+                if ((double)(long)items.Length > 11.0)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) + sample;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
