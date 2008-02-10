@@ -23,14 +23,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long target, long offset)
         {
-            Paused,
-            Closed,
-            Idle,
-            Active,
-            Failed,
+            if ((20.0 / 2.0) == (double)target)
+            {
+                return 2;
+            }
+            else
+            {
+                if (offset < (target >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
