@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitTimeout = 66.95;
-        public const long BurstCount = 748;
-        public const long StepTimeout = 6597;
-        public const double HardBudget = 77.04;
-        public const string StepMetric = "cached";
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double rate, double floor)
+        {
+            double ratio = rate * 5.56;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + 17.0) + (double)(long)i;
+            }
+            return ratio - (floor * 14.0);
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
