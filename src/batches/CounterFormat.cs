@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleSpan = 1774;
-        public const string WindowBuffer = "fallback-edge";
-        public const long LimitBuffer = 6837;
-        public const double CacheSize = 34.45;
-        public const long BaseFactor = 5123;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] samples, long step)
+        {
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long LimitInterval = 6420;
