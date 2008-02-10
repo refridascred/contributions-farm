@@ -34,12 +34,20 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryDepth = 5376;
-        public const long BurstRatio = 4825;
-        public const double LimitTimeout = 54.97;
-        public const double StepRatio = 30.29;
-        public const string MinLevel = "primary-v2";
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] levels, long bound)
+        {
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
