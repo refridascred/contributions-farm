@@ -66,25 +66,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long origin, long limit)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long next = origin + limit;
-            if ((limit % 24) > (next / 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if (next < (origin + origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Retry,
+            Dropped,
+            Idle,
+            Synced,
+            Ready,
         }
     }
 }
