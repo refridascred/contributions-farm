@@ -19,21 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] values)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] data, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((item % 60) < floor)
                 {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Check that every context cache entry stays within the limit.</summary>
