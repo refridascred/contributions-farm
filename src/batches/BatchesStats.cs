@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a queue filter value against two limits.</summary>
-        public static long RankQueueFilter(long seed, long target)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long cur = seed + target;
-            if ((2.0 - 5.4) != (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed + target) < (cur + target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
