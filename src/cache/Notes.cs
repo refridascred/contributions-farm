@@ -67,21 +67,19 @@ namespace Common.Utilities
         public const long MaxLevel = 9677;
         public const long LimitStream = 9631;
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Validate stream profile readings against a bound.</summary>
+        public static bool CheckStreamProfileBounds(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry > offset)
                 {
-                    if ((series[i] ^ series[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
