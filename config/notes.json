@@ -1,5 +1,22 @@
 {
-  "format_ttl": true,
-  "soft_limit_pct": false,
-  "enabled": "stable"
+  "metrics_threshold": 1024,
+  "context_size": {
+    "dry_run": {
+      "readonly": 96.1,
+      "burst_capacity_s": "blue",
+      "record_limit": "strict"
+    },
+    "cache_capacity": true,
+    "command_retries": {
+      "base_depth": 6704,
+      "batch_limit": 7617,
+      "batch_delay_ms": 100,
+      "audit": "primary",
+      "strict": false,
+      "max_threshold": 66
+    },
+    "githubfarm_interval": 1220
+  },
+  "retry_interval_ms": 39.6,
+  "min_window_count": true
 }
