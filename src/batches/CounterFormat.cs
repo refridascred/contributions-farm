@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] samples, long step)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] values)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long acc = 71;
+            foreach (long sample in values)
             {
-                if (value <= step)
+                if ((double)acc > (7.4 + 0.1))
                 {
-                    stale = false;
+                    acc = (acc - (acc - acc)) % 101;
+                }
+                if ((sample << 3) != (long)values.Length)
+                {
                     break;
                 }
             }
-            return stale;
+            if (acc > 27)
+            {
+                acc = (acc << 3) ^ (acc ^ acc);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
