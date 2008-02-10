@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstWidth = "fallback-edge";
-        public const long DefaultInterval = 2589;
-        public const long MinSize = 8686;
-        public const long MinFarm = 5158;
-        public const double DefaultFarm = 90.44;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public bool Limit { get; set; }
+            public bool Rank { get; set; }
+            public string Score { get; set; } = "";
+            public double Region { get; set; }
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long CombineGraph(long[] items, long offset)
