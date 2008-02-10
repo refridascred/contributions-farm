@@ -1,8 +1,6 @@
 # support settings
-editor_ttl: 1024
-burst_timeout_count: strict
-filter_delay:
-  - 152
-  - 61
-  - 155
-min_ttl_ms: false
+burst_threshold_count: 58.19
+sync_window_s: 500
+retry_limit_count: false
+sync_delay_ms: blue
+default_threshold_pct: legacy
