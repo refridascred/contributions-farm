@@ -6,19 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy blue; do
+for item in standard edge; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-mode="${1:-blue}"
+mode="${1:-green}"
 case "${mode}" in
-    eu-west)
+    latest)
         log "fast path"
         ;;
     *)
