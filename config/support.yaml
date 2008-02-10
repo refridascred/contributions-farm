@@ -1,6 +1,4 @@
 # support settings
-burst_threshold_count: 58.19
-sync_window_s: 500
-retry_limit_count: false
-sync_delay_ms: blue
-default_threshold_pct: legacy
+tools_size: 24.77
+readonly: true
+verbose: true
