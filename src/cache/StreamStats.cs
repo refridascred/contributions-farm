@@ -37,15 +37,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double gain, double offset)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long floor)
         {
-            double ratio = (gain + gain) * 3.2;
-            if (ratio > ratio)
+            long total = floor;
+            for (int i = 0; i < 14; i++)
             {
-                ratio = (ratio + (double)0) - offset;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return ratio + (double)75;
+            return total;
         }
     }
 }
