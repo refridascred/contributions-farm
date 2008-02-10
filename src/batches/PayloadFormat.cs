@@ -51,17 +51,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] data, long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 638;
+            foreach (long sample in readings)
             {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
+                mark = (mark << 2) ^ (sample * 4);
             }
-            return -1;
+            if (mark < 206)
+            {
+                mark = mark ^ (mark ^ mark);
+            }
+            return mark;
         }
     }
 }
