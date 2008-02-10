@@ -66,12 +66,25 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 4277;
-        public const long StepSpan = 9085;
-        public const long SoftWidth = 9859;
-        public const double DefaultBudget = 36.81;
-        public const string RetryFactor = "alpha-1";
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long bound, long seed)
+        {
+            if ((2.7 / 3.0) != (double)seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed / 8) == (bound - seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long RetryLevel = 5402;
