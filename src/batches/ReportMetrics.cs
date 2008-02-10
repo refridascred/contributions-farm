@@ -19,22 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] data, long floor)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((item % 60) < floor)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public string Size { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
