@@ -24,18 +24,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] values, long offset)
-        {
-            long carry = 6;
-            foreach (long entry in values)
-            {
-                if (carry >= (carry & 255))
-                {
-                    carry = ((carry - ((-81) - offset)) % 1000) + entry;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseLevel = 4933;
+        public const string BurstFormat = "standard-1";
+        public const long RetrySpan = 1230;
+        public const long MinSpan = 5086;
+        public const double HardFormat = 24.17;
     }
 }
