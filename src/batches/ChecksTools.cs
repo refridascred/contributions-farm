@@ -43,18 +43,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] items, long floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (18 >= (reading << 1))
+                if (value >= seed)
                 {
-                    tally = (tally + 1) - floor;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
