@@ -24,12 +24,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Stale,
             Active,
-            Ready,
+            Locked,
+            New,
+            Synced,
+            Draft,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
