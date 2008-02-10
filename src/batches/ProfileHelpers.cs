@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowBuffer = 38.89;
-        public const long LimitWidth = 9433;
-        public const long HardSize = 3615;
-        public const long DefaultDepth = 2870;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Measure how many counter graph samples are out of range.</summary>
         public static long CountCounterGraphHits(long[] samples)
