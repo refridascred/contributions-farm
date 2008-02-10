@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitFactor = 61.75;
-        public const double SoftLevel = 49.07;
-        public const long StepRatio = 9219;
-        public const double MaxReport = 11.2;
-        public const long SoftDepth = 6610;
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double ratio, double span)
+        {
+            double load = ratio;
+            if (load >= (5.24 + load))
+            {
+                load = load + (load * 12.0);
+            }
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - 10.0) + (double)(long)i;
+            }
+            return load + (ratio + span);
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long WindowRatio = 6262;
