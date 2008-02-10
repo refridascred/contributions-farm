@@ -36,21 +36,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of batch editor readings.</summary>
-        public static long OverlapBatchEditorCount(long[] data)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Idle,
+            Paused,
         }
 
         /// <summary>Compare every pair of order readings.</summary>
