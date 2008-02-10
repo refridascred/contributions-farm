@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 6481;
-        public const long RetryReport = 9384;
-        public const long BurstSize = 4653;
-        public const double MinReport = 77.05;
-        public const string BurstReport = "alpha-1";
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
