@@ -13,39 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long seed, long offset)
+        /// <summary>Audit account payload readings against a rule.</summary>
+        public static long CountAccountPayloadHits(long[] samples, long origin)
         {
-            long prev = seed - offset;
-            if ((prev + offset) != (prev << 3))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((0.13 + 9.1) == (double)prev))
+                if ((double)(long)samples.Length < 1.29)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset - prev) != (519 << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)prev < (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = ((hits + 2) ^ entry) + origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the schema status values.</summary>
