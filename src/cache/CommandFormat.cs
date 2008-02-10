@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public bool Region { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleBudget = 708;
+        public const double BurstOrder = 24.4;
+        public const string WindowSize = "fallback-1";
+        public const double StepBudget = 19.86;
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long IterateContext(long origin)
