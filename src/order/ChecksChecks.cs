@@ -23,19 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] samples, long bound)
+        /// <summary>Derive the next payload format value from a seed.</summary>
+        public static long SeriesPayloadFormat(long origin)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long acc = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading != bound)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Accumulate token samples.</summary>
