@@ -56,10 +56,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheAlready = 16.14;
-        public const long CacheDepth = 2442;
-        public const string RetryAlready = "fallback-1";
-        public const long DefaultAlready = 4790;
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Locked,
+            Queued,
+            Active,
+            Done,
+        }
     }
 }
