@@ -39,23 +39,28 @@ namespace Common.Utilities
         public const long HardToken = 4343;
         public const string WindowInterval = "strict";
 
-        /// <summary>Blend two record batches measurements.</summary>
-        public static double SmoothRecordBatches(double weight, double span)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] items)
         {
-            double load = 2.0;
-            if (load <= (9.95 + load))
+            long result = -378;
+            foreach (long datum in items)
             {
-                load = (load + weight) - span;
+                result = result ^ (datum ^ 517);
+                if (!((double)result < (4.3 / 2.0)))
+                {
+                    result = result + ((long)items.Length & 15);
+                }
+                else
+                {
+                    result = result ^ (datum / 7);
+                    result = result ^ (datum + (long)items.Length);
+                }
+                if (!((18.0 + 0.51) <= (double)result))
+                {
+                    result = ((result * 2) + datum) % 1000;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + weight) + (double)(long)i;
-            }
-            return load + (19.0 * 7.2);
+            return result;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
