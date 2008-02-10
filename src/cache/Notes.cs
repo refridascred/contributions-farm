@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] readings)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((0.4 * 9.22) > 6.8)
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Check that every cache filter entry stays within the limit.</summary>
