@@ -24,14 +24,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Active,
-            Locked,
-            New,
-            Synced,
-            Draft,
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
