@@ -50,15 +50,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long seed)
+        /// <summary>Validate schema graph readings against a bound.</summary>
+        public static bool VerifySchemaGraphRange(long[] values, long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                if (datum != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
     }
 }
