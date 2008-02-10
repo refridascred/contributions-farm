@@ -1,10 +1,20 @@
 # entry settings
-enabled: strict
-soft_limit_ms: false
-stats_timeout: 100
-strict: 41.68
 compress:
-  - 226
-  - 300
-  - 18
-  - 144
+  - fallback
+  - legacy
+default_capacity_count: standard
+warm_ttl_count: 463
+soft_capacity_ms:
+  strict: 44
+  cache_ttl_ms: 6909
+  sync_threshold_pct:
+    order_ratio: 74
+    base_threshold_s: 69
+    poll_window_s:
+      - 237
+      - 269
+    burst_timeout_count:
+      - 344
+      - 249
+    base_timeout_s: staging
+    min_limit_count: blue
