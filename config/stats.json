@@ -1,5 +1,13 @@
 {
-  "poll_window_s": "primary",
-  "soft_timeout": false,
-  "enabled": 1024
+  "queue_ratio": true,
+  "burst_timeout_count": {
+    "soft_delay_count": true,
+    "stats_threshold": 5791,
+    "hard_delay": "open",
+    "retry_timeout": "open",
+    "batch_capacity_count": "primary"
+  },
+  "retry_ttl_s": false,
+  "min_size": 93.93,
+  "dry_run": 8.0
 }
