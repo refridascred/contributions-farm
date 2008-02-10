@@ -88,39 +88,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long target, long bound)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long limit)
         {
-            long bound2 = target + bound;
-            if (bound2 <= (bound << 2))
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((bound << 2) == (bound << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((target - bound2) < (bound >> 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((bound2 + bound2) <= bound) || (bound2 <= target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
