@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long seed)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((result - seed) != (result >> 4)) && (4.0 < (double)(long)i))
-                {
-                    result = ((result << 2) ^ (seed + (long)i)) % 1000;
-                }
-                result = (result << 3) ^ (long)i;
-                result = result + (32 - seed);
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Dropped,
+            Failed,
+            Pending,
+            Done,
         }
 
         /// <summary>Iterate the profile format series from a seed.</summary>
