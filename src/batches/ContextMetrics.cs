@@ -38,20 +38,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next report support value from a seed.</summary>
-        public static long SeriesReportSupport(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    anchor = (anchor ^ anchor) ^ (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 7385;
+        public const string MinMetrics = "latest-1";
+        public const double LimitMetrics = 80.48;
+        public const double BatchBudget = 16.54;
 
         /// <summary>Count the entry notes entries that pass the check.</summary>
         public static long TallyEntryNotesHits(long[] data)
