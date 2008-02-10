@@ -12,21 +12,31 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of payload token readings.</summary>
-        public static long MatchPayloadTokenCount(long[] values)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long limit, long limit2)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (limit < (limit & 63))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((limit - 95) < limit2) || ((limit & 255) == (limit2 - limit)))
                 {
-                    if ((values[i] + values[j]) < 7)
+                    return 5;
+                }
+                else
+                {
+                    if (((-983) - limit) <= 95)
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the commits mode values.</summary>
