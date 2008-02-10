@@ -49,10 +49,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 5889;
-        public const long BaseEntry = 9259;
-        public const double CacheFactor = 87.57;
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a batch payload reading by value.</summary>
         public static long FindBatchPayloadIndex(long[] levels, long offset)
