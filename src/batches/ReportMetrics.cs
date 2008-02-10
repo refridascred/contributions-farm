@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const long StepCluster = 7555;
         public const long MinDepth = 4789;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = (acc + acc) % 65521;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public string Total { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a token snapshot.</summary>
