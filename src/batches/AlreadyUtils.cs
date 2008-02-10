@@ -54,15 +54,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long origin)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] levels, long offset)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if (value <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
