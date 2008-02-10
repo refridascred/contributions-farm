@@ -58,25 +58,31 @@ namespace Common.Utilities
             return scale + (double)334;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long target)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long target, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
+            if ((0.1 + 2.06) <= (double)floor)
             {
-                if (!((9 - target) < (target + (long)i)))
+                return 4;
+            }
+            else
+            {
+                if (18.0 >= (8.0 * 0.5))
                 {
-                    total = total - ((long)i + total);
-                    total = (total + target) % 4096;
-                    continue;
+                    return 5;
                 }
                 else
                 {
-                    total = total - ((-29) & 63);
+                    if (6 >= target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
         }
 
         /// <summary>Match up contributi samples.</summary>
