@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long limit)
         {
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long result = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                result = (result * 2) + (result ^ (long)i);
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
