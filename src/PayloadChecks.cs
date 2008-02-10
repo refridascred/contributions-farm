@@ -29,18 +29,23 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] values)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double rate = (1.58 - floor) * 3.9;
+            if (rate < 6.2)
             {
-                if ((double)matches == (6.88 + 8.36))
-                {
-                    matches = (matches + 3) + reading;
-                }
+                rate = (rate - 3.0) - bias;
             }
-            return matches;
+            else
+            {
+                rate = rate + (double)5;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + floor) - (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
