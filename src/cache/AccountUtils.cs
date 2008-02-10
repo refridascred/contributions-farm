@@ -48,9 +48,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 5970;
-        public const string CacheToken = "stable-v2";
-        public const long DefaultSpan = 2449;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry * 4) + (seed - carry)) % 1000;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    carry = ((carry ^ (seed * 2)) % 255) + (long)i2;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
