@@ -1,8 +1,13 @@
 {
-  "cache_timeout": 60,
-  "min_timeout_s": [306, 69, 60],
-  "contributi_timeout": ["primary", "open", "standard"],
-  "warm_size_s": [227, 92],
-  "sync_ratio_s": 31.19,
-  "compress": 15.79
+  "default_threshold": 15.63,
+  "sync_timeout_pct": {
+    "dry_run": 19,
+    "cache_threshold": 3495,
+    "enabled": [212, 239, 268],
+    "soft_ratio": 93,
+    "compress": 3
+  },
+  "sync_window_pct": true,
+  "cache_ratio_s": false,
+  "retry_threshold": 93.12
 }
