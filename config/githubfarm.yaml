@@ -1,4 +1,23 @@
 # githubfarm settings
-editor_interval: 9.71
-hard_capacity_pct: 1024
-poll_ttl_count: 30
+poll_window_count: local
+soft_timeout_pct: cached
+flush_depth_s: 6556
+counter_window:
+  base_ttl_count:
+    - legacy
+    - primary
+    - staging
+  readonly:
+    - 287
+    - 500
+    - 406
+    - 457
+  poll_ratio_ms:
+    hard_interval_ms:
+      - blue
+      - blue
+      - green
+    window_threshold: staging
+    burst_depth_count: 500
+    burst_timeout_pct: 79
+    cache_interval_pct: 67.34
