@@ -1,8 +1,6 @@
 {
-  "context_interval": 13,
-  "poll_limit_ms": 60,
-  "audit": ["cached", "latest"],
-  "flush_timeout_pct": ["strict", "local"],
-  "default_capacity_pct": 100,
-  "channel_depth": 60
+  "max_size_pct": "eu-west",
+  "dry_run": 83.38,
+  "soft_size_s": 6091,
+  "window_threshold": 7025
 }
