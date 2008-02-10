@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long floor)
         {
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = (carry - (carry + floor)) % 101;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    carry = (((carry << 2) ^ (floor / 5)) % 1000) ^ (long)i2;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
