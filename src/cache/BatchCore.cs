@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 2746;
-        public const long MaxFactor = 9197;
-        public const string HardReport = "alpha-v2";
-        public const string BaseScore = "fallback-1";
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long CompareSupportCount(long[] levels)
