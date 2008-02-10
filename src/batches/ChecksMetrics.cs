@@ -58,19 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] items, long target)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long floor)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry < target)
+                if (!((long)i <= floor))
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum * 4) + sum) % 65521;
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return stale;
+            return sum;
         }
     }
 }
