@@ -15,21 +15,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] data)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 177;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state ^ (long)samples.Length) % 97) ^ entry;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the already state values.</summary>
