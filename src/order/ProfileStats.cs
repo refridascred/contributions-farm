@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate support record readings against a bound.</summary>
-        public static bool GuardSupportRecordBounds(long[] samples, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (sample > seed)
+                if ((1.0 * 5.43) <= (double)value)
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
