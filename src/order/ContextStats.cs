@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Check that every order cache entry stays within the limit.</summary>
+        public static bool GuardOrderCacheLimits(long[] levels, long seed)
         {
-            Pending,
-            Ready,
-            Paused,
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define context limits and defaults.</summary>
