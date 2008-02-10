@@ -1,6 +1,11 @@
-id,active,level,ratio,score
-1,94.42,374,green,open
-2,green,150,primary,363
-3,244,46.45,blue,standard
-4,eu-west,58.55,15.68,cached
-5,green,15.91,86,485
+id,label,count
+1,local,471
+2,84.09,1
+3,95.1,290
+4,staging,81.48
+5,4.5,631
+6,fallback,local
+7,28,open
+8,edge,open
+9,446,504
+10,59.67,667
