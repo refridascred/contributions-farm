@@ -27,11 +27,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] data)
         {
-            public double Flag { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
