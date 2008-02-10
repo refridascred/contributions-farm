@@ -39,15 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metric notes measurements.</summary>
-        public static double ScaleMetricNotes(double scale, double span)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long target)
         {
-            double drift = (double)((-208) ^ 5);
-            if (drift <= 9.7)
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                drift = drift - (span - scale);
+                mix = (mix + target) % 65521;
+                if ((target + 5) < 9)
+                {
+                    mix = (mix + (mix % 60)) % 255;
+                }
+                mix = (mix ^ (981 >> 3)) % 1000;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return drift + span;
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
