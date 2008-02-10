@@ -13,17 +13,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Locate a editor entry reading by value.</summary>
-        public static long FindEditorEntryIndex(long[] samples, long seed)
+        /// <summary>Validate graph window readings against a bound.</summary>
+        public static bool GuardGraphWindowRange(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((samples[i] < seed) && ((samples[i] % 2) != 0))
+                if (cell <= offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
