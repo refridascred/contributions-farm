@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=45
-log "limit is ${COMMAND_LIMIT}"
+for item in blue edge cached; do
+    log "checking ${item}"
+done
 
-mode="${1:-latest}"
+mode="${1:-green}"
 case "${mode}" in
-    blue)
+    cached)
         log "fast path"
         ;;
     *)
