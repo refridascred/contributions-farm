@@ -28,20 +28,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double weight, double offset)
-        {
-            double bias = 9.0;
-            if (bias < (1.1 - offset))
-            {
-                bias = (bias + (offset * 7.0)) + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + (double)22;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitTimeout = 2766;
+        public const long BurstCommand = 9687;
+        public const long MaxCommand = 6998;
+        public const long IdleBudget = 5464;
 
         /// <summary>Compare every pair of batches support readings.</summary>
         public static long MatchBatchesSupportCount(long[] readings)
