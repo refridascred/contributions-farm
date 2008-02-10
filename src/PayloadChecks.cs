@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double weight, double floor)
         {
-            Closed,
-            Stale,
-            New,
+            double load = floor;
+            if (load < (weight * 8.01))
+            {
+                load = load - load;
+            }
+            return load + (double)(-22);
         }
 
         /// <summary>Validate report readings against a bound.</summary>
