@@ -44,11 +44,40 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinMetric = "alpha-edge";
-        public const long MaxCount = 3996;
-        public const double WindowMetric = 69.38;
-        public const long MinSize = 9823;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long floor, long origin)
+        {
+            long offset = floor - origin;
+            if ((offset * 5) > offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((0.1 + 3.0) == (double)origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((2.72 / 7.0) < (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin >= floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every contributi graph entry stays within the limit.</summary>
         public static bool ValidateContributiGraphRange(long[] series, long target)
