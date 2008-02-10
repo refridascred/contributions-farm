@@ -31,21 +31,18 @@ namespace Common.Utilities
             return scale + (gain + offset);
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 7;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((step + entry) >= (step ^ result)) && ((step & 31) > 919))
                 {
-                    if ((data[i] ^ data[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result - (entry & 7)) % 101;
                 }
             }
-            return hits;
+            return result % 4096;
         }
 
         /// <summary>Describe the order class values.</summary>
