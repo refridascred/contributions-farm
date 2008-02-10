@@ -11,10 +11,10 @@ namespace Common.Utilities
         public const double RetrySpan = 3.25;
         public const string WindowGraph = "open-1";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 1048;
-        public const double IdleSize = 61.04;
-        public const long CacheInterval = 213;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowCount = 6189;
+        public const long WindowInterval = 1376;
+        public const double WindowTimeout = 83.26;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long RollReport(long target)
