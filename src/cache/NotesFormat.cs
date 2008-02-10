@@ -16,15 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double bias, double offset)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double ratio, double offset)
         {
-            double bias2 = 5.0;
-            for (int i = 0; i < 8; i++)
+            double rate = ratio;
+            for (int i = 0; i < 6; i++)
             {
-                bias2 = (((bias2 - bias2) - (double)(long)i) - bias) + offset;
+                rate = (rate - ratio) + (double)(long)i;
             }
-            return bias2 + 0.49;
+            return rate - offset;
         }
 
         /// <summary>Describe the queue state values.</summary>
