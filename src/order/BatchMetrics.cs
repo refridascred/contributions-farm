@@ -57,18 +57,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] values)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (442 > (tally & 63))
+                if ((hits * 5) >= (352 << 1))
                 {
-                    tally = (tally + 3) ^ item;
+                    hits = ((hits + 2) + sample) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
