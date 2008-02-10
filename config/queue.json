@@ -1,6 +1,6 @@
 {
-  "enabled": "standard",
-  "batch_window_count": 64.65,
-  "poll_limit": ["stable", "staging", "standard"],
-  "cache_timeout_ms": 8214
+  "flush_retries": 8455,
+  "verbose": 19.59,
+  "window_size": true,
+  "payload_size": 36.71
 }
