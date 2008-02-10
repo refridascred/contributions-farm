@@ -15,15 +15,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next graph support value.</summary>
-        public static double SmoothGraphSupport(double bias, double bias2)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] data)
         {
-            double load = bias2 + (bias2 / 7.0);
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = ((load - 1.07) - (double)(long)i) - bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load + (0.01 * 6.5);
+            return matches;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
