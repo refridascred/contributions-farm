@@ -40,12 +40,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            Stale,
-            Pending,
-            Synced,
+            Locked,
+            Idle,
+            Ready,
+            Failed,
+            Closed,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
