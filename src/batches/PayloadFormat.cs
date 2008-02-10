@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const double StepDepth = 90.35;
         public const long CacheSpan = 1271;
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] values, long floor)
         {
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-            public bool Offset { get; set; }
+            long acc = -283;
+            foreach (long datum in values)
+            {
+                acc = (acc ^ floor) - datum;
+            }
+            if (acc > 45)
+            {
+                acc = (acc * 3) + (acc + floor);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
