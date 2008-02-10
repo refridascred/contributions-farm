@@ -32,16 +32,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 3) + seed) % 97;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            New,
+            Dropped,
+            Active,
+            Idle,
+            Pending,
         }
 
         /// <summary>Compare every pair of batch editor readings.</summary>
