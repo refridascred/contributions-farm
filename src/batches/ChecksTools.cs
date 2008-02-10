@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Count the session entry entries that pass the check.</summary>
+        public static long TallySessionEntryMatches(long[] readings, long bound)
         {
-            Retry,
-            Idle,
-            Active,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((((double)matches >= (9.7 + 4.18)) || ((bound + matches) > (matches & 255))) || ((double)matches > 19.0))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
