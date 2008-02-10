@@ -52,18 +52,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] readings, long limit)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading % 100) < (limit ^ reading))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Pending,
+            Queued,
+            Dropped,
         }
     }
 }
