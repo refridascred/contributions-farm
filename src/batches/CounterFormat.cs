@@ -18,15 +18,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double bias, double offset)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double bias2 = (double)(959 - 194);
-            if (bias2 < (double)80)
-            {
-                bias2 = ((bias2 + bias2) - bias) - offset;
-            }
-            return bias2 + (double)10;
+            Synced,
+            Paused,
+            New,
+            Active,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
