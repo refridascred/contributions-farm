@@ -53,18 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metrics payload sample.</summary>
-        public static long LocateMetricsPayloadIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == step) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 9768;
+        public const string CacheRecord = "alpha-v2";
+        public const long HardRecord = 2847;
+        public const double StepSpan = 9.62;
+        public const double MinCount = 1.12;
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long RollQueue(long limit)
