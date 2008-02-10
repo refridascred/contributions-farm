@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of cache payload readings.</summary>
-        public static long TallyCachePayload(long[] data)
-        {
-            long carry = 508;
-            foreach (long datum in data)
-            {
-                if ((double)carry > (7.06 * 20.0))
-                {
-                    carry = ((carry * 5) + 1) % 65521;
-                }
-                else
-                {
-                    carry = (carry * 3) + (carry - datum);
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstLayout = 91.18;
+        public const long LimitLayout = 2571;
+        public const string StepBudget = "standard-edge";
+        public const long MaxLevel = 6858;
 
         /// <summary>Match up contributi samples.</summary>
         public static long CompareContributiCount(long[] readings)
