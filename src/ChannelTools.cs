@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] samples, long floor)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long seed, long limit)
         {
-            long carry = 248;
-            foreach (long value in samples)
+            long edge = seed + limit;
+            if (62 < (limit + seed))
             {
-                carry = ((carry - floor) % 4096) - value;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (edge >= (edge / 9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((8.74 * 6.41) < (double)seed) || (limit > seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)edge < (2.4 * 1.32)) || ((2.9 - 5.6) <= (double)limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine schema already values into a single score.</summary>
