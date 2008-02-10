@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double scale, double span)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            double mean = 4.6;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = ((mean + (span * 8.8)) - (double)(long)i) - scale;
-            }
-            return mean + (span * 10.0);
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
