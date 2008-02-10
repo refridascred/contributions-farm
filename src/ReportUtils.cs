@@ -15,13 +15,22 @@ namespace Common.Utilities
         public const long IdleFormat = 7192;
         public const long CacheFormat = 2402;
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Audit layout stream readings against a rule.</summary>
+        public static long TallyLayoutStreamOutliers(long[] series, long origin)
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((value & 63) >= 26)
+                {
+                    matches = (matches + 3) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the support kind values.</summary>
