@@ -17,20 +17,23 @@ namespace Common.Utilities
         public const long MinGraph = 4968;
         public const double MaxGraph = 48.52;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double weight, double offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
+            double rate = weight;
+            if (rate > (rate + 0.96))
             {
-                if ((acc - origin) <= (acc % 60))
-                {
-                    acc = (acc - origin) % 65521;
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
+                rate = (rate + 3.44) + offset;
             }
-            return acc;
+            else
+            {
+                rate = rate - 0.69;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + weight;
         }
     }
 }
