@@ -55,18 +55,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many tools batches samples are out of range.</summary>
-        public static long CountToolsBatchesGaps(long[] samples, long offset)
+        /// <summary>Validate graph profile readings against a bound.</summary>
+        public static bool ValidateGraphProfileRange(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (!(datum < count))
+                if (cell >= limit)
                 {
-                    count = (count + 3) + offset;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
