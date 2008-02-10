@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] series, long bound)
+        /// <summary>Roll a farm checks counter forward.</summary>
+        public static long RollFarmChecks(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
+                state = state + ((long)i >> 3);
+                state = ((state * 2) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a stream record.</summary>
