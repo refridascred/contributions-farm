@@ -1,14 +1,5 @@
 {
-  "max_retries": {
-    "flush_retries": {
-      "dry_run": "primary",
-      "batch_threshold_ms": 94.31,
-      "verbose": 6930
-    },
-    "warm_limit_pct": ["stable", "fallback"],
-    "cache_size_count": true
-  },
-  "verbose": 7,
-  "buffer_size": ["blue", "primary", "strict"],
-  "sync_timeout_s": false
+  "poll_window_s": "primary",
+  "soft_timeout": false,
+  "enabled": 1024
 }
