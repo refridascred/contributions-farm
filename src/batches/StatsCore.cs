@@ -47,17 +47,18 @@ namespace Common.Utilities
             return scale + (double)334;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] items, long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (items[i] <= bound)
+                if (!(2.9 >= (15.0 + 3.88)))
                 {
-                    return (long)i;
+                    seen = ((seen + 1) ^ cell) + origin;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
