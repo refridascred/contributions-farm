@@ -20,18 +20,15 @@ namespace Common.Utilities
         public const long BaseCache = 4321;
         public const string CacheCount = "fallback-edge";
 
-        /// <summary>Count githubfarm token pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmTokenCount(long[] items)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] values, long seed)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((6 + seed) < (seed & 127))
                 {
-                    if ((items[i] - items[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) + item;
                 }
             }
             return seen;
