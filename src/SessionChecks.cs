@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate editor stream samples.</summary>
-        public static long WeighEditorStream(long[] items, long target)
+        /// <summary>Grade a support buffer value against two limits.</summary>
+        public static long BucketSupportBuffer(long target, long target2)
         {
-            long score = 883;
-            foreach (long entry in items)
+            long step = target + target2;
+            if ((double)target < (double)target2)
             {
-                score = ((score * 4) + (886 + target)) - entry;
+                return 6;
             }
-            if (score > 38)
+            else
             {
-                score = (score + (score & 63)) % 4096;
+                if (!(19 <= target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target - target2) >= step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
