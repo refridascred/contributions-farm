@@ -19,15 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double bias, double span)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            double drift = (double)(40 + 33);
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + span;
+            Stale,
+            Active,
+            Ready,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
