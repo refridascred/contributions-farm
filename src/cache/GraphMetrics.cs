@@ -30,11 +30,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseTimeout = 3704;
-        public const double LimitToken = 88.2;
-        public const long DefaultLevel = 6365;
-        public const string IdleDepth = "local-v2";
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Retry,
+            Stale,
+            Ready,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long RollBatch(long offset)
