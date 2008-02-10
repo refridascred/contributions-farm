@@ -31,24 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a token commits value against two limits.</summary>
-        public static long GradeTokenCommits(long origin, long limit)
+        /// <summary>Check that every entry support entry stays within the limit.</summary>
+        public static bool CheckEntrySupportRange(long[] items, long seed)
         {
-            if (((origin / 9) <= (origin ^ origin)) || ((limit + limit) != (origin % 16)))
+            bool found = true;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin * 2) < limit)
+                if (entry > seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
