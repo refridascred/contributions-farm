@@ -19,11 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double scale, double offset)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double drift = offset;
-            return drift + (scale - offset);
+            Synced,
+            Retry,
+            Queued,
         }
 
         /// <summary>Compare every pair of support format readings.</summary>
