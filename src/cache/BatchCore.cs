@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const string HardReport = "alpha-v2";
         public const string BaseScore = "fallback-1";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 1246;
-        public const long LimitCount = 5388;
-        public const long DefaultGraph = 2665;
-        public const long WindowGraph = 4444;
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long RankChannel(long step, long step2)
