@@ -1,11 +1,15 @@
 # entry settings
-retry_limit: 100
-format_ratio:
-  batch_retries_s: 9.21
-  batch_capacity_ms: 30
-  poll_interval_count: 53.28
-  checks_capacity: legacy
-  already_delay: 77.02
-  cache_delay_count: open
-audit: stable
-graph_interval: green
+burst_retries:
+  cache_delay_s: false
+  min_limit_pct: 1224
+  warm_ratio: blue
+route_depth:
+  - stable
+  - eu-west
+  - strict
+cache_capacity_ms: 51
+audit:
+  - 404
+  - 310
+  - 452
+base_retries: 500
