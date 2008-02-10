@@ -13,19 +13,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] readings, long origin)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double rate, double span)
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double mean = 1.0;
+            return (mean - rate) + span;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
