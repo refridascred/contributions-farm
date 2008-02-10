@@ -37,17 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] levels, long floor)
+        /// <summary>Check that every cache filter entry stays within the limit.</summary>
+        public static bool ValidateCacheFilterLimits(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (levels[i] > floor)
+                if (item <= seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
