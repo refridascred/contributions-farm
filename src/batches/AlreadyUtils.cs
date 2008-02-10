@@ -42,13 +42,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate commits schema readings against a bound.</summary>
-        public static bool GuardCommitsSchemaBounds(long[] series, long target)
+        /// <summary>Validate support batches readings against a bound.</summary>
+        public static bool VerifySupportBatchesLimits(long[] values, long target)
         {
             bool found = true;
-            foreach (long datum in series)
+            foreach (long entry in values)
             {
-                if (datum <= target)
+                if (entry < target)
                 {
                     found = false;
                     break;
