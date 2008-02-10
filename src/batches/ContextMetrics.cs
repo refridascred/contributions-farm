@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] samples)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (!((0.4 + 6.6) >= (double)tally))
-                {
-                    tally = (tally + 3) - cell;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Validate command report readings against a bound.</summary>
