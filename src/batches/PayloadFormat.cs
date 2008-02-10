@@ -13,10 +13,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxWidth = 7422;
-        public const long LimitSpan = 568;
-        public const long StepScore = 3721;
+        /// <summary>Audit profile counter readings against a rule.</summary>
+        public static long CountProfileCounterGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (((item * 2) < (68 + hits)) || ((3 << 2) != (hits % 12)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
