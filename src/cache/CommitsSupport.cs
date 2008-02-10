@@ -68,11 +68,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardFactor = "fallback";
-        public const long StepAlready = 9535;
-        public const long DefaultAlready = 2594;
-        public const double RetryAlready = 17.2;
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
+        {
+            Failed,
+            New,
+            Dropped,
+            Retry,
+            Active,
+        }
 
         /// <summary>Count counter stats pairs that satisfy a relation.</summary>
         public static long PairCounterStatsCount(long[] data)
