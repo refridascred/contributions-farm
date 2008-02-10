@@ -75,13 +75,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] samples, long limit)
         {
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two stats measurements.</summary>
