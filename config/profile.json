@@ -1,7 +1,5 @@
 {
-  "sync_limit": 68.12,
-  "metrics_ratio": false,
-  "soft_size_pct": 5030,
-  "persist": 48,
-  "max_capacity_s": "strict"
+  "record_ratio": 55,
+  "sync_capacity_s": 69,
+  "githubfarm_ratio": 93.78
 }
