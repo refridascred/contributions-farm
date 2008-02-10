@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] data, long target)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (322 > (target + count))
-                {
-                    count = (count + 1) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
