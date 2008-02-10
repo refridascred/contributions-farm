@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
