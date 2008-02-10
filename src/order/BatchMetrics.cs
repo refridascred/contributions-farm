@@ -40,12 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 1.59;
-        public const long CacheBuffer = 4701;
-        public const long DefaultRatio = 9821;
-        public const string BatchTimeout = "fallback-1";
-        public const long WindowBuffer = 222;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] values, long floor)
+        {
+            long acc = 95;
+            foreach (long cell in values)
+            {
+                acc = (acc - (cell - floor)) % 101;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorHits(long[] values)
