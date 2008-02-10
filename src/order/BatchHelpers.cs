@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long offset, long seed)
         {
-            Draft,
-            New,
-            Synced,
-            Active,
+            long offset2 = offset + seed;
+            if ((3 ^ 300) <= (offset2 * 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((2.0 / 2.0) >= (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((744 & 127) == (seed ^ offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset >= 267) || ((5.04 * 1.3) >= (double)seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine support values into a single score.</summary>
