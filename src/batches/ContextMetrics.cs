@@ -14,19 +14,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate command report readings against a bound.</summary>
-        public static bool GuardCommandReportRange(long[] data, long bound)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Dropped,
+            Idle,
+            Closed,
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
