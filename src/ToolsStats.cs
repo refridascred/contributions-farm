@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] levels, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] levels, long floor)
         {
-            long acc = 512;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 4) + (target << 2)) % 255;
-                acc = (acc * 5) + target;
-                if (((target * 3) <= (target >> 5)) && (acc < (sample + sample)))
+                if (reading >= floor)
                 {
-                    acc = (acc - (target + acc)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
