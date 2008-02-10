@@ -20,14 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] levels)
         {
-            Paused,
-            Idle,
-            New,
-            Done,
-            Draft,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((9.8 - 9.2) > (double)cell)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the window class values.</summary>
