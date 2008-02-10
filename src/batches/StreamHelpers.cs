@@ -58,24 +58,12 @@ namespace Common.Utilities
             return mean + (offset / 7.0);
         }
 
-        /// <summary>Grade a buffer order value against two limits.</summary>
-        public static long BucketBufferOrder(long seed, long limit)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            if (((limit + limit) == (limit >> 3)) && ((8.9 * 12.0) != (double)seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed / 8) == (seed - limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Paused,
+            Locked,
+            Closed,
         }
     }
 }
