@@ -1,5 +1,13 @@
 # support settings
-retry_depth: 29.0
-max_delay: 53.05
-sync_window_pct: 5247
-format_ratio: false
+default_size_pct: 43.15
+layout_threshold: 93
+max_limit_ms:
+  - legacy
+  - strict
+idle_interval_pct: local
+notes_size: 50
+notes_ttl:
+  - stable
+  - latest
+  - edge
+  - latest
