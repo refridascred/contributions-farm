@@ -55,38 +55,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long origin, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] series, long step)
         {
-            if ((1.3 - 20.0) < (double)origin)
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((origin >> 5) > (target + target)))
+                if (hits >= (item + item))
                 {
-                    return 8;
+                    hits = (hits + 3) - step;
                 }
                 else
                 {
-                    if ((3.6 - 3.3) >= (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (4.0 > (double)target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a account snapshot.</summary>
