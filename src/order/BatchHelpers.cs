@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double ratio, double floor)
         {
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
+            double weight = ratio;
+            return (weight - ratio) + floor;
         }
 
         /// <summary>Describe the token status values.</summary>
