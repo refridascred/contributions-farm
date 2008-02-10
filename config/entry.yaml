@@ -1,7 +1,6 @@
 # entry settings
-base_ttl: strict
-persist: true
-entry_delay: latest
-soft_depth_count: 100
-strict: 100
-sync_timeout: false
+poll_ttl_count: 60
+persist: 74
+burst_retries: 8
+graph_delay: 5077
+cluster_window: true
