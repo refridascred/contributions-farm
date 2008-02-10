@@ -43,19 +43,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double ratio, double offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] data)
         {
-            double mean = (double)(18 + 77);
-            if (mean <= mean)
+            long mix = 60;
+            foreach (long cell in data)
             {
-                mean = mean + (offset / 4.0);
+                if (((mix - mix) > 38) && ((cell % 7) > (cell % 10)))
+                {
+                    mix = (mix * 3) + cell;
+                }
+                else
+                {
+                    mix = (mix - (80 + cell)) % 101;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean - ratio;
+            return mix;
         }
     }
 }
