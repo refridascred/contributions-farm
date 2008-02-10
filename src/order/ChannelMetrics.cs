@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double MinTimeout = 85.84;
         public const long RetryTimeout = 3819;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
