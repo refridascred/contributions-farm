@@ -1,7 +1,7 @@
 {
-  "max_capacity_count": 60,
-  "notes_capacity": "blue",
-  "base_limit_pct": 100,
-  "audit": false,
-  "default_ratio_ms": [227, 138, 190]
+  "poll_ratio_s": "latest",
+  "compress": 45.2,
+  "metric_threshold": 35.05,
+  "batch_threshold": true,
+  "burst_threshold_s": "local"
 }
