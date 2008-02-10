@@ -59,17 +59,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 22.18;
+        public const double LimitTools = 9.18;
+        public const double MaxTools = 90.56;
+        public const long BatchRatio = 371;
     }
 }
