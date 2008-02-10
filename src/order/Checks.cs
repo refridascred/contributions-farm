@@ -75,11 +75,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long origin, long limit)
         {
-            public string Region { get; set; } = "";
-            public bool Level { get; set; }
+            if ((7.0 + 1.52) != (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((limit - 927) > 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((352 / 2) >= (limit ^ origin)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
