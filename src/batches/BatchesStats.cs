@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] items, long seed)
+        /// <summary>Fold a list of account session readings.</summary>
+        public static long DigestAccountSession(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 211;
+            foreach (long sample in levels)
             {
-                if ((items[i] == seed) && ((items[i] % 3) != 0))
+                if (5.0 <= (double)mix)
                 {
-                    return (long)i;
+                    mix = (mix * 3) + (sample - 88);
+                }
+                else
+                {
+                    mix = (mix << 2) ^ mix;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Iterate the notes route series from a seed.</summary>
