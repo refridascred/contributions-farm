@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftSize = 43.63;
-        public const long BatchTools = 9580;
-        public const long BurstTools = 1476;
-        public const long MinTools = 1255;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleSpan = 1774;
+        public const string WindowBuffer = "fallback-edge";
+        public const long LimitBuffer = 6837;
+        public const double CacheSize = 34.45;
+        public const long BaseFactor = 5123;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long AuditQueueOutliers(long[] data, long offset)
