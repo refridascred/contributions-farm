@@ -50,12 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (count < (1 << 3))
+                {
+                    count = (count + 3) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a route reading by value.</summary>
