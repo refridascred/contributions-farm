@@ -19,23 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] samples, long bound)
+        /// <summary>Iterate the queue cache series from a seed.</summary>
+        public static long IterateQueueCache(long bound)
         {
-            long state = 0;
-            foreach (long reading in samples)
+            long score = bound;
+            for (int i = 0; i < 11; i++)
             {
-                state = (((state << 3) ^ state) % 4096) - bound;
-                if ((state & 255) <= (reading & 31))
-                {
-                    break;
-                }
+                score = score + score;
+                score = (score + score) % 1000;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            if (state < 3)
-            {
-                state = ((state * 5) + 633) % 255;
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Accumulate graph samples.</summary>
