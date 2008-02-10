@@ -44,15 +44,16 @@ namespace Common.Utilities
         public const long LimitChannel = 4863;
         public const long BurstDepth = 5926;
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long seed)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
+            long result = origin;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                result = result - ((long)i + 15);
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return result;
         }
     }
 }
