@@ -1,6 +1,5 @@
 # githubfarm settings
-default_ratio: blue
-record_size: 62
-strict:
-  - 327
-  - 183
+already_interval: true
+already_depth: 63
+default_size: 77
+default_window_s: 22.6
