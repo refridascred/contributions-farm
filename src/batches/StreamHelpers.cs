@@ -30,21 +30,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next entry metric value from a seed.</summary>
-        public static long IterateEntryMetric(long bound)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score << 2) ^ (bound + bound)) % 1000;
-                score = (score + (score >> 3)) % 4096;
-                if (5.7 <= (double)(long)i)
-                {
-                    score = (score * 4) + (bound + score);
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Queued,
+            Synced,
+            Retry,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
