@@ -39,21 +39,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count support stream pairs that satisfy a relation.</summary>
-        public static long MatchSupportStreamCount(long[] readings)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 1;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix << 3) ^ mix) % 255;
+                mix = mix ^ (reading ^ reading);
             }
-            return tally;
+            if (mix > 364)
+            {
+                mix = (mix * 5) + limit;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Check that every githubfarm layout entry stays within the limit.</summary>
