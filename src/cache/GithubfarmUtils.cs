@@ -17,11 +17,18 @@ namespace Common.Utilities
         public const double DefaultStats = 98.77;
         public const long CacheBudget = 4373;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] readings)
         {
-            public bool Region { get; set; }
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (!((double)seen > (7.2 * 0.6)))
+                {
+                    seen = (seen + 1) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a metric reading.</summary>
