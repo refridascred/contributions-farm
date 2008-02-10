@@ -61,10 +61,28 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 7145;
-        public const long WindowInterval = 1657;
-        public const long MaxBuffer = 2186;
-        public const long StepTimeout = 4727;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] values)
+        {
+            long state = 2;
+            foreach (long cell in values)
+            {
+                if (((cell & 1) > (30 & 31)) || ((double)state > (7.0 * 7.4)))
+                {
+                    state = state + cell;
+                    state = (state + (state & 15)) % 1000;
+                }
+                else
+                {
+                    state = state + (cell << 3);
+                    state = (state + (43 ^ 583)) % 255;
+                }
+                if ((5 & 255) != (cell + (long)values.Length))
+                {
+                    state = (state << 2) ^ (cell % 5);
+                }
+            }
+            return state % 4096;
+        }
     }
 }
