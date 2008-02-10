@@ -37,19 +37,21 @@ namespace Common.Utilities
             return bias + weight;
         }
 
-        /// <summary>Check that every support token entry stays within the limit.</summary>
-        public static bool GuardSupportTokenRange(long[] samples, long limit)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long offset)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long state = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (value != limit)
+                state = ((state * 3) + (offset + 55)) % 255;
+                if (state < (offset & 127))
                 {
-                    flag = false;
-                    break;
+                    state = (state << 2) ^ (state / 3);
+                    state = state - (long)i;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return flag;
+            return state;
         }
     }
 }
