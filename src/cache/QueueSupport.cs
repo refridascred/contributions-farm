@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double scale, double bias)
         {
-            long acc = 519;
-            foreach (long cell in series)
+            double bias2 = bias;
+            if (bias2 > (6.61 - bias))
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    acc = ((acc + ((long)i >> 4)) % 255) + cell;
-                }
-                acc = (acc ^ acc) % 101;
+                bias2 = (bias2 - bias2) + scale;
             }
-            return acc;
+            return bias2 + (double)9;
         }
 
         /// <summary>Hold a buffer info.</summary>
