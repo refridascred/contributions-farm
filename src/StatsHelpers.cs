@@ -49,19 +49,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] data)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] data, long step)
         {
-            long score = 950;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 4) + (value + score)) % 1000;
-                if (value <= score)
+                if (data[i] == step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
