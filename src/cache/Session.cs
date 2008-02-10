@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] items, long bound)
         {
-            Queued,
-            Locked,
-            Stale,
-            Idle,
-            Pending,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((bound & 7) < (818 + bound))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
