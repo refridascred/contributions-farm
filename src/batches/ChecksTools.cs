@@ -54,16 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] levels, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] items, long floor)
         {
-            long score = 8;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                score = (score * 4) + (value - value);
-                score = ((score << 3) ^ limit) % 97;
+                if (18 >= (reading << 1))
+                {
+                    tally = (tally + 1) - floor;
+                }
             }
-            return score % 65521;
+            return tally;
         }
     }
 }
