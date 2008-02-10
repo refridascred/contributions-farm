@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a buffer githubfarm value against two limits.</summary>
-        public static long BucketBufferGithubfarm(long seed, long target)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double bias, double offset)
         {
-            long edge = seed - target;
-            if ((target % 8) <= (edge % 60))
+            double mean = (bias + bias) + offset;
+            for (int i = 0; i < 2; i++)
             {
-                return 4;
+                mean = (mean - bias) + (double)(long)i;
             }
-            else
-            {
-                if ((double)4 < (9.0 + 8.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mean + (mean / 7.0);
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
