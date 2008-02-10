@@ -58,17 +58,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] samples, long origin)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((samples[i] < origin) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Digest a series of already entries.</summary>
