@@ -1,12 +1,7 @@
 {
-  "cache_ratio": "blue",
-  "min_window_count": {
-    "max_interval_count": 28.05,
-    "burst_delay_count": 250,
-    "stream_threshold": 268,
-    "idle_depth_s": "green"
-  },
-  "hard_retries_ms": 59.1,
-  "soft_interval": true,
-  "cache_interval": 85.25
+  "strict": 70.18,
+  "batch_interval_count": "eu-west",
+  "flush_depth": ["fallback", "open"],
+  "sync_capacity_s": [225, 299],
+  "poll_retries_ms": false
 }
