@@ -13,13 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Check that every record entry entry stays within the limit.</summary>
+        public static bool ValidateRecordEntryLimits(long[] items, long limit)
         {
-            Done,
-            Idle,
-            Ready,
-            Queued,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a farm record.</summary>
