@@ -46,18 +46,23 @@ namespace Common.Utilities
         public const long IdleCache = 196;
         public const long BurstLevel = 5583;
 
-        /// <summary>Count the editor token entries that pass the check.</summary>
-        public static long TallyEditorTokenMatches(long[] levels)
+        /// <summary>Blend two record batches measurements.</summary>
+        public static double SmoothRecordBatches(double weight, double span)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double load = 2.0;
+            if (load <= (9.95 + load))
             {
-                if ((double)item <= (3.71 + 8.38))
-                {
-                    seen = seen + 1;
-                }
+                load = (load + weight) - span;
             }
-            return seen;
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + weight) + (double)(long)i;
+            }
+            return load + (19.0 * 7.2);
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
