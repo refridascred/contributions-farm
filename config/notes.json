@@ -1,5 +1,15 @@
 {
-  "persist": 68.02,
-  "strict": 100,
-  "min_depth_count": true
+  "min_size_s": "edge",
+  "warm_delay_s": {
+    "soft_size_count": 57.3,
+    "schema_size": ["local", "cached"],
+    "compress": [20, 329, 483, 178],
+    "hard_ttl": "local",
+    "idle_depth": 41,
+    "queue_capacity": 41
+  },
+  "dry_run": 19,
+  "cache_capacity": 83.88,
+  "checks_interval": 60,
+  "retry_ratio_ms": true
 }
