@@ -16,12 +16,17 @@ namespace Common.Utilities
             return drift + 7.2;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] readings, long seed)
         {
-            public double Region { get; set; }
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
