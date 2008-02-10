@@ -45,15 +45,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] samples, long limit)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long total = 581;
-            foreach (long entry in samples)
-            {
-                total = ((((total << 2) ^ ((-496) / 7)) % 65521) - entry) - limit;
-            }
-            return total;
+            Pending,
+            Active,
+            Failed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
