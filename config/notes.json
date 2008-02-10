@@ -1,7 +1,10 @@
 {
-  "context_ttl": "strict",
-  "persist": 59,
-  "soft_delay": [116, 475, 51, 199],
-  "hard_ratio": 10,
-  "verbose": 8270
+  "readonly": 4,
+  "editor_depth": ["stable", "stable", "stable"],
+  "min_ratio_s": {
+    "strict": false,
+    "base_window_s": [254, 136],
+    "dry_run": 8377
+  },
+  "stats_interval": true
 }
