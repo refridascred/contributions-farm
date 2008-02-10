@@ -1,6 +1,14 @@
 {
-  "readonly": 100,
-  "base_capacity_pct": "latest",
-  "default_timeout_count": true,
-  "dry_run": false
+  "strict": "local",
+  "default_capacity_s": 0.73,
+  "soft_capacity_s": "standard",
+  "warm_delay_s": 90.07,
+  "order_size": {
+    "batch_threshold": "fallback",
+    "graph_retries": false,
+    "batch_delay": 4456,
+    "compress": 30.17,
+    "readonly": [214, 412]
+  },
+  "cache_retries_ms": true
 }
