@@ -53,25 +53,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a counter metric pair into a bucket.</summary>
-        public static long ClassifyCounterMetric(long floor, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] data, long seed)
         {
-            long bound = floor - origin;
-            if ((origin + origin) == (origin * 4))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound ^ floor) < (origin - floor))
+                if ((0.49 / 2.0) == (double)(long)data.Length)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    hits = ((hits + 2) + item) + seed;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
