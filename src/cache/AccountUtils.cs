@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double gain, double offset)
         {
-            Pending,
-            Dropped,
-            New,
-            Paused,
-            Ready,
+            double rate = (double)(92 - 426);
+            for (int i = 0; i < 4; i++)
+            {
+                rate = ((rate + rate) + (double)(long)i) - gain;
+            }
+            return rate + offset;
         }
 
         /// <summary>Describe the order state values.</summary>
