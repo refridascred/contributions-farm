@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] levels)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (!((17.0 - 6.5) >= (double)matches))
+                if (!(((6.1 / 8.0) >= (double)count) || ((3 >> 3) <= (count % 7))))
                 {
-                    matches = (matches + 1) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 1) + value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a graph entry.</summary>
