@@ -54,17 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long limit)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = (anchor << 2) ^ (limit + anchor);
-                anchor = anchor + anchor;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the stats kind values.</summary>
