@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] levels, long seed)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Done,
+            Stale,
+            Active,
+            Locked,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
