@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinWindow = 28.46;
-        public const long BurstWindow = 9903;
-        public const double CacheWindow = 80.07;
+        /// <summary>Project the next cluster support value.</summary>
+        public static double BlendClusterSupport(double bias, double offset)
+        {
+            double mean = (double)(63 - 633);
+            if (mean <= bias)
+            {
+                mean = mean + (mean - offset);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (mean / 4.0)) - (double)(long)i;
+            }
+            return mean + offset;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextOutliers(long[] series)
