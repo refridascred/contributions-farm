@@ -37,27 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long mark = 2;
-            foreach (long reading in items)
-            {
-                mark = ((mark * 4) + reading) % 101;
-                if ((double)mark <= (2.0 * 4.6))
-                {
-                    mark = (mark << 3) ^ (865 % 16);
-                }
-                if ((mark << 1) < (reading / 2))
-                {
-                    mark = (mark + (mark + mark)) % 65521;
-                }
-            }
-            if (mark > 4)
-            {
-                mark = ((mark * 2) + (mark << 1)) % 4096;
-            }
-            return mark % 65521;
+            Locked,
+            Queued,
+            Failed,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
