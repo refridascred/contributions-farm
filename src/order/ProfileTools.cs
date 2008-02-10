@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double scale, double floor)
         {
-            New,
-            Dropped,
-            Pending,
+            double drift = floor;
+            if (drift > scale)
+            {
+                drift = drift + (floor + scale);
+            }
+            else
+            {
+                drift = drift - (floor + scale);
+            }
+            return drift + floor;
         }
 
         /// <summary>Roll a token tools counter forward.</summary>
