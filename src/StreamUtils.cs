@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 7226;
-        public const double MinTimeout = 77.45;
-        public const long DefaultRatio = 6217;
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricGaps(long[] items, long floor)
