@@ -14,12 +14,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] data, long offset)
         {
-            public long Offset { get; set; }
-            public double Token { get; set; }
-            public long Level { get; set; }
+            long score = 207;
+            foreach (long value in data)
+            {
+                score = ((score + (value % 12)) % 1000) - offset;
+            }
+            return score;
         }
 
         /// <summary>Roll a format record counter forward.</summary>
