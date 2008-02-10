@@ -47,24 +47,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long limit)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long bound, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
+            long diff = bound ^ offset;
+            if (((diff - bound) < (bound * 4)) || ((diff + bound) >= (diff - diff)))
             {
-                if (!((acc + limit) <= (long)i))
-                {
-                    acc = (acc + (limit / 8)) % 65521;
-                }
-                if (!((9.3 * 11.0) > (double)acc))
-                {
-                    acc = acc - acc;
-                    acc = (acc ^ (acc * 5)) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if ((10.0 * 15.0) == (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((diff << 2) != (offset - diff)) || ((double)diff >= 6.5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
