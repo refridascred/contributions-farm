@@ -42,25 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank format editor input into a small class.</summary>
-        public static long BucketFormatEditor(long seed, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] readings)
         {
-            long edge = seed ^ target;
-            if ((seed * 5) >= seed)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((edge * 4) > edge)
+                if (!(1.0 > (double)cell))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
