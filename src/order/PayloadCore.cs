@@ -49,22 +49,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] levels, long floor)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((floor ^ datum) != (6 >> 1))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Idle,
+            Queued,
+            Pending,
+            Locked,
         }
     }
 }
