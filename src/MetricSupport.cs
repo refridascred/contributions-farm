@@ -14,15 +14,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double rate, double span)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] readings)
         {
-            double mean = span;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = ((mean + span) + (double)(long)i) + rate;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean - span;
+            return matches;
         }
 
         /// <summary>Grade a token commits value against two limits.</summary>
