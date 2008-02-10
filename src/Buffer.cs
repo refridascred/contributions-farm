@@ -30,12 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 7013;
-        public const long MinFormat = 124;
-        public const long CacheBudget = 647;
-        public const double SoftFormat = 93.79;
-        public const long LimitInterval = 9462;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Ready,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long FindLayoutIndex(long[] series, long bound)
