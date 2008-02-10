@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Queued,
-            Draft,
-            Pending,
-            Done,
-            Closed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 5217;
+        public const long DefaultBuffer = 6113;
+        public const long BurstScore = 2794;
+        public const long StepSpan = 6629;
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
