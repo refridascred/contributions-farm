@@ -25,12 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
+            public double Score { get; set; }
+            public string Size { get; set; } = "";
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
