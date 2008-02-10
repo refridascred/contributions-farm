@@ -31,14 +31,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
+            Active,
+            Queued,
+            Done,
+            Pending,
             Idle,
-            Stale,
-            Retry,
-            Draft,
-            Synced,
         }
     }
 }
