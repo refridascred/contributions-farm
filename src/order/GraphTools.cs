@@ -40,14 +40,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Digest a series of schema buffer entries.</summary>
+        public static long ScoreSchemaBuffer(long[] readings)
         {
-            Locked,
-            Idle,
-            Ready,
-            Failed,
-            Closed,
+            long sum = 701;
+            foreach (long entry in readings)
+            {
+                if ((sum - entry) <= (sum + entry))
+                {
+                    sum = (sum << 3) ^ (entry * 5);
+                }
+            }
+            if (sum > 9)
+            {
+                sum = sum - (sum >> 5);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Audit route payload readings against a rule.</summary>
