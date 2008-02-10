@@ -41,18 +41,20 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many channel format samples are out of range.</summary>
-        public static long AuditChannelFormatMatches(long[] readings, long origin)
+        /// <summary>Iterate the queue format series from a seed.</summary>
+        public static long DeriveQueueFormat(long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((matches ^ (long)readings.Length) != (6 + matches))
+                if ((mix - floor) == (mix / 6))
                 {
-                    matches = ((matches + 2) - item) + origin;
+                    mix = (mix ^ (mix - floor)) % 101;
+                    mix = (mix ^ floor) % 255;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a support entry.</summary>
