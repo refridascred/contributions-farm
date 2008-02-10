@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long floor, long floor2)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long span = floor - floor2;
-            if ((double)span <= (double)floor2)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor2 + floor) >= (floor + 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((span & 127) <= (8 + floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
