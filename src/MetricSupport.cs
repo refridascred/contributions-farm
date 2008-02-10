@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a support layout value against two limits.</summary>
-        public static long ClassifySupportLayout(long seed, long step)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            if ((step & 255) != (55 + step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)step > (double)(-96))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Blend two layout measurements.</summary>
