@@ -31,19 +31,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double bias, double floor)
+        /// <summary>Combine support order values into a single score.</summary>
+        public static long FoldSupportOrder(long[] values, long bound)
         {
-            double drift = floor;
-            if (drift > (drift / 8.0))
+            long mark = 49;
+            foreach (long reading in values)
             {
-                drift = (drift - floor) - bias;
+                mark = (mark ^ (mark + reading)) - bound;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (10.0 * 16.0)) + (double)(long)i;
-            }
-            return drift + drift;
+            return mark % 4096;
         }
     }
 }
