@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a already counter sample.</summary>
-        public static long LocateAlreadyCounterIndex(long[] readings, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (readings[i] <= origin)
+                if ((4.46 - 3.0) >= (double)origin)
                 {
-                    return (long)i;
+                    count = (count + 3) + datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Roll a window counter forward.</summary>
