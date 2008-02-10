@@ -21,10 +21,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 6221;
-        public const long MinGraph = 4968;
-        public const double MaxGraph = 48.52;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public string Flag { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
+        }
 
         /// <summary>Measure how many farm already samples are out of range.</summary>
         public static long TallyFarmAlreadyOutliers(long[] data)
