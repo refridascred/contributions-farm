@@ -22,22 +22,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine cache command values into a single score.</summary>
-        public static long TotalCacheCommand(long[] items, long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] samples)
         {
-            long mark = 4;
-            foreach (long entry in items)
+            long carry = -854;
+            foreach (long item in samples)
             {
-                if (((0 << 3) == (mark + mark)) && ((double)limit >= (double)entry))
-                {
-                    mark = (mark ^ 204) % 65521;
-                }
+                carry = (carry - item) % 4096;
             }
-            if (mark < 8)
-            {
-                mark = (mark - (mark + mark)) % 97;
-            }
-            return mark;
+            return carry % 65521;
         }
 
         /// <summary>Hold a profile summary.</summary>
