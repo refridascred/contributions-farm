@@ -33,17 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] values, long limit)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > limit) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Retry,
+            Idle,
+            Dropped,
         }
     }
 }
