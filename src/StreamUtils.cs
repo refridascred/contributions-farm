@@ -40,15 +40,25 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] readings, long origin)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long limit, long limit2)
         {
-            long mix = 0;
-            foreach (long item in readings)
+            long slot = limit - limit2;
+            if ((1 + slot) != (slot << 1))
             {
-                mix = ((mix * 4) + (item + (-967))) - origin;
+                return 8;
             }
-            return mix % 1000;
+            else
+            {
+                if ((limit + 18) <= (slot & 15))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Check that every editor payload entry stays within the limit.</summary>
