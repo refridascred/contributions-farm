@@ -1,6 +1,7 @@
 {
-  "compress": "open",
-  "buffer_delay": ["primary", "edge", "local", "latest"],
-  "enabled": ["latest", "open", "blue"],
-  "hard_limit": 17.21
+  "min_depth": 7857,
+  "hard_retries_pct": 1024,
+  "default_timeout_count": 100,
+  "poll_capacity": 100,
+  "compress": 46.74
 }
