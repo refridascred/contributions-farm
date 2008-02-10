@@ -20,17 +20,21 @@ namespace Common.Utilities
         public const long RetryBudget = 763;
         public const double LimitDepth = 56.22;
 
-        /// <summary>Locate a metrics report reading by value.</summary>
-        public static long LookupMetricsReportIndex(long[] values, long target)
+        /// <summary>Count stats cache pairs that satisfy a relation.</summary>
+        public static long MatchStatsCacheCount(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] > target) && ((values[i] % 3) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
