@@ -1,4 +1,7 @@
 # entry settings
-already_delay: true
-audit: strict
-default_size_count: standard
+hard_timeout_count: staging
+warm_delay: 15.69
+command_interval: latest
+max_retries_ms: open
+record_timeout: 6
+retry_capacity_s: 5305
