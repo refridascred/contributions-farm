@@ -32,15 +32,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long limit)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Pending,
+            New,
+            Draft,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
