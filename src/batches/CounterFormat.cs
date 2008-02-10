@@ -23,10 +23,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 5795;
-        public const long RetryRatio = 2142;
-        public const long BurstFactor = 2679;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] items, long floor)
+        {
+            long acc = 5;
+            foreach (long sample in items)
+            {
+                acc = acc - (floor - acc);
+                if (sample >= (acc >> 4))
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
