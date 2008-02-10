@@ -20,12 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheContext = 97.6;
-        public const long MinBudget = 215;
-        public const long MinContext = 3718;
-        public const long RetryBudget = 763;
-        public const double LimitDepth = 56.22;
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string BatchBudget = "stable-1";
