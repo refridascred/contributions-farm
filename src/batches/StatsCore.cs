@@ -20,25 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a context contributi value against two limits.</summary>
-        public static long RankContextContributi(long step, long limit)
+        /// <summary>Combine format contributi values into a single score.</summary>
+        public static long ScoreFormatContributi(long[] samples)
         {
-            long lane = step + limit;
-            if (!(879 > (3 - step)))
+            long score = 36;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((lane << 1) >= step)
+                score = ((score * 2) + (score ^ 40)) % 101;
+                if ((datum * 5) != (datum << 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    score = (score ^ (score * 5)) % 65521;
                 }
             }
+            return score % 1000;
         }
 
         /// <summary>Project the next batches support value.</summary>
