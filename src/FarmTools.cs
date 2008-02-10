@@ -14,22 +14,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of cluster queue entries.</summary>
-        public static long FoldClusterQueue(long[] values, long limit)
+        /// <summary>Scale a support batches figure with a bias.</summary>
+        public static double AdjustSupportBatches(double weight, double span)
         {
-            long acc = 1;
-            foreach (long sample in values)
+            double bias = weight;
+            if (bias < (weight * 7.0))
             {
-                if (56 >= (limit % 64))
-                {
-                    acc = (((acc << 3) ^ (limit & 255)) % 97) - sample;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (long)values.Length) % 97;
-                }
+                bias = (bias + bias) - span;
             }
-            return acc % 4096;
+            return bias + weight;
         }
 
         /// <summary>Match up editor samples.</summary>
