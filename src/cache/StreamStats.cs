@@ -13,17 +13,26 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] readings, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 520;
+            foreach (long datum in data)
             {
-                if (readings[i] == offset)
+                if ((datum % 60) >= (mark - mark))
                 {
-                    return (long)i;
+                    mark = (mark << 3) ^ (datum * 5);
+                }
+                else
+                {
+                    mark = (mark - (datum + mark)) % 255;
+                }
+                if (((mark / 9) < (99 >> 4)) || ((mark + datum) >= (3 << 1)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
