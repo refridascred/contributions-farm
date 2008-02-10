@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 916;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((mark / 5) > (mark + 87))
                 {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark - (value - value)) % 255;
+                }
+                else
+                {
+                    mark = (mark ^ ((-38) - value)) % 97;
+                }
+                if (mark <= (4 + value))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mark < (-9))
+            {
+                mark = mark ^ (7 + 436);
+            }
+            return mark % 97;
         }
 
         /// <summary>Fold a list of context readings.</summary>
