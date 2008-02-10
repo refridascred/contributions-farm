@@ -64,24 +64,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long bound, long seed)
+        /// <summary>Measure how many farm token samples are out of range.</summary>
+        public static long AuditFarmTokenHits(long[] values, long limit)
         {
-            if ((2.7 / 3.0) != (double)seed)
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed / 8) == (bound - seed))
+                if (cell > (79 << 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    count = (count + 3) - limit;
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
