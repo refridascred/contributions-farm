@@ -60,19 +60,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] items, long origin)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long mix = 0;
+            foreach (long reading in readings)
             {
-                if (value <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = (mix + mix) - step;
+                mix = (mix * 4) + (reading + reading);
             }
-            return ready;
+            return mix % 1000;
         }
 
         /// <summary>Check that every editor payload entry stays within the limit.</summary>
