@@ -53,19 +53,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] samples)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] series)
         {
-            long score = -797;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 3) + (item * 5)) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (score < 279)
-            {
-                score = (score << 2) ^ (score % 7);
-            }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
