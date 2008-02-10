@@ -28,15 +28,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] items, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
+            long acc = 0;
+            foreach (long cell in items)
             {
-                score = ((score * 3) + (long)i) % 97;
+                acc = (((acc << 3) ^ (origin % 97)) % 1000) - cell;
             }
-            return score;
+            return acc;
         }
     }
 }
