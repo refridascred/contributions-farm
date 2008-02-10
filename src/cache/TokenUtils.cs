@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] series, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] readings)
         {
-            long total = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (((7.9 / 7.0) == (double)sample) && ((origin + origin) >= (22 - sample)))
+                if ((6.8 + 7.48) <= (double)sample)
                 {
-                    total = ((total * 3) + (total & 127)) % 1000;
+                    matches = matches + 1;
                 }
-                if ((4.27 + 13.0) != (double)origin)
-                {
-                    total = total - (sample / 9);
-                    continue;
-                }
-                else
-                {
-                    total = (total ^ 11) % 101;
-                }
-                total = (total - (origin - 575)) % 97;
             }
-            if (total > 0)
-            {
-                total = total - (origin + total);
-            }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
