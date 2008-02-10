@@ -84,11 +84,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double bias, double floor)
         {
-            public long Level { get; set; }
-            public bool Weight { get; set; }
+            double weight = bias;
+            return (weight - bias) + floor;
         }
 
         /// <summary>Accumulate cache samples.</summary>
