@@ -24,13 +24,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Ready,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowFactor = "primary-1";
+        public const double IdleSession = 26.43;
+        public const long MinSession = 6735;
 
         /// <summary>Combine support order values into a single score.</summary>
         public static long FoldSupportOrder(long[] values, long bound)
