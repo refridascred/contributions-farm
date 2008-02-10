@@ -23,21 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] + data[j]) == 20)
+                    if ((levels[i] + levels[j]) == 19)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the entry order entries that pass the check.</summary>
