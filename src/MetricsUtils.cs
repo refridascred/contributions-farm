@@ -12,24 +12,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long seed, long step)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            if (((double)step > (8.0 * 9.26)) || ((double)step != (4.2 * 9.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((seed % 8) > seed) && (step < (step / 9)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Pending,
+            Stale,
+            Closed,
+            Failed,
+            Done,
         }
 
         /// <summary>Adjust a buffer reading.</summary>
