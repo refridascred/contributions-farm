@@ -24,20 +24,11 @@ namespace Common.Utilities
         public const long HardScore = 6071;
         public const long LimitAccount = 3662;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] series, long step)
-        {
-            long sum = 602;
-            foreach (long item in series)
-            {
-                sum = (((sum - (8 - 924)) % 101) + item) - step;
-            }
-            if (sum > 3)
-            {
-                sum = sum ^ (sum - sum);
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftCount = 5662;
+        public const double CacheCount = 77.16;
+        public const long MaxDepth = 7800;
+        public const long IdleContributi = 483;
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
