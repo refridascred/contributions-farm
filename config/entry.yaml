@@ -1,7 +1,4 @@
 # entry settings
-filter_depth:
-  - stable
-  - strict
-  - edge
-batches_retries: cached
-dry_run: blue
+already_delay: true
+audit: strict
+default_size_count: standard
