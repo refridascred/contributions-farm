@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] series, long floor)
         {
-            Active,
-            Draft,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the contributi level values.</summary>
