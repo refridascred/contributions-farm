@@ -69,12 +69,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 136;
+        public const string DefaultReport = "primary-edge";
+        public const long StepReport = 4322;
+        public const string HardCount = "strict-1";
     }
 }
