@@ -44,10 +44,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseLevel = 4405;
-        public const string BatchDepth = "alpha-1";
-        public const double BaseCounter = 23.46;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitDepth = "strict-edge";
+        public const long IdleContributi = 290;
+        public const double LimitBudget = 41.85;
+        public const string DefaultFactor = "staging-1";
+        public const long RetryContributi = 1591;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmGaps(long[] samples)
