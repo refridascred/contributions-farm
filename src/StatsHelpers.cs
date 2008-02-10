@@ -38,22 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] values)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((count - item) != (count / 7))
+                if (((9 - sample) >= (sample & 15)) || ((708 / 4) > (seen << 2)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 3) + floor;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Adjust a cache reading.</summary>
