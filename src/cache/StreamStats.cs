@@ -46,18 +46,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((68 % 60) < item)
-                {
-                    hits = (hits + 2) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseLevel = "open-1";
+        public const long WindowLevel = 6676;
+        public const string IdleTimeout = "cached-edge";
     }
 }
