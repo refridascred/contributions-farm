@@ -61,18 +61,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] items, long origin)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long total = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (origin <= (entry % 2))
-                {
-                    seen = seen + 2;
-                }
+                total = (total ^ (total / 6)) % 255;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
     }
 }
