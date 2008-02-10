@@ -15,19 +15,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate cluster tools readings against a bound.</summary>
-        public static bool VerifyClusterToolsLimits(long[] samples, long limit)
+        /// <summary>Project the next graph support value.</summary>
+        public static double SmoothGraphSupport(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            double load = bias2 + (bias2 / 7.0);
+            for (int i = 0; i < 6; i++)
             {
-                if (reading != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                load = ((load - 1.07) - (double)(long)i) - bias;
             }
-            return flag;
+            return load + (0.01 * 6.5);
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
