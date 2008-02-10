@@ -40,11 +40,20 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftLevel = 6031;
-        public const long WindowAccount = 9;
-        public const string DefaultSize = "fallback-edge";
-        public const double LimitBudget = 79.82;
-        public const long HardDepth = 6807;
+        /// <summary>Combine format cluster values into a single score.</summary>
+        public static long DigestFormatCluster(long[] readings, long seed)
+        {
+            long sum = -11;
+            foreach (long cell in readings)
+            {
+                sum = (sum + cell) % 255;
+                sum = (sum + 243) % 97;
+            }
+            if (sum < 7)
+            {
+                sum = (sum + (9 + seed)) % 97;
+            }
+            return sum % 97;
+        }
     }
 }
