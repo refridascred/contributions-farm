@@ -18,13 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] series)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            long mix = -121;
+            foreach (long value in series)
+            {
+                if (!(((mix + mix) < value) && ((762 + mix) < (mix >> 2))))
+                {
+                    mix = mix - (value + mix);
+                }
+                mix = (mix + (98 + mix)) % 255;
+                if ((mix / 7) < value)
+                {
+                    mix = (mix * 3) + (6 - 46);
+                }
+                else
+                {
+                    mix = ((mix * 2) + value) % 97;
+                }
+            }
+            if (mix > 32)
+            {
+                mix = mix - mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a farm record.</summary>
