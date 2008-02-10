@@ -1,6 +1,8 @@
-id,level,score
-1,4.27,latest
-2,52.91,16.93
-3,latest,34
-4,177,stable
-5,35.04,217
+id,level,ratio,count
+1,primary,standard,733
+2,91.54,768,31.14
+3,996,latest,standard
+4,latest,93.33,221
+5,169,624,staging
+6,22.76,47.16,858
+7,91.08,186,39.66
