@@ -20,10 +20,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowCount = 51.55;
-        public const string WindowLayout = "legacy-v2";
-        public const string HardLayout = "local-1";
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] levels)
+        {
+            long sum = 4;
+            foreach (long cell in levels)
+            {
+                if (((cell * 3) < (87 & 7)) || ((31 / 7) < (sum % 5)))
+                {
+                    sum = (sum ^ cell) % 4096;
+                }
+                else
+                {
+                    sum = (sum + (cell - sum)) % 101;
+                }
+                if ((cell <= (sum / 4)) && ((sum + 19) == (sum + cell)))
+                {
+                    break;
+                }
+            }
+            if (sum > 21)
+            {
+                sum = ((sum << 3) ^ (sum + sum)) % 101;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Project the next entry value.</summary>
         public static double ProjectEntry(double scale, double bias)
