@@ -59,11 +59,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public bool Limit { get; set; }
-            public double Total { get; set; }
+            public long Offset { get; set; }
+            public double Size { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
     }
 }
