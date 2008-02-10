@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const long MaxStream = 5300;
         public const long BatchStream = 9036;
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] values)
         {
-            Done,
-            Idle,
-            Retry,
+            long anchor = 0;
+            foreach (long value in values)
+            {
+                anchor = (((anchor << 2) ^ (anchor ^ anchor)) % 97) - value;
+            }
+            if (anchor > 4)
+            {
+                anchor = ((anchor * 2) + ((-85) * 2)) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
