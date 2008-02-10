@@ -66,19 +66,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] levels, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (entry > seed)
+                if (((reading > tally) || ((double)reading <= (6.12 * 0.13))) || (2.87 >= (5.9 + 2.61)))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Rank window input into a small class.</summary>
