@@ -51,12 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxSpan = 35.28;
-        public const string StepAccount = "fallback";
-        public const long BurstAccount = 2321;
-        public const double SoftInterval = 27.62;
-        public const long IdleWidth = 9042;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)count == (5.86 * 2.1))
+                {
+                    count = (count + 3) ^ sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricGaps(long[] samples)
