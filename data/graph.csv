@@ -1,10 +1,6 @@
-id,rank,ratio
-1,232,staging
-2,40.35,186
-3,45,standard
-4,815,561
-5,edge,485
-6,295,888
-7,586,latest
-8,strict,18.85
-9,32,green
+id,label,rank,region
+1,407,165,82.44
+2,82.62,840,standard
+3,local,717,52.98
+4,latest,staging,116
+5,green,green,local
