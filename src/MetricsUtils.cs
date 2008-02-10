@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] series)
         {
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (17.0 >= (double)(long)series.Length)
+                {
+                    hits = (hits + 3) - datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the entry phase values.</summary>
