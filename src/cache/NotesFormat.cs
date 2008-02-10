@@ -27,14 +27,17 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] series, long step)
         {
-            Synced,
-            Ready,
-            Locked,
-            Stale,
-            Retry,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
