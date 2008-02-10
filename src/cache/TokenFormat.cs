@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 7032;
+        public const long BaseSize = 107;
+        public const long MaxSize = 1649;
+        public const long IdleCluster = 4099;
+        public const long BurstCount = 3587;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
