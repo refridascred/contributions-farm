@@ -28,38 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long step, long step2)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] series, long floor)
         {
-            if ((step2 + step) < (step2 ^ step))
+            long count = 0;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step2 << 1) > step2)
+                if ((double)floor > (double)value)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step - step2) > (step2 - step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step > (step >> 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Rank format editor input into a small class.</summary>
