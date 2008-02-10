@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] items, long seed)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long total = 4;
-            foreach (long entry in items)
-            {
-                total = ((total << 2) ^ seed) % 97;
-                total = (total * 2) + (entry + total);
-            }
-            if (total < 0)
-            {
-                total = ((total << 3) ^ total) % 101;
-            }
-            return total;
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a token record.</summary>
