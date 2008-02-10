@@ -13,15 +13,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double scale, double floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] readings, long floor)
         {
-            double load = (9.0 - scale) / 8.0;
-            if (load > (floor + scale))
+            bool found = true;
+            foreach (long value in readings)
             {
-                load = load - scale;
+                if (value > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return load - load;
+            return found;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
