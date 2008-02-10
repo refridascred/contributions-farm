@@ -8,10 +8,16 @@ log() {
 
 total=0
 for i in $(seq 1 9); do
-    total=$((total + i * 5))
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in eu-west primary; do
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in open eu-west latest; do
     log "checking ${item}"
 done
