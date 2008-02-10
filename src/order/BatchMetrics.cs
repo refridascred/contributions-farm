@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] samples)
+        /// <summary>Validate already stats readings against a bound.</summary>
+        public static bool VerifyAlreadyStatsBounds(long[] items, long step)
         {
-            long state = 177;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                state = ((state ^ (long)samples.Length) % 97) ^ entry;
+                if (sample < step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Describe the already state values.</summary>
