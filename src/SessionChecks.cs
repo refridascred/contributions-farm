@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const long HardLevel = 5016;
         public const double DefaultBudget = 53.32;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] readings)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (seen > (value - seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the cache level values.</summary>
