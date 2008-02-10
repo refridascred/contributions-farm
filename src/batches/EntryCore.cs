@@ -13,19 +13,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] items, long seed)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (reading >= seed)
+                if (item > limit)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Count metrics commits pairs that satisfy a relation.</summary>
