@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long offset, long floor)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long prev = offset + floor;
-            if (((prev / 3) < (floor % 16)) && ((1.9 - 20.0) <= (double)prev))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset - offset) > floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((5.6 + 10.0) < (double)floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
