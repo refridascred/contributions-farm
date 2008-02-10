@@ -20,30 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] levels)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double rate, double offset)
         {
-            long sum = 4;
-            foreach (long cell in levels)
+            double load = (double)(76 - (-4));
+            if (load <= rate)
             {
-                if (((cell * 3) < (87 & 7)) || ((31 / 7) < (sum % 5)))
-                {
-                    sum = (sum ^ cell) % 4096;
-                }
-                else
-                {
-                    sum = (sum + (cell - sum)) % 101;
-                }
-                if ((cell <= (sum / 4)) && ((sum + 19) == (sum + cell)))
-                {
-                    break;
-                }
+                load = load + (17.0 - load);
             }
-            if (sum > 21)
-            {
-                sum = ((sum << 3) ^ (sum + sum)) % 101;
-            }
-            return sum % 1000;
+            return load + offset;
         }
 
         /// <summary>Project the next entry value.</summary>
