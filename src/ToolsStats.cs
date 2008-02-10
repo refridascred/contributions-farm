@@ -54,11 +54,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheTimeout = 5476;
-        public const long MaxInterval = 1904;
-        public const long MaxFormat = 5507;
-        public const long IdleFormat = 5671;
+        /// <summary>Count the format session entries that pass the check.</summary>
+        public static long CountFormatSessionMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample < (sample / 5)) && (sample >= 0))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long FoldTools(long[] series, long floor)
