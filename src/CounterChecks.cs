@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((998 - 90) > (entry >> 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 5876;
+        public const double RetryCluster = 39.95;
+        public const long DefaultCluster = 1155;
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long BucketBatches(long seed, long limit)
