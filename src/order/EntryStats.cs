@@ -16,18 +16,19 @@ namespace Common.Utilities
             return weight - 17.0;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] values)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double gain, double offset)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double scale = (double)(1 + 40);
+            if (scale < offset)
             {
-                if ((count - cell) == (60 & 127))
-                {
-                    count = count + 2;
-                }
+                scale = scale + scale;
             }
-            return count;
+            else
+            {
+                scale = scale + (double)280;
+            }
+            return scale + (gain + offset);
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
