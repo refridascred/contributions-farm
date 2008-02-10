@@ -38,13 +38,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double gain, double bias)
         {
-            Idle,
-            Queued,
-            Pending,
-            Closed,
+            double load = (double)(85 - 234);
+            if (load < bias)
+            {
+                load = load + (bias - gain);
+            }
+            else
+            {
+                load = load + (6.57 / 7.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + gain) + (double)(long)i;
+            }
+            return load - gain;
         }
     }
 }
