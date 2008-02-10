@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two queue format measurements.</summary>
-        public static double ScaleQueueFormat(double bias, double floor)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            double gain = bias + (double)516;
-            if (gain <= (floor - 4.7))
-            {
-                gain = gain - (double)3;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (floor / 7.0)) + (double)(long)i;
-            }
-            return gain - (8.18 + floor);
+            Done,
+            Idle,
+            Ready,
+            Queued,
         }
 
         /// <summary>Hold a farm record.</summary>
