@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine already schema values into a single score.</summary>
-        public static long DigestAlreadySchema(long[] samples)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] samples)
         {
-            long acc = 19;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                acc = (acc ^ (acc >> 5)) + datum;
+                if (!((double)hits < 3.6) || ((cell << 1) < (cell % 12)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a checks record.</summary>
