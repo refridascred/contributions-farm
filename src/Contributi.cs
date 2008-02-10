@@ -19,32 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long bound, long floor)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long bound2 = bound - floor;
-            if ((bound2 / 2) >= bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.85 * 18.0) != (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor & 7) >= floor) && ((84 >> 5) == (floor + 51)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            New,
+            Retry,
+            Failed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
