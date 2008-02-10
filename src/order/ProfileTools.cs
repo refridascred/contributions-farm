@@ -20,14 +20,18 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] series, long step)
         {
-            Pending,
-            New,
-            Dropped,
-            Ready,
-            Paused,
+            long score = 389;
+            foreach (long sample in series)
+            {
+                if ((step + (long)series.Length) < sample)
+                {
+                    score = (score - (429 * 4)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Fold a list of support readings.</summary>
