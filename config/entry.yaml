@@ -1,5 +1,16 @@
 # entry settings
-batch_ttl_ms: 69.94
-idle_delay: legacy
-warm_limit: fallback
-poll_depth_ms: cached
+burst_depth_s: 3915
+audit:
+  - eu-west
+  - fallback
+  - strict
+session_ratio: latest
+farm_timeout:
+  - 195
+  - 472
+  - 332
+flush_ratio: false
+soft_retries_pct:
+  - 266
+  - 171
+  - 388
