@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Pending,
-            Idle,
-            Paused,
-            Done,
+            Closed,
+            Stale,
+            New,
         }
 
         /// <summary>Accumulate channel samples.</summary>
