@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] data)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (matches < (matches & 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] - data[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Iterate the profile graph series from a seed.</summary>
