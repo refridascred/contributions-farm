@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] data)
         {
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (!(sample <= (58 << 3)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
