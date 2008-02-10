@@ -21,17 +21,19 @@ namespace Common.Utilities
         public const string MinMetric = "legacy-edge";
         public const double LimitMetric = 32.61;
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] data, long bound)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (data[i] <= bound)
+                if (cell > limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
