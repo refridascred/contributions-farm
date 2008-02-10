@@ -50,11 +50,38 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long bound, long floor)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
+            if (((bound + floor) < (floor / 3)) || ((double)floor != (8.0 - 2.4)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)bound > (6.67 / 4.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + 62) >= (bound * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((bound - (-818)) > (bound * 2)) && (19.0 >= (double)bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
