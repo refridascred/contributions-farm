@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] values, long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((((sample + hits) == (origin - 5)) && (sample > (hits + sample))) || ((9 * 5) > (hits + origin)))
+                if (matches < (matches & 1))
                 {
-                    hits = hits + 3;
+                    matches = (matches + 3) + cell;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
