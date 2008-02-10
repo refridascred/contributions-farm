@@ -82,18 +82,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit entry window readings against a rule.</summary>
-        public static long TallyEntryWindowOutliers(long[] readings, long bound)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((item & 63) >= (hits & 7))
-                {
-                    hits = (hits + 2) + bound;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a batch stats.</summary>
