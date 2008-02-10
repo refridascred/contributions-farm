@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public long Rank { get; set; }
-            public double Level { get; set; }
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
+            Done,
+            Closed,
+            Queued,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the metric kind values.</summary>
