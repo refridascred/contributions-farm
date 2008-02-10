@@ -13,18 +13,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] series, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((seed % 2) < seed)
+                if ((7 + datum) < (4 - datum))
                 {
-                    matches = (matches + 1) + cell;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
