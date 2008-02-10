@@ -57,12 +57,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] samples, long limit)
         {
-            Active,
-            Ready,
-            Done,
+            long score = 11;
+            foreach (long value in samples)
+            {
+                score = (((score << 2) ^ 181) ^ value) + limit;
+                score = (score ^ (score + score)) % 255;
+            }
+            if (score > (-803))
+            {
+                score = (score ^ ((long)samples.Length * 2)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
