@@ -19,15 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a support batches figure with a bias.</summary>
-        public static double AdjustSupportBatches(double weight, double span)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] series)
         {
-            double bias = weight;
-            if (bias < (weight * 7.0))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = (bias + bias) - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias + weight;
+            return tally;
         }
 
         /// <summary>Describe the context state values.</summary>
