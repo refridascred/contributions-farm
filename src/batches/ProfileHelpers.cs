@@ -45,18 +45,18 @@ namespace Common.Utilities
             return (gain + (double)719) + bias;
         }
 
-        /// <summary>Measure how many batch payload samples are out of range.</summary>
-        public static long TallyBatchPayloadOutliers(long[] items)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long anchor = 1;
+            foreach (long entry in data)
             {
-                if ((123 >> 5) >= value)
+                if ((entry <= (61 & 63)) || ((anchor % 2) <= (36 >> 2)))
                 {
-                    matches = matches + 2;
+                    anchor = ((anchor ^ (anchor & 1)) % 97) - target;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
