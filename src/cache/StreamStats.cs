@@ -18,26 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] data)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long mark = 520;
-            foreach (long datum in data)
-            {
-                if ((datum % 60) >= (mark - mark))
-                {
-                    mark = (mark << 3) ^ (datum * 5);
-                }
-                else
-                {
-                    mark = (mark - (datum + mark)) % 255;
-                }
-                if (((mark / 9) < (99 >> 4)) || ((mark + datum) >= (3 << 1)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Idle,
+            Failed,
+            New,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
