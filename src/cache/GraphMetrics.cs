@@ -23,15 +23,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Blend two report schema measurements.</summary>
-        public static double SmoothReportSchema(double ratio, double bias)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            double bias2 = (double)(520 / 9);
-            if (bias2 > (double)3)
-            {
-                bias2 = (bias2 - bias) - ratio;
-            }
-            return bias2 - (bias2 - 9.51);
+            public double Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
