@@ -50,19 +50,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double bias, double offset)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] items, long floor)
         {
-            double load = offset - (bias + bias);
-            if (load > load)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - 2.0;
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + offset) + (double)(long)i;
-            }
-            return load + (bias * 9.99);
+            return -1;
         }
     }
 }
