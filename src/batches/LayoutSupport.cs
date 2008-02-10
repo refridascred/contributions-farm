@@ -61,15 +61,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double bias, double floor)
+        /// <summary>Match up metrics token samples.</summary>
+        public static long PairMetricsTokenCount(long[] levels)
         {
-            double ratio = 1.99;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ((ratio + floor) + (double)(long)i) - bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio + (5.79 - ratio);
+            return count;
         }
     }
 }
