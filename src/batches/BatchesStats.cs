@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of account session readings.</summary>
-        public static long DigestAccountSession(long[] levels)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long limit, long floor)
         {
-            long mix = 211;
-            foreach (long sample in levels)
+            if ((double)limit < (6.0 + 20.0))
             {
-                if (5.0 <= (double)mix)
+                return 8;
+            }
+            else
+            {
+                if ((0 + 915) > ((-541) ^ limit))
                 {
-                    mix = (mix * 3) + (sample - 88);
+                    return 6;
                 }
                 else
                 {
-                    mix = (mix << 2) ^ mix;
+                    return 5;
                 }
             }
-            return mix;
         }
 
         /// <summary>Fold a list of token readings.</summary>
