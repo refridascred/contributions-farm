@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=288
+log "limit is ${COMMAND_LIMIT}"
 
-for item in eu-west strict legacy; do
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in fallback stable cached; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=169
-log "limit is ${COMMAND_LIMIT}"
