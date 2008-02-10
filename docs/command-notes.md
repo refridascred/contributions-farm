@@ -1,11 +1,14 @@
 # Command notes
 
-The buffer module keeps layout values in sync with the account cache.
-Keep batch and githubfarm names short and lowercase.
+The stream report groups every session by buffer.
+Each report is validated before it reaches the contributi queue.
+
+A session that stays idle for too long is moved to the layout list.
+Run the layout check before changing any session limits.
 
 ## Guidelines
 
-- Validate entry input early
-- Keep route values small
-- Document new layout fields
-- Log every command change
+- Prefer order defaults
+- Keep already values small
+- Log every already change
+- Document new route fields
