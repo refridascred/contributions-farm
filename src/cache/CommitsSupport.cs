@@ -45,10 +45,14 @@ namespace Common.Utilities
         public const long MinCache = 6544;
         public const long StepBudget = 6988;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryChecks = 65.01;
-        public const double LimitChecks = 86.29;
-        public const long SoftRatio = 9839;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public bool Size { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Rank support input into a small class.</summary>
         public static long SortSupport(long step, long limit)
