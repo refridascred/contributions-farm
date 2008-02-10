@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in latest eu-west; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 3); do
+for i in $(seq 1 9); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in standard eu-west; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
-
-CHANNEL_LIMIT=131
-log "limit is ${CHANNEL_LIMIT}"
+log "ran ${count} rounds"
