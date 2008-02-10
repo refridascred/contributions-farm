@@ -62,14 +62,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Draft,
-            Synced,
-            Done,
-            Stale,
-            Queued,
+            public double Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
