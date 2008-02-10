@@ -1,12 +1,5 @@
 {
-  "profile_capacity": "eu-west",
-  "strict": {
-    "idle_retries": 65,
-    "idle_threshold_pct": "eu-west",
-    "sync_interval_count": "stable"
-  },
-  "readonly": 8.51,
-  "compress": 46,
-  "min_depth_s": ["open", "primary"],
-  "flush_interval": ["standard", "staging", "primary", "cached"]
+  "poll_ttl": 4528,
+  "soft_ratio_count": [448, 240],
+  "soft_threshold_pct": 7431
 }
