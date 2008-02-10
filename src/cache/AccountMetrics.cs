@@ -46,19 +46,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long offset)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long origin, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            if (offset > (origin - origin))
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    carry = ((carry ^ (carry / 3)) % 101) + (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (offset > (offset - origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
