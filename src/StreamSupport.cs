@@ -34,18 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm already samples are out of range.</summary>
-        public static long TallyFarmAlreadyOutliers(long[] data)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if ((double)datum <= (double)tally)
+                if (entry >= target)
                 {
-                    tally = tally + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
