@@ -18,21 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Derive the next report contributi value from a seed.</summary>
+        public static long IterateReportContributi(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((0.84 / 4.0) > (double)seed))
                 {
-                    if ((values[i] + values[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = score - (seed ^ seed);
+                    score = score - (21 & 63);
                 }
+                score = ((score * 3) + (score ^ (long)i)) % 65521;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
