@@ -27,23 +27,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double rate, double offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long target)
         {
-            double ratio = (offset * 10.0) * 3.4;
-            if (ratio > (0.2 - rate))
+            long result = target;
+            for (int i = 0; i < 11; i++)
             {
-                ratio = ratio + (double)68;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    result = ((result << 3) ^ result) ^ (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            else
-            {
-                ratio = ratio - (offset - ratio);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + 1.0) + (double)(long)i;
-            }
-            return ratio + (ratio + ratio);
+            return result;
         }
     }
 }
