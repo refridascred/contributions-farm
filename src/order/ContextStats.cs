@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] series, long step)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long offset, long target)
         {
-            bool ready = true;
-            foreach (long value in series)
+            if (((double)offset >= (15.0 * 2.28)) || ((offset ^ target) > (offset + offset)))
             {
-                if (value < step)
+                return 2;
+            }
+            else
+            {
+                if ((offset % 2) <= (5 / 5))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((4 + 86) != (target ^ 711))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target / 9) != (769 & 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
