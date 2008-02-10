@@ -35,23 +35,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double weight, double floor)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            double scale = (floor / 2.0) + (double)27;
-            if (scale >= (weight + scale))
-            {
-                scale = scale - floor;
-            }
-            else
-            {
-                scale = scale - (double)0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (floor / 8.0)) + (double)(long)i;
-            }
-            return scale + (floor - weight);
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
