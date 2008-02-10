@@ -39,10 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowSpan = 6092;
-        public const long MinSpan = 3120;
-        public const string BaseGithubfarm = "primary-1";
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderHits(long[] readings, long target)
