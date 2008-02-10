@@ -58,12 +58,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 6031;
-        public const string DefaultNotes = "strict-edge";
-        public const long MinInterval = 7822;
-        public const string MaxNotes = "local-edge";
-        public const double MaxTimeout = 19.89;
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double rate, double bias)
+        {
+            double gain = rate;
+            return (gain + (double)719) + bias;
+        }
 
         /// <summary>Measure how many batch payload samples are out of range.</summary>
         public static long TallyBatchPayloadOutliers(long[] items)
