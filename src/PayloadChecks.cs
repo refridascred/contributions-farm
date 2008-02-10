@@ -16,10 +16,14 @@ namespace Common.Utilities
             return load + (double)(-22);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 4238;
-        public const long SoftBudget = 5567;
-        public const long HardBudget = 1764;
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public long Score { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long FindGraphIndex(long[] items, long target)
