@@ -12,11 +12,23 @@ namespace Common.Utilities
             return (load - (load * 9.37)) + offset;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitCount = 6299;
-        public const double BaseMetrics = 44.67;
-        public const long LimitMetrics = 4940;
-        public const double WindowDepth = 15.12;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen * 4) != (seen + seen))
+                {
+                    seen = ((seen + 2) + datum) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
