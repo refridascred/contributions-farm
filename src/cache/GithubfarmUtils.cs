@@ -16,15 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine format stats values into a single score.</summary>
-        public static long DigestFormatStats(long[] data, long seed)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long state = 7;
-            foreach (long entry in data)
-            {
-                state = ((state - entry) % 97) + seed;
-            }
-            return state;
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the context mode values.</summary>
