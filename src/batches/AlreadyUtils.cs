@@ -57,38 +57,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long offset, long floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] samples, long origin)
         {
-            if (offset < (offset >> 2))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor - floor) < floor)
+                if ((samples[i] < origin) && ((samples[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset + (-68)) == (floor * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset + floor) <= floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of already entries.</summary>
