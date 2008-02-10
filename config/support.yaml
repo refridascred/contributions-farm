@@ -1,13 +1,16 @@
 # support settings
-default_size_pct: 43.15
-layout_threshold: 93
-max_limit_ms:
-  - legacy
+counter_interval: 18
+enabled:
   - strict
-idle_interval_pct: local
-notes_size: 50
-notes_ttl:
+  - open
   - stable
-  - latest
-  - edge
-  - latest
+  - eu-west
+burst_threshold_s:
+  hard_limit_s: 1
+  burst_delay_s: 38
+  route_timeout:
+    min_timeout_s: true
+    warm_window_s: 84.35
+    audit:
+      - green
+      - open
