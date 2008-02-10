@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const string WindowFilter = "legacy-1";
         public const long HardWidth = 3288;
 
-        /// <summary>Look up the position of a commits checks sample.</summary>
-        public static long LocateCommitsChecksIndex(long[] items, long limit)
+        /// <summary>Measure how many metrics session samples are out of range.</summary>
+        public static long TallyMetricsSessionMatches(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (items[i] == limit)
+                if (((long)items.Length ^ value) >= (hits - value))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
