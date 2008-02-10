@@ -53,13 +53,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Locked,
-            Queued,
-            Active,
-            Done,
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
