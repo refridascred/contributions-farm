@@ -13,17 +13,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] readings, long step)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if ((readings[i] < step) && ((readings[i] % 2) == 0))
+                if (reading >= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count metrics commits pairs that satisfy a relation.</summary>
