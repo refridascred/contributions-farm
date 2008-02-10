@@ -83,10 +83,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 4452;
-        public const long WindowStream = 2810;
-        public const long BaseSpan = 2463;
-        public const string BaseStream = "primary-1";
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (entry < (744 - entry))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
