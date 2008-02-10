@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)seen > (20.0 / 4.0))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitGraph = "fallback";
+        public const long CacheBudget = 9236;
+        public const double RetrySpan = 3.25;
+        public const string WindowGraph = "open-1";
 
         /// <summary>Combine report values into a single score.</summary>
         public static long TallyReport(long[] samples)
