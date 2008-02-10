@@ -77,26 +77,22 @@ namespace Common.Utilities
             return (weight - bias) + floor;
         }
 
-        /// <summary>Combine support commits values into a single score.</summary>
-        public static long TallySupportCommits(long[] values)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] samples)
         {
-            long mix = -6;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((double)mix >= (double)value)
+                if ((reading << 3) > (83 - reading))
                 {
-                    mix = ((mix << 3) ^ mix) % 4096;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    mix = mix ^ (mix / 4);
-                }
-                if ((mix + value) > (96 - mix))
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return mix;
+            return matches;
         }
     }
 }
