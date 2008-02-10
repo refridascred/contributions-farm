@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 8072;
-        public const long CacheTimeout = 5414;
-        public const long RetryStats = 47;
-        public const long BatchTimeout = 3482;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] series, long step)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long RankBatches(long origin, long offset)
