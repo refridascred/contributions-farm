@@ -20,11 +20,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            Active,
+            Done,
+            Synced,
+            Failed,
         }
     }
 }
