@@ -50,13 +50,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Flag { get; set; }
+            Ready,
+            Paused,
+            Pending,
+            Active,
+            Stale,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
