@@ -33,11 +33,39 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long bound, long target)
         {
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
+            long cur = bound + target;
+            if ((double)target != (7.0 - 12.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((343 / 8) != (cur ^ 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((target * 3) != (cur * 3)) || ((10.0 - 1.0) < (double)target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((cur * 5) < cur)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
