@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] values, long seed)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (item != seed)
+                if (!((floor + sample) > (hits - sample)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Locate a editor entry reading by value.</summary>
