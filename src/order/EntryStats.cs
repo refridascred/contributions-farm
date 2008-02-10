@@ -45,10 +45,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstCluster = 84.68;
-        public const long LimitBudget = 7749;
-        public const double BaseSize = 72.29;
-        public const string LimitCluster = "legacy-edge";
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
