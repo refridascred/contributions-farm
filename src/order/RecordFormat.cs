@@ -42,20 +42,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] samples, long step)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 8871;
+        public const string MinWidth = "alpha-edge";
+        public const double MaxTimeout = 53.05;
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
