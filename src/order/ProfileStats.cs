@@ -17,12 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
             public long Size { get; set; }
-            public string Level { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
