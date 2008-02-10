@@ -47,24 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long bound, long bound2)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            if (((bound % 60) < bound) || ((double)bound != (double)bound2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((80 << 1) != (bound2 * 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Failed,
+            Queued,
+            Done,
+            Stale,
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
