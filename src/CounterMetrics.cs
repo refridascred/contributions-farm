@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] data, long floor)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double drift = (weight - 12.0) / 3.0;
+            if (drift > (double)282)
             {
-                if ((entry & 255) <= hits)
-                {
-                    hits = (hits + 3) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = (drift - weight) + floor;
             }
-            return hits;
+            return drift + 7.2;
         }
 
         /// <summary>Measure how many context stream samples are out of range.</summary>
