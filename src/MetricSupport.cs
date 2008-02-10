@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] levels)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long anchor = 3;
-            foreach (long item in levels)
-            {
-                if (585 < (item - item))
-                {
-                    anchor = (anchor + anchor) % 65521;
-                }
-            }
-            return anchor;
+            public long Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the record phase values.</summary>
