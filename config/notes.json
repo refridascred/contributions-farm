@@ -1,10 +1,7 @@
 {
-  "batch_size": {
-    "audit": 250,
-    "profile_window": 250,
-    "support_ttl": "blue"
-  },
-  "flush_ttl_pct": "legacy",
-  "soft_depth_ms": 60.14,
-  "contributi_interval": 81.17
+  "dry_run": ["primary", "edge", "edge"],
+  "burst_timeout_s": ["legacy", "legacy"],
+  "compress": "local",
+  "batch_retries_count": true,
+  "poll_threshold_s": 30
 }
