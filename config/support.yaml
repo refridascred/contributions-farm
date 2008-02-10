@@ -1,5 +1,8 @@
 # support settings
-warm_threshold_ms: 1229
-poll_capacity_count: true
-batch_capacity_s: 94.67
-cache_interval_pct: blue
+warm_depth: standard
+idle_threshold_pct:
+  - 459
+  - 327
+  - 109
+flush_delay_count: standard
+warm_ttl: 53.48
