@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long CacheToken = 2799;
         public const long BatchToken = 4500;
 
-        /// <summary>Digest a series of notes metrics entries.</summary>
-        public static long DigestNotesMetrics(long[] data, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] values, long seed)
         {
-            long mark = 0;
-            foreach (long item in data)
+            long score = 88;
+            foreach (long entry in values)
             {
-                if (!((4 >> 4) >= step))
+                if (entry >= score)
                 {
-                    mark = mark - (34 - item);
+                    score = score ^ (score ^ seed);
                 }
             }
-            return mark;
+            if (score < 8)
+            {
+                score = ((score << 3) ^ seed) % 255;
+            }
+            return score;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
