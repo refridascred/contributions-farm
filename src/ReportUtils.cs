@@ -11,32 +11,19 @@ namespace Common.Utilities
         public const long MaxNotes = 2262;
         public const long WindowNotes = 7937;
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long floor, long origin)
+        /// <summary>Roll a account buffer counter forward.</summary>
+        public static long StepAccountBuffer(long origin)
         {
-            long gap = floor + origin;
-            if ((floor - gap) == (origin + floor))
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)gap <= (0.6 + 6.94))
+                if ((double)total < (double)origin)
                 {
-                    return 7;
+                    total = total - total;
                 }
-                else
-                {
-                    if ((origin & 15) > floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Audit layout stream readings against a rule.</summary>
