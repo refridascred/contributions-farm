@@ -70,12 +70,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepInterval = 27.84;
-        public const long BaseNotes = 7216;
-        public const string SoftTimeout = "standard-1";
-        public const string BurstDepth = "strict";
-        public const double RetrySpan = 6.49;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Closed,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
