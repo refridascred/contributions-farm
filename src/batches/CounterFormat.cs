@@ -24,17 +24,10 @@ namespace Common.Utilities
         public const string BatchFilter = "alpha-v2";
         public const double SoftSpan = 87.12;
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 2972;
+        public const string MinLayout = "strict-1";
+        public const long MinLevel = 5664;
+        public const double DefaultLayout = 48.05;
     }
 }
