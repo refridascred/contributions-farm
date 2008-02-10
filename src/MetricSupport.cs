@@ -20,21 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] readings)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = -7;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (0 > (8 - origin))
                 {
-                    if ((readings[i] + readings[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (((state * 4) + (origin % 16)) % 101) - entry;
                 }
             }
-            return matches;
+            if (state < 276)
+            {
+                state = (state + (state - state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of commits channel readings.</summary>
