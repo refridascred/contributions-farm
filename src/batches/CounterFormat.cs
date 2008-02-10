@@ -27,20 +27,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] series)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long floor)
         {
-            long state = 39;
-            foreach (long reading in series)
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
             {
-                state = ((state << 3) ^ (reading ^ reading)) % 1000;
-                state = (state + ((-94) % 24)) % 101;
-                if ((7.4 - 0.7) != (double)reading)
-                {
-                    state = (state - reading) % 1000;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return state;
+            return carry;
         }
     }
 }
