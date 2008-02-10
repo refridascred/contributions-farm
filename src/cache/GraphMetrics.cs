@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long floor, long floor2)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] readings, long limit)
         {
-            if ((double)floor >= 9.0)
+            long carry = 33;
+            foreach (long entry in readings)
             {
-                return 1;
+                carry = ((carry * 4) + entry) % 65521;
+                carry = carry - (entry << 3);
+                carry = (carry + (limit + entry)) % 1000;
             }
-            else
-            {
-                if ((floor2 & 127) > (2 >> 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor2 / 8) >= floor2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((60 / 3) < (floor2 - floor)) && ((floor2 ^ floor2) > (floor2 * 5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
