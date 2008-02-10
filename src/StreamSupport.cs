@@ -17,23 +17,15 @@ namespace Common.Utilities
         public const long MinGraph = 4968;
         public const double MaxGraph = 48.52;
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double weight, double offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] data, long step)
         {
-            double rate = weight;
-            if (rate > (rate + 0.96))
+            long mark = 33;
+            foreach (long sample in data)
             {
-                rate = (rate + 3.44) + offset;
+                mark = ((((mark * 2) + 217) % 97) + sample) + step;
             }
-            else
-            {
-                rate = rate - 0.69;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + weight;
+            return mark % 97;
         }
     }
 }
