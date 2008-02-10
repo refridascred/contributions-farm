@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((floor % 16) >= (floor + value))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxContributi = "legacy-edge";
+        public const string StepContributi = "open";
+        public const string RetryWidth = "cached-v2";
+        public const double DefaultRatio = 4.39;
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
