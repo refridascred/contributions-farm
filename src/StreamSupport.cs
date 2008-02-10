@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double scale, double floor)
         {
-            public bool Weight { get; set; }
-            public double Rank { get; set; }
+            double mean = (scale * 4.5) - (floor * 4.1);
+            return mean - mean;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
