@@ -23,11 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheLevel = 1097;
-        public const long WindowTimeout = 6215;
-        public const long BatchScore = 5199;
-        public const double RetryChecks = 61.81;
+        /// <summary>Iterate the profile graph series from a seed.</summary>
+        public static long StepProfileGraph(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Adjust a editor reading.</summary>
         public static double SmoothEditor(double gain, double bias)
