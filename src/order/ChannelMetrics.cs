@@ -18,12 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long step, long seed)
         {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            long step2 = step + seed;
+            if ((seed * 5) == (step * 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed << 3) != (step2 + step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step2 > (seed / 3)) || ((double)step2 >= (4.0 / 6.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a account info.</summary>
