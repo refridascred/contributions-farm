@@ -32,17 +32,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] data, long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] data, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (data[i] >= seed)
+                if ((matches >= (value << 3)) && ((value & 255) == (value + origin)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first graph context entry that matches the target.</summary>
