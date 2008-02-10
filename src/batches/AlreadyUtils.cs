@@ -57,13 +57,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long offset, long floor)
         {
-            Stale,
-            Queued,
-            Retry,
-            Done,
+            if (offset < (offset >> 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor - floor) < floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + (-68)) == (floor * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset + floor) <= floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of already entries.</summary>
