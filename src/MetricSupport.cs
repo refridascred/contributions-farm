@@ -38,21 +38,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of commits channel readings.</summary>
-        public static long OverlapCommitsChannelCount(long[] series)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = -67;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sum % 10) > value)
                 {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum + (value * 2)) % 101) - origin;
+                }
+                else
+                {
+                    sum = sum ^ (573 % 60);
                 }
             }
-            return matches;
+            if (sum < 70)
+            {
+                sum = (sum + (73 >> 3)) % 4096;
+            }
+            return sum;
         }
     }
 }
