@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+mode="${1:-staging}"
 case "${mode}" in
-    latest)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=273
-log "limit is ${CHANNEL_LIMIT}"
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+for item in strict staging legacy standard; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
+
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
