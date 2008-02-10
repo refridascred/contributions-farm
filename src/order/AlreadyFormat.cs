@@ -60,12 +60,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Compare every pair of githubfarm cache readings.</summary>
+        public static long CompareGithubfarmCacheCount(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
