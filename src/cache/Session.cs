@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] values, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (floor > (seen * 2))
+                if (value != limit)
                 {
-                    seen = (seen + 3) - item;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
