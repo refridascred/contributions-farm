@@ -24,13 +24,21 @@ namespace Common.Utilities
         public const long BaseCache = 4321;
         public const string CacheCount = "fallback-edge";
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Count githubfarm token pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmTokenCount(long[] items)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
