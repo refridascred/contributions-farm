@@ -16,22 +16,14 @@ namespace Common.Utilities
             return mean - (scale + scale);
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] items)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long result = 328;
-            foreach (long cell in items)
-            {
-                if (cell <= (cell & 15))
-                {
-                    result = (result - (result << 1)) % 65521;
-                }
-                else
-                {
-                    result = result + (result + result);
-                }
-            }
-            return result % 97;
+            Stale,
+            Draft,
+            Failed,
+            Pending,
+            Active,
         }
 
         /// <summary>Hold a support summary.</summary>
