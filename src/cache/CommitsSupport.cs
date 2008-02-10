@@ -51,13 +51,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] data)
         {
-            public bool Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((double)count > (double)entry)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank support input into a small class.</summary>
