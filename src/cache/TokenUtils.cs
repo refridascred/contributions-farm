@@ -48,15 +48,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the farm window series from a seed.</summary>
-        public static long RollFarmWindow(long step)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] data, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                if (sample > bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
     }
 }
