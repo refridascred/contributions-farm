@@ -1,13 +1,8 @@
 {
-  "batch_depth_count": true,
-  "base_interval": [45, 461, 471],
-  "sync_interval_pct": 14,
-  "window_ratio": 6226,
-  "cache_retries": {
-    "compress": 6647,
-    "min_limit_ms": 1024,
-    "burst_retries_pct": 100,
-    "default_size_s": 68.38,
-    "already_timeout": ["standard", "local", "cached", "local"]
-  }
+  "cache_timeout": 60,
+  "min_timeout_s": [306, 69, 60],
+  "contributi_timeout": ["primary", "open", "standard"],
+  "warm_size_s": [227, 92],
+  "sync_ratio_s": 31.19,
+  "compress": 15.79
 }
