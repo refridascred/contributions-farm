@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] data, long offset)
+        /// <summary>Fold a list of stream buffer readings.</summary>
+        public static long TotalStreamBuffer(long[] values)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long acc = -17;
+            foreach (long value in values)
             {
-                if ((count + 0) >= 106)
-                {
-                    count = ((count + 2) ^ sample) + offset;
-                }
+                acc = ((acc * 4) + (acc + value)) % 101;
+                acc = ((acc << 3) ^ (value + acc)) % 4096;
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Combine format values into a single score.</summary>
