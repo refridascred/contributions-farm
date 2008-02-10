@@ -12,15 +12,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] data)
+        /// <summary>Count the record notes entries that pass the check.</summary>
+        public static long MeasureRecordNotesGaps(long[] data)
         {
             long seen = 0;
-            foreach (long cell in data)
+            foreach (long reading in data)
             {
-                if (cell >= (cell << 3))
+                if ((reading >> 5) < (seen >> 3))
                 {
-                    seen = seen + 3;
+                    seen = seen + 1;
                 }
             }
             return seen;
