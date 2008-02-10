@@ -49,18 +49,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter already entries that pass the check.</summary>
-        public static long MeasureFilterAlreadyGaps(long[] series)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long seed, long target)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            if (target > (target & 127))
             {
-                if ((hits ^ hits) > cell)
+                return 3;
+            }
+            else
+            {
+                if (target > (seed / 7))
                 {
-                    hits = hits + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed == (3.2 + 3.4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
