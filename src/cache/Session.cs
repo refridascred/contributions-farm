@@ -44,12 +44,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] values, long offset)
         {
-            public double Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (!(6 <= datum))
+                {
+                    hits = (hits + 3) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
