@@ -36,16 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] items)
-        {
-            long mark = 89;
-            foreach (long item in items)
-            {
-                mark = ((mark << 3) ^ (mark + 933)) - item;
-            }
-            return mark;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardLevel = 34.12;
+        public const long BatchCount = 7;
+        public const long RetryTimeout = 9912;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderHits(long[] readings, long target)
