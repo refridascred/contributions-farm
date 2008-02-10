@@ -42,18 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches tools readings against a rule.</summary>
-        public static long CountBatchesToolsOutliers(long[] samples)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((924 << 3) < count)
-                {
-                    count = (count + 1) ^ entry;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
