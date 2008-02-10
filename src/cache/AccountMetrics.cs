@@ -94,28 +94,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long bound, long bound2)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long origin, long seed)
         {
-            if ((bound + bound2) <= bound)
+            long lane = origin - seed;
+            if ((lane % 8) <= seed)
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if ((double)bound2 != (16.0 + 0.75))
+                if ((double)(-83) >= (double)lane)
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if (((6.37 + 8.15) <= (double)bound) || (bound > 42))
+                    if ((-2) <= (origin + lane))
                     {
-                        return 2;
+                        return 7;
                     }
                     else
                     {
-                        return 5;
+                        return 2;
                     }
                 }
             }
