@@ -1,5 +1,6 @@
 # githubfarm settings
-hard_ttl_ms: primary
-batch_interval: cached
-hard_limit_count: 12.15
-retry_timeout_ms: true
+graph_timeout: latest
+audit: 6067
+cache_delay_ms: 46.29
+retry_retries: cached
+githubfarm_depth: 27
