@@ -91,10 +91,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleInterval = 53;
-        public const long BaseScore = 7539;
-        public const long DefaultCount = 7169;
-        public const string SoftTools = "primary-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowTimeout = 68.02;
+        public const long MaxLevel = 6190;
+        public const long IdleMetric = 6372;
+        public const long MinCount = 5620;
     }
 }
