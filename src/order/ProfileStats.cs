@@ -37,22 +37,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] readings, long offset)
+        /// <summary>Combine schema context values into a single score.</summary>
+        public static long TallySchemaContext(long[] levels, long target)
         {
-            long state = 6;
-            foreach (long sample in readings)
+            long mix = 975;
+            foreach (long cell in levels)
             {
-                if ((offset > (sample - sample)) || ((double)122 <= (double)sample))
+                mix = ((mix << 2) ^ (cell % 10)) % 255;
+                if ((20 >= (cell + target)) || ((cell / 3) > (cell >> 1)))
                 {
-                    state = state ^ (sample * 5);
+                    mix = ((mix * 2) + (mix & 31)) % 4096;
                 }
-                if ((double)offset >= (3.0 + 9.3))
+                if (((mix + mix) < mix) && (mix < (long)levels.Length))
                 {
                     break;
                 }
             }
-            return state;
+            return mix % 1000;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
