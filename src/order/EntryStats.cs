@@ -55,21 +55,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long step)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long floor, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
+            long diff = floor + limit;
+            if ((2.75 + 9.13) <= (double)limit)
             {
-                if ((step - sum) != ((long)i + sum))
-                {
-                    sum = sum ^ (88 & 7);
-                    sum = sum + step;
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((diff <= floor) || ((1 - limit) < (diff % 97)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
