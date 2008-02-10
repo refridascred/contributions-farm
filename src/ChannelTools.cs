@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] items, long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long sum = 3;
+            foreach (long item in readings)
             {
-                if (sample >= bound)
+                if (!(sum <= 6))
                 {
-                    ok = false;
-                    break;
+                    sum = sum + (item - 1);
+                    sum = sum - (4 - 183);
+                }
+                if (((item + offset) < (offset << 1)) || ((sum + 55) <= (offset + item)))
+                {
+                    sum = sum ^ 85;
+                }
+                else
+                {
+                    sum = sum - (item % 12);
                 }
             }
-            return ok;
+            if (sum < 3)
+            {
+                sum = (sum ^ offset) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Combine schema already values into a single score.</summary>
