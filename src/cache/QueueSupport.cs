@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double scale, double bias)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] values, long seed)
         {
-            double bias2 = bias;
-            if (bias2 > (6.61 - bias))
+            bool ready = true;
+            foreach (long item in values)
             {
-                bias2 = (bias2 - bias2) + scale;
+                if (item != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias2 + (double)9;
+            return ready;
         }
 
         /// <summary>Hold a buffer info.</summary>
