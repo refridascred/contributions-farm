@@ -11,14 +11,15 @@ namespace Common.Utilities
         public const long BaseCounter = 5372;
         public const double StepSize = 83.43;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long bound)
         {
-            Queued,
-            Done,
-            Draft,
-            Synced,
-            Stale,
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
