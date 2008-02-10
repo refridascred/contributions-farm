@@ -1,15 +1,13 @@
 {
-  "default_retries_s": 61.14,
-  "warm_ttl_ms": 1024,
-  "default_threshold_count": "cached",
-  "cache_window_count": 100,
-  "profile_interval": false,
+  "session_limit": 60.73,
+  "sync_depth": 62.98,
+  "batch_ttl": 31,
+  "min_ttl_ms": 1163,
+  "strict": "legacy",
   "enabled": {
-    "verbose": 75.92,
-    "soft_timeout_count": "strict",
-    "enabled": "open",
-    "batches_interval": "cached",
-    "warm_ratio_count": ["fallback", "legacy", "local"],
-    "stream_retries": false
+    "strict": ["fallback", "open", "legacy"],
+    "base_retries_ms": 8929,
+    "retry_capacity": "stable",
+    "hard_capacity_pct": 500
   }
 }
