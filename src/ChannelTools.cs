@@ -39,21 +39,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] data)
+        /// <summary>Scale a cluster payload figure with a bias.</summary>
+        public static double ProjectClusterPayload(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = bias;
+            if (load <= (load - ratio))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load - (ratio + ratio);
             }
-            return tally;
+            return load - (bias + ratio);
         }
     }
 }
