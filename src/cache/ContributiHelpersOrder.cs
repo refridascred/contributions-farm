@@ -23,10 +23,20 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstDepth = "staging-v2";
-        public const long MaxProfile = 8342;
-        public const long IdleProfile = 5702;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] values, long step)
+        {
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string IdleFormat = "staging-v2";
