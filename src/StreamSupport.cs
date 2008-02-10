@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] samples, long offset)
         {
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((offset >> 5) >= (27 + cell))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
