@@ -32,21 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up session githubfarm samples.</summary>
-        public static long PairSessionGithubfarmCount(long[] values)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] series, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 2;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((sum >> 3) > (sum & 7)) || (sum >= origin))
                 {
-                    if ((values[i] + values[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum * 5) + value) % 4096;
                 }
             }
-            return seen;
+            if (sum > 394)
+            {
+                sum = ((sum * 2) + (1 + sum)) % 65521;
+            }
+            return sum % 4096;
         }
     }
 }
