@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double gain, double offset)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            double scale = gain;
-            return (scale - gain) + offset;
+            Idle,
+            Closed,
+            Ready,
+            Done,
         }
 
         /// <summary>Accumulate context samples.</summary>
