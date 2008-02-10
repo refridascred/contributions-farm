@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] data, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (!((floor + sample) > (hits - sample)))
+                if ((count % 5) >= (0 - count))
                 {
-                    hits = hits + 1;
+                    count = (count + 1) + datum;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Locate a editor entry reading by value.</summary>
