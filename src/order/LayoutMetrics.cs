@@ -34,10 +34,11 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitScore = "primary-edge";
-        public const string HardContext = "primary";
-        public const long RetryContext = 1122;
-        public const string SoftContext = "legacy";
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
+        }
     }
 }
