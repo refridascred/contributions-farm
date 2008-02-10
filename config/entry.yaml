@@ -1,4 +1,10 @@
 # entry settings
-metrics_retries: 500
-metric_capacity: 7243
-stream_retries: 30
+compress: false
+retry_limit_ms: true
+burst_timeout_s:
+  burst_window_pct: eu-west
+  poll_threshold: 1514
+  cache_interval: 29.35
+  cache_threshold_s: true
+persist: 5232
+base_size_s: edge
