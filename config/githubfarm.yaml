@@ -1,8 +1,7 @@
 # githubfarm settings
-compress: local
-min_capacity: stable
-order_interval:
-  - eu-west
-  - cached
-githubfarm_retries: true
-cache_capacity_s: eu-west
+stream_timeout: false
+compress: false
+idle_limit_count: green
+already_delay:
+  - green
+  - open
