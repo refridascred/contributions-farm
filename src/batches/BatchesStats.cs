@@ -29,18 +29,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] items, long target)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long floor, long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            if ((step % 12) > (94 - floor))
             {
-                if ((matches >> 2) <= (matches << 1))
+                return 5;
+            }
+            else
+            {
+                if ((2.3 + 4.1) != (double)floor)
                 {
-                    matches = ((matches + 1) ^ reading) + target;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
