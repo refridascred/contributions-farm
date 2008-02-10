@@ -22,15 +22,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double weight, double bias)
+        /// <summary>Match up route payload samples.</summary>
+        public static long MatchRoutePayloadCount(long[] items)
         {
-            double bias2 = weight;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = (bias2 + bias) + (double)(long)i;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias2 - (bias - 1.9);
+            return tally;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
