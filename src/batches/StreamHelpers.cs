@@ -51,20 +51,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every contributi tools entry stays within the limit.</summary>
-        public static bool GuardContributiToolsLimits(long[] samples, long target)
-        {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseLevel = 4405;
+        public const string BatchDepth = "alpha-1";
+        public const double BaseCounter = 23.46;
 
         /// <summary>Blend two layout format measurements.</summary>
         public static double BlendLayoutFormat(double gain, double floor)
