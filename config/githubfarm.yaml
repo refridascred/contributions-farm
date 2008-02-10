@@ -1,15 +1,13 @@
 # githubfarm settings
-hard_depth_ms:
-  - 285
-  - 288
-  - 330
-  - 338
-verbose:
-  persist: 4859
-  schema_ratio: 27
-  poll_size: true
-  sync_ratio_s: 46.06
-  max_limit: stable
-  strict: true
-batch_delay: true
-layout_limit: true
+hard_ttl_count:
+  min_ratio: 3728
+  counter_limit: false
+  stats_timeout:
+    - blue
+    - cached
+    - open
+    - standard
+graph_retries: 8.57
+poll_interval: 1024
+editor_delay: edge
+min_capacity: cached
