@@ -18,16 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream buffer readings.</summary>
-        public static long TotalStreamBuffer(long[] values)
+        /// <summary>Look up the position of a order route sample.</summary>
+        public static long FindOrderRouteIndex(long[] items, long bound)
         {
-            long acc = -17;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 4) + (acc + value)) % 101;
-                acc = ((acc << 3) ^ (value + acc)) % 4096;
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Rank batches buffer input into a small class.</summary>
