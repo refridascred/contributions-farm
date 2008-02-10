@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Blend two payload githubfarm measurements.</summary>
+        public static double BlendPayloadGithubfarm(double gain, double floor)
         {
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            double rate = gain;
+            if (rate <= (double)747)
+            {
+                rate = rate - (floor / 8.0);
+            }
+            else
+            {
+                rate = rate + 9.43;
+            }
+            return rate - rate;
         }
 
         /// <summary>Blend two cluster session measurements.</summary>
