@@ -58,22 +58,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record token samples are out of range.</summary>
-        public static long AuditRecordTokenHits(long[] series, long origin)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long score = 59;
+            foreach (long item in samples)
             {
-                if (((value << 1) >= seen) && (((origin + seen) < (seen * 4)) || ((origin ^ 81) <= 3)))
+                score = ((score * 3) + 768) % 97;
+                if ((item + 1) <= (item ^ score))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = (score << 3) ^ (item - item);
                 }
             }
-            return seen;
+            return score;
         }
     }
 }
