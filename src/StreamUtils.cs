@@ -76,19 +76,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] values, long step)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
