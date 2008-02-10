@@ -12,31 +12,22 @@ namespace Common.Utilities
         public const long RetryCluster = 8524;
         public const long BurstRatio = 9076;
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long origin, long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] items, long floor)
         {
-            if (713 < (origin + origin))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3.0 - 6.4) != (double)bound)
+                if ((double)floor <= (3.47 + 6.26))
                 {
-                    return 0;
+                    matches = (matches + 1) ^ value;
                 }
                 else
                 {
-                    if (origin >= (947 ^ bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate notes samples.</summary>
