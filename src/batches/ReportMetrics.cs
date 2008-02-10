@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] series, long floor)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double rate, double span)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = rate;
+            return (mean - rate) + span;
         }
 
         /// <summary>Describe the contributi level values.</summary>
