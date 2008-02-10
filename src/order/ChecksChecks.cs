@@ -16,17 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a context layout reading by value.</summary>
-        public static long FindContextLayoutIndex(long[] items, long origin)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (items[i] >= origin)
+                if (reading != bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
