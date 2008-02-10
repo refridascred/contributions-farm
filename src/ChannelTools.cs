@@ -59,19 +59,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long mark = 341;
-            foreach (long cell in items)
-            {
-                mark = (((mark * 5) + mark) % 101) ^ cell;
-            }
-            if (mark > 65)
-            {
-                mark = (mark * 2) + (mark + mark);
-            }
-            return mark % 1000;
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
