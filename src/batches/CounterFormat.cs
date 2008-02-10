@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] values)
+        /// <summary>Compare every pair of batch batches readings.</summary>
+        public static long OverlapBatchBatchesCount(long[] readings)
         {
-            long acc = 71;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)acc > (7.4 + 0.1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc - (acc - acc)) % 101;
-                }
-                if ((sample << 3) != (long)values.Length)
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc > 27)
-            {
-                acc = (acc << 3) ^ (acc ^ acc);
-            }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
