@@ -43,11 +43,12 @@ namespace Common.Utilities
         public const long BurstContext = 3010;
         public const string CacheScore = "alpha";
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double bias, double floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            double weight = bias;
-            return (weight - bias) + floor;
+            Active,
+            Synced,
+            Closed,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
