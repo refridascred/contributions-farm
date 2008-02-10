@@ -33,12 +33,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheLevel = 75.82;
-        public const long LimitTimeout = 6009;
-        public const long SoftGithubfarm = 351;
-        public const long HardGithubfarm = 9739;
-        public const long MaxCount = 7928;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public bool Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long RollStream(long bound)
