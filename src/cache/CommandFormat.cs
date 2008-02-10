@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxRatio = 9213;
-        public const long WindowDepth = 4675;
-        public const string MinSpan = "fallback-edge";
-        public const double BurstFactor = 85.66;
-        public const long SoftDepth = 8236;
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Synced,
+            Paused,
+            Idle,
+            Done,
+            Queued,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long IdleBudget = 708;
