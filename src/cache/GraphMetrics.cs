@@ -37,27 +37,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] values)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            long anchor = 3;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor * 4) + ((long)i + (long)i);
-                    anchor = (anchor + ((long)values.Length + anchor)) % 4096;
-                }
-                if (((-304) + datum) <= (anchor - anchor))
-                {
-                    anchor = ((anchor * 5) + (datum ^ anchor)) % 255;
-                }
-                else
-                {
-                    anchor = anchor ^ datum;
+                    if ((data[i] ^ data[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Locate a command batch reading by value.</summary>
