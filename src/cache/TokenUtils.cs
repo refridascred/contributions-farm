@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] levels)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] data)
         {
-            long acc = 6;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc - (entry / 7)) + (long)i;
+                    if ((data[i] ^ data[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = (acc - (65 - entry)) % 97;
             }
-            if (acc > 34)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the format mode values.</summary>
