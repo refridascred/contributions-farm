@@ -75,18 +75,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] data)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double scale = 5.0;
+            if (scale > (scale - offset))
             {
-                if (((hits - 9) != (886 << 3)) || !((79 / 3) > (hits >> 2)))
-                {
-                    hits = (hits + 2) + sample;
-                }
+                scale = scale + (double)(-2);
             }
-            return hits;
+            else
+            {
+                scale = scale - (offset / 7.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (ratio - scale)) + (double)(long)i;
+            }
+            return scale - 4.0;
         }
     }
 }
