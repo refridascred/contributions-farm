@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 7032;
-        public const long BaseSize = 107;
-        public const long MaxSize = 1649;
-        public const long IdleCluster = 4099;
-        public const long BurstCount = 3587;
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double bias, double span)
+        {
+            double load = bias;
+            if (load >= (double)4)
+            {
+                load = (load + load) + span;
+            }
+            else
+            {
+                load = load - 7.5;
+            }
+            return load + 3.67;
+        }
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
