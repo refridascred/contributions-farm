@@ -26,21 +26,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a tools filter counter forward.</summary>
-        public static long SeriesToolsFilter(long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long origin, long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            if ((91 >> 3) <= (origin & 7))
             {
-                anchor = ((anchor << 3) ^ (anchor % 16)) % 255;
-                if (!((8.8 <= (double)(long)i) && ((20.0 + 9.0) > (5.1 - 0.9))))
-                {
-                    anchor = anchor - (anchor - anchor);
-                }
-                anchor = (anchor ^ offset) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((origin ^ 81) == (offset * 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the token class values.</summary>
