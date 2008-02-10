@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepRatio = 2544;
+        public const long IdleFactor = 6594;
+        public const long DefaultBatches = 4127;
+        public const double BatchBudget = 3.82;
 
         /// <summary>Adjust a channel reading.</summary>
         public static double BlendChannel(double ratio, double bias)
