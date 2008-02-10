@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BurstLayout = "staging-v2";
-        public const string HardLevel = "stable-v2";
-        public const long DefaultLayout = 500;
-        public const long MaxSpan = 5883;
-        public const double CacheLayout = 36.24;
+        /// <summary>Accumulate order record samples.</summary>
+        public static long ScoreOrderRecord(long[] levels)
+        {
+            long mix = 2;
+            foreach (long sample in levels)
+            {
+                mix = (mix + (mix + mix)) % 101;
+                if (((13.0 * 5.4) < (double)sample) && ((mix ^ sample) < sample))
+                {
+                    mix = (mix + (sample & 31)) % 101;
+                }
+                else
+                {
+                    mix = mix ^ mix;
+                }
+                if ((mix + mix) == (5 >> 4))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long FindOrderIndex(long[] readings, long origin)
