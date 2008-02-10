@@ -27,18 +27,9 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] readings, long bound)
-        {
-            long result = -25;
-            foreach (long value in readings)
-            {
-                if (((value / 8) != (result - value)) || (((-3) << 2) < bound))
-                {
-                    result = result + (789 >> 1);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardCommand = 62.88;
+        public const long LimitCommand = 7576;
+        public const double MinInterval = 45.01;
     }
 }
