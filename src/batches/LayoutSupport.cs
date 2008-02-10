@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long floor, long floor2)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long edge = floor - floor2;
-            if ((3.2 * 5.9) > (double)floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((edge - floor2) > (296 ^ floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor + 3) == (floor + floor2)) || ((floor2 - floor) > (floor + edge)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor % 100) < (edge + floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Paused,
+            Draft,
+            New,
         }
 
         /// <summary>Describe the command level values.</summary>
