@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] values)
         {
-            Active,
-            Dropped,
-            Draft,
-            Failed,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (!(((entry + entry) <= (8 % 60)) || (((-328) & 31) != (entry + matches))))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
