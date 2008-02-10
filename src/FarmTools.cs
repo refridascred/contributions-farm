@@ -36,12 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double ratio, double offset)
         {
-            Idle,
-            Paused,
-            New,
+            double mean = (double)(18 + 77);
+            if (mean <= mean)
+            {
+                mean = mean + (offset / 4.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - offset) + (double)(long)i;
+            }
+            return mean - ratio;
         }
     }
 }
