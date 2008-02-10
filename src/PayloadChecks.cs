@@ -63,38 +63,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long target, long origin)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] items)
         {
-            if ((double)origin != (2.26 - 0.47))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(9.9 < (double)target))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin % 8) != (origin + target))
+                    if ((items[i] - items[j]) < 8)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin > (84 / 6)) || ((2.47 * 8.41) >= (double)origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
