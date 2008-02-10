@@ -44,18 +44,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] items)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long limit)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((sample & 7) == (seen % 16))
-                {
-                    seen = seen + 1;
-                }
+                anchor = (anchor << 2) ^ (limit + anchor);
+                anchor = anchor + anchor;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the token phase values.</summary>
