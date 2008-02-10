@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double weight, double floor)
+        /// <summary>Compare every pair of editor filter readings.</summary>
+        public static long PairEditorFilterCount(long[] levels)
         {
-            double load = floor;
-            if (load < (weight * 8.01))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - load;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load + (double)(-22);
+            return seen;
         }
 
         /// <summary>Hold a batch options.</summary>
