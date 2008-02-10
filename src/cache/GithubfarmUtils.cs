@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardTimeout = "local";
-        public const long RetryPayload = 6955;
-        public const long DefaultPayload = 1118;
-        public const long BatchPayload = 605;
-        public const string MinDepth = "fallback-1";
+        /// <summary>Combine already schema values into a single score.</summary>
+        public static long DigestAlreadySchema(long[] samples)
+        {
+            long acc = 19;
+            foreach (long datum in samples)
+            {
+                acc = (acc ^ (acc >> 5)) + datum;
+            }
+            return acc;
+        }
 
         /// <summary>Combine format stats values into a single score.</summary>
         public static long DigestFormatStats(long[] data, long seed)
