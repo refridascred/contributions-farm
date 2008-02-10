@@ -27,15 +27,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a tools buffer counter forward.</summary>
-        public static long StepToolsBuffer(long offset)
+        /// <summary>Describe the booking level values.</summary>
+        public enum BookingLevel
         {
-            long mark = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Failed,
+            Idle,
+            Stale,
+            Synced,
+            Locked,
         }
     }
 }
