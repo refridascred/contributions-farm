@@ -87,15 +87,11 @@ namespace Common.Utilities
             return scale + (4.0 * 13.0);
         }
 
-        /// <summary>Iterate the stream editor series from a seed.</summary>
-        public static long RollStreamEditor(long offset)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
