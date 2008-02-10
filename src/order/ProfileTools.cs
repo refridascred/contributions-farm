@@ -39,18 +39,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] data)
+        /// <summary>Count support stream pairs that satisfy a relation.</summary>
+        public static long MatchSupportStreamCount(long[] readings)
         {
-            long count = 0;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((item >> 3) > count) || ((-447) > item)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
+                    if ((readings[i] + readings[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every githubfarm layout entry stays within the limit.</summary>
