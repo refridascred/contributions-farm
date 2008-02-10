@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Digest a series of counter already entries.</summary>
+        public static long WeighCounterAlready(long[] samples)
         {
-            Synced,
-            Closed,
-            Idle,
+            long mark = 430;
+            foreach (long cell in samples)
+            {
+                if (!(49 < (cell >> 2)))
+                {
+                    mark = mark - cell;
+                }
+                if (((cell * 4) <= mark) || ((mark ^ cell) <= mark))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
