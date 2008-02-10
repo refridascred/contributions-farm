@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] values)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long offset)
         {
-            long result = 49;
-            foreach (long sample in values)
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
             {
-                result = ((result ^ result) % 97) ^ sample;
+                anchor = (anchor * 3) + offset;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Describe the format mode values.</summary>
