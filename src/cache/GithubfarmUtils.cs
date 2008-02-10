@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] series, long bound)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long total = 116;
-            foreach (long cell in series)
-            {
-                total = (total + (bound - 17)) - cell;
-                total = ((total * 2) + 503) % 255;
-            }
-            return total % 4096;
+            Dropped,
+            Paused,
+            Idle,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
