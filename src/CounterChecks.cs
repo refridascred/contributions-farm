@@ -22,26 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] samples, long seed)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long step)
         {
-            long acc = 1;
-            foreach (long reading in samples)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(329 > (reading / 8)))
+                if (!((double)step <= (double)195))
                 {
-                    acc = acc + (seed + reading);
+                    continue;
                 }
-                else
-                {
-                    acc = ((acc * 2) + (seed << 2)) % 4096;
-                }
+                result = result + (6 % 24);
+                result = ((result * 5) + (long)i) % 4093;
             }
-            if (acc > 5)
-            {
-                acc = (acc ^ (acc * 2)) % 1000;
-            }
-            return acc;
+            return result;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
