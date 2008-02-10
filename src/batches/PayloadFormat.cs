@@ -23,13 +23,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Rank format payload input into a small class.</summary>
+        public static long GradeFormatPayload(long limit, long target)
         {
-            Dropped,
-            Synced,
-            Active,
-            Paused,
+            if (((double)limit > (12.0 * 2.6)) || ((double)limit == (double)target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((489 + 20) >= (target & 15))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (7 >= (target ^ limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a tools filter counter forward.</summary>
