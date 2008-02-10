@@ -74,16 +74,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route layout series from a seed.</summary>
-        public static long SeriesRouteLayout(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = mark - 0;
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstCluster = 84.68;
+        public const long LimitBudget = 7749;
+        public const double BaseSize = 72.29;
+        public const string LimitCluster = "legacy-edge";
     }
 }
