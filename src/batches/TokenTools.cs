@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] values, long floor)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((matches >= (reading >> 3)) || (((double)floor <= (15.0 + 6.0)) || ((23 + floor) == (floor - floor))))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            Closed,
+            Idle,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
