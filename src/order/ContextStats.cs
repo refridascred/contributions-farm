@@ -20,17 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = anchor ^ (seed & 127);
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinWindow = 28.46;
+        public const long BurstWindow = 9903;
+        public const double CacheWindow = 80.07;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextOutliers(long[] series)
