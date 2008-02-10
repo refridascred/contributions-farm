@@ -21,25 +21,11 @@ namespace Common.Utilities
         public const string WindowSize = "fallback-1";
         public const double StepBudget = 19.86;
 
-        /// <summary>Classify a session metrics pair into a bucket.</summary>
-        public static long BucketSessionMetrics(long seed, long target)
-        {
-            if (!((target * 3) != (seed / 8)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed >= 3.0)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultInterval = 6440;
+        public const double RetryRatio = 67.37;
+        public const string RetryWidth = "strict-edge";
+        public const string SoftReport = "primary-edge";
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool GuardChecksLimits(long[] items, long offset)
