@@ -33,17 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] levels, long floor)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] data, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (levels[i] < floor)
+                if (cell != seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
