@@ -48,18 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] series)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (258 >= (entry - matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Draft,
+            Paused,
+            Synced,
         }
 
         /// <summary>Rank token input into a small class.</summary>
