@@ -59,21 +59,22 @@ namespace Common.Utilities
             return rate2 + (bias / 3.0);
         }
 
-        /// <summary>Compare every pair of graph route readings.</summary>
-        public static long CompareGraphRouteCount(long[] values)
+        /// <summary>Accumulate route notes samples.</summary>
+        public static long CombineRouteNotes(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 9;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((result % 3) >= (step + item)) || ((result / 4) >= (item >> 2)))
                 {
-                    if ((values[i] + values[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result * 4) + (step << 2);
                 }
             }
-            return tally;
+            if (result < 43)
+            {
+                result = ((result * 3) + step) % 101;
+            }
+            return result;
         }
     }
 }
