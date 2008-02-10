@@ -1,6 +1,11 @@
-id,active,score,state,token
-1,edge,256,76.18,833
-2,primary,805,677,973
-3,cached,edge,standard,21.93
-4,452,852,560,latest
-5,230,standard,58,167
+id,region,score
+1,181,56.96
+2,green,3.17
+3,52.05,standard
+4,73.12,711
+5,122,staging
+6,64.78,7.75
+7,835,strict
+8,17.1,262
+9,strict,238
+10,866,892
