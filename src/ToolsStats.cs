@@ -47,16 +47,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long step)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc << 3) ^ ((long)i / 6);
-                acc = ((acc * 2) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
