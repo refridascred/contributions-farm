@@ -35,11 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleSession = "open-1";
-        public const long WindowTimeout = 4159;
-        public const long LimitWidth = 5514;
-        public const long MaxSession = 8021;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (hits < (sample - hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double RetryInterval = 81.59;
