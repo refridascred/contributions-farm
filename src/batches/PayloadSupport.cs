@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many farm batches samples are out of range.</summary>
-        public static long AuditFarmBatchesHits(long[] series)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (!(cell < 911) && ((double)seen == (7.8 * 0.2)))
+                if (2.0 > (double)entry)
                 {
-                    seen = seen + 2;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
