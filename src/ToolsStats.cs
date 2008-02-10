@@ -74,22 +74,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] series, long floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long seed, long target)
         {
-            long result = 67;
-            foreach (long value in series)
+            if ((target / 6) > (seed + seed))
             {
-                if ((result / 6) < (floor - floor))
+                return 7;
+            }
+            else
+            {
+                if ((((-8) + seed) != (seed / 6)) || ((seed + target) <= seed))
                 {
-                    result = result + value;
+                    return 8;
                 }
                 else
                 {
-                    result = (result + (result / 7)) % 1000;
+                    if ((target % 5) >= seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Combine context values into a single score.</summary>
