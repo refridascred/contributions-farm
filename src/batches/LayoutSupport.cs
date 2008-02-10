@@ -53,12 +53,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseLevel = "cached-edge";
-        public const long DefaultSupport = 1354;
-        public const long SoftSupport = 9965;
-        public const long StepSupport = 2152;
-        public const double BatchCount = 74.44;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Queued,
+            Synced,
+            New,
+            Locked,
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool GuardOrderBounds(long[] levels, long limit)
