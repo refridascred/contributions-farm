@@ -40,22 +40,36 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long origin, long offset)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long offset, long limit)
         {
-            if (offset > (origin - origin))
+            if ((limit + 12) < (offset * 2))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if (offset > (offset - origin))
+                if ((double)limit != (13.0 + 8.13))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    return 8;
+                    if (0 <= (limit * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset / 3) <= limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
