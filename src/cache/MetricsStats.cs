@@ -19,32 +19,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long bound, long offset)
+        /// <summary>Match up batches checks samples.</summary>
+        public static long PairBatchesChecksCount(long[] samples)
         {
-            long edge = bound - offset;
-            if (bound <= (edge % 16))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound + offset) >= (offset - bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound & 127) <= (bound << 2))
+                    if ((samples[i] + samples[j]) > 13)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the context mode values.</summary>
