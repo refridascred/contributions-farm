@@ -41,13 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            Queued,
-            Active,
-            Ready,
-            Draft,
+            long carry = 3;
+            foreach (long datum in series)
+            {
+                if ((datum < (carry % 16)) && ((carry - datum) == (97 & 127)))
+                {
+                    carry = ((carry * 4) + (datum + datum)) % 1000;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ datum;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Check that every editor payload entry stays within the limit.</summary>
