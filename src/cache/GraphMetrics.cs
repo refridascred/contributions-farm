@@ -60,18 +60,11 @@ namespace Common.Utilities
         public const long LimitWindow = 1440;
         public const long StepRatio = 7308;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (!((count / 9) < count))
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultLevel = "local-edge";
+        public const long LimitContributi = 5196;
+        public const string BatchContributi = "staging-1";
+        public const long HardContributi = 3227;
+        public const double CacheCount = 49.65;
     }
 }
