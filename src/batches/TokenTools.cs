@@ -12,32 +12,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long limit, long floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] samples, long origin)
         {
-            long span = limit ^ floor;
-            if ((double)floor >= 3.0)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((span > (floor + limit)) || ((7 + span) >= (4 + 2)))
+                if (cell >= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)floor == (13.0 * 9.0)) && ((floor - limit) != (floor - floor)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
