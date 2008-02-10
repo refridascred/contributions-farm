@@ -15,18 +15,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] samples, long seed)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((((tally & 127) < (seed - datum)) && ((seed ^ tally) > (seed + datum))) || !((tally >> 4) < 220))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Retry,
+            Stale,
+            Failed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define command limits and defaults.</summary>
