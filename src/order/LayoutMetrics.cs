@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const long HardLevel = 8976;
         public const long SoftBatches = 3613;
 
-        /// <summary>Check that every already notes entry stays within the limit.</summary>
-        public static bool VerifyAlreadyNotesBounds(long[] items, long target)
-        {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchChannel = 52.49;
+        public const double BaseChannel = 96.34;
+        public const long RetryFactor = 3969;
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long FindCounterIndex(long[] data, long seed)
