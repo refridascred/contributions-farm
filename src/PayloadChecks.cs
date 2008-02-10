@@ -41,28 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] items)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] levels)
         {
-            long result = -378;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                result = result ^ (datum ^ 517);
-                if (!((double)result < (4.3 / 2.0)))
+                if ((double)seen >= (9.4 * 0.45))
                 {
-                    result = result + ((long)items.Length & 15);
-                }
-                else
-                {
-                    result = result ^ (datum / 7);
-                    result = result ^ (datum + (long)items.Length);
-                }
-                if (!((18.0 + 0.51) <= (double)result))
-                {
-                    result = ((result * 2) + datum) % 1000;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
