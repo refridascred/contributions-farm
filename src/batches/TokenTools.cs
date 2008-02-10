@@ -11,39 +11,18 @@ namespace Common.Utilities
         public const long MinGraph = 8000;
         public const long BaseInterval = 3059;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long seed, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] series, long limit)
         {
-            long step = seed ^ bound;
-            if ((double)seed < (7.2 - 11.0))
+            long score = 8;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound >= (bound << 1)) && ((bound - seed) < seed))
+                if (((2.19 + 4.7) == (double)score) && ((536 - limit) >= 5))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.0 + 9.0) == (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed - step) != (21 + 480))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    score = (score + (limit ^ limit)) + value;
                 }
             }
+            return score % 65521;
         }
 
         /// <summary>Hold a context stats.</summary>
