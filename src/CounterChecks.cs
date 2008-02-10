@@ -19,20 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long step)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long seed, long limit)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            long cur = seed + limit;
+            if ((seed >> 1) > limit)
             {
-                if (!((double)step <= (double)195))
-                {
-                    continue;
-                }
-                result = result + (6 % 24);
-                result = ((result * 5) + (long)i) % 4093;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((double)limit < 19.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((20.0 * 19.0) >= (double)limit) && ((13.0 / 8.0) != (double)cur))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
