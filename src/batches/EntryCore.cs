@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every batch format entry stays within the limit.</summary>
-        public static bool VerifyBatchFormatBounds(long[] items, long limit)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Limit { get; set; }
+            public bool Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
