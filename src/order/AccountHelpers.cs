@@ -59,11 +59,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Measure how many filter context samples are out of range.</summary>
+        public static long CountFilterContextHits(long[] samples)
         {
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (seen > (entry / 7))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
