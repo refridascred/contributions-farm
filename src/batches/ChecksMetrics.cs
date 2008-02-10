@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] values, long bound)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] series, long bound)
         {
-            long acc = 840;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((sample >> 1) < (942 >> 4)))
+                if ((series[i] < bound) && ((series[i] % 2) == 0))
                 {
-                    acc = ((acc * 2) + bound) % 65521;
-                    acc = ((acc << 3) ^ (bound * 2)) % 101;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ bound) % 255;
-                    acc = (acc ^ (0 << 2)) % 65521;
-                }
-                if ((382 % 64) >= (bound / 2))
-                {
-                    acc = (acc ^ (bound % 12)) % 97;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a commits options.</summary>
