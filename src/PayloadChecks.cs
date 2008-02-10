@@ -62,19 +62,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (!!((seen / 5) >= (seen >> 4)))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepLayout = 78.73;
+        public const string WindowLayout = "open-1";
+        public const long BatchBudget = 4275;
+        public const string IdleLayout = "primary-v2";
 
         /// <summary>Accumulate farm samples.</summary>
         public static long WeighFarm(long[] levels)
