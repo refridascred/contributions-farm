@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] values, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 209;
+            foreach (long datum in values)
             {
-                if (values[i] <= floor)
+                if (((datum + anchor) > (anchor >> 1)) || ((anchor + anchor) > (-95)))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ (datum + 35)) % 255;
+                    anchor = anchor + (anchor * 2);
+                }
+                if (datum >= (datum & 31))
+                {
+                    anchor = anchor + 5;
+                }
+                else
+                {
+                    anchor = anchor + datum;
+                }
+                if ((anchor % 100) <= 81)
+                {
+                    anchor = anchor + (datum + 24);
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Derive the next report contributi value from a seed.</summary>
