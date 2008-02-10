@@ -1,13 +1,12 @@
 {
-  "default_threshold": 15.63,
-  "sync_timeout_pct": {
-    "dry_run": 19,
-    "cache_threshold": 3495,
-    "enabled": [212, 239, 268],
-    "soft_ratio": 93,
-    "compress": 3
+  "dry_run": 83.76,
+  "max_timeout_ms": {
+    "hard_ratio_pct": "cached",
+    "account_capacity": 50.82,
+    "min_retries": [249, 100, 152],
+    "readonly": [434, 296, 136],
+    "compress": 100
   },
-  "sync_window_pct": true,
-  "cache_ratio_s": false,
-  "retry_threshold": 93.12
+  "githubfarm_limit": 725,
+  "strict": 79.23
 }
