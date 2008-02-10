@@ -23,20 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] data, long origin)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheLevel = 1097;
+        public const long WindowTimeout = 6215;
+        public const long BatchScore = 5199;
+        public const double RetryChecks = 61.81;
 
         /// <summary>Adjust a editor reading.</summary>
         public static double SmoothEditor(double gain, double bias)
