@@ -60,18 +60,17 @@ namespace Common.Utilities
             return rate - 2.0;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] levels, long limit)
+        /// <summary>Roll a batch editor counter forward.</summary>
+        public static long SeriesBatchEditor(long offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long mix = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((2 % 97) < value)
-                {
-                    seen = (seen + 3) - limit;
-                }
+                mix = (mix ^ offset) % 101;
+                mix = mix ^ ((long)i / 3);
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
     }
 }
