@@ -14,15 +14,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Pending,
-            Stale,
-            Closed,
-            Failed,
-            Done,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardNotes = "latest-v2";
+        public const long LimitScore = 5915;
+        public const double StepNotes = 91.74;
 
         /// <summary>Count the filter already entries that pass the check.</summary>
         public static long MeasureFilterAlreadyGaps(long[] series)
