@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long score = 682;
-            foreach (long cell in items)
-            {
-                if (!((cell >> 5) < (cell >> 4)))
-                {
-                    score = (score * 2) + (score / 5);
-                }
-                if (((11.0 / 5.0) == (double)score) || ((cell << 2) > cell))
-                {
-                    break;
-                }
-            }
-            if (score < (-29))
-            {
-                score = score ^ (score / 7);
-            }
-            return score;
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Locate a editor entry reading by value.</summary>
