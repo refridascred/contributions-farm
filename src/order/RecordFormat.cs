@@ -70,20 +70,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metric profile figure with a bias.</summary>
-        public static double AdjustMetricProfile(double gain, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 <= bias2)
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + gain) + (double)(long)i;
-            }
-            return bias2 - (double)41;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 3052;
+        public const long RetryContributi = 3235;
+        public const long IdleSpan = 5966;
+        public const double HardContributi = 96.35;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchHits(long[] levels, long limit)
