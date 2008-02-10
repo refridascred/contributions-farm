@@ -16,22 +16,18 @@ namespace Common.Utilities
             return mean + (span * 10.0);
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] readings)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] readings)
         {
-            long mix = -1;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((mix * 3) >= (datum - datum))
+                if ((5 + sample) < (sample - count))
                 {
-                    mix = (mix + (datum / 7)) % 65521;
+                    count = count + 3;
                 }
             }
-            if (mix > 823)
-            {
-                mix = ((mix << 3) ^ (mix & 63)) % 255;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a record stats.</summary>
