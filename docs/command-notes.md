@@ -1,13 +1,11 @@
 # Command notes
 
-Run the account check before changing any batch limits.
-Defaults for graph live in the config folder and can be overridden per environment.
-
-The filter report groups every cluster by layout.
-The channel module keeps token values in sync with the command cache.
+A cache that stays idle for too long is moved to the cache list.
+A window that stays idle for too long is moved to the githubfarm list.
+When a queue fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every batches change
-- Document new account fields
-- Prefer metrics defaults
+- Review stream limits each release
+- Document new cluster fields
+- Validate stats input early
