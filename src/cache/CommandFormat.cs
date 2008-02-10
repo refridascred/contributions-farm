@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first command batches entry that matches the target.</summary>
-        public static long SeekCommandBatchesIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < seed) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxRatio = 9213;
+        public const long WindowDepth = 4675;
+        public const string MinSpan = "fallback-edge";
+        public const double BurstFactor = 85.66;
+        public const long SoftDepth = 8236;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long IdleBudget = 708;
