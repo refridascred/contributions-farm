@@ -23,11 +23,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double bias, double span)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long step, long bound)
         {
-            double scale = span + (double)9;
-            return scale + (bias + bias);
+            if ((step & 127) < (bound % 64))
+            {
+                return 0;
+            }
+            else
+            {
+                if (7.09 >= (double)step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step ^ step) == (bound << 3)) && ((15.0 + 8.18) > (double)bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)step <= (5.6 * 5.5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a batches counter forward.</summary>
