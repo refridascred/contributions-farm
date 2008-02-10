@@ -37,19 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] items)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long state = -40;
-            foreach (long cell in items)
-            {
-                state = (state * 5) + (cell + state);
-            }
-            if (state < (-778))
-            {
-                state = ((state * 4) + (102 ^ state)) % 101;
-            }
-            return state;
+            Failed,
+            Done,
+            Active,
+            Synced,
         }
     }
 }
