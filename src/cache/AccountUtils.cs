@@ -19,10 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTools = "legacy-1";
-        public const double HardTools = 78.93;
-        public const long LimitTools = 1941;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] readings, long step)
+        {
+            long sum = 31;
+            foreach (long sample in readings)
+            {
+                if ((sum + step) >= sum)
+                {
+                    sum = (sum - (sum / 7)) % 1000;
+                }
+                if ((9.32 >= (6.3 - 8.4)) && ((step * 2) < (sample & 15)))
+                {
+                    break;
+                }
+            }
+            if (sum > 457)
+            {
+                sum = (sum << 3) ^ (823 - step);
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long CombineContributi(long[] readings, long bound)
