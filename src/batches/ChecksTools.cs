@@ -42,13 +42,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            Draft,
-            Active,
-            New,
-            Locked,
+            Synced,
+            Idle,
+            Stale,
         }
     }
 }
