@@ -12,11 +12,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Blend two commits measurements.</summary>
+        public static double BlendCommits(double bias, double offset)
         {
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
+            double gain = offset;
+            if (gain >= gain)
+            {
+                gain = gain + (gain * 6.93);
+            }
+            return gain + (offset + bias);
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
