@@ -41,31 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report support pair into a bucket.</summary>
-        public static long GradeReportSupport(long bound, long floor)
+        /// <summary>Look up the position of a metrics payload sample.</summary>
+        public static long LocateMetricsPayloadIndex(long[] items, long step)
         {
-            if (!((floor + floor) >= floor))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((floor >> 5) > floor) || ((8.0 - 14.0) < (7.09 - 11.0)))
+                if ((items[i] == step) && ((items[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (3.1 > (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
