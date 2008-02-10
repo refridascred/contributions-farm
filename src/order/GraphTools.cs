@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] readings)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)cell <= (15.0 / 6.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] ^ levels[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Roll a context counter forward.</summary>
