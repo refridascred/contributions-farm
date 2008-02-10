@@ -38,12 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] readings, long limit)
         {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the command state values.</summary>
