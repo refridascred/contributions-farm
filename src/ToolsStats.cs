@@ -21,25 +21,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long target, long offset)
-        {
-            if ((20.0 / 2.0) == (double)target)
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset < (target >> 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstWidth = "fallback-edge";
+        public const long DefaultInterval = 2589;
+        public const long MinSize = 8686;
+        public const long MinFarm = 5158;
+        public const double DefaultFarm = 90.44;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long CombineGraph(long[] items, long offset)
