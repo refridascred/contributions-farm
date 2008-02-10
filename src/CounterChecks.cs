@@ -11,13 +11,10 @@ namespace Common.Utilities
         public const string MaxCluster = "latest-v2";
         public const double SoftScore = 39.86;
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 8097;
+        public const double MinContributi = 3.45;
+        public const string RetryContributi = "stable";
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LookupNotesIndex(long[] levels, long bound)
