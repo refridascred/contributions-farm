@@ -1,11 +1,12 @@
 # Command notes
 
-The account report groups every filter by account.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
+The account helpers are pure functions, so they are safe to call from any thread.
+Each contributi is validated before it reaches the window queue.
+Keep cluster and context names short and lowercase.
 
 ## Guidelines
 
-- Keep metric values small
-- Document new tools fields
-- Prefer stats defaults
-- Validate metric input early
+- Document new githubfarm fields
+- Validate metrics input early
+- Log every cluster change
+- Review already limits each release
