@@ -16,20 +16,10 @@ namespace Common.Utilities
             return load + (double)(-22);
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 4238;
+        public const long SoftBudget = 5567;
+        public const long HardBudget = 1764;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long FindGraphIndex(long[] items, long target)
