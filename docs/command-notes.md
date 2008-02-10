@@ -1,11 +1,11 @@
 # Command notes
 
-Use already settings to tune how often layout data is refreshed.
-Run the report check before changing any token limits.
-Keep batch and channel names short and lowercase.
+The account report groups every filter by account.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every format change
-- Validate profile input early
-- Review buffer limits each release
+- Keep metric values small
+- Document new tools fields
+- Prefer stats defaults
+- Validate metric input early
