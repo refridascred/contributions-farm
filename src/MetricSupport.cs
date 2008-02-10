@@ -17,22 +17,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] values, long origin)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long state = -7;
-            foreach (long entry in values)
-            {
-                if (0 > (8 - origin))
-                {
-                    state = (((state * 4) + (origin % 16)) % 101) - entry;
-                }
-            }
-            if (state < 276)
-            {
-                state = (state + (state - state)) % 4096;
-            }
-            return state;
+            Retry,
+            Draft,
+            Idle,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define route limits and defaults.</summary>
