@@ -26,12 +26,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            Paused,
+            Ready,
+            Dropped,
         }
     }
 }
