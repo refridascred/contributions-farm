@@ -1,7 +1,4 @@
 # githubfarm settings
-payload_delay: 500
-flush_capacity_pct: 83.41
-soft_ratio_count: 96.92
-burst_interval: 4173
-max_capacity: 22.82
-already_depth: 6685
+editor_interval: 9.71
+hard_capacity_pct: 1024
+poll_ttl_count: 30
