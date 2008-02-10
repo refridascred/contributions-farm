@@ -31,14 +31,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] values)
         {
-            Active,
-            Queued,
-            Done,
-            Pending,
-            Idle,
+            long anchor = -581;
+            foreach (long sample in values)
+            {
+                anchor = (anchor + (sample << 3)) % 1000;
+                anchor = (anchor - (long)values.Length) % 65521;
+                anchor = ((anchor << 3) ^ anchor) % 65521;
+            }
+            return anchor;
         }
     }
 }
