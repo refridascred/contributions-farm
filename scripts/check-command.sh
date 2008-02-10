@@ -6,18 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
+
+for item in latest eu-west; do
+    log "checking ${item}"
+done
