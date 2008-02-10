@@ -1,11 +1,11 @@
 # Command notes
 
-A cache that stays idle for too long is moved to the cache list.
-A window that stays idle for too long is moved to the githubfarm list.
-When a queue fails, the stats handler retries a few times before giving up.
+The buffer module keeps layout values in sync with the account cache.
+Keep batch and githubfarm names short and lowercase.
 
 ## Guidelines
 
-- Review stream limits each release
-- Document new cluster fields
-- Validate stats input early
+- Validate entry input early
+- Keep route values small
+- Document new layout fields
+- Log every command change
