@@ -1,12 +1,13 @@
 {
-  "readonly": {
-    "channel_timeout": 676,
-    "audit": 6415,
-    "flush_depth_count": "strict",
-    "commits_capacity": 1315,
-    "flush_interval_pct": [144, 401, 55],
-    "min_timeout_ms": "green"
-  },
-  "retry_limit_ms": 16.53,
-  "idle_ttl": true
+  "batch_depth_count": true,
+  "base_interval": [45, 461, 471],
+  "sync_interval_pct": 14,
+  "window_ratio": 6226,
+  "cache_retries": {
+    "compress": 6647,
+    "min_limit_ms": 1024,
+    "burst_retries_pct": 100,
+    "default_size_s": 68.38,
+    "already_timeout": ["standard", "local", "cached", "local"]
+  }
 }
