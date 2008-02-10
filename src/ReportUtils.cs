@@ -35,19 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double rate, double bias)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            double rate2 = 15.0;
-            if (rate2 < bias)
-            {
-                rate2 = rate2 + rate2;
-            }
-            else
-            {
-                rate2 = rate2 + (bias - rate);
-            }
-            return rate2 + (bias / 3.0);
+            Synced,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a stats record.</summary>
