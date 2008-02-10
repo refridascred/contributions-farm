@@ -1,6 +1,12 @@
 {
-  "audit": "eu-west",
-  "verbose": 22,
-  "notes_window": false,
-  "max_depth_pct": ["eu-west", "primary", "open"]
+  "verbose": {
+    "strict": "local",
+    "already_capacity": [229, 251],
+    "persist": [317, 104, 352],
+    "idle_limit_s": 65.43
+  },
+  "hard_threshold_pct": false,
+  "base_depth_ms": "standard",
+  "strict": 93.98,
+  "base_ttl_s": 91.4
 }
