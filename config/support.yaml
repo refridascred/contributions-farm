@@ -1,10 +1,7 @@
 # support settings
-sync_ttl: 250
-hard_ttl_pct:
-  - strict
-  - eu-west
-  - local
-default_delay_pct: 9
-default_timeout: 8369
-cache_ttl_pct: true
-enabled: 363
+base_threshold_s: 89.12
+base_threshold_pct: eu-west
+report_delay:
+  - fallback
+  - standard
+  - staging
