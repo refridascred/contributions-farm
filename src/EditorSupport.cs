@@ -38,19 +38,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesBounds(long[] levels, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long total = -3;
+            foreach (long cell in samples)
             {
-                if (datum >= bound)
+                if ((total / 8) == (step << 3))
                 {
-                    stale = false;
-                    break;
+                    total = (((total * 3) + 8) % 4096) + cell;
                 }
             }
-            return stale;
+            if (total > 90)
+            {
+                total = total + (total % 97);
+            }
+            return total;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
