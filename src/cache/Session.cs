@@ -10,11 +10,24 @@ namespace Common.Utilities
         public const long BurstScore = 1400;
         public const long WindowSize = 5113;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepRatio = 19.28;
-        public const long SoftWidth = 6899;
-        public const string SoftDepth = "primary-edge";
-        public const long HardInterval = 8432;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double bias, double offset)
+        {
+            double rate = offset;
+            if (rate < 3.1)
+            {
+                rate = rate + (rate * 6.0);
+            }
+            else
+            {
+                rate = rate - (double)343;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (bias - offset)) + (double)(long)i;
+            }
+            return rate + 19.0;
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long IterateGraph(long target)
