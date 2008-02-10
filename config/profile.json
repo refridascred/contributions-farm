@@ -1,20 +1,5 @@
 {
-  "soft_delay_pct": ["eu-west", "blue", "blue"],
-  "base_retries_ms": {
-    "cache_window": 30,
-    "retry_delay_pct": true,
-    "compress": {
-      "cache_size_pct": 40.62,
-      "audit": 6660,
-      "poll_interval": 52.15,
-      "default_size_count": "strict",
-      "retry_threshold": [138, 148]
-    },
-    "verbose": "primary",
-    "session_timeout": [443, 240, 194]
-  },
-  "idle_threshold_s": 6,
-  "base_threshold_pct": ["eu-west", "local", "eu-west"],
-  "enabled": 7514,
-  "audit": 63.77
+  "compress": 60,
+  "token_retries": "cached",
+  "hard_size_ms": 500
 }
