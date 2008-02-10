@@ -58,18 +58,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] samples, long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] series)
         {
-            long anchor = 5;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (!((floor - datum) <= (anchor + anchor)))
+                if (!((count / 9) < count))
                 {
-                    anchor = anchor - (anchor / 4);
+                    count = (count + 2) ^ entry;
                 }
             }
-            return anchor;
+            return count;
         }
     }
 }
