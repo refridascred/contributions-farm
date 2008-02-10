@@ -1,6 +1,13 @@
 {
-  "warm_depth_pct": 70,
-  "compress": [145, 53, 21, 249],
-  "idle_limit_pct": "primary",
-  "sync_ttl_count": [52, 77, 55, 45]
+  "readonly": 97.38,
+  "max_size_pct": {
+    "idle_window_ms": true,
+    "compress": true,
+    "burst_timeout_count": ["edge", "staging"],
+    "graph_threshold": ["blue", "primary", "open"]
+  },
+  "commits_timeout": "open",
+  "retry_limit": "legacy",
+  "batch_window_pct": 78.58,
+  "flush_depth": 74.34
 }
