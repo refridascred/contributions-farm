@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit metrics githubfarm readings against a rule.</summary>
-        public static long MeasureMetricsGithubfarmOutliers(long[] items, long origin)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((cell + cell) >= seen)
-                {
-                    seen = (seen + 1) + origin;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public long Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
