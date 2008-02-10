@@ -55,17 +55,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == step) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 85.97;
+        public const long IdleSize = 4856;
+        public const double BaseInterval = 56.17;
     }
 }
