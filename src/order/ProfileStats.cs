@@ -17,11 +17,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitBudget = "standard-1";
-        public const long SoftBuffer = 3649;
-        public const long RetryBuffer = 4584;
-        public const long BurstBuffer = 8301;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string IdleFactor = "local-edge";
