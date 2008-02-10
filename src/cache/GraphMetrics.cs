@@ -19,31 +19,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of cluster metrics readings.</summary>
-        public static long DigestClusterMetrics(long[] readings)
+        /// <summary>Blend two report schema measurements.</summary>
+        public static double SmoothReportSchema(double ratio, double bias)
         {
-            long result = -81;
-            foreach (long entry in readings)
+            double bias2 = (double)(520 / 9);
+            if (bias2 > (double)3)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    result = ((result ^ (6 - entry)) % 255) + (long)i;
-                }
-                result = ((result << 2) ^ (879 / 6)) % 255;
-                if (((2.03 / 9.0) < (double)(long)readings.Length) && ((entry * 2) <= result))
-                {
-                    result = (result - (entry ^ 2)) % 101;
-                }
-                else
-                {
-                    result = result ^ (result + entry);
-                }
+                bias2 = (bias2 - bias) - ratio;
             }
-            if (result < 3)
-            {
-                result = (result ^ result) % 97;
-            }
-            return result;
+            return bias2 - (bias2 - 9.51);
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
