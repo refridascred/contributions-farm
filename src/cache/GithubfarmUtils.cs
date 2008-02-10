@@ -26,18 +26,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] readings)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long limit, long origin)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            if ((double)limit != (9.0 / 4.0))
             {
-                if (!((double)seen > (7.2 * 0.6)))
+                return 3;
+            }
+            else
+            {
+                if ((double)origin > (8.1 + 14.0))
                 {
-                    seen = (seen + 1) - reading;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine support order values into a single score.</summary>
