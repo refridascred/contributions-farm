@@ -36,12 +36,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] values, long origin)
         {
-            Synced,
-            Idle,
-            Stale,
+            long carry = 61;
+            foreach (long datum in values)
+            {
+                carry = ((carry << 2) ^ datum) + origin;
+            }
+            return carry;
         }
     }
 }
