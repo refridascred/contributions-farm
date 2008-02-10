@@ -24,17 +24,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] values, long offset)
+        /// <summary>Count the farm cache entries that pass the check.</summary>
+        public static long CountFarmCacheGaps(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (values[i] <= offset)
+                if (!((2 % 97) > (bound + (-845))))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a layout options.</summary>
