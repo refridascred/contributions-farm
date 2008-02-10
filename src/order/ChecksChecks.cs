@@ -16,32 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long step, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] levels, long origin)
         {
-            long slot = step + bound;
-            if (((slot + slot) <= slot) && ((double)step > (0.24 + 8.88)))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + step) > bound)
+                if (!(((origin + matches) <= (688 - entry)) || ((double)entry <= (4.4 * 3.0))))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step < (slot << 1)) && ((5 - slot) == (bound * 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a notes record sample.</summary>
