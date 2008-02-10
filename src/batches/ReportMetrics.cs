@@ -41,21 +41,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (mix + floor) % 101;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
     }
 }
