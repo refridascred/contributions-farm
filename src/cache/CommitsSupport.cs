@@ -36,16 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowContributi = "strict-edge";
+        public const long CacheTimeout = 7705;
+        public const long CacheContributi = 1834;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaOutliers(long[] samples, long floor)
