@@ -1,4 +1,23 @@
 # githubfarm settings
-stats_ratio: legacy
-strict: 30
-idle_ttl: local
+idle_interval: 51
+persist:
+  editor_depth:
+    - 10
+    - 196
+  verbose: 9143
+  persist: true
+batch_size_s: 250
+entry_limit:
+  min_window_ms: true
+  cache_depth: 500
+  window_size:
+    - 41
+    - 411
+    - 315
+  soft_ratio_s:
+    - 425
+    - 61
+    - 414
+    - 16
+hard_retries: 7030
+default_depth_ms: 8535
