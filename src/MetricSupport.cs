@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] series, long seed)
+        /// <summary>Derive the next profile checks value from a seed.</summary>
+        public static long RollProfileChecks(long floor)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long mix = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry >= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix << 2) ^ (floor >> 1)) % 1000;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Accumulate order samples.</summary>
