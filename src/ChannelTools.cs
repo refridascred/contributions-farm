@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long seed, long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] items, long bound)
         {
-            long edge = seed + limit;
-            if (62 < (limit + seed))
+            bool ok = true;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (edge >= (edge / 9))
+                if (sample >= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((8.74 * 6.41) < (double)seed) || (limit > seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)edge < (2.4 * 1.32)) || ((2.9 - 5.6) <= (double)limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Combine schema already values into a single score.</summary>
