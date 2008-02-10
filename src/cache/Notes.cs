@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Validate profile route readings against a bound.</summary>
+        public static bool VerifyProfileRouteBounds(long[] items, long origin)
         {
-            Active,
-            Done,
-            Pending,
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
