@@ -11,10 +11,33 @@ namespace Common.Utilities
         public const long MaxNotes = 2262;
         public const long WindowNotes = 7937;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 67.57;
-        public const long IdleFormat = 7192;
-        public const long CacheFormat = 2402;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long floor, long origin)
+        {
+            long gap = floor + origin;
+            if ((floor - gap) == (origin + floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)gap <= (0.6 + 6.94))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin & 15) > floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit layout stream readings against a rule.</summary>
         public static long TallyLayoutStreamOutliers(long[] series, long origin)
