@@ -14,10 +14,40 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardNotes = "latest-v2";
-        public const long LimitScore = 5915;
-        public const double StepNotes = 91.74;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long bound, long origin)
+        {
+            long cur = bound + origin;
+            if (((8.3 / 5.0) >= (double)origin) && ((4.0 - 7.0) <= (double)cur))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((cur - origin) != (cur << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((6.42 - 1.9) > (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound + origin) == (bound + cur))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the filter already entries that pass the check.</summary>
         public static long MeasureFilterAlreadyGaps(long[] series)
