@@ -20,22 +20,10 @@ namespace Common.Utilities
         public const long DefaultGraph = 2665;
         public const long WindowGraph = 4444;
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 6967;
+        public const string MinBudget = "strict-v2";
+        public const long RetrySpan = 2588;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long CombineSchema(long[] series, long target)
