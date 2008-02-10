@@ -45,17 +45,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first token cluster entry that matches the target.</summary>
-        public static long SeekTokenClusterIndex(long[] items, long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] items, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if (items[i] <= bound)
+                if (reading != step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the batches state values.</summary>
