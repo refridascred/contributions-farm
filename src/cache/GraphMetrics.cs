@@ -60,18 +60,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] series, long floor)
+        /// <summary>Locate a command batch reading by value.</summary>
+        public static long LookupCommandBatchIndex(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value < 9) && (((double)seen < (3.37 - 7.2)) && ((2 + seen) <= (seen & 7))))
+                if (items[i] == step)
                 {
-                    seen = (seen + 1) + floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
