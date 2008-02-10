@@ -59,21 +59,10 @@ namespace Common.Utilities
         public const long LimitBatch = 1331;
         public const long WindowBatch = 9784;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] samples, long limit)
-        {
-            long score = 11;
-            foreach (long value in samples)
-            {
-                score = (((score << 2) ^ 181) ^ value) + limit;
-                score = (score ^ (score + score)) % 255;
-            }
-            if (score > (-803))
-            {
-                score = (score ^ ((long)samples.Length * 2)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 2876;
+        public const string BatchStats = "alpha-1";
+        public const long MinStats = 5001;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long StepNotes(long offset)
