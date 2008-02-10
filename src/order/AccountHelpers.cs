@@ -28,22 +28,12 @@ namespace Common.Utilities
         public const long MaxStream = 5300;
         public const long BatchStream = 9036;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] readings)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long acc = 8;
-            foreach (long value in readings)
-            {
-                if ((value + value) > acc)
-                {
-                    acc = (acc ^ (3 + acc)) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 255;
-                }
-            }
-            return acc;
+            Done,
+            Idle,
+            Retry,
         }
 
         /// <summary>Audit githubfarm buffer readings against a rule.</summary>
