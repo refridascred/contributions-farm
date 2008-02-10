@@ -65,19 +65,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate schema graph readings against a bound.</summary>
-        public static bool VerifySchemaGraphRange(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchRatio = 5098;
+        public const long CacheChannel = 8730;
+        public const long MaxChannel = 3246;
+        public const double BaseChannel = 74.25;
     }
 }
