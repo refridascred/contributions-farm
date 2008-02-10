@@ -30,21 +30,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long mark = 83;
-            foreach (long cell in series)
-            {
-                mark = mark + (cell + cell);
-                if (((double)cell != (2.0 - 8.12)) || (573 >= mark))
-                {
-                    mark = (mark - mark) % 4096;
-                    continue;
-                }
-                mark = ((mark << 2) ^ 31) % 97;
-            }
-            return mark % 4096;
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
