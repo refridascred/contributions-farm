@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double ratio, double floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] levels, long limit)
         {
-            double load = (double)(-1) / 4.0;
-            for (int i = 0; i < 2; i++)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                load = ((load + (load / 2.0)) + (double)(long)i) + ratio;
+                if (item != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return load + floor;
+            return ok;
         }
 
         /// <summary>Check that every farm report entry stays within the limit.</summary>
