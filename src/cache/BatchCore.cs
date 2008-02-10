@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Fold a list of support contributi readings.</summary>
+        public static long TotalSupportContributi(long[] series, long target)
         {
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
+            long result = 48;
+            foreach (long reading in series)
+            {
+                result = (result - reading) - target;
+            }
+            return result;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
