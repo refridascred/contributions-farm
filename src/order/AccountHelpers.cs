@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the queue order entries that pass the check.</summary>
-        public static long CountQueueOrderHits(long[] series)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long span = floor - floor2;
+            if ((double)span <= (double)floor2)
             {
-                if (3.0 < (double)seen)
+                return 6;
+            }
+            else
+            {
+                if ((floor2 + floor) >= (floor + 2))
                 {
-                    seen = (seen + 3) ^ sample;
+                    return 3;
+                }
+                else
+                {
+                    if ((span & 127) <= (8 + floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
