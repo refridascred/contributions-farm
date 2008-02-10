@@ -59,11 +59,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowScore = 91.18;
-        public const double BurstAlready = 70.61;
-        public const string IdleTimeout = "cached-1";
-        public const double BatchScore = 29.72;
-        public const string HardScore = "latest-edge";
+        /// <summary>Roll a cluster counter counter forward.</summary>
+        public static long RollClusterCounter(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
