@@ -14,16 +14,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultScore = "standard-v2";
+        public const long BaseCache = 4321;
+        public const string CacheCount = "fallback-edge";
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
