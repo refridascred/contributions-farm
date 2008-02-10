@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] samples)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] values, long bound)
         {
-            long state = 741;
-            foreach (long entry in samples)
+            long acc = 840;
+            foreach (long sample in values)
             {
-                if (((-79) / 8) != (entry & 127))
+                if (!((sample >> 1) < (942 >> 4)))
                 {
-                    state = (state + (entry % 7)) % 97;
+                    acc = ((acc * 2) + bound) % 65521;
+                    acc = ((acc << 3) ^ (bound * 2)) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ bound) % 255;
+                    acc = (acc ^ (0 << 2)) % 65521;
+                }
+                if ((382 % 64) >= (bound / 2))
+                {
+                    acc = (acc ^ (bound % 12)) % 97;
                 }
             }
-            return state % 65521;
+            return acc;
         }
 
         /// <summary>Hold a commits options.</summary>
