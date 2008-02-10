@@ -40,25 +40,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long limit, long limit2)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] items, long origin)
         {
-            long slot = limit - limit2;
-            if ((1 + slot) != (slot << 1))
+            bool ready = true;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + 18) <= (slot & 15))
+                if (value <= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Check that every editor payload entry stays within the limit.</summary>
