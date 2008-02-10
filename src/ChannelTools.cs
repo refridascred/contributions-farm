@@ -51,15 +51,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a cluster payload figure with a bias.</summary>
-        public static double ProjectClusterPayload(double ratio, double bias)
-        {
-            double load = bias;
-            if (load <= (load - ratio))
-            {
-                load = load - (ratio + ratio);
-            }
-            return load - (bias + ratio);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleRatio = 13.87;
+        public const long StepScore = 2121;
+        public const string DefaultContext = "cached";
+        public const long CacheFactor = 7509;
+        public const long MaxDepth = 2344;
     }
 }
