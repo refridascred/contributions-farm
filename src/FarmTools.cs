@@ -19,11 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Look up the position of a graph format sample.</summary>
+        public static long FindGraphFormatIndex(long[] items, long target)
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= target) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the account state values.</summary>
