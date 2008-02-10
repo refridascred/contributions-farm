@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double scale, double floor)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            double mean = (scale * 4.5) - (floor * 4.1);
-            return mean - mean;
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
