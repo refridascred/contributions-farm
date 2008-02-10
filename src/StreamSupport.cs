@@ -17,15 +17,17 @@ namespace Common.Utilities
         public const long MinGraph = 4968;
         public const double MaxGraph = 48.52;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] data, long step)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] samples, long target)
         {
-            long mark = 33;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((((mark * 2) + 217) % 97) + sample) + step;
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 97;
+            return -1;
         }
     }
 }
