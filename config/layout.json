@@ -1,6 +1,19 @@
 {
-  "cache_delay_pct": 76.93,
-  "editor_threshold": "green",
-  "counter_capacity": "strict",
-  "enabled": "latest"
+  "enabled": "standard",
+  "verbose": {
+    "flush_limit_s": "stable",
+    "compress": "eu-west",
+    "poll_retries_count": ["fallback", "primary"],
+    "flush_depth_s": 1101,
+    "batch_limit_s": {
+      "metric_delay": 30,
+      "githubfarm_depth": false,
+      "warm_delay_count": [432, 200]
+    },
+    "burst_retries_s": 1473
+  },
+  "retry_size": 30,
+  "payload_retries": "latest",
+  "cache_ratio_count": false,
+  "base_threshold_count": true
 }
