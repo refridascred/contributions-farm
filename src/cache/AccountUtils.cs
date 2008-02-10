@@ -39,14 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double scale, double floor)
         {
-            New,
-            Locked,
-            Ready,
-            Closed,
-            Queued,
+            double load = (9.0 - scale) / 8.0;
+            if (load > (floor + scale))
+            {
+                load = load - scale;
+            }
+            return load - load;
         }
 
         /// <summary>Match up report samples.</summary>
