@@ -1,36 +1,7 @@
 # support settings
-verbose: blue
-cluster_threshold: true
-soft_threshold: 87
-enabled:
-  githubfarm_delay:
-    channel_ttl: 96.12
-    max_retries_count: stable
-    persist: 3.3
-  window_ttl:
-    editor_ttl: 65.83
-    soft_retries_count: local
-    flush_delay_count:
-      - edge
-      - latest
-  idle_size_s: 13.67
-  readonly:
-    base_capacity_pct: 30
-    base_threshold_count:
-      - 118
-      - 177
-    layout_limit: 500
-    strict: open
-    metrics_timeout: true
-    account_window: true
-  default_ratio:
-    idle_ratio_s: 100
-    tools_depth: 87.47
-    soft_timeout_s:
-      - edge
-      - fallback
-      - legacy
-      - eu-west
-    base_size_pct: blue
-    dry_run: 30
-retry_threshold: 92.62
+retry_ratio:
+  - eu-west
+  - strict
+  - eu-west
+burst_timeout_s: 31.68
+burst_window_pct: staging
