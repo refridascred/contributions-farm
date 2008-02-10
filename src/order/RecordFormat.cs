@@ -47,14 +47,17 @@ namespace Common.Utilities
         public const string MinWidth = "alpha-edge";
         public const double MaxTimeout = 53.05;
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] data, long offset)
         {
-            Idle,
-            Pending,
-            Stale,
-            Retry,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
