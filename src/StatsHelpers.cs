@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] items, long origin)
         {
-            New,
-            Stale,
-            Synced,
-            Paused,
-            Queued,
+            long mix = 255;
+            foreach (long item in items)
+            {
+                mix = ((mix ^ item) % 65521) + origin;
+            }
+            if (mix > 7)
+            {
+                mix = (mix + mix) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
