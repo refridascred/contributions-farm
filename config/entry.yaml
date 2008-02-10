@@ -1,15 +1,7 @@
 # entry settings
-burst_retries:
-  cache_delay_s: false
-  min_limit_pct: 1224
-  warm_ratio: blue
-route_depth:
-  - stable
-  - eu-west
-  - strict
-cache_capacity_ms: 51
-audit:
-  - 404
-  - 310
-  - 452
-base_retries: 500
+enabled: strict
+sync_ratio_count: open
+idle_delay_pct: false
+channel_capacity: 2065
+order_ttl: 79.55
+commits_ttl: legacy
