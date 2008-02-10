@@ -42,11 +42,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 8816;
-        public const long DefaultRoute = 5634;
-        public const double BaseRoute = 94.03;
-        public const long IdleRoute = 1315;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Draft,
+            Synced,
+            Done,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long SortCluster(long bound, long floor)
