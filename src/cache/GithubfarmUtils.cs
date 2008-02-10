@@ -23,24 +23,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long limit, long origin)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] values, long bound)
         {
-            if ((double)limit != (9.0 / 4.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin > (8.1 + 14.0))
+                if (values[i] >= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine support order values into a single score.</summary>
