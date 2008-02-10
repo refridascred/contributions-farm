@@ -19,21 +19,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] readings)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((levels[i] <= bound) && ((levels[i] % 5) != 0))
                 {
-                    if ((readings[i] ^ readings[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
