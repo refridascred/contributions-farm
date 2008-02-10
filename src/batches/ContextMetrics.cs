@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] values, long floor)
         {
-            Locked,
-            Failed,
-            Retry,
+            long total = -14;
+            foreach (long cell in values)
+            {
+                if (!((total % 2) < (cell + cell)))
+                {
+                    total = (total ^ ((-59) ^ total)) % 1000;
+                }
+                if (((total - total) >= (cell * 4)) && ((13.0 + 12.0) != (double)floor))
+                {
+                    total = (total ^ total) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
