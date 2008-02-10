@@ -12,32 +12,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long step, long seed)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long step2 = step + seed;
-            if ((seed * 5) == (step * 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed << 3) != (step2 + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step2 > (seed / 3)) || ((double)step2 >= (4.0 / 6.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a account info.</summary>
