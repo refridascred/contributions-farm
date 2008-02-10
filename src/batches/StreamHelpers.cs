@@ -37,18 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] items)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            double bias = 9.0;
+            if (bias < (1.1 - offset))
             {
-                if (((sample + matches) > matches) && (((9 - matches) <= 52) || (matches <= (sample + matches))))
-                {
-                    matches = matches + 1;
-                }
+                bias = (bias + (offset * 7.0)) + weight;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + (double)22;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
