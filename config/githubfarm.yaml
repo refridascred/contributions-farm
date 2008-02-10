@@ -1,4 +1,20 @@
 # githubfarm settings
-poll_retries_s: 5068
-batch_depth_ms: 19
-dry_run: primary
+dry_run:
+  max_window_pct: legacy
+  githubfarm_depth: blue
+  layout_ttl:
+    - 317
+    - 390
+  format_ratio: 8898
+hard_timeout_s: 1308
+stream_window:
+  - fallback
+  - staging
+audit:
+  batch_retries_pct: 2217
+  base_retries:
+    - 395
+    - 5
+    - 278
+  graph_limit: 500
+  base_timeout_ms: 4969
