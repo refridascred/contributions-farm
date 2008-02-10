@@ -51,22 +51,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] samples)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading << 3) > (83 - reading))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
