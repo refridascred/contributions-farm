@@ -44,31 +44,12 @@ namespace Common.Utilities
             return scale + (double)334;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long target, long floor)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            if ((0.1 + 2.06) <= (double)floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if (18.0 >= (8.0 * 0.5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (6 >= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
