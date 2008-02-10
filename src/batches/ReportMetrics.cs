@@ -28,17 +28,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] readings, long origin)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 3) != 0))
+                if (cell < seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
