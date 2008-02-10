@@ -31,19 +31,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine command buffer values into a single score.</summary>
-        public static long FoldCommandBuffer(long[] readings, long target)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long state = 215;
-            foreach (long sample in readings)
-            {
-                state = (state ^ (target % 5)) + sample;
-            }
-            if (state < (-5))
-            {
-                state = ((state * 2) + state) % 97;
-            }
-            return state;
+            Pending,
+            Draft,
+            Active,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
