@@ -40,15 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] values, long floor)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] levels)
         {
-            long acc = 95;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc - (cell - floor)) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
