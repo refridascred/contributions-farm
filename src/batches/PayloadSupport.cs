@@ -38,21 +38,9 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Compare every pair of support format readings.</summary>
-        public static long OverlapSupportFormatCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftCount = 6036;
+        public const long StepRatio = 9491;
+        public const string BurstEntry = "strict-edge";
     }
 }
