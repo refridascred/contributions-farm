@@ -1,4 +1,12 @@
 # support settings
-persist: 1371
-buffer_depth: false
-batch_window: 6562
+enabled: 48.8
+hard_retries_pct:
+  - 8
+  - 309
+  - 79
+  - 321
+idle_ratio:
+  - cached
+  - green
+  - open
+  - latest
