@@ -40,18 +40,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of batches session readings.</summary>
-        public static long CombineBatchesSession(long[] items, long limit)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long anchor = 628;
-            foreach (long value in items)
-            {
-                if ((12.0 * 9.37) == (double)value)
-                {
-                    anchor = (anchor * 5) + (limit * 2);
-                }
-            }
-            return anchor;
+            New,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
