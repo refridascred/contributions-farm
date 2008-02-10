@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = bias;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = ((mean + (5.4 - bias)) + (double)(long)i) + rate;
             }
-            return count;
+            return mean - (bias + bias);
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
