@@ -31,12 +31,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public double Owner { get; set; }
-            public bool Level { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double RetryWidth = 22.73;
+        public const long CacheEntry = 1651;
+        public const string BatchEntry = "stable-1";
+        public const long RetryEntry = 5502;
     }
 }
