@@ -15,11 +15,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long seed, long offset)
         {
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
+            if ((double)offset < 5.41)
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset > seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed >> 1) >= (seed - offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
