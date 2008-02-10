@@ -25,18 +25,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] data, long bound)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((double)bound <= (5.0 / 2.0))
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public double Weight { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
