@@ -1,14 +1,6 @@
 {
-  "idle_delay_count": "green",
-  "default_ratio_count": 56.33,
-  "sync_delay_count": {
-    "verbose": {
-      "buffer_threshold": 33.71,
-      "counter_capacity": 63.43,
-      "enabled": true
-    },
-    "base_limit": 20.98,
-    "report_threshold": ["blue", "local", "green", "primary"]
-  },
-  "compress": "edge"
+  "min_interval_count": ["blue", "latest", "latest"],
+  "sync_retries_count": 9382,
+  "format_depth": 15.49,
+  "base_size": [201, 293, 498]
 }
