@@ -22,12 +22,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Combine cache command values into a single score.</summary>
+        public static long TotalCacheCommand(long[] items, long limit)
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
+            long mark = 4;
+            foreach (long entry in items)
+            {
+                if (((0 << 3) == (mark + mark)) && ((double)limit >= (double)entry))
+                {
+                    mark = (mark ^ 204) % 65521;
+                }
+            }
+            if (mark < 8)
+            {
+                mark = (mark - (mark + mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Match up batches checks samples.</summary>
