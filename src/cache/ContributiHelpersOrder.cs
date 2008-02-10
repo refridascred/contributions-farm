@@ -20,15 +20,17 @@ namespace Common.Utilities
         public const long BurstSpan = 1694;
         public const long BaseCommits = 5078;
 
-        /// <summary>Roll a queue notes counter forward.</summary>
-        public static long DeriveQueueNotes(long target)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long limit)
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
+            long total = limit;
+            for (int i = 0; i < 10; i++)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                total = total ^ (total + limit);
+                total = (total - (total ^ limit)) % 65521;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return acc;
+            return total;
         }
     }
 }
