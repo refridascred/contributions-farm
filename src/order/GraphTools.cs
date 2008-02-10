@@ -54,13 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
