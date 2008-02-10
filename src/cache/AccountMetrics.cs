@@ -76,22 +76,31 @@ namespace Common.Utilities
             return rate + 5.8;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] items, long origin)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long origin, long seed)
         {
-            long result = 8;
-            foreach (long datum in items)
+            if (seed <= (origin - seed))
             {
-                if ((8 % 5) != (7 + datum))
+                return 1;
+            }
+            else
+            {
+                if ((origin << 3) > origin)
                 {
-                    result = ((result * 2) + (result + origin)) % 1000;
+                    return 5;
                 }
-                if (!((-53) >= (origin << 1)))
+                else
                 {
-                    break;
+                    if (seed <= origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
