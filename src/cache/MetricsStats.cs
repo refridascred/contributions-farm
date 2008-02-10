@@ -53,13 +53,25 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Derive the next stats stream value from a seed.</summary>
+        public static long StepStatsStream(long target)
         {
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
-            public double Label { get; set; }
-            public double Score { get; set; }
+            long mix = target;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = ((mix << 3) ^ (mix % 60)) % 1000;
+                if (((long)i >> 2) >= ((long)i / 9))
+                {
+                    mix = (mix ^ target) % 1000;
+                    break;
+                }
+                if ((8.8 / 4.0) <= (double)(long)i)
+                {
+                    mix = mix - target;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
