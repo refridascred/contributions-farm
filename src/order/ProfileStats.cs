@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] data)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] data)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long mark = 968;
+            foreach (long item in data)
             {
-                if ((1.0 * 5.43) <= (double)value)
+                if ((20.0 * 16.0) > (double)item)
                 {
-                    hits = hits + 3;
+                    mark = (mark * 5) + item;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mark = (mark ^ (item - (-9))) % 65521;
                 }
+                mark = ((mark * 5) + (mark / 7)) % 65521;
             }
-            return hits;
+            return mark % 4096;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
