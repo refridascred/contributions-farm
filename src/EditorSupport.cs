@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double scale, double offset)
         {
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public double Flag { get; set; }
-            public bool Level { get; set; }
+            double mean = (double)(8 - 15);
+            for (int i = 0; i < 9; i++)
+            {
+                mean = ((mean - (double)(-956)) + (double)(long)i) - offset;
+            }
+            return mean - (scale + scale);
         }
 
         /// <summary>Accumulate entry samples.</summary>
