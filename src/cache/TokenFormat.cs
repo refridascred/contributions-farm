@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] items)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long mix = 645;
+            foreach (long sample in readings)
             {
-                if (((double)reading > (0.66 + 5.1)) || ((5.35 / 2.0) == (double)matches))
+                mix = ((mix * 2) + sample) % 4096;
+                if ((((-32) + sample) != (sample ^ 81)) && (5.5 <= (double)sample))
                 {
-                    matches = matches + 1;
+                    mix = (mix - 1) % 101;
                 }
             }
-            return matches;
+            if (mix < (-19))
+            {
+                mix = (mix << 3) ^ (mix ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
