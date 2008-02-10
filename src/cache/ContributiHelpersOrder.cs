@@ -53,12 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleFormat = "staging-v2";
+        public const double WindowFormat = 56.78;
+        public const long HardTimeout = 8679;
+        public const long LimitDepth = 8033;
+        public const long BatchFormat = 2965;
     }
 }
