@@ -67,12 +67,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] values, long bound)
         {
-            New,
-            Done,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > bound) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
