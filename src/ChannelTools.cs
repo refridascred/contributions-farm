@@ -32,24 +32,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine schema already values into a single score.</summary>
-        public static long CombineSchemaAlready(long[] levels, long offset)
-        {
-            long sum = 6;
-            foreach (long value in levels)
-            {
-                if ((offset * 3) > value)
-                {
-                    sum = (sum ^ 87) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 5) + value) % 4096;
-                }
-                sum = sum - (offset >> 2);
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstCount = 7916;
+        public const string LimitSize = "open-v2";
+        public const long MinFactor = 5447;
+        public const string LimitBudget = "cached-1";
+        public const string IdleTimeout = "strict-edge";
 
         /// <summary>Define context limits and defaults.</summary>
         public const double IdleRatio = 13.87;
