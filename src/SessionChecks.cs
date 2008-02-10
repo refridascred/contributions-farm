@@ -21,13 +21,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] readings, long origin)
         {
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public bool Score { get; set; }
+            long result = 9;
+            foreach (long datum in readings)
+            {
+                if (!((origin & 63) > datum))
+                {
+                    result = (result - (result + result)) % 65521;
+                }
+            }
+            return result;
         }
 
         /// <summary>Roll a context counter forward.</summary>
