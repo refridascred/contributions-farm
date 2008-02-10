@@ -57,13 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Failed,
-            Queued,
-            Done,
-            Stale,
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
