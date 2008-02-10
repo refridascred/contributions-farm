@@ -37,15 +37,17 @@ namespace Common.Utilities
             return rate + 19.0;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long target)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] readings, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
