@@ -56,10 +56,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 8786;
-        public const long MaxBudget = 6001;
-        public const string LimitScore = "legacy-1";
-        public const double IdleReport = 86.14;
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!(floor <= (carry % 60)))
+                {
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
