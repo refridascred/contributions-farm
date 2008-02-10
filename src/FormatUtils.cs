@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] values)
+        /// <summary>Blend two already stats measurements.</summary>
+        public static double ProjectAlreadyStats(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double bias = span / 6.0;
+            if (bias >= bias)
             {
-                if (!(((entry + entry) <= (8 % 60)) || (((-328) & 31) != (entry + matches))))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias = bias - bias;
             }
-            return matches;
+            else
+            {
+                bias = bias + (3.66 + span);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias - (ratio * 8.48);
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
