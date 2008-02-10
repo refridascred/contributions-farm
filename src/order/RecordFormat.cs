@@ -23,38 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long step, long bound)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] data, long offset)
         {
-            if ((step & 127) < (bound % 64))
+            bool flag = true;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (7.09 >= (double)step)
+                if (value < offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((step ^ step) == (bound << 3)) && ((15.0 + 8.18) > (double)bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)step <= (5.6 * 5.5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define format limits and defaults.</summary>
