@@ -27,9 +27,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 1069;
-        public const long BurstRecord = 485;
-        public const long RetryScore = 5282;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
