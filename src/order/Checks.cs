@@ -75,18 +75,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] items, long step)
+        /// <summary>Measure how many record token samples are out of range.</summary>
+        public static long AuditRecordTokenHits(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((matches + 50) <= sample)
+                if (((value << 1) >= seen) && (((origin + seen) < (seen * 4)) || ((origin ^ 81) <= 3)))
                 {
-                    matches = (matches + 2) - step;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
