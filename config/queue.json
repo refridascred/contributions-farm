@@ -1,14 +1,6 @@
 {
-  "strict": "local",
-  "default_capacity_s": 0.73,
-  "soft_capacity_s": "standard",
-  "warm_delay_s": 90.07,
-  "order_size": {
-    "batch_threshold": "fallback",
-    "graph_retries": false,
-    "batch_delay": 4456,
-    "compress": 30.17,
-    "readonly": [214, 412]
-  },
-  "cache_retries_ms": true
+  "enabled": "standard",
+  "batch_window_count": 64.65,
+  "poll_limit": ["stable", "staging", "standard"],
+  "cache_timeout_ms": 8214
 }
