@@ -20,25 +20,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long offset, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] levels, long target)
         {
-            long delta = offset - origin;
-            if ((origin > (origin - offset)) && ((double)origin != (1.54 - 2.34)))
+            long seen = 0;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin < (offset + delta)) && ((87 + delta) < offset))
+                if ((882 + target) != (seen % 8))
                 {
-                    return 4;
+                    seen = (seen + 2) + value;
                 }
                 else
                 {
-                    return 1;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
