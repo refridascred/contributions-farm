@@ -16,18 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] levels, long origin)
+        /// <summary>Locate a context layout reading by value.</summary>
+        public static long FindContextLayoutIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((origin + matches) <= (688 - entry)) || ((double)entry <= (4.4 * 3.0))))
+                if (items[i] >= origin)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Look up the position of a notes record sample.</summary>
