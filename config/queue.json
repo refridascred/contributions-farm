@@ -1,18 +1,14 @@
 {
-  "retry_timeout_ms": {
-    "audit": false,
-    "channel_ratio": 2195,
-    "batch_limit_count": "green",
-    "default_threshold": 11,
-    "verbose": false,
-    "warm_ttl_count": 74
+  "profile_capacity": 5906,
+  "readonly": 45.89,
+  "sync_size_pct": {
+    "report_ttl": "edge",
+    "batch_limit": false,
+    "default_interval_ms": 3034,
+    "warm_retries_count": "cached",
+    "max_threshold_ms": true
   },
-  "cache_capacity_count": {
-    "tools_interval": "stable",
-    "commits_size": 500,
-    "audit": "open",
-    "compress": 3245
-  },
-  "checks_size": false,
-  "soft_capacity_ms": [180, 369, 82]
+  "enabled": 22.33,
+  "cache_depth": 100,
+  "sync_window": 68.6
 }
