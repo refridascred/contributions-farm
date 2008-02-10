@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] values, long offset)
         {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
