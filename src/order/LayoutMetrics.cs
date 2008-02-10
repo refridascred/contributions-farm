@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a layout schema value against two limits.</summary>
-        public static long ClassifyLayoutSchema(long step, long step2)
+        /// <summary>Count the route layout entries that pass the check.</summary>
+        public static long TallyRouteLayoutMatches(long[] items)
         {
-            long edge = step + step2;
-            if (!((step2 + edge) < step))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((0.15 + 10.0) > (double)edge)
+                if ((value ^ value) < value)
                 {
-                    return 2;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((step >> 5) >= (399 - step2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step2 % 8) > step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every already notes entry stays within the limit.</summary>
