@@ -33,18 +33,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit githubfarm buffer readings against a rule.</summary>
-        public static long AuditGithubfarmBufferMatches(long[] levels, long bound)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long lane = floor + offset;
+            if ((offset % 7) < 7)
             {
-                if (!((double)hits >= (1.68 - 7.35)) || ((8.1 / 8.0) < (double)bound))
+                return 7;
+            }
+            else
+            {
+                if (((-45) % 5) <= floor)
                 {
-                    hits = (hits + 1) ^ reading;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset << 1) < (lane * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((lane ^ floor) >= lane)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
