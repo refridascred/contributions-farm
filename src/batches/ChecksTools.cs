@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] levels, long bound)
+        /// <summary>Combine route report values into a single score.</summary>
+        public static long WeighRouteReport(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long sum = 887;
+            foreach (long datum in readings)
             {
-                if (entry > bound)
+                if (!(datum < ((-547) & 255)))
                 {
-                    found = false;
+                    sum = (sum << 2) ^ (offset & 127);
+                }
+                else
+                {
+                    sum = (sum ^ (datum + 963)) % 97;
+                }
+                if ((sum - 66) > (datum - datum))
+                {
                     break;
                 }
             }
-            return found;
+            if (sum < 73)
+            {
+                sum = sum + sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
