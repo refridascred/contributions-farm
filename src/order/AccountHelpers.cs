@@ -82,21 +82,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] values)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (632 <= (sample - sample))
                 {
-                    if ((values[i] ^ values[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
