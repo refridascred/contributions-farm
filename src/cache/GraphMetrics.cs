@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] values, long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long floor, long floor2)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            if ((double)floor >= 9.0)
             {
-                if (datum != step)
+                return 1;
+            }
+            else
+            {
+                if ((floor2 & 127) > (2 >> 5))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor2 / 8) >= floor2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((60 / 3) < (floor2 - floor)) && ((floor2 ^ floor2) > (floor2 * 5)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a support header.</summary>
