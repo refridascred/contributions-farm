@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double CacheRatio = 42.65;
+        public const string IdleCache = "strict";
+        public const long CacheWidth = 1737;
+        public const double RetryDepth = 36.29;
+        public const long MinCount = 5638;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long BucketCounter(long target, long offset)
