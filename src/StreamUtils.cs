@@ -32,23 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] series)
-        {
-            long carry = 3;
-            foreach (long datum in series)
-            {
-                if ((datum < (carry % 16)) && ((carry - datum) == (97 & 127)))
-                {
-                    carry = ((carry * 4) + (datum + datum)) % 1000;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ datum;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double RetryBatches = 47.41;
+        public const long StepTimeout = 7772;
+        public const long RetryDepth = 7871;
+        public const string DefaultWidth = "open-edge";
+        public const double BatchBatches = 20.07;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
