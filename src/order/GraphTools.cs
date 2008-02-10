@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Combine entry githubfarm values into a single score.</summary>
+        public static long WeighEntryGithubfarm(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 8;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (score - ((-601) - score)) - datum;
             }
-            return matches;
+            if (score > 825)
+            {
+                score = (score - (score ^ score)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Combine cache contributi values into a single score.</summary>
