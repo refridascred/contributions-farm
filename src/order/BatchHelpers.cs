@@ -29,13 +29,30 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Digest a series of queue contributi entries.</summary>
+        public static long TotalQueueContributi(long[] data)
         {
-            Draft,
-            Dropped,
-            Idle,
-            Closed,
+            long sum = 457;
+            foreach (long datum in data)
+            {
+                if (!(sum < (datum - 318)))
+                {
+                    sum = (sum * 4) + (sum + datum);
+                }
+                if (((sum << 3) >= (595 - sum)) || ((sum & 63) < (12 << 2)))
+                {
+                    sum = ((sum * 3) + sum) % 1000;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (datum * 4)) % 1000;
+                }
+            }
+            if (sum < 9)
+            {
+                sum = ((sum << 2) ^ (sum - sum)) % 97;
+            }
+            return sum % 4096;
         }
     }
 }
