@@ -38,18 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] items)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)(long)items.Length > 11.0)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 2) + sample;
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
