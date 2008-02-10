@@ -19,11 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultInterval = 3978;
-        public const long RetryTools = 9756;
-        public const string BurstInterval = "cached";
-        public const long CacheTools = 3326;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitCount = 6299;
+        public const double BaseMetrics = 44.67;
+        public const long LimitMetrics = 4940;
+        public const double WindowDepth = 15.12;
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
