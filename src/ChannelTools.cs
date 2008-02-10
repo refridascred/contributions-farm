@@ -22,11 +22,9 @@ namespace Common.Utilities
         public const long IdleCounter = 2097;
         public const string MaxCounter = "alpha-v2";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleRatio = 13.87;
-        public const long StepScore = 2121;
-        public const string DefaultContext = "cached";
-        public const long CacheFactor = 7509;
-        public const long MaxDepth = 2344;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchDepth = "stable";
+        public const long BatchToken = 465;
+        public const string BaseTimeout = "open-edge";
     }
 }
