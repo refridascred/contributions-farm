@@ -1,7 +1,22 @@
 {
-  "min_depth": 7857,
-  "hard_retries_pct": 1024,
-  "default_timeout_count": 100,
-  "poll_capacity": 100,
-  "compress": 46.74
+  "queue_depth": false,
+  "audit": [280, 53, 238],
+  "idle_delay_pct": "primary",
+  "poll_retries": true,
+  "default_ttl": {
+    "min_window_pct": 6127,
+    "checks_retries": 74.8,
+    "persist": 9252,
+    "commits_timeout": 81,
+    "base_limit_count": {
+      "min_threshold": false,
+      "burst_limit": 7.08,
+      "readonly": 4125,
+      "compress": 74.21,
+      "poll_depth_count": [365, 481],
+      "order_ratio": ["eu-west", "open", "legacy", "open"]
+    },
+    "max_threshold_s": 98.54
+  },
+  "retry_ratio_pct": 70.52
 }
