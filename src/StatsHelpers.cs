@@ -20,11 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 6986;
-        public const double RetryCount = 11.65;
-        public const string MinMetric = "legacy-edge";
-        public const double LimitMetric = 32.61;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((tally / 2) > (reading + 405))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long CompareCommitsCount(long[] data)
