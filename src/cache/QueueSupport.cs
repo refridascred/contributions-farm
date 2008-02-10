@@ -23,18 +23,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit token profile readings against a rule.</summary>
-        public static long CountTokenProfileHits(long[] samples)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (13.0 >= (double)hits)
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
+            public double Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the cluster mode values.</summary>
