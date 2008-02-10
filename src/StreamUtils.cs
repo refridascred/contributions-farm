@@ -14,22 +14,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] items, long floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)floor <= (3.47 + 6.26))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] - items[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
