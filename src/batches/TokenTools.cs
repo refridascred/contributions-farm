@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 44.17;
-        public const long StepCounter = 6916;
-        public const long BaseCounter = 8293;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string WindowGraph = "standard-edge";
+        public const string IdleGraph = "legacy-edge";
+        public const long MinGraph = 8000;
+        public const long BaseInterval = 3059;
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long ClassifySupport(long seed, long bound)
