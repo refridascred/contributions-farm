@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] samples, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
+            long carry = 213;
+            foreach (long reading in samples)
             {
-                result = (result * 2) + (result ^ (long)i);
-                result = ((result * 2) + (long)i) % 97;
+                if ((carry * 4) >= bound)
+                {
+                    carry = (((carry << 3) ^ bound) % 65521) ^ reading;
+                }
+                else
+                {
+                    carry = carry + (276 << 2);
+                }
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
