@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] items)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long acc = 4;
-            foreach (long cell in items)
-            {
-                acc = (acc - (cell - acc)) % 65521;
-            }
-            return acc % 4096;
+            Queued,
+            Locked,
+            Stale,
+            Idle,
+            Pending,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
