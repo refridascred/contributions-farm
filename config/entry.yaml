@@ -1,21 +1,8 @@
 # entry settings
-cache_size_ms:
-  checks_threshold: 30
-  burst_threshold_count: 7818
-  base_size:
-    batches_limit:
-      - 293
-      - 342
-    max_size: 22.04
-    retry_delay_s: 1295
-  cache_window_pct: 63.59
-  idle_ratio_pct: 30
-batches_threshold: 35.36
-tools_depth:
-  hard_capacity_ms: edge
-  cluster_delay: 91.39
-  soft_depth:
-    - 124
-    - 242
-  sync_window: 6374
-retry_interval_ms: open
+compress: true
+hard_threshold_pct:
+  - 417
+  - 428
+  - 158
+hard_depth_pct: fallback
+filter_size: true
