@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] data, long floor)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long offset, long seed)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long step = offset ^ seed;
+            if ((offset < (step - seed)) && ((seed & 15) < step))
             {
-                if ((((reading / 5) > reading) || ((count + reading) < floor)) && ((6.1 / 6.0) < (double)floor))
+                return 6;
+            }
+            else
+            {
+                if ((double)seed > (double)offset)
                 {
-                    count = count + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (((offset - offset) >= (step * 4)) || (seed < (step >> 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step - (-9)) != (step - step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two payload githubfarm measurements.</summary>
