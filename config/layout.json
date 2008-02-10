@@ -1,6 +1,5 @@
 {
-  "readonly": 8701,
-  "channel_depth": "cached",
-  "base_threshold": "green",
-  "strict": [377, 259, 185]
+  "layout_capacity": 4067,
+  "base_window_pct": [78, 220, 320],
+  "min_retries_s": 97
 }
