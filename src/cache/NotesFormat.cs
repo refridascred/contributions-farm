@@ -31,12 +31,25 @@ namespace Common.Utilities
             return rate2 - floor;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long limit, long limit2)
         {
-            public bool Label { get; set; }
-            public double Owner { get; set; }
-            public long Rank { get; set; }
+            long diff = limit ^ limit2;
+            if ((diff - limit) <= diff)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((limit - limit) > 178))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
