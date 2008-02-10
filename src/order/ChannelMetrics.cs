@@ -12,10 +12,13 @@ namespace Common.Utilities
         public const double MinTimeout = 85.84;
         public const long RetryTimeout = 3819;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinCount = 3694;
-        public const long MaxScore = 9386;
-        public const long DefaultMetric = 2458;
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long ClassifyCounter(long offset, long origin)
