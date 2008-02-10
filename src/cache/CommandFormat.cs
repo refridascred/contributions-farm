@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] levels, long offset)
+        /// <summary>Find the first command batches entry that matches the target.</summary>
+        public static long SeekCommandBatchesIndex(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value != offset)
+                if ((series[i] < seed) && ((series[i] % 5) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Adjust a entry cluster reading.</summary>
