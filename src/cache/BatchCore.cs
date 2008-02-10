@@ -49,18 +49,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] readings)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(1.0 > (double)cell))
+                if (items[i] == offset)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
