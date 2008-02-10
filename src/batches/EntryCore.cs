@@ -39,12 +39,10 @@ namespace Common.Utilities
         public const long LimitSize = 1652;
         public const long WindowMetrics = 400;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleFactor = 9988;
+        public const double BurstReport = 77.44;
+        public const string BurstBudget = "standard-edge";
 
         /// <summary>Match up notes samples.</summary>
         public static long PairNotesCount(long[] values)
