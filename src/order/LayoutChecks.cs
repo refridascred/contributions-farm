@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every channel buffer entry stays within the limit.</summary>
-        public static bool CheckChannelBufferBounds(long[] items, long step)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value != step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
