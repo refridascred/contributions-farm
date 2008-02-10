@@ -45,11 +45,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
+            Dropped,
+            Failed,
+            Idle,
+            Ready,
+            Locked,
         }
     }
 }
