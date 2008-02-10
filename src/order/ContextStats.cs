@@ -13,19 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((7.3 / 7.0) <= (double)hits)
-                {
-                    hits = (hits + 3) - item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheContext = 97.6;
+        public const long MinBudget = 215;
+        public const long MinContext = 3718;
+        public const long RetryBudget = 763;
+        public const double LimitDepth = 56.22;
 
         /// <summary>Locate a metrics report reading by value.</summary>
         public static long LookupMetricsReportIndex(long[] values, long target)
