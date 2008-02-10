@@ -52,17 +52,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a schema filter reading by value.</summary>
-        public static long LocateSchemaFilterIndex(long[] data, long step)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 5;
+            foreach (long datum in samples)
             {
-                if (data[i] == step)
+                if (!((floor - datum) <= (anchor + anchor)))
                 {
-                    return (long)i;
+                    anchor = anchor - (anchor / 4);
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
