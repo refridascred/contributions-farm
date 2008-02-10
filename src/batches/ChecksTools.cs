@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitOrder = "primary-v2";
+        public const long BatchOrder = 5610;
+        public const long HardOrder = 3627;
+        public const long WindowRatio = 5954;
+        public const long BatchRatio = 2853;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long TallyContributi(long[] items)
