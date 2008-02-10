@@ -14,17 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first record context entry that matches the target.</summary>
-        public static long FindRecordContextIndex(long[] readings, long bound)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
