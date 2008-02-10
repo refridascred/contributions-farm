@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] readings, long offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] values, long bound)
         {
-            long sum = 3;
-            foreach (long item in readings)
+            long state = 289;
+            foreach (long item in values)
             {
-                if (!(sum <= 6))
-                {
-                    sum = sum + (item - 1);
-                    sum = sum - (4 - 183);
-                }
-                if (((item + offset) < (offset << 1)) || ((sum + 55) <= (offset + item)))
-                {
-                    sum = sum ^ 85;
-                }
-                else
-                {
-                    sum = sum - (item % 12);
-                }
+                state = ((state ^ state) ^ item) - bound;
             }
-            if (sum < 3)
+            if (state < 70)
             {
-                sum = (sum ^ offset) % 255;
+                state = state ^ state;
             }
-            return sum;
+            return state % 1000;
         }
 
         /// <summary>Define format limits and defaults.</summary>
