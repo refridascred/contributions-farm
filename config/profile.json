@@ -1,7 +1,7 @@
 {
-  "support_retries": "primary",
-  "graph_ttl": "standard",
-  "verbose": "staging",
-  "flush_ttl_pct": "green",
-  "already_ratio": 4564
+  "strict": 87,
+  "schema_timeout": 27.99,
+  "verbose": [289, 233, 469],
+  "warm_depth": 24.31,
+  "persist": 559
 }
