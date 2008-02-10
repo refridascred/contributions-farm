@@ -49,11 +49,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string RetryWidth = "legacy-v2";
-        public const long BaseFormat = 4176;
-        public const long LimitDepth = 8333;
-        public const long CacheLevel = 3004;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public long Count { get; set; }
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Classify a contributi stats pair into a bucket.</summary>
         public static long SortContributiStats(long limit, long seed)
