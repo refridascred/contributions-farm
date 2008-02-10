@@ -1,12 +1,6 @@
 {
-  "verbose": {
-    "strict": "local",
-    "already_capacity": [229, 251],
-    "persist": [317, 104, 352],
-    "idle_limit_s": 65.43
-  },
-  "hard_threshold_pct": false,
-  "base_depth_ms": "standard",
-  "strict": 93.98,
-  "base_ttl_s": 91.4
+  "min_size_count": "stable",
+  "metrics_ttl": 250,
+  "persist": 76,
+  "contributi_interval": 70
 }
