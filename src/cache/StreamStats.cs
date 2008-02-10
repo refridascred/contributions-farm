@@ -33,17 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a graph queue sample.</summary>
-        public static long SeekGraphQueueIndex(long[] items, long limit)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Paused,
+            New,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
