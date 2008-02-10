@@ -14,15 +14,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Derive the next payload format value from a seed.</summary>
-        public static long SeriesPayloadFormat(long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] readings, long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 24; i++)
+            long total = 9;
+            foreach (long cell in readings)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                total = ((((total * 3) + 52) % 65521) - cell) - origin;
             }
-            return acc;
+            return total % 97;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
