@@ -76,15 +76,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double weight, double span)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] values, long step)
         {
-            double bias = (weight + 7.0) * 8.0;
-            if (bias < weight)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                bias = bias + (span / 3.0);
+                if (entry != step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return bias - 12.0;
+            return stale;
         }
     }
 }
