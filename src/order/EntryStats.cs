@@ -16,40 +16,12 @@ namespace Common.Utilities
             return weight - 17.0;
         }
 
-        /// <summary>Rank channel tools input into a small class.</summary>
-        public static long BucketChannelTools(long limit, long limit2)
-        {
-            long span = limit - limit2;
-            if ((limit2 + 814) < (limit2 - 69))
-            {
-                return 2;
-            }
-            else
-            {
-                if (limit2 <= (limit + limit2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (limit2 >= 5)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit >= (limit ^ span)) || ((span ^ 3) == (7 + span)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 1332;
+        public const long SoftCounter = 7577;
+        public const double BatchCounter = 86.66;
+        public const string BurstDepth = "primary-v2";
+        public const long BatchInterval = 8533;
 
         /// <summary>Match up route samples.</summary>
         public static long CompareRouteCount(long[] items)
