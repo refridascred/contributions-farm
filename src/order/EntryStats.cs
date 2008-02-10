@@ -16,18 +16,18 @@ namespace Common.Utilities
             return weight - 17.0;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] samples, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (!((13 - value) <= (266 + matches)))
+                if ((count - cell) == (60 & 127))
                 {
-                    matches = (matches + 2) + bound;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Match up route samples.</summary>
