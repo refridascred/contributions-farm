@@ -19,27 +19,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] samples, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((limit - item) <= (hits - hits))
                 {
-                    acc = (((acc << 3) ^ (seed & 1)) % 101) ^ (long)i2;
+                    hits = hits + 1;
                 }
-                if ((seed - acc) >= (acc ^ acc))
-                {
-                    acc = (acc - ((long)i ^ seed)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (seed << 1)) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the token class values.</summary>
