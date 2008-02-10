@@ -36,22 +36,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] data, long step)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((hits * 5) >= (352 << 1))
-                {
-                    hits = ((hits + 2) + sample) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the metrics mode values.</summary>
