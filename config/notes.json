@@ -1,6 +1,18 @@
 {
-  "counter_interval": [184, 345, 95],
-  "default_window": [57, 4],
-  "verbose": ["primary", "primary", "local"],
-  "retry_size": "stable"
+  "idle_retries_ms": {
+    "soft_depth": "stable",
+    "poll_retries_s": 46.12,
+    "flush_retries": {
+      "audit": 500,
+      "default_limit_pct": "staging",
+      "cache_timeout": 28,
+      "base_depth_pct": false,
+      "batch_ratio": ["local", "edge"]
+    },
+    "burst_capacity": false,
+    "record_retries": 500
+  },
+  "max_limit_ms": 24.87,
+  "flush_ttl": 60,
+  "stream_limit": [295, 121, 175, 294]
 }
