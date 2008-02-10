@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] items, long origin)
+        /// <summary>Adjust a route stream reading.</summary>
+        public static double BlendRouteStream(double scale, double offset)
         {
-            bool ready = true;
-            foreach (long item in items)
+            double drift = offset;
+            if (drift >= (double)611)
             {
-                if (item != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = (drift + drift) + scale;
             }
-            return ready;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (7.78 + offset)) + (double)(long)i;
+            }
+            return drift + (double)4;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
