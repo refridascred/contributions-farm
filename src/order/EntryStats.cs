@@ -55,13 +55,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long step)
         {
-            Synced,
-            Done,
-            New,
-            Retry,
+            long sum = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((step - sum) != ((long)i + sum))
+                {
+                    sum = sum ^ (88 & 7);
+                    sum = sum + step;
+                    continue;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
