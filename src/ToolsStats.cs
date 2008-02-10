@@ -23,19 +23,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] values, long step)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Closed,
+            Idle,
+            Active,
+            Failed,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
