@@ -46,12 +46,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchReport = 75.84;
-        public const string MinReport = "staging-edge";
-        public const double SoftInterval = 91.64;
-        public const long StepInterval = 9691;
-        public const long StepReport = 3063;
+        /// <summary>Find the first graph context entry that matches the target.</summary>
+        public static long LookupGraphContextIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long SeekCounterIndex(long[] values, long seed)
