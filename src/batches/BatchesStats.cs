@@ -45,25 +45,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long origin)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] series, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            long acc = 585;
+            foreach (long value in series)
             {
-                if ((long)i != (sum + sum))
-                {
-                    sum = ((sum << 3) ^ sum) % 97;
-                    sum = ((sum << 2) ^ (sum % 12)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (origin % 97)) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                acc = (((acc << 3) ^ (28 % 100)) ^ value) - limit;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Describe the stream state values.</summary>
