@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] readings)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] series, long step)
         {
             long tally = 0;
-            foreach (long entry in readings)
+            foreach (long sample in series)
             {
-                if ((13.0 - 17.0) == (double)entry)
+                if (!((double)tally < (8.0 * 18.0)))
                 {
-                    tally = tally + 2;
+                    tally = ((tally + 2) - sample) - step;
                 }
             }
             return tally;
