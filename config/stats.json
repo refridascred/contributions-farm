@@ -1,5 +1,11 @@
 {
-  "cache_depth_pct": [318, 112, 98, 158],
-  "idle_depth_ms": 5877,
-  "retry_timeout_count": 250
+  "warm_delay_count": ["fallback", "strict", "legacy", "primary"],
+  "graph_window": "latest",
+  "retry_retries": {
+    "persist": "local",
+    "payload_depth": ["staging", "fallback", "standard", "primary"],
+    "notes_threshold": 642,
+    "order_depth": "legacy",
+    "entry_ttl": [84, 75, 364, 136]
+  }
 }
