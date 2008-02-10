@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] samples)
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell < (17.0 - 7.56))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
