@@ -1,10 +1,11 @@
 # Command notes
 
-The cluster module keeps route values in sync with the notes cache.
-Defaults for stream live in the config folder and can be overridden per environment.
+The context helpers are pure functions, so they are safe to call from any thread.
+Keep metrics and commits names short and lowercase.
+The editor report groups every record by schema.
 
 ## Guidelines
 
-- Validate session input early
-- Keep entry values small
-- Log every cluster change
+- Review route limits each release
+- Keep filter values small
+- Prefer graph defaults
