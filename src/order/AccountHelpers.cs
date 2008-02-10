@@ -25,19 +25,30 @@ namespace Common.Utilities
         public const string HardScore = "strict-v2";
         public const long BurstTimeout = 7751;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] values, long target)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long mix = 5;
+            foreach (long value in values)
             {
-                if (datum >= target)
+                if ((value % 60) >= mix)
                 {
-                    ok = false;
+                    mix = (mix ^ 892) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (mix * 4)) % 65521;
+                }
+                if ((double)value > (1.37 * 0.65))
+                {
                     break;
                 }
             }
-            return ok;
+            if (mix < 39)
+            {
+                mix = (mix ^ (mix << 3)) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Accumulate already samples.</summary>
