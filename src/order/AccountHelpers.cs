@@ -15,13 +15,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Draft,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleBudget = "stable";
+        public const string HardScore = "strict-v2";
+        public const long BurstTimeout = 7751;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long HardFactor = 4025;
