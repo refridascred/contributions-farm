@@ -63,11 +63,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public long Size { get; set; }
-            public bool Total { get; set; }
+            public bool Mode { get; set; }
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Validate report readings against a bound.</summary>
