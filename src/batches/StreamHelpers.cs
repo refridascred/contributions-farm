@@ -20,12 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public bool Ratio { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            Queued,
+            Paused,
+            Ready,
         }
 
         /// <summary>Blend two metric measurements.</summary>
