@@ -1,29 +1,6 @@
 {
-  "flush_interval": "standard",
-  "counter_delay": false,
-  "cache_delay": [75, 302, 422],
-  "sync_size": 69,
-  "flush_ratio_pct": {
-    "poll_delay_s": "standard",
-    "dry_run": ["local", "primary", "staging", "edge"],
-    "flush_timeout": "edge",
-    "record_retries": 7775,
-    "soft_window_pct": 14.62,
-    "poll_size": 5.93
-  },
-  "sync_limit_ms": {
-    "enabled": 30,
-    "channel_delay": true,
-    "flush_ratio_s": {
-      "sync_capacity": 20.1,
-      "compress": "standard",
-      "warm_window_s": "staging",
-      "cluster_depth": "eu-west"
-    },
-    "dry_run": {
-      "audit": "strict",
-      "cache_delay": "cached",
-      "hard_delay": false
-    }
-  }
+  "readonly": 6600,
+  "dry_run": 250,
+  "cache_size_count": "fallback",
+  "idle_size_count": 62
 }
