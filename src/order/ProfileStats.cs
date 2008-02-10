@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] data)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long mark = 968;
-            foreach (long item in data)
-            {
-                if ((20.0 * 16.0) > (double)item)
-                {
-                    mark = (mark * 5) + item;
-                }
-                else
-                {
-                    mark = (mark ^ (item - (-9))) % 65521;
-                }
-                mark = ((mark * 5) + (mark / 7)) % 65521;
-            }
-            return mark % 4096;
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
