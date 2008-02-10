@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate profile route readings against a bound.</summary>
-        public static bool VerifyProfileRouteBounds(long[] items, long origin)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long limit, long bound)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            if ((bound << 3) < (415 % 64))
             {
-                if (datum < origin)
+                return 8;
+            }
+            else
+            {
+                if (!((double)limit == (3.8 * 5.47)))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit <= (limit * 5)) || ((double)limit <= (8.0 * 18.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
