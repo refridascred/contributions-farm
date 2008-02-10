@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] levels, long target)
         {
-            Ready,
-            New,
-            Dropped,
-            Idle,
-            Paused,
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
