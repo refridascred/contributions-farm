@@ -1,8 +1,5 @@
 {
-  "already_limit": "open",
-  "base_retries": false,
-  "cache_retries": "edge",
-  "stream_timeout": true,
-  "soft_delay_ms": true,
-  "graph_ratio": true
+  "max_size_pct": false,
+  "default_size_count": false,
+  "batch_ratio_ms": 75
 }
