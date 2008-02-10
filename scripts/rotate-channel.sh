@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in fallback legacy stable; do
+    log "checking ${item}"
+done
 
 count=0
 while [ "${count}" -lt 4 ]; do
@@ -22,6 +16,5 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-for item in fallback eu-west local cached; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=304
+log "limit is ${CHANNEL_LIMIT}"
