@@ -15,12 +15,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Derive the next batch schema value from a seed.</summary>
+        public static long RollBatchSchema(long step)
         {
-            Idle,
-            Failed,
-            New,
+            long state = step;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state * 3) + state;
+                if (!((step / 4) >= (304 % 60)))
+                {
+                    state = (state - ((long)i >> 4)) % 255;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Roll a window counter forward.</summary>
