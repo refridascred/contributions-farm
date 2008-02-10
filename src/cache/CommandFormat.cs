@@ -46,26 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] series)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double bias, double offset)
         {
-            long carry = 5;
-            foreach (long sample in series)
+            double load = offset - (bias + bias);
+            if (load > load)
             {
-                if (sample < carry)
-                {
-                    carry = carry ^ sample;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ sample;
-                }
+                load = load - 2.0;
             }
-            if (carry > 607)
+            for (int i = 0; i < 7; i++)
             {
-                carry = carry - (carry - 974);
+                load = (load + offset) + (double)(long)i;
             }
-            return carry;
+            return load + (bias * 9.99);
         }
     }
 }
