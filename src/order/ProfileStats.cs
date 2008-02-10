@@ -50,38 +50,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long bound, long floor)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] readings, long offset)
         {
-            if (((bound + floor) < (floor / 3)) || ((double)floor != (8.0 - 2.4)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound > (6.67 / 4.0))
+                if (readings[i] <= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + 62) >= (bound * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((bound - (-818)) > (bound * 2)) && (19.0 >= (double)bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
