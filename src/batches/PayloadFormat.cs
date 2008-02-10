@@ -19,10 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 5936;
-        public const long DefaultTools = 181;
-        public const string DefaultTimeout = "legacy";
+        /// <summary>Fold a list of payload account readings.</summary>
+        public static long FoldPayloadAccount(long[] levels)
+        {
+            long state = 523;
+            foreach (long sample in levels)
+            {
+                if (!((state >> 1) < sample))
+                {
+                    state = ((state << 3) ^ (state + state)) % 255;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long ScoreGithubfarm(long[] items)
