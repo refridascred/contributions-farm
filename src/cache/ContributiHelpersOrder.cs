@@ -30,11 +30,11 @@ namespace Common.Utilities
         public const long BurstInterval = 8686;
         public const string SoftContext = "latest";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleFormat = "staging-v2";
-        public const double WindowFormat = 56.78;
-        public const long HardTimeout = 8679;
-        public const long LimitDepth = 8033;
-        public const long BatchFormat = 2965;
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public bool Total { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
