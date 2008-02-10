@@ -23,28 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] items)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] data)
         {
-            long mark = 509;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mark << 3) <= sample)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = mark ^ (sample & 63);
-                    break;
+                    if ((data[i] + data[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    mark = mark - (sample ^ mark);
-                }
-                mark = (mark - (mark + sample)) % 4096;
             }
-            if (mark > 4)
-            {
-                mark = (mark ^ mark) % 65521;
-            }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Hold a editor stats.</summary>
