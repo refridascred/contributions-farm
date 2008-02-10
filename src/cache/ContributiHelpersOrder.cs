@@ -20,22 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] series, long floor)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((floor / 8) == (35 + floor))
-                {
-                    count = (count + 1) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Draft,
+            Idle,
+            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Blend two editor measurements.</summary>
