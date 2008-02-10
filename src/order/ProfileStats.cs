@@ -37,31 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cache schema entries.</summary>
-        public static long FoldCacheSchema(long[] samples, long step)
-        {
-            long mark = 148;
-            foreach (long item in samples)
-            {
-                if (!(mark >= (item & 15)))
-                {
-                    break;
-                }
-                if (item < (step >> 4))
-                {
-                    mark = (mark ^ (mark / 9)) % 1000;
-                }
-                if ((18 / 2) >= item)
-                {
-                    break;
-                }
-            }
-            if (mark < 528)
-            {
-                mark = (mark ^ mark) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardLevel = 562;
+        public const long BaseDepth = 4109;
+        public const string SoftFactor = "standard-1";
+        public const double CacheStream = 63.77;
+        public const long MaxFactor = 3626;
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
