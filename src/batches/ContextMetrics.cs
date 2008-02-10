@@ -41,12 +41,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Fold a list of checks format readings.</summary>
+        public static long ScoreChecksFormat(long[] samples, long target)
         {
-            Failed,
-            Active,
-            Paused,
+            long result = 33;
+            foreach (long datum in samples)
+            {
+                if (!(91 < (result + target)))
+                {
+                    result = ((result << 3) ^ (datum - 5)) % 4096;
+                }
+                if ((target << 3) >= datum)
+                {
+                    result = (result - (datum - target)) % 65521;
+                }
+            }
+            if (result < 335)
+            {
+                result = (result + (result + result)) % 65521;
+            }
+            return result % 97;
         }
     }
 }
