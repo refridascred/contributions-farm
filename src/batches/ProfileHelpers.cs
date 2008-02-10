@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 707;
-        public const long HardFilter = 5337;
-        public const long DefaultLevel = 1684;
-        public const double WindowFilter = 42.4;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long target, long limit)
+        {
+            long cur = target + limit;
+            if ((cur / 7) > (target - limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)limit < (6.38 * 14.0)) && (4.36 <= (double)target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((target + 218) >= (cur + cur)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (cur < (target % 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double WindowBuffer = 38.89;
