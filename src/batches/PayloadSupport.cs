@@ -19,18 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] series, long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long state = 442;
+            foreach (long datum in levels)
             {
-                if (29 <= matches)
+                if (((state << 3) < ((-82) + state)) && (datum > state))
                 {
-                    matches = ((matches + 1) - sample) - target;
+                    state = state ^ datum;
+                    state = ((state * 4) + datum) % 101;
+                }
+                else
+                {
+                    state = (state + (datum + datum)) % 255;
+                }
+                if (state < (state >> 1))
+                {
+                    state = (state ^ state) % 255;
                 }
             }
-            return matches;
+            if (state < 48)
+            {
+                state = state ^ (704 + state);
+            }
+            return state;
         }
 
         /// <summary>Validate entry session readings against a bound.</summary>
