@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] values, long step)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long anchor = 7;
-            foreach (long cell in values)
-            {
-                if (!((9.69 + 3.0) >= (double)step))
-                {
-                    anchor = ((anchor << 2) ^ (cell + step)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor ^ (step * 4)) % 101;
-                }
-            }
-            return anchor;
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
