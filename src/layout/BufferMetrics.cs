@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Measure how many channel account samples are out of range.</summary>
+        public static long MeasureChannelAccountMatches(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry <= (33 / 5))
                 {
-                    if ((data[i] ^ data[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
