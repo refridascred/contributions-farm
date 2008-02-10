@@ -20,14 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] series, long target)
         {
-            Draft,
-            Idle,
-            Active,
-            New,
-            Synced,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Blend two editor measurements.</summary>
