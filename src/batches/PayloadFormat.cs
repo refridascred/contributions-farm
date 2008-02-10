@@ -42,14 +42,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] data, long step)
         {
-            Done,
-            Queued,
-            Paused,
-            Idle,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
