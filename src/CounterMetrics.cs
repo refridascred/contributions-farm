@@ -16,18 +16,12 @@ namespace Common.Utilities
             return drift + 7.2;
         }
 
-        /// <summary>Measure how many context stream samples are out of range.</summary>
-        public static long MeasureContextStreamOutliers(long[] values)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((hits - reading) != (reading - 94))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
