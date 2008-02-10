@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((long)i & 3) >= offset)
-                {
-                    score = (score - offset) % 4096;
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
