@@ -50,10 +50,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 58;
-        public const long RetryTimeout = 8513;
-        public const long BatchTools = 4998;
-        public const long SoftLevel = 552;
+        /// <summary>Compare every pair of stats counter readings.</summary>
+        public static long CompareStatsCounterCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
