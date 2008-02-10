@@ -91,18 +91,18 @@ namespace Common.Utilities
             return (weight - bias) + floor;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] readings)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] readings)
         {
-            long anchor = 6;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (anchor < (reading * 5))
+                if ((hits >> 3) > (item >> 3))
                 {
-                    anchor = anchor ^ reading;
+                    hits = hits + 2;
                 }
             }
-            return anchor;
+            return hits;
         }
     }
 }
