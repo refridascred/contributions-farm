@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 8368;
+        public const double StepRatio = 33.79;
+        public const double CacheRatio = 84.66;
+        public const double MinWidth = 85.04;
 
         /// <summary>Classify a commits channel pair into a bucket.</summary>
         public static long BucketCommitsChannel(long bound, long floor)
