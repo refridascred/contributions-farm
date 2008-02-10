@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] items, long origin)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] levels)
         {
-            long mix = 255;
-            foreach (long item in items)
+            long mix = 4;
+            foreach (long datum in levels)
             {
-                mix = ((mix ^ item) % 65521) + origin;
-            }
-            if (mix > 7)
-            {
-                mix = (mix + mix) % 255;
+                mix = mix ^ (441 ^ datum);
             }
             return mix;
         }
