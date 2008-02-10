@@ -39,25 +39,18 @@ namespace Common.Utilities
         public const double SoftSize = 56.12;
         public const long HardGithubfarm = 2931;
 
-        /// <summary>Grade a githubfarm schema value against two limits.</summary>
-        public static long BucketGithubfarmSchema(long bound, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] items, long offset)
         {
-            long step = bound + target;
-            if ((bound <= (bound % 2)) || ((bound << 1) >= (bound << 3)))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step / 9) >= step)
+                if ((double)offset != (1.0 + 5.44))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    seen = (seen + 2) + entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a contributi context sample.</summary>
