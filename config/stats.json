@@ -1,6 +1,7 @@
 {
-  "commits_timeout": 53.91,
-  "warm_ttl": 1024,
-  "entry_depth": "local",
-  "stream_delay": 5931
+  "enabled": 250,
+  "poll_limit": "blue",
+  "min_size": true,
+  "compress": 92.26,
+  "context_depth": 76
 }
