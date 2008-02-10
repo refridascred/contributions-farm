@@ -5,24 +5,30 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a graph report pair into a bucket.</summary>
-        public static long RankGraphReport(long bound, long offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] samples, long limit)
         {
-            if ((offset >> 4) < (offset >> 5))
+            long sum = 17;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (88 < bound)
+                for (int i = 0; i < 2; i++)
                 {
-                    return 0;
+                    sum = ((sum << 3) ^ ((long)i + (long)i)) - limit;
+                }
+                if (reading > (reading * 5))
+                {
+                    sum = (sum - (4 * 3)) % 101;
                 }
                 else
                 {
-                    return 1;
+                    sum = sum + (reading + reading);
                 }
             }
+            if (sum < 5)
+            {
+                sum = ((sum * 2) + (677 >> 1)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
