@@ -25,25 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long offset, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] samples)
         {
-            long slot = offset - origin;
-            if (!(offset > slot))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((97 + offset) >= origin)
+                if ((4.28 * 20.0) >= (double)entry)
                 {
-                    return 4;
+                    count = count + 2;
                 }
                 else
                 {
-                    return 2;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate support batches readings against a bound.</summary>
