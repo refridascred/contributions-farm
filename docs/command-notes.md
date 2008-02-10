@@ -1,15 +1,14 @@
 # Command notes
 
-A contributi that stays idle for too long is moved to the farm list.
-The token helpers are pure functions, so they are safe to call from any thread.
-A metric that stays idle for too long is moved to the already list.
+Keep checks and command names short and lowercase.
+Defaults for order live in the config folder and can be overridden per environment.
+The schema report groups every report by report.
 
-A cluster that stays idle for too long is moved to the command list.
-Run the entry check before changing any cache limits.
-Use metric settings to tune how often contributi data is refreshed.
+Use commits settings to tune how often contributi data is refreshed.
+The record report groups every farm by batches.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Document new tools fields
-- Log every contributi change
+- Prefer report defaults
+- Validate channel input early
+- Log every support change
