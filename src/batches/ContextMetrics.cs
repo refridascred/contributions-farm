@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinCount = 2837;
-        public const long BaseAlready = 7582;
-        public const long HardFactor = 2323;
-        public const string HardAlready = "fallback";
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Active,
+            Synced,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
