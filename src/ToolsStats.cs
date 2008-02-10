@@ -75,23 +75,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double ratio, double offset)
-        {
-            double scale = 5.0;
-            if (scale > (scale - offset))
-            {
-                scale = scale + (double)(-2);
-            }
-            else
-            {
-                scale = scale - (offset / 7.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (ratio - scale)) + (double)(long)i;
-            }
-            return scale - 4.0;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 4452;
+        public const long WindowStream = 2810;
+        public const long BaseSpan = 2463;
+        public const string BaseStream = "primary-1";
     }
 }
