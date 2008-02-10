@@ -61,12 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Digest a series of contributi session entries.</summary>
+        public static long TallyContributiSession(long[] values)
         {
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            long total = 8;
+            foreach (long value in values)
+            {
+                if (value >= (23 ^ total))
+                {
+                    total = ((total << 2) ^ (total + (-94))) % 101;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Count commits entry pairs that satisfy a relation.</summary>
