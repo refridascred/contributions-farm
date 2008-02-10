@@ -33,22 +33,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] values, long offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (!(6 <= datum))
+                if (value >= step)
                 {
-                    hits = (hits + 3) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
