@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] samples, long offset)
+        /// <summary>Fold a list of notes commits readings.</summary>
+        public static long FoldNotesCommits(long[] readings, long origin)
         {
-            long anchor = 5;
-            foreach (long reading in samples)
+            long total = 13;
+            foreach (long value in readings)
             {
-                if ((reading + reading) >= offset)
-                {
-                    anchor = (anchor ^ offset) % 97;
-                    anchor = ((anchor << 3) ^ (reading + anchor)) % 255;
-                }
-                if ((anchor >> 2) >= offset)
-                {
-                    anchor = ((anchor << 3) ^ (offset >> 5)) % 1000;
-                }
+                total = ((total ^ (total + total)) + value) - origin;
             }
-            return anchor % 97;
+            return total;
         }
 
         /// <summary>Count the farm cache entries that pass the check.</summary>
