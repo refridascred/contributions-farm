@@ -20,31 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long limit, long limit2)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long seed)
         {
-            if (limit < (limit & 63))
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 7;
+                anchor = anchor ^ (seed & 127);
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (((limit - 95) < limit2) || ((limit & 255) == (limit2 - limit)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((-983) - limit) <= 95)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
