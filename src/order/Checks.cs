@@ -36,21 +36,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] data)
+        /// <summary>Derive the next format graph value from a seed.</summary>
+        public static long SeriesFormatGraph(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)(long)i > (2.0 / 3.0))
                 {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = score ^ ((long)i << 1);
+                    score = (score * 3) + (seed % 16);
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
