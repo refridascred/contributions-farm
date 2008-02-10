@@ -24,36 +24,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long result = 203;
-            foreach (long datum in items)
-            {
-                long count = (datum % 60) & 63;
-                if (datum >= (count - count))
-                {
-                    result = (result - (datum + count)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    count = ((count << 2) ^ result) % 65521;
-                }
-                if ((result + (long)items.Length) < (result >> 5))
-                {
-                    result = ((result * 2) + (result << 2)) % 65521;
-                }
-                else
-                {
-                    result = (result + result) % 97;
-                }
-            }
-            if (result < 614)
-            {
-                result = result ^ result;
-            }
-            return result;
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
