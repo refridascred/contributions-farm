@@ -44,10 +44,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchSpan = 6926;
-        public const string SoftAlready = "primary-1";
-        public const string BurstRatio = "strict-v2";
-        public const long WindowAlready = 4436;
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
