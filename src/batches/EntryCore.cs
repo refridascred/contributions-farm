@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] items)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long limit)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long anchor = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (((5 + (long)items.Length) < (item >> 2)) || ((item - seen) > (item * 5)))
-                {
-                    seen = seen + 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a checks summary.</summary>
