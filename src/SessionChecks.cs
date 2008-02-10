@@ -13,11 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 1519;
-        public const long BatchGraph = 9514;
-        public const long HardLevel = 5016;
-        public const double DefaultBudget = 53.32;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
