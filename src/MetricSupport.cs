@@ -36,23 +36,24 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] series)
+        /// <summary>Grade a token commits value against two limits.</summary>
+        public static long GradeTokenCommits(long origin, long limit)
         {
-            long result = 7;
-            foreach (long reading in series)
+            if (((origin / 9) <= (origin ^ origin)) || ((limit + limit) != (origin % 16)))
             {
-                if (((double)result <= (0.6 * 3.48)) || (6 < (result * 5)))
+                return 7;
+            }
+            else
+            {
+                if ((origin * 2) < limit)
                 {
-                    break;
+                    return 0;
                 }
-                result = (result << 3) ^ (reading - result);
-                if ((6.1 - 18.0) >= (double)result)
+                else
                 {
-                    break;
+                    return 1;
                 }
             }
-            return result;
         }
     }
 }
