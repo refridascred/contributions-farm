@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] values, long floor)
         {
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (floor > (seen * 2))
+                {
+                    seen = (seen + 3) - item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
