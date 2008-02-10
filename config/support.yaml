@@ -1,7 +1,10 @@
 # support settings
-hard_ttl_s: 3877
-idle_delay_ms: strict
-hard_limit_s: cached
-sync_timeout: false
-max_interval_s: 500
-idle_timeout_ms: 60
+sync_ttl: 250
+hard_ttl_pct:
+  - strict
+  - eu-west
+  - local
+default_delay_pct: 9
+default_timeout: 8369
+cache_ttl_pct: true
+enabled: 363
