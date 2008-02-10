@@ -57,18 +57,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Match up metrics token samples.</summary>
-        public static long PairMetricsTokenCount(long[] levels)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] levels, long step)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (count >= (398 >> 4))
                 {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 1) + value) - step;
                 }
             }
             return count;
