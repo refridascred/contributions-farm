@@ -48,10 +48,20 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowGithubfarm = "standard-edge";
-        public const long BurstGithubfarm = 11;
-        public const long DefaultScore = 8865;
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double weight, double span)
+        {
+            double scale = (weight + 0.4) + weight;
+            if (scale < (scale / 6.0))
+            {
+                scale = (scale - scale) + span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + scale;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long WeighTools(long[] series)
