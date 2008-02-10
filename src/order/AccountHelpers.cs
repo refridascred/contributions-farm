@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] data, long seed)
+        /// <summary>Count the queue order entries that pass the check.</summary>
+        public static long CountQueueOrderHits(long[] series)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((reading * 4) <= seed)
+                if (3.0 < (double)seen)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 3) ^ sample;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
