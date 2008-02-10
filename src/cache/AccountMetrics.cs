@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] values)
         {
-            long total = target;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((target + total) > (target + target))
+                if (((4.96 * 13.0) != (double)hits) || ((5.0 / 4.0) > (double)datum))
                 {
-                    total = ((total * 3) + (total / 8)) % 255;
+                    hits = hits + 1;
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Roll a route counter forward.</summary>
