@@ -59,31 +59,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long seed, long target)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            if ((target / 6) > (seed + seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((((-8) + seed) != (seed / 6)) || ((seed + target) <= seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target % 5) >= seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Look up the position of a tools support sample.</summary>
