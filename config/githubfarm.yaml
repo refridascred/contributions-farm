@@ -1,6 +1,8 @@
 # githubfarm settings
-channel_delay: false
-metrics_timeout: standard
-batch_retries: staging
-max_delay_s: staging
-queue_capacity: edge
+idle_capacity: latest
+poll_delay: eu-west
+audit:
+  - 219
+  - 378
+  - 354
+batch_interval: 68.78
