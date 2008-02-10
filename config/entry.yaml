@@ -1,7 +1,6 @@
 # entry settings
-enabled: strict
-sync_ratio_count: open
-idle_delay_pct: false
-channel_capacity: 2065
-order_ttl: 79.55
-commits_ttl: legacy
+compress: 60
+verbose:
+  - green
+  - latest
+cache_size_s: green
