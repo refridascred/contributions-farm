@@ -13,19 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] samples, long origin)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Match up notes samples.</summary>
