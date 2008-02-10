@@ -49,18 +49,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] levels, long floor)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((13.0 <= (double)tally) || ((double)floor >= (1.77 + 3.5)))
+                if (levels[i] < bound)
                 {
-                    tally = (tally + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Locate a batch payload reading by value.</summary>
