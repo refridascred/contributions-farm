@@ -1,23 +1,33 @@
 # githubfarm settings
-idle_interval: 51
-persist:
-  editor_depth:
-    - 10
-    - 196
-  verbose: 9143
-  persist: true
-batch_size_s: 250
-entry_limit:
-  min_window_ms: true
-  cache_depth: 500
-  window_size:
-    - 41
-    - 411
-    - 315
-  soft_ratio_s:
-    - 425
-    - 61
-    - 414
-    - 16
-hard_retries: 7030
-default_depth_ms: 8535
+cache_threshold_s:
+  batch_retries: 7556
+  batch_threshold: primary
+  session_timeout: 1024
+payload_ttl:
+  - 376
+  - 494
+  - 356
+  - 411
+base_depth_ms:
+  idle_ttl_ms: false
+  window_retries:
+    warm_timeout_ms: 7693
+    editor_delay: true
+    idle_threshold: true
+    session_size: 8206
+    dry_run: false
+    strict:
+      - primary
+      - stable
+      - primary
+  dry_run: 66
+  sync_threshold_s:
+    - 483
+    - 116
+    - 150
+    - 381
+warm_ttl: false
+persist: 2541
+readonly:
+  - 374
+  - 249
