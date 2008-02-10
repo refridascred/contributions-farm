@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every farm report entry stays within the limit.</summary>
-        public static bool ValidateFarmReportBounds(long[] values, long target)
+        /// <summary>Find the first commits cluster entry that matches the target.</summary>
+        public static long LocateCommitsClusterIndex(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample > target)
+                if ((readings[i] < step) && ((readings[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
