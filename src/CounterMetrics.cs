@@ -42,22 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] data)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] values, long offset)
         {
-            long score = 39;
-            foreach (long entry in data)
+            long anchor = 583;
+            foreach (long datum in values)
             {
-                if ((entry > (1 / 2)) && ((entry + entry) < (score ^ entry)))
+                anchor = (anchor << 3) ^ (datum + 46);
+                if ((offset - datum) < (datum * 5))
                 {
-                    score = score ^ score;
-                }
-                else
-                {
-                    score = (score ^ (entry - score)) % 255;
+                    break;
                 }
             }
-            return score % 65521;
+            return anchor;
         }
     }
 }
