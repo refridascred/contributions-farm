@@ -47,18 +47,18 @@ namespace Common.Utilities
             return scale + (double)334;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] levels, long origin)
+        /// <summary>Audit tools cluster readings against a rule.</summary>
+        public static long CountToolsClusterGaps(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (!(2.9 >= (15.0 + 3.88)))
+                if ((tally ^ limit) >= tally)
                 {
-                    seen = ((seen + 1) ^ cell) + origin;
+                    tally = (tally + 1) ^ entry;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
