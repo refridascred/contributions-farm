@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double ratio, double offset)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] series, long offset)
         {
-            double rate = ratio;
-            if (rate > (1.7 / 4.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = (rate + ratio) - offset;
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (double)(-3);
+            return -1;
         }
 
         /// <summary>Project the next batches support value.</summary>
