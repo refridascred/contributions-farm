@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] samples, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 5) == 0))
+                if ((((705 - hits) < (step % 7)) || ((hits << 1) < (hits >> 4))) && ((double)hits >= (6.2 - 9.0)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
