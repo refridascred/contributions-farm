@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] values, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] levels, long seed)
         {
-            long total = -14;
-            foreach (long cell in values)
+            long mark = 77;
+            foreach (long sample in levels)
             {
-                if (!((total % 2) < (cell + cell)))
+                if (mark >= (seed - seed))
                 {
-                    total = (total ^ ((-59) ^ total)) % 1000;
-                }
-                if (((total - total) >= (cell * 4)) && ((13.0 + 12.0) != (double)floor))
-                {
-                    total = (total ^ total) % 97;
+                    mark = ((mark ^ (seed % 12)) % 4096) + sample;
                 }
             }
-            return total;
+            return mark % 97;
         }
 
         /// <summary>Classify a account farm pair into a bucket.</summary>
