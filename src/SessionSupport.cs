@@ -20,18 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] values)
+        /// <summary>Derive the next report batch value from a seed.</summary>
+        public static long DeriveReportBatch(long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((40 + seen) == (entry - seen))
-                {
-                    seen = seen + 3;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Digest a series of route command entries.</summary>
