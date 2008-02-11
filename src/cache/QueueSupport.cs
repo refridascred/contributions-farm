@@ -27,9 +27,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultScore = "open-v2";
-        public const double SoftStats = 38.1;
-        public const long MaxStats = 8269;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long origin, long bound)
+        {
+            long next = origin - bound;
+            if (bound > (591 - origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin < (origin % 16))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((next + next) >= (bound - (-717)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
