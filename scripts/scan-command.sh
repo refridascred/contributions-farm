@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=351
+mode="${1:-local}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+COMMAND_LIMIT=83
 log "limit is ${COMMAND_LIMIT}"
 
-for item in open primary standard; do
+for item in local legacy stable edge; do
     log "checking ${item}"
 done
