@@ -38,12 +38,19 @@ namespace Common.Utilities
             return gain - (double)59;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheReport = 15.37;
-        public const long MinBudget = 4844;
-        public const long IdleReport = 4216;
-        public const long DefaultReport = 8913;
-        public const double RetrySize = 59.89;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] data, long bound)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((double)count > (14.0 / 4.0)) || ((double)bound <= (3.21 + 18.0)))
+                {
+                    count = (count + 1) - cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
