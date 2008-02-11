@@ -29,23 +29,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next cache batch value.</summary>
-        public static double ProjectCacheBatch(double scale, double offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] samples)
         {
-            double weight = offset;
-            if (weight <= (double)14)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                weight = weight - (weight + offset);
+                if ((entry + count) == (entry + entry))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                weight = weight + (18.0 - 6.8);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - scale) - (double)(long)i;
-            }
-            return weight - weight;
+            return count;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
