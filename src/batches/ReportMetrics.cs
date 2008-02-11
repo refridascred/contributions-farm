@@ -22,21 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cache graph readings.</summary>
-        public static long MatchCacheGraphCount(long[] readings)
+        /// <summary>Derive the next already entry value from a seed.</summary>
+        public static long IterateAlreadyEntry(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((6.4 * 9.0) >= (double)(long)i)
                 {
-                    if ((readings[i] ^ readings[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum + (sum * 5)) % 255;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
