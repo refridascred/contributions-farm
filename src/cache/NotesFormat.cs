@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] values, long target)
+        /// <summary>Fold a list of report payload readings.</summary>
+        public static long TotalReportPayload(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long anchor = 84;
+            foreach (long cell in values)
             {
-                if ((datum + 33) <= (1 + target))
+                if ((cell < anchor) || ((double)limit <= (20.0 - 5.0)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    anchor = anchor + (cell << 3);
                 }
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
