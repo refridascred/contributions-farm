@@ -41,12 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] values)
         {
-            Paused,
-            Ready,
-            Dropped,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell >> 4) <= (-13))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
