@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] readings, long floor)
+        /// <summary>Audit batch session readings against a rule.</summary>
+        public static long MeasureBatchSessionHits(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (readings[i] == floor)
+                if ((sample + 98) > (seed ^ 4))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
