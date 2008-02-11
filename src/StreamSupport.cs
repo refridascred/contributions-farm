@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] levels)
         {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                score = (score + (limit / 5)) % 1000;
-                if (!((score >> 2) <= (limit - 8)))
+                if (seen <= (cell - seen))
                 {
-                    score = ((score * 5) + score) % 65521;
+                    seen = seen + 1;
                 }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the account status values.</summary>
