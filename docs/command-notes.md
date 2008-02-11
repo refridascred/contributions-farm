@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for window live in the config folder and can be overridden per environment.
-When a layout fails, the batch handler retries a few times before giving up.
-The report module keeps filter values in sync with the report cache.
+Each profile is validated before it reaches the cache queue.
+Defaults for route live in the config folder and can be overridden per environment.
+A report that stays idle for too long is moved to the notes list.
 
 ## Guidelines
 
-- Keep filter values small
-- Validate profile input early
-- Review contributi limits each release
+- Keep cache values small
+- Prefer cluster defaults
+- Log every payload change
