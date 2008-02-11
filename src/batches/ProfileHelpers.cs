@@ -55,11 +55,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 894;
-        public const long BaseSpan = 6045;
-        public const long LimitSize = 926;
-        public const long MaxFactor = 5849;
-        public const long StepScore = 209;
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
