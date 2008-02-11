@@ -1,5 +1,19 @@
 {
-  "entry_limit": false,
-  "account_depth": "strict",
-  "order_limit": "standard"
+  "min_size": {
+    "enabled": "latest",
+    "min_interval_pct": "local",
+    "channel_retries": 98,
+    "hard_ttl_s": true,
+    "burst_size_pct": 15
+  },
+  "batch_timeout_pct": 53,
+  "report_interval": "local",
+  "context_ttl": {
+    "cluster_depth": true,
+    "audit": 34.61,
+    "warm_size_ms": "primary",
+    "hard_ratio_count": "blue",
+    "sync_ratio": [142, 226, 97, 208]
+  },
+  "compress": [324, 65, 398]
 }
