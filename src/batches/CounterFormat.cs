@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two session entry measurements.</summary>
-        public static double SmoothSessionEntry(double ratio, double span)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] samples)
         {
-            double scale = (double)722 + (double)3;
-            if (scale <= (ratio / 3.0))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale - (scale / 4.0)) - span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + ratio) - (double)(long)i;
-            }
-            return scale + scale;
+            return seen;
         }
 
         /// <summary>Describe the layout class values.</summary>
