@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] series, long seed)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((3.82 - 5.16) > (double)seed) || !(tally < (reading << 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((samples[i] - samples[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the session phase values.</summary>
