@@ -16,21 +16,11 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Count window route pairs that satisfy a relation.</summary>
-        public static long OverlapWindowRouteCount(long[] data)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
