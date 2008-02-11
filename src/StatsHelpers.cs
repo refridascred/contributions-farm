@@ -40,18 +40,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] levels)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((sample - (-79)) < (sample % 10))
+                if ((value ^ target) > (target + target))
                 {
-                    count = count + 2;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
