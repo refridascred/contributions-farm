@@ -22,13 +22,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            New,
-            Active,
-            Locked,
-            Closed,
+            Draft,
+            Queued,
+            Pending,
+            Done,
+            Ready,
         }
 
         /// <summary>Count the batch already entries that pass the check.</summary>
