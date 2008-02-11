@@ -23,12 +23,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] readings, long limit)
         {
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
