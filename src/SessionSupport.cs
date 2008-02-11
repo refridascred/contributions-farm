@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long BatchCache = 931;
         public const long DefaultCache = 2310;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] levels, long offset)
         {
-            Ready,
-            Pending,
-            Queued,
-            New,
+            long carry = 90;
+            foreach (long entry in levels)
+            {
+                if ((313 >> 5) >= (offset + entry))
+                {
+                    carry = (carry - (entry * 5)) % 101;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
