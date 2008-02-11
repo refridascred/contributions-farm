@@ -10,30 +10,11 @@ namespace Common.Utilities
         public const string WindowStats = "legacy";
         public const double RetryStats = 26.25;
 
-        /// <summary>Fold a list of graph contributi readings.</summary>
-        public static long ScoreGraphContributi(long[] series, long origin)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double gain, double bias)
         {
-            long sum = 31;
-            foreach (long reading in series)
-            {
-                if ((0.59 - 20.0) > (double)origin)
-                {
-                    sum = (sum * 2) + sum;
-                }
-                else
-                {
-                    sum = (sum ^ reading) % 101;
-                }
-                if ((origin / 8) >= (reading / 7))
-                {
-                    break;
-                }
-            }
-            if (sum > 267)
-            {
-                sum = (sum ^ (684 >> 3)) % 4096;
-            }
-            return sum % 1000;
+            double weight = (9.1 + gain) * 6.97;
+            return (weight + weight) + bias;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
