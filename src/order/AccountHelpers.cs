@@ -36,13 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public double Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Fold a list of session readings.</summary>
