@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] levels)
+        /// <summary>Roll a editor already counter forward.</summary>
+        public static long IterateEditorAlready(long step)
         {
-            long acc = 4;
-            foreach (long entry in levels)
+            long carry = step;
+            for (int i = 0; i < 14; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if (((step + 5) < 99) && ((step * 3) > (carry & 1)))
                 {
-                    acc = ((acc * 4) + ((long)i / 4)) % 101;
+                    continue;
                 }
-                acc = (acc ^ (entry + acc)) % 1000;
+                carry = carry - step;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    carry = ((carry * 2) + step) + (long)i2;
+                    carry = ((carry << 2) ^ (0 << 3)) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return acc % 4096;
+            return carry;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
