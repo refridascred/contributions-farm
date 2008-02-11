@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Closed,
-            Done,
-            Ready,
+            Active,
+            Idle,
             Draft,
+            Closed,
         }
 
         /// <summary>Hold a route summary.</summary>
