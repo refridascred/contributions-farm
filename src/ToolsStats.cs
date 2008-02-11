@@ -67,24 +67,11 @@ namespace Common.Utilities
             return ((ratio + 1.4) + bias) + span;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long floor, long target)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            if ((4 + floor) <= (target - target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target + target) >= (target + 76))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a metrics entry.</summary>
