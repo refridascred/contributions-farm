@@ -19,11 +19,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 3252;
-        public const long DefaultCount = 3054;
-        public const long BatchCount = 4309;
-        public const string IdleWidth = "open-1";
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] levels, long offset)
+        {
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double BaseGraph = 32.42;
