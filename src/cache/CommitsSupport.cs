@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of window metrics entries.</summary>
-        public static long TotalWindowMetrics(long[] items)
+        /// <summary>Compare every pair of tools account readings.</summary>
+        public static long PairToolsAccountCount(long[] data)
         {
-            long sum = 8;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell / 6) < cell)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum * 2) + (sum << 3);
-                }
-                else
-                {
-                    sum = ((sum * 5) + (cell & 15)) % 65521;
+                    if ((data[i] + data[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum > 0)
-            {
-                sum = (sum << 2) ^ (sum << 1);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Rank cache context input into a small class.</summary>
