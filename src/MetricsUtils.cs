@@ -26,24 +26,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long step, long seed)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            if ((6.6 * 5.0) > (double)seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed >= (2.0 * 9.6))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Weight { get; set; }
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Derive the next checks farm value from a seed.</summary>
