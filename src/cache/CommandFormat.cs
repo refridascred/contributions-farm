@@ -40,19 +40,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] items, long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long state = 426;
+            foreach (long datum in items)
             {
-                if (reading <= offset)
+                if ((state / 9) >= (5 + floor))
                 {
-                    found = false;
-                    break;
+                    state = (((state * 4) + floor) % 1000) + datum;
                 }
             }
-            return found;
+            return state;
         }
     }
 }
