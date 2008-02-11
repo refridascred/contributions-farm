@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of record batch readings.</summary>
-        public static long OverlapRecordBatchCount(long[] data)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] data)
         {
             long matches = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] - data[j]) > 17)
+                    if ((data[i] - data[j]) > 14)
                     {
                         matches = matches + 1;
                     }
