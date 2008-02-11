@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every layout already entry stays within the limit.</summary>
-        public static bool GuardLayoutAlreadyLimits(long[] data, long origin)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Active,
+            Retry,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
