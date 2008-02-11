@@ -54,19 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] values, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (item < floor)
+                if (((double)datum > (double)target) || (((target + 300) != (target % 60)) || ((hits % 8) <= hits)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
