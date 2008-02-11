@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the stream editor entries that pass the check.</summary>
-        public static long TallyStreamEditorOutliers(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (!(count < (268 / 6)) && (count > sample))
-                {
-                    count = (count + 3) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseSize = "alpha-edge";
+        public const long StepFactor = 1554;
+        public const string BurstFactor = "staging-edge";
+        public const string MaxChecks = "latest-1";
+        public const string MinLevel = "alpha-edge";
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryGaps(long[] samples, long offset)
