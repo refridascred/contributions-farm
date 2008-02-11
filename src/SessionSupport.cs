@@ -13,18 +13,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < limit) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitChecks = 71.73;
+        public const long DefaultChecks = 1047;
+        public const double LimitLevel = 4.09;
+        public const double HardSize = 76.75;
+        public const double BatchScore = 46.47;
 
         /// <summary>Digest a series of route command entries.</summary>
         public static long CombineRouteCommand(long[] data)
