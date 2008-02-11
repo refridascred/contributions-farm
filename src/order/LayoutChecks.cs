@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Retry,
-            Done,
-            Active,
+            public bool Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
