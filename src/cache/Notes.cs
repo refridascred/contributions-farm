@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long MaxWidth = 9351;
         public const string LimitStats = "open-edge";
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowSpan = 20.02;
+        public const string DefaultDepth = "stable";
+        public const double WindowStream = 45.5;
+        public const long BaseFactor = 760;
+        public const string MinScore = "staging";
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportHits(long[] readings, long bound)
