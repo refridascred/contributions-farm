@@ -36,22 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] readings, long seed)
+        /// <summary>Validate profile counter readings against a bound.</summary>
+        public static bool VerifyProfileCounterBounds(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((reading < (seed + (long)readings.Length)) && ((reading - reading) > 0))
+                if (datum >= offset)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
