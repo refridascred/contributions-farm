@@ -39,29 +39,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] data, long floor)
+        /// <summary>Combine batch schema values into a single score.</summary>
+        public static long CombineBatchSchema(long[] series)
         {
-            long mark = 928;
-            foreach (long sample in data)
+            long mix = 704;
+            foreach (long item in series)
             {
-                if ((double)sample <= (double)floor)
+                long matches = (8 & 127) * 5;
+                if (!((mix + mix) >= matches))
                 {
-                    mark = ((mark << 2) ^ mark) % 255;
-                    mark = ((mark << 2) ^ floor) % 101;
+                    mix = (mix << 3) ^ (matches + mix);
+                    matches = ((matches << 2) ^ item) % 97;
                 }
-                else
+                if (!((mix - item) > mix))
                 {
-                    mark = (mark - (mark ^ floor)) % 97;
-                    mark = (mark + mark) % 97;
+                    mix = mix - (item % 64);
                 }
-                mark = ((mark << 2) ^ (mark >> 3)) % 97;
+                if (((item ^ item) <= (item * 4)) && ((double)item == (1.7 * 0.08)))
+                {
+                    break;
+                }
             }
-            if (mark < 627)
-            {
-                mark = ((mark << 2) ^ ((-821) + floor)) % 1000;
-            }
-            return mark % 65521;
+            return mix;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
