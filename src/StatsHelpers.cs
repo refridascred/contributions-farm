@@ -35,12 +35,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 7893;
-        public const long RetryInterval = 578;
-        public const string CacheInterval = "alpha";
-        public const long RetryFactor = 4837;
-        public const double CacheBuffer = 33.56;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                state = state + (limit / 5);
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsMatches(long[] samples, long target)
