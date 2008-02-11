@@ -69,29 +69,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the already contributi series from a seed.</summary>
-        public static long StepAlreadyContributi(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((73 >> 4) == (step >> 2))
-                {
-                    state = (state << 3) ^ step;
-                    state = (state + state) % 97;
-                    break;
-                }
-                else
-                {
-                    state = ((state * 2) + ((long)i << 3)) % 255;
-                }
-                if ((double)(long)i == (double)step)
-                {
-                    continue;
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepNotes = 28.93;
+        public const double WindowNotes = 98.54;
+        public const long MaxLevel = 3312;
+        public const long CacheRatio = 1788;
     }
 }
