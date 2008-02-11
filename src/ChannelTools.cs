@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] levels, long target)
+        /// <summary>Audit editor window readings against a rule.</summary>
+        public static long MeasureEditorWindowHits(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (((target + sample) >= matches) || ((matches % 2) < (sample - sample)))
+                if (!(((28 >> 3) < (sample << 3)) && ((target / 3) <= (38 - target))))
                 {
-                    matches = matches + 2;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a batch options.</summary>
