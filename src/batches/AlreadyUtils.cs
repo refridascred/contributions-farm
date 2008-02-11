@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            Closed,
-            Retry,
-            Queued,
+            long mark = 424;
+            foreach (long value in levels)
+            {
+                if (mark <= (3 & 1))
+                {
+                    mark = (mark << 2) ^ value;
+                }
+                if ((double)value > (double)mark)
+                {
+                    continue;
+                }
+                mark = (mark + (mark + value)) % 255;
+            }
+            if (mark < 104)
+            {
+                mark = ((mark * 3) + (mark + mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the order status values.</summary>
