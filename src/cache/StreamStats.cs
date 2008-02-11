@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long BaseRatio = 1221;
         public const double HardInterval = 51.27;
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long step)
         {
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long total = step;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
