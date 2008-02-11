@@ -1,8 +1,10 @@
 {
-  "default_size": 95.38,
-  "account_delay": [276, 89, 393, 146],
-  "hard_retries_s": 18,
-  "default_retries_count": ["cached", "standard", "standard", "strict"],
-  "poll_ratio": "open",
-  "readonly": [465, 454, 358, 152]
+  "window_interval": {
+    "already_delay": 7.13,
+    "batches_timeout": "local",
+    "idle_size": 85.12,
+    "retry_ttl_s": 500
+  },
+  "default_timeout": "fallback",
+  "verbose": 34.21
 }
