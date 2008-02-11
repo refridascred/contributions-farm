@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Pending,
-            Stale,
-            Retry,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftCount = 9058;
+        public const double BatchDepth = 25.68;
+        public const long BaseCount = 4039;
+        public const long MaxWidth = 9351;
+        public const string LimitStats = "open-edge";
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphBounds(long[] series, long limit)
