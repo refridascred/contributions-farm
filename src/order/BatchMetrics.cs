@@ -46,39 +46,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long seed, long offset)
+        /// <summary>Compare every pair of context buffer readings.</summary>
+        public static long PairContextBufferCount(long[] samples)
         {
-            long lane = seed + offset;
-            if ((double)lane >= (19.0 * 14.0))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((seed / 3) > (seed ^ lane)) && ((lane - lane) >= (5 - offset)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((lane << 3) != (lane & 255)))
+                    if ((samples[i] ^ samples[j]) < 9)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((8.91 + 6.3) >= (double)lane))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every report notes entry stays within the limit.</summary>
