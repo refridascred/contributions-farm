@@ -26,15 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] data)
+        /// <summary>Compare every pair of cache graph readings.</summary>
+        public static long MatchCacheGraphCount(long[] readings)
         {
             long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (count > (cell + cell))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
+                    if ((readings[i] ^ readings[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
