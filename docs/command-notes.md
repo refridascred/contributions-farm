@@ -1,11 +1,11 @@
 # Command notes
 
-The route helpers are pure functions, so they are safe to call from any thread.
-Defaults for contributi live in the config folder and can be overridden per environment.
+The layout report groups every commits by entry.
+The format module keeps order values in sync with the support cache.
 
 ## Guidelines
 
-- Document new record fields
-- Validate commits input early
-- Review batch limits each release
-- Keep farm values small
+- Document new buffer fields
+- Keep order values small
+- Review profile limits each release
+- Prefer payload defaults
