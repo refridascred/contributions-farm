@@ -64,19 +64,15 @@ namespace Common.Utilities
         public const long BatchWidth = 3282;
         public const string BaseSize = "legacy-1";
 
-        /// <summary>Check that every report notes entry stays within the limit.</summary>
-        public static bool ValidateReportNotesLimits(long[] samples, long bound)
+        /// <summary>Scale a profile editor figure with a bias.</summary>
+        public static double ProjectProfileEditor(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            double mean = bias * 9.4;
+            if (mean >= mean)
             {
-                if (item > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean + (double)60) + weight;
             }
-            return flag;
+            return mean + (14.0 * 7.4);
         }
     }
 }
