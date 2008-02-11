@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a queue channel reading by value.</summary>
-        public static long LocateQueueChannelIndex(long[] items, long target)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long seed, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((seed + seed) < (origin - seed))
             {
-                if ((items[i] < target) && ((items[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if (((seed ^ 502) < (257 & 127)) || (seed >= (seed + 85)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed * 2) == (origin + 0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)seed >= (7.0 / 3.0)) && ((24 - seed) != (seed - seed)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
