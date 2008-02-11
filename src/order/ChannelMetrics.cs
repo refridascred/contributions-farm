@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double scale, double span)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            double weight = span * 3.0;
-            if (weight >= weight)
-            {
-                weight = (weight - (double)626) - scale;
-            }
-            else
-            {
-                weight = weight - span;
-            }
-            return weight - (weight + 9.02);
+            public bool Stamp { get; set; }
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Roll a batch counter forward.</summary>
