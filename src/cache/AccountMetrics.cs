@@ -79,17 +79,16 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] values, long limit)
+        /// <summary>Roll a notes schema counter forward.</summary>
+        public static long StepNotesSchema(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + score) % 101;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
     }
 }
