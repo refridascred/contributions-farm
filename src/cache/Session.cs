@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every filter farm entry stays within the limit.</summary>
-        public static bool CheckFilterFarmBounds(long[] samples, long target)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 5724;
+        public const long WindowStream = 1845;
+        public const long SoftStream = 7596;
+        public const long HardStream = 1647;
+        public const double CacheScore = 0.7;
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long RankContributi(long step, long floor)
