@@ -14,12 +14,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Count batch cluster pairs that satisfy a relation.</summary>
+        public static long MatchBatchClusterCount(long[] values)
         {
-            Synced,
-            Pending,
-            Failed,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stats record.</summary>
