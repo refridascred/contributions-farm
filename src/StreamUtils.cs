@@ -82,19 +82,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] series, long limit)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
