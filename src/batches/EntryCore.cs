@@ -33,14 +33,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public bool Score { get; set; }
-            public double Owner { get; set; }
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultBatches = "standard-edge";
+        public const string BatchBatches = "staging-1";
+        public const string CacheBatches = "legacy-1";
+        public const long SoftScore = 6429;
+        public const long RetrySpan = 7539;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
