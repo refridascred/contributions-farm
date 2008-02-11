@@ -52,23 +52,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Grade a order profile value against two limits.</summary>
+        public static long ClassifyOrderProfile(long origin, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
+            if (!((3 & 15) < (offset & 3)))
             {
-                if ((double)step >= (7.2 - 6.87))
+                return 3;
+            }
+            else
+            {
+                if ((offset + offset) > (origin - (-364)))
                 {
-                    mix = ((mix << 2) ^ (mix - (long)i)) % 4096;
+                    return 4;
                 }
                 else
                 {
-                    mix = (mix ^ mix) % 65521;
+                    if ((double)offset > (10.0 + 4.21))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
         }
     }
 }
