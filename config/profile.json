@@ -1,6 +1,15 @@
 {
-  "poll_depth_s": 48.41,
-  "metric_size": "eu-west",
-  "audit": [489, 203],
-  "persist": 100
+  "soft_retries_count": "green",
+  "route_threshold": "fallback",
+  "enabled": "local",
+  "flush_interval_count": {
+    "cache_ratio_s": "latest",
+    "warm_ratio_ms": "green",
+    "cache_limit_s": true
+  },
+  "metric_window": {
+    "audit": "standard",
+    "stats_window": 2548,
+    "verbose": 40.32
+  }
 }
