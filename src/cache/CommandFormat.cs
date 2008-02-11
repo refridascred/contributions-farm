@@ -61,12 +61,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] samples, long step)
         {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
