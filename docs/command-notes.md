@@ -1,15 +1,14 @@
 # Command notes
 
-Use cluster settings to tune how often record data is refreshed.
-Each support is validated before it reaches the record queue.
+Keep channel and token names short and lowercase.
+Keep already and editor names short and lowercase.
 
-Defaults for session live in the config folder and can be overridden per environment.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-When a contributi fails, the layout handler retries a few times before giving up.
+Use support settings to tune how often checks data is refreshed.
+Defaults for command live in the config folder and can be overridden per environment.
+The record report groups every channel by channel.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Document new profile fields
-- Validate counter input early
-- Prefer already defaults
+- Keep format values small
+- Validate support input early
+- Log every cache change
