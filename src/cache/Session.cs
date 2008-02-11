@@ -19,18 +19,15 @@ namespace Common.Utilities
         public const long CacheRatio = 5834;
         public const long LimitWidth = 4959;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] items, long target)
+        /// <summary>Accumulate order batches samples.</summary>
+        public static long TotalOrderBatches(long[] readings, long step)
         {
-            long sum = 515;
-            foreach (long entry in items)
+            long sum = 70;
+            foreach (long value in readings)
             {
-                if ((double)79 > (double)entry)
-                {
-                    sum = (sum - entry) - target;
-                }
+                sum = (((sum * 3) + (902 * 4)) - value) + step;
             }
-            return sum;
+            return sum % 65521;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
