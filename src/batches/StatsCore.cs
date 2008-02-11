@@ -28,15 +28,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double gain, double offset)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            double bias = gain / 2.0;
+            if (bias <= bias)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                bias = (bias - bias) + offset;
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + gain) + (double)(long)i;
+            }
+            return bias - 17.0;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
