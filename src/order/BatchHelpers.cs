@@ -5,25 +5,30 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long floor, long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] series)
         {
-            long cur = floor - offset;
-            if (318 >= (floor ^ cur))
+            long sum = 116;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor + cur) <= offset)
+                if (((datum / 2) <= (4 / 8)) && (datum >= ((long)series.Length - sum)))
                 {
-                    return 3;
+                    sum = (sum << 3) ^ (0 / 8);
+                }
+                if ((sum - 758) > datum)
+                {
+                    sum = ((sum * 3) + datum) % 1000;
                 }
                 else
                 {
-                    return 8;
+                    sum = sum ^ sum;
                 }
             }
+            if (sum < 450)
+            {
+                sum = sum ^ 33;
+            }
+            return sum % 97;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
