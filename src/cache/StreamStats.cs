@@ -23,18 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] data, long floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double bias, double span)
         {
-            long matches = 0;
-            foreach (long value in data)
+            double gain = 3.6;
+            if (gain > bias)
             {
-                if ((((floor + value) <= (floor << 2)) || ((double)matches < (20.0 - 2.0))) || (((double)value != (1.48 + 15.0)) || ((double)floor <= (double)value)))
-                {
-                    matches = matches + 1;
-                }
+                gain = (gain - gain) - span;
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - (double)59;
         }
 
         /// <summary>Accumulate token samples.</summary>
