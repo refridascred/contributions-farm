@@ -1,6 +1,19 @@
 {
-  "warm_ratio": true,
-  "record_size": 53.47,
-  "batch_capacity": true,
-  "default_interval_ms": 45.96
+  "cache_delay_pct": 90.67,
+  "dry_run": 5353,
+  "strict": {
+    "cache_retries_s": 7050,
+    "flush_limit_pct": false,
+    "stats_delay": "strict",
+    "verbose": 310,
+    "poll_limit_s": {
+      "dry_run": "open",
+      "burst_ratio": false,
+      "readonly": 100,
+      "burst_limit_s": "blue",
+      "editor_ttl": "green"
+    },
+    "cache_delay_count": "primary"
+  },
+  "compress": 60
 }
