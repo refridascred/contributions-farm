@@ -20,25 +20,11 @@ namespace Common.Utilities
             return weight + (double)965;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long target, long floor)
-        {
-            if ((target ^ target) >= (6 % 64))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor - target) <= floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryFactor = 9015;
+        public const long MaxWidth = 3101;
+        public const long CacheCounter = 6419;
+        public const string SoftCounter = "fallback-edge";
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long CompareCounterCount(long[] series)
