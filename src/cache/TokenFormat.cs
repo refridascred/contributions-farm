@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 45.81;
-        public const string MaxCommits = "cached-v2";
-        public const string HardTimeout = "open-1";
-        public const long BaseBudget = 757;
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Ready,
+            New,
+            Idle,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
