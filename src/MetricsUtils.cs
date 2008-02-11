@@ -16,12 +16,17 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] items, long seed)
         {
-            Failed,
-            Paused,
-            New,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a account info.</summary>
