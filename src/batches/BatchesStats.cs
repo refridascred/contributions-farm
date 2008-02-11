@@ -32,15 +32,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] series)
         {
-            long carry = limit;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if ((tally + tally) >= reading)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
