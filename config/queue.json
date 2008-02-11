@@ -1,13 +1,6 @@
 {
-  "poll_depth_count": true,
-  "soft_window": false,
-  "soft_size": 55.0,
-  "route_capacity": {
-    "hard_ttl_pct": 500,
-    "idle_timeout_count": 52.86,
-    "soft_threshold_count": 94.7,
-    "stats_threshold": true,
-    "burst_retries_pct": [386, 114, 114]
-  },
-  "cache_delay": 2118
+  "format_delay": 99,
+  "default_ttl_count": [473, 475, 88],
+  "sync_timeout": 3.38,
+  "poll_size": "eu-west"
 }
