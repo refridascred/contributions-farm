@@ -60,18 +60,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit already githubfarm readings against a rule.</summary>
-        public static long AuditAlreadyGithubfarmOutliers(long[] data)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((501 + hits) >= hits)
+                if ((count & 3) > (item - item))
                 {
-                    hits = (hits + 3) - cell;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
