@@ -52,10 +52,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxProfile = "cached";
-        public const double SoftSize = 11.28;
-        public const long HardProfile = 6758;
+        /// <summary>Check that every already route entry stays within the limit.</summary>
+        public static bool GuardAlreadyRouteBounds(long[] levels, long target)
+        {
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double RetryAlready = 23.65;
