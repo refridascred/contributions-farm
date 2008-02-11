@@ -36,22 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] samples, long floor)
+        /// <summary>Count the batch already entries that pass the check.</summary>
+        public static long MeasureBatchAlreadyGaps(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((double)7 >= (double)floor)
+                if (!((49 >> 1) < (cell - bound)) || (((cell >> 1) <= (bound * 4)) && (cell >= (bound + matches))))
                 {
-                    seen = (seen + 2) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
