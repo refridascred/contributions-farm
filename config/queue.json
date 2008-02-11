@@ -1,6 +1,5 @@
 {
-  "retry_timeout_ms": "eu-west",
-  "base_size": "local",
-  "burst_delay_count": 57.84,
-  "commits_delay": 6.56
+  "min_window_count": 37.01,
+  "buffer_threshold": "fallback",
+  "account_interval": ["eu-west", "legacy", "open"]
 }
