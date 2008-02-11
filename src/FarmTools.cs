@@ -15,13 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowInterval = 7936;
+        public const long MinAlready = 5937;
+        public const string RetryAlready = "local-edge";
+        public const string MaxAlready = "alpha-1";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string HardRatio = "stable-v2";
