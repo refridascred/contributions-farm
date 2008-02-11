@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseSize = "alpha-edge";
-        public const long StepFactor = 1554;
-        public const string BurstFactor = "staging-edge";
-        public const string MaxChecks = "latest-1";
-        public const string MinLevel = "alpha-edge";
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryGaps(long[] samples, long offset)
