@@ -20,9 +20,23 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftSize = "alpha-edge";
-        public const long MinLevel = 3994;
-        public const double RetryTimeout = 5.55;
+        /// <summary>Blend two graph queue measurements.</summary>
+        public static double BlendGraphQueue(double scale, double bias)
+        {
+            double mean = (double)9 + 0.1;
+            if (mean > (double)76)
+            {
+                mean = (mean - mean) - bias;
+            }
+            else
+            {
+                mean = mean - (scale / 3.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - 2.0) - (double)(long)i;
+            }
+            return mean + mean;
+        }
     }
 }
