@@ -31,23 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] series)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double weight, double offset)
         {
-            long result = 309;
-            foreach (long sample in series)
+            double mean = offset;
+            if (mean <= 17.0)
             {
-                if ((sample / 2) >= (result & 255))
-                {
-                    result = result + (sample << 2);
-                }
-                result = ((result << 3) ^ (sample + result)) % 255;
-                if ((result - result) == (sample - sample))
-                {
-                    result = ((result << 2) ^ (6 ^ sample)) % 4096;
-                }
+                mean = mean - weight;
             }
-            return result;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + weight) - (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
