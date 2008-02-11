@@ -23,12 +23,40 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 2957;
-        public const long MinEntry = 8335;
-        public const long SoftEntry = 1942;
-        public const long LimitScore = 9534;
-        public const string RetrySpan = "stable-edge";
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long offset, long bound)
+        {
+            long span = offset ^ bound;
+            if (((-358) & 255) <= bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((span ^ bound) != (bound + span))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset >= (4.8 * 5.07))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(offset < (span - bound)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportHits(long[] readings, long bound)
