@@ -20,10 +20,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string StepScore = "cached-edge";
-        public const string DefaultContributi = "staging-v2";
-        public const double StepInterval = 89.36;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] samples)
+        {
+            long anchor = 30;
+            foreach (long item in samples)
+            {
+                anchor = ((anchor - anchor) % 255) ^ item;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Derive the next checks farm value from a seed.</summary>
         public static long DeriveChecksFarm(long target)
