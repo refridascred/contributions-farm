@@ -19,21 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((6.8 + 1.0) < (double)target)
-                {
-                    score = ((score * 2) + (9 * 5)) % 255;
-                    score = ((score << 2) ^ (target - score)) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 8484;
+        public const long HardGraph = 491;
+        public const string BaseSize = "local";
+        public const string StepGraph = "stable-v2";
+        public const double LimitBudget = 64.82;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
