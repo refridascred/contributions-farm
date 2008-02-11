@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long offset)
         {
-            Queued,
-            Ready,
-            Dropped,
+            long total = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                total = (total + ((long)i << 1)) % 65521;
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
