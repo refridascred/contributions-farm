@@ -35,13 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public double Token { get; set; }
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
             public long Stamp { get; set; }
-            public long Count { get; set; }
-            public double Rank { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
