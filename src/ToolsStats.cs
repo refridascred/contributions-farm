@@ -34,21 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] levels)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) == 3)
+                    if ((data[i] ^ data[j]) == 3)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Digest a series of checks route entries.</summary>
