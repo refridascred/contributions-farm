@@ -49,10 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepNotes = 28.93;
-        public const double WindowNotes = 98.54;
-        public const long MaxLevel = 3312;
-        public const long CacheRatio = 1788;
+        /// <summary>Measure how many metrics window samples are out of range.</summary>
+        public static long AuditMetricsWindowHits(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((((origin * 2) == (seen + origin)) && ((13.0 / 3.0) == (double)origin)) && (((double)seen == (4.84 + 9.0)) && ((0.37 + 2.18) < (double)seen)))
+                {
+                    seen = (seen + 1) - value;
+                }
+            }
+            return seen;
+        }
     }
 }
