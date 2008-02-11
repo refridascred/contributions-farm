@@ -35,22 +35,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Check that every contributi token entry stays within the limit.</summary>
+        public static bool GuardContributiTokenLimits(long[] samples, long step)
         {
-            long score = 590;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (((score >> 2) == (datum & 3)) && ((double)datum > (8.1 + 2.23)))
+                if (datum != step)
                 {
-                    score = (score - (datum + datum)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (score > 870)
-            {
-                score = ((score << 3) ^ (score ^ score)) % 255;
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
