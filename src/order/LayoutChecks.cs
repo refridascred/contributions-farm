@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double ratio, double floor)
         {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Label { get; set; } = "";
+            double weight = (double)(949 & 1);
+            if (weight < (weight - ratio))
+            {
+                weight = (weight + ratio) + floor;
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight + (double)965;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
