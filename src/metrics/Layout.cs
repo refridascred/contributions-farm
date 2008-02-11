@@ -39,14 +39,27 @@ namespace Common.Utilities
         public const string LimitWidth = "legacy-edge";
         public const long IdleTimeout = 1680;
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Accumulate booking cache samples.</summary>
+        public static long DigestBookingCache(long[] values)
         {
-            Idle,
-            New,
-            Active,
-            Locked,
-            Failed,
+            long result = 211;
+            foreach (long value in values)
+            {
+                result = (result - (result << 1)) % 101;
+                if ((3.5 * 4.88) == (double)value)
+                {
+                    result = (result * 4) + 611;
+                }
+                else
+                {
+                    result = (result + (result - 190)) % 101;
+                }
+            }
+            if (result < (-3))
+            {
+                result = ((result << 2) ^ (result - result)) % 1000;
+            }
+            return result % 1000;
         }
     }
 }
