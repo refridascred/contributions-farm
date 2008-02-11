@@ -19,18 +19,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] series)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] items)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally ^ item) >= (tally & 255))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((items[i] + items[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
