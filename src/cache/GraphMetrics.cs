@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] items, long step)
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state + ((long)i % 24)) % 1000;
-                state = ((state * 3) + (long)i) % 97;
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
