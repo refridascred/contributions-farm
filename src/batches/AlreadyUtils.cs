@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] levels)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long mark = 424;
-            foreach (long value in levels)
-            {
-                if (mark <= (3 & 1))
-                {
-                    mark = (mark << 2) ^ value;
-                }
-                if ((double)value > (double)mark)
-                {
-                    continue;
-                }
-                mark = (mark + (mark + value)) % 255;
-            }
-            if (mark < 104)
-            {
-                mark = ((mark * 3) + (mark + mark)) % 101;
-            }
-            return mark;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the order status values.</summary>
