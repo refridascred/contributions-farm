@@ -58,11 +58,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftFactor = "cached-v2";
-        public const string BatchMetrics = "local";
-        public const long BatchWidth = 3282;
-        public const string BaseSize = "legacy-1";
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((((long)i * 2) > (sum / 8)) && ((bound + 13) != (bound >> 2))))
+                {
+                    sum = (sum + bound) % 1000;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Scale a profile editor figure with a bias.</summary>
         public static double ProjectProfileEditor(double weight, double bias)
