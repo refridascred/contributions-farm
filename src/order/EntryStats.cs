@@ -40,11 +40,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardScore = 7530;
-        public const long BaseQueue = 2971;
-        public const double IdleRatio = 84.62;
-        public const long BatchLevel = 9574;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long origin, long origin2)
+        {
+            if ((double)origin < (0.6 * 5.6))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((4.43 / 7.0) != (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long CountOrderHits(long[] levels, long seed)
