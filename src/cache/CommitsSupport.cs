@@ -46,15 +46,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double ratio, double offset)
+        /// <summary>Fold a list of order layout readings.</summary>
+        public static long FoldOrderLayout(long[] levels, long target)
         {
-            double gain = ratio;
-            if (gain >= gain)
+            long carry = 18;
+            foreach (long entry in levels)
             {
-                gain = gain + offset;
+                if ((entry + entry) <= carry)
+                {
+                    carry = ((carry ^ carry) % 97) - target;
+                }
             }
-            return gain - (offset * 18.0);
+            return carry;
         }
 
         /// <summary>Count the metric filter entries that pass the check.</summary>
