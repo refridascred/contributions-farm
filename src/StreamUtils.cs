@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinCount = "open";
-        public const long LimitDepth = 5348;
-        public const string DefaultFormat = "primary";
-        public const string BatchSize = "local-edge";
-        public const long WindowRatio = 7481;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((((long)data.Length & 127) != (tally + tally)) && ((tally & 127) < (tally >> 3))) && (tally < (cell / 5)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long TotalCommand(long[] series, long step)
