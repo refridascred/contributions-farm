@@ -20,19 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] samples, long origin)
+        /// <summary>Count the metrics metric entries that pass the check.</summary>
+        public static long AuditMetricsMetricHits(long[] values)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (entry < origin)
+                if (!((double)item < (4.79 + 9.9)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
