@@ -57,14 +57,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] values)
         {
-            Idle,
-            Synced,
-            New,
-            Pending,
-            Closed,
+            long sum = 5;
+            foreach (long reading in values)
+            {
+                if ((sum - sum) > (sum / 5))
+                {
+                    sum = ((sum - 14) % 97) + reading;
+                    continue;
+                }
+                sum = ((sum << 2) ^ (2 + 118)) % 97;
+                if ((7.0 * 4.88) > (double)sum)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a farm record.</summary>
