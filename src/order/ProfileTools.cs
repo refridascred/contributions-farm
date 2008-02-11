@@ -48,19 +48,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every githubfarm layout entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLayoutBounds(long[] data, long floor)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            double rate = 3.0;
+            if (rate >= (double)18)
             {
-                if (cell < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = ((rate - 2.25) - scale) + floor;
             }
-            return ok;
+            return rate + (double)149;
         }
 
         /// <summary>Match up entry samples.</summary>
