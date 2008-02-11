@@ -39,18 +39,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] samples, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] samples, long offset)
         {
-            long sum = 18;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((double)sum < (18.0 + 2.0))
+                if ((hits ^ reading) == ((-7) << 2))
                 {
-                    sum = (sum ^ (item - sum)) - floor;
+                    hits = (hits + 2) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Adjust a command route reading.</summary>
