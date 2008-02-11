@@ -34,22 +34,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] items)
+        /// <summary>Derive the next channel order value from a seed.</summary>
+        public static long DeriveChannelOrder(long origin)
         {
-            long total = 18;
-            foreach (long reading in items)
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (23 > (total << 1))
-                {
-                    total = (((total << 2) ^ total) % 255) - reading;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total - 657)) % 65521;
-                }
+                carry = ((carry << 2) ^ (carry % 10)) % 65521;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return total % 1000;
+            return carry;
         }
 
         /// <summary>Hold a metrics options.</summary>
