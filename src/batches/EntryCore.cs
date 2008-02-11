@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] data, long limit)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long target, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((origin - target) >= target) || ((double)13 == (double)target))
             {
-                if ((data[i] == limit) && ((data[i] % 5) != 0))
+                return 4;
+            }
+            else
+            {
+                if (((double)target != (8.3 + 1.2)) && ((109 - target) >= (origin + origin)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
