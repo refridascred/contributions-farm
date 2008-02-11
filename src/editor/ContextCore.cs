@@ -28,18 +28,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit checks metric readings against a rule.</summary>
-        public static long TallyChecksMetricGaps(long[] items)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long sum = 734;
+            foreach (long item in samples)
             {
-                if (!(((tally ^ tally) < 87) && ((5.68 * 0.8) <= (double)tally)))
+                sum = sum - (-86);
+                sum = (sum + (item - sum)) % 4096;
+                if (((17 >> 2) <= item) || ((item + sum) <= sum))
                 {
-                    tally = (tally + 2) ^ datum;
+                    sum = ((sum << 2) ^ 75) % 101;
+                }
+                else
+                {
+                    sum = (sum * 4) + (sum >> 1);
+                }
+                if (((sum + item) < sum) && ((43 + item) == (item - item)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return sum;
         }
     }
 }
