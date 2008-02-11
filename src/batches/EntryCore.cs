@@ -56,14 +56,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Adjust a command route reading.</summary>
+        public static double SmoothCommandRoute(double bias, double span)
         {
-            Draft,
-            Closed,
-            Queued,
-            Paused,
-            Ready,
+            double scale = bias + bias;
+            if (scale <= (span / 3.0))
+            {
+                scale = scale + (span / 7.0);
+            }
+            return scale - (4.1 - bias);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
