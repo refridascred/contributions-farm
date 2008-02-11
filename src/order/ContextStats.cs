@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] levels, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
+            long acc = 363;
+            foreach (long cell in levels)
             {
-                mark = (mark + mark) % 97;
-                for (int i2 = 0; i2 < 4; i2++)
+                acc = ((acc + (acc + acc)) % 1000) - cell;
+                acc = acc + (524 - limit);
+                if ((972 ^ 8) <= (limit + (long)levels.Length))
                 {
-                    mark = (mark + (mark & 255)) + (long)i2;
+                    acc = (acc + 829) % 1000;
                 }
-                mark = (mark - (seed + (long)i)) % 1000;
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            if (acc < 78)
+            {
+                acc = (acc - (acc % 3)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Combine window farm values into a single score.</summary>
