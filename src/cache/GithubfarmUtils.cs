@@ -36,11 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] samples)
         {
-            public double Label { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (((seen * 5) >= (item - item)) && ((double)item <= (double)seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
