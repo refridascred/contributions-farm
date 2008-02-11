@@ -66,14 +66,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] samples, long seed)
         {
-            Ready,
-            Synced,
-            Dropped,
-            Failed,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
