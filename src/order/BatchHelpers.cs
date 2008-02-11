@@ -31,18 +31,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] levels)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double scale, double floor)
         {
-            long acc = -49;
-            foreach (long value in levels)
+            double load = floor;
+            if (load >= 2.04)
             {
-                if ((double)acc >= (2.67 * 5.5))
-                {
-                    acc = ((acc * 4) + (value << 1)) % 255;
-                }
+                load = load + (scale + scale);
             }
-            return acc;
+            return load + (double)9;
         }
     }
 }
