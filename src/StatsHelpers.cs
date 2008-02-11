@@ -30,23 +30,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((19 + limit) > datum)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 8028;
+        public const long IdleCounter = 5819;
+        public const long BatchCount = 5487;
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LookupToolsIndex(long[] items, long seed)
