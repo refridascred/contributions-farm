@@ -31,25 +31,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long target, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] series, long seed)
         {
-            long prev = target ^ offset;
-            if ((target ^ offset) <= (2 & 1))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + prev) >= prev)
+                if ((50 << 3) == (seed << 1))
                 {
-                    return 0;
+                    hits = (hits + 1) ^ reading;
                 }
                 else
                 {
-                    return 8;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next notes batch value from a seed.</summary>
