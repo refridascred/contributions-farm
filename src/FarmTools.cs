@@ -15,39 +15,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long origin, long seed)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long diff = origin - seed;
-            if (seed < (diff * 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((diff - 556) != (diff - origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin * 4) < (seed & 127)) || ((diff - seed) != (origin + origin)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)seed == (1.9 + 4.76))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Done,
+            Synced,
+            Draft,
+            Locked,
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
