@@ -1,7 +1,5 @@
 {
-  "persist": 26.63,
-  "editor_timeout": 1024,
-  "graph_timeout": "fallback",
-  "metric_capacity": 9760,
-  "readonly": false
+  "flush_ratio_s": true,
+  "burst_delay_s": 250,
+  "audit": "green"
 }
