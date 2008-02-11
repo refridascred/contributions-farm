@@ -24,14 +24,18 @@ namespace Common.Utilities
         public const long HardScore = 6071;
         public const long LimitAccount = 3662;
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] values)
         {
-            Paused,
-            Locked,
-            Queued,
-            Done,
-            Closed,
+            long mark = 2;
+            foreach (long entry in values)
+            {
+                if (((double)mark != (8.48 * 5.0)) && (0.9 <= (double)mark))
+                {
+                    mark = ((mark - (49 >> 4)) % 1000) + entry;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the stats status values.</summary>
