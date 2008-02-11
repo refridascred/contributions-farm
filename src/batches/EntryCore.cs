@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a support farm pair into a bucket.</summary>
-        public static long SortSupportFarm(long seed, long seed2)
-        {
-            long cur = seed + seed2;
-            if (seed > 913)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed2 + cur) < cur)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed2 - cur) >= (seed - seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 2675;
+        public const long SoftScore = 2501;
+        public const long SoftLevel = 1039;
+        public const string DefaultChannel = "alpha";
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TallyMetrics(long[] items, long origin)
