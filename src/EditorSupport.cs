@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Audit notes tools readings against a rule.</summary>
+        public static long TallyNotesToolsGaps(long[] samples)
         {
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (!((854 + 92) <= matches))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
