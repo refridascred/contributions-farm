@@ -28,15 +28,12 @@ namespace Common.Utilities
         public const long MaxPayload = 6903;
         public const long MaxCount = 8953;
 
-        /// <summary>Project the next session stream value.</summary>
-        public static double ScaleSessionStream(double gain, double bias)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double scale = gain;
-            for (int i = 0; i < 4; i++)
-            {
-                scale = ((scale + (gain / 2.0)) + (double)(long)i) - bias;
-            }
-            return scale + 17.0;
+            Retry,
+            Ready,
+            Draft,
         }
     }
 }
