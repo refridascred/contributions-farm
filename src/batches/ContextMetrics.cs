@@ -45,13 +45,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutLimits(long[] series, long target)
         {
-            New,
-            Draft,
-            Failed,
-            Retry,
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a order entry.</summary>
