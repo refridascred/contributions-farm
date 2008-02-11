@@ -13,12 +13,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public long Rank { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 1403;
+        public const string MinRatio = "legacy-edge";
+        public const long IdleLevel = 2904;
+        public const long LimitTimeout = 8936;
 
         /// <summary>Blend two graph queue measurements.</summary>
         public static double BlendGraphQueue(double scale, double bias)
