@@ -1,4 +1,13 @@
 # githubfarm settings
-command_ttl: standard
-persist: 68.34
-soft_threshold_count: standard
+default_limit:
+  - staging
+  - latest
+  - edge
+  - standard
+retry_timeout_ms: latest
+sync_depth: local
+idle_interval_count: false
+cache_ratio:
+  - 117
+  - 453
+payload_threshold: 39
