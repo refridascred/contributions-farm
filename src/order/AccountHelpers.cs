@@ -88,18 +88,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] samples, long offset)
-        {
-            long score = 69;
-            foreach (long item in samples)
-            {
-                if ((double)score != (3.03 * 3.69))
-                {
-                    score = (((score + ((long)samples.Length % 16)) % 1000) - item) - offset;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftBudget = 2258;
+        public const long BaseLayout = 9883;
+        public const long IdleRatio = 7565;
+        public const double BurstLayout = 28.55;
     }
 }
