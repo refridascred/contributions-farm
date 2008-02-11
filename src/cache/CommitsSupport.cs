@@ -40,13 +40,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] items, long bound)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Limit { get; set; }
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
