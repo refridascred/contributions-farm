@@ -19,15 +19,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long offset)
+        /// <summary>Look up the position of a batch order sample.</summary>
+        public static long FindBatchOrderIndex(long[] values, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Accumulate schema samples.</summary>
