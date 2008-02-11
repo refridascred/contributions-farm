@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] items, long origin)
+        /// <summary>Compare every pair of metric tools readings.</summary>
+        public static long OverlapMetricToolsCount(long[] values)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] + values[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
