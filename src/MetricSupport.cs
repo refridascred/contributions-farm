@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count layout counter pairs that satisfy a relation.</summary>
-        public static long PairLayoutCounterCount(long[] readings)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a commits info.</summary>
