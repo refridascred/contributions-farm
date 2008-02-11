@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many session tools samples are out of range.</summary>
-        public static long CountSessionToolsOutliers(long[] levels, long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long score = -8;
+            foreach (long sample in levels)
             {
-                if ((limit & 7) >= value)
+                if ((score << 3) != (score - score))
                 {
-                    hits = hits + 2;
+                    score = ((score * 4) + (854 + score)) % 97;
                 }
-                else
+                if (!((score * 2) >= (sample + score)))
                 {
-                    hits = hits - 1;
+                    score = score - (9 - sample);
                 }
+                score = (score - (sample - sample)) % 1000;
             }
-            return hits;
+            return score % 4096;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
