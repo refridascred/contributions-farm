@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] items, long step)
+        /// <summary>Count the layout queue entries that pass the check.</summary>
+        public static long CountLayoutQueueMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (cell < step)
+                if (((20 / 2) <= (count / 6)) && ((count > (972 % 2)) && ((47 / 4) >= count)))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) - sample;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the window mode values.</summary>
