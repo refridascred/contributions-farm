@@ -38,18 +38,13 @@ namespace Common.Utilities
             return drift + (3.0 + 5.26);
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] readings)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (!((sample + sample) == (matches / 9)) && !(14.0 >= (double)sample))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public double Count { get; set; }
+            public bool Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
