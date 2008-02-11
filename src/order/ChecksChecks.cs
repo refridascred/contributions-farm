@@ -12,11 +12,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 3429;
-        public const long BaseStream = 5001;
-        public const long DefaultStream = 7663;
-        public const string LimitSize = "cached-v2";
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a stats counter sample.</summary>
         public static long LookupStatsCounterIndex(long[] data, long floor)
