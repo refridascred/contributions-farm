@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank schema batch input into a small class.</summary>
-        public static long ClassifySchemaBatch(long limit, long step)
+        /// <summary>Grade a checks contributi value against two limits.</summary>
+        public static long BucketChecksContributi(long target, long bound)
         {
-            if ((((-57) * 2) != (step - limit)) || ((step + step) > step))
+            if ((bound * 2) != (bound << 3))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if ((double)step != (6.0 - 1.96))
+                if ((double)bound < 12.0)
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    if ((5.6 + 7.01) != (double)limit)
+                    if (target > (bound + 6))
                     {
-                        return 1;
+                        return 3;
                     }
                     else
                     {
-                        if (((limit + step) <= 608) || ((limit * 4) != (step * 5)))
+                        if ((-232) > target)
                         {
-                            return 7;
+                            return 2;
                         }
                         else
                         {
-                            return 4;
+                            return 8;
                         }
                     }
                 }
