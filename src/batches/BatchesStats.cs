@@ -19,17 +19,11 @@ namespace Common.Utilities
         public const double WindowQueue = 88.2;
         public const long MinQueue = 5996;
 
-        /// <summary>Derive the next channel order value from a seed.</summary>
-        public static long DeriveChannelOrder(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry << 2) ^ (carry % 10)) % 65521;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardInterval = 2965;
+        public const long RetrySize = 6912;
+        public const double SoftAccount = 25.02;
+        public const long BaseAccount = 6442;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long AuditFormatGaps(long[] values)
