@@ -6,21 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=120
-log "limit is ${CHANNEL_LIMIT}"
+for item in open legacy local eu-west; do
+    log "checking ${item}"
+done
 
-mode="${1:-blue}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    stable)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
