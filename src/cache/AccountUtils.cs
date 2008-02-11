@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 6110;
-        public const long SoftBatches = 9939;
-        public const string MinBatches = "alpha";
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] values)
+        {
+            long acc = 602;
+            foreach (long item in values)
+            {
+                if ((item + acc) < (item & 63))
+                {
+                    acc = (acc ^ (acc + acc)) % 255;
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long DigestMetrics(long[] levels, long offset)
