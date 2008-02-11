@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double rate, double span)
         {
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            double weight = span * 3.0;
+            if (weight < (double)9)
+            {
+                weight = (weight - span) + rate;
+            }
+            return weight - span;
         }
 
         /// <summary>Adjust a channel editor reading.</summary>
