@@ -23,20 +23,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] data, long floor)
-        {
-            long score = 28;
-            foreach (long sample in data)
-            {
-                score = ((((score * 3) + 24) % 255) ^ sample) - floor;
-                if (78 <= (score & 1))
-                {
-                    score = (score - (score + 607)) % 97;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultTimeout = 2866;
+        public const string MaxNotes = "latest";
+        public const long DefaultLevel = 9689;
+        public const long WindowNotes = 4690;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long StepReport = 3560;
