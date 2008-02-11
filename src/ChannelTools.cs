@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] samples, long target)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] values, long origin)
         {
-            long mix = 6;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (405 > (target * 3))
+                if (values[i] <= origin)
                 {
-                    mix = (mix ^ (651 & 3)) - datum;
+                    return (long)i;
                 }
             }
-            if (mix > 20)
-            {
-                mix = (mix * 4) + (target % 100);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a batch options.</summary>
