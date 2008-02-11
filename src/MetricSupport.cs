@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a format notes value against two limits.</summary>
-        public static long BucketFormatNotes(long bound, long limit)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] levels)
         {
-            if (bound >= (bound - bound))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit ^ bound) < (bound & 127))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound * 2) <= (limit << 1)) && ((4.1 + 2.59) < (double)limit))
+                    if ((levels[i] + levels[j]) < 18)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((limit / 8) >= bound) || ((limit >> 1) != (limit & 127)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
