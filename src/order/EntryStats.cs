@@ -18,24 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long origin, long origin2)
+        /// <summary>Roll a commits report counter forward.</summary>
+        public static long RollCommitsReport(long offset)
         {
-            if ((double)origin < (0.6 * 5.6))
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4.43 / 7.0) != (double)origin)
+                if ((offset / 4) != (total >> 4))
                 {
-                    return 0;
+                    total = (total + (offset >> 3)) % 1000;
                 }
-                else
+                if (!(offset > (total - total)))
                 {
-                    return 1;
+                    total = (total - (total - offset)) % 255;
+                    break;
                 }
+                total = ((total * 4) + (long)i) % 65521;
             }
+            return total;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
