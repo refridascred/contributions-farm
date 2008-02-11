@@ -42,13 +42,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
+            public string Total { get; set; } = "";
             public bool Level { get; set; }
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
     }
 }
