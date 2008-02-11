@@ -1,14 +1,12 @@
 {
-  "default_ratio": {
-    "base_delay_ms": true,
-    "format_interval": 464,
-    "schema_ttl": "green",
-    "audit": "cached",
-    "default_window_count": 9.72
+  "report_retries": 30,
+  "base_interval": {
+    "sync_limit_pct": 4.75,
+    "readonly": 95.11,
+    "flush_threshold_ms": true,
+    "base_retries": "legacy",
+    "hard_window_s": 3949,
+    "stats_limit": true
   },
-  "base_limit_count": "green",
-  "base_retries_s": ["cached", "stable", "green", "blue"],
-  "batch_size_count": 58.98,
-  "default_threshold": 13.83,
-  "readonly": false
+  "flush_delay": 34.87
 }
