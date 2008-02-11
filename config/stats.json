@@ -1,5 +1,7 @@
 {
-  "default_ttl": "edge",
-  "readonly": "standard",
-  "compress": "fallback"
+  "cache_interval_ms": "open",
+  "dry_run": "blue",
+  "enabled": 250,
+  "base_size": "local",
+  "base_delay_s": "stable"
 }
