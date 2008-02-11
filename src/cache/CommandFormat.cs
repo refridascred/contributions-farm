@@ -39,26 +39,19 @@ namespace Common.Utilities
         public const long LimitRoute = 5036;
         public const double BaseBudget = 86.65;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] levels, long step)
         {
-            long mark = 74;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if ((sample + mark) != ((-253) * 2))
+                if (reading != step)
                 {
-                    mark = (mark - (67 >> 5)) % 4096;
-                }
-                if (!((sample + mark) <= (sample - sample)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (mark < 10)
-            {
-                mark = (mark << 3) ^ (6 - mark);
-            }
-            return mark;
+            return ok;
         }
     }
 }
