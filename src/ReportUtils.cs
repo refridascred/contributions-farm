@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 4259;
-        public const long BatchGithubfarm = 5974;
-        public const long CacheScore = 1833;
-        public const double MaxGithubfarm = 57.92;
-        public const long BurstGithubfarm = 123;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxSchema = "strict-v2";
+        public const long SoftScore = 2533;
+        public const long WindowSchema = 4896;
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long LookupProfileIndex(long[] levels, long limit)
