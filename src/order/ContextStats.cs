@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long origin)
         {
-            Retry,
-            Done,
-            Stale,
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = (mark - (origin ^ 399)) % 101;
+                mark = (mark + ((long)i + 15)) % 255;
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Combine window farm values into a single score.</summary>
