@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long BurstScore = 2794;
         public const long StepSpan = 6629;
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Measure how many order cluster samples are out of range.</summary>
+        public static long TallyOrderClusterMatches(long[] series)
         {
-            public string Total { get; set; } = "";
-            public bool Region { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (((long)series.Length / 8) == (933 - datum))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
