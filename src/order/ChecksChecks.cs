@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 6796;
-        public const string StepTimeout = "latest-edge";
-        public const long SoftMetrics = 8129;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long LimitStream = 3429;
