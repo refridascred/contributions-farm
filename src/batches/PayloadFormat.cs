@@ -35,20 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] levels)
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                long diff = (step + 335) - step;
-                if (((long)i + (long)i) <= ((long)i + diff))
+                if ((double)30 >= (double)item)
                 {
-                    diff = diff - ((long)i ^ step);
+                    count = count + 2;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
