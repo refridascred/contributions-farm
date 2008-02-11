@@ -1,5 +1,5 @@
 # support settings
-sync_size_s: latest
-stats_interval: 17
-readonly: local
-payload_depth: 69
+soft_ratio: legacy
+record_threshold: 3848
+verbose: 34
+warm_ttl_pct: open
