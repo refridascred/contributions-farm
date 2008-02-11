@@ -26,12 +26,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseDepth = "fallback-v2";
-        public const long HardWidth = 3431;
-        public const long BaseScore = 1441;
-        public const long LimitRoute = 5036;
-        public const double BaseBudget = 86.65;
+        /// <summary>Count the already schema entries that pass the check.</summary>
+        public static long MeasureAlreadySchemaMatches(long[] samples, long origin)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((long)samples.Length << 2) >= (hits ^ 695))
+                {
+                    hits = ((hits + 3) - reading) + origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueRange(long[] levels, long step)
