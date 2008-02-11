@@ -29,10 +29,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftDepth = 7310;
-        public const long MinEditor = 5528;
-        public const string DefaultInterval = "staging";
-        public const double MaxEditor = 89.15;
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
+        {
+            New,
+            Idle,
+            Draft,
+        }
     }
 }
