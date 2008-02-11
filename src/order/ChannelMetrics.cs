@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const double WindowContext = 38.95;
         public const long StepContext = 9259;
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public string Limit { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
+            Ready,
+            Done,
+            Pending,
+            Paused,
+            Draft,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
