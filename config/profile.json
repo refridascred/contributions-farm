@@ -1,18 +1,7 @@
 {
-  "filter_delay": 92.59,
-  "poll_capacity_ms": "strict",
-  "farm_depth": {
-    "retry_depth": 250,
-    "command_delay": {
-      "flush_depth_count": 86.22,
-      "soft_delay": ["stable", "staging", "green", "standard"],
-      "warm_retries_s": false,
-      "readonly": "fallback",
-      "graph_window": "legacy"
-    },
-    "retry_depth_s": 250,
-    "cache_limit_pct": 9501,
-    "dry_run": "stable"
-  },
-  "enabled": ["green", "strict", "eu-west", "primary"]
+  "soft_depth": "staging",
+  "sync_retries_count": "standard",
+  "min_timeout_pct": 24,
+  "account_capacity": true,
+  "min_limit_count": 59.18
 }
