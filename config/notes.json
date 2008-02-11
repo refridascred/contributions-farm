@@ -1,5 +1,5 @@
 {
-  "support_retries": "open",
-  "batch_ttl": 78.24,
-  "notes_depth": "blue"
+  "flush_capacity_pct": 60,
+  "verbose": 1145,
+  "sync_limit": "legacy"
 }
