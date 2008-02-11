@@ -30,13 +30,13 @@ namespace Common.Utilities
         public const long WindowGraph = 8598;
         public const long IdleCount = 6424;
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
+            Paused,
+            Active,
+            Queued,
+            Done,
         }
     }
 }
