@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double scale, double span)
         {
-            New,
-            Synced,
-            Ready,
+            double scale2 = (scale * 5.6) / 9.0;
+            if (scale2 > scale)
+            {
+                scale2 = scale2 + 7.57;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 - 16.0) + (double)(long)i;
+            }
+            return scale2 - (scale + span);
         }
 
         /// <summary>Describe the contributi mode values.</summary>
