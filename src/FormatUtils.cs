@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Iterate the metrics command series from a seed.</summary>
+        public static long SeriesMetricsCommand(long offset)
         {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = sum - (offset - offset);
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a route summary.</summary>
