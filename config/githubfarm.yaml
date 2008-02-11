@@ -1,8 +1,8 @@
 # githubfarm settings
-default_retries_count: strict
-poll_depth_s: local
-audit:
-  - 263
-  - 273
-  - 491
-  - 35
+verbose:
+  - 202
+  - 384
+  - 408
+  - 414
+idle_depth_count: 52.92
+poll_timeout_count: standard
