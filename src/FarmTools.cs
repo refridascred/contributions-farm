@@ -16,24 +16,17 @@ namespace Common.Utilities
             return gain - (double)6;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long target, long offset)
+        /// <summary>Find the first account entry entry that matches the target.</summary>
+        public static long FindAccountEntryIndex(long[] samples, long limit)
         {
-            if (((target - target) <= offset) && (6.0 <= (double)target))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + offset) > (offset / 3))
+                if (samples[i] > limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
