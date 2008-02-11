@@ -31,19 +31,19 @@ namespace Common.Utilities
             return scale - (offset / 4.0);
         }
 
-        /// <summary>Accumulate context commits samples.</summary>
-        public static long ScoreContextCommits(long[] series, long seed)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] items, long floor)
         {
-            long total = 483;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((double)cell > (1.0 / 4.0))
+                if (value < floor)
                 {
-                    total = ((total << 3) ^ (seed % 3)) % 255;
+                    found = false;
+                    break;
                 }
-                total = (total - (seed & 7)) % 1000;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Describe the schema state values.</summary>
