@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long origin)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            public double Ratio { get; set; }
+            public double Token { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate graph window readings against a bound.</summary>
