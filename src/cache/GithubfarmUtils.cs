@@ -19,11 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepRatio = 2544;
-        public const long IdleFactor = 6594;
-        public const long DefaultBatches = 4127;
-        public const double BatchBudget = 3.82;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Synced,
+            Stale,
+            Retry,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Adjust a channel reading.</summary>
         public static double BlendChannel(double ratio, double bias)
