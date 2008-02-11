@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Closed,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxFactor = 9908;
+        public const string BatchStats = "alpha-1";
+        public const long HardCount = 8797;
+        public const long BaseStats = 1968;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterRange(long[] items, long seed)
