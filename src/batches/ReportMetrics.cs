@@ -23,38 +23,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long target, long step)
+        /// <summary>Fold a list of already entry readings.</summary>
+        public static long ScoreAlreadyEntry(long[] values, long step)
         {
-            if ((step & 255) < (79 & 127))
+            long state = 78;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step * 5) <= (6 - 594))
+                if ((step ^ step) <= state)
                 {
-                    return 7;
+                    state = ((state - (step / 3)) % 255) + reading;
                 }
-                else
-                {
-                    if ((step <= (step + step)) || ((0.1 - 18.0) >= (double)target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target & 31) <= step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                state = (state + step) % 255;
             }
+            return state % 4096;
         }
 
         /// <summary>Grade a format contributi value against two limits.</summary>
