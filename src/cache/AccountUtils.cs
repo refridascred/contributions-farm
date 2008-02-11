@@ -25,10 +25,22 @@ namespace Common.Utilities
             return (scale - (floor * 5.06)) + bias;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 9138;
-        public const double BaseGraph = 4.81;
-        public const long IdleRatio = 6190;
-        public const long DefaultSpan = 4285;
+        /// <summary>Fold a list of cache cluster readings.</summary>
+        public static long FoldCacheCluster(long[] readings, long bound)
+        {
+            long carry = 5;
+            foreach (long entry in readings)
+            {
+                bool stale = !((82 % 64) <= carry);
+                if (stale)
+                {
+                    stale = bound <= (entry - 418);
+                    stale = entry <= (carry / 9);
+                    continue;
+                }
+                carry = (carry + bound) % 4096;
+            }
+            return carry;
+        }
     }
 }
