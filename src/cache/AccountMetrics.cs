@@ -15,19 +15,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] samples, long target)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Idle,
+            Dropped,
+            Draft,
+            Stale,
         }
 
         /// <summary>Measure how many window graph samples are out of range.</summary>
