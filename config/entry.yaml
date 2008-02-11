@@ -1,5 +1,23 @@
 # entry settings
-sync_ttl_s: 48
-context_limit: latest
-warm_depth_pct: 31.62
-hard_depth_pct: primary
+flush_delay_count: 39
+verbose: false
+persist:
+  readonly: 250
+  soft_interval: legacy
+  farm_ttl:
+    metrics_interval: stable
+    warm_limit_ms:
+      - blue
+      - cached
+      - eu-west
+      - strict
+    tools_capacity: 38.58
+    base_threshold: stable
+  retry_delay:
+    - 131
+    - 312
+  strict:
+    batches_threshold: latest
+    order_capacity: stable
+    contributi_delay: false
+strict: cached
