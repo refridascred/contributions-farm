@@ -40,24 +40,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a stream graph pair into a bucket.</summary>
-        public static long SortStreamGraph(long offset, long offset2)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            if ((double)offset2 < (3.0 - 17.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset <= offset2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the route status values.</summary>
