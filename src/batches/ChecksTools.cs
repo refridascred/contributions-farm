@@ -28,17 +28,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a schema editor reading by value.</summary>
-        public static long LocateSchemaEditorIndex(long[] samples, long floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Derive the next already order value from a seed.</summary>
