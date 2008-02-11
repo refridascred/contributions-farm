@@ -50,31 +50,23 @@ namespace Common.Utilities
         public const long SoftWindow = 7775;
         public const long MaxWindow = 8836;
 
-        /// <summary>Grade a cluster contributi value against two limits.</summary>
-        public static long SortClusterContributi(long floor, long offset)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long target)
         {
-            if ((((-172) << 2) < offset) && ((offset * 5) > 54))
+            long sum = target;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((3.95 / 4.0) <= (double)floor)
+                if ((double)target < (10.0 / 6.0))
                 {
-                    return 8;
+                    sum = (sum * 4) + 39;
                 }
                 else
                 {
-                    if (!((offset * 3) <= (floor + (-56))))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = (sum ^ ((long)i >> 3)) % 65521;
                 }
+                sum = ((sum * 5) + (long)i) % 97;
             }
+            return sum;
         }
     }
 }
