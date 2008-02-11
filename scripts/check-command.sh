@@ -6,15 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-open}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 4); do
+for i in $(seq 1 9); do
     total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in primary standard staging; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-
-COMMAND_LIMIT=363
-log "limit is ${COMMAND_LIMIT}"
+log "ran ${count} rounds"
