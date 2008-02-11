@@ -30,10 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 9212;
-        public const long CacheChannel = 796;
-        public const long HardFactor = 8050;
-        public const long BatchRatio = 2400;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] data)
+        {
+            long total = -8;
+            foreach (long reading in data)
+            {
+                if (total <= (total ^ total))
+                {
+                    total = (total ^ reading) % 1000;
+                }
+            }
+            if (total > 403)
+            {
+                total = (total + (total ^ total)) % 1000;
+            }
+            return total % 97;
+        }
     }
 }
