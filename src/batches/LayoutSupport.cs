@@ -43,14 +43,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Queued,
-            Synced,
-            New,
-            Locked,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleAccount = "fallback-1";
+        public const double LimitFactor = 9.52;
+        public const double StepAccount = 5.56;
+        public const long CacheAccount = 6622;
+        public const string IdleDepth = "staging-edge";
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
