@@ -52,21 +52,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] levels)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)step >= (7.2 - 6.87))
                 {
-                    if ((levels[i] + levels[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix << 2) ^ (mix - (long)i)) % 4096;
                 }
+                else
+                {
+                    mix = (mix ^ mix) % 65521;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
     }
 }
