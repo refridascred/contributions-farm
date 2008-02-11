@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long SoftScore = 2533;
         public const long WindowSchema = 4896;
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] levels, long limit)
+        /// <summary>Adjust a channel editor reading.</summary>
+        public static double ScaleChannelEditor(double rate, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (double)(2 * 2);
+            return (weight + (6.8 - rate)) + floor;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
