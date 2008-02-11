@@ -75,13 +75,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long offset)
         {
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            long score = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                score = (score ^ score) % 97;
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
