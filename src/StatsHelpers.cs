@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Ready,
-            Active,
-            Queued,
+            New,
+            Synced,
+            Draft,
+            Pending,
+            Paused,
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
