@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public bool Label { get; set; }
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double HardScore = 81.65;
+        public const long RetryScore = 9988;
+        public const string MaxStats = "cached";
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long OverlapNotesCount(long[] items)
