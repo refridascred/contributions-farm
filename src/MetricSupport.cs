@@ -30,18 +30,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] values, long offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] values)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((263 - item) >= (tally + offset))
+                if ((90 * 5) <= (hits * 3))
                 {
-                    tally = tally + 1;
+                    hits = (hits + 3) + value;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
