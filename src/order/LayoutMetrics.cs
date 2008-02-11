@@ -60,14 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] items, long seed)
         {
-            Synced,
-            Queued,
-            Pending,
-            Dropped,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == seed) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
