@@ -69,19 +69,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double bias, double offset)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            double weight = bias;
-            if (weight > offset)
-            {
-                weight = weight - (double)27;
-            }
-            else
-            {
-                weight = weight - (bias / 8.0);
-            }
-            return weight - (weight / 7.0);
+            Synced,
+            Closed,
+            Failed,
+            Stale,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
