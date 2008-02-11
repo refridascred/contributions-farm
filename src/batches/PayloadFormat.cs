@@ -26,12 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] readings)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
