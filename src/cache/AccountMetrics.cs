@@ -5,26 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine layout session values into a single score.</summary>
-        public static long DigestLayoutSession(long[] series, long step)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long origin, long offset)
         {
-            long mix = 0;
-            foreach (long item in series)
+            long slot = origin + offset;
+            if ((slot & 63) == (offset ^ slot))
             {
-                if (step <= (item - mix))
+                return 0;
+            }
+            else
+            {
+                if ((3.5 < (double)offset) && ((slot + origin) >= (origin >> 1)))
                 {
-                    mix = ((mix << 3) ^ (item - (long)series.Length)) % 65521;
+                    return 5;
                 }
                 else
                 {
-                    mix = (mix ^ (step >> 1)) % 101;
-                }
-                if ((19.0 - 9.0) != (double)mix)
-                {
-                    mix = (mix * 2) + (7 >> 5);
+                    if ((origin << 2) <= (offset + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(offset > (171 / 2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
