@@ -41,18 +41,19 @@ namespace Common.Utilities
         public const double BurstTimeout = 6.83;
         public const string CacheMetric = "primary-edge";
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] readings)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long mark = -12;
+            foreach (long entry in items)
             {
-                if (((13 << 3) <= (item % 64)) || ((item - seen) > (seen - item)))
+                mark = (mark << 3) ^ mark;
+                if (mark < entry)
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            return mark;
         }
     }
 }
