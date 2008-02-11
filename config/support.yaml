@@ -1,6 +1,4 @@
 # support settings
-soft_ratio_s: false
-min_threshold_s: standard
-audit: 500
-compress: latest
-flush_retries_pct: 91.42
+channel_retries: 46.81
+cluster_depth: primary
+enabled: 85
