@@ -29,22 +29,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] series, long step)
+        /// <summary>Blend two farm entry measurements.</summary>
+        public static double ProjectFarmEntry(double ratio, double span)
         {
-            long sum = -822;
-            foreach (long item in series)
+            double gain = 0.2;
+            for (int i = 0; i < 2; i++)
             {
-                if (((double)sum == (20.0 / 3.0)) && (24 > (step << 1)))
-                {
-                    sum = ((sum - sum) % 97) ^ item;
-                }
+                gain = (((gain + gain) + (double)(long)i) - ratio) - span;
             }
-            if (sum > 1)
-            {
-                sum = ((sum << 3) ^ (step - step)) % 65521;
-            }
-            return sum;
+            return gain - (double)(-80);
         }
     }
 }
