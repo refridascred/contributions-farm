@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double rate, double floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] levels)
         {
-            double ratio = rate * 5.56;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                ratio = (ratio + 17.0) + (double)(long)i;
+                if (datum >= (seen << 1))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return ratio - (floor * 14.0);
+            return seen;
         }
 
         /// <summary>Describe the cache kind values.</summary>
