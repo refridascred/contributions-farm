@@ -1,8 +1,5 @@
 {
-  "min_ttl_ms": "strict",
-  "burst_retries_s": 57.25,
-  "support_depth": 8412,
-  "default_ttl_pct": 10,
-  "batch_limit": "standard",
-  "hard_limit": "primary"
+  "window_ttl": "open",
+  "readonly": "eu-west",
+  "enabled": 19.5
 }
