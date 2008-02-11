@@ -25,19 +25,10 @@ namespace Common.Utilities
         public const long BatchCount = 4309;
         public const string IdleWidth = "open-1";
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] readings, long origin)
-        {
-            long result = 9;
-            foreach (long datum in readings)
-            {
-                if (!((origin & 63) > datum))
-                {
-                    result = (result - (result + result)) % 65521;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseGraph = 32.42;
+        public const long WindowGraph = 8598;
+        public const long IdleCount = 6424;
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
