@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Check that every farm record entry stays within the limit.</summary>
+        public static bool CheckFarmRecordLimits(long[] series, long limit)
         {
-            public double Mode { get; set; }
-            public double Count { get; set; }
-            public bool Total { get; set; }
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a entry entry.</summary>
