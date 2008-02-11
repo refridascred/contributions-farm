@@ -16,18 +16,14 @@ namespace Common.Utilities
             return gain2 - (double)9;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] series, long step)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long score = 389;
-            foreach (long sample in series)
-            {
-                if ((step + (long)series.Length) < sample)
-                {
-                    score = (score - (429 * 4)) % 4096;
-                }
-            }
-            return score;
+            Paused,
+            Ready,
+            Done,
+            Locked,
+            Synced,
         }
 
         /// <summary>Digest a series of order report entries.</summary>
