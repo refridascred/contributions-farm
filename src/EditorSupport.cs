@@ -78,18 +78,10 @@ namespace Common.Utilities
             return weight - (weight / 7.0);
         }
 
-        /// <summary>Measure how many profile metrics samples are out of range.</summary>
-        public static long MeasureProfileMetricsMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((hits - hits) > (entry - hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseTimeout = "stable-edge";
+        public const long BurstCluster = 9346;
+        public const long CacheCluster = 9332;
+        public const long RetryCluster = 1813;
     }
 }
