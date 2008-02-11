@@ -46,22 +46,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] items)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (((seen / 8) >= (cell + seen)) || !((cell - seen) == (23 ^ 51)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Pending,
+            New,
+            Stale,
+            Done,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
