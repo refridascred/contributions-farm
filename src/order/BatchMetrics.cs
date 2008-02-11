@@ -22,14 +22,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] values)
         {
-            Draft,
-            Queued,
-            Pending,
-            Done,
-            Ready,
+            long acc = 10;
+            foreach (long value in values)
+            {
+                if ((double)value >= (8.0 * 5.42))
+                {
+                    acc = (acc << 2) ^ (value + acc);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Count the batch already entries that pass the check.</summary>
