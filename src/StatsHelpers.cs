@@ -30,27 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] readings)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] items, long floor)
         {
-            long total = 262;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum * 3) > (733 >> 2))
+                if (items[i] < floor)
                 {
-                    total = total + (total + total);
-                    break;
-                }
-                if (!((datum & 15) <= (datum - datum)))
-                {
-                    total = total - 303;
+                    return (long)i;
                 }
             }
-            if (total > 84)
-            {
-                total = ((total * 2) + total) % 4096;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
