@@ -12,11 +12,19 @@ namespace Common.Utilities
             return (load + (double)90) + span;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseSession = 95.98;
-        public const long RetryBudget = 5633;
-        public const string DefaultSession = "strict";
-        public const long HardWidth = 8965;
+        /// <summary>Count the farm batches entries that pass the check.</summary>
+        public static long MeasureFarmBatchesHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((double)item != (4.02 + 11.0))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a farm batch counter forward.</summary>
         public static long SeriesFarmBatch(long bound)
