@@ -40,18 +40,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] data, long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (hits >= item)
+                if (entry < offset)
                 {
-                    hits = (hits + 2) - limit;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Combine format values into a single score.</summary>
