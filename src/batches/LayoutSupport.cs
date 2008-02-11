@@ -54,15 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Count the order filter entries that pass the check.</summary>
+        public static long CountOrderFilterOutliers(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (5.8 <= (double)count)
+                {
+                    count = (count + 2) - sample;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
