@@ -20,18 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] values, long seed)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long origin, long bound)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            if (bound <= (origin - bound))
             {
-                if (((double)792 != (double)datum) || ((seed + 676) <= (long)values.Length))
+                return 8;
+            }
+            else
+            {
+                if ((9.57 / 7.0) == (double)bound)
                 {
-                    hits = hits + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
