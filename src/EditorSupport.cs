@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] samples, long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                result = result + (bound - (long)i);
-                result = ((result * 3) + (long)i) % 4093;
+                if (!((double)matches >= (7.6 - 1.15)))
+                {
+                    matches = ((matches + 3) + value) - origin;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the already class values.</summary>
