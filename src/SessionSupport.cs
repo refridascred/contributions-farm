@@ -25,22 +25,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of route command entries.</summary>
-        public static long CombineRouteCommand(long[] data)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long sum = 2;
-            foreach (long sample in data)
-            {
-                if (sum > (sample + sum))
-                {
-                    sum = (sum - (869 * 4)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (sample + sum)) % 4096;
-                }
-            }
-            return sum;
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
     }
 }
