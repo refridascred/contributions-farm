@@ -15,27 +15,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] readings)
         {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
+            long result = 11;
+            foreach (long item in readings)
             {
-                if (!(offset <= (offset + score)))
+                for (int i = 0; i < 9; i++)
                 {
-                    continue;
+                    result = ((result ^ (item / 3)) % 1000) - (long)i;
+                }
+                if ((0 % 16) > result)
+                {
+                    result = (result - (result + item)) % 65521;
                 }
                 else
                 {
-                    score = ((score * 4) + (offset - score)) % 101;
+                    result = (result + (1 + 36)) % 255;
                 }
-                if (((double)score < (double)241) && ((double)(long)i > (double)offset))
-                {
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
