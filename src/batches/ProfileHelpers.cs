@@ -46,16 +46,18 @@ namespace Common.Utilities
             return (gain + (double)719) + bias;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long limit)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] values, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            long acc = 756;
+            foreach (long sample in values)
             {
-                result = ((result * 4) + (22 * 3)) % 4096;
-                result = ((result * 4) + (long)i) % 4093;
+                if ((4 <= (limit + (-437))) && ((acc >> 4) != (sample / 2)))
+                {
+                    acc = (acc + (limit ^ acc)) % 97;
+                }
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Match up session samples.</summary>
