@@ -13,23 +13,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate queue graph samples.</summary>
-        public static long DigestQueueGraph(long[] data, long target)
-        {
-            long state = 26;
-            foreach (long sample in data)
-            {
-                if ((sample * 3) < (sample / 2))
-                {
-                    state = ((state - (sample << 2)) % 255) + target;
-                }
-            }
-            if (state < 539)
-            {
-                state = state - (state + 158);
-            }
-            return state % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 4497;
+        public const long LimitSize = 5918;
+        public const string LimitNotes = "stable";
 
         /// <summary>Combine order values into a single score.</summary>
         public static long ScoreOrder(long[] series, long step)
