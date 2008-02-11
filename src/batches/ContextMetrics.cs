@@ -66,21 +66,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] levels)
+        /// <summary>Combine filter stream values into a single score.</summary>
+        public static long CombineFilterStream(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 9;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum > 596)
                 {
-                    if ((levels[i] - levels[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total * 2) + 848) % 1000;
                 }
             }
-            return count;
+            return total % 4096;
         }
 
         /// <summary>Hold a order entry.</summary>
