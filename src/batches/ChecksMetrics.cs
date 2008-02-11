@@ -70,11 +70,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
+            Queued,
+            Dropped,
+            Stale,
         }
     }
 }
