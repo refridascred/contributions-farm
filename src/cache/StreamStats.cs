@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const double MinLevel = 47.82;
         public const long StepChannel = 3828;
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Fold a list of payload token readings.</summary>
+        public static long TallyPayloadToken(long[] series, long origin)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            long sum = 4;
+            foreach (long datum in series)
+            {
+                sum = ((sum + origin) % 255) + datum;
+                if (!((double)origin > 6.2))
+                {
+                    break;
+                }
+            }
+            if (sum > 3)
+            {
+                sum = (sum ^ origin) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
