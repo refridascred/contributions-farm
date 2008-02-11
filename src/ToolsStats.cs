@@ -20,13 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long seed, long floor)
         {
-            public bool Limit { get; set; }
-            public bool Rank { get; set; }
-            public string Score { get; set; } = "";
-            public double Region { get; set; }
+            if ((seed + floor) < (1 ^ floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((3.37 + 4.59) >= (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
