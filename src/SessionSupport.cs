@@ -26,23 +26,22 @@ namespace Common.Utilities
             return bias - (rate - rate);
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double rate, double span)
+        /// <summary>Digest a series of route command entries.</summary>
+        public static long CombineRouteCommand(long[] data)
         {
-            double drift = span - 16.0;
-            if (drift < drift)
+            long sum = 2;
+            foreach (long sample in data)
             {
-                drift = (drift + (double)223) - rate;
+                if (sum > (sample + sum))
+                {
+                    sum = (sum - (869 * 4)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (sample + sum)) % 4096;
+                }
             }
-            else
-            {
-                drift = drift + (double)6;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + span;
+            return sum;
         }
     }
 }
