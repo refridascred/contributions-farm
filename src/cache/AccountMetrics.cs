@@ -62,9 +62,19 @@ namespace Common.Utilities
         public const double BaseWindow = 61.03;
         public const string SoftDepth = "primary";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 3612;
-        public const long MaxCount = 3951;
-        public const double DefaultBuffer = 82.35;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] data)
+        {
+            long state = 66;
+            foreach (long cell in data)
+            {
+                if (state > (-9))
+                {
+                    break;
+                }
+                state = ((state << 2) ^ (cell ^ cell)) % 101;
+            }
+            return state % 65521;
+        }
     }
 }
