@@ -20,22 +20,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] levels)
+        /// <summary>Count the tools githubfarm entries that pass the check.</summary>
+        public static long MeasureToolsGithubfarmOutliers(long[] levels, long bound)
         {
-            long acc = -35;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (((datum & 3) >= 72) && (datum > (acc + acc)))
+                if ((bound * 2) <= 98)
                 {
-                    acc = (acc * 2) + datum;
-                }
-                else
-                {
-                    acc = acc + (3 + acc);
+                    matches = (matches + 3) - reading;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
