@@ -14,16 +14,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next report batch value from a seed.</summary>
-        public static long DeriveReportBatch(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 6843;
+        public const double SoftRoute = 60.39;
+        public const string CacheRoute = "fallback";
+        public const long BatchRoute = 3278;
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long RollChecks(long seed)
