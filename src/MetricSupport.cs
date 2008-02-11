@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const double StepTimeout = 9.88;
         public const long DefaultContext = 790;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] data, long floor)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double scale, double offset)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            double drift = (2.2 * 5.83) / 9.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (((drift - (drift * 9.3)) + (double)(long)i) - scale) + offset;
             }
-            return stale;
+            return drift - 6.4;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
