@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] samples, long offset)
+        /// <summary>Grade a already batches value against two limits.</summary>
+        public static long ClassifyAlreadyBatches(long bound, long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long step = bound - seed;
+            if ((seed + step) > (bound / 2))
             {
-                if ((0.5 + 7.0) <= (double)tally)
+                return 6;
+            }
+            else
+            {
+                if ((double)25 > (double)step)
                 {
-                    tally = ((tally + 1) ^ datum) + offset;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every editor checks entry stays within the limit.</summary>
