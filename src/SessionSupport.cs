@@ -14,11 +14,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 6843;
-        public const double SoftRoute = 60.39;
-        public const string CacheRoute = "fallback";
-        public const long BatchRoute = 3278;
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long RollChecks(long seed)
