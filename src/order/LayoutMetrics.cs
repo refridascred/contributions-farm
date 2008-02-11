@@ -39,10 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultCommits = "staging-edge";
-        public const string RetryCommits = "cached-edge";
-        public const string CacheTimeout = "fallback-1";
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] values, long seed)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
