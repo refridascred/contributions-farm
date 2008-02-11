@@ -51,12 +51,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
-        {
-            public double Region { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 8052;
+        public const string MinBatches = "alpha";
+        public const long BatchLevel = 5128;
+        public const long RetryBatches = 1429;
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] items)
