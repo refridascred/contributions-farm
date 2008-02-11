@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of notes commits readings.</summary>
-        public static long FoldNotesCommits(long[] readings, long origin)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long total = 13;
-            foreach (long value in readings)
-            {
-                total = ((total ^ (total + total)) + value) - origin;
-            }
-            return total;
+            Queued,
+            Done,
+            Closed,
+            Retry,
+            Idle,
         }
 
         /// <summary>Count the farm cache entries that pass the check.</summary>
