@@ -50,26 +50,35 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of checks route entries.</summary>
-        public static long DigestChecksRoute(long[] series)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] values)
         {
-            long mix = 415;
-            foreach (long cell in series)
+            long sum = 396;
+            foreach (long sample in values)
             {
-                if ((16.0 + 2.74) != (double)mix)
+                if ((sum << 2) >= (sample / 4))
                 {
-                    mix = ((mix * 2) + mix) + cell;
+                    sum = sum ^ 502;
+                }
+                if ((sample >> 1) < (106 >> 4))
+                {
+                    sum = (sum - (sum >> 2)) % 101;
+                    sum = (sum + (sum % 97)) % 65521;
                 }
                 else
                 {
-                    mix = ((mix * 4) + (mix - mix)) % 97;
+                    sum = (sum << 2) ^ (sum & 3);
+                }
+                if ((double)sample > (7.14 - 8.2))
+                {
+                    sum = (sum - (4 * 3)) % 4096;
+                }
+                else
+                {
+                    sum = (sum + (sum * 3)) % 101;
                 }
             }
-            if (mix > 5)
-            {
-                mix = mix + (mix + (long)series.Length);
-            }
-            return mix % 4096;
+            return sum;
         }
 
         /// <summary>Locate a githubfarm tools reading by value.</summary>
