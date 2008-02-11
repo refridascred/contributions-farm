@@ -19,19 +19,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double weight, double floor)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] samples, long limit)
         {
-            double rate = (double)((-6) % 3);
-            if (rate >= weight)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate + 2.15) - floor;
+                if ((samples[i] >= limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + weight) + (double)(long)i;
-            }
-            return rate + (double)96;
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
