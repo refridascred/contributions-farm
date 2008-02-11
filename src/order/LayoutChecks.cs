@@ -43,17 +43,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long target)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((data[i] >= target) && ((data[i] % 5) != 0))
+                if ((double)count > (4.0 + 12.0))
                 {
-                    return (long)i;
+                    count = ((count + 1) ^ entry) - step;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a format record.</summary>
