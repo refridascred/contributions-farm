@@ -62,19 +62,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] samples, long offset)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item >= offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
