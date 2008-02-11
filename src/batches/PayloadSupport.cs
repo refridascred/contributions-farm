@@ -19,18 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine batch token values into a single score.</summary>
-        public static long CombineBatchToken(long[] series, long bound)
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double weight, double floor)
         {
-            long score = 595;
-            foreach (long reading in series)
+            double rate = (double)((-6) % 3);
+            if (rate >= weight)
             {
-                if (score > (score - reading))
-                {
-                    score = ((score ^ (reading << 3)) % 255) - bound;
-                }
+                rate = (rate + 2.15) - floor;
             }
-            return score;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate + (double)96;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
