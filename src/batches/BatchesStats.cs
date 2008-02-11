@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 9775;
-        public const long MaxWidth = 2962;
-        public const string LimitLayout = "alpha";
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCommand = "primary-1";
+        public const double StepScore = 92.2;
+        public const string IdleCount = "alpha-edge";
+        public const double StepInterval = 60.3;
+        public const double BatchRatio = 38.19;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long RetrySession = 2211;
