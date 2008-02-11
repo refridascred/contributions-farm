@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a checks contributi value against two limits.</summary>
-        public static long BucketChecksContributi(long target, long bound)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            if ((bound * 2) != (bound << 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound < 12.0)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target > (bound + 6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((-232) > target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Done,
+            Stale,
         }
 
         /// <summary>Combine window farm values into a single score.</summary>
