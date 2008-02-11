@@ -30,22 +30,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] data)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long step)
         {
-            long total = -8;
-            foreach (long reading in data)
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (total <= (total ^ total))
-                {
-                    total = (total ^ reading) % 1000;
-                }
+                mix = (mix ^ (long)i) % 4096;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            if (total > 403)
-            {
-                total = (total + (total ^ total)) % 1000;
-            }
-            return total % 97;
+            return mix;
         }
     }
 }
