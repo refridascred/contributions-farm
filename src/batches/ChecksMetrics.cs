@@ -55,20 +55,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] samples, long step)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long mark = 3;
-            foreach (long reading in samples)
-            {
-                if ((double)step <= (6.0 - 0.83))
-                {
-                    mark = (mark - (mark - step)) - reading;
-                }
-                mark = (mark - ((-6) % 100)) % 4096;
-                mark = (mark * 2) + mark;
-            }
-            return mark % 1000;
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
