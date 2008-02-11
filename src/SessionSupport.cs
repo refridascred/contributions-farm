@@ -20,21 +20,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = (acc - acc) % 4096;
-                if (!((double)limit <= (5.07 / 3.0)))
-                {
-                    acc = ((acc << 3) ^ ((long)i + limit)) % 101;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 8941;
+        public const string BurstContributi = "staging-v2";
+        public const long MaxDepth = 1066;
 
         /// <summary>Digest a series of route command entries.</summary>
         public static long CombineRouteCommand(long[] data)
