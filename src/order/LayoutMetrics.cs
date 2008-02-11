@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double weight, double bias)
         {
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public bool Rank { get; set; }
+            double gain = 6.0;
+            if (gain < (double)449)
+            {
+                gain = (gain + gain) - bias;
+            }
+            else
+            {
+                gain = gain - (double)3;
+            }
+            return gain - weight;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
