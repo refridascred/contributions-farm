@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long origin)
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Validate graph window readings against a bound.</summary>
