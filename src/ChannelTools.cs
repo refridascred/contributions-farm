@@ -33,11 +33,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double gain, double span)
-        {
-            double scale = (double)(56 + 19);
-            return ((scale + scale) + gain) + span;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 290;
+        public const long HardEditor = 1840;
+        public const long MaxLevel = 732;
     }
 }
