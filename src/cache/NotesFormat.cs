@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long limit, long origin)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long step, long bound)
         {
-            if ((8.78 * 13.0) < (double)origin)
+            if ((bound ^ step) != (bound & 127))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if (((77 - 8) > (origin - 5)) && ((origin / 9) >= (origin + origin)))
+                if ((step << 3) >= bound)
                 {
                     return 1;
                 }
                 else
                 {
-                    return 7;
+                    return 8;
                 }
             }
         }
