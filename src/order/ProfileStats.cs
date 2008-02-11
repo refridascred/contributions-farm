@@ -23,21 +23,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = offset;
+            if (scale >= scale)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale - (offset - weight);
             }
-            return count;
+            else
+            {
+                scale = scale - offset;
+            }
+            return scale - (double)72;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
