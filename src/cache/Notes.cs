@@ -66,13 +66,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
             Idle,
-            New,
-            Active,
             Ready,
+            Retry,
+            Synced,
+            Done,
         }
     }
 }
