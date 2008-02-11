@@ -17,20 +17,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] data, long bound)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheScore = 3341;
+        public const long StepReport = 3860;
+        public const string IdleSpan = "stable-1";
 
         /// <summary>Grade a format contributi value against two limits.</summary>
         public static long BucketFormatContributi(long offset, long bound)
