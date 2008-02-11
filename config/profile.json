@@ -1,7 +1,5 @@
 {
-  "soft_depth": "staging",
-  "sync_retries_count": "standard",
-  "min_timeout_pct": 24,
-  "account_capacity": true,
-  "min_limit_count": 59.18
+  "default_delay": "fallback",
+  "default_interval": "strict",
+  "strict": 100
 }
