@@ -32,19 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] values, long seed)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of stats readings.</summary>
