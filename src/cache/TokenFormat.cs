@@ -42,18 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] samples, long limit)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)limit != (6.2 - 9.5))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            Closed,
+            Stale,
+            New,
+            Queued,
+            Draft,
         }
     }
 }
