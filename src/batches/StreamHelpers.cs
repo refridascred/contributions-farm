@@ -47,15 +47,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] items)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] data, long bound)
         {
-            long state = 99;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                state = (state - (state + 4)) + cell;
+                if ((double)datum < (3.3 * 13.0))
+                {
+                    seen = (seen + 2) + bound;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Compare every pair of batches support readings.</summary>
