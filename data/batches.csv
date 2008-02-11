@@ -1,7 +1,7 @@
-id,active,count
-1,59.04,open
-2,primary,6.96
-3,edge,local
-4,794,79.97
-5,12.17,35.2
-6,88.04,69.3
+id,active,count,owner
+1,686,58.18,1.87
+2,edge,59.26,58
+3,legacy,854,blue
+4,green,36.29,fallback
+5,262,29,eu-west
+6,216,13,179
