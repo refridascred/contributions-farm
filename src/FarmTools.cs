@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            Active,
+            Pending,
+            Ready,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a checks info.</summary>
