@@ -1,37 +1,12 @@
 # githubfarm settings
-sync_threshold_ms:
-  retry_limit_count: 1
-  sync_threshold_pct:
-    entry_ratio: 66
-    min_ratio_s: blue
-    poll_ratio:
-      - 310
-      - 319
-      - 421
-    sync_threshold_s: cached
-  retry_capacity_s:
-    - edge
-    - open
-    - green
-    - local
-  session_size: latest
-enabled:
-  - 90
-  - 8
-default_limit_pct: 82
-hard_capacity_s:
-  enabled:
-    token_ratio:
-      - stable
-      - local
-      - legacy
-      - stable
-    idle_delay_ms: 60
-    burst_threshold: edge
-    report_delay:
-      - 108
-      - 438
-    enabled: 6448
-  max_ratio: staging
-  stats_threshold: 100
-  max_size: cached
+strict: 2.51
+default_timeout: 30
+burst_timeout_ms: standard
+entry_retries:
+  - 160
+  - 204
+checks_limit:
+  - 172
+  - 121
+  - 5
+githubfarm_depth: 834
