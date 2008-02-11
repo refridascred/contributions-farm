@@ -26,10 +26,22 @@ namespace Common.Utilities
         public const double StepRatio = 32.75;
         public const long LimitTimeout = 9884;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CachePayload = 59.93;
-        public const string HardPayload = "open-v2";
-        public const long DefaultPayload = 5003;
+        /// <summary>Compare every pair of counter route readings.</summary>
+        public static long CompareCounterRouteCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double ProjectRoute(double rate, double bias)
