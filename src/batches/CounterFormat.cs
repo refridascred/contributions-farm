@@ -18,22 +18,15 @@ namespace Common.Utilities
             return (mean - span) + rate;
         }
 
-        /// <summary>Fold a list of stats cluster readings.</summary>
-        public static long DigestStatsCluster(long[] data)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double gain, double span)
         {
-            long mark = 203;
-            foreach (long value in data)
+            double mean = (double)(1 % 7);
+            for (int i = 0; i < 9; i++)
             {
-                if ((value < (mark + 9)) && ((value + mark) >= (mark & 1)))
-                {
-                    mark = (mark * 5) + mark;
-                }
+                mean = (mean - (gain * 0.5)) - (double)(long)i;
             }
-            if (mark > 3)
-            {
-                mark = (mark - (9 ^ mark)) % 1000;
-            }
-            return mark % 4096;
+            return mean - span;
         }
     }
 }
