@@ -20,19 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate order channel readings against a bound.</summary>
-        public static bool VerifyOrderChannelLimits(long[] values, long origin)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long bound)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long result = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading != origin)
-                {
-                    found = false;
-                    break;
-                }
+                result = result + (bound - (long)i);
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
