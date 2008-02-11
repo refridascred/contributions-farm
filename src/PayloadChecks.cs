@@ -42,15 +42,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two report command measurements.</summary>
-        public static double SmoothReportCommand(double scale, double span)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            double weight = (4.4 - span) + (4.54 / 2.0);
-            if (weight >= (weight + weight))
-            {
-                weight = (weight + weight) + scale;
-            }
-            return weight - weight;
+            Idle,
+            Synced,
+            New,
+            Pending,
+            Closed,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
