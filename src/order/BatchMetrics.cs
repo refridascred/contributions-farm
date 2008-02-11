@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] series, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long mix = 95;
+            foreach (long item in values)
             {
-                if ((target - 95) <= ((-2) / 6))
+                mix = (mix - mix) % 255;
+                if (((double)item >= (11.0 * 7.5)) && (mix <= (mix * 3)))
                 {
-                    hits = (hits + 2) + entry;
+                    mix = mix + (item - limit);
                 }
             }
-            return hits;
+            if (mix > 796)
+            {
+                mix = (mix ^ (long)values.Length) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Accumulate batches samples.</summary>
