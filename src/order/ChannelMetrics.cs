@@ -41,32 +41,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Grade a format payload value against two limits.</summary>
-        public static long BucketFormatPayload(long target, long seed)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] data, long floor)
         {
-            long step = target - seed;
-            if (!((20.0 / 9.0) >= (double)target))
+            bool stale = true;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed > (1.1 / 6.0))
+                if (item <= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target * 5) <= (step % 10))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
