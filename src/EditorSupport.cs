@@ -76,22 +76,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] items, long target)
+        /// <summary>Locate a stream cache reading by value.</summary>
+        public static long SeekStreamCacheIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)(long)items.Length <= (10.0 + 5.6))
+                if (levels[i] > bound)
                 {
-                    hits = ((hits + 2) + value) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
