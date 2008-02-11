@@ -1,9 +1,6 @@
-id,weight,owner
-1,21.46,83.77
-2,fallback,legacy
-3,54.83,84.47
-4,702,78.89
-5,34,26.07
-6,418,latest
-7,575,58.35
-8,legacy,blue
+id,token,label,region,ratio
+1,334,90.12,446,717
+2,92.41,917,84.94,cached
+3,558,68.7,40.55,225
+4,877,local,15.2,strict
+5,287,904,latest,blue
