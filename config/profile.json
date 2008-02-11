@@ -1,5 +1,7 @@
 {
-  "default_delay": "fallback",
-  "default_interval": "strict",
+  "soft_capacity_pct": true,
+  "already_limit": 5672,
+  "compress": "cached",
+  "poll_threshold": "open",
   "strict": 100
 }
