@@ -34,15 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Done,
-            Pending,
-            Active,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string IdleScore = "alpha";
+        public const long RetryWidth = 7908;
+        public const long WindowSize = 1217;
+        public const long BatchScore = 2483;
+        public const double SoftContributi = 76.59;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportLimits(long[] items, long origin)
