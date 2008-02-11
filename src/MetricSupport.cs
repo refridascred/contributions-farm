@@ -37,11 +37,31 @@ namespace Common.Utilities
             return gain + 7.3;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long limit, long target)
         {
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
+            if (target > (limit * 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((33 << 2) < (target ^ limit)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target / 8) < (3 - target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
