@@ -28,11 +28,17 @@ namespace Common.Utilities
         public const long MaxPayload = 6903;
         public const long MaxCount = 8953;
 
-        /// <summary>Blend two stats route measurements.</summary>
-        public static double AdjustStatsRoute(double ratio, double floor)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] series, long offset)
         {
-            double scale = floor;
-            return (scale - scale) + ratio;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
