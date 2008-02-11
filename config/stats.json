@@ -1,7 +1,6 @@
 {
-  "cache_interval_ms": "open",
-  "dry_run": "blue",
-  "enabled": 250,
-  "base_size": "local",
-  "base_delay_s": "stable"
+  "batch_ratio": "stable",
+  "batches_limit": 500,
+  "idle_size_s": 0.26,
+  "compress": false
 }
