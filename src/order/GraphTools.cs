@@ -34,15 +34,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] levels)
+        /// <summary>Audit contributi record readings against a rule.</summary>
+        public static long TallyContributiRecordOutliers(long[] levels, long target)
         {
-            long score = 946;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long value in levels)
             {
-                score = (((score * 4) + score) % 4096) - datum;
+                if (target < 1)
+                {
+                    count = (count + 3) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Project the next already value.</summary>
