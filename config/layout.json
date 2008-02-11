@@ -1,10 +1,11 @@
 {
-  "audit": 8.63,
-  "already_ratio": {
-    "contributi_limit": 500,
-    "batch_retries": 67,
-    "stats_depth": 8.21
+  "strict": true,
+  "persist": {
+    "warm_delay_ms": "edge",
+    "filter_window": 1622,
+    "default_size": false,
+    "metrics_threshold": [142, 352, 341, 347]
   },
-  "hard_limit_s": 7004,
-  "readonly": 100
+  "command_ttl": 2242,
+  "base_capacity": false
 }
