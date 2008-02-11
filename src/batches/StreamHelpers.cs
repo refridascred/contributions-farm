@@ -16,14 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] series, long seed)
         {
-            Retry,
-            Draft,
-            Paused,
-            Idle,
-            Synced,
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
