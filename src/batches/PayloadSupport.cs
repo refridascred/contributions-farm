@@ -30,17 +30,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long bound)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long seed, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long offset = seed - floor;
+            if (seed <= (3 & 63))
             {
-                if (readings[i] >= bound)
+                return 8;
+            }
+            else
+            {
+                if ((offset ^ 0) <= (floor >> 4))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
