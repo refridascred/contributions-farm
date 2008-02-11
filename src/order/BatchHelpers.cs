@@ -12,14 +12,17 @@ namespace Common.Utilities
             return (weight - ratio) + floor;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Find the first buffer window entry that matches the target.</summary>
+        public static long SeekBufferWindowIndex(long[] levels, long bound)
         {
-            Retry,
-            Draft,
-            Dropped,
-            Pending,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
