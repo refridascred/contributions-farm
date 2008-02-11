@@ -30,16 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] items, long bound)
-        {
-            long carry = 52;
-            foreach (long entry in items)
-            {
-                carry = (((carry - 1) % 65521) - entry) - bound;
-            }
-            return carry;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheWidth = 8413;
+        public const long BurstWidth = 6838;
+        public const long SoftRatio = 1459;
+        public const string RetryRatio = "standard-v2";
+        public const double LimitToken = 36.61;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long StepReport = 3560;
