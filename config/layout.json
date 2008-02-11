@@ -1,6 +1,14 @@
 {
-  "flush_window_pct": 2798,
-  "order_limit": 880,
-  "filter_depth": 60,
-  "format_interval": "staging"
+  "default_ratio": {
+    "base_delay_ms": true,
+    "format_interval": 464,
+    "schema_ttl": "green",
+    "audit": "cached",
+    "default_window_count": 9.72
+  },
+  "base_limit_count": "green",
+  "base_retries_s": ["cached", "stable", "green", "blue"],
+  "batch_size_count": 58.98,
+  "default_threshold": 13.83,
+  "readonly": false
 }
