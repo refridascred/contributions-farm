@@ -27,26 +27,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] items, long origin)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long score = -42;
-            foreach (long item in items)
-            {
-                if (((item - score) >= 639) && ((score + item) > item))
-                {
-                    score = (score ^ item) - origin;
-                }
-                else
-                {
-                    score = score ^ ((long)items.Length / 5);
-                }
-            }
-            if (score > 5)
-            {
-                score = (score - (score * 4)) % 101;
-            }
-            return score;
+            Done,
+            Ready,
+            Draft,
+            Closed,
         }
     }
 }
