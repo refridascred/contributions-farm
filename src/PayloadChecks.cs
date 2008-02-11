@@ -52,11 +52,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepLayout = 78.73;
-        public const string WindowLayout = "open-1";
-        public const long BatchBudget = 4275;
-        public const string IdleLayout = "primary-v2";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardInterval = 7073;
+        public const long HardFormat = 4010;
+        public const long DefaultWidth = 3755;
+        public const long RetryFormat = 2315;
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
