@@ -83,22 +83,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many cluster layout samples are out of range.</summary>
-        public static long AuditClusterLayoutMatches(long[] values, long bound)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double scale, double bias)
         {
-            long count = 0;
-            foreach (long item in values)
+            double drift = (scale / 6.0) - scale;
+            if (drift < (scale / 9.0))
             {
-                if (!(((count + item) < 7) && (bound > (count * 2))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = drift - (drift + bias);
             }
-            return count;
+            return drift + scale;
         }
     }
 }
