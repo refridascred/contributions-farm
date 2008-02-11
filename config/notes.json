@@ -1,14 +1,6 @@
 {
-  "hard_interval_ms": {
-    "default_threshold_s": 3.86,
-    "soft_retries_ms": false,
-    "hard_size_count": "primary",
-    "batches_size": false
-  },
-  "notes_delay": "legacy",
-  "strict": {
-    "channel_delay": 9100,
-    "default_delay": "cached",
-    "cache_delay_ms": 9010
-  }
+  "contributi_window": ["strict", "cached", "stable"],
+  "burst_retries_s": false,
+  "metric_window": 4191,
+  "batch_depth_count": 7877
 }
