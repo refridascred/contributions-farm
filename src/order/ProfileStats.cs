@@ -11,24 +11,18 @@ namespace Common.Utilities
         public const double CacheRatio = 84.66;
         public const double MinWidth = 85.04;
 
-        /// <summary>Classify a commits channel pair into a bucket.</summary>
-        public static long BucketCommitsChannel(long bound, long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] series, long origin)
         {
-            if (floor <= (34 * 5))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor + floor) < floor)
+                if ((tally * 4) <= (origin + cell))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
