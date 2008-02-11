@@ -31,14 +31,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Pending,
-            Paused,
-            Retry,
-            Draft,
-            Active,
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
