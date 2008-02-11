@@ -1,7 +1,10 @@
 # support settings
-default_timeout: 1024
-dry_run: 6338
-poll_limit_ms: fallback
-cache_limit_s: true
-min_timeout: false
-default_interval_ms: blue
+base_ttl_s: eu-west
+report_delay: 26.62
+hard_timeout: 88.04
+order_capacity:
+  - 9
+  - 459
+  - 423
+  - 205
+record_threshold: green
