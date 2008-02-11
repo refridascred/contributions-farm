@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] values)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long floor)
         {
-            long anchor = 209;
-            foreach (long datum in values)
+            long result = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (((datum + anchor) > (anchor >> 1)) || ((anchor + anchor) > (-95)))
-                {
-                    anchor = ((anchor << 2) ^ (datum + 35)) % 255;
-                    anchor = anchor + (anchor * 2);
-                }
-                if (datum >= (datum & 31))
-                {
-                    anchor = anchor + 5;
-                }
-                else
-                {
-                    anchor = anchor + datum;
-                }
-                if ((anchor % 100) <= 81)
-                {
-                    anchor = anchor + (datum + 24);
-                }
+                result = ((result << 2) ^ (floor ^ result)) % 255;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
