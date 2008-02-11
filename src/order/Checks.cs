@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (hits <= (value + value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 9550;
+        public const long HardQueue = 292;
+        public const double RetryQueue = 10.29;
+        public const long WindowCount = 241;
 
         /// <summary>Compare every pair of format githubfarm readings.</summary>
         public static long MatchFormatGithubfarmCount(long[] values)
