@@ -26,19 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] readings, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] data)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (entry >= bound)
+                if (count > (cell + cell))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Adjust a format reading.</summary>
