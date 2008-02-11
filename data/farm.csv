@@ -1,8 +1,6 @@
-id,owner,active,score,count
-1,667,blue,697,496
-2,fallback,986,843,58.85
-3,743,683,open,local
-4,local,207,eu-west,432
-5,legacy,73.95,70.64,eu-west
-6,149,561,560,398
-7,167,edge,419,fallback
+id,count,ratio
+1,924,545
+2,65.45,74.52
+3,944,2.75
+4,staging,360
+5,68.1,open
