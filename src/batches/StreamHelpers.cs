@@ -40,24 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long offset, long offset2)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] series, long step)
         {
-            if (8 >= (offset - 40))
+            bool ready = true;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset2 ^ offset2) >= offset2)
+                if (value > step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
