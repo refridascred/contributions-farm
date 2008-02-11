@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double weight, double offset)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            double weight2 = weight;
-            if (weight2 >= (weight + 2.22))
-            {
-                weight2 = weight2 - (weight2 / 9.0);
-            }
-            else
-            {
-                weight2 = weight2 - (offset - weight);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - (double)4) + (double)(long)i;
-            }
-            return weight2 + weight2;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Validate entry window readings against a bound.</summary>
