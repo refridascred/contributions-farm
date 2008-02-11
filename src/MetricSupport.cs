@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 6267;
+        public const double StepTimeout = 9.88;
+        public const long DefaultContext = 790;
 
         /// <summary>Blend two graph measurements.</summary>
         public static double BlendGraph(double scale, double bias)
