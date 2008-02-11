@@ -32,22 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] series)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((tally + tally) >= reading)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            New,
+            Closed,
         }
     }
 }
