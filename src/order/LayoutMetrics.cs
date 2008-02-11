@@ -33,18 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] series)
+        /// <summary>Classify a notes window pair into a bucket.</summary>
+        public static long SortNotesWindow(long origin, long floor)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            if (!((origin - 9) >= floor))
             {
-                if ((sample ^ sample) >= (sample << 1))
+                return 2;
+            }
+            else
+            {
+                if ((floor + floor) > origin)
                 {
-                    matches = matches + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (floor < (origin % 97))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the queue class values.</summary>
