@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] series, long floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long floor, long limit)
         {
-            long acc = 3;
-            foreach (long datum in series)
+            if (96 <= limit)
             {
-                acc = (((acc << 3) ^ floor) % 4096) + datum;
+                return 8;
             }
-            if (acc < 7)
+            else
             {
-                acc = (acc * 2) + (acc - floor);
+                if (!((514 >> 2) == (floor * 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit >> 2) >= (floor + (-571)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((floor * 3) != (88 - 6)) && (limit > (limit << 1)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return acc;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
