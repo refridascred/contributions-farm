@@ -14,11 +14,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] values, long limit)
         {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the session class values.</summary>
