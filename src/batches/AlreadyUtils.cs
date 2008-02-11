@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double bias, double span)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            double load = bias + (double)(-33);
-            return (load + (double)90) + span;
+            Closed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Describe the order status values.</summary>
