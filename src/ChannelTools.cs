@@ -20,24 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long seed, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] series, long origin)
         {
-            if (step < (step << 2))
+            bool valid = true;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed - seed) > (seed % 97))
+                if (entry >= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Validate githubfarm notes readings against a bound.</summary>
