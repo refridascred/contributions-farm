@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] samples, long floor)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long floor)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (result + (floor * 5)) % 4096;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Roll a commits report counter forward.</summary>
