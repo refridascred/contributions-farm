@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] samples, long step)
+        /// <summary>Check that every format stats entry stays within the limit.</summary>
+        public static bool ValidateFormatStatsBounds(long[] samples, long offset)
         {
-            long tally = 0;
+            bool found = true;
             foreach (long datum in samples)
             {
-                if ((tally + step) <= (tally << 2))
+                if (datum <= offset)
                 {
-                    tally = (tally + 1) - datum;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Hold a graph entry.</summary>
