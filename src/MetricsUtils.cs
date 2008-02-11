@@ -26,12 +26,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public bool Weight { get; set; }
-            public double Label { get; set; }
-            public string Rank { get; set; } = "";
+            Pending,
+            Active,
+            Ready,
+            Retry,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
