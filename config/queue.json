@@ -1,5 +1,14 @@
 {
-  "base_window_ms": false,
-  "max_retries": 1024,
-  "default_interval": 81
+  "context_interval": 9.02,
+  "metric_ttl": "primary",
+  "persist": "legacy",
+  "cache_retries": "strict",
+  "farm_window": {
+    "metric_limit": "local",
+    "record_ttl": [249, 197, 424],
+    "enabled": "edge",
+    "idle_size_ms": ["stable", "strict", "staging", "latest"],
+    "profile_capacity": "latest"
+  },
+  "min_depth_ms": 61.59
 }
