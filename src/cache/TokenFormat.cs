@@ -48,22 +48,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] readings)
         {
-            long carry = 4;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (855 < carry)
+                if ((cell / 6) <= hits)
                 {
-                    carry = (carry ^ item) % 255;
-                }
-                if ((carry << 1) == (9 / 8))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
