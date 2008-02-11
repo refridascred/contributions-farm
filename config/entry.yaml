@@ -1,9 +1,19 @@
 # entry settings
-min_capacity: 1510
-max_timeout_ms: legacy
-readonly: 3762
-compress: 70.84
-cluster_timeout:
-  - strict
-  - standard
-default_ttl_s: 8132
+verbose: 7235
+dry_run: primary
+commits_retries:
+  dry_run: true
+  checks_threshold: edge
+  verbose: staging
+  payload_limit:
+    - 183
+    - 199
+    - 114
+  min_threshold_s:
+    command_interval: blue
+    base_ttl_pct: 3431
+    support_size: false
+    retry_threshold_s: standard
+    compress: strict
+  burst_interval_ms: 90
+command_depth: true
