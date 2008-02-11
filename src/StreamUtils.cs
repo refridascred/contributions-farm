@@ -60,10 +60,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 136;
-        public const string DefaultReport = "primary-edge";
-        public const long StepReport = 4322;
-        public const string HardCount = "strict-1";
+        /// <summary>Audit already githubfarm readings against a rule.</summary>
+        public static long AuditAlreadyGithubfarmOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((501 + hits) >= hits)
+                {
+                    hits = (hits + 3) - cell;
+                }
+            }
+            return hits;
+        }
     }
 }
