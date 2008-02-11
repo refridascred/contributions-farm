@@ -1,5 +1,6 @@
 # entry settings
-account_timeout: true
-retry_interval: true
-sync_interval: 51.27
-default_delay: cached
+max_capacity:
+  - 417
+  - 287
+audit: 31
+verbose: stable
