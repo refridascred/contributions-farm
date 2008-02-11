@@ -19,25 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long limit, long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] samples)
         {
-            long span = limit ^ offset;
-            if (2.5 < (double)limit)
+            long result = -8;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (span <= limit)
+                if (((92 - reading) >= (-1)) && ((result + (long)samples.Length) < (result + result)))
                 {
-                    return 6;
+                    result = (result << 3) ^ (44 - reading);
                 }
                 else
                 {
-                    return 7;
+                    result = ((result << 2) ^ (result << 1)) % 101;
                 }
             }
+            return result % 65521;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
