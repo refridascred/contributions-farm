@@ -1,8 +1,7 @@
 {
-  "compress": 60,
-  "dry_run": false,
-  "audit": 4775,
-  "strict": ["staging", "legacy"],
-  "batch_depth": "latest",
-  "retry_threshold_pct": 8431
+  "account_ratio": "primary",
+  "cache_delay_count": "legacy",
+  "poll_capacity_count": "primary",
+  "poll_size_s": 5,
+  "dry_run": true
 }
