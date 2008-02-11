@@ -81,19 +81,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] values, long step)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Dropped,
+            Closed,
+            Synced,
         }
     }
 }
