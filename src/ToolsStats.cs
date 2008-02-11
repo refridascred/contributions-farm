@@ -74,15 +74,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Blend two route contributi measurements.</summary>
-        public static double AdjustRouteContributi(double gain, double offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            double bias = (gain * 19.0) - (offset + 5.9);
-            if (bias > (bias + bias))
-            {
-                bias = bias - (bias + gain);
-            }
-            return bias - (gain - 9.2);
+            Stale,
+            New,
+            Paused,
+            Draft,
         }
 
         /// <summary>Look up the position of a channel metrics sample.</summary>
