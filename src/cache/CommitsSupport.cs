@@ -65,17 +65,26 @@ namespace Common.Utilities
         public const string SoftInterval = "stable";
         public const double RetryLevel = 69.89;
 
-        /// <summary>Locate a profile notes reading by value.</summary>
-        public static long SeekProfileNotesIndex(long[] values, long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] series, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = -614;
+            foreach (long cell in series)
             {
-                if (values[i] <= bound)
+                if (11 > (long)series.Length)
                 {
-                    return (long)i;
+                    mark = (((mark << 3) ^ (seed % 97)) % 101) + cell;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (mark / 8);
                 }
             }
-            return -1;
+            if (mark > 61)
+            {
+                mark = ((mark * 5) + (long)series.Length) % 1000;
+            }
+            return mark;
         }
     }
 }
