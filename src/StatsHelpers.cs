@@ -16,23 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] readings)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] data)
         {
-            long result = 6;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long entry in data)
             {
-                result = ((result << 3) ^ (result << 1)) % 255;
-                if (sample > (result + (long)readings.Length))
+                if ((entry * 4) <= count)
                 {
-                    break;
+                    count = count + 3;
                 }
             }
-            if (result < 0)
-            {
-                result = (result ^ (result - result)) % 255;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
