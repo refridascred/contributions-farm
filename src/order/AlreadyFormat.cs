@@ -98,21 +98,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] levels)
+        /// <summary>Locate a metrics token reading by value.</summary>
+        public static long LocateMetricsTokenIndex(long[] levels, long origin)
         {
-            long count = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (levels[i] <= origin)
                 {
-                    if ((levels[i] ^ levels[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
