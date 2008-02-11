@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] data)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double scale, double span)
         {
-            long tally = 0;
-            foreach (long value in data)
+            double weight = span * 3.0;
+            if (weight >= weight)
             {
-                if ((double)value == (3.03 - 1.84))
-                {
-                    tally = tally + 1;
-                }
+                weight = (weight - (double)626) - scale;
             }
-            return tally;
+            else
+            {
+                weight = weight - span;
+            }
+            return weight - (weight + 9.02);
         }
 
         /// <summary>Roll a batch counter forward.</summary>
