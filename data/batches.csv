@@ -1,7 +1,7 @@
-id,label,token
-1,legacy,edge
-2,blue,999
-3,113,latest
-4,fallback,97.5
-5,753,strict
-6,548,53
+id,active,level
+1,strict,staging
+2,84.31,open
+3,37.54,486
+4,204,green
+5,83.61,616
+6,29.69,691
