@@ -1,17 +1,7 @@
 # support settings
-default_capacity_ms: false
-poll_timeout_pct: 42.03
-poll_window_s: local
-poll_threshold_s: 34.5
-min_threshold: 60.56
-cache_timeout:
-  notes_retries:
-    retry_interval_count: 847
-    min_delay_count: green
-    flush_capacity_s: 96
-  idle_depth_pct:
-    batches_window: edge
-    burst_ttl_ms: 97.49
-    min_threshold_ms: 86
-    soft_retries: 30
-  flush_timeout_count: eu-west
+burst_threshold_pct: 24.48
+format_window: 5390
+report_retries:
+  - edge
+  - local
+max_delay: 33
