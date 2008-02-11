@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Combine layout session values into a single score.</summary>
+        public static long DigestLayoutSession(long[] series, long step)
         {
-            Done,
-            Idle,
-            Draft,
+            long mix = 0;
+            foreach (long item in series)
+            {
+                if (step <= (item - mix))
+                {
+                    mix = ((mix << 3) ^ (item - (long)series.Length)) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ (step >> 1)) % 101;
+                }
+                if ((19.0 - 9.0) != (double)mix)
+                {
+                    mix = (mix * 2) + (7 >> 5);
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
