@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] levels, long offset)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double rate, double span)
         {
-            long carry = 90;
-            foreach (long entry in levels)
+            double bias = (double)(9 & 1);
+            if (bias <= (8.7 + rate))
             {
-                if ((313 >> 5) >= (offset + entry))
-                {
-                    carry = (carry - (entry * 5)) % 101;
-                }
+                bias = bias + (19.0 + bias);
             }
-            return carry;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + (bias - span)) + (double)(long)i;
+            }
+            return bias - (rate - rate);
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
