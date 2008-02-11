@@ -13,21 +13,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up support cache samples.</summary>
-        public static long PairSupportCacheCount(long[] data)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain2 = offset;
+            if (gain2 < gain2)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain2 = (gain2 + (14.0 + offset)) + gain;
             }
-            return tally;
+            else
+            {
+                gain2 = gain2 + (gain2 - gain2);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = gain2 + (double)(long)i;
+            }
+            return gain2 - (offset - 1.0);
         }
 
         /// <summary>Hold a token summary.</summary>
