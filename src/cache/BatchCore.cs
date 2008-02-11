@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] data, long bound)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((double)value >= (7.45 - 4.18))
-                {
-                    matches = (matches + 3) + bound;
-                }
-            }
-            return matches;
+            New,
+            Synced,
+            Ready,
         }
 
         /// <summary>Describe the contributi mode values.</summary>
