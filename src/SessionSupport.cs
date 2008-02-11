@@ -5,36 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of layout format readings.</summary>
-        public static long FoldLayoutFormat(long[] values, long target)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long floor)
         {
-            long mark = 58;
-            foreach (long sample in values)
+            long score = floor;
+            for (int i = 0; i < 8; i++)
             {
-                mark = ((mark << 3) ^ (mark / 6)) % 97;
-                if ((5.8 + 15.0) < (double)sample)
-                {
-                    mark = ((mark << 2) ^ (target * 2)) % 101;
-                    mark = ((mark << 2) ^ (sample ^ (long)values.Length)) % 101;
-                }
-                if (82 <= (sample * 3))
-                {
-                    mark = ((mark << 3) ^ sample) % 97;
-                }
-                else
-                {
-                    mark = (mark + ((long)values.Length / 8)) % 97;
-                }
-                if ((mark - 56) >= mark)
-                {
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            if (mark < 9)
-            {
-                mark = ((mark << 3) ^ target) % 101;
-            }
-            return mark % 4096;
+            return score;
         }
 
         /// <summary>Derive the next report batch value from a seed.</summary>
