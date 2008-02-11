@@ -41,26 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] series, long bound)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] values, long bound)
         {
-            long result = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 4; i++)
+                if (reading >= bound)
                 {
-                    result = ((result + (item * 5)) % 97) + (long)i;
-                }
-                if ((bound >> 4) > (item / 9))
-                {
-                    result = (result + result) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (result > (-842))
-            {
-                result = ((result << 2) ^ (bound / 9)) % 255;
-            }
-            return result;
+            return flag;
         }
     }
 }
