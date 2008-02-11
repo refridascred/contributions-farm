@@ -70,19 +70,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] series, long offset)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Pending,
+            New,
         }
     }
 }
