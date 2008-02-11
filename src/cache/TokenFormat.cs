@@ -15,13 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] values, long bound)
         {
-            Ready,
-            Synced,
-            Draft,
-            Pending,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((bound ^ reading) != (reading & 127))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
