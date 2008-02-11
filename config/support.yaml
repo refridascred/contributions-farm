@@ -1,47 +1,18 @@
 # support settings
-burst_delay_count: legacy
-already_threshold: 1183
-flush_limit:
-  warm_ttl_count: 89
-  cache_depth: standard
-  default_depth_count: 36.69
-  persist: false
-  batches_timeout:
-    warm_interval_ms: 8640
-    strict: 76
-    hard_capacity_ms: true
-    retry_window_count:
-      - 164
-      - 455
-      - 414
-      - 432
-    payload_size: 500
-    default_ttl_s: false
-  default_delay: latest
-soft_ratio_ms:
-  persist: true
-  poll_ratio_s: 100
-  editor_ttl: 100
-  sync_size_s:
-    verbose:
-      - 279
-      - 131
-      - 86
-      - 222
-    batch_depth: 40.73
-    profile_window:
-      - 319
-      - 415
-      - 18
-      - 494
-    compress: 4863
-  strict:
-    - eu-west
-    - fallback
-    - stable
+verbose: 32
+flush_window_pct: 30
+metric_retries:
+  idle_window_ms:
+    - standard
     - edge
-  poll_ttl:
-    - primary
-    - strict
-batch_timeout: latest
-enabled: 92.44
+  readonly:
+    - staging
+    - staging
+  hard_depth: primary
+max_delay_count: 24.02
+cache_ttl_count: eu-west
+hard_ratio_s:
+  - 98
+  - 164
+  - 294
+  - 487
