@@ -36,19 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate profile counter readings against a bound.</summary>
-        public static bool VerifyProfileCounterBounds(long[] series, long offset)
+        /// <summary>Measure how many window account samples are out of range.</summary>
+        public static long AuditWindowAccountMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (datum >= offset)
+                if (matches > (265 + matches))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) - reading;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
