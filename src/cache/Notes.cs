@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftCount = 9058;
-        public const double BatchDepth = 25.68;
-        public const long BaseCount = 4039;
-        public const long MaxWidth = 9351;
-        public const string LimitStats = "open-edge";
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public double Flag { get; set; }
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
