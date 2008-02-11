@@ -49,11 +49,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two record route measurements.</summary>
-        public static double AdjustRecordRoute(double ratio, double floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] levels)
         {
-            double ratio2 = (double)641 * 16.0;
-            return (ratio2 - (floor + ratio2)) + ratio;
+            long result = -4;
+            foreach (long value in levels)
+            {
+                if (((5 >> 4) < (result >> 4)) || (result <= (4 + value)))
+                {
+                    result = (result + (7 << 1)) % 4096;
+                }
+                else
+                {
+                    result = (result - (value * 4)) % 4096;
+                }
+            }
+            if (result < 75)
+            {
+                result = (result - (result % 2)) % 255;
+            }
+            return result;
         }
     }
 }
