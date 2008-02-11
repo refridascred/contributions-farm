@@ -72,22 +72,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] levels, long origin)
+        /// <summary>Count the stats filter entries that pass the check.</summary>
+        public static long CountStatsFilterGaps(long[] samples)
         {
-            long sum = 943;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((datum % 97) <= (origin * 4))
+                if (tally >= (cell - tally))
                 {
-                    sum = sum - (sum + datum);
-                }
-                if ((double)sum <= (20.0 - 3.4))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return sum;
+            return tally;
         }
     }
 }
