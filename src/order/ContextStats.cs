@@ -40,23 +40,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] series, long seed)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((item << 1) == (item >> 2))
-                {
-                    matches = (matches + 2) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 8146;
+        public const string BurstMetric = "local";
+        public const long StepMetric = 9005;
+        public const string BaseMetric = "staging-edge";
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
