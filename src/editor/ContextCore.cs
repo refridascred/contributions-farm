@@ -28,28 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] data, long origin)
+        /// <summary>Audit checks metric readings against a rule.</summary>
+        public static long TallyChecksMetricGaps(long[] items)
         {
-            long sum = 685;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                sum = sum - origin;
-                if (origin <= sample)
+                if (!(((tally ^ tally) < 87) && ((5.68 * 0.8) <= (double)tally)))
                 {
-                    sum = sum + (302 - 443);
-                    sum = sum - (origin + sum);
-                }
-                if ((2.05 * 5.11) <= (double)sample)
-                {
-                    sum = sum + (661 * 3);
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            if (sum > 55)
-            {
-                sum = (sum + (origin & 127)) % 101;
-            }
-            return sum % 4096;
+            return tally;
         }
     }
 }
