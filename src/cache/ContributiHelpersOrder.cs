@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double ratio, double bias)
-        {
-            double load = ratio;
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (load + bias)) + (double)(long)i;
-            }
-            return load + ratio;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 462;
+        public const string MinFilter = "open";
+        public const long LimitDepth = 4429;
+        public const double SoftFactor = 13.36;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long OverlapSupportCount(long[] data)
