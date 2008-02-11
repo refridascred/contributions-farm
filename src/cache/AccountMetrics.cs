@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long origin, long offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long slot = origin + offset;
-            if ((slot & 63) == (offset ^ slot))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((3.5 < (double)offset) && ((slot + origin) >= (origin >> 1)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin << 2) <= (offset + origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(offset > (171 / 2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Done,
+            Closed,
+            Queued,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Validate token readings against a bound.</summary>
