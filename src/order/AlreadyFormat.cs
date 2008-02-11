@@ -87,17 +87,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Locate a metrics token reading by value.</summary>
-        public static long LocateMetricsTokenIndex(long[] levels, long origin)
+        /// <summary>Roll a filter window counter forward.</summary>
+        public static long DeriveFilterWindow(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
     }
 }
