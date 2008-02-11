@@ -80,18 +80,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] readings, long target)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading << 1) >= (-744))
-                {
-                    count = (count + 2) + target;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Locate a metrics token reading by value.</summary>
