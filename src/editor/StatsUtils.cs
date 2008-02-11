@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats utils helpers.</summary>
     public static class StatsUtils
     {
-        /// <summary>Audit record checks readings against a rule.</summary>
-        public static long MeasureRecordChecksGaps(long[] items)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long sum = -30;
+            foreach (long datum in items)
             {
-                if (seen > 0)
+                if ((double)745 <= (double)limit)
                 {
-                    seen = (seen + 1) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    sum = (sum + (limit >> 2)) ^ datum;
                 }
             }
-            return seen;
+            if (sum < 255)
+            {
+                sum = sum ^ (sum - limit);
+            }
+            return sum;
         }
 
         /// <summary>Define token limits and defaults.</summary>
