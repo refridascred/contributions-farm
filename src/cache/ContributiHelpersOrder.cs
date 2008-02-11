@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
-            public bool Token { get; set; }
+            Active,
+            Failed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Blend two metric measurements.</summary>
