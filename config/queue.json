@@ -1,11 +1,19 @@
 {
-  "record_depth": 99,
-  "retry_retries": {
-    "base_interval_s": 16,
-    "persist": "green",
-    "notes_threshold": 60,
-    "burst_timeout": 83
+  "poll_ratio": [464, 262, 40],
+  "session_retries": "latest",
+  "burst_retries_s": "fallback",
+  "idle_delay_pct": {
+    "warm_capacity_s": 7196,
+    "retry_threshold": ["latest", "stable", "local"],
+    "burst_depth": "strict",
+    "compress": "standard"
   },
-  "audit": ["edge", "eu-west"],
-  "min_size": "eu-west"
+  "verbose": 87.76,
+  "warm_capacity": {
+    "hard_depth_ms": 39.15,
+    "verbose": 3.58,
+    "hard_depth": "staging",
+    "min_ttl_ms": 54,
+    "max_retries_count": "green"
+  }
 }
