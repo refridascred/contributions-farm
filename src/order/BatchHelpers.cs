@@ -14,19 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many stats profile samples are out of range.</summary>
-        public static long CountStatsProfileHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (((value & 1) >= (41 ^ tally)) && ((8 > tally) || ((value * 2) != (11 & 15))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheTimeout = 5774;
+        public const long BaseInterval = 3996;
+        public const double StepNotes = 72.91;
+        public const long BurstBudget = 1287;
+        public const long LimitNotes = 8423;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long CombineChecks(long[] levels)
