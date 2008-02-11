@@ -47,20 +47,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] items, long origin)
-        {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 7187;
+        public const long WindowBudget = 5013;
+        public const long WindowRecord = 8629;
+        public const long LimitLevel = 4291;
 
         /// <summary>Count metric record pairs that satisfy a relation.</summary>
         public static long CompareMetricRecordCount(long[] readings)
