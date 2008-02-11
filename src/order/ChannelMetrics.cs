@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftDepth = 554;
-        public const long RetryRoute = 4482;
-        public const double HardRoute = 45.61;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Accumulate queue graph samples.</summary>
         public static long DigestQueueGraph(long[] data, long target)
