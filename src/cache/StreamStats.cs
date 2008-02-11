@@ -38,25 +38,12 @@ namespace Common.Utilities
             return gain - (double)59;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] readings)
-        {
-            long score = 0;
-            foreach (long datum in readings)
-            {
-                if (datum >= score)
-                {
-                    score = ((score << 3) ^ datum) % 65521;
-                    break;
-                }
-                else
-                {
-                    score = (score ^ ((long)readings.Length ^ score)) % 1000;
-                }
-                score = score - (datum + datum);
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheReport = 15.37;
+        public const long MinBudget = 4844;
+        public const long IdleReport = 4216;
+        public const long DefaultReport = 8913;
+        public const double RetrySize = 59.89;
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
