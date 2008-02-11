@@ -15,11 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a farm summary.</summary>
