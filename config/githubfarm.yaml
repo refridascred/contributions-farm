@@ -1,8 +1,10 @@
 # githubfarm settings
-verbose:
-  - 202
-  - 384
-  - 408
-  - 414
-idle_depth_count: 52.92
-poll_timeout_count: standard
+layout_retries: 100
+report_limit: open
+min_delay_ms: legacy
+account_threshold: false
+record_timeout: 6731
+warm_delay:
+  - 155
+  - 359
+  - 190
