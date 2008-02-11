@@ -23,19 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph farm samples are out of range.</summary>
-        public static long TallyGraphFarmGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (cell < (cell - 54))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 4531;
+        public const double BatchCommand = 53.35;
+        public const double LimitCommand = 79.36;
+        public const double StepRatio = 74.57;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandHits(long[] readings)
