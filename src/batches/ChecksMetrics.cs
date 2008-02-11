@@ -46,23 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double gain, double span)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            double mean = (double)660 + (span / 2.0);
-            if (mean < (double)783)
-            {
-                mean = mean + gain;
-            }
-            else
-            {
-                mean = mean + (gain + mean);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (mean - span)) - (double)(long)i;
-            }
-            return mean + mean;
+            Dropped,
+            Active,
+            Failed,
+            Idle,
         }
 
         /// <summary>Accumulate graph samples.</summary>
