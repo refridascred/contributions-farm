@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryScore = 2825;
-        public const long DefaultFactor = 5520;
-        public const string BatchPayload = "fallback-v2";
-        public const long BasePayload = 9552;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseLevel = 1240;
+        public const long LimitRecord = 156;
+        public const double MaxCount = 10.16;
+        public const long SoftRecord = 7442;
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double BlendMetric(double weight, double offset)
