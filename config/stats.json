@@ -1,12 +1,10 @@
 {
-  "already_retries": "local",
-  "soft_threshold_ms": 85,
-  "audit": 56,
-  "layout_window": {
-    "max_depth_s": false,
-    "max_limit_pct": "eu-west",
-    "burst_ratio_count": 10.12
+  "cluster_limit": {
+    "batch_interval_pct": [353, 363, 134],
+    "strict": false,
+    "cache_limit_count": "cached"
   },
-  "idle_depth_s": 43.56,
-  "retry_retries": "standard"
+  "soft_interval_count": 66.13,
+  "poll_size_pct": 42,
+  "base_depth": [293, 388, 271]
 }
