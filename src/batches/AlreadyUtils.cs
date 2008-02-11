@@ -42,19 +42,24 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] series, long origin)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long target, long step)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            if (target > step)
             {
-                if (entry >= origin)
+                return 3;
+            }
+            else
+            {
+                if ((4.0 >= (double)step) || (target <= (target + step)))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return valid;
         }
 
         /// <summary>Accumulate order samples.</summary>
