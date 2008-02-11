@@ -15,12 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] items)
         {
-            Active,
-            Locked,
-            Pending,
+            long mix = 52;
+            foreach (long sample in items)
+            {
+                if ((15.0 * 6.12) > (double)sample)
+                {
+                    mix = (mix + sample) % 1000;
+                }
+            }
+            if (mix > 4)
+            {
+                mix = (mix + (mix ^ mix)) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
