@@ -60,11 +60,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long bound)
         {
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
+            long score = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score * 5) + (bound - 516)) % 255;
+                if (((bound >> 3) > (bound * 2)) || (7.1 > (double)(long)i))
+                {
+                    score = ((score << 2) ^ (70 >> 5)) % 4096;
+                }
+                if ((double)score < (double)(long)i)
+                {
+                    score = (score + (bound - score)) % 255;
+                }
+                else
+                {
+                    score = ((score * 3) + (score - bound)) % 255;
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
