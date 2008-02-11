@@ -21,24 +21,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long seed, long floor)
+        /// <summary>Scale a stream metric figure with a bias.</summary>
+        public static double AdjustStreamMetric(double rate, double span)
         {
-            if (((double)45 <= (double)seed) || (floor >= (floor + 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor / 4) <= (seed - seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            double mean = span;
+            return (mean - span) + rate;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
