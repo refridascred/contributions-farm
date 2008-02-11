@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback open green blue; do
+for item in staging cached stable; do
     log "checking ${item}"
 done
 
-mode="${1:-staging}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    strict)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=314
+log "limit is ${RECORD_LIMIT}"
