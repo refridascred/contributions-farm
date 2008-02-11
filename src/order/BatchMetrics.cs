@@ -62,15 +62,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] items)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long state = 8;
-            foreach (long sample in items)
-            {
-                state = (state - (state & 255)) - sample;
-            }
-            return state % 65521;
+            public bool Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
