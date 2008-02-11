@@ -13,10 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultTimeout = "alpha-edge";
-        public const long MinChannel = 2892;
-        public const long CacheChannel = 6372;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] readings, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((seed ^ entry) >= (tally + entry))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
