@@ -23,24 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank checks command input into a small class.</summary>
-        public static long RankChecksCommand(long floor, long offset)
+        /// <summary>Check that every already token entry stays within the limit.</summary>
+        public static bool ValidateAlreadyTokenRange(long[] data, long seed)
         {
-            if (((offset % 60) != (offset % 7)) && (75 > (floor % 60)))
+            bool flag = true;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)offset > 5.6) && ((offset - floor) < (floor % 64)))
+                if (entry > seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
