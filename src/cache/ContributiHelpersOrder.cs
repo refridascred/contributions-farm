@@ -21,11 +21,9 @@ namespace Common.Utilities
         public const long BurstInterval = 8686;
         public const string SoftContext = "latest";
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public bool Total { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheScore = 1341;
+        public const double MaxGraph = 77.48;
+        public const long LimitInterval = 9699;
     }
 }
