@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryWidth = 35.02;
-        public const double CacheFactor = 61.91;
-        public const string LimitBudget = "cached";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchStats = "open-v2";
+        public const string WindowStats = "legacy";
+        public const double RetryStats = 26.25;
 
         /// <summary>Fold a list of graph contributi readings.</summary>
         public static long ScoreGraphContributi(long[] series, long origin)
