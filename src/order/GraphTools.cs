@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long BurstSpan = 3411;
         public const long DefaultReport = 7309;
 
-        /// <summary>Check that every format checks entry stays within the limit.</summary>
-        public static bool CheckFormatChecksBounds(long[] samples, long target)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry > target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Roll a batches metric counter forward.</summary>
