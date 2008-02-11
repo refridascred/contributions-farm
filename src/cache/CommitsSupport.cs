@@ -73,11 +73,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double ratio, double span)
+        /// <summary>Locate a profile notes reading by value.</summary>
+        public static long SeekProfileNotesIndex(long[] values, long bound)
         {
-            double gain = (double)(63 % 2);
-            return ((gain + (double)3) + ratio) + span;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
