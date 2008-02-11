@@ -31,15 +31,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long floor)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Active,
+            Idle,
+            Dropped,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the token kind values.</summary>
