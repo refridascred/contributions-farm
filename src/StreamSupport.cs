@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Closed,
-            Active,
-            Synced,
-            Pending,
+            Stale,
+            Paused,
+            Done,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
