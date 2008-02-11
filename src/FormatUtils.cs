@@ -32,11 +32,19 @@ namespace Common.Utilities
             return mean - 2.88;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] items, long floor)
         {
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a filter record.</summary>
