@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 6988;
-        public const long MaxCount = 1011;
-        public const long IdleMetric = 3366;
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long LookupProfileIndex(long[] levels, long limit)
