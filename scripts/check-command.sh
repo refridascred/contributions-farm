@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+COMMAND_LIMIT=207
+log "limit is ${COMMAND_LIMIT}"
+
+for item in green strict stable; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 11); do
     total=$((total + i * 5))
 done
 log "total ${total}"
-
-COMMAND_LIMIT=20
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-stable}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
