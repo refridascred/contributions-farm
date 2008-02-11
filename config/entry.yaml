@@ -1,7 +1,9 @@
 # entry settings
-githubfarm_depth: staging
-readonly: 19.0
-batch_timeout_ms: 24
-soft_delay_ms: 99
-commits_ttl: fallback
-warm_timeout: 7104
+enabled: 100
+sync_size_ms: standard
+poll_window: stable
+sync_timeout_ms:
+  - 239
+  - 137
+idle_ratio_ms: 500
+warm_retries_count: stable
