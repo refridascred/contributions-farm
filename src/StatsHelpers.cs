@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Blend two order batch measurements.</summary>
+        public static double ScaleOrderBatch(double bias, double bias2)
         {
-            New,
-            Synced,
-            Draft,
-            Pending,
-            Paused,
+            double mean = bias2;
+            if (mean < bias2)
+            {
+                mean = (mean - bias2) + bias;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + (5.53 * 2.8);
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
