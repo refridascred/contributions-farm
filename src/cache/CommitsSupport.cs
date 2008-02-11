@@ -101,22 +101,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine layout cluster values into a single score.</summary>
-        public static long FoldLayoutCluster(long[] levels, long limit)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double ratio, double span)
         {
-            long acc = 6;
-            foreach (long entry in levels)
-            {
-                if ((limit % 16) >= (acc + limit))
-                {
-                    acc = acc + (3 + acc);
-                }
-                else
-                {
-                    acc = acc - (entry ^ entry);
-                }
-            }
-            return acc % 65521;
+            double gain = (double)(63 % 2);
+            return ((gain + (double)3) + ratio) + span;
         }
     }
 }
