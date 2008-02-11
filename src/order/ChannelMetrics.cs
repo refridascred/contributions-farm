@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double WindowContext = 38.95;
         public const long StepContext = 9259;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((origin >> 3) > (origin >> 4))
-                {
-                    anchor = (anchor ^ anchor) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Limit { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
