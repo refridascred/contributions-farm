@@ -53,17 +53,10 @@ namespace Common.Utilities
         public const long StepPayload = 5252;
         public const double MaxBudget = 5.66;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftInterval = "latest-1";
+        public const double StepFactor = 68.74;
+        public const long BatchFormat = 3697;
+        public const long IdleFormat = 5051;
     }
 }
