@@ -22,12 +22,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] series)
         {
-            Ready,
-            Closed,
-            Stale,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (datum < (datum ^ datum))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
