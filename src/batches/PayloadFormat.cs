@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] data, long seed)
+        /// <summary>Find the first tools route entry that matches the target.</summary>
+        public static long FindToolsRouteIndex(long[] data, long seed)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] > seed)
+                if (data[i] < seed)
                 {
                     return (long)i;
                 }
