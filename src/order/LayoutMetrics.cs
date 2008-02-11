@@ -41,13 +41,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Compare every pair of graph command readings.</summary>
+        public static long OverlapGraphCommandCount(long[] items)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
