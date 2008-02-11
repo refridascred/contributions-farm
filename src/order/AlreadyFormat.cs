@@ -96,14 +96,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] levels)
         {
-            Queued,
-            Failed,
-            Idle,
-            Pending,
-            Retry,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
