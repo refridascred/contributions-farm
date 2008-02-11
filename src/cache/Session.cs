@@ -44,24 +44,19 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] levels)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long target)
         {
-            long result = -4;
-            foreach (long value in levels)
+            long result = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (((5 >> 4) < (result >> 4)) || (result <= (4 + value)))
+                result = (result * 4) + ((long)i ^ result);
+                if ((result & 255) > result)
                 {
-                    result = (result + (7 << 1)) % 4096;
+                    result = (result << 3) ^ (target + target);
+                    break;
                 }
-                else
-                {
-                    result = (result - (value * 4)) % 4096;
-                }
-            }
-            if (result < 75)
-            {
-                result = (result - (result % 2)) % 255;
+                result = ((result * 4) + (long)i) % 101;
             }
             return result;
         }
