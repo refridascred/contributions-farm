@@ -69,11 +69,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleRatio = 4028;
-        public const long HardCount = 8426;
-        public const long WindowCounter = 3022;
-        public const long SoftDepth = 5721;
-        public const long RetryWidth = 6501;
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double rate, double floor)
+        {
+            double scale = rate;
+            return scale - floor;
+        }
     }
 }
