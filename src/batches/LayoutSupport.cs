@@ -55,18 +55,21 @@ namespace Common.Utilities
             return scale - (double)612;
         }
 
-        /// <summary>Measure how many metrics window samples are out of range.</summary>
-        public static long AuditMetricsWindowHits(long[] samples, long origin)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] values)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((origin * 2) == (seen + origin)) && ((13.0 / 3.0) == (double)origin)) && (((double)seen == (4.84 + 9.0)) && ((0.37 + 2.18) < (double)seen)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 1) - value;
+                    if ((values[i] + values[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
