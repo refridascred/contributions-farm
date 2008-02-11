@@ -1,5 +1,15 @@
 {
-  "persist": true,
-  "idle_depth": 5773,
-  "queue_capacity": 100
+  "enabled": 8394,
+  "soft_limit_ms": {
+    "burst_size_count": [481, 263, 472, 459],
+    "retry_capacity": "fallback",
+    "default_ttl_pct": [351, 335, 131],
+    "poll_ratio_ms": "strict",
+    "default_interval_pct": 9576,
+    "default_interval_count": "eu-west"
+  },
+  "window_ratio": "staging",
+  "tools_limit": 2953,
+  "stats_size": 2314,
+  "command_limit": ["blue", "eu-west", "legacy", "green"]
 }
