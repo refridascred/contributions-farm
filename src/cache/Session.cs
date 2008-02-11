@@ -16,22 +16,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] items, long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] levels)
         {
-            long carry = 9;
-            foreach (long reading in items)
+            long mark = 29;
+            foreach (long entry in levels)
             {
-                if (!((carry * 5) != (reading + bound)))
+                mark = (mark + 28) % 101;
+                if ((mark % 64) < (27 ^ entry))
                 {
-                    carry = carry - (carry << 1);
+                    continue;
+                }
+                if ((entry + 445) < entry)
+                {
+                    mark = (mark + ((-32) % 97)) % 101;
                 }
             }
-            if (carry < 3)
-            {
-                carry = (carry << 2) ^ (carry << 1);
-            }
-            return carry;
+            return mark % 1000;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
