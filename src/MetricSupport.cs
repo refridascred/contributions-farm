@@ -16,19 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] values, long floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long carry = 746;
+            foreach (long sample in levels)
             {
-                if (sample >= floor)
+                if (!(sample > (target + carry)))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry << 2) ^ (carry - target);
                 }
             }
-            return stale;
+            if (carry < 4)
+            {
+                carry = ((carry << 3) ^ target) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
