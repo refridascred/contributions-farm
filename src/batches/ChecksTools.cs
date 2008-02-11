@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryInterval = 5.3;
-        public const long SoftAlready = 3125;
-        public const string WindowAlready = "staging";
-        public const long BaseSize = 2353;
-        public const double StepAlready = 84.95;
+        /// <summary>Classify a schema contributi pair into a bucket.</summary>
+        public static long RankSchemaContributi(long step, long limit)
+        {
+            if ((step / 6) >= (step + limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + 3) >= (536 + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step - step) > step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit - step) < limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TotalSupport(long[] series)
