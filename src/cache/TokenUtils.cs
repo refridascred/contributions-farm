@@ -42,22 +42,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes support samples.</summary>
-        public static long DigestNotesSupport(long[] series, long offset)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] series, long offset)
         {
-            long state = 808;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell >> 3) > (state + cell))
+                if ((series[i] <= offset) && ((series[i] % 5) != 0))
                 {
-                    state = (((state << 2) ^ (637 + state)) % 101) + offset;
+                    return (long)i;
                 }
             }
-            if (state < 161)
-            {
-                state = (state ^ state) % 97;
-            }
-            return state;
+            return -1;
         }
     }
 }
