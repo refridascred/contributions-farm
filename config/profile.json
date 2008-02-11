@@ -1,8 +1,8 @@
 {
-  "idle_ratio_s": [237, 69, 122],
-  "warm_ratio_count": false,
-  "audit": false,
-  "filter_timeout": false,
-  "base_threshold": 3226,
-  "enabled": 75
+  "flush_ttl_ms": 30,
+  "stream_size": 8328,
+  "persist": 54,
+  "flush_retries_pct": 7147,
+  "order_ratio": [369, 168, 479, 458],
+  "batch_window_count": 100
 }
