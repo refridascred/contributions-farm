@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of checks metric readings.</summary>
-        public static long DigestChecksMetric(long[] data, long target)
-        {
-            long acc = 4;
-            foreach (long sample in data)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    acc = ((acc - (sample + 4)) % 65521) + (long)i;
-                    acc = (acc << 2) ^ (865 ^ sample);
-                }
-                acc = acc ^ (target >> 2);
-                if ((acc ^ sample) < acc)
-                {
-                    break;
-                }
-            }
-            if (acc < 38)
-            {
-                acc = (acc ^ (acc & 63)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinCount = "open";
+        public const long LimitDepth = 5348;
+        public const string DefaultFormat = "primary";
+        public const string BatchSize = "local-edge";
+        public const long WindowRatio = 7481;
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long TallyGithubfarmGaps(long[] levels, long target)
