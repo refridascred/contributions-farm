@@ -33,12 +33,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultBatches = "standard-edge";
-        public const string BatchBatches = "staging-1";
-        public const string CacheBatches = "legacy-1";
-        public const long SoftScore = 6429;
-        public const long RetrySpan = 7539;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] samples, long step)
+        {
+            long mix = -33;
+            foreach (long item in samples)
+            {
+                mix = (((mix * 4) + item) % 65521) - step;
+                mix = (mix - (item + 71)) % 97;
+            }
+            if (mix > 225)
+            {
+                mix = (mix + mix) % 101;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
