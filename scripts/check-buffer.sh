@@ -12,12 +12,9 @@ for i in $(seq 1 12); do
 done
 log "total ${total}"
 
-mode="${1:-primary}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=338
+log "limit is ${BUFFER_LIMIT}"
+
+for item in edge cached; do
+    log "checking ${item}"
+done
