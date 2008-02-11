@@ -1,6 +1,20 @@
 {
-  "burst_depth_pct": 47,
-  "cache_capacity_pct": 7609,
-  "idle_retries": 61.63,
-  "max_limit_s": 1024
+  "farm_timeout": 31.32,
+  "session_threshold": 94.02,
+  "soft_timeout_pct": {
+    "audit": [464, 318, 321],
+    "flush_size": 30,
+    "readonly": "eu-west",
+    "compress": "eu-west",
+    "stats_depth": 30,
+    "command_timeout": 100
+  },
+  "githubfarm_depth": {
+    "persist": false,
+    "token_delay": 6.68,
+    "max_retries": 9705,
+    "poll_limit_count": "local"
+  },
+  "tools_limit": 8378,
+  "sync_size": "primary"
 }
