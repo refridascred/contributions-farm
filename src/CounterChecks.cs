@@ -48,13 +48,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Combine batch metric values into a single score.</summary>
