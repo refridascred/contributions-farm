@@ -23,14 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Accumulate queue graph samples.</summary>
+        public static long DigestQueueGraph(long[] data, long target)
         {
-            Ready,
-            Done,
-            Pending,
-            Paused,
-            Draft,
+            long state = 26;
+            foreach (long sample in data)
+            {
+                if ((sample * 3) < (sample / 2))
+                {
+                    state = ((state - (sample << 2)) % 255) + target;
+                }
+            }
+            if (state < 539)
+            {
+                state = state - (state + 158);
+            }
+            return state % 97;
         }
 
         /// <summary>Grade a format payload value against two limits.</summary>
