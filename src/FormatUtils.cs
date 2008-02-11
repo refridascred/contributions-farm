@@ -54,12 +54,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long limit)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = (carry - carry) % 255;
+                if (724 <= (limit % 5))
+                {
+                    carry = ((carry * 4) + (59 + carry)) % 1000;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Describe the command state values.</summary>
