@@ -1,5 +1,5 @@
 {
-  "burst_delay_count": ["open", "local"],
-  "readonly": 6789,
-  "hard_ratio_pct": "fallback"
+  "audit": "edge",
+  "dry_run": 31.97,
+  "support_ttl": "green"
 }
