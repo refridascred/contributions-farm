@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] samples)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample & 255) <= sample)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
