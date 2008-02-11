@@ -1,7 +1,7 @@
 # githubfarm settings
-batch_delay_count: 250
-commits_threshold: strict
-dry_run: 56
-max_depth: 38.34
-hard_window: 250
-min_window: 18.31
+account_retries: green
+support_threshold: 86
+stream_window: edge
+warm_ratio_count: 85
+cache_window_count: 54.21
+context_delay: 91
