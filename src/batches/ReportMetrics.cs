@@ -23,19 +23,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of already entry readings.</summary>
-        public static long ScoreAlreadyEntry(long[] values, long step)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] data, long bound)
         {
-            long state = 78;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((step ^ step) <= state)
+                if (entry > bound)
                 {
-                    state = ((state - (step / 3)) % 255) + reading;
+                    valid = false;
+                    break;
                 }
-                state = (state + step) % 255;
             }
-            return state % 4096;
+            return valid;
         }
 
         /// <summary>Grade a format contributi value against two limits.</summary>
