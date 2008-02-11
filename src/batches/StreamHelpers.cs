@@ -16,10 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCount = 4554;
-        public const long StepFactor = 7362;
-        public const long WindowInterval = 607;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Retry,
+            Draft,
+            Paused,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteOutliers(long[] data, long bound)
