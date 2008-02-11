@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Ready,
-            New,
-            Stale,
-            Done,
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
