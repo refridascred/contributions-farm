@@ -55,23 +55,39 @@ namespace Common.Utilities
             return weight - (6.51 - weight);
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double weight, double span)
+        /// <summary>Classify a filter notes pair into a bucket.</summary>
+        public static long RankFilterNotes(long floor, long origin)
         {
-            double load = (double)(1 + 9);
-            if (load <= (double)4)
+            long diff = floor + origin;
+            if ((((-1) * 4) == (origin + 0)) && ((floor + diff) <= (908 >> 1)))
             {
-                load = load + span;
+                return 6;
             }
             else
             {
-                load = load - weight;
+                if ((diff & 31) <= (floor - floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)floor >= 6.79) || (diff >= (diff / 6)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (7.7 / 7.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (load + weight)) - (double)(long)i;
-            }
-            return load - span;
         }
     }
 }
