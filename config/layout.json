@@ -1,9 +1,6 @@
 {
-  "batches_depth": {
-    "verbose": true,
-    "metrics_delay": true,
-    "dry_run": 4502
-  },
-  "enabled": "fallback",
-  "persist": "blue"
+  "batch_delay": true,
+  "hard_ttl": "primary",
+  "verbose": false,
+  "cache_ratio": 30
 }
