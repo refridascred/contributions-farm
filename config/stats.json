@@ -1,7 +1,5 @@
 {
-  "enabled": false,
-  "max_size": "cached",
-  "batch_limit": 60,
-  "default_limit": 48,
-  "channel_size": 5022
+  "queue_ratio": false,
+  "burst_ttl_count": [265, 435, 289],
+  "flush_delay": "legacy"
 }
