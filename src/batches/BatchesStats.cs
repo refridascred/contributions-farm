@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double StepInterval = 60.3;
         public const double BatchRatio = 38.19;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 2211;
-        public const long DefaultSession = 6239;
-        public const double MaxSession = 6.01;
-        public const string MaxFactor = "local-1";
-        public const string BatchSession = "fallback-v2";
+        /// <summary>Measure how many layout route samples are out of range.</summary>
+        public static long CountLayoutRouteGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((1 >= ((long)readings.Length % 64)) && (9.8 >= (double)tally))
+                {
+                    tally = (tally + 2) - entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a support channel sample.</summary>
         public static long SeekSupportChannelIndex(long[] series, long floor)
