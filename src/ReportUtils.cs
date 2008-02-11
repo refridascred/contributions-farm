@@ -38,13 +38,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Active,
-            New,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 9371;
+        public const long WindowStream = 6905;
+        public const double BurstStream = 88.3;
+        public const long IdleStream = 9434;
+        public const long MaxInterval = 5198;
     }
 }
