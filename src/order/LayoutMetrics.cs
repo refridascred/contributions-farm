@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long floor, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] values, long origin)
         {
-            if (96 <= limit)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((514 >> 2) == (floor * 5)))
+                if (9 > hits)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit >> 2) >= (floor + (-571)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((floor * 3) != (88 - 6)) && (limit > (limit << 1)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = ((hits + 2) ^ sample) + origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
