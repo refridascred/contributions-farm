@@ -31,22 +31,32 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of schema token readings.</summary>
-        public static long ScoreSchemaToken(long[] values)
+        /// <summary>Classify a already entry pair into a bucket.</summary>
+        public static long RankAlreadyEntry(long step, long bound)
         {
-            long sum = -47;
-            foreach (long reading in values)
+            long delta = step + bound;
+            if ((step - delta) < (bound / 7))
             {
-                if ((reading / 9) == (sum + sum))
+                return 4;
+            }
+            else
+            {
+                if ((double)step >= 3.66)
                 {
-                    sum = (sum ^ (reading + 8)) % 255;
+                    return 8;
+                }
+                else
+                {
+                    if (((69 / 3) >= (step << 3)) || (((-7) + step) >= bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (sum > 246)
-            {
-                sum = (sum ^ sum) % 255;
-            }
-            return sum;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
