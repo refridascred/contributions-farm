@@ -31,22 +31,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] series, long seed)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long bound, long floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            if (!((floor >> 4) > 0))
             {
-                if ((50 << 3) == (seed << 1))
+                return 8;
+            }
+            else
+            {
+                if (!((bound + bound) <= (floor - floor)))
                 {
-                    hits = (hits + 1) ^ reading;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)floor <= (8.9 * 9.9))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((floor - bound) > (floor << 2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next notes batch value from a seed.</summary>
