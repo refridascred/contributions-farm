@@ -19,24 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metric order value against two limits.</summary>
-        public static long ClassifyMetricOrder(long target, long target2)
+        /// <summary>Match up session token samples.</summary>
+        public static long PairSessionTokenCount(long[] values)
         {
-            if ((target2 + target) >= (target2 % 8))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target2 << 2) >= (target2 >> 3)) || ((target2 + target2) > target2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    if ((values[i] + values[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next batches support value.</summary>
