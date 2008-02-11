@@ -79,18 +79,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many filter context samples are out of range.</summary>
-        public static long CountFilterContextHits(long[] samples)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long score = 69;
+            foreach (long item in samples)
             {
-                if (seen > (entry / 7))
+                if ((double)score != (3.03 * 3.69))
                 {
-                    seen = seen + 3;
+                    score = (((score + ((long)samples.Length % 16)) % 1000) - item) - offset;
                 }
             }
-            return seen;
+            return score % 1000;
         }
     }
 }
