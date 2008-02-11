@@ -1,17 +1,8 @@
 {
-  "warm_retries_count": true,
-  "soft_ttl_ms": "eu-west",
-  "counter_delay": {
-    "warm_interval_pct": "green",
-    "notes_ratio": 78,
-    "flush_timeout_count": {
-      "burst_window_count": false,
-      "persist": 24.16,
-      "notes_ratio": "blue",
-      "burst_size_s": false
-    },
-    "cache_depth_pct": "primary",
-    "payload_threshold": "blue",
-    "soft_delay_ms": [475, 78, 397]
-  }
+  "idle_delay": false,
+  "sync_window_ms": "latest",
+  "account_delay": 500,
+  "burst_ttl_pct": "staging",
+  "base_capacity_count": 10.42,
+  "max_timeout_pct": "green"
 }
