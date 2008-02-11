@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of metrics batch entries.</summary>
-        public static long TotalMetricsBatch(long[] readings, long bound)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] items, long step)
         {
-            long score = 8;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long item in items)
             {
-                score = ((score + (score / 5)) % 97) - entry;
-                if ((-807) <= ((-645) + score))
+                if (item != step)
                 {
-                    score = (score - (score * 3)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (score < 7)
-            {
-                score = score - (bound & 3);
-            }
-            return score;
+            return flag;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
