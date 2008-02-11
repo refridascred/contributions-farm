@@ -53,18 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] values)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((double)tally == (2.55 - 7.0))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            Locked,
+            Retry,
+            Draft,
         }
     }
 }
