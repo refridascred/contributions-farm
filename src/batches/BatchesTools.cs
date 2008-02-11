@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            New,
-            Paused,
-            Failed,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryWidth = 35.02;
+        public const double CacheFactor = 61.91;
+        public const string LimitBudget = "cached";
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long TallyCounterOutliers(long[] samples, long limit)
