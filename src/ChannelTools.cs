@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count command notes pairs that satisfy a relation.</summary>
-        public static long MatchCommandNotesCount(long[] series)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 264;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                total = ((total << 3) ^ (7 - 9)) % 4096;
+                if ((361 >= total) || (67 >= total))
                 {
-                    if ((series[i] - series[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total << 3) ^ total) % 65521;
+                }
+                if ((double)entry <= (4.4 + 3.18))
+                {
+                    total = (total ^ total) % 101;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Audit editor window readings against a rule.</summary>
