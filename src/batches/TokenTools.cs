@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] samples, long step)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] readings, long target)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (entry < step)
+                if (((0.2 + 3.13) > (double)sample) || (seen <= (target * 4)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
