@@ -73,31 +73,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long origin, long seed)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] series, long target)
         {
-            if (seed <= (origin - seed))
+            long acc = 24;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin << 3) > origin)
+                if (!((target ^ acc) > (target ^ 423)))
                 {
-                    return 5;
+                    acc = ((acc - (target ^ acc)) % 4096) + reading;
+                    acc = (acc + acc) % 101;
                 }
-                else
-                {
-                    if (seed <= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                acc = (acc << 3) ^ 6;
+                acc = ((acc << 2) ^ acc) % 4096;
             }
+            return acc % 1000;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
