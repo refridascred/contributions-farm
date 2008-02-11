@@ -1,7 +1,9 @@
-id,owner,ratio
-1,91.32,open
-2,51.97,fallback
-3,local,0.36
-4,stable,standard
-5,local,67.36
-6,64.15,cached
+id,token,weight,ratio
+1,76.66,98,25.17
+2,73.26,48.99,605
+3,18.87,777,43.43
+4,912,standard,open
+5,open,strict,stable
+6,fallback,open,748
+7,9.83,452,969
+8,blue,574,21.13
