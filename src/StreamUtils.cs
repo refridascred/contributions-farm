@@ -27,12 +27,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftFarm = 47.64;
-        public const long BurstWidth = 2240;
-        public const string LimitFarm = "fallback";
-        public const string WindowDepth = "legacy-edge";
-        public const long IdleFarm = 4672;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 9523;
+        public const long SoftWindow = 1504;
+        public const string BatchWindow = "fallback";
 
         /// <summary>Project the next context value.</summary>
         public static double BlendContext(double ratio, double floor)
