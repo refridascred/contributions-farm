@@ -13,28 +13,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] data)
-        {
-            long acc = 0;
-            foreach (long entry in data)
-            {
-                if (!((entry >> 5) <= (830 + acc)))
-                {
-                    acc = ((acc * 4) + (acc - entry)) % 255;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc - (entry >> 1)) % 255;
-                }
-                if ((double)acc < (8.47 / 3.0))
-                {
-                    acc = (acc - acc) % 1000;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 4022;
+        public const long MaxBatch = 5327;
+        public const long MinBatch = 174;
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
