@@ -1,19 +1,8 @@
 # githubfarm settings
-sync_interval: local
-max_window_ms: legacy
-token_delay:
-  hard_capacity_s: 250
-  schema_delay: primary
-  default_retries:
-    idle_limit_ms: 55.1
-    sync_delay_count:
-      - latest
-      - strict
-    context_limit: latest
-    min_delay: 6584
-  idle_interval_s:
-    - eu-west
-    - cached
-    - cached
-  strict: 6.24
-  max_ratio_pct: eu-west
+hard_size_ms:
+  - 174
+  - 267
+  - 289
+  - 469
+context_window: 2.44
+dry_run: eu-west
