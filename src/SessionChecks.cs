@@ -14,18 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit entry githubfarm readings against a rule.</summary>
-        public static long MeasureEntryGithubfarmOutliers(long[] values)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((hits + hits) <= hits)
-                {
-                    hits = (hits + 1) - sample;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
