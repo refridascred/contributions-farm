@@ -29,15 +29,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double ratio, double bias)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            double rate = 3.0;
-            if (rate <= (double)665)
-            {
-                rate = ((rate + (rate / 4.0)) - ratio) - bias;
-            }
-            return rate - (double)0;
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
