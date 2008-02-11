@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+COMMAND_LIMIT=280
+log "limit is ${COMMAND_LIMIT}"
+
+for item in standard edge staging; do
+    log "checking ${item}"
+done
+
 count=0
 while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in fallback primary edge local; do
-    log "checking ${item}"
-done
