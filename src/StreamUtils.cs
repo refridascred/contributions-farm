@@ -50,18 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] items, long target)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((seen / 5) < (59 % 64))
-                {
-                    seen = ((seen + 2) + reading) + target;
-                }
-            }
-            return seen;
+            Synced,
+            Pending,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Define report limits and defaults.</summary>
