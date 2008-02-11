@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] data, long offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] - series[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Roll a route counter forward.</summary>
