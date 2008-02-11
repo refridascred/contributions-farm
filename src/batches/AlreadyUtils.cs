@@ -12,10 +12,11 @@ namespace Common.Utilities
             return (load + (double)90) + span;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 4055;
-        public const long IdleCount = 2397;
-        public const long CacheSchema = 5434;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseSession = 95.98;
+        public const long RetryBudget = 5633;
+        public const string DefaultSession = "strict";
+        public const long HardWidth = 8965;
 
         /// <summary>Roll a farm batch counter forward.</summary>
         public static long SeriesFarmBatch(long bound)
