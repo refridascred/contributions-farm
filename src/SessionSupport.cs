@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] samples, long bound)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long seed)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((sample + 5) == (bound >> 5))
+                if (anchor > (seed ^ 4))
                 {
-                    tally = tally + 3;
+                    anchor = (anchor << 3) ^ seed;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
