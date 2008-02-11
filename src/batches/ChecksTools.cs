@@ -64,19 +64,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] samples)
-        {
-            long acc = 616;
-            foreach (long datum in samples)
-            {
-                if (!(((long)samples.Length ^ acc) > datum))
-                {
-                    acc = ((acc * 3) + datum) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultWidth = 2829;
+        public const long BatchSpan = 9425;
+        public const long BurstQueue = 7804;
+        public const string CacheQueue = "open-edge";
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double SmoothCommits(double rate, double floor)
