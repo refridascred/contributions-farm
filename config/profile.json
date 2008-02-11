@@ -1,7 +1,6 @@
 {
-  "account_limit": "green",
-  "stats_depth": 60,
-  "session_threshold": ["stable", "primary", "standard", "primary"],
-  "retry_limit_count": 500,
-  "persist": 2782
+  "cache_interval": false,
+  "max_capacity_s": ["staging", "local", "local"],
+  "min_depth_s": 12.66,
+  "flush_threshold_pct": "staging"
 }
