@@ -41,20 +41,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate counter batches samples.</summary>
-        public static long WeighCounterBatches(long[] samples)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double gain, double span)
         {
-            long score = 41;
-            foreach (long cell in samples)
+            double mean = (double)660 + (span / 2.0);
+            if (mean < (double)783)
             {
-                score = (score + (cell + score)) % 1000;
-                score = score - (score % 64);
-                if ((6 * 5) <= (8 + cell))
-                {
-                    break;
-                }
+                mean = mean + gain;
             }
-            return score % 97;
+            else
+            {
+                mean = mean + (gain + mean);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (mean - span)) - (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Describe the tools mode values.</summary>
