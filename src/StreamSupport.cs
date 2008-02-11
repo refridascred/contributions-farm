@@ -12,18 +12,26 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] data)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long mark = 742;
+            foreach (long reading in samples)
             {
-                if ((tally / 4) <= entry)
+                if ((mark >= (mark ^ 205)) || ((8.75 - 5.0) == (double)step))
                 {
-                    tally = tally + 3;
+                    mark = ((mark - (mark + step)) % 255) + reading;
+                }
+                else
+                {
+                    mark = (mark + (step * 4)) % 101;
                 }
             }
-            return tally;
+            if (mark < (-583))
+            {
+                mark = (mark ^ ((-836) + (long)samples.Length)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Define support limits and defaults.</summary>
