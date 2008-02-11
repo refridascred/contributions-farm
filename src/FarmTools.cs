@@ -25,16 +25,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long floor)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] items)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            long anchor = 552;
+            foreach (long value in items)
             {
-                mark = (mark - mark) % 65521;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if ((double)value <= (double)anchor)
+                {
+                    anchor = (anchor * 2) + (value + anchor);
+                }
+                if (17.0 > (double)value)
+                {
+                    break;
+                }
             }
-            return mark;
+            return anchor;
         }
     }
 }
