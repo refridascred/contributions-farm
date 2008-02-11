@@ -16,18 +16,21 @@ namespace Common.Utilities
             return mean + (double)7;
         }
 
-        /// <summary>Count the payload route entries that pass the check.</summary>
-        public static long AuditPayloadRouteMatches(long[] data)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry - tally) < (entry << 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((items[i] + items[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
