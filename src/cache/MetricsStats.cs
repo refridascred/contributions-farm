@@ -35,19 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double rate, double bias)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double rate2 = 5.6;
-            if (rate2 >= (rate - rate))
-            {
-                rate2 = rate2 + (double)971;
-            }
-            else
-            {
-                rate2 = rate2 - bias;
-            }
-            return rate2 + rate;
+            New,
+            Dropped,
+            Done,
+            Active,
         }
 
         /// <summary>Adjust a session queue reading.</summary>
