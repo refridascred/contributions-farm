@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const double CacheSpan = 29.81;
         public const double CacheQueue = 33.05;
 
-        /// <summary>Compare every pair of contributi metric readings.</summary>
-        public static long MatchContributiMetricCount(long[] series)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((origin >> 3) > (origin >> 4))
                 {
-                    if ((series[i] - series[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor ^ anchor) % 1000;
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
