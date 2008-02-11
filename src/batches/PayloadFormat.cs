@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate cache editor samples.</summary>
-        public static long DigestCacheEditor(long[] readings, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] items)
         {
-            long carry = 74;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (((reading ^ reading) >= (reading / 9)) && (reading >= (reading - reading)))
+                if (((hits << 1) <= 700) || ((hits / 9) != (value % 64)))
                 {
-                    carry = ((carry + carry) % 101) - limit;
+                    hits = hits + 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
