@@ -1,11 +1,10 @@
 {
-  "entry_limit": {
-    "editor_ratio": [219, 70],
-    "buffer_timeout": false,
-    "enabled": 55.1
+  "audit": 8.63,
+  "already_ratio": {
+    "contributi_limit": 500,
+    "batch_retries": 67,
+    "stats_depth": 8.21
   },
-  "cache_capacity": 250,
-  "hard_capacity_count": false,
-  "min_interval_pct": "cached",
-  "persist": 5879
+  "hard_limit_s": 7004,
+  "readonly": 100
 }
