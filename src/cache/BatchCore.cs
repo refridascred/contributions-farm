@@ -47,30 +47,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cache support values into a single score.</summary>
-        public static long WeighCacheSupport(long[] values, long floor)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long state = 5;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    state = ((state - (state + floor)) % 101) ^ (long)i;
-                }
-                if (entry < (state + state))
-                {
-                    state = ((state * 3) + (entry - state)) % 1000;
-                }
-                if ((entry % 60) <= ((-9) & 255))
-                {
-                    state = (state ^ (floor + entry)) % 101;
-                }
-            }
-            if (state > 72)
-            {
-                state = ((state << 2) ^ (floor - state)) % 255;
-            }
-            return state % 65521;
+            Active,
+            Paused,
+            Closed,
+            Synced,
         }
     }
 }
