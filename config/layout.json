@@ -1,6 +1,14 @@
 {
-  "persist": false,
-  "idle_limit": ["open", "local"],
-  "min_threshold_count": 75,
-  "readonly": 27
+  "stream_size": "open",
+  "enabled": ["local", "staging", "green", "blue"],
+  "metric_delay": 5211,
+  "batches_ttl": false,
+  "base_timeout_ms": "local",
+  "poll_threshold": {
+    "verbose": "fallback",
+    "max_size_pct": "fallback",
+    "batch_interval_pct": 57.04,
+    "session_window": true,
+    "idle_capacity": false
+  }
 }
