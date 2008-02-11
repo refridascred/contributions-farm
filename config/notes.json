@@ -1,6 +1,5 @@
 {
-  "githubfarm_timeout": "stable",
-  "batch_retries_pct": 671,
-  "default_interval_s": 35,
-  "cache_ttl_count": 89.24
+  "support_retries": "open",
+  "batch_ttl": 78.24,
+  "notes_depth": "blue"
 }
