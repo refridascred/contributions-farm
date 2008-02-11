@@ -67,13 +67,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] levels, long target)
         {
-            Failed,
-            Pending,
-            Queued,
-            Closed,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (313 < (target - seen))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
     }
 }
