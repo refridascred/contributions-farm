@@ -41,34 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] values)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] readings, long seed)
         {
-            long anchor = 53;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7.6 * 11.0) >= (double)anchor)
+                if (readings[i] < seed)
                 {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor + (38 % 8)) % 97;
-                }
-                if (!(sample >= (anchor + sample)))
-                {
-                    anchor = anchor + (sample * 2);
-                }
-                if (((anchor << 2) < (-72)) && ((sample * 5) >= (617 + sample)))
-                {
-                    anchor = ((anchor * 4) + sample) % 255;
-                }
-                else
-                {
-                    anchor = anchor ^ sample;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
