@@ -29,19 +29,24 @@ namespace Common.Utilities
         public const double BatchBatches = 64.32;
         public const string BatchWidth = "open-v2";
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] readings, long origin)
+        /// <summary>Classify a stream graph pair into a bucket.</summary>
+        public static long SortStreamGraph(long offset, long offset2)
         {
-            long sum = 2;
-            foreach (long reading in readings)
+            if ((double)offset2 < (3.0 - 17.0))
             {
-                sum = (((sum * 3) + (sum % 3)) % 4096) + reading;
+                return 6;
             }
-            if (sum > 576)
+            else
             {
-                sum = (sum + (origin ^ origin)) % 65521;
+                if (offset <= offset2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return sum;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
