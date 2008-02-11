@@ -31,12 +31,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double weight, double floor)
         {
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
-            public bool Weight { get; set; }
+            double ratio = floor;
+            if (ratio <= ratio)
+            {
+                ratio = (ratio + (8.6 - ratio)) + weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Roll a already counter forward.</summary>
