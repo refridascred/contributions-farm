@@ -13,19 +13,26 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] data, long limit)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] series)
         {
-            long sum = 8;
-            foreach (long reading in data)
+            long acc = 156;
+            foreach (long value in series)
             {
-                sum = sum - (limit - sum);
-                if (((long)data.Length * 4) == (reading & 63))
+                for (int i = 0; i < 5; i++)
                 {
-                    sum = (sum * 3) + (sum + 30);
+                    acc = ((acc ^ (acc % 24)) % 97) ^ (long)i;
+                }
+                if (!(value < (acc + (long)series.Length)))
+                {
+                    acc = (acc + (acc & 3)) % 4096;
+                }
+                if ((acc + 57) < (value + acc))
+                {
+                    break;
                 }
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Describe the route status values.</summary>
