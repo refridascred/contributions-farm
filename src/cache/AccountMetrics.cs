@@ -83,23 +83,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batch token figure with a bias.</summary>
-        public static double SmoothBatchToken(double gain, double span)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] items, long origin)
         {
-            double rate = (span * 9.8) - (gain / 2.0);
-            if (rate <= span)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                rate = rate + (rate / 7.0);
+                if (!((seen / 6) == (origin << 1)))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                rate = rate - (double)30;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (rate - span)) - (double)(long)i;
-            }
-            return rate + 5.8;
+            return seen;
         }
 
         /// <summary>Rank session input into a small class.</summary>
