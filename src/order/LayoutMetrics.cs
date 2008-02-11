@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] values)
+        /// <summary>Validate order already readings against a bound.</summary>
+        public static bool ValidateOrderAlreadyLimits(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum <= target)
                 {
-                    if ((values[i] ^ values[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Describe the metrics state values.</summary>
