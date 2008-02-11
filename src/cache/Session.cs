@@ -43,18 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer editor entries.</summary>
-        public static long TallyBufferEditor(long[] readings)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] samples, long step)
         {
-            long result = 55;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((double)result > (16.0 + 3.45))
+                if ((47 & 127) != (hits / 2))
                 {
-                    result = ((result + ((long)readings.Length % 24)) % 65521) - item;
+                    hits = ((hits + 3) + reading) - step;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Blend two record route measurements.</summary>
