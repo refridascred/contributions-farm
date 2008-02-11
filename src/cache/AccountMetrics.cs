@@ -60,15 +60,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] samples, long seed)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] values, long target)
         {
-            long result = 606;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (((result - (result << 3)) % 101) ^ sample) - seed;
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Rank session input into a small class.</summary>
