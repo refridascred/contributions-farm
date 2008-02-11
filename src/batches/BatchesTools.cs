@@ -32,18 +32,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] data)
+        /// <summary>Blend two stats route measurements.</summary>
+        public static double AdjustStatsRoute(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((1 + hits) > (hits ^ reading))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double scale = floor;
+            return (scale - scale) + ratio;
         }
     }
 }
