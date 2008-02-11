@@ -1,19 +1,19 @@
 # support settings
-tools_threshold: 83
-strict: open
-readonly:
-  cache_delay_pct: blue
-  warm_window: staging
-  record_window: false
-  readonly: 250
-  graph_ttl:
-    - 53
-    - 469
-    - 269
-  entry_delay: 1024
-compress:
-  - 132
-  - 196
-  - 261
-  - 422
-channel_interval: 86
+commits_ratio: open
+editor_limit:
+  strict: 37.28
+  burst_interval_s:
+    persist: false
+    min_capacity_count:
+      - staging
+      - fallback
+    verbose: false
+    cache_ttl_ms: open
+  retry_capacity: 250
+  audit: 65
+  filter_ttl: cached
+  default_depth_ms:
+    - 305
+    - 101
+githubfarm_timeout: 27.52
+metrics_depth: 60
