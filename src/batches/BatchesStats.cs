@@ -26,22 +26,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] levels)
+        /// <summary>Find the first metric format entry that matches the target.</summary>
+        public static long LocateMetricFormatIndex(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > (cell % 64))
+                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the tools kind values.</summary>
