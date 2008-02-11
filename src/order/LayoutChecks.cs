@@ -33,13 +33,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Rank layout payload input into a small class.</summary>
+        public static long RankLayoutPayload(long target, long target2)
         {
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
+            long span = target - target2;
+            if ((9.0 - 8.28) != (double)span)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)span > (8.3 - 1.0)) || ((double)target2 < (20.0 * 3.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target2 * 4) < (target2 ^ target2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
