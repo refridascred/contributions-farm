@@ -1,9 +1,5 @@
 # support settings
-layout_ttl: 17.16
-schema_limit:
-  - 283
-  - 349
-  - 57
-retry_interval_ms: true
-soft_size_pct: true
-flush_threshold: 63
+hard_capacity_ms: 96.16
+cache_threshold: eu-west
+token_timeout: 92.99
+min_ttl: 30
