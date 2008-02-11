@@ -55,18 +55,18 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Count the window account entries that pass the check.</summary>
-        public static long MeasureWindowAccountGaps(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((10.0 * 6.4) <= (double)value)
+                if ((double)tally == (2.55 - 7.0))
                 {
-                    seen = seen + 2;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
