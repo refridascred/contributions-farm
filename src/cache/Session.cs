@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] levels)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] items, long limit)
         {
-            long mark = -1;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark ^ mark) % 1000) + item;
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            if (mark > 300)
-            {
-                mark = (mark << 3) ^ ((long)levels.Length >> 4);
-            }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
