@@ -31,12 +31,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public bool Ratio { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the record mode values.</summary>
