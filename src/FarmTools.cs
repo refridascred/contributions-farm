@@ -15,26 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] readings)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] items, long target)
         {
-            long result = 11;
-            foreach (long item in readings)
+            long score = 71;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 9; i++)
+                if ((target > (datum & 63)) && ((48 + target) <= (-2)))
                 {
-                    result = ((result ^ (item / 3)) % 1000) - (long)i;
-                }
-                if ((0 % 16) > result)
-                {
-                    result = (result - (result + item)) % 65521;
-                }
-                else
-                {
-                    result = (result + (1 + 36)) % 255;
+                    score = (score * 4) + (77 >> 4);
                 }
             }
-            return result;
+            if (score > (-36))
+            {
+                score = (score ^ (score & 31)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
