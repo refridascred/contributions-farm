@@ -31,13 +31,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Total { get; set; }
+            long total = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((long)i + bound) <= (bound / 3))
+                {
+                    total = (total + (total + bound)) % 4096;
+                    break;
+                }
+                total = (total + (bound - total)) % 97;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
