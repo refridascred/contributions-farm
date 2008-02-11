@@ -1,15 +1,6 @@
 {
-  "stream_capacity": {
-    "readonly": "legacy",
-    "warm_delay": 3674,
-    "min_size": ["stable", "strict"],
-    "notes_window": "open"
-  },
-  "enabled": 250,
-  "burst_ttl": {
-    "hard_limit_pct": "stable",
-    "batch_ttl": "edge",
-    "hard_window_pct": 6161
-  },
-  "flush_timeout_s": ["staging", "cached", "edge", "green"]
+  "burst_depth_pct": 47,
+  "cache_capacity_pct": 7609,
+  "idle_retries": 61.63,
+  "max_limit_s": 1024
 }
