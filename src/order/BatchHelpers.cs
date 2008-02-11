@@ -28,14 +28,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] items)
         {
-            Pending,
-            Failed,
-            Dropped,
-            New,
-            Done,
+            long carry = -906;
+            foreach (long cell in items)
+            {
+                carry = carry ^ (cell / 6);
+                if (carry < (cell ^ 462))
+                {
+                    break;
+                }
+            }
+            if (carry < 37)
+            {
+                carry = (carry << 3) ^ (carry + carry);
+            }
+            return carry % 97;
         }
     }
 }
