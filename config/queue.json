@@ -1,7 +1,7 @@
 {
-  "enabled": 99,
-  "strict": 3210,
-  "batch_delay_ms": 21.19,
-  "sync_limit_count": ["open", "legacy", "local", "green"],
-  "compress": ["standard", "green", "open"]
+  "readonly": true,
+  "verbose": false,
+  "sync_depth_count": "primary",
+  "profile_capacity": false,
+  "min_ratio_pct": "staging"
 }
