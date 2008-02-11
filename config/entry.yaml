@@ -1,6 +1,13 @@
 # entry settings
-layout_ttl: 42.36
-base_retries_pct: false
-compress:
-  - local
-  - local
+idle_threshold_count: stable
+batch_retries:
+  - 385
+  - 294
+  - 432
+  - 145
+min_timeout_count: 73.4
+stats_limit:
+  enabled: 27.57
+  cache_window: false
+  readonly: false
+  editor_size: cached
