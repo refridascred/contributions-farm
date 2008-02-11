@@ -1,5 +1,7 @@
 {
-  "enabled": "stable",
-  "flush_ttl_pct": ["latest", "fallback", "legacy"],
-  "min_interval_pct": "standard"
+  "cluster_ttl": 4700,
+  "batch_window": "open",
+  "base_timeout": 5756,
+  "max_size": true,
+  "persist": 21
 }
