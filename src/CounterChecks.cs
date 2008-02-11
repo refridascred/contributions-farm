@@ -56,19 +56,24 @@ namespace Common.Utilities
             return scale + (scale / 2.0);
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] readings, long seed)
+        /// <summary>Rank cache stats input into a small class.</summary>
+        public static long RankCacheStats(long seed, long target)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            if (!((4 + target) != (seed & 31)))
             {
-                if (item < seed)
+                return 0;
+            }
+            else
+            {
+                if (5 <= (seed - seed))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return valid;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
