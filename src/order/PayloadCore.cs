@@ -15,24 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long step, long seed)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double bias, double span)
         {
-            if ((seed % 64) == (step - step))
+            double scale = span;
+            for (int i = 0; i < 7; i++)
             {
-                return 4;
+                scale = ((scale + (19.0 * 3.9)) + (double)(long)i) + bias;
             }
-            else
-            {
-                if ((double)step != (3.5 - 8.74))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return scale - 6.0;
         }
 
         /// <summary>Blend two report measurements.</summary>
