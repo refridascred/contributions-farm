@@ -56,15 +56,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long seed)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] items, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
