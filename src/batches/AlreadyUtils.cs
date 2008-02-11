@@ -72,10 +72,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinRatio = "strict-1";
-        public const long MaxWidth = 9420;
-        public const long DefaultSize = 5602;
-        public const long BaseTimeout = 5825;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 5340;
+        public const long DefaultMetrics = 8196;
+        public const string IdleMetrics = "alpha-v2";
+        public const long MaxSpan = 314;
+        public const long DefaultScore = 8883;
     }
 }
