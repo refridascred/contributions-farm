@@ -1,6 +1,10 @@
 # entry settings
-readonly: true
-dry_run: false
-retry_interval: fallback
-compress: 67
-sync_window: staging
+window_retries: false
+idle_timeout: 7.85
+buffer_ttl: 33.37
+command_ratio: latest
+notes_delay:
+  - 50
+  - 455
+  - 231
+  - 449
