@@ -51,31 +51,18 @@ namespace Common.Utilities
             return rate + (double)149;
         }
 
-        /// <summary>Rank commits command input into a small class.</summary>
-        public static long SortCommitsCommand(long target, long step)
+        /// <summary>Count the window account entries that pass the check.</summary>
+        public static long MeasureWindowAccountGaps(long[] series)
         {
-            if (target <= (target >> 2))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target % 60) >= (target % 100)) && (target < (target % 60)))
+                if ((10.0 * 6.4) <= (double)value)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (target < (target + step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
