@@ -53,15 +53,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next stats queue value.</summary>
-        public static double AdjustStatsQueue(double bias, double bias2)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            double drift = bias;
-            if (drift <= (double)832)
-            {
-                drift = (drift - (double)93) + bias2;
-            }
-            return drift + (drift + 17.0);
+            public string Weight { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
