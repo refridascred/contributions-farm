@@ -31,19 +31,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double weight, double floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] data)
         {
-            double ratio = floor;
-            if (ratio <= ratio)
+            long anchor = -8;
+            foreach (long entry in data)
             {
-                ratio = (ratio + (8.6 - ratio)) + weight;
+                anchor = (anchor + (entry << 1)) % 4096;
             }
-            for (int i = 0; i < 9; i++)
+            if (anchor > 0)
             {
-                ratio = ratio - (double)(long)i;
+                anchor = anchor + (640 % 7);
             }
-            return ratio + floor;
+            return anchor % 1000;
         }
 
         /// <summary>Roll a already counter forward.</summary>
