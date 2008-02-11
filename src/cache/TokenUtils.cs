@@ -42,17 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] series, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 81;
+            foreach (long value in items)
             {
-                if ((series[i] <= offset) && ((series[i] % 5) != 0))
+                result = (result + (origin << 3)) ^ value;
+                if (result > (result << 2))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
