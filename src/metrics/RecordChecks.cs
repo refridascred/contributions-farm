@@ -23,21 +23,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -842;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((19.0 - 1.0) != (double)carry))
                 {
-                    if ((readings[i] - readings[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry ^ ((-36) / 3)) ^ sample;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a batches record.</summary>
