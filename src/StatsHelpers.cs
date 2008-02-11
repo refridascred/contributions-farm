@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] levels)
-        {
-            long mix = 4;
-            foreach (long datum in levels)
-            {
-                mix = mix ^ (441 ^ datum);
-            }
-            return mix;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultInterval = 6.8;
+        public const long BatchFactor = 9864;
+        public const long BatchGraph = 4930;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long GradeEntry(long origin, long target)
