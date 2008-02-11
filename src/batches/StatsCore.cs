@@ -36,19 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batches support value.</summary>
-        public static double AdjustBatchesSupport(double gain, double span)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] data)
         {
-            double scale = span;
-            if (scale > (gain + scale))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + span) - (double)(long)i;
-            }
-            return scale + (double)334;
+            return hits;
         }
 
         /// <summary>Audit tools cluster readings against a rule.</summary>
