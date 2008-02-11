@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
+            Done,
+            Ready,
+            Closed,
         }
 
         /// <summary>Accumulate commits samples.</summary>
