@@ -1,10 +1,4 @@
 # githubfarm settings
-base_delay_s: true
-enabled: cached
-batch_size: legacy
-metric_capacity: 70
-min_ratio_pct:
-  - strict
-  - stable
-  - latest
-metric_size: 42.88
+command_ttl: standard
+persist: 68.34
+soft_threshold_count: standard
