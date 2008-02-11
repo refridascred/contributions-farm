@@ -42,21 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of batches support readings.</summary>
-        public static long MatchBatchesSupportCount(long[] readings)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value < seed)
                 {
-                    if ((readings[i] + readings[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
