@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] values)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long acc = 602;
-            foreach (long item in values)
-            {
-                if ((item + acc) < (item & 63))
-                {
-                    acc = (acc ^ (acc + acc)) % 255;
-                }
-            }
-            return acc % 1000;
+            Closed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
