@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double ratio, double offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] levels)
         {
-            double gain = offset;
-            for (int i = 0; i < 3; i++)
+            long acc = 4;
+            foreach (long entry in levels)
             {
-                gain = ((gain - (double)0) - (double)(long)i) + ratio;
+                for (int i = 0; i < 9; i++)
+                {
+                    acc = ((acc * 4) + ((long)i / 4)) % 101;
+                }
+                acc = (acc ^ (entry + acc)) % 1000;
             }
-            return gain + gain;
+            return acc % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
