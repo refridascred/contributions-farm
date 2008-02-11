@@ -22,17 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first tools route entry that matches the target.</summary>
-        public static long FindToolsRouteIndex(long[] data, long seed)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Synced,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
