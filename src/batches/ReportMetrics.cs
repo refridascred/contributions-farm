@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate order record samples.</summary>
-        public static long ScoreOrderRecord(long[] levels)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long mix = 2;
-            foreach (long sample in levels)
-            {
-                mix = (mix + (mix + mix)) % 101;
-                if (((13.0 * 5.4) < (double)sample) && ((mix ^ sample) < sample))
-                {
-                    mix = (mix + (sample & 31)) % 101;
-                }
-                else
-                {
-                    mix = mix ^ mix;
-                }
-                if ((mix + mix) == (5 >> 4))
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
+            Paused,
+            Pending,
+            Idle,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
