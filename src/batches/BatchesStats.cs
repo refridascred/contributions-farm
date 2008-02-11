@@ -40,17 +40,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first notes format entry that matches the target.</summary>
-        public static long FindNotesFormatIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == limit) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepTools = "staging-edge";
+        public const double BaseTools = 16.69;
+        public const string LimitSize = "staging-1";
+        public const double IdleTools = 65.47;
     }
 }
