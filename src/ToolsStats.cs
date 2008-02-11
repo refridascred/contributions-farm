@@ -67,11 +67,12 @@ namespace Common.Utilities
             return ((ratio + 1.4) + bias) + span;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
+            Paused,
+            Synced,
+            Failed,
         }
 
         /// <summary>Hold a metrics entry.</summary>
