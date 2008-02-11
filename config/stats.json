@@ -1,7 +1,7 @@
 {
-  "soft_interval": "green",
-  "min_size": "green",
-  "max_ratio_ms": 5988,
-  "hard_interval_ms": "standard",
-  "account_window": 65.99
+  "retry_capacity": "staging",
+  "warm_limit_ms": false,
+  "format_threshold": 53,
+  "poll_window_ms": true,
+  "dry_run": 85.9
 }
