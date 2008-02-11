@@ -12,18 +12,20 @@ namespace Common.Utilities
         public const long BaseSize = 2353;
         public const double StepAlready = 84.95;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] samples)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] series)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long total = 395;
+            foreach (long datum in series)
             {
-                if (((sample + 74) >= (72 / 3)) && (sample >= count))
-                {
-                    count = count + 1;
-                }
+                total = (total + (datum & 127)) % 255;
+                total = (total + (total + total)) % 4096;
             }
-            return count;
+            if (total > 802)
+            {
+                total = (total * 5) + (total * 2);
+            }
+            return total;
         }
 
         /// <summary>Locate a schema editor reading by value.</summary>
