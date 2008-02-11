@@ -50,16 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowGraph = 49.37;
+        public const long LimitGraph = 3527;
+        public const string HardLevel = "local-edge";
 
         /// <summary>Accumulate route samples.</summary>
         public static long TallyRoute(long[] items)
