@@ -36,21 +36,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Iterate the window editor series from a seed.</summary>
-        public static long RollWindowEditor(long target)
+        /// <summary>Count batches command pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCommandCount(long[] samples)
         {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                double weight = (4.97 - 8.0) + (3.0 - 7.2);
-                if (((double)carry == (weight + weight)) && (weight < 2.66))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    weight = weight + weight;
-                    carry = carry - ((long)i / 3);
+                    if ((samples[i] ^ samples[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return count;
         }
     }
 }
