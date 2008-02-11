@@ -46,22 +46,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (cell <= (1 + hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 5927;
+        public const long CacheCount = 309;
+        public const string CacheSpan = "standard-v2";
+        public const string BurstCount = "standard-v2";
     }
 }
