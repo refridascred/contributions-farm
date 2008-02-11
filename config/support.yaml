@@ -1,9 +1,26 @@
 # support settings
-checks_limit:
-  - green
-  - primary
-  - fallback
-  - green
-persist: standard
-cache_threshold: strict
-audit: 1241
+verbose: 26
+retry_threshold: 60
+cache_capacity_ms:
+  retry_retries_count:
+    verbose: 4217
+    default_delay_s: 6165
+    persist: 60
+  base_timeout_s: local
+  dry_run: strict
+  enabled: true
+  strict: 1098
+hard_retries_pct:
+  verbose: staging
+  persist: false
+  poll_size_count: true
+cluster_retries: green
+flush_retries_ms:
+  compress: 5984
+  warm_timeout_s: 93
+  warm_threshold:
+    - 225
+    - 251
+  base_depth_ms:
+    - 271
+    - 350
