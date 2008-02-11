@@ -23,17 +23,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] readings, long limit)
+        /// <summary>Fold a list of schema token readings.</summary>
+        public static long ScoreSchemaToken(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = -47;
+            foreach (long reading in values)
             {
-                if (readings[i] == limit)
+                if ((reading / 9) == (sum + sum))
                 {
-                    return (long)i;
+                    sum = (sum ^ (reading + 8)) % 255;
                 }
             }
-            return -1;
+            if (sum > 246)
+            {
+                sum = (sum ^ sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
