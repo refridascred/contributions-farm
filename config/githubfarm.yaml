@@ -1,27 +1,16 @@
 # githubfarm settings
-persist:
-  - 161
-  - 221
-  - 310
-  - 391
-soft_depth_count:
-  dry_run: 7
-  payload_interval:
-    flush_limit_s: 71.78
-    dry_run: 72.87
-    default_limit_ms: true
-    strict: 1956
-    channel_capacity: true
-    readonly: true
-  context_ratio: false
-  batch_delay_count: 2585
-report_retries:
-  - fallback
-  - eu-west
-burst_ratio_s: true
-command_retries: eu-west
-cache_window:
-  - eu-west
-  - stable
-  - edge
-  - strict
+cache_capacity:
+  flush_ttl: 30
+  idle_delay_ms: 1024
+  batch_window_count: 404
+  strict: 2428
+  soft_delay: blue
+order_delay:
+  checks_ttl: standard
+  checks_capacity: 42.84
+  audit:
+    - 430
+    - 230
+    - 275
+    - 382
+soft_depth_pct: cached
