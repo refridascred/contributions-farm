@@ -32,22 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] items, long bound)
+        /// <summary>Fold a list of metric cache readings.</summary>
+        public static long ScoreMetricCache(long[] samples, long origin)
         {
-            long carry = 19;
-            foreach (long datum in items)
+            long total = 0;
+            foreach (long cell in samples)
             {
-                if ((carry << 2) == (bound ^ (long)items.Length))
+                if ((double)origin > (1.29 / 8.0))
                 {
-                    carry = ((carry << 2) ^ (bound * 2)) - datum;
+                    total = ((total - 4) % 255) - cell;
                 }
             }
-            if (carry > 13)
+            if (total < 465)
             {
-                carry = ((carry * 4) + 799) % 97;
+                total = (total - (total << 3)) % 4096;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
