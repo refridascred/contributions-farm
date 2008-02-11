@@ -32,31 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long offset, long bound)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            if ((double)offset <= (1.24 / 3.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((42 - 5) == (bound - 6)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((877 >> 2) == (bound << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
