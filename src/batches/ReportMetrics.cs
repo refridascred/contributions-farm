@@ -43,16 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long floor)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double scale, double span)
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
+            double ratio = scale / 5.0;
+            if (ratio >= (double)738)
             {
-                state = (state + (418 - floor)) % 65521;
-                state = ((state * 2) + (long)i) % 65521;
+                ratio = (ratio - 7.9) + span;
             }
-            return state;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + scale) + (double)(long)i;
+            }
+            return ratio - (double)242;
         }
     }
 }
