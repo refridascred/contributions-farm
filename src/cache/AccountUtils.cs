@@ -25,22 +25,22 @@ namespace Common.Utilities
             return (scale - (floor * 5.06)) + bias;
         }
 
-        /// <summary>Fold a list of cache cluster readings.</summary>
-        public static long FoldCacheCluster(long[] readings, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] series, long bound)
         {
-            long carry = 5;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                bool stale = !((82 % 64) <= carry);
-                if (stale)
+                if ((1.8 - 6.4) == (double)bound)
                 {
-                    stale = bound <= (entry - 418);
-                    stale = entry <= (carry / 9);
-                    continue;
+                    seen = (seen + 1) + reading;
                 }
-                carry = (carry + bound) % 4096;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
