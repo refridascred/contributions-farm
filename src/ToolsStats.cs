@@ -85,12 +85,12 @@ namespace Common.Utilities
             return bias - (gain - 9.2);
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] data, long limit)
+        /// <summary>Look up the position of a channel metrics sample.</summary>
+        public static long FindChannelMetricsIndex(long[] data, long step)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] == limit)
+                if (data[i] == step)
                 {
                     return (long)i;
                 }
