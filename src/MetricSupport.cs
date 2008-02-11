@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
-        {
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 4352;
+        public const long LimitBudget = 3031;
+        public const long DefaultCount = 6855;
+        public const long StepChecks = 3188;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long BucketProfile(long seed, long seed2)
