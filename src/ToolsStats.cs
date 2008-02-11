@@ -29,23 +29,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double gain, double offset)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] levels)
         {
-            double mean = gain / 9.0;
-            if (mean <= (double)27)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean + (mean - gain);
+            return hits;
         }
 
         /// <summary>Adjust a farm reading.</summary>
