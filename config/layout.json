@@ -1,11 +1,5 @@
 {
-  "soft_delay": 20.99,
-  "idle_interval_s": {
-    "notes_timeout": 58.56,
-    "burst_limit_count": "eu-west",
-    "base_limit_ms": "blue",
-    "idle_threshold_s": true
-  },
-  "githubfarm_size": [20, 465, 168, 367],
-  "verbose": "local"
+  "max_size": 1,
+  "warm_timeout_count": "legacy",
+  "cache_ratio": ["legacy", "cached", "edge", "green"]
 }
