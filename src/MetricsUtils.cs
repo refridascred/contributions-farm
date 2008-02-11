@@ -71,24 +71,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] readings, long target)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long bound)
         {
-            long carry = 69;
-            foreach (long reading in readings)
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
             {
-                carry = (carry + (reading & 127)) % 4096;
-                carry = (carry + target) % 4096;
-                if ((7 - reading) <= (reading + carry))
-                {
-                    carry = (carry << 3) ^ (reading + carry);
-                }
-                if (2.2 < (double)carry)
-                {
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return carry;
+            return acc;
         }
     }
 }
