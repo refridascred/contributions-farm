@@ -39,12 +39,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultRatio = 711;
-        public const string DefaultSpan = "staging-v2";
-        public const string LimitBudget = "primary-v2";
-        public const double BaseNotes = 29.89;
-        public const long BurstSize = 6122;
+        /// <summary>Classify a buffer session pair into a bucket.</summary>
+        public static long ClassifyBufferSession(long bound, long origin)
+        {
+            long span = bound ^ origin;
+            if (!(origin > (5 >> 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((span ^ span) > origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)bound > (19.0 / 7.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
