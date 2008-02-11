@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double ratio, double floor)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            double weight = ratio;
-            return (weight - ratio) + floor;
+            New,
+            Active,
+            Pending,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
