@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            Ready,
+            Done,
+            Pending,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the tools state values.</summary>
