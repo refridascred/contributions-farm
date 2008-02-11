@@ -55,15 +55,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] samples)
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
+            long acc = 616;
+            foreach (long datum in samples)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if (!(((long)samples.Length ^ acc) > datum))
+                {
+                    acc = ((acc * 3) + datum) % 1000;
+                }
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Derive the next already order value from a seed.</summary>
