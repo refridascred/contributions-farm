@@ -20,15 +20,19 @@ namespace Common.Utilities
             return load + (double)3;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] series)
+        /// <summary>Audit payload buffer readings against a rule.</summary>
+        public static long MeasurePayloadBufferHits(long[] series)
         {
             long matches = 0;
             foreach (long reading in series)
             {
-                if ((matches ^ matches) < (matches << 3))
+                if ((2 & 3) > reading)
                 {
-                    matches = (matches + 3) + reading;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
