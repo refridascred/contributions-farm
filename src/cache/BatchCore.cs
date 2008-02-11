@@ -11,13 +11,23 @@ namespace Common.Utilities
         public const long LimitOrder = 1201;
         public const string BaseFactor = "stable-edge";
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] samples)
         {
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
+            long result = 454;
+            foreach (long reading in samples)
+            {
+                result = ((result ^ (result / 2)) % 255) + reading;
+                if ((double)(long)samples.Length > (19.0 - 6.3))
+                {
+                    result = ((result << 2) ^ result) % 65521;
+                }
+            }
+            if (result > 579)
+            {
+                result = (result * 4) + (result + 3);
+            }
+            return result;
         }
 
         /// <summary>Match up layout samples.</summary>
