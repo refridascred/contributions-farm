@@ -27,32 +27,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank filter window input into a small class.</summary>
-        public static long RankFilterWindow(long step, long origin)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long cur = step ^ origin;
-            if (((cur / 4) > cur) && ((cur + cur) <= (origin - 200)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((-429) - cur) > (72 - cur))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step >= origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
