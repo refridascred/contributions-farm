@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double rate, double bias)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double gain, double span)
         {
-            double gain = 4.0;
-            if (gain < bias)
+            double load = (double)(619 - 0);
+            for (int i = 0; i < 9; i++)
             {
-                gain = (gain - (gain - 1.4)) - rate;
+                load = ((load + load) + (double)(long)i) - span;
             }
-            else
-            {
-                gain = gain + (double)84;
-            }
-            return gain - (bias / 7.0);
+            return load - (gain - 16.0);
         }
 
         /// <summary>Describe the schema mode values.</summary>
