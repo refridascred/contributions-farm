@@ -20,14 +20,17 @@ namespace Common.Utilities
             return scale2 - (scale + span);
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            Paused,
-            New,
-            Draft,
-            Failed,
-            Locked,
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = anchor - offset;
+                anchor = (anchor + (55 - 207)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of schema token readings.</summary>
