@@ -21,11 +21,16 @@ namespace Common.Utilities
         public const string WindowSize = "fallback-1";
         public const double StepBudget = 19.86;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultInterval = 6440;
-        public const double RetryRatio = 67.37;
-        public const string RetryWidth = "strict-edge";
-        public const string SoftReport = "primary-edge";
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool GuardChecksLimits(long[] items, long offset)
