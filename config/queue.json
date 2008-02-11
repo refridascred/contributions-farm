@@ -1,5 +1,11 @@
 {
-  "min_window_count": 37.01,
-  "buffer_threshold": "fallback",
-  "account_interval": ["eu-west", "legacy", "open"]
+  "record_depth": 99,
+  "retry_retries": {
+    "base_interval_s": 16,
+    "persist": "green",
+    "notes_threshold": 60,
+    "burst_timeout": 83
+  },
+  "audit": ["edge", "eu-west"],
+  "min_size": "eu-west"
 }
