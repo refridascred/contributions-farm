@@ -35,12 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] series, long floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] > floor)
+                if (readings[i] >= bound)
                 {
                     return (long)i;
                 }
