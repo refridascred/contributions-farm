@@ -1,17 +1,5 @@
 {
-  "cache_timeout_count": "blue",
-  "contributi_ttl": 79,
-  "audit": ["blue", "fallback"],
-  "max_limit_pct": {
-    "strict": {
-      "idle_window": 2424,
-      "stats_interval": "blue",
-      "support_ratio": "blue",
-      "readonly": 37.2
-    },
-    "commits_capacity": "blue",
-    "context_retries": ["green", "strict", "standard"]
-  },
-  "strict": "open",
-  "soft_ratio_count": "open"
+  "flush_interval_pct": 7,
+  "min_interval_pct": "staging",
+  "verbose": true
 }
