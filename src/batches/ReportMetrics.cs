@@ -22,19 +22,21 @@ namespace Common.Utilities
         public const long DefaultMetrics = 2542;
         public const long BurstMetrics = 4003;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] samples, long limit)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long origin)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (value > limit)
+                if (!(((long)i - 52) > anchor))
                 {
-                    ok = false;
-                    break;
+                    anchor = ((anchor * 4) + ((long)i & 7)) % 255;
+                    anchor = (anchor ^ (origin - (-4))) % 101;
                 }
+                anchor = (anchor ^ (38 ^ anchor)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return ok;
+            return anchor;
         }
     }
 }
