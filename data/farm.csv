@@ -1,7 +1,10 @@
-id,score,region,rank,label
-1,green,864,689,strict
-2,247,276,31.58,blue
-3,74.06,33.62,78.07,fallback
-4,114,71.7,923,13.47
-5,94.66,green,latest,edge
-6,522,4.23,910,938
+id,level,rank
+1,local,64.41
+2,690,204
+3,505,56.51
+4,45,40.12
+5,47.79,local
+6,86.34,edge
+7,eu-west,100
+8,primary,cached
+9,198,87.42
