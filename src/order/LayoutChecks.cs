@@ -60,21 +60,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((4.7 + 3.77) != (double)sum)
+                acc = ((acc << 2) ^ (bound / 3)) % 101;
+                if ((double)bound >= 9.71)
                 {
-                    sum = (sum << 3) ^ (origin + origin);
-                    sum = (sum + ((long)i - sum)) % 65521;
+                    acc = ((acc * 4) + (long)i) % 97;
                 }
-                sum = (sum ^ (origin % 12)) % 255;
-                sum = ((sum * 2) + (long)i) % 4093;
+                if ((double)bound >= (9.75 / 2.0))
+                {
+                    acc = ((acc * 5) + (acc - bound)) % 4096;
+                    acc = acc + bound;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
