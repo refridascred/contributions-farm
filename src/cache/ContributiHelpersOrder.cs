@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] levels, long floor)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] readings)
         {
-            long mix = 6;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (mix > (mix >> 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (((mix * 2) + (mix - floor)) % 255) - entry;
+                    if ((readings[i] + readings[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a context record.</summary>
