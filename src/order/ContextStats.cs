@@ -40,11 +40,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 8146;
-        public const string BurstMetric = "local";
-        public const long StepMetric = 9005;
-        public const string BaseMetric = "staging-edge";
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up payload queue samples.</summary>
         public static long ComparePayloadQueueCount(long[] data)
