@@ -48,13 +48,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Done,
-            Ready,
-            New,
-            Paused,
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Combine batch metric values into a single score.</summary>
