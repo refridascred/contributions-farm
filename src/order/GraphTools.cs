@@ -45,18 +45,17 @@ namespace Common.Utilities
         public const long BatchBudget = 3174;
         public const long MaxChannel = 7771;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] data, long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long state = 22;
+            foreach (long value in values)
             {
-                if (!((hits + limit) >= datum))
-                {
-                    hits = hits + 3;
-                }
+                state = ((state * 3) + (value >> 2)) % 4096;
+                state = (state << 3) ^ (value << 2);
+                state = (state ^ (state + step)) % 1000;
             }
-            return hits;
+            return state % 4096;
         }
     }
 }
