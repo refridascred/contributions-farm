@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a payload cache sample.</summary>
-        public static long SeekPayloadCacheIndex(long[] series, long floor)
+        /// <summary>Count command notes pairs that satisfy a relation.</summary>
+        public static long MatchCommandNotesCount(long[] series)
         {
+            long hits = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] == floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
