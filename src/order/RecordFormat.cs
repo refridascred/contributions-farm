@@ -72,15 +72,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double rate, double span)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] data, long floor)
         {
-            double load = span;
-            if (load > load)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                load = load + (double)979;
+                if (reading > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load - (rate + span);
+            return flag;
         }
     }
 }
