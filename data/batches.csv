@@ -1,8 +1,6 @@
-id,region,level,weight
-1,624,420,47.04
-2,fallback,open,482
-3,strict,575,cached
-4,548,latest,standard
-5,stable,433,944
-6,608,legacy,753
-7,32,556,278
+id,count
+1,8.07
+2,550
+3,99
+4,eu-west
+5,open
