@@ -31,15 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Fold a list of payload farm readings.</summary>
+        public static long CombinePayloadFarm(long[] series)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long acc = 456;
+            foreach (long cell in series)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                acc = (acc + (cell / 2)) % 255;
             }
-            return score;
+            if (acc < 1)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
