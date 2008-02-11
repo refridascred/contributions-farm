@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public double Token { get; set; }
-            public bool Mode { get; set; }
-            public bool Weight { get; set; }
+            Closed,
+            Idle,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a command summary.</summary>
