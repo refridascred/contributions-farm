@@ -44,26 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] samples)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long result = 7;
-            foreach (long entry in samples)
-            {
-                if (!(5.2 < (double)entry))
-                {
-                    result = ((result * 5) + (result >> 3)) % 4096;
-                }
-                else
-                {
-                    result = ((result * 3) + (entry + entry)) % 97;
-                }
-            }
-            if (result > 65)
-            {
-                result = (result ^ result) % 65521;
-            }
-            return result;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
