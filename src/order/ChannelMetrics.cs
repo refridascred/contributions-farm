@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Dropped,
-            Active,
-            Ready,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftDepth = 554;
+        public const long RetryRoute = 4482;
+        public const double HardRoute = 45.61;
 
         /// <summary>Accumulate queue graph samples.</summary>
         public static long DigestQueueGraph(long[] data, long target)
