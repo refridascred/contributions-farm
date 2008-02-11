@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every editor checks entry stays within the limit.</summary>
-        public static bool GuardEditorChecksRange(long[] levels, long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long score = 388;
+            foreach (long entry in data)
             {
-                if (datum <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((((score << 3) ^ (22 & 255)) % 1000) + entry) + offset;
             }
-            return ready;
+            if (score > 152)
+            {
+                score = score - 436;
+            }
+            return score;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
