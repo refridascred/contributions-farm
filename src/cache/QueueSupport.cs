@@ -37,15 +37,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double ratio, double floor)
-        {
-            double scale = (double)((-34) + (-2));
-            for (int i = 0; i < 7; i++)
-            {
-                scale = ((scale - (ratio + ratio)) + (double)(long)i) + floor;
-            }
-            return scale + ratio;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 5943;
+        public const long CacheCount = 8652;
+        public const string MaxOrder = "legacy";
     }
 }
