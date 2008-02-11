@@ -20,38 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a commits schema pair into a bucket.</summary>
-        public static long ClassifyCommitsSchema(long seed, long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] values)
         {
-            if ((seed + 86) <= limit)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit < (1.1 * 16.0))
+                if ((40 + seen) == (entry - seen))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit >> 5) < (seed % 24))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((seed + seed) <= limit) && ((double)limit != (2.0 * 5.67)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of route command entries.</summary>
