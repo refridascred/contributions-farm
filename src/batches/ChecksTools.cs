@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Combine buffer stats values into a single score.</summary>
+        public static long ScoreBufferStats(long[] levels)
         {
-            Synced,
-            Done,
-            Idle,
-            Draft,
-            Ready,
+            long score = -153;
+            foreach (long reading in levels)
+            {
+                score = ((score ^ (long)levels.Length) % 1000) + reading;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define order limits and defaults.</summary>
