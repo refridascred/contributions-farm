@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstScore = 72.56;
-        public const long WindowInterval = 6983;
-        public const long BurstWidth = 2239;
-        public const long CacheTools = 2253;
-        public const long RetryTools = 4206;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Dropped,
+            Ready,
+            Retry,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
