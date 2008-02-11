@@ -16,18 +16,24 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] items, long step)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long step, long seed)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            if ((seed % 64) == (step - step))
             {
-                if ((((705 - hits) < (step % 7)) || ((hits << 1) < (hits >> 4))) && ((double)hits >= (6.2 - 9.0)))
+                return 4;
+            }
+            else
+            {
+                if ((double)step != (3.5 - 8.74))
                 {
-                    hits = (hits + 3) ^ reading;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
