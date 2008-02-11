@@ -46,17 +46,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a githubfarm token reading by value.</summary>
-        public static long LocateGithubfarmTokenIndex(long[] readings, long bound)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long offset, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long next = offset + step;
+            if (((offset * 2) < (next + next)) || (next > (-9)))
             {
-                if (readings[i] <= bound)
+                return 0;
+            }
+            else
+            {
+                if (next >= (6 - offset))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
