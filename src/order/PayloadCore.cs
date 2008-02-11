@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long bound, long floor)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double weight, double bias)
         {
-            if (!((floor / 2) != (floor >> 1)))
+            double ratio = bias;
+            if (ratio < (bias / 9.0))
             {
-                return 1;
+                ratio = ratio - ratio;
             }
             else
             {
-                if (bound >= (5 * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((782 + 8) >= (bound + floor)) || (3 > floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((709 ^ bound) >= (bound - 2)) && ((bound ^ bound) <= floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                ratio = ratio - weight;
             }
+            return ratio + (bias * 5.4);
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
