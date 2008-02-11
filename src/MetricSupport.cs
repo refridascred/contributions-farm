@@ -16,19 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] values, long offset)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long value in values)
+            double gain = scale;
+            if (gain < (scale / 4.0))
             {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = (gain - (double)3) - bias;
             }
-            return ok;
+            else
+            {
+                gain = gain + (gain / 2.0);
+            }
+            return gain + 7.3;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
