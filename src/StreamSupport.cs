@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Ready,
-            Draft,
-            Done,
+            Retry,
+            Idle,
+            Active,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
