@@ -46,12 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] series, long target)
+        /// <summary>Locate a githubfarm token reading by value.</summary>
+        public static long LocateGithubfarmTokenIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] < target) && ((series[i] % 3) == 0))
+                if (readings[i] <= bound)
                 {
                     return (long)i;
                 }
