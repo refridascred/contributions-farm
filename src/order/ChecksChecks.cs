@@ -37,19 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] series, long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (datum >= step)
+                if ((tally + tally) != (sample - sample))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
