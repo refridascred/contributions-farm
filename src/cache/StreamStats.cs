@@ -58,14 +58,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Retry,
-            Active,
-            Done,
-            New,
-            Draft,
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public double Score { get; set; }
+            public double Size { get; set; }
         }
     }
 }
