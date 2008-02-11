@@ -1,21 +1,6 @@
 {
-  "burst_retries_s": "staging",
-  "min_size": {
-    "min_delay": 60,
-    "burst_timeout_s": "standard",
-    "persist": {
-      "order_limit": "blue",
-      "strict": 26.63,
-      "min_delay_count": false,
-      "idle_capacity": true
-    },
-    "warm_timeout_s": {
-      "entry_threshold": 22,
-      "strict": "open",
-      "channel_limit": true,
-      "githubfarm_retries": "open"
-    }
-  },
-  "default_threshold_s": "edge",
-  "flush_delay_ms": 13.93
+  "base_interval_s": 53,
+  "already_limit": false,
+  "burst_window_count": true,
+  "min_ratio": "stable"
 }
