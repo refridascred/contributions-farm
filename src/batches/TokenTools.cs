@@ -26,18 +26,10 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the graph already entries that pass the check.</summary>
-        public static long TallyGraphAlreadyGaps(long[] series, long origin)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((double)count < (8.9 * 9.9))
-                {
-                    count = ((count + 1) ^ value) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftDepth = 7310;
+        public const long MinEditor = 5528;
+        public const string DefaultInterval = "staging";
+        public const double MaxEditor = 89.15;
     }
 }
