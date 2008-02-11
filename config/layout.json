@@ -1,14 +1,11 @@
 {
-  "stream_size": "open",
-  "enabled": ["local", "staging", "green", "blue"],
-  "metric_delay": 5211,
-  "batches_ttl": false,
-  "base_timeout_ms": "local",
-  "poll_threshold": {
-    "verbose": "fallback",
-    "max_size_pct": "fallback",
-    "batch_interval_pct": 57.04,
-    "session_window": true,
-    "idle_capacity": false
+  "default_delay_s": 6464,
+  "max_size": true,
+  "burst_capacity": 4128,
+  "idle_limit": 77.56,
+  "dry_run": {
+    "verbose": 7,
+    "default_ratio_pct": 28,
+    "enabled": "green"
   }
 }
