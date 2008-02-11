@@ -27,19 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double scale, double bias)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] levels, long target)
         {
-            double weight = bias;
-            if (weight > (2.0 * 16.0))
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                weight = (weight - 8.47) + scale;
+                if (entry < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (bias * 8.0);
-            }
-            return weight - (double)5;
+            return stale;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
