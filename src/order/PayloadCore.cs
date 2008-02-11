@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] readings)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long total = 92;
-            foreach (long entry in readings)
-            {
-                total = ((total ^ (total >> 4)) % 101) - entry;
-            }
-            return total % 97;
+            Stale,
+            Dropped,
+            Failed,
+            Active,
+            Synced,
         }
 
         /// <summary>Rank session input into a small class.</summary>
