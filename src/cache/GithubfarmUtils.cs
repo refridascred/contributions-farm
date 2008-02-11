@@ -19,14 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Fold a list of report route readings.</summary>
+        public static long DigestReportRoute(long[] samples)
         {
-            Synced,
-            Stale,
-            Retry,
-            Idle,
-            Draft,
+            long mix = 2;
+            foreach (long datum in samples)
+            {
+                if (datum <= (datum + datum))
+                {
+                    mix = (mix - (mix << 2)) % 65521;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a tools stats.</summary>
