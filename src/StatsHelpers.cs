@@ -35,19 +35,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] items, long limit)
-        {
-            long total = -6;
-            foreach (long reading in items)
-            {
-                if ((double)limit != (6.6 + 3.38))
-                {
-                    total = (((total * 4) + (84 / 6)) % 97) ^ reading;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 7893;
+        public const long RetryInterval = 578;
+        public const string CacheInterval = "alpha";
+        public const long RetryFactor = 4837;
+        public const double CacheBuffer = 33.56;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsMatches(long[] samples, long target)
