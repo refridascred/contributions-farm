@@ -30,12 +30,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long step, long bound)
         {
-            public bool Label { get; set; }
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
+            if ((bound * 5) >= (step - bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound < (bound & 127))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound > (step << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a notes reading.</summary>
