@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 7391;
-        public const string BurstSize = "fallback-v2";
-        public const long MinWidth = 7085;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 6110;
+        public const long SoftBatches = 9939;
+        public const string MinBatches = "alpha";
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
