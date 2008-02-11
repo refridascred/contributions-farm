@@ -35,19 +35,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double weight, double offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] items)
         {
-            double bias = (double)(798 ^ 42);
-            if (bias > weight)
+            long anchor = 5;
+            foreach (long value in items)
             {
-                bias = bias + offset;
+                anchor = ((anchor - (3 % 16)) % 101) ^ value;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias + (bias / 7.0);
+            return anchor;
         }
     }
 }
