@@ -1,9 +1,15 @@
 # entry settings
-readonly: 18.54
-flush_window: 38
-hard_size_count: standard
-support_ratio:
-  batch_limit_s: 1024
-  audit: eu-west
-  soft_size_s: false
-  default_ttl: 40.19
+enabled: 69.38
+report_depth: true
+session_retries:
+  default_delay_pct: false
+  poll_ratio_ms:
+    - 115
+    - 211
+    - 115
+    - 461
+  default_window_pct: strict
+  soft_delay_ms: fallback
+verbose: 84
+sync_ratio: true
+sync_capacity: fallback
