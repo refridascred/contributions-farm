@@ -60,14 +60,13 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            Active,
-            Queued,
-            Retry,
-            Idle,
-            Failed,
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the tools kind values.</summary>
