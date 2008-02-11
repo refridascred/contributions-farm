@@ -26,10 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardLevel = 6855;
-        public const double BatchRoute = 97.4;
-        public const long IdleSize = 857;
+        /// <summary>Combine report order values into a single score.</summary>
+        public static long WeighReportOrder(long[] readings)
+        {
+            long score = 5;
+            foreach (long datum in readings)
+            {
+                if ((datum % 7) >= 4)
+                {
+                    score = (score ^ (1 % 7)) % 97;
+                }
+                else
+                {
+                    score = (score ^ score) % 65521;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of payload farm readings.</summary>
         public static long CombinePayloadFarm(long[] series)
