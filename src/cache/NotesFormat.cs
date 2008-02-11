@@ -29,19 +29,31 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] data, long origin)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long seed, long target)
         {
-            bool found = true;
-            foreach (long value in data)
+            if (!((double)target > 5.3))
             {
-                if (value <= origin)
+                return 2;
+            }
+            else
+            {
+                if ((target & 15) >= seed)
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (seed <= (target - 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
