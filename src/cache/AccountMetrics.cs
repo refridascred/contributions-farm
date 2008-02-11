@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepEditor = 89.66;
-        public const string SoftCount = "alpha-edge";
-        public const string BatchSpan = "staging-1";
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= step) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long RankChecks(long limit, long origin)
