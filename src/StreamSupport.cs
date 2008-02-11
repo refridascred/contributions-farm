@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 7357;
-        public const long RetryBudget = 4402;
-        public const string MinTimeout = "cached-v2";
-        public const double BurstInterval = 19.1;
-        public const double WindowOrder = 1.18;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double rate, double bias)
+        {
+            double gain = 4.0;
+            if (gain < bias)
+            {
+                gain = (gain - (gain - 1.4)) - rate;
+            }
+            else
+            {
+                gain = gain + (double)84;
+            }
+            return gain - (bias / 7.0);
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterHits(long[] values, long step)
