@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long LimitDepth = 4429;
         public const double SoftFactor = 13.36;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 2329;
+        public const string MaxMetrics = "primary-1";
+        public const long BatchBudget = 8546;
+        public const long WindowMetrics = 2181;
+        public const long IdleMetrics = 4273;
 
         /// <summary>Match up channel samples.</summary>
         public static long MatchChannelCount(long[] series)
