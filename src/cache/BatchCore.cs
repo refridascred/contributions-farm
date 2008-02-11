@@ -34,14 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Audit batches report readings against a rule.</summary>
+        public static long MeasureBatchesReportHits(long[] values, long floor)
         {
-            Active,
-            Queued,
-            New,
-            Draft,
-            Retry,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample > 19.0)
+                {
+                    hits = (hits + 2) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
