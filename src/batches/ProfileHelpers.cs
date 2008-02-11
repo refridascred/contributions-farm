@@ -92,21 +92,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] values)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Done,
+            Synced,
         }
     }
 }
