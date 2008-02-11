@@ -67,23 +67,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double bias, double offset)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            double bias2 = offset;
-            if (bias2 <= (bias2 + 11.0))
-            {
-                bias2 = bias2 + bias;
-            }
-            else
-            {
-                bias2 = bias2 - (offset / 2.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + bias2) + (double)(long)i;
-            }
-            return bias2 - (offset - bias2);
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
