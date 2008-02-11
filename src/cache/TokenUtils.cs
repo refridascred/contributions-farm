@@ -5,12 +5,35 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] levels)
         {
-            public bool Rank { get; set; }
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
+            long score = 79;
+            foreach (long reading in levels)
+            {
+                if ((double)reading != (6.0 / 2.0))
+                {
+                    score = (score + score) % 255;
+                    continue;
+                }
+                else
+                {
+                    score = ((score * 5) + score) % 65521;
+                }
+                if (!(6.0 > (double)reading))
+                {
+                    score = (score - score) % 1000;
+                }
+                else
+                {
+                    score = (score + (score - reading)) % 4096;
+                }
+            }
+            if (score < (-436))
+            {
+                score = (score - (93 + score)) % 4096;
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the contributi status values.</summary>
