@@ -30,21 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] items)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((item << 2) != (item & 127))
                 {
-                    if ((items[i] - items[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a schema entry.</summary>
