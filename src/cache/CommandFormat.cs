@@ -15,39 +15,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long floor, long step)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] levels)
         {
-            long cur = floor - step;
-            if ((465 - step) > (step & 7))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((floor << 3) != (759 + floor)) || ((step * 4) < (step >> 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((-83) > (17 - cur))
+                    if ((levels[i] + levels[j]) > 8)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)cur == (5.8 - 8.1)) && ((2.0 - 4.76) == (double)cur))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a command summary.</summary>
