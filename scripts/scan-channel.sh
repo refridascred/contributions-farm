@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in open green local; do
+    log "checking ${item}"
+done
 
-CHANNEL_LIMIT=338
+CHANNEL_LIMIT=262
 log "limit is ${CHANNEL_LIMIT}"
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
