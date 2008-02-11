@@ -1,12 +1,5 @@
 {
-  "soft_capacity": 87.6,
-  "stats_limit": ["blue", "eu-west", "cached", "cached"],
-  "cache_ttl": {
-    "cache_threshold": "open",
-    "route_ratio": 60,
-    "warm_window_count": 54.23
-  },
-  "persist": [324, 351],
-  "enabled": "legacy",
-  "warm_threshold": ["local", "primary"]
+  "cache_timeout": false,
+  "min_retries_count": "local",
+  "burst_capacity_count": 500
 }
