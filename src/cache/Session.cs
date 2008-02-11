@@ -16,31 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long step, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] items, long bound)
         {
-            if ((double)floor > (0.3 + 15.0))
+            long carry = 9;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (step >= (floor + step))
+                if (!((carry * 5) != (reading + bound)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (16 <= step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    carry = carry - (carry << 1);
                 }
             }
+            if (carry < 3)
+            {
+                carry = (carry << 2) ^ (carry << 1);
+            }
+            return carry;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
