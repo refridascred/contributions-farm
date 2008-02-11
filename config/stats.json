@@ -1,7 +1,8 @@
 {
-  "retry_capacity": "staging",
-  "warm_limit_ms": false,
-  "format_threshold": 53,
-  "poll_window_ms": true,
-  "dry_run": 85.9
+  "flush_interval_ms": 29.66,
+  "batch_size": true,
+  "contributi_size": "strict",
+  "max_ttl_count": 79.86,
+  "githubfarm_timeout": 32,
+  "retry_depth_count": "green"
 }
