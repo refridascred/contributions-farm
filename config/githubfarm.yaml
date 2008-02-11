@@ -1,10 +1,8 @@
 # githubfarm settings
-buffer_threshold:
-  - 352
-  - 394
-  - 468
-  - 277
-metric_window: 1024
-burst_window_count: strict
-counter_interval: green
-min_threshold_s: 93.64
+window_ratio: edge
+command_capacity:
+  schema_size: 49
+  burst_capacity: false
+  layout_delay: green
+support_ttl: true
+default_size_count: 100
