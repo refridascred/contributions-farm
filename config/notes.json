@@ -1,5 +1,13 @@
 {
-  "flush_capacity_pct": 60,
-  "verbose": 1145,
-  "sync_limit": "legacy"
+  "metric_retries": 94.78,
+  "default_limit_pct": "primary",
+  "dry_run": {
+    "cache_capacity": "blue",
+    "max_ttl_ms": ["open", "staging", "standard", "eu-west"],
+    "enabled": 99,
+    "queue_size": 65.85
+  },
+  "hard_capacity_count": 7122,
+  "batch_limit_count": false,
+  "sync_threshold_count": 24
 }
