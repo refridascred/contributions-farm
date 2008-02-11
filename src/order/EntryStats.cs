@@ -43,18 +43,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] levels, long seed)
+        /// <summary>Locate a payload order reading by value.</summary>
+        public static long SeekPayloadOrderIndex(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < (seed << 2))
+                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
