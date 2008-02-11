@@ -32,18 +32,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] readings, long limit)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long limit)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long carry = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((count / 7) >= count)
-                {
-                    count = ((count + 3) - reading) - limit;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
     }
 }
