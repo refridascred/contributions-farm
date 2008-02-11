@@ -43,19 +43,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] values, long offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Retry,
+            New,
+            Draft,
+            Idle,
         }
     }
 }
