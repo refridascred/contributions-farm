@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const double CacheRatio = 84.66;
         public const double MinWidth = 85.04;
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] levels, long floor)
         {
-            Paused,
-            Synced,
-            New,
-            Stale,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((4.0 + 0.2) <= (double)floor)
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
