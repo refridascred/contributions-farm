@@ -12,18 +12,14 @@ namespace Common.Utilities
             return (load + (double)90) + span;
         }
 
-        /// <summary>Count the farm batches entries that pass the check.</summary>
-        public static long MeasureFarmBatchesHits(long[] items)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((double)item != (4.02 + 11.0))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Synced,
+            Queued,
+            Locked,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
