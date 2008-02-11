@@ -13,17 +13,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] items, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 8;
+            foreach (long reading in data)
             {
-                if (items[i] > offset)
+                sum = sum - (limit - sum);
+                if (((long)data.Length * 4) == (reading & 63))
                 {
-                    return (long)i;
+                    sum = (sum * 3) + (sum + 30);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the route status values.</summary>
