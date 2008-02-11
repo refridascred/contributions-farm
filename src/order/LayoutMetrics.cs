@@ -33,32 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a notes window pair into a bucket.</summary>
-        public static long SortNotesWindow(long origin, long floor)
-        {
-            if (!((origin - 9) >= floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor + floor) > origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor < (origin % 97))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardScore = "alpha-v2";
+        public const long BurstStats = 7734;
+        public const long LimitCount = 4736;
+        public const long MaxDepth = 3399;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
