@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 9775;
+        public const long MaxWidth = 2962;
+        public const string LimitLayout = "alpha";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long RetrySession = 2211;
