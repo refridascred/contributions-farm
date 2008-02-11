@@ -48,13 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] readings)
         {
-            Failed,
-            Retry,
-            Pending,
-            Draft,
+            long sum = 3;
+            foreach (long datum in readings)
+            {
+                sum = ((sum * 3) + 2) + datum;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
