@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of batches account readings.</summary>
-        public static long WeighBatchesAccount(long[] data, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] series)
         {
-            long carry = 819;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((double)60 < (double)carry)
+                if ((entry % 16) > (matches - matches))
                 {
-                    carry = (((carry ^ 4) % 4096) + cell) + floor;
+                    matches = matches + 3;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Look up the position of a batch order sample.</summary>
