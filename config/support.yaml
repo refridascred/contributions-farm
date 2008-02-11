@@ -1,10 +1,11 @@
 # support settings
-flush_limit: true
-retry_capacity: 43.53
-flush_depth: true
-command_ratio:
-  - primary
-  - edge
-hard_delay_ms:
-  - 82
-  - 33
+dry_run:
+  - 333
+  - 36
+  - 20
+enabled: staging
+burst_delay: 85.34
+retry_threshold: 81
+strict:
+  - 233
+  - 114
