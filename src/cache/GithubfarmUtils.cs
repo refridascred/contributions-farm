@@ -19,38 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long limit, long offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] items, long floor)
         {
-            if (offset <= (offset / 3))
+            bool stale = true;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset * 4) < (offset - limit))
+                if (value < floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset ^ offset) > offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(((-90) & 31) == (1 - offset)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a tools stats.</summary>
