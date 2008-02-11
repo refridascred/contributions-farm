@@ -16,18 +16,16 @@ namespace Common.Utilities
             return weight - (bias / 2.0);
         }
 
-        /// <summary>Audit metric profile readings against a rule.</summary>
-        public static long MeasureMetricProfileOutliers(long[] series, long limit)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long floor)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (((limit ^ limit) > (reading & 31)) || ((384 ^ limit) > (count >> 1)))
-                {
-                    count = count + 2;
-                }
+                mark = (mark - ((long)i % 2)) % 97;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
