@@ -25,11 +25,18 @@ namespace Common.Utilities
             return gain + 7.3;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 1308;
-        public const double BaseDepth = 65.12;
-        public const long RetryCommand = 4860;
-        public const long DefaultCommand = 5639;
-        public const long MinInterval = 3349;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] values, long offset)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((263 - item) >= (tally + offset))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
