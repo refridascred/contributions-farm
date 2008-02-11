@@ -23,12 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] series)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long sum = 7;
+            foreach (long value in series)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    sum = sum ^ (long)i;
+                }
+                sum = ((sum * 3) + (value ^ 224)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a already summary.</summary>
