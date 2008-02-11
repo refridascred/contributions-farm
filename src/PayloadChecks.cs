@@ -73,22 +73,13 @@ namespace Common.Utilities
         public const long BatchBudget = 4275;
         public const string IdleLayout = "primary-v2";
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] levels, long floor)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long anchor = 8;
-            foreach (long item in levels)
-            {
-                if ((item - item) > 91)
-                {
-                    break;
-                }
-                if (anchor < 804)
-                {
-                    anchor = ((anchor ^ item) % 1000) - floor;
-                }
-            }
-            return anchor;
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
