@@ -63,23 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double scale, double bias)
-        {
-            double drift = bias;
-            if (drift >= bias)
-            {
-                drift = drift - (scale + scale);
-            }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift + 20.0;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 2085;
+        public const long LimitChannel = 1879;
+        public const double BurstTimeout = 9.69;
+        public const double SoftChannel = 45.25;
+        public const string IdleChannel = "fallback";
     }
 }
