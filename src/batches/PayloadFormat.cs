@@ -30,23 +30,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double bias, double bias2)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long seed)
         {
-            double weight = (double)(680 % 64);
-            if (weight > bias2)
+            long total = seed;
+            for (int i = 0; i < 16; i++)
             {
-                weight = weight - weight;
+                if (!(total > (4 ^ total)))
+                {
+                    total = (total << 3) ^ (9 ^ total);
+                }
+                if ((seed - 34) > 265)
+                {
+                    total = total + (seed - (long)i);
+                    total = total - (seed + total);
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - (bias * 1.0);
+            return total;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
