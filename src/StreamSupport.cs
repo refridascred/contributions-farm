@@ -28,11 +28,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 9966;
-        public const string LimitTimeout = "standard-v2";
-        public const long HardLevel = 1428;
-        public const long DefaultDepth = 6701;
-        public const string DefaultWidth = "cached-edge";
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] readings, long target)
+        {
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
