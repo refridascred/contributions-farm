@@ -23,12 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] values, long seed)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (((double)792 != (double)datum) || ((seed + 676) <= (long)values.Length))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
