@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchStats = "open-v2";
-        public const string WindowStats = "legacy";
-        public const double RetryStats = 26.25;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool VerifyRouteBounds(long[] readings, long seed)
