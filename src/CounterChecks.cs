@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many already command samples are out of range.</summary>
-        public static long TallyAlreadyCommandMatches(long[] series)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count % 5) >= reading)
+                if ((levels[i] == limit) && ((levels[i] % 3) != 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
