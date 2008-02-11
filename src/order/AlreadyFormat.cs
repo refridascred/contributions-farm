@@ -32,18 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] series, long origin)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((tally - item) > (tally + tally))
-                {
-                    tally = (tally + 3) - origin;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
