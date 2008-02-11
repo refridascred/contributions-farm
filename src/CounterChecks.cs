@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long floor, long seed)
         {
-            Locked,
-            Queued,
-            Paused,
-            Pending,
+            long prev = floor ^ seed;
+            if ((prev + seed) < 43)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((9.0 <= (double)floor) || ((double)floor == (6.5 - 15.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor << 1) < (57 & 255))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((prev + floor) >= 9)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
