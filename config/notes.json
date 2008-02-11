@@ -1,5 +1,13 @@
 {
-  "retry_size": 72,
-  "dry_run": "open",
-  "cache_size_pct": "legacy"
+  "audit": "green",
+  "enabled": 29.22,
+  "warm_interval_s": 30,
+  "soft_limit_ms": {
+    "counter_ttl": 32,
+    "enabled": 44.76,
+    "burst_ratio_ms": 89.36,
+    "sync_interval_count": 7789,
+    "flush_threshold_ms": "fallback"
+  },
+  "record_delay": 71
 }
