@@ -57,15 +57,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a cluster route figure with a bias.</summary>
-        public static double BlendClusterRoute(double weight, double floor)
+        /// <summary>Match up counter tools samples.</summary>
+        public static long MatchCounterToolsCount(long[] items)
         {
-            double weight2 = floor + 5.3;
-            if (weight2 > (double)918)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = (weight2 - 9.7) - weight;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return weight2 - (16.0 / 9.0);
+            return matches;
         }
 
         /// <summary>Combine filter stream values into a single score.</summary>
