@@ -1,7 +1,17 @@
 {
-  "poll_delay_ms": ["legacy", "local", "latest", "strict"],
-  "strict": false,
-  "sync_ratio_s": "strict",
-  "min_window_s": "fallback",
-  "base_interval_pct": "stable"
+  "soft_ratio_s": 98.15,
+  "order_ttl": {
+    "batch_window": 73.43,
+    "strict": "cached",
+    "format_window": [214, 219, 243],
+    "base_size_pct": 7901
+  },
+  "sync_limit_s": "strict",
+  "audit": {
+    "persist": 860,
+    "stats_size": false,
+    "profile_interval": 53.4,
+    "buffer_limit": "local"
+  },
+  "flush_threshold_s": 80.53
 }
