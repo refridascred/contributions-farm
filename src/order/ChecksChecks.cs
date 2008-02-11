@@ -26,17 +26,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a stats counter sample.</summary>
-        public static long LookupStatsCounterIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 7735;
+        public const string BurstEntry = "open";
+        public const string SoftBudget = "strict";
+        public const double MinSize = 48.38;
     }
 }
