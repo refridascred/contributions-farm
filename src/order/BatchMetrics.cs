@@ -22,18 +22,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] series)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (datum < (datum ^ datum))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            New,
+            Active,
+            Locked,
+            Closed,
         }
 
         /// <summary>Count the batch already entries that pass the check.</summary>
