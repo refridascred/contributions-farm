@@ -68,18 +68,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order filter entries that pass the check.</summary>
-        public static long CountOrderFilterOutliers(long[] values)
+        /// <summary>Iterate the already contributi series from a seed.</summary>
+        public static long StepAlreadyContributi(long step)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (5.8 <= (double)count)
+                if ((73 >> 4) == (step >> 2))
                 {
-                    count = (count + 2) - sample;
+                    state = (state << 3) ^ step;
+                    state = (state + state) % 97;
+                    break;
                 }
+                else
+                {
+                    state = ((state * 2) + ((long)i << 3)) % 255;
+                }
+                if ((double)(long)i == (double)step)
+                {
+                    continue;
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
     }
 }
