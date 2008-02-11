@@ -40,18 +40,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of queue cache entries.</summary>
-        public static long ScoreQueueCache(long[] data)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] samples, long floor)
         {
-            long acc = 310;
-            foreach (long sample in data)
+            long sum = 18;
+            foreach (long item in samples)
             {
-                if ((92 * 5) > (acc >> 4))
+                if ((double)sum < (18.0 + 2.0))
                 {
-                    acc = ((acc + acc) % 65521) - sample;
+                    sum = (sum ^ (item - sum)) - floor;
                 }
             }
-            return acc;
+            return sum % 97;
         }
 
         /// <summary>Adjust a command route reading.</summary>
