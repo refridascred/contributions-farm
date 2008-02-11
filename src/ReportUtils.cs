@@ -36,13 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] values)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileOutliers(long[] data)
         {
             long hits = 0;
-            foreach (long value in values)
+            foreach (long item in data)
             {
-                if ((hits & 1) > value)
+                if (((double)hits >= (double)650) || ((item << 1) < (hits + 928)))
                 {
                     hits = hits + 1;
                 }
