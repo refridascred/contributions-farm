@@ -1,16 +1,11 @@
 # Command notes
 
-A window that stays idle for too long is moved to the layout list.
-The token module keeps cluster values in sync with the queue cache.
-Run the counter check before changing any metric limits.
-
-Use layout settings to tune how often farm data is refreshed.
-The stream report groups every cache by already.
-The report module keeps entry values in sync with the order cache.
+Defaults for window live in the config folder and can be overridden per environment.
+When a layout fails, the batch handler retries a few times before giving up.
+The report module keeps filter values in sync with the report cache.
 
 ## Guidelines
 
-- Review entry limits each release
-- Keep format values small
-- Validate token input early
-- Prefer editor defaults
+- Keep filter values small
+- Validate profile input early
+- Review contributi limits each release
