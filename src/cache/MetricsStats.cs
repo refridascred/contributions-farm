@@ -25,21 +25,14 @@ namespace Common.Utilities
         public const long RetryEntry = 9872;
         public const long CacheFactor = 7646;
 
-        /// <summary>Match up stats channel samples.</summary>
-        public static long OverlapStatsChannelCount(long[] items)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Queued,
+            Failed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a record entry.</summary>
