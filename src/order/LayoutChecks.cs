@@ -56,19 +56,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream payload entry stays within the limit.</summary>
-        public static bool ValidateStreamPayloadRange(long[] readings, long limit)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Owner { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the route kind values.</summary>
