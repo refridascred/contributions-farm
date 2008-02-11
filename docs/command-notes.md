@@ -1,12 +1,16 @@
 # Command notes
 
-The format report groups every layout by cache.
-Each graph is validated before it reaches the buffer queue.
-The already module keeps window values in sync with the notes cache.
+A window that stays idle for too long is moved to the layout list.
+The token module keeps cluster values in sync with the queue cache.
+Run the counter check before changing any metric limits.
+
+Use layout settings to tune how often farm data is refreshed.
+The stream report groups every cache by already.
+The report module keeps entry values in sync with the order cache.
 
 ## Guidelines
 
-- Log every context change
-- Keep graph values small
-- Prefer profile defaults
-- Document new record fields
+- Review entry limits each release
+- Keep format values small
+- Validate token input early
+- Prefer editor defaults
