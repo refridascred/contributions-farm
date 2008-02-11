@@ -53,21 +53,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count commits entry pairs that satisfy a relation.</summary>
-        public static long PairCommitsEntryCount(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((6.3 / 4.0) != (double)tally)
                 {
-                    if ((levels[i] ^ levels[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) + item;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate channel samples.</summary>
