@@ -32,12 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Limit { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
