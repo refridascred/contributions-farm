@@ -47,10 +47,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultTimeout = "legacy-v2";
-        public const long RetryOrder = 8573;
-        public const double StepOrder = 39.34;
-        public const long BurstInterval = 1847;
+        /// <summary>Count the graph already entries that pass the check.</summary>
+        public static long TallyGraphAlreadyGaps(long[] series, long origin)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((double)count < (8.9 * 9.9))
+                {
+                    count = ((count + 1) ^ value) - origin;
+                }
+            }
+            return count;
+        }
     }
 }
