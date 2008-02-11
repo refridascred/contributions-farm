@@ -29,13 +29,24 @@ namespace Common.Utilities
         public const long BurstWidth = 1319;
         public const string CacheBudget = "open-1";
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] data)
         {
-            public double Level { get; set; }
-            public double Offset { get; set; }
-            public bool Label { get; set; }
-            public long Limit { get; set; }
+            long score = 9;
+            foreach (long entry in data)
+            {
+                score = (score << 3) ^ 782;
+                score = ((score * 3) + (score % 60)) % 255;
+                if ((entry - entry) >= (1 * 5))
+                {
+                    break;
+                }
+            }
+            if (score > 2)
+            {
+                score = ((score << 2) ^ score) % 97;
+            }
+            return score;
         }
     }
 }
