@@ -53,12 +53,19 @@ namespace Common.Utilities
             return gain - (offset * 18.0);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstWindow = 3.66;
-        public const double MaxSize = 0.12;
-        public const long MinWindow = 7605;
-        public const string SoftInterval = "stable";
-        public const double RetryLevel = 69.89;
+        /// <summary>Count the metric filter entries that pass the check.</summary>
+        public static long TallyMetricFilterGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading > (1.17 / 8.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TotalMetrics(long[] series, long seed)
