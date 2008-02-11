@@ -39,11 +39,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double rate, double bias)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long bound, long step)
         {
-            double gain = rate;
-            return (gain + (double)719) + bias;
+            if ((step * 5) == (bound / 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step & 31) >= step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step % 24) <= (bound ^ step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate filter samples.</summary>
