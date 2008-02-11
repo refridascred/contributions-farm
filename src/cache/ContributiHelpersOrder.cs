@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 462;
-        public const string MinFilter = "open";
-        public const long LimitDepth = 4429;
-        public const double SoftFactor = 13.36;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] levels, long floor)
+        {
+            long mix = 6;
+            foreach (long entry in levels)
+            {
+                if (mix > (mix >> 4))
+                {
+                    mix = (((mix * 2) + (mix - floor)) % 255) - entry;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
