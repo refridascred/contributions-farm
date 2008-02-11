@@ -51,18 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] values, long limit)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (!(((item >> 1) > (item - limit)) || ((limit - limit) != (tally - limit))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
