@@ -13,14 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Done,
-            Draft,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 9133;
+        public const long MinSpan = 8331;
+        public const double DefaultAccount = 24.64;
+        public const string BurstRatio = "primary-edge";
+        public const long IdleAccount = 2889;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
