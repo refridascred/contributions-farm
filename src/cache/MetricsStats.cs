@@ -31,18 +31,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] values)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double bias, double bias2)
         {
-            long mark = 447;
-            foreach (long entry in values)
+            double gain = bias2 - (bias2 + bias);
+            if (gain < bias2)
             {
-                if ((entry + 907) >= (mark + 0))
-                {
-                    mark = mark + (mark + mark);
-                }
+                gain = gain + bias2;
             }
-            return mark;
+            return gain - gain;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
