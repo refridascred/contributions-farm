@@ -1,11 +1,24 @@
 # support settings
-base_window: green
-soft_ratio_ms: eu-west
-poll_depth: staging
-stream_limit: 49
-hard_retries_pct: false
-metric_timeout:
-  - 143
-  - 93
-  - 491
-  - 255
+base_depth_count: true
+batch_window_s:
+  - eu-west
+  - green
+  - local
+flush_window_pct: edge
+warm_limit_s:
+  audit: eu-west
+  flush_capacity_count: true
+  min_limit: edge
+  readonly: 10
+  min_size:
+    batch_depth_s:
+      - 403
+      - 123
+      - 43
+    base_threshold_count:
+      - open
+      - green
+    soft_limit_ms: 53.82
+    base_threshold: local
+    strict: 5930
+    filter_depth: 60
