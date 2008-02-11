@@ -16,22 +16,15 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Audit payload buffer readings against a rule.</summary>
-        public static long MeasurePayloadBufferHits(long[] series)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long anchor = 56;
+            foreach (long cell in data)
             {
-                if ((2 & 3) > reading)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((anchor + (cell * 3)) % 101) + floor;
             }
-            return matches;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the channel status values.</summary>
