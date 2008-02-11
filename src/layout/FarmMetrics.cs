@@ -32,19 +32,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] series, long seed)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long total = 50;
-            foreach (long entry in series)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    total = ((((total << 3) ^ total) % 1000) - (long)i) ^ entry;
-                }
-                total = total - (total - seed);
-            }
-            return total;
+            Locked,
+            New,
+            Ready,
         }
     }
 }
