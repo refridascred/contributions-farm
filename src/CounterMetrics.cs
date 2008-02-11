@@ -46,19 +46,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cluster token entries.</summary>
-        public static long ScoreClusterToken(long[] readings, long bound)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] series, long target)
         {
-            long anchor = 21;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor ^ (0 - anchor)) - datum) - bound;
+                if ((series[i] < target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 54)
-            {
-                anchor = ((anchor * 4) + (anchor >> 1)) % 65521;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
