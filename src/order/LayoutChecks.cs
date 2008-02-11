@@ -87,13 +87,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Pending,
-            Dropped,
-            Closed,
-            Synced,
+            public double Level { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
