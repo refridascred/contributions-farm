@@ -29,22 +29,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] series, long origin)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long state = 55;
-            foreach (long sample in series)
-            {
-                if (!((9.55 - 4.6) >= (double)state))
-                {
-                    state = (((state * 5) + sample) % 1000) + origin;
-                }
-            }
-            if (state > (-39))
-            {
-                state = ((state << 2) ^ (61 & 15)) % 1000;
-            }
-            return state % 4096;
+            Queued,
+            Synced,
+            New,
+            Done,
+            Draft,
         }
     }
 }
