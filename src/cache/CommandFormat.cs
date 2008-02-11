@@ -26,18 +26,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the already schema entries that pass the check.</summary>
-        public static long MeasureAlreadySchemaMatches(long[] samples, long origin)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((long)samples.Length << 2) >= (hits ^ 695))
-                {
-                    hits = ((hits + 3) - reading) + origin;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
