@@ -15,24 +15,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long origin, long target)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] readings, long origin)
         {
-            if ((target + 5) >= origin)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (20.0 < (double)origin)
+                if (readings[i] == origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
