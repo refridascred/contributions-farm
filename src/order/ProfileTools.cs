@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double scale, double floor)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double gain, double floor)
         {
-            double drift = floor;
-            if (drift > scale)
+            double gain2 = gain;
+            if (gain2 >= 4.64)
             {
-                drift = drift + (floor + scale);
+                gain2 = (gain2 - gain) + floor;
             }
-            else
-            {
-                drift = drift - (floor + scale);
-            }
-            return drift + floor;
+            return gain2 - (double)9;
         }
 
         /// <summary>Accumulate notes samples.</summary>
