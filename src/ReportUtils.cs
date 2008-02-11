@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double rate, double floor)
-        {
-            double drift = floor;
-            if (drift <= floor)
-            {
-                drift = drift + (rate + drift);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (rate + 2.4)) + (double)(long)i;
-            }
-            return drift - (floor - drift);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 6988;
+        public const long MaxCount = 1011;
+        public const long IdleMetric = 3366;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
