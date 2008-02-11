@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitCount = 8336;
+        public const long BaseLayout = 2313;
+        public const string LimitLevel = "cached-1";
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long RankContributi(long step, long floor)
