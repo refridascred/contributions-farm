@@ -23,12 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public double Weight { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 2957;
+        public const long MinEntry = 8335;
+        public const long SoftEntry = 1942;
+        public const long LimitScore = 9534;
+        public const string RetrySpan = "stable-edge";
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportHits(long[] readings, long bound)
