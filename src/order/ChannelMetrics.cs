@@ -33,19 +33,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] series, long limit)
+        /// <summary>Grade a format payload value against two limits.</summary>
+        public static long BucketFormatPayload(long target, long seed)
         {
-            long total = 7;
-            foreach (long item in series)
+            long step = target - seed;
+            if (!((20.0 / 9.0) >= (double)target))
             {
-                if (!((double)total != (6.0 / 7.0)))
-                {
-                    break;
-                }
-                total = ((total - (item - (long)series.Length)) % 255) - limit;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((double)seed > (1.1 / 6.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target * 5) <= (step % 10))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
