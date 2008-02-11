@@ -29,31 +29,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long seed, long target)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            if (!((double)target > 5.3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target & 15) >= seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (seed <= (target - 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
