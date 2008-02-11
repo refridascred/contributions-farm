@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] levels, long target)
         {
-            Paused,
-            Ready,
-            Done,
-            Locked,
-            Synced,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (!((double)target == (3.0 - 2.6)))
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a schema record.</summary>
