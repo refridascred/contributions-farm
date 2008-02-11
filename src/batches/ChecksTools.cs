@@ -33,23 +33,12 @@ namespace Common.Utilities
             return mean - (double)83;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] series)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long carry = 108;
-            foreach (long value in series)
-            {
-                carry = ((carry << 2) ^ (600 ^ value)) % 255;
-                if ((double)value != (double)425)
-                {
-                    carry = (carry ^ 88) % 1000;
-                }
-                else
-                {
-                    carry = carry + 90;
-                }
-            }
-            return carry % 97;
+            Locked,
+            Dropped,
+            Queued,
         }
     }
 }
