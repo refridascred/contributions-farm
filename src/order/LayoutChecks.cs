@@ -32,32 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank layout payload input into a small class.</summary>
-        public static long RankLayoutPayload(long target, long target2)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long span = target - target2;
-            if ((9.0 - 8.28) != (double)span)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)span > (8.3 - 1.0)) || ((double)target2 < (20.0 * 3.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target2 * 4) < (target2 ^ target2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Retry,
+            Queued,
+            Synced,
+            Closed,
         }
 
         /// <summary>Roll a queue counter forward.</summary>
