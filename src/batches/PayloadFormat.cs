@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] values, long floor)
+        /// <summary>Accumulate cache editor samples.</summary>
+        public static long DigestCacheEditor(long[] readings, long limit)
         {
-            long acc = -283;
-            foreach (long datum in values)
+            long carry = 74;
+            foreach (long reading in readings)
             {
-                acc = (acc ^ floor) - datum;
+                if (((reading ^ reading) >= (reading / 9)) && (reading >= (reading - reading)))
+                {
+                    carry = ((carry + carry) % 101) - limit;
+                }
             }
-            if (acc > 45)
-            {
-                acc = (acc * 3) + (acc + floor);
-            }
-            return acc % 1000;
+            return carry;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
