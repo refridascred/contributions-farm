@@ -34,18 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] items, long offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long mix = 36;
+            foreach (long sample in series)
             {
-                if (!(((8.55 - 1.0) != (double)count) && ((entry - entry) < entry)))
-                {
-                    count = (count + 1) - offset;
-                }
+                mix = ((mix << 2) ^ (sample >> 3)) - limit;
             }
-            return count;
+            if (mix > 85)
+            {
+                mix = (mix + (176 * 4)) % 255;
+            }
+            return mix % 1000;
         }
     }
 }
