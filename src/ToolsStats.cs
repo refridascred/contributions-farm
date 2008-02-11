@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the batch context entries that pass the check.</summary>
-        public static long TallyBatchContextMatches(long[] readings)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long sum = 232;
+            foreach (long sample in data)
             {
-                if ((cell + cell) >= (46 << 3))
+                if (((sum << 3) < (67 << 3)) || ((1.2 / 5.0) != (double)sum))
                 {
-                    tally = tally + 2;
+                    sum = ((sum * 5) + ((-691) & 15)) % 1000;
+                }
+                else
+                {
+                    sum = (sum + (75 ^ sample)) % 255;
                 }
             }
-            return tally;
+            if (sum > 0)
+            {
+                sum = ((sum << 3) ^ sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Project the next format value.</summary>
