@@ -25,31 +25,11 @@ namespace Common.Utilities
             return gain + 7.3;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long limit, long target)
-        {
-            if (target > (limit * 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((33 << 2) < (target ^ limit)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target / 8) < (3 - target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 1308;
+        public const double BaseDepth = 65.12;
+        public const long RetryCommand = 4860;
+        public const long DefaultCommand = 5639;
+        public const long MinInterval = 3349;
     }
 }
