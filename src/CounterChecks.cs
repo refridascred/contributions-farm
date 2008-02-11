@@ -65,18 +65,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] readings)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long seed)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (((hits & 127) <= item) && ((hits / 4) <= item))
-                {
-                    hits = hits + 1;
-                }
+                result = (result - (long)i) % 255;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
     }
 }
