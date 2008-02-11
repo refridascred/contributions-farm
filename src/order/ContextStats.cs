@@ -46,18 +46,22 @@ namespace Common.Utilities
             return ((gain + 1.22) + scale) + offset;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] samples)
+        /// <summary>Audit batch context readings against a rule.</summary>
+        public static long TallyBatchContextOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((((hits % 3) > (sample % 64)) || (hits < (hits / 9))) || (7.6 >= (double)sample))
+                if (((double)56 != (double)tally) && (((tally << 2) > (1 ^ item)) || ((item >> 5) == (item + tally))))
                 {
-                    hits = hits + 1;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
