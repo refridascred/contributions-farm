@@ -14,32 +14,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long seed, long step)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] samples)
         {
-            long slot = seed ^ step;
-            if ((step * 4) > step)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)slot <= (double)step))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((slot - seed) >= ((-783) >> 3))
+                    if ((samples[i] - samples[j]) > 2)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
