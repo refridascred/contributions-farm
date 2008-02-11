@@ -69,11 +69,18 @@ namespace Common.Utilities
         public const long BurstQueue = 7804;
         public const string CacheQueue = "open-edge";
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double rate, double floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] readings, long target)
         {
-            double scale = rate;
-            return scale - floor;
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((hits ^ value) > hits) || (value >= (hits + 665)))
+                {
+                    hits = (hits + 3) + target;
+                }
+            }
+            return hits;
         }
     }
 }
