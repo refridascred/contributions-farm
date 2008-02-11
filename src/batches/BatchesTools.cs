@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] readings, long seed)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long floor)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (sample < seed)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (acc * 5) + acc;
+                acc = acc - (acc - 803);
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
