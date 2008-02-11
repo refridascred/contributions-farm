@@ -1,7 +1,17 @@
 {
-  "default_delay": 8789,
-  "default_ttl_pct": 62,
-  "retry_retries_s": "legacy",
-  "default_ratio_s": [323, 332, 14, 383],
-  "sync_ttl": 96
+  "cache_timeout_count": "blue",
+  "contributi_ttl": 79,
+  "audit": ["blue", "fallback"],
+  "max_limit_pct": {
+    "strict": {
+      "idle_window": 2424,
+      "stats_interval": "blue",
+      "support_ratio": "blue",
+      "readonly": 37.2
+    },
+    "commits_capacity": "blue",
+    "context_retries": ["green", "strict", "standard"]
+  },
+  "strict": "open",
+  "soft_ratio_count": "open"
 }
