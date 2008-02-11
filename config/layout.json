@@ -1,13 +1,8 @@
 {
-  "sync_ratio": 99,
-  "contributi_depth": {
-    "filter_capacity": true,
-    "max_ttl_ms": false,
-    "idle_ratio": "strict",
-    "warm_ratio_count": ["primary", "green", "blue", "open"],
-    "metric_interval": 30
-  },
-  "enabled": 33.79,
-  "record_timeout": [235, 196, 320],
-  "flush_depth_ms": "strict"
+  "sync_interval_s": "eu-west",
+  "verbose": 30,
+  "enabled": ["stable", "standard"],
+  "retry_capacity_count": 328,
+  "warm_ratio_ms": "eu-west",
+  "context_delay": 41
 }
