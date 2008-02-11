@@ -13,14 +13,31 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long floor, long offset)
         {
-            Synced,
-            Dropped,
-            Locked,
-            Paused,
-            Closed,
+            if (((floor << 2) > (offset & 3)) || ((offset * 2) < (offset ^ 364)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((4 ^ offset) > 44))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((537 % 60) <= floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metric level values.</summary>
