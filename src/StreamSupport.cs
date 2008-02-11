@@ -30,13 +30,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] samples)
         {
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
