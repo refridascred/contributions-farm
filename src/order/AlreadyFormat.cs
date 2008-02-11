@@ -5,27 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] series, long seed)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long origin, long target)
         {
-            long acc = 195;
-            foreach (long cell in series)
+            if (!(origin > (target << 3)))
             {
-                acc = acc - seed;
-                if ((acc ^ cell) != (9 + seed))
+                return 5;
+            }
+            else
+            {
+                if (((target & 15) != (664 >> 3)) || (target <= (origin + origin)))
                 {
-                    acc = (acc << 2) ^ seed;
+                    return 6;
                 }
-                if (!(cell <= (cell - seed)))
+                else
                 {
-                    break;
+                    if ((origin + origin) == (709 - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (acc > 96)
-            {
-                acc = acc - (acc / 4);
-            }
-            return acc % 97;
         }
 
         /// <summary>Accumulate commits samples.</summary>
