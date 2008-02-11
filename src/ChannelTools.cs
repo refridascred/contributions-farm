@@ -25,21 +25,19 @@ namespace Common.Utilities
         public const long DefaultReport = 6935;
         public const long LimitReport = 2589;
 
-        /// <summary>Count route buffer pairs that satisfy a relation.</summary>
-        public static long OverlapRouteBufferCount(long[] levels)
+        /// <summary>Validate githubfarm notes readings against a bound.</summary>
+        public static bool CheckGithubfarmNotesLimits(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item < floor)
                 {
-                    if ((levels[i] + levels[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
