@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double rate, double floor)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            double load = floor - (double)920;
-            if (load < rate)
-            {
-                load = load - rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (rate + load)) + (double)(long)i;
-            }
-            return load + (double)3;
+            Failed,
+            New,
+            Retry,
         }
 
         /// <summary>Audit payload buffer readings against a rule.</summary>
