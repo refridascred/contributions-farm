@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string DefaultFarm = "primary-edge";
-        public const long LimitFarm = 6554;
-        public const long SoftCount = 9813;
+        /// <summary>Count the batch context entries that pass the check.</summary>
+        public static long TallyBatchContextMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell + cell) >= (46 << 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next format value.</summary>
         public static double AdjustFormat(double scale, double bias)
