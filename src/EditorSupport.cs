@@ -38,18 +38,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] items)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)seen != (4.0 - 0.2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 3) ^ entry;
+                    if ((data[i] + data[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
