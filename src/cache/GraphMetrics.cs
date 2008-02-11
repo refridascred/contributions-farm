@@ -31,19 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double weight, double offset)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            double mean = offset;
-            if (mean <= 17.0)
-            {
-                mean = mean - weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + weight) - (double)(long)i;
-            }
-            return mean - mean;
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
