@@ -57,14 +57,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            Synced,
-            Pending,
-            Done,
-            Locked,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 7190;
+        public const long WindowBuffer = 5683;
+        public const string MinBuffer = "latest";
 
         /// <summary>Combine filter stream values into a single score.</summary>
         public static long CombineFilterStream(long[] readings)
