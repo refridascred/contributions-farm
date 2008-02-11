@@ -1,8 +1,14 @@
 {
-  "order_size": false,
-  "schema_retries": "blue",
-  "max_depth": ["local", "eu-west", "legacy"],
-  "warm_delay_count": "fallback",
-  "sync_delay_pct": 100,
-  "metric_limit": 1516
+  "soft_capacity_count": "eu-west",
+  "cache_timeout_count": "strict",
+  "compress": 2742,
+  "queue_limit": {
+    "soft_limit": 458,
+    "warm_ratio_pct": "fallback",
+    "flush_interval_pct": 96.55,
+    "schema_limit": false,
+    "burst_retries_pct": 36,
+    "notes_timeout": 5821
+  },
+  "poll_retries": ["stable", "green"]
 }
