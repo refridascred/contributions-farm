@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix << 3) ^ (8 - 38)) % 255;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = ((mix + mix) % 1000) ^ (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepEditor = 89.66;
+        public const string SoftCount = "alpha-edge";
+        public const string BatchSpan = "staging-1";
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long RankChecks(long limit, long origin)
