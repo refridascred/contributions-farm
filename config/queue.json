@@ -1,6 +1,7 @@
 {
-  "poll_retries": "cached",
-  "retry_delay_s": "green",
-  "counter_size": "strict",
-  "min_limit_s": [330, 77, 367, 105]
+  "enabled": 99,
+  "strict": 3210,
+  "batch_delay_ms": 21.19,
+  "sync_limit_count": ["open", "legacy", "local", "green"],
+  "compress": ["standard", "green", "open"]
 }
