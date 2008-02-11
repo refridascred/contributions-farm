@@ -33,14 +33,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long bound, long seed)
         {
-            Active,
-            Idle,
-            Dropped,
-            Locked,
-            Stale,
+            if (90 >= (seed & 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if (8.5 > (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound / 4) != ((-232) / 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (4.0 - 12.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the token kind values.</summary>
