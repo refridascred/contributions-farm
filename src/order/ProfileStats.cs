@@ -48,17 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a contributi report reading by value.</summary>
-        public static long LookupContributiReportIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitFilter = "stable";
+        public const double MinFilter = 57.48;
+        public const double BaseWidth = 71.59;
+        public const long BurstFilter = 5814;
+        public const long MaxScore = 4415;
     }
 }
