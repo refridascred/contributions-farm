@@ -15,18 +15,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the farm cache entries that pass the check.</summary>
-        public static long CountFarmCacheGaps(long[] levels, long bound)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] items)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mark = 273;
+            foreach (long item in items)
             {
-                if (!((2 % 97) > (bound + (-845))))
+                if ((double)item != (7.0 + 2.4))
                 {
-                    matches = (matches + 3) - item;
+                    mark = (mark - (mark << 3)) % 1000;
                 }
             }
-            return matches;
+            if (mark > 60)
+            {
+                mark = ((mark * 3) + (mark - mark)) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
