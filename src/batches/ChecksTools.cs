@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((entry * 2) <= seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryInterval = 5.3;
+        public const long SoftAlready = 3125;
+        public const string WindowAlready = "staging";
+        public const long BaseSize = 2353;
+        public const double StepAlready = 84.95;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long CountNotesGaps(long[] samples)
