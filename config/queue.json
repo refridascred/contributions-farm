@@ -1,7 +1,7 @@
 {
-  "account_ratio": "primary",
-  "cache_delay_count": "legacy",
-  "poll_capacity_count": "primary",
-  "poll_size_s": 5,
-  "dry_run": true
+  "default_delay": 8789,
+  "default_ttl_pct": 62,
+  "retry_retries_s": "legacy",
+  "default_ratio_s": [323, 332, 14, 383],
+  "sync_ttl": 96
 }
