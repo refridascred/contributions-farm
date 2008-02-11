@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next already order value from a seed.</summary>
-        public static long SeriesAlreadyOrder(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = sum ^ (origin % 24);
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BurstScore = 72.56;
+        public const long WindowInterval = 6983;
+        public const long BurstWidth = 2239;
+        public const long CacheTools = 2253;
+        public const long RetryTools = 4206;
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
