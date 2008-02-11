@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] series)
+        /// <summary>Rank cache queue input into a small class.</summary>
+        public static long SortCacheQueue(long target, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((973 + origin) > (origin ^ origin)) || ((0.7 * 20.0) <= (double)target))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((66 + origin) == ((-26) + 53))
                 {
-                    if ((series[i] - series[j]) > 10)
+                    return 2;
+                }
+                else
+                {
+                    if (target > (target >> 1))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
