@@ -82,11 +82,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
+            Synced,
+            Dropped,
+            Paused,
         }
     }
 }
