@@ -23,11 +23,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 4531;
-        public const double BatchCommand = 53.35;
-        public const double LimitCommand = 79.36;
-        public const double StepRatio = 74.57;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long step, long floor)
+        {
+            long edge = step ^ floor;
+            if ((double)edge <= (20.0 / 9.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (step > floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((edge + 35) > edge)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandHits(long[] readings)
