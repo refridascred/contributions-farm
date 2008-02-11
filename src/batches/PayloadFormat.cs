@@ -30,24 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long seed)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!(total > (4 ^ total)))
-                {
-                    total = (total << 3) ^ (9 ^ total);
-                }
-                if ((seed - 34) > 265)
-                {
-                    total = total + (seed - (long)i);
-                    total = total - (seed + total);
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public bool Score { get; set; }
+            public double Token { get; set; }
+            public double Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
