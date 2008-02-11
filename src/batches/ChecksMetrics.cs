@@ -72,17 +72,14 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] series, long floor)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < floor) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Dropped,
+            Pending,
+            Ready,
+            Retry,
         }
     }
 }
