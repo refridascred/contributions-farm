@@ -73,17 +73,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] levels, long step)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 0;
+            foreach (long datum in items)
             {
-                if (levels[i] == step)
+                if (!((datum >> 5) == (datum >> 4)))
                 {
-                    return (long)i;
+                    anchor = (anchor * 3) + datum;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Check that every already route entry stays within the limit.</summary>
