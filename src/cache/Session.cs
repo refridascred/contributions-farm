@@ -33,21 +33,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long target)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] readings)
         {
-            long result = target;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result * 4) + ((long)i ^ result);
-                if ((result & 255) > result)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result << 3) ^ (target + target);
-                    break;
+                    if ((readings[i] + readings[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return count;
         }
     }
 }
