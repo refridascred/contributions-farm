@@ -56,19 +56,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] values, long origin)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long mark = -8;
+            foreach (long datum in values)
             {
-                if (entry < origin)
+                if ((6.92 - 3.9) != (double)mark)
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark + 30) % 255) ^ datum;
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
