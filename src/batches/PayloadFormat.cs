@@ -39,31 +39,20 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long offset, long bound)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long offset)
         {
-            if ((offset + bound) != (offset + offset))
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound > (bound & 127))
+                sum = (sum + (offset + (long)i)) % 97;
+                if ((offset - sum) > sum)
                 {
-                    return 4;
+                    sum = sum - sum;
                 }
-                else
-                {
-                    if ((5.3 - 9.0) >= (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
+            return sum;
         }
     }
 }
