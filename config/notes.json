@@ -1,13 +1,10 @@
 {
-  "audit": "green",
-  "enabled": 29.22,
-  "warm_interval_s": 30,
-  "soft_limit_ms": {
-    "counter_ttl": 32,
-    "enabled": 44.76,
-    "burst_ratio_ms": 89.36,
-    "sync_interval_count": 7789,
-    "flush_threshold_ms": "fallback"
+  "dry_run": {
+    "hard_ratio": 79.53,
+    "stream_timeout": 250,
+    "base_ttl_s": 5981
   },
-  "record_delay": 71
+  "default_depth_s": "strict",
+  "editor_ttl": "edge",
+  "warm_threshold_s": 30
 }
