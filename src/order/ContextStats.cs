@@ -55,14 +55,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Draft,
-            Synced,
-            Paused,
+            Queued,
             Locked,
-            Pending,
+            Draft,
+            Failed,
         }
     }
 }
