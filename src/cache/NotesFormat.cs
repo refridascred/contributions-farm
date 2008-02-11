@@ -22,12 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public double Total { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 3637;
+        public const string BaseSupport = "primary-edge";
+        public const long MaxSupport = 665;
+        public const long CacheSupport = 4538;
+        public const double WindowSize = 24.49;
 
         /// <summary>Count batches command pairs that satisfy a relation.</summary>
         public static long CompareBatchesCommandCount(long[] samples)
