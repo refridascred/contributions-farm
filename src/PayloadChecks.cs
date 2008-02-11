@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 3154;
-        public const long DefaultWindow = 2674;
-        public const long MaxScore = 9140;
-        public const long HardWidth = 6892;
-        public const double MinFactor = 53.84;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 9109;
+        public const long MinCommits = 5571;
+        public const string MinTimeout = "open-edge";
+        public const long DefaultCount = 6068;
 
         /// <summary>Count the command tools entries that pass the check.</summary>
         public static long TallyCommandToolsMatches(long[] data)
