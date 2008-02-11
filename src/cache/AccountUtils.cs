@@ -19,19 +19,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] levels, long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] items, long seed)
         {
-            long mark = 9;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long item in items)
             {
-                mark = (((mark * 4) + (mark + mark)) ^ entry) + offset;
-                if (!((double)mark >= (double)3))
+                if (item < seed)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Validate commits record readings against a bound.</summary>
