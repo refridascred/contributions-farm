@@ -30,18 +30,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] readings, long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long sum = 2;
+            foreach (long reading in readings)
             {
-                if (entry < (entry + matches))
-                {
-                    matches = (matches + 3) + target;
-                }
+                sum = (((sum * 3) + (sum % 3)) % 4096) + reading;
             }
-            return matches;
+            if (sum > 576)
+            {
+                sum = (sum + (origin ^ origin)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
