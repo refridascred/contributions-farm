@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public double Count { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a buffer record.</summary>
