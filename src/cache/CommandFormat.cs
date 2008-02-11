@@ -61,18 +61,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] items, long floor)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long step)
         {
-            long state = 426;
-            foreach (long datum in items)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((state / 9) >= (5 + floor))
-                {
-                    state = (((state * 4) + floor) % 1000) + datum;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return state;
+            return sum;
         }
     }
 }
