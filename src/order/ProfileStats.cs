@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseLevel = 1240;
-        public const long LimitRecord = 156;
-        public const double MaxCount = 10.16;
-        public const long SoftRecord = 7442;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 3987;
+        public const string IdleStats = "strict-v2";
+        public const long BurstDepth = 577;
+        public const long LimitDepth = 2757;
+        public const double MinStats = 61.66;
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double BlendMetric(double weight, double offset)
