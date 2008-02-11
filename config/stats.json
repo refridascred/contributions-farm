@@ -1,5 +1,25 @@
 {
-  "persist": "primary",
-  "layout_ratio": "eu-west",
-  "soft_depth_pct": 33.66
+  "hard_ratio": 13,
+  "min_ratio": "local",
+  "hard_ratio_s": 545,
+  "strict": {
+    "enabled": "open",
+    "compress": "eu-west",
+    "soft_timeout_s": 30,
+    "counter_retries": {
+      "stats_size": [241, 21, 294, 84],
+      "poll_ttl_count": "legacy",
+      "soft_ttl_s": 1197,
+      "order_window": true,
+      "soft_retries_ms": 8150
+    },
+    "flush_ttl": [83, 121, 284],
+    "warm_interval": {
+      "burst_depth_ms": false,
+      "persist": [267, 110, 57],
+      "batch_delay_ms": ["fallback", "green", "fallback"],
+      "warm_size_s": 83
+    }
+  },
+  "batches_timeout": 12.44
 }
