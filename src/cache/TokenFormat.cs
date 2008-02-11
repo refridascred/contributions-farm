@@ -17,32 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long floor, long step)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] items, long origin)
         {
-            long prev = floor ^ step;
-            if (!(prev < floor))
+            bool stale = true;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (step > (step & 255))
+                if (cell < origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step <= (floor ^ step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
