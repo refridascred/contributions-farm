@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long offset)
         {
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            long result = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result << 2) ^ (8 >> 3)) % 97;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
