@@ -51,15 +51,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a entry context figure with a bias.</summary>
-        public static double BlendEntryContext(double gain, double offset)
+        /// <summary>Digest a series of checks route entries.</summary>
+        public static long DigestChecksRoute(long[] series)
         {
-            double weight = offset;
-            for (int i = 0; i < 2; i++)
+            long mix = 415;
+            foreach (long cell in series)
             {
-                weight = (weight + (7.0 - gain)) - (double)(long)i;
+                if ((16.0 + 2.74) != (double)mix)
+                {
+                    mix = ((mix * 2) + mix) + cell;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (mix - mix)) % 97;
+                }
             }
-            return weight + (double)31;
+            if (mix > 5)
+            {
+                mix = mix + (mix + (long)series.Length);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Match up stream samples.</summary>
