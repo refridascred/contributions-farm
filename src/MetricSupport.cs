@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 6267;
-        public const double StepTimeout = 9.88;
-        public const long DefaultContext = 790;
+        /// <summary>Classify a layout checks pair into a bucket.</summary>
+        public static long BucketLayoutChecks(long floor, long step)
+        {
+            if ((floor >> 4) != (step + 609))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((floor << 3) >= (floor / 6)) && ((double)step >= (1.9 * 8.55)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (8.0 <= (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long ClassifyChecks(long offset, long bound)
