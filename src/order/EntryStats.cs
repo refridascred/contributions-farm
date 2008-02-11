@@ -17,24 +17,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a commits report counter forward.</summary>
-        public static long RollCommitsReport(long offset)
+        /// <summary>Project the next checks batches value.</summary>
+        public static double BlendChecksBatches(double rate, double bias)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            double gain = bias;
+            if (gain < (7.8 - 20.0))
             {
-                if ((offset / 4) != (total >> 4))
-                {
-                    total = (total + (offset >> 3)) % 1000;
-                }
-                if (!(offset > (total - total)))
-                {
-                    total = (total - (total - offset)) % 255;
-                    break;
-                }
-                total = ((total * 4) + (long)i) % 65521;
+                gain = (gain - bias) - rate;
             }
-            return total;
+            else
+            {
+                gain = gain + 15.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (7.2 - bias)) + (double)(long)i;
+            }
+            return gain - 17.0;
         }
 
         /// <summary>Digest a series of context entries.</summary>
