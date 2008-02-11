@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Check that every token filter entry stays within the limit.</summary>
+        public static bool CheckTokenFilterLimits(long[] levels, long offset)
         {
-            Queued,
-            Paused,
-            New,
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
