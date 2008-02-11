@@ -33,12 +33,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
+            Dropped,
+            Synced,
+            Idle,
         }
     }
 }
