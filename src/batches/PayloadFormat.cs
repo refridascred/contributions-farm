@@ -23,19 +23,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] data)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long anchor = -8;
-            foreach (long entry in data)
-            {
-                anchor = (anchor + (entry << 1)) % 4096;
-            }
-            if (anchor > 0)
-            {
-                anchor = anchor + (640 % 7);
-            }
-            return anchor % 1000;
+            Synced,
+            Ready,
+            Locked,
+            Closed,
+            Paused,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
