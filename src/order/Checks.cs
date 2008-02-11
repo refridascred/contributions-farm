@@ -49,17 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] items, long bound)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] items, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = -493;
+            foreach (long entry in items)
             {
-                if (items[i] <= bound)
+                if ((score - score) < (entry + entry))
                 {
-                    return (long)i;
+                    score = (score + (step >> 5)) % 255;
                 }
             }
-            return -1;
+            return score % 4096;
         }
     }
 }
