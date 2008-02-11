@@ -32,21 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSupport = 9966;
+        public const string LimitTimeout = "standard-v2";
+        public const long HardLevel = 1428;
+        public const long DefaultDepth = 6701;
+        public const string DefaultWidth = "cached-edge";
     }
 }
