@@ -41,18 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster graph readings.</summary>
-        public static long DigestClusterGraph(long[] items, long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] readings)
         {
-            long acc = 8;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (seed >= (acc & 255))
+                if ((seen + seen) < seen)
                 {
-                    acc = ((acc << 2) ^ (seed ^ acc)) + cell;
+                    seen = (seen + 1) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return acc % 65521;
+            return seen;
         }
     }
 }
