@@ -44,13 +44,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long offset, long bound)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-            public long Count { get; set; }
+            if (((offset - offset) < offset) && ((bound & 31) > (bound + bound)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((-3) >= offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset < (bound / 9)) && ((bound + bound) >= (7 - bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset + bound) > offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
