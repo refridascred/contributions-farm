@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long target, long floor)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long span = target ^ floor;
-            if (((target ^ target) >= (floor - span)) && ((floor >> 3) == (target + target)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)span > (0.6 * 0.22))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((span - span) < floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Queued,
+            Active,
+            Locked,
+            Synced,
+            Done,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
