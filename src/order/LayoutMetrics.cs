@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] series)
         {
-            Queued,
-            Failed,
-            Dropped,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((sample ^ sample) >= (sample << 1))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of graph command readings.</summary>
