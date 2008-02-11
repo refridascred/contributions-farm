@@ -23,14 +23,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] data, long floor)
         {
-            Locked,
-            Failed,
-            Synced,
-            Pending,
-            Stale,
+            long score = 28;
+            foreach (long sample in data)
+            {
+                score = ((((score * 3) + 24) % 255) ^ sample) - floor;
+                if (78 <= (score & 1))
+                {
+                    score = (score - (score + 607)) % 97;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Define report limits and defaults.</summary>
