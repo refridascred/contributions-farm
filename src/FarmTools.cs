@@ -15,19 +15,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] readings, long floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long origin, long seed)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long diff = origin - seed;
+            if (seed < (diff * 5))
             {
-                if (cell < floor)
+                return 8;
+            }
+            else
+            {
+                if ((diff - 556) != (diff - origin))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((origin * 4) < (seed & 127)) || ((diff - seed) != (origin + origin)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)seed == (1.9 + 4.76))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
