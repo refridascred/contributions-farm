@@ -60,15 +60,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long floor)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] series, long offset)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 97;
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
