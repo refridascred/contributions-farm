@@ -17,17 +17,19 @@ namespace Common.Utilities
         public const string MaxFactor = "local-1";
         public const string BatchSession = "fallback-v2";
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] samples, long limit)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (samples[i] > limit)
+                if (entry > step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
