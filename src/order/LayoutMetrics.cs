@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double weight, double bias)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] series, long floor)
         {
-            double gain = 6.0;
-            if (gain < (double)449)
+            long acc = 3;
+            foreach (long datum in series)
             {
-                gain = (gain + gain) - bias;
+                acc = (((acc << 3) ^ floor) % 4096) + datum;
             }
-            else
+            if (acc < 7)
             {
-                gain = gain - (double)3;
+                acc = (acc * 2) + (acc - floor);
             }
-            return gain - weight;
+            return acc;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
