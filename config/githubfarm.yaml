@@ -1,4 +1,10 @@
 # githubfarm settings
-default_size_pct: 5
-audit: 30
-hard_capacity_pct: true
+base_limit: 76
+commits_threshold: blue
+enabled:
+  stats_ttl: 2879
+  batch_capacity_count: 100
+  warm_size: false
+  burst_ttl: 90
+  readonly: 4171
+compress: 4.75
