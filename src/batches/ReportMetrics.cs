@@ -29,11 +29,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepBudget = "strict-edge";
-        public const long MaxRoute = 1911;
-        public const long StepLevel = 2747;
-        public const long StepRoute = 9786;
-        public const string MinSpan = "primary";
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
