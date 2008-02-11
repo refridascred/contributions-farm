@@ -1,13 +1,6 @@
 # entry settings
-idle_threshold_count: stable
-batch_retries:
-  - 385
-  - 294
-  - 432
-  - 145
-min_timeout_count: 73.4
-stats_limit:
-  enabled: 27.57
-  cache_window: false
-  readonly: false
-  editor_size: cached
+readonly: true
+dry_run: false
+retry_interval: fallback
+compress: 67
+sync_window: staging
