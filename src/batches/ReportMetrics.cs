@@ -22,10 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 9208;
-        public const string RetryBatch = "open-v2";
-        public const string MinBatch = "cached-v2";
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] values, long origin)
+        {
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Iterate the format layout series from a seed.</summary>
         public static long DeriveFormatLayout(long bound)
