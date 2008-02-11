@@ -1,14 +1,11 @@
 # Command notes
 
-The stream report groups every session by buffer.
-Each report is validated before it reaches the contributi queue.
-
-A session that stays idle for too long is moved to the layout list.
-Run the layout check before changing any session limits.
+Keep report and cluster names short and lowercase.
+When a record fails, the channel handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer order defaults
-- Keep already values small
-- Log every already change
-- Document new route fields
+- Log every batches change
+- Review filter limits each release
+- Validate tools input early
+- Prefer session defaults
