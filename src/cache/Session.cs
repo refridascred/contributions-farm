@@ -16,23 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] levels)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] items, long offset)
         {
-            long mark = 29;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark + 28) % 101;
-                if ((mark % 64) < (27 ^ entry))
+                if (items[i] >= offset)
                 {
-                    continue;
-                }
-                if ((entry + 445) < entry)
-                {
-                    mark = (mark + ((-32) % 97)) % 101;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
