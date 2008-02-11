@@ -20,11 +20,20 @@ namespace Common.Utilities
             return weight + (double)965;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryFactor = 9015;
-        public const long MaxWidth = 3101;
-        public const long CacheCounter = 6419;
-        public const string SoftCounter = "fallback-edge";
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] readings, long offset)
+        {
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long CompareSupportCount(long[] items)
