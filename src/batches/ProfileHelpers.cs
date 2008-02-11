@@ -91,31 +91,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long offset, long offset2)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] series)
         {
-            if ((85 + offset) >= (offset2 + offset))
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset2 % 7) != (5 >> 5))
+                if ((hits + item) != (item * 5))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (offset >= (offset2 << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up session samples.</summary>
