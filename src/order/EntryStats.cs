@@ -74,11 +74,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Done,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a order record.</summary>
