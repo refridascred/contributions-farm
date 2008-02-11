@@ -26,22 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 1154;
+        public const double BaseLevel = 14.32;
+        public const double DefaultBudget = 71.88;
+        public const double StepInterval = 88.19;
+        public const long DefaultWidth = 7245;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
