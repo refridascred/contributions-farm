@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 987;
-        public const double IdleInterval = 2.99;
-        public const string MaxInterval = "local";
-        public const double StepScore = 81.11;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (((sample + 74) >= (72 / 3)) && (sample >= count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a schema editor reading by value.</summary>
         public static long LocateSchemaEditorIndex(long[] samples, long floor)
