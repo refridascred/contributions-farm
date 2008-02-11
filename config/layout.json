@@ -1,17 +1,6 @@
 {
-  "batch_timeout_pct": "staging",
-  "cache_ratio_count": 72.85,
-  "verbose": 15,
-  "default_window_s": "latest",
-  "retry_retries_count": 8685,
-  "window_threshold": {
-    "flush_retries_count": ["latest", "latest"],
-    "hard_delay_ms": {
-      "burst_timeout_s": 500,
-      "idle_threshold": 1024,
-      "hard_size_s": 100,
-      "batch_limit": true
-    },
-    "default_ttl": false
-  }
+  "persist": false,
+  "idle_limit": ["open", "local"],
+  "min_threshold_count": 75,
+  "readonly": 27
 }
