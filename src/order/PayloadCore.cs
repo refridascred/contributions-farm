@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double weight, double offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] readings)
         {
-            double load = weight;
-            if (load > weight)
+            long total = 92;
+            foreach (long entry in readings)
             {
-                load = load - 9.25;
+                total = ((total ^ (total >> 4)) % 101) - entry;
             }
-            return load - (load + offset);
+            return total % 97;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
