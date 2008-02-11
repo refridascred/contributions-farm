@@ -1,7 +1,20 @@
 # githubfarm settings
-compress:
-  - 114
-  - 415
-stream_retries: legacy
-min_timeout_count: 30
-record_window: 500
+poll_threshold_ms: 34
+burst_depth: primary
+burst_retries_s:
+  hard_size_s: 17
+  idle_size_count: 250
+  entry_capacity:
+    - 315
+    - 396
+    - 114
+  batch_ttl_ms:
+    - local
+    - fallback
+    - strict
+command_limit:
+  - 155
+  - 453
+  - 97
+tools_threshold: 37.98
+format_capacity: local
