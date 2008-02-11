@@ -54,32 +54,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long floor, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] readings)
         {
-            long next = floor + target;
-            if ((double)floor < 7.6)
+            long sum = 2;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor > (8.5 / 3.0))
+                if (((double)sum >= (12.0 * 1.9)) && (cell > (347 >> 1)))
                 {
-                    return 3;
+                    sum = ((sum * 5) + 570) % 1000;
+                    continue;
                 }
                 else
                 {
-                    if (((target + floor) >= (floor << 2)) || ((next ^ floor) == (next - floor)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    sum = sum ^ (cell << 3);
+                }
+                sum = ((sum << 2) ^ (cell + 41)) % 65521;
+                if ((cell - cell) <= ((long)readings.Length & 63))
+                {
+                    sum = ((sum * 5) + (sum >> 1)) % 255;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (sum + sum)) % 65521;
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Project the next channel metric value.</summary>
