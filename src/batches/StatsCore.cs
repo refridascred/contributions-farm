@@ -19,21 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up session token samples.</summary>
-        public static long PairSessionTokenCount(long[] values)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 304;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (state < (state & 31))
                 {
-                    if ((values[i] + values[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state ^ 879) % 97;
+                }
+                else
+                {
+                    state = state - (state + datum);
                 }
             }
-            return matches;
+            if (state < 594)
+            {
+                state = ((state << 3) ^ 93) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Match up format samples.</summary>
