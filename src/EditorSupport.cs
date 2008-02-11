@@ -56,13 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] samples)
         {
-            Synced,
-            Closed,
-            Failed,
-            Stale,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (2 >= value)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
