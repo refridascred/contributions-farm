@@ -63,16 +63,13 @@ namespace Common.Utilities
         public const double LimitSpan = 65.43;
         public const double WindowCache = 4.09;
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                result = (result ^ (result ^ offset)) % 97;
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
