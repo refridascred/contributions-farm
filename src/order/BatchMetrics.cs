@@ -62,12 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Check that every report notes entry stays within the limit.</summary>
+        public static bool ValidateReportNotesLimits(long[] samples, long bound)
         {
-            public bool Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
