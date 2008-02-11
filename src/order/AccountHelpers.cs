@@ -30,12 +30,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            Retry,
-            Idle,
-            Ready,
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of session readings.</summary>
