@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long MaxWidth = 9351;
         public const string LimitStats = "open-edge";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 3414;
-        public const string BurstGraph = "primary-v2";
-        public const double CacheGraph = 1.57;
-        public const long RetryLevel = 1168;
-        public const string HardLevel = "strict-v2";
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public double Weight { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportHits(long[] readings, long bound)
