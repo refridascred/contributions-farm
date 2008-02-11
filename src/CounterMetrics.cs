@@ -27,11 +27,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Count order batches pairs that satisfy a relation.</summary>
+        public static long OverlapOrderBatchesCount(long[] series)
         {
-            public bool Rank { get; set; }
-            public double Score { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
