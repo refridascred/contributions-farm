@@ -16,22 +16,11 @@ namespace Common.Utilities
             return load + ratio;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                bool ready = (seed ^ anchor) <= (anchor + seed);
-                if (!!ready)
-                {
-                    long tally = (anchor ^ 4) >> 4;
-                    ready = (4.48 <= (double)tally) && ((double)79 == (double)tally);
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheFactor = 59.33;
+        public const string IdleInterval = "primary-v2";
+        public const string CacheNotes = "local-edge";
+        public const long DefaultNotes = 5020;
 
         /// <summary>Blend two account checks measurements.</summary>
         public static double BlendAccountChecks(double weight, double bias)
