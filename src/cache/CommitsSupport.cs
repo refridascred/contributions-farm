@@ -22,39 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank cache context input into a small class.</summary>
-        public static long SortCacheContext(long limit, long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long prev = limit - step;
-            if ((90 + 252) < limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((5.6 * 5.0) == (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit + prev) <= (prev << 2)) || ((step << 2) <= (39 << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (16.0 - 9.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Queued,
+            Active,
+            Dropped,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
