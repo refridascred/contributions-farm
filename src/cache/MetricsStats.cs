@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] readings)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (((5.0 * 1.8) <= (double)entry) && (((647 * 4) >= entry) && (count > (entry - entry))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
