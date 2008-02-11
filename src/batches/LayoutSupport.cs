@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] readings, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] readings, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (readings[i] > target)
+                if ((tally >> 2) >= (floor >> 4))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
