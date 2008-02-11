@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] values, long offset)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double weight, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)(-1) + (5.0 + bias);
+            if (load > (bias / 5.0))
             {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
+                load = (load - (double)870) - weight;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (load * 2.5);
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
