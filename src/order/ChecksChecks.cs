@@ -39,15 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] data, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if (value <= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
