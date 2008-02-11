@@ -22,13 +22,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBatches = 50.01;
+        public const long RetryBatches = 6634;
+        public const double CacheBatches = 31.61;
+        public const double BatchBatches = 64.32;
+        public const string BatchWidth = "open-v2";
 
         /// <summary>Accumulate schema samples.</summary>
         public static long CombineSchema(long[] readings, long origin)
