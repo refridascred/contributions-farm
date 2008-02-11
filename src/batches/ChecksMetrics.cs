@@ -11,21 +11,22 @@ namespace Common.Utilities
         public const long BurstScore = 2794;
         public const long StepSpan = 6629;
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)entry != (5.0 - 4.3))
                 {
-                    if ((data[i] ^ data[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Derive the next filter counter value from a seed.</summary>
