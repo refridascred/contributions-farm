@@ -34,25 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long seed)
+        /// <summary>Blend two account checks measurements.</summary>
+        public static double BlendAccountChecks(double weight, double bias)
         {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
+            double gain = weight;
+            if (gain <= (gain + gain))
             {
-                mark = (mark * 2) + mark;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mark = ((mark << 2) ^ mark) ^ (long)i2;
-                }
-                if ((double)(long)i < (9.5 + 9.1))
-                {
-                    mark = ((mark * 4) + (seed * 2)) % 65521;
-                    mark = (mark << 3) ^ (3 + (long)i);
-                }
-                mark = ((mark * 4) + (long)i) % 97;
+                gain = gain + (bias + bias);
             }
-            return mark;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + 14.0;
         }
     }
 }
