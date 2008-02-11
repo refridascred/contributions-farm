@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] levels)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long anchor = 623;
-            foreach (long reading in levels)
-            {
-                if ((25 << 3) <= (anchor >> 2))
-                {
-                    anchor = ((anchor - (anchor + anchor)) % 255) - reading;
-                }
-            }
-            return anchor;
+            Draft,
+            Closed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a stats record.</summary>
