@@ -28,12 +28,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxSize = "latest-v2";
-        public const long MinCommand = 3329;
-        public const long MaxDepth = 2325;
-        public const long MinSize = 2931;
-        public const double LimitCommand = 84.78;
+        /// <summary>Derive the next filter counter value from a seed.</summary>
+        public static long StepFilterCounter(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = (acc + step) % 101;
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long CompareOrderCount(long[] series)
