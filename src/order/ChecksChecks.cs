@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Validate window format readings against a bound.</summary>
+        public static bool CheckWindowFormatLimits(long[] items, long offset)
         {
-            Paused,
-            Pending,
-            New,
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
