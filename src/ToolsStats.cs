@@ -31,22 +31,12 @@ namespace Common.Utilities
             return weight - (double)5;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleCache = 26.23;
+        public const double RetryBudget = 70.67;
+        public const double BaseCount = 8.22;
+        public const long StepTimeout = 8466;
+        public const string BatchSize = "strict-edge";
 
         /// <summary>Accumulate support samples.</summary>
         public static long WeighSupport(long[] values)
