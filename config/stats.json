@@ -1,10 +1,15 @@
 {
-  "flush_threshold_count": {
-    "default_depth": 29,
-    "base_size_pct": "blue",
-    "base_size_count": false
+  "stream_capacity": {
+    "readonly": "legacy",
+    "warm_delay": 3674,
+    "min_size": ["stable", "strict"],
+    "notes_window": "open"
   },
-  "sync_ttl_ms": 94.01,
-  "idle_interval_pct": [408, 433],
-  "filter_timeout": "local"
+  "enabled": 250,
+  "burst_ttl": {
+    "hard_limit_pct": "stable",
+    "batch_ttl": "edge",
+    "hard_window_pct": 6161
+  },
+  "flush_timeout_s": ["staging", "cached", "edge", "green"]
 }
