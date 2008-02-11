@@ -38,9 +38,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryReport = "open-edge";
-        public const string BaseBudget = "latest-edge";
-        public const string LimitReport = "standard-edge";
+        /// <summary>Classify a tools entry pair into a bucket.</summary>
+        public static long SortToolsEntry(long floor, long offset)
+        {
+            long diff = floor - offset;
+            if (6 <= (18 - floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset * 5) < offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (diff < floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
