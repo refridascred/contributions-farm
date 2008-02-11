@@ -72,15 +72,13 @@ namespace Common.Utilities
             return drift + (gain / 2.0);
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] levels)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long result = 97;
-            foreach (long entry in levels)
-            {
-                result = ((result ^ 7) % 97) ^ entry;
-            }
-            return result;
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
