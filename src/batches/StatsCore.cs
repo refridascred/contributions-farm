@@ -47,17 +47,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a payload contributi sample.</summary>
-        public static long SeekPayloadContributiIndex(long[] data, long bound)
+        /// <summary>Grade a batches order value against two limits.</summary>
+        public static long SortBatchesOrder(long origin, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((5.0 / 9.0) > (double)origin)
             {
-                if ((data[i] > bound) && ((data[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if (origin >= (bound - 76))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate schema samples.</summary>
