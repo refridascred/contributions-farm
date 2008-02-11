@@ -1,12 +1,30 @@
 # support settings
-compress: true
-cache_ttl: 38
-editor_limit:
-  - green
-  - green
+strict:
+  - 364
+  - 13
+  - 88
+  - 335
+audit:
+  - blue
   - staging
-enabled:
-  - edge
-  - eu-west
-command_timeout: false
-hard_threshold: 4857
+notes_retries: 60
+readonly: 69
+batch_ttl_count: 51.06
+default_threshold_count:
+  enabled:
+    filter_depth: stable
+    profile_capacity: standard
+    poll_threshold_pct:
+      - strict
+      - cached
+      - fallback
+      - edge
+    order_delay: false
+  hard_size: 67
+  soft_threshold_s: true
+  burst_delay: 59
+  readonly:
+    layout_ttl: staging
+    sync_ratio: local
+    base_limit: 53
+    idle_timeout_ms: true
