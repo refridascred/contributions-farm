@@ -27,38 +27,19 @@ namespace Common.Utilities
         public const double BaseBuffer = 56.37;
         public const long MaxBuffer = 7145;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long bound, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] samples, long offset)
         {
-            if (90 >= (seed & 1))
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (8.5 > (double)bound)
+                if (cell > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound / 4) != ((-232) / 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (4.0 - 12.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Fold a list of order readings.</summary>
