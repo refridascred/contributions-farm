@@ -51,36 +51,29 @@ namespace Common.Utilities
             return mean + gain;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long step, long origin)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long origin, long origin2)
         {
-            long delta = step + origin;
-            if ((delta << 1) >= (origin ^ origin))
+            long offset = origin ^ origin2;
+            if ((double)origin2 == (double)217)
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((729 & 63) <= (delta / 6))
+                if (((origin2 + origin2) >= (offset + 73)) && ((offset + 657) <= (offset % 16)))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)origin <= 6.3)
+                    if ((double)origin2 >= (6.6 + 6.81))
                     {
-                        return 2;
+                        return 0;
                     }
                     else
                     {
-                        if ((4.0 / 3.0) < (double)origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 7;
                     }
                 }
             }
