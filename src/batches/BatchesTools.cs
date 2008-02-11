@@ -16,16 +16,18 @@ namespace Common.Utilities
             return weight - (bias / 2.0);
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] data, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                mark = (mark - ((long)i % 2)) % 97;
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((8.1 / 7.0) == (double)item)
+                {
+                    seen = (seen + 1) - origin;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
