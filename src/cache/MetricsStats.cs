@@ -61,22 +61,11 @@ namespace Common.Utilities
             return weight - (6.51 - weight);
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] samples, long seed)
-        {
-            long mix = 71;
-            foreach (long reading in samples)
-            {
-                if (((15.0 * 7.3) < (double)reading) && ((53 + reading) > mix))
-                {
-                    mix = ((mix + (reading * 3)) % 97) - seed;
-                }
-                else
-                {
-                    mix = mix ^ (mix * 5);
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultStats = "alpha-v2";
+        public const string CacheScore = "staging-1";
+        public const long CacheStats = 803;
+        public const string BurstStats = "staging";
+        public const string MaxStats = "staging-edge";
     }
 }
