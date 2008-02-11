@@ -13,31 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long limit, long origin)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] samples, long target)
         {
-            if (!((6 % 97) < (origin & 63)))
+            bool flag = true;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin & 15) != (389 + limit))
+                if (value < target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit / 2) > (limit + limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
