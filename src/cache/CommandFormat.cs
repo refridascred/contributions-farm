@@ -61,15 +61,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long step)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public double Label { get; set; }
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
