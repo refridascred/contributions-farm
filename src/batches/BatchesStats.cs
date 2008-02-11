@@ -26,17 +26,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a support channel sample.</summary>
-        public static long SeekSupportChannelIndex(long[] series, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (series[i] == floor)
+                if (cell > (cell % 64))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the tools kind values.</summary>
