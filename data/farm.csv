@@ -1,8 +1,7 @@
-id,count,token
-1,17.46,33
-2,518,primary
-3,206,94.91
-4,615,957
-5,973,3.4
-6,blue,26.08
-7,staging,stable
+id,score,ratio,count,weight
+1,154,35.44,498,926
+2,177,54.29,green,strict
+3,141,97,414,standard
+4,952,43.22,latest,62.36
+5,498,fallback,46.08,88.68
+6,0.02,green,956,6.97
