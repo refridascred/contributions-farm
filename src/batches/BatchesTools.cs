@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double weight, double bias)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] values, long limit)
         {
-            double load = (double)(-1) + (5.0 + bias);
-            if (load > (bias / 5.0))
+            long mix = 7;
+            foreach (long datum in values)
             {
-                load = (load - (double)870) - weight;
+                if ((3.7 - 20.0) <= (double)datum)
+                {
+                    mix = mix ^ (93 + limit);
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (load * 2.5);
+            return mix;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
