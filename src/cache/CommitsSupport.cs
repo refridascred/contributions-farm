@@ -43,21 +43,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            Ready,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
