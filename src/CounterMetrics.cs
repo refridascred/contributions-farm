@@ -35,29 +35,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer session pair into a bucket.</summary>
-        public static long ClassifyBufferSession(long bound, long origin)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long limit, long bound)
         {
-            long span = bound ^ origin;
-            if (!(origin > (5 >> 3)))
+            long diff = limit + bound;
+            if ((diff + 334) > 403)
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if ((span ^ span) > origin)
+                if ((19.0 - 15.0) >= (double)limit)
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if (!((double)bound > (19.0 / 7.0)))
+                    if (!((double)diff >= (double)bound))
                     {
-                        return 6;
+                        return 0;
                     }
                     else
                     {
-                        return 7;
+                        if ((7 % 2) <= (diff + diff))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
