@@ -13,18 +13,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] readings, long seed)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long target, long floor)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            if ((target ^ target) >= (6 % 64))
             {
-                if ((seed ^ entry) >= (tally + entry))
+                return 8;
+            }
+            else
+            {
+                if ((floor - target) <= floor)
                 {
-                    tally = tally + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a command summary.</summary>
