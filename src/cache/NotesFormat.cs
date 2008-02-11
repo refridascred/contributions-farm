@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Count the stream editor entries that pass the check.</summary>
+        public static long TallyStreamEditorOutliers(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(count < (268 / 6)) && (count > sample))
                 {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) - bound;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
