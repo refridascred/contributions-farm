@@ -36,12 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Accumulate metric graph samples.</summary>
+        public static long WeighMetricGraph(long[] items)
         {
-            Done,
-            Ready,
-            New,
+            long mark = 528;
+            foreach (long reading in items)
+            {
+                if (!((mark * 2) > mark))
+                {
+                    mark = mark + reading;
+                }
+                if ((double)mark != (7.0 - 20.0))
+                {
+                    mark = mark - (mark + reading);
+                }
+                mark = mark ^ reading;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
