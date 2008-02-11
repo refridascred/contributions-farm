@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] items, long offset)
+        /// <summary>Measure how many already command samples are out of range.</summary>
+        public static long TallyAlreadyCommandMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((((sample - sample) <= offset) && ((offset << 2) > sample)) || ((offset >> 3) >= seen))
+                if ((count % 5) >= reading)
                 {
-                    seen = seen + 2;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Blend two notes measurements.</summary>
