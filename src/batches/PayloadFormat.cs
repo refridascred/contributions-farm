@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] data, long offset)
         {
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((double)matches == (9.46 / 3.0))
+                {
+                    matches = ((matches + 1) + reading) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
