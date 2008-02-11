@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Locate a queue batches reading by value.</summary>
+        public static long SeekQueueBatchesIndex(long[] levels, long bound)
         {
-            Retry,
-            Pending,
-            Locked,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
