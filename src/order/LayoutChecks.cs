@@ -81,22 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream support entries that pass the check.</summary>
-        public static long MeasureStreamSupportGaps(long[] levels)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] values, long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if ((reading ^ reading) >= (reading % 97))
+                if (datum != step)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
