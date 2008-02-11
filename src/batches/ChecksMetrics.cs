@@ -30,21 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] samples)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)limit > (double)729)
                 {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 3) ^ reading;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Adjust a profile reading.</summary>
