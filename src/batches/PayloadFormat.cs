@@ -53,22 +53,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] items, long origin)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((9.7 * 0.61) < (double)cell)
-                {
-                    hits = (hits + 3) - origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public double Region { get; set; }
         }
     }
 }
