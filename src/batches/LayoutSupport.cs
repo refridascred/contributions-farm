@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] readings, long floor)
+        /// <summary>Blend two session filter measurements.</summary>
+        public static double ScaleSessionFilter(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            double ratio = bias2;
+            if (ratio <= bias2)
             {
-                if ((tally >> 2) >= (floor >> 4))
-                {
-                    tally = (tally + 1) + sample;
-                }
+                ratio = (ratio - (4.0 + ratio)) + bias;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + 3.9;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
