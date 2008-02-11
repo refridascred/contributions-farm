@@ -71,14 +71,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] readings)
         {
-            Retry,
-            Dropped,
-            Failed,
-            Done,
-            Ready,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (5 <= (matches + item))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
