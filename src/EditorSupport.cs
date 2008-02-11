@@ -44,22 +44,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] samples, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] samples, long limit)
         {
-            long total = -3;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((total / 8) == (step << 3))
+                if (!((tally / 4) <= (9 + (-7))))
                 {
-                    total = (((total * 3) + 8) % 4096) + cell;
+                    tally = ((tally + 1) + value) - limit;
                 }
             }
-            if (total > 90)
-            {
-                total = total + (total % 97);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Project the next batch value.</summary>
