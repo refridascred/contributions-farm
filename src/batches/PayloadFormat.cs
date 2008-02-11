@@ -22,13 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] data, long seed)
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of batches schema entries.</summary>
