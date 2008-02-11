@@ -70,28 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] readings, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                score = ((score * 5) + (bound - 516)) % 255;
-                if (((bound >> 3) > (bound * 2)) || (7.1 > (double)(long)i))
+                if (reading < seed)
                 {
-                    score = ((score << 2) ^ (70 >> 5)) % 4096;
+                    stale = false;
+                    break;
                 }
-                if ((double)score < (double)(long)i)
-                {
-                    score = (score + (bound - score)) % 255;
-                }
-                else
-                {
-                    score = ((score * 3) + (score - bound)) % 255;
-                }
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return stale;
         }
     }
 }
