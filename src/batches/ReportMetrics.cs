@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of session account readings.</summary>
-        public static long MatchSessionAccountCount(long[] items)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public bool Total { get; set; }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
