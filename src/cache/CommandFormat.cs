@@ -17,15 +17,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long mix = 993;
-            foreach (long datum in levels)
-            {
-                mix = ((mix << 3) ^ (datum + datum)) % 255;
-            }
-            return mix % 4096;
+            New,
+            Pending,
+            Failed,
+            Done,
+            Dropped,
         }
 
         /// <summary>Hold a order header.</summary>
