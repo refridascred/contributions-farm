@@ -19,13 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Locked,
-            Active,
-            Stale,
-            Idle,
+            Queued,
+            Paused,
+            New,
         }
 
         /// <summary>Locate a session reading by value.</summary>
