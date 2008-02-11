@@ -40,15 +40,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double scale, double floor)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double bias, double floor)
         {
-            double rate = 3.0;
-            if (rate >= (double)18)
+            double gain = floor;
+            if (gain > bias)
             {
-                rate = ((rate - 2.25) - scale) + floor;
+                gain = gain + (gain * 4.0);
             }
-            return rate + (double)149;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (6.0 / 7.0)) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Count the window account entries that pass the check.</summary>
