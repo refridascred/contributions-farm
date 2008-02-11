@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] readings)
         {
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
