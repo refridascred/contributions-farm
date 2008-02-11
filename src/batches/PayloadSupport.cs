@@ -35,19 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every session schema entry stays within the limit.</summary>
-        public static bool ValidateSessionSchemaRange(long[] series, long limit)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long seed)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return stale;
+            return score;
         }
     }
 }
