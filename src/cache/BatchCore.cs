@@ -13,17 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
+            long sum = 2;
+            foreach (long entry in items)
             {
-                anchor = anchor - offset;
-                anchor = (anchor + (55 - 207)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if ((entry + sum) != (7 - 290))
+                {
+                    sum = (sum ^ (275 ^ entry)) % 255;
+                }
             }
-            return anchor;
+            if (sum > 1)
+            {
+                sum = sum - (sum - 883);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Fold a list of schema token readings.</summary>
