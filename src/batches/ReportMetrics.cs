@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepCount = 2235;
-        public const string DefaultEditor = "legacy-1";
-        public const long DefaultTimeout = 5726;
-        public const double HardEditor = 31.17;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] readings, long seed)
+        {
+            long carry = 7;
+            foreach (long sample in readings)
+            {
+                if ((seed & 3) == (sample + carry))
+                {
+                    carry = (carry * 4) + (carry % 64);
+                }
+            }
+            if (carry < 0)
+            {
+                carry = (carry * 5) + (617 / 5);
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long GradeAlready(long target, long step)
