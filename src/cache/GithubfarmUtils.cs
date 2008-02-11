@@ -19,20 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] items, long floor)
-        {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 1031;
+        public const long BaseQueue = 5356;
+        public const double BatchQueue = 69.07;
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
