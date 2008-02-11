@@ -48,16 +48,19 @@ namespace Common.Utilities
             return mean + (mean - gain);
         }
 
-        /// <summary>Roll a graph checks counter forward.</summary>
-        public static long RollGraphChecks(long offset)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double gain, double span)
         {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
+            double gain2 = gain;
+            if (gain2 <= gain)
             {
-                score = score + (score % 3);
-                score = ((score * 4) + (long)i) % 4093;
+                gain2 = gain2 + (double)3;
             }
-            return score;
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 - gain) + (double)(long)i;
+            }
+            return gain2 + (span - span);
         }
 
         /// <summary>Match up stream samples.</summary>
