@@ -48,18 +48,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (!(((double)value >= (19.0 - 8.16)) && ((double)count <= (4.5 - 7.05))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 3560;
+        public const double StepSize = 46.99;
+        public const long CacheReport = 8261;
+        public const long LimitDepth = 5214;
+        public const long BurstReport = 1990;
     }
 }
