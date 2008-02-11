@@ -1,8 +1,25 @@
 # entry settings
-stream_timeout: 52.18
-sync_ratio: 250
-cache_capacity_ms:
+cache_retries:
   - latest
-  - stable
-enabled: false
-cache_timeout_s: stable
+  - local
+  - standard
+  - strict
+channel_limit:
+  base_ttl_pct:
+    compress: 6.67
+    verbose: 37.86
+    flush_ttl_pct:
+      - fallback
+      - legacy
+      - stable
+    soft_depth: strict
+    soft_threshold_pct: false
+    cache_ttl_pct: 7846
+  enabled: fallback
+  flush_ttl_ms:
+    - 385
+    - 88
+  warm_interval_ms: false
+batches_capacity: 500
+buffer_limit: 19.43
+idle_interval_ms: true
