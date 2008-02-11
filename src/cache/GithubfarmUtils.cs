@@ -50,17 +50,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                score = (score + (12 ^ 0)) % 4096;
-                score = score + score;
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 6308;
+        public const long StepScore = 2886;
+        public const long BaseLevel = 6968;
     }
 }
