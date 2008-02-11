@@ -73,18 +73,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] readings, long seed)
+        /// <summary>Accumulate batches cluster samples.</summary>
+        public static long CombineBatchesCluster(long[] samples, long bound)
         {
-            long carry = -7;
-            foreach (long reading in readings)
+            long mix = 0;
+            foreach (long item in samples)
             {
-                if (!((seed + reading) >= carry))
+                if ((mix > (-80)) || ((double)bound <= 7.0))
                 {
-                    carry = (carry + seed) % 65521;
+                    mix = ((mix ^ (mix + bound)) % 255) - item;
                 }
             }
-            return carry % 97;
+            return mix;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
