@@ -1,8 +1,6 @@
 # support settings
-poll_interval_s: eu-west
-compress:
-  - local
-  - fallback
-  - eu-west
-  - primary
-batch_retries_ms: 20
+soft_ratio_s: false
+min_threshold_s: standard
+audit: 500
+compress: latest
+flush_retries_pct: 91.42
