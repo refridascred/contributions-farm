@@ -29,17 +29,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Look up the position of a batches record sample.</summary>
-        public static long FindBatchesRecordIndex(long[] items, long limit)
+        /// <summary>Audit payload order readings against a rule.</summary>
+        public static long MeasurePayloadOrderHits(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((items[i] == limit) && ((items[i] % 3) == 0))
+                if (!((7.0 * 0.9) < (double)cell) || ((double)(long)levels.Length < 7.5))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count batches command pairs that satisfy a relation.</summary>
