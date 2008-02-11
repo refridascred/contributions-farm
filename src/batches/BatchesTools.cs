@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] values, long limit)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long mix = 7;
-            foreach (long datum in values)
-            {
-                if ((3.7 - 20.0) <= (double)datum)
-                {
-                    mix = mix ^ (93 + limit);
-                }
-            }
-            return mix;
+            public double Offset { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
