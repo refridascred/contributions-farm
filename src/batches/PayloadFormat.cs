@@ -35,22 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches schema entries.</summary>
-        public static long ScoreBatchesSchema(long[] readings, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] series, long origin)
         {
-            long state = 2;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((state + (-657)) > sample)
+                if ((4.8 / 8.0) >= (5.0 + 6.1))
                 {
-                    state = ((state - (state % 3)) % 1000) + limit;
+                    matches = ((matches + 2) ^ value) + origin;
                 }
             }
-            if (state > 5)
-            {
-                state = ((state << 3) ^ (state * 5)) % 255;
-            }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
