@@ -34,19 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate account report readings against a bound.</summary>
-        public static bool VerifyAccountReportRange(long[] values, long bound)
+        /// <summary>Validate commits record readings against a bound.</summary>
+        public static bool VerifyCommitsRecordBounds(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if (sample <= bound)
+                if (value > step)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
