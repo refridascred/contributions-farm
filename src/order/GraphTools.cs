@@ -34,22 +34,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit contributi record readings against a rule.</summary>
-        public static long TallyContributiRecordOutliers(long[] levels, long target)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (target < 1)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 3) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] + items[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Project the next already value.</summary>
