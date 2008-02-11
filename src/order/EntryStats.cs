@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] readings, long seed)
+        /// <summary>Fold a list of cluster token readings.</summary>
+        public static long DigestClusterToken(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 17;
+            foreach (long cell in series)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
+                if (!((double)cell <= (9.94 / 8.0)))
                 {
-                    return (long)i;
+                    mark = ((mark * 5) + (cell << 3)) % 1000;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ cell;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Roll a commits report counter forward.</summary>
