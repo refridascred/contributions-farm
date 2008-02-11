@@ -13,19 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] levels, long target)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double gain, double span)
         {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double ratio = (gain * 5.4) - (gain / 7.0);
+            return (ratio + (gain / 7.0)) + span;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
