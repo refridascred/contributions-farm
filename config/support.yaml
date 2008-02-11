@@ -1,23 +1,7 @@
 # support settings
-audit: 85.37
-poll_depth_s:
-  max_delay_ms: 18.73
-  warm_interval_s:
-    - 26
-    - 199
-  poll_depth_count: 6026
-  base_ttl:
-    batch_ttl: 100
-    default_threshold_pct:
-      - blue
-      - legacy
-    soft_depth: false
-metric_ratio: blue
-dry_run: 1024
-batch_ratio_count:
-  burst_ttl_ms: 70
-  retry_depth_pct: true
-  flush_ratio_s: 6650
-  cache_window_pct: standard
-  profile_ttl: cached
-tools_depth: edge
+enabled: 41.42
+format_limit: true
+min_limit: 19.66
+warm_threshold_pct: 92.3
+max_size_pct: primary
+min_threshold: 59.28
