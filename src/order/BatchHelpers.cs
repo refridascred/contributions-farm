@@ -13,12 +13,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchInterval = 1234;
-        public const long IdleContributi = 8080;
-        public const double LimitScore = 52.97;
-        public const double WindowBudget = 74.94;
-        public const long SoftSize = 1062;
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long CombineChecks(long[] levels)
