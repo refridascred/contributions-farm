@@ -68,10 +68,10 @@ namespace Common.Utilities
             return scale - (4.1 - bias);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 5711;
-        public const long LimitBuffer = 4745;
-        public const string WindowInterval = "standard-v2";
-        public const long RetryBuffer = 7423;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxCount = 22.96;
+        public const double MaxEntry = 51.79;
+        public const double CacheInterval = 69.19;
+        public const double IdleEntry = 38.36;
     }
 }
