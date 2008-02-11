@@ -17,17 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] series, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (series[i] > limit)
+                if ((tally % 10) == (item - (-84)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of already readings.</summary>
