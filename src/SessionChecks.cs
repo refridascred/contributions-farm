@@ -14,18 +14,16 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the layout queue entries that pass the check.</summary>
-        public static long CountLayoutQueueMatches(long[] samples)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long seed)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (((20 / 2) <= (count / 6)) && ((count > (972 % 2)) && ((47 / 4) >= count)))
-                {
-                    count = (count + 3) - sample;
-                }
+                mix = mix + (mix % 7);
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the window mode values.</summary>
