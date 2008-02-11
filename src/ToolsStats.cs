@@ -87,10 +87,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 2600;
-        public const double CacheLevel = 29.79;
-        public const long HardFactor = 5996;
-        public const double LimitBudget = 16.37;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
