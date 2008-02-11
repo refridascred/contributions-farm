@@ -56,11 +56,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 1401;
-        public const string LimitBudget = "legacy-1";
-        public const double MinSpan = 22.56;
-        public const long HardCounter = 5836;
-        public const long LimitCounter = 2450;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Idle,
+            New,
+            Active,
+            Ready,
+        }
     }
 }
