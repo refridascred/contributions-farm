@@ -62,18 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] items, long step)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long score = -493;
-            foreach (long entry in items)
-            {
-                if ((score - score) < (entry + entry))
-                {
-                    score = (score + (step >> 5)) % 255;
-                }
-            }
-            return score % 4096;
+            Retry,
+            New,
+            Failed,
+            Queued,
         }
     }
 }
