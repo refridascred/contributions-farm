@@ -26,19 +26,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double rate, double bias)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double ratio, double floor)
         {
-            double gain = 8.2 * 16.0;
-            if (gain < (7.58 / 3.0))
-            {
-                gain = (gain + (double)(-7)) - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + rate) + (double)(long)i;
-            }
-            return gain + gain;
+            double drift = (double)(3 / 5);
+            return (drift + floor) + ratio;
         }
 
         /// <summary>Describe the context state values.</summary>
