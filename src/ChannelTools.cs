@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] series, long limit)
         {
-            Paused,
-            Locked,
-            Done,
-            Failed,
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit editor window readings against a rule.</summary>
