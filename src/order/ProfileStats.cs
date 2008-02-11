@@ -37,24 +37,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a editor metric pair into a bucket.</summary>
-        public static long GradeEditorMetric(long offset, long floor)
+        /// <summary>Audit editor layout readings against a rule.</summary>
+        public static long MeasureEditorLayoutMatches(long[] values)
         {
-            if (((15 - offset) >= (floor * 5)) || ((offset + 81) >= (offset ^ offset)))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((floor / 6) >= offset) || (floor > (offset * 5)))
+                if (cell <= (97 + cell))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
