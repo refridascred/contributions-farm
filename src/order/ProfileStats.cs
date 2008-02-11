@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] readings, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
