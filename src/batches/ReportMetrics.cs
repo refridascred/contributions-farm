@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a contributi commits counter forward.</summary>
-        public static long RollContributiCommits(long bound)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long target, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
+            long bound = target + limit;
+            if (limit >= (target & 15))
             {
-                score = (score - ((long)i * 3)) % 4096;
-                score = ((score * 2) + (long)i) % 101;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((bound / 5) < 4)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
