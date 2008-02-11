@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] series, long seed)
+        /// <summary>Blend two session entry measurements.</summary>
+        public static double SmoothSessionEntry(double ratio, double span)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            double scale = (double)722 + (double)3;
+            if (scale <= (ratio / 3.0))
             {
-                if (datum <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = (scale - (scale / 4.0)) - span;
             }
-            return ok;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + ratio) - (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Describe the layout class values.</summary>
