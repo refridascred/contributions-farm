@@ -34,12 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseWidth = "standard-1";
-        public const long BurstCount = 2264;
-        public const long LimitFormat = 3764;
-        public const string RetrySpan = "strict-edge";
-        public const long BurstSpan = 72;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Done,
+            Pending,
+            Active,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportLimits(long[] items, long origin)
