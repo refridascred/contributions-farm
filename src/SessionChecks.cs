@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] items)
         {
-            public bool Score { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-            public double Token { get; set; }
+            long sum = 13;
+            foreach (long datum in items)
+            {
+                if ((6 < (datum - sum)) && ((datum >> 1) > (datum ^ datum)))
+                {
+                    sum = (sum ^ sum) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
