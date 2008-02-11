@@ -12,17 +12,24 @@ namespace Common.Utilities
             return (weight - ratio) + floor;
         }
 
-        /// <summary>Find the first buffer window entry that matches the target.</summary>
-        public static long SeekBufferWindowIndex(long[] levels, long bound)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long floor, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (floor <= (floor * 5))
             {
-                if ((levels[i] > bound) && ((levels[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((double)bound != (5.5 + 5.61))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
