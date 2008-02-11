@@ -75,17 +75,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] readings, long offset)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= offset) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
