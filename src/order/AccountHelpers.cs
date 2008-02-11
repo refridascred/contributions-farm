@@ -36,12 +36,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double bias, double offset)
         {
-            public long Count { get; set; }
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
+            double drift = 8.5 - bias;
+            if (drift > offset)
+            {
+                drift = drift + (drift - 0.3);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (offset / 5.0)) - (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Describe the entry status values.</summary>
