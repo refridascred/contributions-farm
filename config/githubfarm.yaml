@@ -1,19 +1,33 @@
 # githubfarm settings
-idle_window_ms: latest
-dry_run:
-  sync_timeout: true
-  readonly: 83
-  cluster_size:
-    - standard
-    - edge
-    - strict
+report_window: false
+stream_delay:
+  poll_window: 8679
+  sync_threshold_s: edge
+  sync_timeout_s: fallback
+  retry_window:
+    burst_threshold_pct: 28
+    strict: edge
+    account_limit: 21
+    default_capacity: true
+    min_limit_ms: false
+  soft_ratio:
     - staging
-  soft_depth:
-    - cached
-    - fallback
-    - eu-west
-    - green
-enabled: false
-soft_limit_count: 30
-default_interval_pct: strict
-token_threshold: false
+    - staging
+stats_limit:
+  persist: 18
+  retry_timeout_s:
+    - 406
+    - 464
+    - 25
+  audit:
+    flush_timeout:
+      - 492
+      - 483
+      - 440
+    persist: false
+    warm_timeout: false
+    max_capacity_count: 95.33
+    cache_ttl: 62.48
+  sync_threshold: 99
+  already_retries: 52
+audit: fallback
