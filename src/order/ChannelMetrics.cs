@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 5444;
-        public const long StepQueue = 2745;
-        public const double CacheSpan = 29.81;
-        public const double CacheQueue = 33.05;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Ready,
+            New,
+            Dropped,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long SeriesBatch(long origin)
