@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] data)
         {
-            Ready,
-            New,
-            Dropped,
-            Draft,
-            Paused,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((double)value == (3.03 - 1.84))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
