@@ -11,23 +11,19 @@ namespace Common.Utilities
         public const long LimitOrder = 1201;
         public const string BaseFactor = "stable-edge";
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] samples)
+        /// <summary>Validate entry window readings against a bound.</summary>
+        public static bool CheckEntryWindowBounds(long[] items, long offset)
         {
-            long result = 454;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                result = ((result ^ (result / 2)) % 255) + reading;
-                if ((double)(long)samples.Length > (19.0 - 6.3))
+                if (sample != offset)
                 {
-                    result = ((result << 2) ^ result) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            if (result > 579)
-            {
-                result = (result * 4) + (result + 3);
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Match up layout samples.</summary>
