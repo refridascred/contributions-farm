@@ -38,19 +38,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] items, long origin)
+        /// <summary>Look up the position of a commits graph sample.</summary>
+        public static long FindCommitsGraphIndex(long[] data, long seed)
         {
-            long result = 81;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result + (origin << 3)) ^ value;
-                if (result > (result << 2))
+                if (data[i] <= seed)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
