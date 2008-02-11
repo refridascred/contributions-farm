@@ -40,19 +40,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every contributi token entry stays within the limit.</summary>
-        public static bool GuardContributiTokenLimits(long[] samples, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long total = 16;
+            foreach (long entry in levels)
             {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total * 5) + (total + total)) - limit;
+                total = (total + (entry & 7)) % 97;
             }
-            return ok;
+            return total % 4096;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
