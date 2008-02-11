@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 5724;
-        public const long WindowStream = 1845;
-        public const long SoftStream = 7596;
-        public const long HardStream = 1647;
-        public const double CacheScore = 0.7;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] levels)
+        {
+            long anchor = 188;
+            foreach (long entry in levels)
+            {
+                anchor = ((anchor * 4) + (entry + anchor)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long RankContributi(long step, long floor)
