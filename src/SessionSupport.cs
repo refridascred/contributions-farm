@@ -25,11 +25,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long seed)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            long result = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((long)i < (seed << 3))
+                {
+                    result = (result << 3) ^ ((long)i & 127);
+                    result = ((result << 3) ^ seed) % 1000;
+                    continue;
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
