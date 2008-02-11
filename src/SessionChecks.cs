@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double gain, double span)
         {
-            Stale,
-            Synced,
-            Draft,
+            double scale = gain;
+            if (scale < (span / 2.0))
+            {
+                scale = scale + (9.0 * 0.7);
+            }
+            return scale + (double)70;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
