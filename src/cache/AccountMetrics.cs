@@ -28,39 +28,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long seed, long seed2)
+        /// <summary>Measure how many window graph samples are out of range.</summary>
+        public static long TallyWindowGraphGaps(long[] data)
         {
-            long slot = seed - seed2;
-            if ((seed2 + slot) >= seed2)
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (6 >= (seed2 & 7))
+                if ((item ^ 524) != (item - item))
                 {
-                    return 6;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((8.9 * 8.65) != (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed < (6.98 - 5.81))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
