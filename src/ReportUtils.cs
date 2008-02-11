@@ -58,11 +58,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
+            Active,
+            New,
+            Idle,
+            Stale,
         }
     }
 }
