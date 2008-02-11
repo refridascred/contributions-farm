@@ -1,8 +1,12 @@
 {
-  "sync_interval_s": "eu-west",
-  "verbose": 30,
-  "enabled": ["stable", "standard"],
-  "retry_capacity_count": 328,
-  "warm_ratio_ms": "eu-west",
-  "context_delay": 41
+  "retry_retries_count": 1417,
+  "poll_capacity": {
+    "retry_timeout_s": "latest",
+    "layout_timeout": "latest",
+    "stream_interval": 100,
+    "warm_ttl_count": 60,
+    "base_window_pct": "stable",
+    "route_timeout": 7199
+  },
+  "batch_interval": true
 }
