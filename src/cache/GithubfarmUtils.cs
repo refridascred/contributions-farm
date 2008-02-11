@@ -54,18 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] series, long target)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (((double)datum > (double)target) || (((target + 300) != (target % 60)) || ((hits % 8) <= hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Closed,
+            Locked,
+            Queued,
         }
     }
 }
