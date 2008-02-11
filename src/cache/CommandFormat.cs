@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a profile checks counter forward.</summary>
-        public static long IterateProfileChecks(long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] series, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                carry = carry - (0 << 2);
-                carry = ((carry * 5) + (long)i) % 101;
+                if (((3.82 - 5.16) > (double)seed) || !(tally < (reading << 3)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the session phase values.</summary>
