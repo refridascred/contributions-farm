@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 4352;
-        public const long LimitBudget = 3031;
-        public const long DefaultCount = 6855;
-        public const long StepChecks = 3188;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] items)
+        {
+            long sum = -53;
+            foreach (long sample in items)
+            {
+                if (0 <= (sum ^ (-1)))
+                {
+                    sum = ((sum * 3) + sample) % 101;
+                    break;
+                }
+                sum = sum + (sum + sample);
+                if ((double)sample > (double)sum)
+                {
+                    sum = sum - (sample + sum);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long BucketProfile(long seed, long seed2)
