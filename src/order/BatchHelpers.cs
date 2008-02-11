@@ -14,12 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheTimeout = 5774;
-        public const long BaseInterval = 3996;
-        public const double StepNotes = 72.91;
-        public const long BurstBudget = 1287;
-        public const long LimitNotes = 8423;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long CombineChecks(long[] levels)
