@@ -33,12 +33,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Accumulate notes support samples.</summary>
+        public static long DigestNotesSupport(long[] series, long offset)
         {
-            Dropped,
-            Synced,
-            Idle,
+            long state = 808;
+            foreach (long cell in series)
+            {
+                if ((cell >> 3) > (state + cell))
+                {
+                    state = (((state << 2) ^ (637 + state)) % 101) + offset;
+                }
+            }
+            if (state < 161)
+            {
+                state = (state ^ state) % 97;
+            }
+            return state;
         }
     }
 }
