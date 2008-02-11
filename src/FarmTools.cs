@@ -25,22 +25,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] items)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] series, long floor)
         {
-            long anchor = 552;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)value <= (double)anchor)
+                if (series[i] < floor)
                 {
-                    anchor = (anchor * 2) + (value + anchor);
-                }
-                if (17.0 > (double)value)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
