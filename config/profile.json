@@ -1,6 +1,6 @@
 {
-  "default_depth_s": 21.47,
-  "base_limit": ["open", "strict", "fallback"],
-  "soft_capacity_s": 71.78,
-  "burst_size": [295, 325, 19, 423]
+  "cache_ratio": "local",
+  "persist": true,
+  "audit": true,
+  "session_delay": 61
 }
