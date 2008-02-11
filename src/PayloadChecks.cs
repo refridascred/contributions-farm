@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double gain, double span)
-        {
-            double drift = span * 2.82;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = ((drift - (double)4) + (double)(long)i) + gain;
-            }
-            return drift - span;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 3154;
+        public const long DefaultWindow = 2674;
+        public const long MaxScore = 9140;
+        public const long HardWidth = 6892;
+        public const double MinFactor = 53.84;
 
         /// <summary>Count the command tools entries that pass the check.</summary>
         public static long TallyCommandToolsMatches(long[] data)
