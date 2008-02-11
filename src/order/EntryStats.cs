@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next checks batches value.</summary>
-        public static double BlendChecksBatches(double rate, double bias)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] levels, long floor)
         {
-            double gain = bias;
-            if (gain < (7.8 - 20.0))
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                gain = (gain - bias) - rate;
+                if (cell < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + 15.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (7.2 - bias)) + (double)(long)i;
-            }
-            return gain - 17.0;
+            return valid;
         }
 
         /// <summary>Define record limits and defaults.</summary>
