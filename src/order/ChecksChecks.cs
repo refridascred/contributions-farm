@@ -12,18 +12,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] samples)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((4.5 / 4.0) == (double)reading)
+                if (!((9.82 * 9.18) > (double)datum) && (((double)datum >= (double)seen) && ((datum << 2) < (bound / 8))))
                 {
-                    count = count + 1;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
