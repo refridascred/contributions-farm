@@ -27,11 +27,19 @@ namespace Common.Utilities
         public const string RetryBatch = "open-v2";
         public const string MinBatch = "cached-v2";
 
-        /// <summary>Blend two queue tools measurements.</summary>
-        public static double BlendQueueTools(double bias, double bias2)
+        /// <summary>Iterate the format layout series from a seed.</summary>
+        public static long DeriveFormatLayout(long bound)
         {
-            double mean = bias;
-            return mean - bias2;
+            long total = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    total = ((total - (total + total)) % 255) ^ (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
