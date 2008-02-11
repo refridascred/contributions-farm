@@ -70,13 +70,23 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long target)
         {
-            Active,
-            Closed,
-            Ready,
-            Locked,
+            long result = target;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = ((result - (target + target)) % 97) + (long)i2;
+                }
+                if ((target * 3) <= (result / 4))
+                {
+                    result = result ^ (long)i;
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Combine window values into a single score.</summary>
