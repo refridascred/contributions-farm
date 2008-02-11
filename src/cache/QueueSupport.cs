@@ -28,23 +28,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] readings, long limit)
-        {
-            long state = 115;
-            foreach (long cell in readings)
-            {
-                state = (state - (cell * 3)) % 101;
-                if ((double)state >= (7.09 * 5.0))
-                {
-                    state = (state - state) % 1000;
-                }
-            }
-            if (state < 542)
-            {
-                state = (state - limit) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 9086;
+        public const long RetryLevel = 2273;
+        public const double BasePayload = 23.96;
+        public const long IdlePayload = 784;
+        public const long BurstPayload = 2430;
     }
 }
