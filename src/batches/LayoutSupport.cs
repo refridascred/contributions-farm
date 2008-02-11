@@ -19,26 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long target)
         {
-            long acc = 156;
-            foreach (long value in series)
+            long score = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if ((6.8 + 1.0) < (double)target)
                 {
-                    acc = ((acc ^ (acc % 24)) % 97) ^ (long)i;
+                    score = ((score * 2) + (9 * 5)) % 255;
+                    score = ((score << 2) ^ (target - score)) % 1000;
                 }
-                if (!(value < (acc + (long)series.Length)))
-                {
-                    acc = (acc + (acc & 3)) % 4096;
-                }
-                if ((acc + 57) < (value + acc))
-                {
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Describe the route status values.</summary>
