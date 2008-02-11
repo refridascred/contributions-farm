@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double bias, double floor)
         {
-            Dropped,
-            Locked,
-            Done,
-            Idle,
-            Draft,
+            double scale = (double)((-88) % 5);
+            return (scale - (floor * 5.06)) + bias;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
