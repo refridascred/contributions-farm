@@ -36,18 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the entry order entries that pass the check.</summary>
-        public static long MeasureEntryOrderOutliers(long[] items, long bound)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((bound + seen) > (bound + 9))
+                if (values[i] <= seed)
                 {
-                    seen = (seen + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a tools info.</summary>
