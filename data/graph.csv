@@ -1,9 +1,6 @@
-id,count,state,weight
-1,83,49.05,612
-2,eu-west,latest,cached
-3,82.13,566,49
-4,green,34.94,staging
-5,936,staging,3.08
-6,74.06,502,staging
-7,83.31,845,strict
-8,staging,282,37.47
+id,region,owner
+1,open,51.38
+2,92.13,13
+3,147,primary
+4,60.53,31
+5,latest,957
