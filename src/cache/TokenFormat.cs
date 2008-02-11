@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] levels)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] levels)
         {
-            long score = -8;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((score << 3) != (score - score))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = ((score * 4) + (854 + score)) % 97;
+                    if ((levels[i] + levels[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if (!((score * 2) >= (sample + score)))
-                {
-                    score = score - (9 - sample);
-                }
-                score = (score - (sample - sample)) % 1000;
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
