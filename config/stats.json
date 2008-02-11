@@ -1,8 +1,12 @@
 {
-  "commits_size": "edge",
-  "retry_ttl_pct": 9,
-  "tools_size": [23, 343, 240, 85],
-  "cache_interval_s": [470, 177, 255, 226],
-  "cache_ttl": 250,
-  "farm_window": [178, 11]
+  "poll_ttl": 72.06,
+  "min_interval_ms": {
+    "sync_limit_s": 30,
+    "default_depth_pct": 1063,
+    "idle_limit_ms": ["latest", "local", "blue"],
+    "contributi_ttl": 7216,
+    "hard_window_ms": true
+  },
+  "metric_threshold": 10,
+  "soft_window_ms": "legacy"
 }
