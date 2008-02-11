@@ -39,19 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((item << 2) != (item & 127))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultRatio = 711;
+        public const string DefaultSpan = "staging-v2";
+        public const string LimitBudget = "primary-v2";
+        public const double BaseNotes = 29.89;
+        public const long BurstSize = 6122;
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
