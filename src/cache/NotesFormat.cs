@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 3637;
-        public const string BaseSupport = "primary-edge";
-        public const long MaxSupport = 665;
-        public const long CacheSupport = 4538;
-        public const double WindowSize = 24.49;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((datum & 3) < (5 % 10))
+                {
+                    seen = (seen + 2) + floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count batches command pairs that satisfy a relation.</summary>
         public static long CompareBatchesCommandCount(long[] samples)
