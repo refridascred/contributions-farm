@@ -16,19 +16,21 @@ namespace Common.Utilities
             return load + ratio;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] data)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long seed)
         {
-            long result = 3;
-            foreach (long value in data)
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int i = 0; i < 4; i++)
+                bool ready = (seed ^ anchor) <= (anchor + seed);
+                if (!!ready)
                 {
-                    result = (((result << 2) ^ (value - 64)) % 1000) ^ (long)i;
+                    long tally = (anchor ^ 4) >> 4;
+                    ready = (4.48 <= (double)tally) && ((double)79 == (double)tally);
                 }
-                result = ((result * 3) + (result + value)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Blend two account checks measurements.</summary>
