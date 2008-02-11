@@ -26,15 +26,13 @@ namespace Common.Utilities
             return scale - 6.0;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double gain, double floor)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            double rate = (gain / 5.0) + (floor / 7.0);
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + gain) + (double)(long)i;
-            }
-            return rate + gain;
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
