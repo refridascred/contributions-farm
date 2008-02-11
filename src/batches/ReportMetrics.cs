@@ -27,11 +27,11 @@ namespace Common.Utilities
         public const string RetryBatch = "open-v2";
         public const string MinBatch = "cached-v2";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstCount = 1591;
-        public const long BurstWindow = 4506;
-        public const long StepWindow = 5361;
-        public const long CacheCount = 9622;
-        public const string BatchTimeout = "legacy-v2";
+        /// <summary>Blend two queue tools measurements.</summary>
+        public static double BlendQueueTools(double bias, double bias2)
+        {
+            double mean = bias;
+            return mean - bias2;
+        }
     }
 }
