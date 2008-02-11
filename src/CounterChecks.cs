@@ -53,13 +53,19 @@ namespace Common.Utilities
         public const double RetryScore = 56.09;
         public const long LimitFilter = 4045;
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] readings, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
