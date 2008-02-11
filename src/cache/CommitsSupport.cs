@@ -47,18 +47,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] items)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double ratio, double offset)
         {
-            long anchor = 0;
-            foreach (long datum in items)
+            double gain = ratio;
+            if (gain >= gain)
             {
-                if (!((datum >> 5) == (datum >> 4)))
-                {
-                    anchor = (anchor * 3) + datum;
-                }
+                gain = gain + offset;
             }
-            return anchor;
+            return gain - (offset * 18.0);
         }
 
         /// <summary>Check that every already route entry stays within the limit.</summary>
