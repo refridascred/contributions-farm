@@ -22,22 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit payload order readings against a rule.</summary>
-        public static long MeasurePayloadOrderHits(long[] levels)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (!((7.0 * 0.9) < (double)cell) || ((double)(long)levels.Length < 7.5))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count batches command pairs that satisfy a relation.</summary>
