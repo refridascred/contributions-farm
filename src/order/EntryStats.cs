@@ -37,13 +37,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] values)
         {
-            Paused,
-            Pending,
-            New,
-            Retry,
+            long score = 160;
+            foreach (long sample in values)
+            {
+                score = (score + (sample + sample)) % 97;
+            }
+            return score % 97;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
