@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window farm values into a single score.</summary>
-        public static long WeighWindowFarm(long[] levels, long offset)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] samples)
         {
-            long anchor = 59;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 2) + sample) % 4096;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (anchor < 3)
-            {
-                anchor = anchor ^ (93 + offset);
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
