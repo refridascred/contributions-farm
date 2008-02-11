@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green staging; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=295
+log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-mode="${1:-latest}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "ran ${count} rounds"
