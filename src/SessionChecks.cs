@@ -34,10 +34,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseGraph = 32.42;
-        public const long WindowGraph = 8598;
-        public const long IdleCount = 6424;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            New,
+            Retry,
+            Queued,
+            Synced,
+            Active,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long CacheSize = 8978;
