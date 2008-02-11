@@ -31,20 +31,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] values)
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
+            long mark = 447;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((entry + 907) >= (mark + 0))
                 {
-                    score = (score + (score << 1)) ^ (long)i2;
+                    mark = mark + (mark + mark);
                 }
-                score = ((score * 2) + (offset + score)) % 101;
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
