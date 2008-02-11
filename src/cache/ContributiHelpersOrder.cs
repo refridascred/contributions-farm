@@ -16,22 +16,19 @@ namespace Common.Utilities
             return load + ratio;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] levels)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] data)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long result = 3;
+            foreach (long value in data)
             {
-                if (((12.0 * 2.9) < (double)count) || (((long)levels.Length - reading) > (count & 3)))
+                for (int i = 0; i < 4; i++)
                 {
-                    count = count + 3;
+                    result = (((result << 2) ^ (value - 64)) % 1000) ^ (long)i;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((result * 3) + (result + value)) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Blend two account checks measurements.</summary>
