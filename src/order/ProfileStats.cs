@@ -24,19 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] readings, long step)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell != step)
+                if (values[i] <= step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Audit editor layout readings against a rule.</summary>
