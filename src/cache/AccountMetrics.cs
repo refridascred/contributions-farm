@@ -48,13 +48,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long seed, long seed2)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            long slot = seed - seed2;
+            if ((seed2 + slot) >= seed2)
+            {
+                return 2;
+            }
+            else
+            {
+                if (6 >= (seed2 & 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((8.9 * 8.65) != (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)seed < (6.98 - 5.81))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a batch token figure with a bias.</summary>
