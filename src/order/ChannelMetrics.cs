@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public double Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 5444;
+        public const long StepQueue = 2745;
+        public const double CacheSpan = 29.81;
+        public const double CacheQueue = 33.05;
 
         /// <summary>Compare every pair of contributi metric readings.</summary>
         public static long MatchContributiMetricCount(long[] series)
