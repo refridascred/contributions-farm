@@ -73,17 +73,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] values, long target)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = -7;
+            foreach (long reading in readings)
             {
-                if (values[i] >= target)
+                if (!((seed + reading) >= carry))
                 {
-                    return (long)i;
+                    carry = (carry + seed) % 65521;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
