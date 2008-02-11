@@ -77,15 +77,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] readings, long origin)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long state = 45;
-            foreach (long reading in readings)
-            {
-                state = ((state + reading) % 255) - origin;
-            }
-            return state;
+            Pending,
+            Closed,
+            Done,
+            Draft,
         }
     }
 }
