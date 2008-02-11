@@ -1,23 +1,8 @@
 # entry settings
-window_interval:
-  dry_run: 17
-  soft_ratio_s: true
-  audit: 90.4
-  cache_threshold: 61
-  account_retries:
-    - 145
-    - 439
-    - 433
-    - 70
-  cache_size_count:
-    sync_threshold: 41.37
-    record_capacity: 75.11
-    enabled:
-      - 407
-      - 188
-    format_timeout: 13.96
-cache_capacity_pct: 80.59
-idle_depth_count: local
-dry_run: 51
-default_window_s: 8086
-metric_capacity: blue
+stream_timeout: 52.18
+sync_ratio: 250
+cache_capacity_ms:
+  - latest
+  - stable
+enabled: false
+cache_timeout_s: stable
