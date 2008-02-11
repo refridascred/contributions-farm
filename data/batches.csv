@@ -1,6 +1,7 @@
-id,score,active,label
-1,727,177,703
-2,749,269,cached
-3,73.13,314,eu-west
-4,667,standard,latest
-5,14.17,74,26
+id,count,score,active
+1,blue,standard,eu-west
+2,82.8,938,fallback
+3,19.35,18.54,eu-west
+4,70.87,594,38.01
+5,71.95,green,14
+6,fallback,794,94.4
