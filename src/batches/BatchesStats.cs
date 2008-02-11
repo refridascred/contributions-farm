@@ -39,12 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Paused,
-            New,
-            Closed,
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
