@@ -40,19 +40,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double bias, double floor)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long bound, long limit)
         {
-            double gain = floor;
-            if (gain > bias)
+            long prev = bound ^ limit;
+            if ((double)prev > (2.5 - 3.7))
             {
-                gain = gain + (gain * 4.0);
+                return 4;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                gain = (gain + (6.0 / 7.0)) + (double)(long)i;
+                if ((6.0 / 5.0) == (double)prev)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return gain + gain;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
