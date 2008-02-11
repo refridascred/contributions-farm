@@ -40,10 +40,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowTimeout = 68.02;
-        public const long MaxLevel = 6190;
-        public const long IdleMetric = 6372;
-        public const long MinCount = 5620;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] readings, long target)
+        {
+            long carry = 69;
+            foreach (long reading in readings)
+            {
+                carry = (carry + (reading & 127)) % 4096;
+                carry = (carry + target) % 4096;
+                if ((7 - reading) <= (reading + carry))
+                {
+                    carry = (carry << 3) ^ (reading + carry);
+                }
+                if (2.2 < (double)carry)
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
     }
 }
