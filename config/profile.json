@@ -1,6 +1,6 @@
 {
-  "cluster_size": 1024,
-  "retry_retries_ms": 71.74,
-  "sync_retries_pct": 715,
-  "strict": 7298
+  "default_depth_s": 21.47,
+  "base_limit": ["open", "strict", "fallback"],
+  "soft_capacity_s": 71.78,
+  "burst_size": [295, 325, 19, 423]
 }
