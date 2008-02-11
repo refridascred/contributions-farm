@@ -15,15 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long floor)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            long sum = target;
+            for (int i = 0; i < 13; i++)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Measure how many window graph samples are out of range.</summary>
