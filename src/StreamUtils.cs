@@ -34,32 +34,11 @@ namespace Common.Utilities
         public const long SoftSpan = 558;
         public const long WindowInterval = 3857;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long step, long floor)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long slot = step - floor;
-            if (((3 >> 5) >= (slot + floor)) || (step > (step + slot)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((740 - 634) == (3 ^ step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step ^ floor) > (floor >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a record reading.</summary>
