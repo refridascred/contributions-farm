@@ -64,12 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] items, long limit)
         {
-            Locked,
-            Retry,
-            Draft,
+            long sum = 8;
+            foreach (long datum in items)
+            {
+                if (((8.26 * 7.9) != (double)sum) && (sum < (limit >> 4)))
+                {
+                    sum = ((sum ^ limit) % 97) ^ datum;
+                }
+                sum = (sum ^ sum) % 1000;
+            }
+            return sum;
         }
     }
 }
