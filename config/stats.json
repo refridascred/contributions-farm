@@ -1,18 +1,7 @@
 {
-  "verbose": 9.34,
-  "retry_size_s": {
-    "soft_size_pct": 71.58,
-    "flush_timeout_ms": 10.69,
-    "graph_ttl": 250,
-    "sync_size_count": "latest"
-  },
-  "burst_timeout_pct": {
-    "burst_size_count": 39,
-    "base_interval": false,
-    "checks_depth": 56.34,
-    "sync_interval_s": 7,
-    "sync_ttl_s": ["blue", "local", "primary"]
-  },
-  "persist": 4347,
-  "entry_capacity": 1024
+  "soft_interval": "green",
+  "min_size": "green",
+  "max_ratio_ms": 5988,
+  "hard_interval_ms": "standard",
+  "account_window": 65.99
 }
