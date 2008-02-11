@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] values, long seed)
+        /// <summary>Digest a series of buffer editor entries.</summary>
+        public static long TallyBufferEditor(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long result = 55;
+            foreach (long item in readings)
             {
-                if ((6 + seed) < (seed & 127))
+                if ((double)result > (16.0 + 3.45))
                 {
-                    seen = (seen + 3) + item;
+                    result = ((result + ((long)readings.Length % 24)) % 65521) - item;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the report mode values.</summary>
