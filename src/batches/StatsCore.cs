@@ -61,17 +61,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] items, long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = -43;
+            foreach (long datum in data)
             {
-                if (items[i] < limit)
+                long next = ((-698) + target) + (2 << 2);
+                if (!((next & 31) <= target))
                 {
-                    return (long)i;
+                    next = ((next << 3) ^ (48 - (-89))) % 1000;
+                }
+                if (!((datum & 127) >= datum))
+                {
+                    acc = acc + ((long)data.Length / 6);
+                }
+                else
+                {
+                    acc = (acc * 4) + datum;
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Describe the layout class values.</summary>
