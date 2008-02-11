@@ -46,13 +46,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Retry,
-            Synced,
-            New,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdlePayload = 14.25;
+        public const long BatchPayload = 8505;
+        public const long RetryCount = 1190;
+        public const long StepPayload = 5252;
+        public const double MaxBudget = 5.66;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long FindNotesIndex(long[] readings, long bound)
