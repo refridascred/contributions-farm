@@ -1,6 +1,5 @@
 {
-  "cache_interval": 84.38,
-  "flush_size_count": 81.5,
-  "buffer_interval": "green",
-  "min_ttl": "local"
+  "base_timeout_count": [433, 252],
+  "verbose": 100,
+  "flush_capacity": "standard"
 }
