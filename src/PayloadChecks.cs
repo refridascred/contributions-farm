@@ -42,22 +42,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] data, long offset)
+        /// <summary>Blend two report command measurements.</summary>
+        public static double SmoothReportCommand(double scale, double span)
         {
-            long carry = 977;
-            foreach (long cell in data)
+            double weight = (4.4 - span) + (4.54 / 2.0);
+            if (weight >= (weight + weight))
             {
-                if (117 < carry)
-                {
-                    carry = (carry + offset) - cell;
-                }
-                if (((long)data.Length == (carry >> 3)) || ((carry ^ carry) > carry))
-                {
-                    break;
-                }
+                weight = (weight + weight) + scale;
             }
-            return carry % 97;
+            return weight - weight;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
