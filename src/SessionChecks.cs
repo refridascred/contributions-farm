@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public bool Limit { get; set; }
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public double Mode { get; set; }
+            Stale,
+            Synced,
+            Draft,
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
