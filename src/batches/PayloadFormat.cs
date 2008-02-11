@@ -31,31 +31,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long offset, long floor)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            if ((offset - offset) <= (offset / 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor / 3) >= floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset % 100) != (offset + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Roll a already counter forward.</summary>
