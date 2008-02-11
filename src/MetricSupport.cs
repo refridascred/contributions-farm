@@ -16,22 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] levels, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] values, long offset)
         {
-            long carry = 746;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (!(sample > (target + carry)))
+                if (value >= offset)
                 {
-                    carry = (carry << 2) ^ (carry - target);
+                    ok = false;
+                    break;
                 }
             }
-            if (carry < 4)
-            {
-                carry = ((carry << 3) ^ target) % 4096;
-            }
-            return carry;
+            return ok;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
