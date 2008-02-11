@@ -1,11 +1,11 @@
 # Command notes
 
-When a report fails, the batch handler retries a few times before giving up.
-A route that stays idle for too long is moved to the cache list.
+A layout that stays idle for too long is moved to the context list.
+The buffer report groups every batch by route.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Review metric limits each release
-- Log every order change
-- Document new layout fields
+- Keep cache values small
+- Validate queue input early
+- Prefer commits defaults
+- Document new channel fields
