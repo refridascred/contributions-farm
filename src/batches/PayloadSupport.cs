@@ -32,12 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] levels)
         {
-            public bool Label { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((hits > (item - 3)) && (((hits % 8) >= item) || (9 <= (item >> 3))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
