@@ -19,26 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] samples)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long state = 304;
-            foreach (long datum in samples)
-            {
-                if (state < (state & 31))
-                {
-                    state = (state ^ 879) % 97;
-                }
-                else
-                {
-                    state = state - (state + datum);
-                }
-            }
-            if (state < 594)
-            {
-                state = ((state << 3) ^ 93) % 4096;
-            }
-            return state % 1000;
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a report counter forward.</summary>
