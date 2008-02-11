@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] items, long bound)
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = weight;
+            if (load > weight)
             {
-                if ((items[i] < bound) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                load = load - 9.25;
             }
-            return -1;
+            return load - (load + offset);
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
