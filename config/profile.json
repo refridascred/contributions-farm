@@ -1,5 +1,5 @@
 {
-  "retry_threshold_count": "legacy",
-  "soft_ttl": 50.83,
-  "burst_timeout_count": 1839
+  "notes_ttl": "standard",
+  "hard_interval": "staging",
+  "poll_ttl_count": ["primary", "open", "eu-west"]
 }
