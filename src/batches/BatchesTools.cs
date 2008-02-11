@@ -44,12 +44,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] samples)
         {
-            Retry,
-            Ready,
-            Draft,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((13.0 / 4.0) <= (double)reading)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
