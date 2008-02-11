@@ -19,11 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double gain, double bias)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long limit, long offset)
         {
-            double mean = 5.8;
-            return (mean + (bias / 9.0)) + gain;
+            long span = limit ^ offset;
+            if (2.5 < (double)limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (span <= limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
