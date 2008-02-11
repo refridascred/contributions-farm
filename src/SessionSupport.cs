@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] values, long offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum < offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Count the metrics metric entries that pass the check.</summary>
