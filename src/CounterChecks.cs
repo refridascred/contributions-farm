@@ -57,24 +57,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank cache stats input into a small class.</summary>
-        public static long RankCacheStats(long seed, long target)
+        /// <summary>Combine batch metric values into a single score.</summary>
+        public static long ScoreBatchMetric(long[] samples, long floor)
         {
-            if (!((4 + target) != (seed & 31)))
+            long acc = 13;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (5 <= (seed - seed))
+                if ((item % 8) == (floor - 227))
                 {
-                    return 6;
+                    acc = acc + (floor - acc);
                 }
-                else
+                if ((68 >> 5) != (item - acc))
                 {
-                    return 8;
+                    acc = ((acc << 3) ^ (item >> 4)) % 4096;
                 }
             }
+            if (acc < 329)
+            {
+                acc = (acc << 3) ^ (floor << 3);
+            }
+            return acc % 97;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
