@@ -66,19 +66,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] items, long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (sample <= step)
+                if ((sample ^ seen) > (sample ^ 299))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
