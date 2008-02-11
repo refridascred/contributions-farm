@@ -1,18 +1,6 @@
 # support settings
-verbose: 32
-flush_window_pct: 30
-metric_retries:
-  idle_window_ms:
-    - standard
-    - edge
-  readonly:
-    - staging
-    - staging
-  hard_depth: primary
-max_delay_count: 24.02
-cache_ttl_count: eu-west
-hard_ratio_s:
-  - 98
-  - 164
-  - 294
-  - 487
+profile_delay: 26.27
+persist: primary
+cache_threshold: false
+verbose: true
+burst_capacity_ms: 34.34
