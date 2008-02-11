@@ -1,22 +1,16 @@
 # githubfarm settings
-batch_depth: 61.55
-audit:
-  - 196
-  - 484
-  - 328
-  - 328
-flush_depth_count:
-  hard_timeout_count: 7701
-  cache_size:
-    enabled: 60
-    batch_delay_pct: staging
-    idle_retries_ms: true
-    default_delay_pct: stable
-    min_retries:
-      - 151
-      - 299
-      - 221
-  warm_ttl_count: 78
-  audit: green
-  readonly: cached
-base_depth_pct: 94
+flush_interval: 35
+batch_window: false
+enabled: false
+schema_interval: false
+hard_threshold_s:
+  metric_delay:
+    compress:
+      - blue
+      - staging
+    audit: legacy
+    idle_delay_ms: strict
+    dry_run: false
+  hard_delay_s: 55
+  min_interval: legacy
+hard_window: 8031
