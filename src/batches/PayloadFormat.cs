@@ -13,23 +13,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double gain, double offset)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] values, long floor)
         {
-            double gain2 = offset;
-            if (gain2 < gain2)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain2 = (gain2 + (14.0 + offset)) + gain;
+                if ((values[i] <= floor) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (gain2 - gain2);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = gain2 + (double)(long)i;
-            }
-            return gain2 - (offset - 1.0);
+            return -1;
         }
 
         /// <summary>Hold a token summary.</summary>
