@@ -28,25 +28,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the editor filter series from a seed.</summary>
-        public static long RollEditorFilter(long seed)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = (((total * 4) + total) % 1000) ^ (long)i2;
-                }
-                long cur = seed >> 5;
-                for (int i3 = 0; i3 < 5; i3++)
-                {
-                    total = ((total - (seed << 1)) % 1000) ^ (long)i3;
-                    total = (total + cur) % 255;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            Pending,
+            Failed,
+            Dropped,
+            New,
+            Done,
         }
     }
 }
