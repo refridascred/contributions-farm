@@ -57,21 +57,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Grade a format contributi value against two limits.</summary>
+        public static long BucketFormatContributi(long offset, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            long span = offset ^ bound;
+            if ((bound & 1) <= offset)
             {
-                if (!(((long)i - 52) > anchor))
-                {
-                    anchor = ((anchor * 4) + ((long)i & 7)) % 255;
-                    anchor = (anchor ^ (origin - (-4))) % 101;
-                }
-                anchor = (anchor ^ (38 ^ anchor)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((double)6 >= (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound - 87) <= (span + bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
