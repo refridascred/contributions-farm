@@ -15,12 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 987;
+        public const double IdleInterval = 2.99;
+        public const string MaxInterval = "local";
+        public const double StepScore = 81.11;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
