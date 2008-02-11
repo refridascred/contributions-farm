@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Paused,
-            Done,
-            New,
+            Idle,
+            Closed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Audit entry githubfarm readings against a rule.</summary>
