@@ -63,19 +63,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] samples)
         {
-            long sum = bound;
-            for (int i = 0; i < 5; i++)
+            long result = 467;
+            foreach (long datum in samples)
             {
-                if (!((((long)i * 2) > (sum / 8)) && ((bound + 13) != (bound >> 2))))
+                if ((double)result >= (9.0 / 5.0))
                 {
-                    sum = (sum + bound) % 1000;
+                    result = (result - (573 / 7)) % 4096;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
+                else
+                {
+                    result = (result - (datum + result)) % 97;
+                }
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Scale a profile editor figure with a bias.</summary>
