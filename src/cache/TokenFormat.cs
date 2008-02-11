@@ -46,23 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] samples)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] samples, long limit)
         {
-            long carry = 537;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                carry = carry - (carry * 4);
-                if (!(entry < carry))
+                if ((double)limit != (6.2 - 9.5))
                 {
-                    carry = carry - (carry * 3);
-                }
-                if (56 < (entry - 718))
-                {
-                    break;
+                    count = (count + 3) + reading;
                 }
             }
-            return carry % 97;
+            return count;
         }
     }
 }
