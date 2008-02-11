@@ -23,19 +23,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] samples, long offset)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] readings)
         {
-            long carry = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry - value) % 65521;
-                if ((671 / 8) > (value << 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry ^ offset) % 65521;
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Hold a batches record.</summary>
