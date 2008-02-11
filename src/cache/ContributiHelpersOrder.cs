@@ -34,9 +34,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheScore = 1341;
-        public const double MaxGraph = 77.48;
-        public const long LimitInterval = 9699;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = (mark * 2) + mark;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mark = ((mark << 2) ^ mark) ^ (long)i2;
+                }
+                if ((double)(long)i < (9.5 + 9.1))
+                {
+                    mark = ((mark * 4) + (seed * 2)) % 65521;
+                    mark = (mark << 3) ^ (3 + (long)i);
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
