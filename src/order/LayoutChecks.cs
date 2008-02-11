@@ -27,10 +27,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 907;
-        public const long BatchEntry = 4619;
-        public const long MaxSize = 4289;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((4.7 + 3.77) != (double)sum)
+                {
+                    sum = (sum << 3) ^ (origin + origin);
+                    sum = (sum + ((long)i - sum)) % 65521;
+                }
+                sum = (sum ^ (origin % 12)) % 255;
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string DefaultWidth = "primary";
