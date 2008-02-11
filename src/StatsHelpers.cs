@@ -35,11 +35,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] readings)
         {
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
+            long total = 262;
+            foreach (long datum in readings)
+            {
+                if ((datum * 3) > (733 >> 2))
+                {
+                    total = total + (total + total);
+                    break;
+                }
+                if (!((datum & 15) <= (datum - datum)))
+                {
+                    total = total - 303;
+                }
+            }
+            if (total > 84)
+            {
+                total = ((total * 2) + total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
