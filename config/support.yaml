@@ -1,5 +1,7 @@
 # support settings
-graph_size: cached
-session_limit: latest
-contributi_capacity: strict
-readonly: false
+default_timeout: 1024
+dry_run: 6338
+poll_limit_ms: fallback
+cache_limit_s: true
+min_timeout: false
+default_interval_ms: blue
