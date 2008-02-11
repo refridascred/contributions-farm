@@ -1,7 +1,6 @@
-id,active,ratio,token,count
-1,standard,95.56,eu-west,17.85
-2,188,76,773,cached
-3,368,93.59,91,787
-4,green,standard,733,legacy
-5,green,fallback,61.21,521
-6,41.85,18.54,strict,44.57
+id,count,token,owner
+1,58.96,75.86,30.87
+2,11.17,staging,280
+3,719,376,local
+4,84,staging,0
+5,76.05,staging,245
