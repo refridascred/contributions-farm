@@ -35,11 +35,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double weight, double offset)
         {
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
+            double bias = (double)(798 ^ 42);
+            if (bias > weight)
+            {
+                bias = bias + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias + (bias / 7.0);
         }
     }
 }
