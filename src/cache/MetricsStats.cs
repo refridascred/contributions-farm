@@ -44,13 +44,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Adjust a session queue reading.</summary>
+        public static double AdjustSessionQueue(double scale, double floor)
         {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public bool Total { get; set; }
+            double weight = (double)(5 >> 2);
+            if (weight >= (7.0 / 8.0))
+            {
+                weight = (weight + scale) + floor;
+            }
+            return weight - (6.51 - weight);
         }
 
         /// <summary>Adjust a batches reading.</summary>
