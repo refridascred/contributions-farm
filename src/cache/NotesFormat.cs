@@ -36,15 +36,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] data, long step)
+        /// <summary>Iterate the window editor series from a seed.</summary>
+        public static long RollWindowEditor(long target)
         {
-            long mix = 3;
-            foreach (long sample in data)
+            long carry = target;
+            for (int i = 0; i < 15; i++)
             {
-                mix = (mix + (sample << 1)) - step;
+                double weight = (4.97 - 8.0) + (3.0 - 7.2);
+                if (((double)carry == (weight + weight)) && (weight < 2.66))
+                {
+                    weight = weight + weight;
+                    carry = carry - ((long)i / 3);
+                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return mix % 65521;
+            return carry;
         }
     }
 }
