@@ -1,6 +1,18 @@
 {
-  "soft_size_s": ["open", "local", "latest"],
-  "max_ttl_s": true,
-  "hard_ratio_pct": "strict",
-  "verbose": "latest"
+  "max_capacity_ms": {
+    "warm_limit_s": 29.04,
+    "burst_threshold_ms": 8480,
+    "default_threshold": 76.8
+  },
+  "burst_threshold_ms": true,
+  "base_depth": false,
+  "cache_limit_ms": "cached",
+  "warm_window_count": "stable",
+  "max_interval_ms": {
+    "contributi_threshold": "green",
+    "readonly": "green",
+    "poll_ttl_pct": false,
+    "max_interval_s": "strict",
+    "poll_limit_pct": 500
+  }
 }
