@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double ratio, double offset)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long step)
         {
-            double ratio2 = (double)(21 - 9);
-            for (int i = 0; i < 7; i++)
+            long state = step;
+            for (int i = 0; i < 23; i++)
             {
-                ratio2 = ((ratio2 + offset) + (double)(long)i) - ratio;
+                state = (state + ((long)i % 24)) % 1000;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return ratio2 - (ratio2 / 6.0);
+            return state;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
