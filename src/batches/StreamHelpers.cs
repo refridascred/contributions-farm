@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long seed)
         {
-            Paused,
-            Stale,
-            New,
+            long result = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
