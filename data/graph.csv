@@ -1,6 +1,10 @@
-id,region,owner
-1,open,51.38
-2,92.13,13
-3,147,primary
-4,60.53,31
-5,latest,957
+id,active,region,ratio
+1,primary,legacy,cached
+2,448,431,fallback
+3,689,162,776
+4,strict,503,standard
+5,792,latest,open
+6,268,861,green
+7,edge,strict,393
+8,70.74,578,80.04
+9,78.68,97.68,81.9
