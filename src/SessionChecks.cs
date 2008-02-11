@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] items)
+        /// <summary>Count the session already entries that pass the check.</summary>
+        public static long MeasureSessionAlreadyMatches(long[] data, long origin)
         {
-            long sum = 13;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((6 < (datum - sum)) && ((datum >> 1) > (datum ^ datum)))
+                if ((double)value < 20.0)
                 {
-                    sum = (sum ^ sum) % 101;
+                    matches = (matches + 1) + origin;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
