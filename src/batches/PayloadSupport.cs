@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Draft,
-            Done,
-            Failed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardDepth = 8612;
+        public const long IdleScore = 209;
+        public const long MaxScore = 7061;
+        public const string LimitBatches = "local-1";
+        public const long StepDepth = 2634;
 
         /// <summary>Count farm profile pairs that satisfy a relation.</summary>
         public static long CompareFarmProfileCount(long[] levels)
