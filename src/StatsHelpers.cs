@@ -16,18 +16,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] data)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long origin, long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            if ((target + 5) >= origin)
             {
-                if ((entry * 4) <= count)
+                return 2;
+            }
+            else
+            {
+                if (20.0 < (double)origin)
                 {
-                    count = count + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
