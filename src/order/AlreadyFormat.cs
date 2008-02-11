@@ -36,17 +36,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] readings, long limit)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long target, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long prev = target ^ offset;
+            if ((target ^ offset) <= (2 & 1))
             {
-                if (readings[i] <= limit)
+                return 6;
+            }
+            else
+            {
+                if ((offset + prev) >= prev)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the command state values.</summary>
