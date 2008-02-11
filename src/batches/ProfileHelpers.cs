@@ -12,39 +12,23 @@ namespace Common.Utilities
         public const double BatchLayout = 70.06;
         public const long StepLayout = 8359;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long step, long bound)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double bias, double span)
         {
-            long step2 = step ^ bound;
-            if ((step + bound) > bound)
+            double drift = span + span;
+            if (drift <= 1.2)
             {
-                return 8;
+                drift = drift + 16.0;
             }
             else
             {
-                if (!((step2 + bound) < step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step / 5) > (step2 >> 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (bound > ((-547) + step2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                drift = drift + (double)(-15);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
