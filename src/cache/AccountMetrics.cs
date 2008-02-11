@@ -124,32 +124,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long origin, long seed)
-        {
-            long lane = origin - seed;
-            if ((lane % 8) <= seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)(-83) >= (double)lane)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((-2) <= (origin + lane))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleStream = 8.09;
+        public const long MaxStream = 168;
+        public const long RetryStream = 6947;
+        public const long BurstStream = 203;
+        public const long DefaultStream = 8013;
     }
 }
