@@ -33,13 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] values, long offset)
         {
-            Done,
-            Ready,
-            Draft,
-            Closed,
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
