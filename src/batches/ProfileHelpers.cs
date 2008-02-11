@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            Paused,
-            Ready,
-            Closed,
-            Active,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitSize = 54.62;
+        public const long SoftLayout = 5096;
+        public const long StepScore = 7732;
+        public const double BatchLayout = 70.06;
+        public const long StepLayout = 8359;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long BucketReport(long step, long bound)
