@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Measure how many queue buffer samples are out of range.</summary>
+        public static long CountQueueBufferOutliers(long[] levels, long origin)
         {
-            Ready,
-            Done,
-            Pending,
-            Locked,
-            Paused,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((((origin + tally) <= (origin + 279)) || ((datum / 6) <= (753 + origin))) || !((datum & 127) < origin))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the tools state values.</summary>
