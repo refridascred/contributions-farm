@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const double BurstInterval = 19.1;
         public const double WindowOrder = 1.18;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] data, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (sample <= limit)
+                if ((0.23 + 2.7) == (double)datum)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) + step;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
