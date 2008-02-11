@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
+            Active,
+            Pending,
+            Failed,
+            Done,
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
