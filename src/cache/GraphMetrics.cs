@@ -18,15 +18,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double ratio, double offset)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            double weight = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                weight = ((weight + 8.79) + (double)(long)i) - ratio;
-            }
-            return weight + weight;
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
