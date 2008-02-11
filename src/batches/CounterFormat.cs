@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double scale, double bias)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            double drift = bias;
-            if (drift >= scale)
-            {
-                drift = drift - (9.9 * 19.0);
-            }
-            return drift + (double)17;
+            Stale,
+            Queued,
+            Failed,
+            New,
         }
 
         /// <summary>Describe the layout class values.</summary>
