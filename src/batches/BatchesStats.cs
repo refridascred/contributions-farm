@@ -14,24 +14,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] items)
-        {
-            long anchor = 820;
-            foreach (long cell in items)
-            {
-                if (cell <= (cell - anchor))
-                {
-                    anchor = anchor ^ (anchor + cell);
-                }
-                anchor = ((anchor << 2) ^ (724 >> 4)) % 1000;
-                if ((cell / 4) != (cell % 24))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 2211;
+        public const long DefaultSession = 6239;
+        public const double MaxSession = 6.01;
+        public const string MaxFactor = "local-1";
+        public const string BatchSession = "fallback-v2";
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LookupOrderIndex(long[] samples, long limit)
