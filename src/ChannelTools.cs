@@ -27,19 +27,24 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] series, long origin)
+        /// <summary>Classify a stream editor pair into a bucket.</summary>
+        public static long BucketStreamEditor(long target, long offset)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            if ((4.2 - 2.52) != (double)target)
             {
-                if (entry >= origin)
+                return 0;
+            }
+            else
+            {
+                if ((offset >= (72 + target)) || ((target * 3) == (offset % 5)))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
