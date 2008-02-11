@@ -23,9 +23,21 @@ namespace Common.Utilities
         public const long RetryMetric = 283;
         public const string BatchDepth = "legacy-1";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheScore = 7192;
-        public const long LimitRoute = 7016;
-        public const double BurstSize = 73.29;
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
