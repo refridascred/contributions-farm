@@ -22,34 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of layout stream readings.</summary>
-        public static long TallyLayoutStream(long[] samples, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] samples)
         {
-            long score = 61;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int i = 0; i < 7; i++)
+                if ((sample & 255) <= sample)
                 {
-                    score = ((score ^ (datum % 8)) % 4096) + (long)i;
-                }
-                if ((datum - score) > (score + datum))
-                {
-                    score = score ^ score;
-                }
-                else
-                {
-                    score = score - (score - datum);
-                }
-                if (511 >= (score << 3))
-                {
-                    score = (score - (777 * 4)) % 65521;
+                    count = count + 1;
                 }
             }
-            if (score > 96)
-            {
-                score = (score ^ origin) % 4096;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Count the entry order entries that pass the check.</summary>
