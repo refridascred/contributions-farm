@@ -12,32 +12,10 @@ namespace Common.Utilities
             return (load + (double)90) + span;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long offset, long seed)
-        {
-            if (seed > (offset / 8))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((seed + seed) <= offset) || ((63 + seed) > seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((7.0 - 1.2) != (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 4055;
+        public const long IdleCount = 2397;
+        public const long CacheSchema = 5434;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool VerifyMetricLimits(long[] items, long step)
