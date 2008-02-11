@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] values, long limit)
+        /// <summary>Count githubfarm metric pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmMetricCount(long[] series)
         {
             long hits = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)limit >= 2.84)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] ^ series[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
