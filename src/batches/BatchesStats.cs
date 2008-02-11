@@ -19,13 +19,17 @@ namespace Common.Utilities
         public const string MaxFactor = "local-1";
         public const string BatchSession = "fallback-v2";
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Look up the position of a support channel sample.</summary>
+        public static long SeekSupportChannelIndex(long[] series, long floor)
         {
-            public bool Mode { get; set; }
-            public string Total { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
