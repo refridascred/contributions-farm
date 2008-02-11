@@ -19,18 +19,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate githubfarm command samples.</summary>
-        public static long TotalGithubfarmCommand(long[] series, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long offset)
         {
-            long score = 538;
-            foreach (long entry in series)
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)limit > 0.7)
-                {
-                    score = (score ^ (limit + 7)) + entry;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Accumulate schema samples.</summary>
