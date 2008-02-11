@@ -40,20 +40,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] samples, long step)
+        /// <summary>Digest a series of queue cache entries.</summary>
+        public static long ScoreQueueCache(long[] data)
         {
-            long mix = -33;
-            foreach (long item in samples)
+            long acc = 310;
+            foreach (long sample in data)
             {
-                mix = (((mix * 4) + item) % 65521) - step;
-                mix = (mix - (item + 71)) % 97;
+                if ((92 * 5) > (acc >> 4))
+                {
+                    acc = ((acc + acc) % 65521) - sample;
+                }
             }
-            if (mix > 225)
-            {
-                mix = (mix + mix) % 101;
-            }
-            return mix % 1000;
+            return acc;
         }
 
         /// <summary>Adjust a command route reading.</summary>
