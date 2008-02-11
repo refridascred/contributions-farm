@@ -30,17 +30,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] values, long seed)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double bias, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (bias * 7.73) - bias;
+            if (mean > (floor - 4.5))
             {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
+                mean = mean - (double)3;
             }
-            return -1;
+            return mean - 2.88;
         }
 
         /// <summary>Hold a tools info.</summary>
