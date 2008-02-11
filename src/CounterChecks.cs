@@ -46,12 +46,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 3252;
-        public const long WindowBudget = 5546;
-        public const long SoftFilter = 9596;
-        public const double RetryScore = 56.09;
-        public const long LimitFilter = 4045;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (((seen / 8) >= (cell + seen)) || !((cell - seen) == (23 ^ 51)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool ValidateToolsRange(long[] readings, long seed)
