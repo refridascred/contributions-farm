@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] samples, long target)
         {
-            Active,
-            Pending,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
