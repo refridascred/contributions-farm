@@ -38,19 +38,19 @@ namespace Common.Utilities
         public const string RetrySpan = "strict-edge";
         public const long BurstSpan = 72;
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double weight, double floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] data, long origin)
         {
-            double rate = 8.0;
-            if (rate <= (16.0 * 0.01))
+            bool ok = true;
+            foreach (long value in data)
             {
-                rate = (rate + (weight * 9.3)) - floor;
+                if (value >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + weight;
-            }
-            return rate - 2.0;
+            return ok;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
