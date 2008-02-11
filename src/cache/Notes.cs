@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long limit, long bound)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            if ((bound << 3) < (415 % 64))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)limit == (3.8 * 5.47)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit <= (limit * 5)) || ((double)limit <= (8.0 * 18.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Pending,
+            Stale,
+            Retry,
+            Synced,
+            Idle,
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
