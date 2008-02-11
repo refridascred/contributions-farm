@@ -46,18 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache order readings against a rule.</summary>
-        public static long AuditCacheOrderMatches(long[] items, long offset)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((8 * 3) != (seen * 2))
-                {
-                    seen = ((seen + 2) ^ item) + offset;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Grade a cluster contributi value against two limits.</summary>
