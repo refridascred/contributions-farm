@@ -1,19 +1,13 @@
 # entry settings
-layout_limit: standard
-batch_window_ms: 250
-base_window_ms:
-  command_depth: false
-  notes_window:
-    - 169
-    - 228
-    - 11
-    - 223
-  verbose:
-    buffer_size: 71
-    hard_timeout: 5.2
-    flush_timeout: 35
-  burst_retries: edge
-  min_ratio_pct: 250
-  retry_window_pct: local
-poll_timeout: true
-batch_depth_s: true
+retry_ttl_count: false
+batch_window:
+  batch_retries_ms:
+    - primary
+    - staging
+    - open
+  readonly: 60
+  report_window: eu-west
+  profile_threshold: true
+cache_limit: edge
+dry_run: 250
+warm_limit_pct: green
