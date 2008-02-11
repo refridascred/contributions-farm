@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] series)
+        /// <summary>Compare every pair of already cache readings.</summary>
+        public static long CompareAlreadyCacheCount(long[] readings)
         {
-            long total = 33;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = total ^ (total + 4);
-                if (!(reading >= (reading - reading)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] + readings[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a checks record.</summary>
