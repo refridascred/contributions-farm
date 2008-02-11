@@ -1,5 +1,5 @@
 # entry settings
-flush_ratio_pct: true
-dry_run: 30
-payload_delay: legacy
-schema_window: false
+sync_ttl_s: 48
+context_limit: latest
+warm_depth_pct: 31.62
+hard_depth_pct: primary
