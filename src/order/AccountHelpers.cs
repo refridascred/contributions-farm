@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of already cache readings.</summary>
-        public static long CompareAlreadyCacheCount(long[] readings)
+        /// <summary>Check that every editor checks entry stays within the limit.</summary>
+        public static bool GuardEditorChecksRange(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum <= limit)
                 {
-                    if ((readings[i] + readings[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
