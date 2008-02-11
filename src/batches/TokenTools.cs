@@ -35,13 +35,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public double Mode { get; set; }
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
