@@ -77,13 +77,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Look up the position of a session metric sample.</summary>
+        public static long FindSessionMetricIndex(long[] series, long target)
         {
-            Pending,
-            Closed,
-            Done,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
