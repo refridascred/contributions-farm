@@ -20,18 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] readings)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((85 - tally) >= tally)
-                {
-                    tally = (tally + 2) - value;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Blend two farm entry measurements.</summary>
