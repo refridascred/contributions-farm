@@ -35,19 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate context notes readings against a bound.</summary>
-        public static bool ValidateContextNotesLimits(long[] samples, long target)
+        /// <summary>Check that every session schema entry stays within the limit.</summary>
+        public static bool ValidateSessionSchemaRange(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (entry <= target)
+                if (cell <= limit)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
     }
 }
