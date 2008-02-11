@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftBatch = 97.24;
+        public const double HardBudget = 69.43;
+        public const long StepSize = 1143;
+        public const long RetryBatch = 9595;
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
