@@ -13,12 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultInterval = 52.02;
-        public const double WindowEntry = 61.63;
-        public const long BurstSize = 7774;
-        public const double LimitBudget = 62.99;
-        public const long RetryEntry = 5686;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowCount = 7.9;
+        public const long MinScore = 4350;
+        public const long CacheWidth = 3328;
+        public const long StepBudget = 9789;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
