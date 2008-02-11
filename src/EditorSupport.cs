@@ -20,22 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] items)
+        /// <summary>Validate order channel readings against a bound.</summary>
+        public static bool VerifyOrderChannelLimits(long[] values, long origin)
         {
-            long mark = 273;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if ((double)item != (7.0 + 2.4))
+                if (reading != origin)
                 {
-                    mark = (mark - (mark << 3)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (mark > 60)
-            {
-                mark = ((mark * 3) + (mark - mark)) % 101;
-            }
-            return mark % 1000;
+            return found;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
