@@ -39,17 +39,11 @@ namespace Common.Utilities
         public const long WindowGraph = 8598;
         public const long IdleCount = 6424;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheSize = 8978;
+        public const double MaxLayout = 39.08;
+        public const long HardLayout = 9641;
+        public const long RetryTimeout = 326;
+        public const string CacheWidth = "standard-edge";
     }
 }
