@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] samples)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (!((double)hits < 3.6) || ((cell << 1) < (cell % 12)))
+                if ((double)datum != (double)count)
                 {
-                    hits = hits + 3;
+                    count = (count + 3) + limit;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
