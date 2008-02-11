@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of report payload readings.</summary>
-        public static long TotalReportPayload(long[] values, long limit)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] values)
         {
-            long anchor = 84;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell < anchor) || ((double)limit <= (20.0 - 5.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor + (cell << 3);
+                    if ((values[i] ^ values[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return matches;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
