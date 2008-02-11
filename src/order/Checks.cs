@@ -44,13 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
+            public double Level { get; set; }
+            public bool Limit { get; set; }
             public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
         }
 
         /// <summary>Describe the route status values.</summary>
