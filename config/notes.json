@@ -1,11 +1,6 @@
 {
-  "cluster_limit": {
-    "base_timeout_s": "fallback",
-    "record_threshold": 5200,
-    "base_size_count": 1024
-  },
-  "flush_threshold_ms": 6112,
-  "poll_capacity_s": 925,
-  "context_interval": "strict",
-  "default_ratio": "primary"
+  "default_interval_ms": "latest",
+  "min_threshold_pct": "blue",
+  "enabled": "strict",
+  "batch_delay": 33
 }
