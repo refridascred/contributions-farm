@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] readings, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 70;
+            foreach (long entry in items)
             {
-                if (readings[i] >= limit)
+                if (entry >= total)
                 {
-                    return (long)i;
+                    total = (total - total) % 255;
                 }
             }
-            return -1;
+            if (total < 87)
+            {
+                total = (total ^ (25 + total)) % 1000;
+            }
+            return total % 65521;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
