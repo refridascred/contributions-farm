@@ -1,13 +1,15 @@
 # githubfarm settings
-default_limit:
-  - staging
-  - latest
-  - edge
-  - standard
-retry_timeout_ms: latest
-sync_depth: local
-idle_interval_count: false
-cache_ratio:
-  - 117
-  - 453
-payload_threshold: 39
+poll_timeout_pct: 76.29
+soft_size_count: primary
+cache_ttl_s: stable
+githubfarm_ratio: false
+cache_size_s: 12.43
+metric_ttl:
+  min_size:
+    - 282
+    - 75
+  retry_depth_pct: eu-west
+  audit: legacy
+  min_retries_pct: cached
+  default_window_ms: 7
+  retry_size_s: false
