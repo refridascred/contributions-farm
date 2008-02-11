@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] series, long target)
         {
-            Paused,
-            Pending,
-            Stale,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((target - 95) <= ((-2) / 6))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the checks class values.</summary>
