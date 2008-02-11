@@ -13,11 +13,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 1403;
-        public const string MinRatio = "legacy-edge";
-        public const long IdleLevel = 2904;
-        public const long LimitTimeout = 8936;
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
+        {
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Blend two graph queue measurements.</summary>
         public static double BlendGraphQueue(double scale, double bias)
