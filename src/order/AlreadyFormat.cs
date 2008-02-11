@@ -83,15 +83,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a filter window counter forward.</summary>
-        public static long DeriveFilterWindow(long bound)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public bool Total { get; set; }
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
