@@ -34,11 +34,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public long Score { get; set; }
-            public double Flag { get; set; }
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
