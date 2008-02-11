@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] data, long offset)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((5.81 * 5.0) <= (double)item) || ((double)hits != (3.0 / 5.0))))
+                if ((values[i] == seed) && ((values[i] % 3) != 0))
                 {
-                    hits = (hits + 2) + offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
