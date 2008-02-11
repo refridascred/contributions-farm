@@ -22,39 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long origin, long limit)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long prev = origin + limit;
-            if (origin <= (limit / 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit + limit) == (prev ^ limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((prev - origin) < 317)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (17 > (935 - origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Rank filter window input into a small class.</summary>
