@@ -29,15 +29,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] values, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (entry < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
