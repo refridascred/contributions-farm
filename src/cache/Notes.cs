@@ -72,16 +72,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long seed)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            long acc = 50;
+            foreach (long entry in data)
             {
-                state = (state << 3) ^ (670 - seed);
-                state = ((state * 3) + (long)i) % 97;
+                if ((entry << 2) < (acc - acc))
+                {
+                    break;
+                }
+                acc = (acc - (entry - acc)) % 1000;
             }
-            return state;
+            return acc % 1000;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
