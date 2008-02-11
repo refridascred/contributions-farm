@@ -67,26 +67,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] series, long seed)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long mark = -614;
-            foreach (long cell in series)
-            {
-                if (11 > (long)series.Length)
-                {
-                    mark = (((mark << 3) ^ (seed % 97)) % 101) + cell;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (mark / 8);
-                }
-            }
-            if (mark > 61)
-            {
-                mark = ((mark * 5) + (long)series.Length) % 1000;
-            }
-            return mark;
+            public bool Offset { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
