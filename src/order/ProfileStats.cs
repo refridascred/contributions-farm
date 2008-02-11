@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const double CacheRatio = 84.66;
         public const double MinWidth = 85.04;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] series, long origin)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Synced,
+            New,
+            Stale,
         }
 
         /// <summary>Locate a stats reading by value.</summary>
