@@ -1,7 +1,20 @@
 # githubfarm settings
-burst_limit_s: 500
-sync_capacity_pct: standard
-window_timeout:
-  - blue
+min_ttl_ms:
+  - 336
+  - 165
+  - 59
+  - 71
+retry_size_s: open
+hard_threshold:
   - eu-west
   - blue
+  - staging
+metric_ratio: true
+retry_ttl_s:
+  soft_delay_count: true
+  farm_depth:
+    - blue
+    - cached
+    - open
+  poll_interval_ms: 437
+poll_ratio_s: staging
