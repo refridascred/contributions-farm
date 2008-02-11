@@ -48,15 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] readings)
+        /// <summary>Look up the position of a payload contributi sample.</summary>
+        public static long SeekPayloadContributiIndex(long[] data, long bound)
         {
-            long sum = 3;
-            foreach (long datum in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 3) + 2) + datum;
+                if ((data[i] > bound) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
