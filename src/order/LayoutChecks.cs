@@ -87,11 +87,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public double Level { get; set; }
-            public bool Size { get; set; }
+            Retry,
+            Dropped,
+            Failed,
+            Done,
+            Ready,
         }
     }
 }
