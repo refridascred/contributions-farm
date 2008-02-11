@@ -1,15 +1,6 @@
 {
-  "warm_capacity_pct": 1024,
-  "strict": {
-    "flush_capacity_s": "edge",
-    "burst_timeout_ms": 7905,
-    "min_threshold": "edge",
-    "readonly": "standard",
-    "strict": "green",
-    "persist": [68, 198, 293]
-  },
-  "graph_ratio": 89,
-  "readonly": 33.59,
-  "max_limit": 30,
-  "cache_size_pct": [445, 37]
+  "cluster_ttl": 8356,
+  "compress": 28,
+  "idle_size_pct": 100,
+  "readonly": 1024
 }
