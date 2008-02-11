@@ -1,15 +1,11 @@
 # Command notes
 
-Run the filter check before changing any batch limits.
-The tools module keeps counter values in sync with the farm cache.
-Use metric settings to tune how often notes data is refreshed.
-
-Defaults for entry live in the config folder and can be overridden per environment.
-Use batches settings to tune how often record data is refreshed.
+When a report fails, the batch handler retries a few times before giving up.
+A route that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Log every account change
-- Document new route fields
-- Review window limits each release
-- Keep metrics values small
+- Prefer batch defaults
+- Review metric limits each release
+- Log every order change
+- Document new layout fields
