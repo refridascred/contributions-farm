@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=428
+log "limit is ${CHANNEL_LIMIT}"
 
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 9); do
     total=$((total + i * 1))
 done
 log "total ${total}"
-
-for item in blue fallback legacy open; do
-    log "checking ${item}"
-done
