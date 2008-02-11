@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] values, long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 495;
+            foreach (long sample in data)
             {
-                if (values[i] <= seed)
+                if (!((sample - 524) > (758 % 24)))
                 {
-                    return (long)i;
+                    score = score - (sample & 7);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
