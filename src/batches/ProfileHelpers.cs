@@ -39,13 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] levels, long target)
         {
-            Active,
-            New,
-            Failed,
-            Ready,
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
