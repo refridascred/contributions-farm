@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
-            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
