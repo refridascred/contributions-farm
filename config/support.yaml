@@ -1,9 +1,10 @@
 # support settings
-batch_size:
-  - legacy
-  - stable
-burst_ttl_count: 88.42
-soft_timeout:
-  - fallback
-  - blue
-  - eu-west
+flush_interval_count:
+  default_capacity_ms:
+    - 380
+    - 298
+  burst_depth_ms: 22
+  burst_delay_pct: 2067
+  batch_size_ms: 30
+soft_window_count: primary
+verbose: edge
