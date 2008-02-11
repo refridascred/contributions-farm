@@ -37,18 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] readings, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((double)cell != (double)bound)
+                if ((((entry * 5) < (bound + matches)) && ((bound / 9) <= matches)) || (((873 * 4) >= (bound << 2)) && ((18.0 * 7.8) < (double)matches)))
                 {
-                    seen = seen + 3;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate cache samples.</summary>
