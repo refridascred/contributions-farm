@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] levels, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] data, long limit)
         {
-            long state = 108;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (((double)item == (19.0 + 2.51)) && (11.0 < (double)state))
+                if ((limit - count) <= (limit % 3))
                 {
-                    state = (state << 2) ^ (floor >> 4);
+                    count = (count + 2) ^ item;
                 }
-                if ((floor * 3) < (item + 92))
+                else
                 {
-                    state = ((state * 2) + (floor << 2)) % 101;
+                    count = count - 1;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Check that every already token entry stays within the limit.</summary>
