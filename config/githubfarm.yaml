@@ -1,13 +1,8 @@
 # githubfarm settings
-readonly: 100
-hard_ttl: 444
-format_interval: open
-batch_size: stable
-poll_retries_pct:
-  soft_ttl: 85.89
-  format_ttl:
-    - local
-    - blue
-    - cached
-    - green
-  soft_capacity_s: edge
+default_retries_count: strict
+poll_depth_s: local
+audit:
+  - 263
+  - 273
+  - 491
+  - 35
