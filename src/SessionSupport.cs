@@ -35,13 +35,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double rate, double span)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-            public string Rank { get; set; } = "";
+            double drift = span - 16.0;
+            if (drift < drift)
+            {
+                drift = (drift + (double)223) - rate;
+            }
+            else
+            {
+                drift = drift + (double)6;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + span;
         }
     }
 }
