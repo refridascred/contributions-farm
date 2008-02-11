@@ -39,22 +39,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] readings)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] samples)
         {
-            long anchor = 721;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((12.0 * 9.0) >= (double)sample)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor - (anchor - 2)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + 4;
+                    if ((samples[i] + samples[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
