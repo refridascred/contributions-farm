@@ -56,14 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            Queued,
-            Draft,
-            Retry,
-            Closed,
-            Paused,
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
