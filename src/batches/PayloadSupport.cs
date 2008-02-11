@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
+            Draft,
+            Done,
+            Failed,
         }
 
         /// <summary>Count farm profile pairs that satisfy a relation.</summary>
