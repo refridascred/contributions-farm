@@ -1,5 +1,22 @@
 {
-  "hard_retries_pct": 250,
-  "max_ttl": [174, 264, 43],
-  "flush_timeout_s": false
+  "flush_depth_count": "open",
+  "idle_threshold_s": {
+    "soft_ratio_s": [452, 144],
+    "idle_depth_s": 23,
+    "strict": 1024,
+    "burst_ttl_s": 39.49,
+    "record_ttl": "strict",
+    "retry_size_count": "fallback"
+  },
+  "layout_timeout": 42.14,
+  "idle_timeout": 39.56,
+  "poll_size_s": {
+    "max_timeout": "stable",
+    "warm_ratio_s": {
+      "max_interval_s": 32.3,
+      "counter_threshold": "strict",
+      "hard_timeout": true
+    },
+    "route_window": false
+  }
 }
