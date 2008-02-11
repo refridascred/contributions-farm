@@ -69,23 +69,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Blend two contributi editor measurements.</summary>
+        public static double ScaleContributiEditor(double gain, double offset)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            double scale = offset;
+            if (scale <= (scale / 4.0))
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = ((result - (target + target)) % 97) + (long)i2;
-                }
-                if ((target * 3) <= (result / 4))
-                {
-                    result = result ^ (long)i;
-                }
-                result = ((result * 3) + (long)i) % 101;
+                scale = scale - 6.0;
             }
-            return result;
+            else
+            {
+                scale = scale + (double)48;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (gain / 6.0)) - (double)(long)i;
+            }
+            return scale + (1.0 + offset);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
