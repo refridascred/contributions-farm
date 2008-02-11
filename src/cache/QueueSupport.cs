@@ -14,19 +14,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate graph window readings against a bound.</summary>
-        public static bool GuardGraphWindowRange(long[] readings, long offset)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] values)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] ^ values[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
