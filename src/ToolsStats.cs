@@ -100,11 +100,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 999;
-        public const long SoftLevel = 2606;
-        public const long IdleBatch = 9278;
-        public const long RetryFactor = 212;
-        public const double MaxSize = 70.39;
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
