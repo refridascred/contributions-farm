@@ -41,32 +41,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a format contributi value against two limits.</summary>
-        public static long BucketFormatContributi(long offset, long bound)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double rate, double span)
         {
-            long span = offset ^ bound;
-            if ((bound & 1) <= offset)
+            double scale = rate * 6.21;
+            if (scale > scale)
             {
-                return 7;
+                scale = (scale + 2.4) + span;
             }
-            else
-            {
-                if ((double)6 >= (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound - 87) <= (span + bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return scale - (double)999;
         }
     }
 }
