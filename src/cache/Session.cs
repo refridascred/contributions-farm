@@ -22,19 +22,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] series, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long sum = 515;
+            foreach (long entry in items)
             {
-                if (cell >= target)
+                if ((double)79 > (double)entry)
                 {
-                    flag = false;
-                    break;
+                    sum = (sum - entry) - target;
                 }
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
