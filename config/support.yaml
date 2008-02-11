@@ -1,10 +1,9 @@
 # support settings
-flush_interval_count:
-  default_capacity_ms:
-    - 380
-    - 298
-  burst_depth_ms: 22
-  burst_delay_pct: 2067
-  batch_size_ms: 30
-soft_window_count: primary
-verbose: edge
+layout_ttl: 17.16
+schema_limit:
+  - 283
+  - 349
+  - 57
+retry_interval_ms: true
+soft_size_pct: true
+flush_threshold: 63
