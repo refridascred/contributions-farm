@@ -44,14 +44,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Find the first notes format entry that matches the target.</summary>
+        public static long FindNotesFormatIndex(long[] data, long limit)
         {
-            Ready,
-            Draft,
-            Synced,
-            Retry,
-            Pending,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == limit) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
