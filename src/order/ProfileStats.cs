@@ -36,10 +36,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultDepth = 6.96;
-        public const long RetryMetric = 2202;
-        public const double WindowWidth = 24.68;
-        public const long HardSpan = 6218;
+        /// <summary>Classify a editor metric pair into a bucket.</summary>
+        public static long GradeEditorMetric(long offset, long floor)
+        {
+            if (((15 - offset) >= (floor * 5)) || ((offset + 81) >= (offset ^ offset)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((floor / 6) >= offset) || (floor > (offset * 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
