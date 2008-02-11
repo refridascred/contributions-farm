@@ -1,15 +1,6 @@
 # entry settings
-enabled: 69.38
-report_depth: true
-session_retries:
-  default_delay_pct: false
-  poll_ratio_ms:
-    - 115
-    - 211
-    - 115
-    - 461
-  default_window_pct: strict
-  soft_delay_ms: fallback
-verbose: 84
-sync_ratio: true
-sync_capacity: fallback
+soft_window_s: 1024
+readonly: legacy
+warm_size_ms: 66
+account_window: primary
+channel_threshold: true
