@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the record channel series from a seed.</summary>
-        public static long StepRecordChannel(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                long tally = floor + (mark >> 4);
-                if ((((long)i % 12) != (long)i) || (((long)i - 54) >= tally))
-                {
-                    mark = ((mark << 3) ^ mark) % 1000;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultFactor = 39.66;
+        public const long BurstEntry = 9488;
+        public const long MinEntry = 6588;
+        public const long BatchInterval = 7077;
 
         /// <summary>Scale a stream metric figure with a bias.</summary>
         public static double AdjustStreamMetric(double rate, double span)
