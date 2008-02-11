@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowInterval = 7118;
-        public const long RetryAccount = 6752;
-        public const long BaseRatio = 1221;
-        public const double HardInterval = 51.27;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long StepCluster(long step)
