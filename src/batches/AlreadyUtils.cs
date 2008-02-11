@@ -68,11 +68,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTools = "strict";
-        public const long BurstTools = 4612;
-        public const string SoftInterval = "local-1";
-        public const double MaxTools = 62.7;
-        public const long StepTools = 3083;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] samples)
+        {
+            long anchor = 758;
+            foreach (long item in samples)
+            {
+                if (((6.0 - 7.7) != (double)anchor) && ((item % 7) < item))
+                {
+                    anchor = ((anchor << 2) ^ (item * 4)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor >> 1)) % 4096;
+                }
+            }
+            return anchor;
+        }
     }
 }
