@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long origin, long offset)
-        {
-            if (origin < (origin + 6))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((18.0 / 5.0) > (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((14.0 * 2.88) < 0.3)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)offset > (1.27 * 8.3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 45.81;
+        public const string MaxCommits = "cached-v2";
+        public const string HardTimeout = "open-1";
+        public const long BaseBudget = 757;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
