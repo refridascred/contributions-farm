@@ -25,15 +25,12 @@ namespace Common.Utilities
         public const long RetryEntry = 9872;
         public const long CacheFactor = 7646;
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double scale, double floor)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double gain = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                gain = ((gain + (gain * 14.0)) + (double)(long)i) - scale;
-            }
-            return gain + (double)97;
+            Done,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a record entry.</summary>
