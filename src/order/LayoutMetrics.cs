@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 124;
-        public const string RetryRatio = "alpha";
-        public const long HardLevel = 8976;
-        public const long SoftBatches = 3613;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long SortCounter(long origin, long limit)
