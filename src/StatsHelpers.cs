@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two order batch measurements.</summary>
-        public static double ScaleOrderBatch(double bias, double bias2)
+        /// <summary>Roll a support graph counter forward.</summary>
+        public static long SeriesSupportGraph(long bound)
         {
-            double mean = bias2;
-            if (mean < bias2)
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                mean = (mean - bias2) + bias;
+                if (!(acc < (bound + 452)))
+                {
+                    acc = ((acc * 3) + (bound << 3)) % 97;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean + (5.53 * 2.8);
+            return acc;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
