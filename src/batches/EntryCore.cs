@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Classify a support farm pair into a bucket.</summary>
+        public static long SortSupportFarm(long seed, long seed2)
         {
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
+            long cur = seed + seed2;
+            if (seed > 913)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed2 + cur) < cur)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed2 - cur) >= (seed - seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
