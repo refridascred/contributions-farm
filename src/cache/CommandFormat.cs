@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Synced,
-            Paused,
+            Retry,
             Idle,
-            Done,
-            Queued,
+            Closed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define order limits and defaults.</summary>
