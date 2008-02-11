@@ -37,12 +37,22 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] items)
         {
-            Locked,
-            Dropped,
-            Queued,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (cell <= (1 + hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
