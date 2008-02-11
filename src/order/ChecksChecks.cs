@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] data, long floor)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (((sample + floor) > 900) || ((floor + sample) <= (75 * 3)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Pending,
+            New,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
