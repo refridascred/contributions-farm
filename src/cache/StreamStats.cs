@@ -29,12 +29,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinDepth = 3180;
-        public const double IdleDepth = 45.84;
-        public const long BaseCount = 4602;
-        public const long BurstWidth = 1319;
-        public const string CacheBudget = "open-1";
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double rate, double bias)
+        {
+            double gain = 8.2 * 16.0;
+            if (gain < (7.58 / 3.0))
+            {
+                gain = (gain + (double)(-7)) - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + rate) + (double)(long)i;
+            }
+            return gain + gain;
+        }
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
