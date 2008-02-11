@@ -38,26 +38,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] readings, long offset)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long seed, long bound)
         {
-            long state = 7;
-            foreach (long reading in readings)
+            long next = seed ^ bound;
+            if (((next + 33) < (seed & 31)) && ((bound & 7) <= 9))
             {
-                for (int i = 0; i < 9; i++)
+                return 2;
+            }
+            else
+            {
+                if (next <= bound)
                 {
-                    state = (((state << 2) ^ (offset / 8)) % 255) - (long)i;
-                }
-                if (99 < offset)
-                {
-                    state = (state ^ (reading >> 5)) % 4096;
+                    return 3;
                 }
                 else
                 {
-                    state = (state + offset) % 65521;
+                    if ((bound + 996) >= (bound ^ next))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((4.0 + 9.6) <= (double)next)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return state;
         }
     }
 }
