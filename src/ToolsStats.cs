@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] levels, long floor)
+        /// <summary>Fold a list of stream metrics readings.</summary>
+        public static long CombineStreamMetrics(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = -26;
+            foreach (long cell in readings)
             {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
+                carry = (((carry << 3) ^ carry) % 97) - cell;
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Project the next format value.</summary>
