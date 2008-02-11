@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            long mix = 993;
+            foreach (long datum in levels)
+            {
+                mix = ((mix << 3) ^ (datum + datum)) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a order header.</summary>
