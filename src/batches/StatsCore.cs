@@ -20,15 +20,12 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double gain, double offset)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            double weight = gain / 8.0;
-            if (weight < (offset + weight))
-            {
-                weight = weight - (double)43;
-            }
-            return weight - offset;
+            Synced,
+            Idle,
+            Ready,
         }
 
         /// <summary>Blend two token measurements.</summary>
