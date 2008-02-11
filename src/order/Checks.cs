@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            Queued,
+            Pending,
+            Closed,
         }
 
         /// <summary>Hold a stats record.</summary>
