@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] samples)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long carry = 6;
-            foreach (long entry in samples)
-            {
-                if (((long)samples.Length >> 1) < (entry % 3))
-                {
-                    carry = (carry - (carry % 97)) % 255;
-                }
-            }
-            return carry;
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the cluster status values.</summary>
