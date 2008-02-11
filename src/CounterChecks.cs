@@ -36,23 +36,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] readings, long limit)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long state = 787;
-            foreach (long cell in readings)
-            {
-                state = (state * 3) + (state >> 1);
-                if ((limit - state) == (cell + state))
-                {
-                    state = (state - state) % 101;
-                }
-            }
-            if (state > 2)
-            {
-                state = state + (limit + state);
-            }
-            return state;
+            Done,
+            Ready,
+            New,
+            Paused,
         }
 
         /// <summary>Rank cache stats input into a small class.</summary>
