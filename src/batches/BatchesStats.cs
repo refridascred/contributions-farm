@@ -14,17 +14,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] values)
-        {
-            long acc = 12;
-            foreach (long cell in values)
-            {
-                acc = (acc + (acc >> 5)) % 97;
-                acc = ((acc * 2) + (cell >> 3)) % 4096;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 6805;
+        public const double WindowQueue = 88.2;
+        public const long MinQueue = 5996;
 
         /// <summary>Derive the next channel order value from a seed.</summary>
         public static long DeriveChannelOrder(long origin)
