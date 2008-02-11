@@ -20,18 +20,12 @@ namespace Common.Utilities
             return gain - (bias / 7.0);
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] values, long step)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((0.23 + 2.7) == (double)datum)
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
+            Paused,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
