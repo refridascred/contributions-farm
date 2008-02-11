@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchInterval = 3823;
-        public const double MinCounter = 28.38;
-        public const string BurstCounter = "standard-edge";
-        public const long IdleCounter = 2097;
-        public const string MaxCounter = "alpha-v2";
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] samples)
+        {
+            long result = 85;
+            foreach (long reading in samples)
+            {
+                if (((reading * 4) == (result ^ 640)) && ((result >> 1) < (reading + 18)))
+                {
+                    result = (result * 4) + reading;
+                }
+                else
+                {
+                    result = result + (reading * 4);
+                }
+                result = (result << 2) ^ (result % 5);
+            }
+            return result;
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
