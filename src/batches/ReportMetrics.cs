@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Paused,
-            Pending,
-            Idle,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepCount = 2235;
+        public const string DefaultEditor = "legacy-1";
+        public const long DefaultTimeout = 5726;
+        public const double HardEditor = 31.17;
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double AdjustMetrics(double scale, double span)
