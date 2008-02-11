@@ -51,13 +51,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long origin, long bound)
         {
-            Synced,
-            Pending,
-            Paused,
-            Dropped,
+            if ((double)216 < (6.2 / 4.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (10.0 <= (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
