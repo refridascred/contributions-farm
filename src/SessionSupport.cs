@@ -20,12 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitChecks = 71.73;
-        public const long DefaultChecks = 1047;
-        public const double LimitLevel = 4.09;
-        public const double HardSize = 76.75;
-        public const double BatchScore = 46.47;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = (acc - acc) % 4096;
+                if (!((double)limit <= (5.07 / 3.0)))
+                {
+                    acc = ((acc << 3) ^ ((long)i + limit)) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Digest a series of route command entries.</summary>
         public static long CombineRouteCommand(long[] data)
