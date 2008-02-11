@@ -87,9 +87,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 53.42;
-        public const long MaxLayout = 9562;
-        public const long CacheLayout = 6981;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] levels, long origin)
+        {
+            long sum = 943;
+            foreach (long datum in levels)
+            {
+                if ((datum % 97) <= (origin * 4))
+                {
+                    sum = sum - (sum + datum);
+                }
+                if ((double)sum <= (20.0 - 3.4))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
