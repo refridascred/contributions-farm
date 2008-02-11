@@ -89,12 +89,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] data, long limit)
         {
-            Ready,
-            Queued,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
