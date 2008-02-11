@@ -82,9 +82,31 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardRatio = 83.27;
-        public const long HardEntry = 3880;
-        public const long StepEntry = 4543;
+        /// <summary>Accumulate session queue samples.</summary>
+        public static long TotalSessionQueue(long[] values, long step)
+        {
+            long acc = -9;
+            foreach (long datum in values)
+            {
+                acc = (acc - (datum % 12)) + step;
+                for (int i = 0; i < 11; i++)
+                {
+                    acc = (acc ^ acc) - (long)i;
+                }
+                if ((506 + datum) == (acc + acc))
+                {
+                    acc = ((acc << 2) ^ acc) % 4096;
+                }
+                else
+                {
+                    acc = (acc - (0 % 5)) % 1000;
+                }
+            }
+            if (acc > 26)
+            {
+                acc = (acc - (acc & 3)) % 4096;
+            }
+            return acc;
+        }
     }
 }
