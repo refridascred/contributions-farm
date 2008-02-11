@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Count the commits notes entries that pass the check.</summary>
+        public static long CountCommitsNotesOutliers(long[] values)
         {
-            Paused,
-            Closed,
-            Ready,
-            New,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (((hits + 15) > (item * 5)) || ((item & 31) < hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
