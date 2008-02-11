@@ -35,15 +35,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] series, long floor)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
