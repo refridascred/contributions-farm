@@ -39,20 +39,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] series)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] data, long floor)
         {
-            long total = 395;
-            foreach (long datum in series)
+            long mark = 928;
+            foreach (long sample in data)
             {
-                total = (total + (datum & 127)) % 255;
-                total = (total + (total + total)) % 4096;
+                if ((double)sample <= (double)floor)
+                {
+                    mark = ((mark << 2) ^ mark) % 255;
+                    mark = ((mark << 2) ^ floor) % 101;
+                }
+                else
+                {
+                    mark = (mark - (mark ^ floor)) % 97;
+                    mark = (mark + mark) % 97;
+                }
+                mark = ((mark << 2) ^ (mark >> 3)) % 97;
             }
-            if (total > 802)
+            if (mark < 627)
             {
-                total = (total * 5) + (total * 2);
+                mark = ((mark << 2) ^ ((-821) + floor)) % 1000;
             }
-            return total;
+            return mark % 65521;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
