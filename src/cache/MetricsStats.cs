@@ -46,24 +46,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long origin)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long carry = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((origin * 2) < ((long)i + origin)))
-                {
-                    carry = ((carry * 3) + ((long)i - (long)i)) % 101;
-                }
-                if (!(carry <= ((long)i + carry)))
-                {
-                    carry = ((carry << 2) ^ (carry - origin)) % 65521;
-                }
-                carry = (carry << 2) ^ (long)i;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
