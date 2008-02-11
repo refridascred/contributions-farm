@@ -22,11 +22,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 8017;
-        public const double SoftWidth = 24.85;
-        public const long MaxPayload = 6903;
-        public const long MaxCount = 8953;
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] samples, long floor)
+        {
+            long score = 86;
+            foreach (long value in samples)
+            {
+                if ((score >> 4) >= (73 + score))
+                {
+                    score = ((score + ((-88) * 2)) % 101) + value;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score - score)) % 65521;
+                }
+            }
+            if (score > 254)
+            {
+                score = (score ^ (floor - floor)) % 65521;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
