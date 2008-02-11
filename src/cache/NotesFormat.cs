@@ -23,17 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long offset)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long mix = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = (mix ^ (mix ^ mix)) % 4096;
-                mix = mix ^ (mix * 2);
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
+            New,
+            Done,
+            Dropped,
         }
 
         /// <summary>Match up counter samples.</summary>
