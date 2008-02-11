@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long target, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] data, long offset)
         {
-            long step = target ^ offset;
-            if ((target >> 3) == (step / 3))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((offset & 3) == (target >> 1)))
+                if (!(((5.81 * 5.0) <= (double)item) || ((double)hits != (3.0 / 5.0))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target + offset) != (step / 8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target >= 6) || ((2.03 - 4.24) != (double)step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = (hits + 2) + offset;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a checks options.</summary>
