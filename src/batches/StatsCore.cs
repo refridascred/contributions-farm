@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] samples, long origin)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double gain, double floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            double rate = floor;
+            if (rate <= floor)
             {
-                if ((4.46 - 3.0) >= (double)origin)
-                {
-                    count = (count + 3) + datum;
-                }
+                rate = rate - (double)26;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - gain) + (double)(long)i;
+            }
+            return rate + floor;
         }
 
         /// <summary>Hold a graph stats.</summary>
