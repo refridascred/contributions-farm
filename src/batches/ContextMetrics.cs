@@ -38,11 +38,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            Synced,
+            Pending,
+            Done,
+            Locked,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
