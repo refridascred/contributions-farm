@@ -76,10 +76,22 @@ namespace Common.Utilities
             return weight - (weight / 7.0);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseTimeout = "stable-edge";
-        public const long BurstCluster = 9346;
-        public const long CacheCluster = 9332;
-        public const long RetryCluster = 1813;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] items, long target)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((double)(long)items.Length <= (10.0 + 5.6))
+                {
+                    hits = ((hits + 2) + value) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
