@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first filter stats entry that matches the target.</summary>
-        public static long LookupFilterStatsIndex(long[] series, long origin)
+        /// <summary>Roll a profile checks counter forward.</summary>
+        public static long IterateProfileChecks(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((series[i] <= origin) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = carry - (0 << 2);
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
