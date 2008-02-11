@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long target, long origin)
+        /// <summary>Grade a channel batch value against two limits.</summary>
+        public static long GradeChannelBatch(long limit, long origin)
         {
-            if (((origin - target) >= target) || ((double)13 == (double)target))
+            if ((limit >> 5) <= (limit * 4))
             {
                 return 4;
             }
             else
             {
-                if (((double)target != (8.3 + 1.2)) && ((109 - target) >= (origin + origin)))
+                if ((limit << 3) != (limit / 3))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    return 1;
+                    return 3;
                 }
             }
         }
