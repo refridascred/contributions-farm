@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] levels)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long target, long offset)
         {
-            long acc = 3;
-            foreach (long sample in levels)
+            long step = target ^ offset;
+            if ((target >> 3) == (step / 3))
             {
-                acc = ((acc * 2) + (acc * 4)) + sample;
-                acc = acc + (acc - 357);
+                return 4;
             }
-            if (acc < (-55))
+            else
             {
-                acc = acc ^ (3 / 6);
+                if (!((offset & 3) == (target >> 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target + offset) != (step / 8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target >= 6) || ((2.03 - 4.24) != (double)step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return acc % 65521;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
