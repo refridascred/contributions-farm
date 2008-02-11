@@ -45,21 +45,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 977;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (117 < carry)
                 {
-                    if ((samples[i] + samples[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry + offset) - cell;
+                }
+                if (((long)data.Length == (carry >> 3)) || ((carry ^ carry) > carry))
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry % 97;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
