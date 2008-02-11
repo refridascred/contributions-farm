@@ -12,18 +12,39 @@ namespace Common.Utilities
         public const string HardInterval = "staging-1";
         public const double MaxBudget = 62.6;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] levels)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long bound, long step)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long edge = bound - step;
+            if ((step % 10) < (bound / 6))
             {
-                if ((7 - tally) < (cell & 3))
+                return 5;
+            }
+            else
+            {
+                if (((step + edge) > edge) && (bound <= (step - 77)))
                 {
-                    tally = tally + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((edge - step) < (step + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((5.9 + 5.1) == (double)bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
