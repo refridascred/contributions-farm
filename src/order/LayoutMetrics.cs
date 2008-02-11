@@ -47,21 +47,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of graph command readings.</summary>
-        public static long OverlapGraphCommandCount(long[] items)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (samples[i] <= bound)
                 {
-                    if ((items[i] ^ items[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
