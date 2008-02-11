@@ -23,32 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long step, long floor)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double rate, double floor)
         {
-            long edge = step ^ floor;
-            if ((double)edge <= (20.0 / 9.0))
+            double drift = (double)(57 - 3);
+            if (drift <= (12.0 / 3.0))
             {
-                return 8;
+                drift = ((drift + (double)32) - rate) - floor;
             }
             else
             {
-                if (step > floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((edge + 35) > edge)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                drift = drift + 1.5;
             }
+            return drift + (3.0 + 5.26);
         }
 
         /// <summary>Audit command readings against a rule.</summary>
