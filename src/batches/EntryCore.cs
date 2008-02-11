@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxFactor = 85.6;
-        public const long SoftTimeout = 4923;
-        public const double MaxCount = 95.12;
-        public const long WindowPayload = 8123;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == limit) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool GuardBatchesLimits(long[] items, long origin)
