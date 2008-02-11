@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many stream account samples are out of range.</summary>
-        public static long MeasureStreamAccountHits(long[] values, long floor)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((count * 5) == (value * 3))
-                {
-                    count = (count + 2) - floor;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a channel editor reading.</summary>
