@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long offset, long seed)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] readings, long seed)
         {
-            long step = offset ^ seed;
-            if ((offset < (step - seed)) && ((seed & 15) < step))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed > (double)offset)
+                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset - offset) >= (step * 4)) || (seed < (step >> 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step - (-9)) != (step - step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
