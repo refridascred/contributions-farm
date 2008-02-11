@@ -17,12 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinTimeout = 5758;
-        public const double IdleSpan = 95.59;
-        public const double BurstProfile = 43.74;
-        public const long CacheTimeout = 7657;
-        public const long DefaultProfile = 3152;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
