@@ -36,21 +36,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count batches command pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCommandCount(long[] samples)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                anchor = anchor ^ (seed / 7);
+                if (!((((long)i % 7) >= (anchor + anchor)) || (seed >= (seed + seed))))
                 {
-                    if ((samples[i] ^ samples[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = anchor ^ ((long)i & 31);
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
     }
 }
