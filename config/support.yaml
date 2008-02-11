@@ -1,5 +1,12 @@
 # support settings
-hard_capacity_ms: 96.16
-cache_threshold: eu-west
-token_timeout: 92.99
-min_ttl: 30
+compress: true
+cache_ttl: 38
+editor_limit:
+  - green
+  - green
+  - staging
+enabled:
+  - edge
+  - eu-west
+command_timeout: false
+hard_threshold: 4857
