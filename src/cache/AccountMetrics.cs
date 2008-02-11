@@ -57,39 +57,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long step, long step2)
-        {
-            if (((double)step > 0.7) || ((step2 - step2) > step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step2 << 3) >= (2 >> 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((step % 3) <= (step + step)) && ((double)step == (double)step2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step2 <= (862 >> 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxWindow = 69.7;
+        public const double BaseWindow = 61.03;
+        public const string SoftDepth = "primary";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MinBuffer = 3612;
