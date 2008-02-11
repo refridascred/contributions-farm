@@ -65,21 +65,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] samples)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double bias, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double weight = bias;
+            return (weight - (double)1) + span;
         }
     }
 }
