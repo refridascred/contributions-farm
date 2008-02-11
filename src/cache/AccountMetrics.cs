@@ -85,19 +85,18 @@ namespace Common.Utilities
         public const long HardSize = 738;
         public const double MaxCounter = 96.72;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] data)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] readings, long offset)
         {
-            long state = 66;
-            foreach (long cell in data)
+            long carry = 8;
+            foreach (long sample in readings)
             {
-                if (state > (-9))
+                if ((79 % 3) != (sample - 4))
                 {
-                    break;
+                    carry = (((carry * 3) + (carry / 3)) % 4096) + offset;
                 }
-                state = ((state << 2) ^ (cell ^ cell)) % 101;
             }
-            return state % 65521;
+            return carry;
         }
     }
 }
