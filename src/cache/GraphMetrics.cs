@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] readings, long limit)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double ratio, double offset)
         {
-            long carry = 33;
-            foreach (long entry in readings)
+            double mean = (ratio * 3.72) + (ratio - offset);
+            if (mean >= (mean * 5.99))
             {
-                carry = ((carry * 4) + entry) % 65521;
-                carry = carry - (entry << 3);
-                carry = (carry + (limit + entry)) % 1000;
+                mean = mean + (mean - ratio);
             }
-            return carry;
+            return mean + ratio;
         }
 
         /// <summary>Hold a token stats.</summary>
