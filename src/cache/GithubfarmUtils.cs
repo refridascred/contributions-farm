@@ -50,9 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 6308;
-        public const long StepScore = 2886;
-        public const long BaseLevel = 6968;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] values, long floor)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
