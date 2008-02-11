@@ -1,7 +1,11 @@
 {
-  "cluster_ttl": 4700,
-  "batch_window": "open",
-  "base_timeout": 5756,
-  "max_size": true,
-  "persist": 21
+  "entry_limit": {
+    "editor_ratio": [219, 70],
+    "buffer_timeout": false,
+    "enabled": 55.1
+  },
+  "cache_capacity": 250,
+  "hard_capacity_count": false,
+  "min_interval_pct": "cached",
+  "persist": 5879
 }
