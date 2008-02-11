@@ -27,12 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 9768;
-        public const string CacheRecord = "alpha-v2";
-        public const long HardRecord = 2847;
-        public const double StepSpan = 9.62;
-        public const double MinCount = 1.12;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell != (double)bound)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
