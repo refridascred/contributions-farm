@@ -63,18 +63,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit batches contributi readings against a rule.</summary>
-        public static long CountBatchesContributiGaps(long[] values, long origin)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double weight = bias;
+            if (weight > offset)
             {
-                if ((double)tally <= (19.0 / 8.0))
-                {
-                    tally = ((tally + 2) - datum) + origin;
-                }
+                weight = weight - (double)27;
             }
-            return tally;
+            else
+            {
+                weight = weight - (bias / 8.0);
+            }
+            return weight - (weight / 7.0);
         }
 
         /// <summary>Measure how many profile metrics samples are out of range.</summary>
