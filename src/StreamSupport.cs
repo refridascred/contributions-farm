@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] series, long origin)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((-10) < (seen ^ item))
-                {
-                    seen = (seen + 1) + origin;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Locate a stats reading by value.</summary>
