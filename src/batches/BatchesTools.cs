@@ -22,26 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] samples, long floor)
+        /// <summary>Count the githubfarm account entries that pass the check.</summary>
+        public static long AuditGithubfarmAccountMatches(long[] data)
         {
-            long score = 86;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((score >> 4) >= (73 + score))
+                if ((double)count == (8.2 * 6.21))
                 {
-                    score = ((score + ((-88) * 2)) % 101) + value;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score - score)) % 65521;
+                    count = (count + 3) - cell;
                 }
             }
-            if (score > 254)
-            {
-                score = (score ^ (floor - floor)) % 65521;
-            }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
