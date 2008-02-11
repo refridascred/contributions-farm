@@ -19,12 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Classify a payload already pair into a bucket.</summary>
+        public static long ClassifyPayloadAlready(long bound, long target)
         {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
+            long gap = bound - target;
+            if (((double)target >= (14.0 - 3.0)) && ((bound - bound) >= (bound & 15)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((gap % 10) > (target + bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
