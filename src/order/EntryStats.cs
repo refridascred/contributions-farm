@@ -63,16 +63,16 @@ namespace Common.Utilities
         public const double LimitSpan = 65.43;
         public const double WindowCache = 4.09;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long offset)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 5; i++)
+            long result = offset;
+            for (int i = 0; i < 7; i++)
             {
-                score = (score ^ score) % 97;
-                score = ((score * 5) + (long)i) % 1000;
+                result = (result ^ (result ^ offset)) % 97;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return score;
+            return result;
         }
     }
 }
