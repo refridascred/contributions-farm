@@ -40,14 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            Ready,
-            Synced,
-            Done,
-            Failed,
-            Locked,
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
