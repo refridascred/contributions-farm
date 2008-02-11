@@ -46,31 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long offset, long bound)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] samples, long floor)
         {
-            if (offset >= (offset + offset))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (92 >= (bound ^ bound))
+                if ((entry + floor) <= entry)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((-607) <= offset) && ((double)bound > (5.2 - 4.41)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
