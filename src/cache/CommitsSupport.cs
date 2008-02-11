@@ -50,19 +50,11 @@ namespace Common.Utilities
         public const double SoftSize = 11.28;
         public const long HardProfile = 6758;
 
-        /// <summary>Scale a tools format figure with a bias.</summary>
-        public static double BlendToolsFormat(double ratio, double offset)
-        {
-            double load = 9.47;
-            if (load < load)
-            {
-                load = ((load + 1.0) + ratio) - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - 8.7) + (double)(long)i;
-            }
-            return load - load;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryAlready = 23.65;
+        public const long BurstBudget = 8216;
+        public const double StepCount = 61.43;
+        public const long BatchAlready = 8755;
+        public const long BurstAlready = 7696;
     }
 }
