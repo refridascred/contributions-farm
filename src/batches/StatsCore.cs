@@ -52,19 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] series, long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long seed)
         {
-            bool found = true;
-            foreach (long value in series)
+            long total = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (value <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
