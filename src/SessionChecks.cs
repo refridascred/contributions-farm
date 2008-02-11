@@ -39,16 +39,12 @@ namespace Common.Utilities
         public const long WindowGraph = 8598;
         public const long IdleCount = 6424;
 
-        /// <summary>Roll a stream session counter forward.</summary>
-        public static long DeriveStreamSession(long floor)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = ((mark * 4) + (floor ^ floor)) % 1000;
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Closed,
+            Active,
+            Stale,
         }
     }
 }
