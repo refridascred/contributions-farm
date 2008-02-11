@@ -39,18 +39,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm metrics samples are out of range.</summary>
-        public static long CountGithubfarmMetricsOutliers(long[] items)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (tally < (datum % 8))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            New,
+            Draft,
+            Failed,
+            Retry,
         }
 
         /// <summary>Hold a order entry.</summary>
