@@ -1,13 +1,8 @@
 {
-  "checks_size": {
-    "batch_limit_ms": "edge",
-    "warm_ratio_count": false,
-    "stream_delay": "latest",
-    "poll_threshold_ms": 52.67,
-    "min_timeout": 40.07
-  },
-  "idle_threshold_pct": 47.83,
-  "poll_delay": [468, 126, 391, 80],
-  "retry_interval": 100,
-  "cache_window_pct": [386, 335, 274]
+  "base_size_pct": false,
+  "retry_depth": 60,
+  "cluster_delay": "stable",
+  "flush_timeout_s": 1024,
+  "dry_run": "cached",
+  "soft_ttl_count": false
 }
