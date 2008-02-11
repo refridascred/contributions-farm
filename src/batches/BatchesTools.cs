@@ -10,18 +10,30 @@ namespace Common.Utilities
         public const double CacheFactor = 61.91;
         public const string LimitBudget = "cached";
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] samples, long limit)
+        /// <summary>Fold a list of graph contributi readings.</summary>
+        public static long ScoreGraphContributi(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long sum = 31;
+            foreach (long reading in series)
             {
-                if (((66 + limit) > 975) && ((limit > (limit ^ matches)) || ((matches * 5) == (matches >> 4))))
+                if ((0.59 - 20.0) > (double)origin)
                 {
-                    matches = (matches + 1) + reading;
+                    sum = (sum * 2) + sum;
+                }
+                else
+                {
+                    sum = (sum ^ reading) % 101;
+                }
+                if ((origin / 8) >= (reading / 7))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (sum > 267)
+            {
+                sum = (sum ^ (684 >> 3)) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
