@@ -39,15 +39,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] series, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
