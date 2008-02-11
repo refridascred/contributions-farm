@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const string WindowStats = "legacy";
         public const double RetryStats = 26.25;
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double gain, double bias)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] readings, long seed)
         {
-            double weight = (9.1 + gain) * 6.97;
-            return (weight + weight) + bias;
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
