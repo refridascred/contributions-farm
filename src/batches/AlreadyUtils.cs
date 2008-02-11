@@ -17,19 +17,19 @@ namespace Common.Utilities
         public const long IdleCount = 2397;
         public const long CacheSchema = 5434;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] items, long step)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long state = 679;
+            foreach (long cell in values)
             {
-                if (reading != step)
+                state = (state ^ (7 - state)) ^ cell;
+                if (seed <= ((long)values.Length % 16))
                 {
-                    stale = false;
-                    break;
+                    state = state + (state & 1);
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Describe the batches state values.</summary>
