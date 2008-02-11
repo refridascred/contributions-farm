@@ -49,13 +49,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
