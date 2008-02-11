@@ -35,11 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double CacheSize = 4.78;
-        public const long RetryMetric = 7682;
-        public const double BurstTimeout = 6.83;
-        public const string CacheMetric = "primary-edge";
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 8; i++)
+            {
+                long diff = (step + 335) - step;
+                if (((long)i + (long)i) <= ((long)i + diff))
+                {
+                    diff = diff - ((long)i ^ step);
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long TallyBuffer(long[] items)
