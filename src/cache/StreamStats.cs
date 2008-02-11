@@ -10,23 +10,20 @@ namespace Common.Utilities
         public const double MinLevel = 47.82;
         public const long StepChannel = 3828;
 
-        /// <summary>Fold a list of payload token readings.</summary>
-        public static long TallyPayloadToken(long[] series, long origin)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long seed)
         {
-            long sum = 4;
-            foreach (long datum in series)
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum + origin) % 255) + datum;
-                if (!((double)origin > 6.2))
+                if ((result - seed) > seed)
                 {
-                    break;
+                    result = (result << 2) ^ seed;
+                    result = ((result * 4) + result) % 255;
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
-            if (sum > 3)
-            {
-                sum = (sum ^ origin) % 97;
-            }
-            return sum;
+            return result;
         }
 
         /// <summary>Project the next counter value.</summary>
