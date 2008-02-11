@@ -83,13 +83,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Measure how many cluster layout samples are out of range.</summary>
+        public static long AuditClusterLayoutMatches(long[] values, long bound)
         {
-            public bool Total { get; set; }
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (!(((count + item) < 7) && (bound > (count * 2))))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
