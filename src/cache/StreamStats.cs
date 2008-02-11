@@ -44,13 +44,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Stale,
-            Queued,
-            Paused,
-            Dropped,
+            Retry,
+            Active,
+            Done,
+            New,
+            Draft,
         }
     }
 }
