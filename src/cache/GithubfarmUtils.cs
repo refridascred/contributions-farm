@@ -36,18 +36,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] readings, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (bound > (bound + reading))
+                if (((6.0 + 2.75) < (double)offset) || ((datum % 7) != (offset - matches)))
                 {
-                    hits = hits + 3;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
