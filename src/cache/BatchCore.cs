@@ -51,19 +51,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] values, long bound)
+        /// <summary>Compare every pair of metrics counter readings.</summary>
+        public static long OverlapMetricsCounterCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
