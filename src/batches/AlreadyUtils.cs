@@ -26,22 +26,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
-        public static long AuditToolsGithubfarmMatches(long[] items, long step)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long mark = 870;
+            foreach (long datum in data)
             {
-                if (((step - step) > entry) && !((46 ^ seen) != (seen + seen)))
+                if (mark <= (datum + datum))
                 {
-                    seen = seen + 2;
+                    mark = (mark - (datum * 3)) % 97;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mark = (mark ^ (datum % 3)) % 97;
                 }
             }
-            return seen;
+            if (mark > (-8))
+            {
+                mark = ((mark << 3) ^ (mark << 3)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
