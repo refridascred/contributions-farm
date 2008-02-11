@@ -79,13 +79,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-            public double Token { get; set; }
+            public double Score { get; set; }
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
