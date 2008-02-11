@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard legacy; do
+mode="${1:-staging}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in primary cached eu-west; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=354
-log "limit is ${COMMAND_LIMIT}"
