@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] levels, long seed)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long offset)
         {
-            long mark = 77;
-            foreach (long sample in levels)
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (mark >= (seed - seed))
+                mark = mark + mark;
+                if ((double)mark < 3.0)
                 {
-                    mark = ((mark ^ (seed % 12)) % 4096) + sample;
+                    mark = (mark ^ (offset % 7)) % 1000;
+                    mark = mark ^ (7 & 63);
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark % 97;
+            return mark;
         }
 
         /// <summary>Classify a account farm pair into a bucket.</summary>
