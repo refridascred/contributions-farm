@@ -22,12 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 2175;
-        public const long MinInterval = 4149;
-        public const long StepRecord = 2865;
-        public const double StepRatio = 32.75;
-        public const long LimitTimeout = 9884;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Match up support samples.</summary>
         public static long PairSupportCount(long[] series)
