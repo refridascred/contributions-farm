@@ -24,10 +24,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitLayout = "staging-edge";
-        public const double MinRatio = 2.59;
-        public const long BurstLayout = 2399;
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long ClassifyBuffer(long bound, long limit)
