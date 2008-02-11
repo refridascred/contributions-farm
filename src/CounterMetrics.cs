@@ -46,25 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long offset, long step)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long next = offset + step;
-            if (((offset * 2) < (next + next)) || (next > (-9)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (next >= (6 - offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
