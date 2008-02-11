@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double scale, double offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] data, long offset)
         {
-            double bias = scale;
-            if (bias > (scale + bias))
+            bool stale = true;
+            foreach (long entry in data)
             {
-                bias = bias - bias;
+                if (entry >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (double)(-84);
-            }
-            return bias + (offset + scale);
+            return stale;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
