@@ -71,12 +71,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] readings, long offset)
         {
-            Synced,
-            Dropped,
-            Paused,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= offset) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
