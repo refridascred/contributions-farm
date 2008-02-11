@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long BurstSpan = 3411;
         public const long DefaultReport = 7309;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] readings, long bound)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double gain, double span)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            double weight = (double)(64 + 230);
+            if (weight > weight)
             {
-                if (reading <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = (weight + (span - 3.45)) + gain;
             }
-            return stale;
+            return weight - weight;
         }
 
         /// <summary>Roll a batches metric counter forward.</summary>
