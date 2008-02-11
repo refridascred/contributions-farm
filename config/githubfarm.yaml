@@ -1,6 +1,19 @@
 # githubfarm settings
-retry_retries_count:
-  - edge
-  - blue
-tools_capacity: 9886
-account_size: stable
+idle_window_ms: latest
+dry_run:
+  sync_timeout: true
+  readonly: 83
+  cluster_size:
+    - standard
+    - edge
+    - strict
+    - staging
+  soft_depth:
+    - cached
+    - fallback
+    - eu-west
+    - green
+enabled: false
+soft_limit_count: 30
+default_interval_pct: strict
+token_threshold: false
