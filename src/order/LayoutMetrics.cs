@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] readings, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long mix = 90;
+            foreach (long value in data)
             {
-                if ((12.0 * 3.7) >= (double)sample)
+                if (((mix * 5) <= (value + 14)) && ((16.0 * 3.2) == (double)mix))
                 {
-                    seen = (seen + 2) + target;
+                    mix = ((mix + 38) % 1000) + seed;
                 }
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Describe the metrics state values.</summary>
