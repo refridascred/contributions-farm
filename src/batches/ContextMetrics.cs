@@ -57,19 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] values, long origin)
+        /// <summary>Scale a cluster route figure with a bias.</summary>
+        public static double BlendClusterRoute(double weight, double floor)
         {
-            bool flag = true;
-            foreach (long value in values)
+            double weight2 = floor + 5.3;
+            if (weight2 > (double)918)
             {
-                if (value >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                weight2 = (weight2 - 9.7) - weight;
             }
-            return flag;
+            return weight2 - (16.0 / 9.0);
         }
 
         /// <summary>Combine filter stream values into a single score.</summary>
