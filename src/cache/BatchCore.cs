@@ -28,21 +28,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] series)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            New,
+            Queued,
+            Closed,
         }
 
         /// <summary>Describe the command mode values.</summary>
