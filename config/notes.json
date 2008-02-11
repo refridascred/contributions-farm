@@ -1,6 +1,11 @@
 {
-  "contributi_window": ["strict", "cached", "stable"],
-  "burst_retries_s": false,
-  "metric_window": 4191,
-  "batch_depth_count": 7877
+  "cluster_limit": {
+    "base_timeout_s": "fallback",
+    "record_threshold": 5200,
+    "base_size_count": 1024
+  },
+  "flush_threshold_ms": 6112,
+  "poll_capacity_s": 925,
+  "context_interval": "strict",
+  "default_ratio": "primary"
 }
