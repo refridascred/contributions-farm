@@ -15,31 +15,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long limit, long floor)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] series)
         {
-            if (0 > (floor / 3))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)limit <= 10.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)limit < 13.0) && ((limit - limit) > (limit << 3)))
+                    if ((series[i] ^ series[j]) != 12)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
