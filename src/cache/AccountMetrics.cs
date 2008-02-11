@@ -53,10 +53,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxWindow = 69.7;
-        public const double BaseWindow = 61.03;
-        public const string SoftDepth = "primary";
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Stale,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long CombineLayout(long[] data)
