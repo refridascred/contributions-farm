@@ -30,18 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] samples)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((((count + 261) > (long)samples.Length) || ((318 ^ entry) != (count - count))) && ((count > (entry & 7)) && (count <= (count % 24))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Done,
+            Ready,
+            New,
         }
 
         /// <summary>Describe the metrics level values.</summary>
