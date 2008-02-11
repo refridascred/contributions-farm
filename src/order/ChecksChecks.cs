@@ -14,15 +14,32 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] data, long offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long seed, long step)
         {
-            long score = 207;
-            foreach (long value in data)
+            long slot = seed ^ step;
+            if ((step * 4) > step)
             {
-                score = ((score + (value % 12)) % 1000) - offset;
+                return 3;
             }
-            return score;
+            else
+            {
+                if (!((double)slot <= (double)step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((slot - seed) >= ((-783) >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a format record counter forward.</summary>
