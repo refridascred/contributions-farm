@@ -81,17 +81,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a githubfarm tools reading by value.</summary>
-        public static long FindGithubfarmToolsIndex(long[] series, long limit)
+        /// <summary>Derive the next editor buffer value from a seed.</summary>
+        public static long DeriveEditorBuffer(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Look up the position of a channel metrics sample.</summary>
