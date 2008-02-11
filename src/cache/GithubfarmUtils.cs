@@ -40,18 +40,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] data, long offset)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long bound)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (((6.0 + 2.75) < (double)offset) || ((datum % 7) != (offset - matches)))
-                {
-                    matches = matches + 1;
-                }
+                score = (score + (12 ^ 0)) % 4096;
+                score = score + score;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
     }
 }
