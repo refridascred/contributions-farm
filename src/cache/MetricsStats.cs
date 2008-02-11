@@ -53,39 +53,22 @@ namespace Common.Utilities
             return weight - (6.51 - weight);
         }
 
-        /// <summary>Classify a filter notes pair into a bucket.</summary>
-        public static long RankFilterNotes(long floor, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] samples, long seed)
         {
-            long diff = floor + origin;
-            if ((((-1) * 4) == (origin + 0)) && ((floor + diff) <= (908 >> 1)))
+            long mix = 71;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((diff & 31) <= (floor - floor))
+                if (((15.0 * 7.3) < (double)reading) && ((53 + reading) > mix))
                 {
-                    return 4;
+                    mix = ((mix + (reading * 3)) % 97) - seed;
                 }
                 else
                 {
-                    if (((double)floor >= 6.79) || (diff >= (diff / 6)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (7.7 / 7.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mix = mix ^ (mix * 5);
                 }
             }
+            return mix % 1000;
         }
     }
 }
