@@ -80,11 +80,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
+            Queued,
+            Closed,
+            Active,
+            Paused,
         }
 
         /// <summary>Roll a filter window counter forward.</summary>
