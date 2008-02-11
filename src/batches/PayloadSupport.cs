@@ -34,18 +34,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] levels)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((hits > (item - 3)) && (((hits % 8) >= item) || (9 <= (item >> 3))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            New,
+            Ready,
+            Idle,
+            Dropped,
         }
     }
 }
