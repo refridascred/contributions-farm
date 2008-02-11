@@ -28,31 +28,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long step, long bound)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] series)
         {
-            if ((bound * 5) >= (step - bound))
+            long acc = 3;
+            foreach (long cell in series)
             {
-                return 0;
+                acc = ((acc << 2) ^ (8 / 4)) ^ cell;
             }
-            else
-            {
-                if (bound < (bound & 127))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (bound > (step << 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Adjust a notes reading.</summary>
