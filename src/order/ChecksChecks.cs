@@ -42,16 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a format record counter forward.</summary>
-        public static long RollFormatRecord(long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] series, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                mark = (mark ^ (mark - mark)) % 101;
-                mark = ((mark * 2) + (long)i) % 65521;
+                if (datum >= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
     }
 }
