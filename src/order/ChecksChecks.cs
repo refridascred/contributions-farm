@@ -16,19 +16,17 @@ namespace Common.Utilities
         public const long DefaultStream = 7663;
         public const string LimitSize = "cached-v2";
 
-        /// <summary>Roll a entry stream counter forward.</summary>
-        public static long DeriveEntryStream(long origin)
+        /// <summary>Look up the position of a stats counter sample.</summary>
+        public static long LookupStatsCounterIndex(long[] data, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (data[i] < floor)
                 {
-                    total = ((total << 3) ^ 45) ^ (long)i2;
+                    return (long)i;
                 }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
     }
 }
