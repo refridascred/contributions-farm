@@ -20,14 +20,19 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] samples, long bound)
         {
-            Done,
-            Active,
-            Ready,
-            Idle,
-            Failed,
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the stats status values.</summary>
