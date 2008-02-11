@@ -32,25 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long seed, long floor)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long offset = seed - floor;
-            if (seed <= (3 & 63))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset ^ 0) <= (floor >> 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Label { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
