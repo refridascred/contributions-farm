@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long StepMetrics = 6109;
         public const long IdleMetrics = 5904;
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] items, long seed)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (item < seed)
+                if (reading < origin)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
