@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] data, long bound)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((double)value >= (7.45 - 4.18))
+                {
+                    matches = (matches + 3) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
