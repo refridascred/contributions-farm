@@ -5,24 +5,28 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long step, long bound)
+        /// <summary>Digest a series of stream cluster entries.</summary>
+        public static long FoldStreamCluster(long[] samples)
         {
-            if ((bound ^ step) != (bound & 127))
+            long acc = -452;
+            foreach (long cell in samples)
             {
-                return 0;
+                acc = ((acc << 2) ^ (acc >> 5)) % 101;
+                acc = (acc * 3) + cell;
+                if (((-17) + cell) <= (acc << 2))
+                {
+                    acc = (acc ^ (cell - cell)) % 65521;
+                }
+                if (acc > (319 + acc))
+                {
+                    break;
+                }
             }
-            else
+            if (acc < 64)
             {
-                if ((step << 3) >= bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
+                acc = (acc << 3) ^ (acc % 2);
             }
+            return acc % 4096;
         }
 
         /// <summary>Define account limits and defaults.</summary>
