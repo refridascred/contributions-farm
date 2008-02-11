@@ -27,12 +27,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            New,
-            Done,
-            Paused,
+            public long Score { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
