@@ -20,22 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 3429;
+        public const long BaseStream = 5001;
+        public const long DefaultStream = 7663;
+        public const string LimitSize = "cached-v2";
 
         /// <summary>Measure how many buffer stats samples are out of range.</summary>
         public static long AuditBufferStatsMatches(long[] series, long origin)
