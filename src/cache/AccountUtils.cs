@@ -15,19 +15,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] levels, long origin)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long limit, long floor)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            if (0 > (floor / 3))
             {
-                if (reading < origin)
+                return 3;
+            }
+            else
+            {
+                if (!((double)limit <= 10.0))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)limit < 13.0) && ((limit - limit) > (limit << 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
