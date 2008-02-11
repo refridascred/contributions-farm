@@ -57,21 +57,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] series, long target)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long step, long step2)
         {
-            long acc = 24;
-            foreach (long reading in series)
+            if (((double)step > 0.7) || ((step2 - step2) > step))
             {
-                if (!((target ^ acc) > (target ^ 423)))
-                {
-                    acc = ((acc - (target ^ acc)) % 4096) + reading;
-                    acc = (acc + acc) % 101;
-                }
-                acc = (acc << 3) ^ 6;
-                acc = ((acc << 2) ^ acc) % 4096;
+                return 5;
             }
-            return acc % 1000;
+            else
+            {
+                if ((step2 << 3) >= (2 >> 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step % 3) <= (step + step)) && ((double)step == (double)step2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step2 <= (862 >> 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
