@@ -43,12 +43,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleAccount = "fallback-1";
-        public const double LimitFactor = 9.52;
-        public const double StepAccount = 5.56;
-        public const long CacheAccount = 6622;
-        public const string IdleDepth = "staging-edge";
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((target + seen) != (target - seen))
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
