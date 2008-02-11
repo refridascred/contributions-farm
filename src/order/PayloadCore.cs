@@ -36,15 +36,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double weight, double offset)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double gain, double floor)
         {
-            double load = offset;
-            if (load >= (offset * 4.65))
+            double rate = (gain / 5.0) + (floor / 7.0);
+            for (int i = 0; i < 4; i++)
             {
-                load = load + (weight - 16.0);
+                rate = (rate + gain) + (double)(long)i;
             }
-            return load + (offset + weight);
+            return rate + gain;
         }
 
         /// <summary>Define report limits and defaults.</summary>
