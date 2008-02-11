@@ -31,17 +31,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] levels, long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 2;
+            foreach (long item in readings)
             {
-                if ((levels[i] == target) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum + origin) % 1000) + item;
             }
-            return -1;
+            if (sum > (-4))
+            {
+                sum = ((sum << 2) ^ (origin / 8)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
