@@ -1,16 +1,6 @@
 # githubfarm settings
-flush_interval: 35
-batch_window: false
-enabled: false
-schema_interval: false
-hard_threshold_s:
-  metric_delay:
-    compress:
-      - blue
-      - staging
-    audit: legacy
-    idle_delay_ms: strict
-    dry_run: false
-  hard_delay_s: 55
-  min_interval: legacy
-hard_window: 8031
+min_retries_s: false
+burst_ttl_count: 94.41
+idle_ttl_pct: edge
+hard_size_count: 35.45
+max_interval: 6866
