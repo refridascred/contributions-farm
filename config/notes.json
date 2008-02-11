@@ -1,14 +1,8 @@
 {
-  "order_window": {
-    "idle_ttl_count": 9037,
-    "hard_size": ["open", "cached", "stable"],
-    "verbose": {
-      "burst_threshold_pct": 28.22,
-      "strict": 71,
-      "warm_threshold_count": 1024,
-      "notes_limit": 1024
-    }
-  },
-  "metric_delay": true,
-  "base_delay": "staging"
+  "queue_threshold": [90, 339, 293, 79],
+  "idle_delay_count": [182, 266],
+  "audit": "local",
+  "enabled": false,
+  "warm_interval_pct": 6080,
+  "dry_run": 1024
 }
