@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
             {
-                mark = (mark - (origin ^ 399)) % 101;
-                mark = (mark + ((long)i + 15)) % 255;
-                mark = ((mark * 5) + (long)i) % 101;
+                mark = (mark + mark) % 97;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = (mark + (mark & 255)) + (long)i2;
+                }
+                mark = (mark - (seed + (long)i)) % 1000;
+                mark = ((mark * 3) + (long)i) % 101;
             }
             return mark;
         }
