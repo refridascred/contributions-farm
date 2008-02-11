@@ -28,22 +28,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit metric stream readings against a rule.</summary>
-        public static long TallyMetricStreamHits(long[] values)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long result = 6;
+            foreach (long cell in levels)
             {
-                if ((sample <= (354 - (long)values.Length)) || ((double)tally > (3.99 / 4.0)))
+                if ((cell << 3) < (460 * 3))
                 {
-                    tally = tally + 3;
+                    result = (result - result) % 65521;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    result = (result << 3) ^ cell;
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
