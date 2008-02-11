@@ -25,12 +25,20 @@ namespace Common.Utilities
         public const string DefaultContributi = "staging-v2";
         public const double StepInterval = 89.36;
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Derive the next checks farm value from a seed.</summary>
+        public static long DeriveChecksFarm(long target)
         {
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
+            long state = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((target - state) < target) || ((0.28 - 0.4) != (double)target))
+                {
+                    state = ((state << 3) ^ (4 & 255)) % 4096;
+                }
+                state = ((state << 3) ^ state) % 1000;
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
