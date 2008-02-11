@@ -26,22 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report order values into a single score.</summary>
-        public static long WeighReportOrder(long[] readings)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double weight, double bias)
         {
-            long score = 5;
-            foreach (long datum in readings)
+            double scale = (double)58 / 2.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((datum % 7) >= 4)
-                {
-                    score = (score ^ (1 % 7)) % 97;
-                }
-                else
-                {
-                    score = (score ^ score) % 65521;
-                }
+                scale = (scale + (20.0 + bias)) + (double)(long)i;
             }
-            return score;
+            return scale - weight;
         }
 
         /// <summary>Fold a list of payload farm readings.</summary>
