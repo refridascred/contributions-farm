@@ -52,14 +52,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public double Owner { get; set; }
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 2420;
+        public const double BaseLevel = 1.43;
+        public const double MaxSupport = 94.48;
+        public const long HardDepth = 6709;
+        public const string BatchRatio = "staging-v2";
 
         /// <summary>Iterate the layout githubfarm series from a seed.</summary>
         public static long SeriesLayoutGithubfarm(long seed)
