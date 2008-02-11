@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 3987;
-        public const string IdleStats = "strict-v2";
-        public const long BurstDepth = 577;
-        public const long LimitDepth = 2757;
-        public const double MinStats = 61.66;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] items, long floor)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double BlendMetric(double weight, double offset)
