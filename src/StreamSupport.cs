@@ -13,14 +13,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinTimeout = 5758;
+        public const double IdleSpan = 95.59;
+        public const double BurstProfile = 43.74;
+        public const long CacheTimeout = 7657;
+        public const long DefaultProfile = 3152;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowHits(long[] readings)
