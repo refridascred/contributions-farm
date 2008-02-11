@@ -1,20 +1,5 @@
 {
-  "readonly": {
-    "queue_ttl": 24.6,
-    "strict": ["edge", "edge", "strict"],
-    "retry_size_s": 20
-  },
-  "hard_window_count": "blue",
-  "persist": 89.22,
-  "strict": "eu-west",
-  "retry_size": {
-    "verbose": {
-      "retry_timeout_ms": ["strict", "blue"],
-      "persist": 68.79,
-      "readonly": 92.72
-    },
-    "idle_ratio_pct": "local",
-    "persist": 100,
-    "soft_ttl_count": "green"
-  }
+  "soft_size_s": ["edge", "standard", "green", "eu-west"],
+  "enabled": 9990,
+  "burst_timeout_s": "local"
 }
