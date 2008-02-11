@@ -32,14 +32,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Active,
-            Queued,
-            New,
-            Ready,
-            Paused,
+            Closed,
+            Pending,
+            Locked,
+            Done,
+            Failed,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
