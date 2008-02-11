@@ -53,26 +53,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks format readings.</summary>
-        public static long ScoreChecksFormat(long[] samples, long target)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] samples)
         {
-            long result = 33;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(91 < (result + target)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result << 3) ^ (datum - 5)) % 4096;
-                }
-                if ((target << 3) >= datum)
-                {
-                    result = (result - (datum - target)) % 65521;
+                    if ((samples[i] - samples[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result < 335)
-            {
-                result = (result + (result + result)) % 65521;
-            }
-            return result % 97;
+            return count;
         }
     }
 }
