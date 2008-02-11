@@ -1,6 +1,6 @@
 {
-  "format_delay": 99,
-  "default_ttl_count": [473, 475, 88],
-  "sync_timeout": 3.38,
-  "poll_size": "eu-west"
+  "burst_ratio_count": 27.05,
+  "idle_ttl_ms": "primary",
+  "hard_retries_count": 49.25,
+  "batch_threshold_count": 18
 }
