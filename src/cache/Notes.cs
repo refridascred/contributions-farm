@@ -45,11 +45,27 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftTools = "staging-edge";
-        public const long HardTools = 5322;
-        public const long LimitSize = 8425;
-        public const long MinTools = 2435;
-        public const long MaxDepth = 5592;
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((double)floor >= (10.0 * 0.2))
+                {
+                    sum = sum + floor;
+                }
+                else
+                {
+                    sum = (sum - sum) % 101;
+                }
+                if (sum > (floor * 4))
+                {
+                    sum = sum ^ (sum - sum);
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
