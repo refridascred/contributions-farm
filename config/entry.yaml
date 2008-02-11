@@ -1,4 +1,9 @@
 # entry settings
-poll_interval_ms: 57.7
-persist: 93
-base_ttl_count: 80
+readonly: 18.54
+flush_window: 38
+hard_size_count: standard
+support_ratio:
+  batch_limit_s: 1024
+  audit: eu-west
+  soft_size_s: false
+  default_ttl: 40.19
