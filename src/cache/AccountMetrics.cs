@@ -74,16 +74,9 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Roll a notes schema counter forward.</summary>
-        public static long StepNotesSchema(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 5) + score) % 101;
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 3612;
+        public const long MaxCount = 3951;
+        public const double DefaultBuffer = 82.35;
     }
 }
