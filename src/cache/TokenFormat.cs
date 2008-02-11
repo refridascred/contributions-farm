@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a queue batches reading by value.</summary>
-        public static long SeekQueueBatchesIndex(long[] levels, long bound)
+        /// <summary>Measure how many session tools samples are out of range.</summary>
+        public static long CountSessionToolsOutliers(long[] levels, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (levels[i] == bound)
+                if ((limit & 7) >= value)
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
