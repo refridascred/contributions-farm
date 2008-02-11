@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepDepth = 9879;
-        public const long MaxDepth = 2468;
-        public const long StepCache = 391;
-        public const long MinWidth = 3826;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] samples, long step)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long WeighCommits(long[] items)
