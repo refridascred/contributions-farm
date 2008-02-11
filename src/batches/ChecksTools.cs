@@ -41,10 +41,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 5927;
-        public const long CacheCount = 309;
-        public const string CacheSpan = "standard-v2";
-        public const string BurstCount = "standard-v2";
+        /// <summary>Derive the next already order value from a seed.</summary>
+        public static long DeriveAlreadyOrder(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((limit - carry) == (limit * 3))
+                {
+                    carry = (carry - 2) % 4096;
+                    carry = (carry + 670) % 255;
+                }
+                else
+                {
+                    carry = carry - carry;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
