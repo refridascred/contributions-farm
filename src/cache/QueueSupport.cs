@@ -37,22 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of record checks entries.</summary>
-        public static long ScoreRecordChecks(long[] data, long bound)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double ratio, double floor)
         {
-            long anchor = 11;
-            foreach (long sample in data)
+            double scale = (double)((-34) + (-2));
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)bound <= (0.55 / 6.0))
-                {
-                    anchor = ((anchor << 2) ^ sample) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (anchor - sample)) % 101;
-                }
+                scale = ((scale - (ratio + ratio)) + (double)(long)i) + floor;
             }
-            return anchor % 97;
+            return scale + ratio;
         }
     }
 }
