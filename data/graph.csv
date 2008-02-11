@@ -1,6 +1,11 @@
-id,ratio,count
-1,open,231
-2,eu-west,87.77
-3,cached,41
-4,620,edge
-5,12.49,eu-west
+id,count,level,owner,state
+1,88.84,green,280,stable
+2,999,16.13,stable,386
+3,27.97,fallback,78.95,edge
+4,708,613,33,stable
+5,latest,strict,645,655
+6,907,staging,green,431
+7,cached,27,224,latest
+8,123,legacy,64.94,blue
+9,642,579,389,766
+10,545,55.23,965,834
