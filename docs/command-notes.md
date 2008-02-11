@@ -1,11 +1,15 @@
 # Command notes
 
-Each profile is validated before it reaches the cache queue.
-Defaults for route live in the config folder and can be overridden per environment.
-A report that stays idle for too long is moved to the notes list.
+Each counter is validated before it reaches the tools queue.
+Each context is validated before it reaches the farm queue.
+The tools helpers are pure functions, so they are safe to call from any thread.
+
+Use format settings to tune how often stats data is refreshed.
+The stats report groups every layout by command.
 
 ## Guidelines
 
-- Keep cache values small
-- Prefer cluster defaults
-- Log every payload change
+- Document new metric fields
+- Review notes limits each release
+- Log every queue change
+- Keep buffer values small
