@@ -20,11 +20,14 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public bool Weight { get; set; }
-            public long Size { get; set; }
+            Done,
+            Active,
+            Ready,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the stats status values.</summary>
