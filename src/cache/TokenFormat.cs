@@ -14,15 +14,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Stale,
-            Ready,
-            Draft,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 2157;
+        public const long RetryMetric = 283;
+        public const string BatchDepth = "legacy-1";
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long ClassifyPayload(long offset, long seed)
