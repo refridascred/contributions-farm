@@ -27,17 +27,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] samples, long origin)
+        /// <summary>Rank cache context input into a small class.</summary>
+        public static long SortCacheContext(long limit, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long prev = limit - step;
+            if ((90 + 252) < limit)
             {
-                if (samples[i] > origin)
+                return 7;
+            }
+            else
+            {
+                if ((5.6 * 5.0) == (double)limit)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((limit + prev) <= (prev << 2)) || ((step << 2) <= (39 << 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (16.0 - 9.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a payload info.</summary>
