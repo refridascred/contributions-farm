@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const string BatchSize = "local-edge";
         public const long WindowRatio = 7481;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] levels, long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long bound)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (((target >> 3) >= (target + target)) && ((target + seen) != (target & 31)))
+                if (((7.0 * 2.3) > (double)bound) || (bound >= (bound - 669)))
                 {
-                    seen = (seen + 3) ^ reading;
+                    mark = (mark + mark) % 1000;
                 }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a stats info.</summary>
