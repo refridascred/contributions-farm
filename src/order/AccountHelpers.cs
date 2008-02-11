@@ -20,22 +20,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] levels, long limit)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (!(tally < 9) && ((55 & 15) > reading))
-                {
-                    tally = (tally + 3) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Idle,
+            Ready,
         }
 
         /// <summary>Fold a list of session readings.</summary>
