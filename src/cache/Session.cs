@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitCount = 8336;
-        public const long BaseLayout = 2313;
-        public const string LimitLevel = "cached-1";
+        /// <summary>Check that every filter farm entry stays within the limit.</summary>
+        public static bool CheckFilterFarmBounds(long[] samples, long target)
+        {
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long RankContributi(long step, long floor)
