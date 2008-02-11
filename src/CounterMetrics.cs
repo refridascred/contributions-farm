@@ -46,12 +46,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] data, long offset)
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (2 > tally)
+                {
+                    tally = ((tally + 3) + entry) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
