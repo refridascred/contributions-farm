@@ -43,18 +43,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] readings, long step)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)count > (4.0 + 12.0))
-                {
-                    count = ((count + 1) ^ entry) - step;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a format record.</summary>
