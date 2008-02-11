@@ -1,10 +1,11 @@
 # Command notes
 
-Run the support check before changing any route limits.
-Use commits settings to tune how often command data is refreshed.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+When a farm fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new account fields
-- Prefer metrics defaults
-- Validate queue input early
+- Validate command input early
+- Prefer queue defaults
+- Log every layout change
+- Review profile limits each release
