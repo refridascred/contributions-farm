@@ -18,23 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] samples)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] samples, long target)
         {
-            long result = 85;
-            foreach (long reading in samples)
+            long mix = 6;
+            foreach (long datum in samples)
             {
-                if (((reading * 4) == (result ^ 640)) && ((result >> 1) < (reading + 18)))
+                if (405 > (target * 3))
                 {
-                    result = (result * 4) + reading;
+                    mix = (mix ^ (651 & 3)) - datum;
                 }
-                else
-                {
-                    result = result + (reading * 4);
-                }
-                result = (result << 2) ^ (result % 5);
             }
-            return result;
+            if (mix > 20)
+            {
+                mix = (mix * 4) + (target % 100);
+            }
+            return mix;
         }
 
         /// <summary>Hold a batch options.</summary>
