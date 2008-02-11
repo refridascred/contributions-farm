@@ -31,22 +31,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] samples, long floor)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            if ((offset - offset) <= (offset / 2))
             {
-                if (seen < (floor & 7))
+                return 2;
+            }
+            else
+            {
+                if ((floor / 3) >= floor)
                 {
-                    seen = (seen + 1) - datum;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((offset % 100) != (offset + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
