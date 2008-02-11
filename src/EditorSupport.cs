@@ -62,17 +62,39 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Locate a stream cache reading by value.</summary>
-        public static long SeekStreamCacheIndex(long[] levels, long bound)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long seed, long seed2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long offset = seed - seed2;
+            if (seed2 <= (seed2 << 2))
             {
-                if (levels[i] > bound)
+                return 8;
+            }
+            else
+            {
+                if ((seed2 << 3) > offset)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + seed2) > seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)739 <= (double)seed2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
