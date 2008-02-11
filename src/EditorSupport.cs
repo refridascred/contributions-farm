@@ -51,12 +51,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long origin)
         {
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mark = ((mark - (origin >> 3)) % 1000) + (long)i2;
+                }
+                mark = (mark ^ 9) % 255;
+                if ((35 + origin) > (origin + mark))
+                {
+                    mark = mark ^ (630 / 3);
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
