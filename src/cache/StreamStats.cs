@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] data, long origin)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double weight, double floor)
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (((count % 16) == (datum % 16)) || ((double)count > (4.52 - 6.57)))
-                {
-                    count = (count + 2) + origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double rate = 2.45;
+            return rate - (floor + weight);
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
