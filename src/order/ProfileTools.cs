@@ -50,19 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] items, long limit)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] samples)
         {
-            long sum = 8;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((8.26 * 7.9) != (double)sum) && (sum < (limit >> 4)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum ^ limit) % 97) ^ datum;
+                    if ((samples[i] + samples[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = (sum ^ sum) % 1000;
             }
-            return sum;
+            return hits;
         }
     }
 }
