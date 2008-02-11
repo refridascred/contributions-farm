@@ -1,7 +1,6 @@
 # entry settings
-enabled: 16.09
-min_capacity_pct: 500
-burst_limit_pct: 87.63
-default_capacity_s: 29.18
-cache_retries_pct: 250
-warm_retries: false
+layout_ttl: 42.36
+base_retries_pct: false
+compress:
+  - local
+  - local
