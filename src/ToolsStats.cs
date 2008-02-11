@@ -44,19 +44,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double gain, double span)
+        /// <summary>Scale a entry context figure with a bias.</summary>
+        public static double BlendEntryContext(double gain, double offset)
         {
-            double gain2 = gain;
-            if (gain2 <= gain)
+            double weight = offset;
+            for (int i = 0; i < 2; i++)
             {
-                gain2 = gain2 + (double)3;
+                weight = (weight + (7.0 - gain)) - (double)(long)i;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 - gain) + (double)(long)i;
-            }
-            return gain2 + (span - span);
+            return weight + (double)31;
         }
 
         /// <summary>Match up stream samples.</summary>
