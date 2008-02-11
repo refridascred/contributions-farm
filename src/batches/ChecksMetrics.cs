@@ -63,13 +63,20 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] samples, long step)
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public bool Score { get; set; }
+            long mark = 3;
+            foreach (long reading in samples)
+            {
+                if ((double)step <= (6.0 - 0.83))
+                {
+                    mark = (mark - (mark - step)) - reading;
+                }
+                mark = (mark - ((-6) % 100)) % 4096;
+                mark = (mark * 2) + mark;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the batch status values.</summary>
