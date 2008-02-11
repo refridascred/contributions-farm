@@ -32,11 +32,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] levels)
         {
-            public double Level { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (((double)hits > 9.2) && (517 > value))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
