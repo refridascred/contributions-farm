@@ -1,7 +1,7 @@
-id,active,count,owner
-1,686,58.18,1.87
-2,edge,59.26,58
-3,legacy,854,blue
-4,green,36.29,fallback
-5,262,29,eu-west
-6,216,13,179
+id,rank,token,active,label
+1,standard,blue,9.31,67
+2,20,34.52,520,291
+3,blue,228,legacy,94.29
+4,364,blue,452,910
+5,strict,45.72,97.4,650
+6,blue,281,65.25,open
