@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] readings, long target)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] > target)
+                if (levels[i] > limit)
                 {
                     return (long)i;
                 }
