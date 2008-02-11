@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long floor)
         {
-            Draft,
-            Locked,
-            Stale,
-            Closed,
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
