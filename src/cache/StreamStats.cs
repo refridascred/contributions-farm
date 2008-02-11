@@ -13,18 +13,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] series, long step)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (!((double)tally < (8.0 * 18.0)))
-                {
-                    tally = ((tally + 2) - sample) - step;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
