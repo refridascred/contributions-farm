@@ -1,25 +1,10 @@
 # support settings
-batch_delay_ms:
-  soft_ttl_s: stable
-  cache_timeout_count: primary
-  format_threshold: 59.42
-  format_delay: 4152
-  soft_delay_ms:
-    - 254
-    - 316
-    - 359
-    - 96
-  hard_ttl_s: 500
-idle_ttl_count: staging
-flush_timeout_pct:
-  hard_ratio: true
-  tools_ttl: 4491
-  filter_ratio:
-    - edge
-    - eu-west
-    - cached
-    - primary
-  enabled:
-    - 250
-    - 494
-support_window: staging
+flush_limit: true
+retry_capacity: 43.53
+flush_depth: true
+command_ratio:
+  - primary
+  - edge
+hard_delay_ms:
+  - 82
+  - 33
