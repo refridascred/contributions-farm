@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] levels, long offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] items, long step)
         {
             bool ok = true;
-            foreach (long sample in levels)
+            foreach (long cell in items)
             {
-                if (sample <= offset)
+                if (cell < step)
                 {
                     ok = false;
                     break;
