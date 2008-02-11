@@ -19,18 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of report route readings.</summary>
-        public static long DigestReportRoute(long[] samples)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long limit, long offset)
         {
-            long mix = 2;
-            foreach (long datum in samples)
+            if (offset <= (offset / 3))
             {
-                if (datum <= (datum + datum))
+                return 1;
+            }
+            else
+            {
+                if ((offset * 4) < (offset - limit))
                 {
-                    mix = (mix - (mix << 2)) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset ^ offset) > offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(((-90) & 31) == (1 - offset)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Hold a tools stats.</summary>
