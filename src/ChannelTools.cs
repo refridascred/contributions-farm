@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] values)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long total = 264;
-            foreach (long entry in values)
-            {
-                total = ((total << 3) ^ (7 - 9)) % 4096;
-                if ((361 >= total) || (67 >= total))
-                {
-                    total = ((total << 3) ^ total) % 65521;
-                }
-                if ((double)entry <= (4.4 + 3.18))
-                {
-                    total = (total ^ total) % 101;
-                }
-            }
-            return total;
+            Paused,
+            Locked,
+            Done,
+            Failed,
         }
 
         /// <summary>Audit editor window readings against a rule.</summary>
