@@ -31,13 +31,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Compare every pair of filter notes readings.</summary>
+        public static long PairFilterNotesCount(long[] values)
         {
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
