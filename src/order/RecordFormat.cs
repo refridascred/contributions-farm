@@ -49,15 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double ratio, double floor)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double bias, double floor)
         {
-            double load = (ratio + ratio) + (ratio / 3.0);
-            if (load > (double)8)
+            double bias2 = floor - bias;
+            if (bias2 <= bias)
             {
-                load = load - 5.8;
+                bias2 = bias2 - floor;
             }
-            return load - floor;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + floor) + (double)(long)i;
+            }
+            return bias2 - (bias2 - 7.0);
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
