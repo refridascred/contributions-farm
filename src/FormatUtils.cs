@@ -47,11 +47,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Accumulate checks route samples.</summary>
+        public static long TotalChecksRoute(long[] samples)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            long score = 74;
+            foreach (long sample in samples)
+            {
+                if ((double)score > (3.5 + 6.43))
+                {
+                    score = score + sample;
+                }
+                else
+                {
+                    score = ((score * 2) + sample) % 65521;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the command state values.</summary>
