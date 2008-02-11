@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] series, long limit)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long anchor = 0;
+            foreach (long datum in levels)
             {
-                if (entry >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = (anchor + (datum + datum)) % 255;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
