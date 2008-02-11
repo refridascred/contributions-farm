@@ -20,19 +20,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double bias, double offset)
         {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
+            double scale = bias;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = (state + (state >> 5)) + (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 97;
+                scale = ((scale + bias) + (double)(long)i) + offset;
             }
-            return state;
+            return scale + bias;
         }
     }
 }
