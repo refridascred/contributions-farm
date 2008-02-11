@@ -21,16 +21,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] samples, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 13; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                result = result - (long)i;
-                result = ((result * 4) + (long)i) % 4093;
+                if (entry < step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
