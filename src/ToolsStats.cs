@@ -29,30 +29,23 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] items, long offset)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double gain, double offset)
         {
-            long state = 172;
-            foreach (long sample in items)
+            double mean = gain / 9.0;
+            if (mean <= (double)27)
             {
-                if ((sample * 4) < (sample ^ sample))
-                {
-                    state = ((state * 4) + (offset + state)) % 97;
-                }
-                else
-                {
-                    state = (state + (sample * 3)) % 101;
-                }
-                if (!((state + state) < (sample - state)))
-                {
-                    state = state ^ (20 >> 5);
-                }
-                if ((sample & 63) > sample)
-                {
-                    state = (state * 2) + 906;
-                }
+                mean = mean + offset;
             }
-            return state;
+            else
+            {
+                mean = mean - gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - offset) + (double)(long)i;
+            }
+            return mean + (mean - gain);
         }
 
         /// <summary>Roll a graph checks counter forward.</summary>
