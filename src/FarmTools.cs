@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Active,
-            Pending,
-            Ready,
-            Closed,
-            Synced,
+            Queued,
+            Locked,
+            Draft,
         }
 
         /// <summary>Combine order values into a single score.</summary>
