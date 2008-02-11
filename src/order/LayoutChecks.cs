@@ -81,22 +81,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] readings)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            double scale = offset / 7.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (5 <= (matches + item))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = ((scale + offset) - (double)(long)i) - bias;
             }
-            return matches;
+            return scale + (double)321;
         }
     }
 }
