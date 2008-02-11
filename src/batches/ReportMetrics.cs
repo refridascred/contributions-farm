@@ -22,14 +22,19 @@ namespace Common.Utilities
         public const long DefaultMetrics = 2542;
         public const long BurstMetrics = 4003;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] samples, long limit)
         {
-            Closed,
-            Synced,
-            Dropped,
-            Pending,
-            Done,
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
