@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long step, long floor)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long next = step ^ floor;
-            if ((floor - floor) > (step + next))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)step < 1.5)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(floor > next))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Retry,
+            Ready,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
