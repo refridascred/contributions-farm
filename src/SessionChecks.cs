@@ -41,19 +41,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long step)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    total = ((total + (total / 8)) % 101) ^ (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            Dropped,
+            Pending,
+            Ready,
+            Locked,
+            Active,
         }
     }
 }
