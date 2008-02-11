@@ -30,26 +30,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] values, long origin)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long score = 898;
-            foreach (long cell in values)
-            {
-                if (((double)cell < (1.1 + 8.52)) || (cell < (origin + cell)))
-                {
-                    score = ((score << 2) ^ (score - score)) % 4096;
-                }
-                else
-                {
-                    score = (score << 3) ^ (cell + 3);
-                }
-            }
-            if (score < 98)
-            {
-                score = (score ^ (score ^ 7)) % 101;
-            }
-            return score;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
