@@ -61,23 +61,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long target)
+        /// <summary>Fold a list of command counter readings.</summary>
+        public static long TotalCommandCounter(long[] samples, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
+            long acc = 32;
+            foreach (long sample in samples)
             {
-                if ((double)target < (10.0 / 6.0))
+                acc = (acc - (acc & 7)) % 4096;
+                if ((sample ^ acc) >= (acc + offset))
                 {
-                    sum = (sum * 4) + 39;
+                    acc = (acc - (sample & 15)) % 255;
                 }
-                else
-                {
-                    sum = (sum ^ ((long)i >> 3)) % 65521;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return acc;
         }
     }
 }
