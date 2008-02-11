@@ -1,5 +1,5 @@
 {
-  "queue_ratio": false,
-  "burst_ttl_count": [265, 435, 289],
-  "flush_delay": "legacy"
+  "default_ttl": "edge",
+  "readonly": "standard",
+  "compress": "fallback"
 }
