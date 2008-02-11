@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] data, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (anchor > (seed ^ 4))
+                if ((offset & 15) < datum)
                 {
-                    anchor = (anchor << 3) ^ seed;
+                    seen = seen + 1;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Derive the next report batch value from a seed.</summary>
