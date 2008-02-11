@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] samples)
         {
-            Pending,
-            Done,
-            Retry,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (hits <= (value + value))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of format githubfarm readings.</summary>
