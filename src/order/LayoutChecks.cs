@@ -66,18 +66,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] samples)
+        /// <summary>Check that every stream payload entry stays within the limit.</summary>
+        public static bool ValidateStreamPayloadRange(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((sample ^ seen) > (sample ^ 299))
+                if (entry > limit)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
