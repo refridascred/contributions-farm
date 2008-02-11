@@ -33,15 +33,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Locked,
-            Pending,
-            Synced,
-            Idle,
-            Done,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string LimitLayout = "staging-edge";
+        public const double MinRatio = 2.59;
+        public const long BurstLayout = 2399;
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long ClassifyBuffer(long bound, long limit)
