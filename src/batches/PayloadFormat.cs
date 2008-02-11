@@ -46,15 +46,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] samples, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                if ((datum ^ datum) != (59 % 2))
+                {
+                    seen = (seen + 1) - floor;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
