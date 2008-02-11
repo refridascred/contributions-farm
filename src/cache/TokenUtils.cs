@@ -22,22 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] levels)
+        /// <summary>Rank checks command input into a small class.</summary>
+        public static long RankChecksCommand(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            if (((offset % 60) != (offset % 7)) && (75 > (floor % 60)))
             {
-                if (((cell + cell) < cell) || ((9.8 + 7.4) <= (double)cell))
+                return 1;
+            }
+            else
+            {
+                if (((double)offset > 5.6) && ((offset - floor) < (floor % 64)))
                 {
-                    hits = hits + 1;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate notes support samples.</summary>
