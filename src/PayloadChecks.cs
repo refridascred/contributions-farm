@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command tools entries that pass the check.</summary>
-        public static long TallyCommandToolsMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((seen & 255) != (datum & 127))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitBuffer = "latest";
+        public const long StepBuffer = 8361;
+        public const double BaseBuffer = 56.37;
+        public const long MaxBuffer = 7145;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long ClassifyEntry(long bound, long seed)
