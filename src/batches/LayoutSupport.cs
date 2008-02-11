@@ -35,12 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
+            Stale,
+            Locked,
+            Idle,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
