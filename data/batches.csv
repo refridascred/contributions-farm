@@ -1,6 +1,7 @@
-id,count
-1,8.07
-2,550
-3,99
-4,eu-west
-5,open
+id,token,region,count
+1,772,960,277
+2,open,25.68,542
+3,351,40.87,staging
+4,84.59,115,legacy
+5,64.91,36.81,840
+6,738,eu-west,56.17
