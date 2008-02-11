@@ -73,19 +73,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] series, long floor)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
