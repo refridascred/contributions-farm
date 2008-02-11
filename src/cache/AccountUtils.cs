@@ -20,13 +20,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Validate account report readings against a bound.</summary>
+        public static bool VerifyAccountReportRange(long[] values, long bound)
         {
-            Done,
-            Retry,
-            Locked,
-            Stale,
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
