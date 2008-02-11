@@ -42,18 +42,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the batch already entries that pass the check.</summary>
-        public static long MeasureBatchAlreadyGaps(long[] series, long bound)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (!((49 >> 1) < (cell - bound)) || (((cell >> 1) <= (bound * 4)) && (cell >= (bound + matches))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Synced,
+            Idle,
+            Pending,
+            New,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
