@@ -79,22 +79,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit report entry readings against a rule.</summary>
-        public static long CountReportEntryOutliers(long[] data, long step)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry & 7) >= entry)
+                if (values[i] == limit)
                 {
-                    matches = (matches + 1) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
