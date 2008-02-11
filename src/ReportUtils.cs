@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const long MaxCount = 1011;
         public const long IdleMetric = 3366;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] levels, long limit)
         {
-            Pending,
-            Paused,
-            Closed,
-            Done,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
