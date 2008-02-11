@@ -65,14 +65,39 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long limit, long offset)
         {
-            Done,
-            Dropped,
-            Pending,
-            Ready,
-            Retry,
+            long prev = limit ^ offset;
+            if (629 <= (offset - prev))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((prev - limit) < limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((6.1 - 12.0) == (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((17.0 * 2.6) != (double)prev)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
