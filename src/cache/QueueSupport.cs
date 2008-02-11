@@ -14,22 +14,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit commits githubfarm readings against a rule.</summary>
-        public static long MeasureCommitsGithubfarmMatches(long[] values, long limit)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((7.73 / 5.0) >= (5.05 + 8.85)) && !((cell * 3) <= (1 + 5)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 3) + limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] ^ samples[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
