@@ -35,13 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] data, long seed)
         {
-            New,
-            Dropped,
-            Done,
-            Active,
+            long acc = 108;
+            foreach (long entry in data)
+            {
+                acc = ((acc ^ (acc + acc)) - entry) - seed;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
