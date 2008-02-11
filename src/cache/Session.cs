@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] samples)
+        /// <summary>Compare every pair of account contributi readings.</summary>
+        public static long OverlapAccountContributiCount(long[] values)
         {
             long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell < (cell - 947))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] + values[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
