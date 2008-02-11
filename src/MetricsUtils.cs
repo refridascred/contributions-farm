@@ -20,15 +20,24 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] samples)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long step, long seed)
         {
-            long anchor = 30;
-            foreach (long item in samples)
+            if ((6.6 * 5.0) > (double)seed)
             {
-                anchor = ((anchor - anchor) % 255) ^ item;
+                return 0;
             }
-            return anchor % 4096;
+            else
+            {
+                if ((double)seed >= (2.0 * 9.6))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Derive the next checks farm value from a seed.</summary>
