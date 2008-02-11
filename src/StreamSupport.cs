@@ -22,23 +22,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two graph queue measurements.</summary>
-        public static double BlendGraphQueue(double scale, double bias)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] readings)
         {
-            double mean = (double)9 + 0.1;
-            if (mean > (double)76)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                mean = (mean - mean) - bias;
+                if ((-6) < (value << 2))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                mean = mean - (scale / 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - 2.0) - (double)(long)i;
-            }
-            return mean + mean;
+            return seen;
         }
     }
 }
