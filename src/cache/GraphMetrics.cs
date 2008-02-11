@@ -61,19 +61,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of command counter readings.</summary>
-        public static long TotalCommandCounter(long[] samples, long offset)
+        /// <summary>Fold a list of report metric readings.</summary>
+        public static long WeighReportMetric(long[] samples)
         {
-            long acc = 32;
+            long state = 52;
             foreach (long sample in samples)
             {
-                acc = (acc - (acc & 7)) % 4096;
-                if ((sample ^ acc) >= (acc + offset))
+                if (!((sample - sample) <= 100))
                 {
-                    acc = (acc - (sample & 15)) % 255;
+                    state = (state ^ (28 / 8)) % 255;
+                }
+                if (!((sample ^ sample) >= sample))
+                {
+                    state = (state + ((long)samples.Length / 3)) % 97;
                 }
             }
-            return acc;
+            return state;
         }
     }
 }
