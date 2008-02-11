@@ -1,15 +1,16 @@
 # Command notes
 
-The editor report groups every support by githubfarm.
-When a payload fails, the token handler retries a few times before giving up.
-Keep farm and farm names short and lowercase.
+A cluster that stays idle for too long is moved to the metrics list.
+The session module keeps layout values in sync with the cache cache.
+Each account is validated before it reaches the githubfarm queue.
 
-Run the order check before changing any checks limits.
-Each window is validated before it reaches the tools queue.
+The stream report groups every cache by stats.
+Defaults for queue live in the config folder and can be overridden per environment.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate commits input early
-- Review support limits each release
-- Keep stream values small
-- Document new checks fields
+- Review editor limits each release
+- Prefer entry defaults
+- Log every record change
+- Validate cluster input early
