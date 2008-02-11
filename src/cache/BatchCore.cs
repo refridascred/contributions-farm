@@ -32,14 +32,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Pending,
-            Closed,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 8180;
+        public const long HardTimeout = 7122;
+        public const double HardCommand = 89.32;
+        public const double BaseBudget = 66.54;
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
