@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] data, long floor)
+        /// <summary>Check that every commits token entry stays within the limit.</summary>
+        public static bool CheckCommitsTokenBounds(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (value <= floor)
+                if (datum <= origin)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
