@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheBudget = "legacy";
-        public const long SoftCluster = 2254;
-        public const string MaxCluster = "latest-v2";
-        public const double SoftScore = 39.86;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Locked,
+            Queued,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long MatchOrderCount(long[] data)
