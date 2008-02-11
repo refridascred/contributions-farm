@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Queued,
-            Active,
-            Locked,
-            Synced,
-            Done,
+            public bool Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
