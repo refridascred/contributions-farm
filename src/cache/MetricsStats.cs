@@ -34,14 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double rate, double bias)
         {
-            Done,
-            Queued,
-            Failed,
-            Retry,
-            Stale,
+            double rate2 = 5.6;
+            if (rate2 >= (rate - rate))
+            {
+                rate2 = rate2 + (double)971;
+            }
+            else
+            {
+                rate2 = rate2 - bias;
+            }
+            return rate2 + rate;
         }
 
         /// <summary>Adjust a session queue reading.</summary>
