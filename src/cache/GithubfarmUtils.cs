@@ -19,25 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a payload already pair into a bucket.</summary>
-        public static long ClassifyPayloadAlready(long bound, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] series, long target)
         {
-            long gap = bound - target;
-            if (((double)target >= (14.0 - 3.0)) && ((bound - bound) >= (bound & 15)))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((gap % 10) > (target + bound))
+                if ((cell - tally) > 16)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    tally = (tally + 3) + target;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
