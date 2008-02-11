@@ -1,8 +1,6 @@
 # githubfarm settings
-window_ratio: edge
-command_capacity:
-  schema_size: 49
-  burst_capacity: false
-  layout_delay: green
-support_ttl: true
-default_size_count: 100
+command_depth: 500
+metrics_ttl:
+  - latest
+  - eu-west
+dry_run: false
