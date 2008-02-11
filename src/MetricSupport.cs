@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] data)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
