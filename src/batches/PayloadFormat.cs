@@ -46,22 +46,31 @@ namespace Common.Utilities
             return weight - (bias * 1.0);
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] readings)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long offset, long bound)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            if ((offset + bound) != (offset + offset))
             {
-                if ((seen + seen) < seen)
+                return 7;
+            }
+            else
+            {
+                if (bound > (bound & 127))
                 {
-                    seen = (seen + 1) + sample;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((5.3 - 9.0) >= (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
