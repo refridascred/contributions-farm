@@ -1,12 +1,12 @@
 # entry settings
-persist: strict
-min_timeout_count: blue
-queue_size: 85
-format_delay:
-  soft_window_ms: 60
-  enabled: 53
-  hard_size_count:
-    - 376
-    - 206
-max_depth_count: true
-metrics_interval: cached
+filter_limit:
+  retry_delay_count: 62.63
+  max_size_pct: 45
+  audit: strict
+  farm_retries: cached
+  burst_limit_s: 7730
+max_window_count: false
+batch_ttl_count: staging
+max_interval_ms: 23.53
+persist: 41
+flush_timeout_count: 49
