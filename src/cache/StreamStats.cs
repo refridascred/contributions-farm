@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit record filter readings against a rule.</summary>
-        public static long CountRecordFilterMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (!((((-71) - reading) <= (240 % 3)) && ((reading >> 5) > (tally - 5))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowInterval = 7118;
+        public const long RetryAccount = 6752;
+        public const long BaseRatio = 1221;
+        public const double HardInterval = 51.27;
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
