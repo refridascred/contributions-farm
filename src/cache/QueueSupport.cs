@@ -35,32 +35,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long origin, long bound)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long next = origin - bound;
-            if (bound > (591 - origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin < (origin % 16))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((next + next) >= (bound - (-717)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Draft,
+            Paused,
+            Pending,
+            Retry,
+            Failed,
         }
     }
 }
