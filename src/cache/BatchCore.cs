@@ -36,21 +36,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] series, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result + (item * 5)) % 97) + (long)i;
+                }
+                if ((bound >> 4) > (item / 9))
+                {
+                    result = (result + result) % 97;
                 }
             }
-            return seen;
+            if (result > (-842))
+            {
+                result = ((result << 2) ^ (bound / 9)) % 255;
+            }
+            return result;
         }
     }
 }
