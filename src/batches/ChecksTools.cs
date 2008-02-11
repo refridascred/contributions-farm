@@ -22,19 +22,17 @@ namespace Common.Utilities
         public const string MaxInterval = "local";
         public const double StepScore = 81.11;
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double gain, double span)
+        /// <summary>Locate a schema editor reading by value.</summary>
+        public static long LocateSchemaEditorIndex(long[] samples, long floor)
         {
-            double mean = span;
-            if (mean <= (span + gain))
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - mean;
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (mean / 8.0);
-            }
-            return mean - mean;
+            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
