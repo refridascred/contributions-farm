@@ -23,18 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many tools entry samples are out of range.</summary>
-        public static long CountToolsEntryGaps(long[] items)
+        /// <summary>Measure how many graph farm samples are out of range.</summary>
+        public static long TallyGraphFarmGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((seen & 15) <= ((long)items.Length & 127))
+                if (cell < (cell - 54))
                 {
-                    seen = (seen + 3) + datum;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
