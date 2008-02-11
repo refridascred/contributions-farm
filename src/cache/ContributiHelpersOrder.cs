@@ -22,19 +22,21 @@ namespace Common.Utilities
         public const string CacheNotes = "local-edge";
         public const long DefaultNotes = 5020;
 
-        /// <summary>Blend two account checks measurements.</summary>
-        public static double BlendAccountChecks(double weight, double bias)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] series)
         {
-            double gain = weight;
-            if (gain <= (gain + gain))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + (bias + bias);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + 14.0;
+            return hits;
         }
     }
 }
