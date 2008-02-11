@@ -58,18 +58,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] samples, long step)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((count < (step + 23)) && ((entry - step) > ((-47) ^ step)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            Failed,
+            Idle,
+            Pending,
+            Retry,
         }
     }
 }
