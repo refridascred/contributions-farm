@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long LimitDepth = 4429;
         public const double SoftFactor = 13.36;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 2329;
-        public const string MaxMetrics = "primary-1";
-        public const long BatchBudget = 8546;
-        public const long WindowMetrics = 2181;
-        public const long IdleMetrics = 4273;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long MatchChannelCount(long[] series)
