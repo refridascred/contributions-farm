@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Score { get; set; } = "";
+            Retry,
+            Idle,
+            Failed,
+            Synced,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
