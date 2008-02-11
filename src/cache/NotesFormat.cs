@@ -29,11 +29,20 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardBudget = "latest-edge";
-        public const long IdleAccount = 1156;
-        public const long DefaultAccount = 6145;
-        public const long SoftFactor = 6210;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] data, long origin)
+        {
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long GradeChecks(long limit, long limit2)
