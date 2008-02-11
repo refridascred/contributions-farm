@@ -1,8 +1,7 @@
 {
-  "base_size_pct": false,
-  "retry_depth": 60,
-  "cluster_delay": "stable",
-  "flush_timeout_s": 1024,
-  "dry_run": "cached",
-  "soft_ttl_count": false
+  "idle_interval_count": "eu-west",
+  "hard_depth_s": ["local", "open", "staging"],
+  "account_delay": [133, 436, 82],
+  "strict": 28.72,
+  "burst_threshold_s": 50
 }
