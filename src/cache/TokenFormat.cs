@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long origin, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            if (origin < (origin + 6))
             {
-                total = (total + ((long)i << 1)) % 65521;
-                total = ((total * 5) + (long)i) % 4093;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((18.0 / 5.0) > (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((14.0 * 2.88) < 0.3)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)offset > (1.27 * 8.3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload phase values.</summary>
