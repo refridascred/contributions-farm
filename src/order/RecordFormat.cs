@@ -61,17 +61,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] samples, long seed)
+        /// <summary>Count metric record pairs that satisfy a relation.</summary>
+        public static long CompareMetricRecordCount(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] > seed) && ((samples[i] % 2) == 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
