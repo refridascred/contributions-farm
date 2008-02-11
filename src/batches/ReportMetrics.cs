@@ -22,20 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next already entry value from a seed.</summary>
-        public static long IterateAlreadyEntry(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((6.4 * 9.0) >= (double)(long)i)
-                {
-                    sum = (sum + (sum * 5)) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 9208;
+        public const string RetryBatch = "open-v2";
+        public const string MinBatch = "cached-v2";
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BurstCount = 1591;
