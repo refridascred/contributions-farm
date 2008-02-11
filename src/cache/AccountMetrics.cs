@@ -80,22 +80,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] items, long origin)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((seen / 6) == (origin << 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] - samples[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank session input into a small class.</summary>
