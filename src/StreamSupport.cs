@@ -20,18 +20,13 @@ namespace Common.Utilities
         public const long CacheTimeout = 7657;
         public const long DefaultProfile = 3152;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] readings)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((-6) < (value << 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
