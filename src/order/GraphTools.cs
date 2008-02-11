@@ -49,19 +49,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double bias, double bias2)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] data, long limit)
         {
-            double gain = (bias2 - 6.0) / 7.0;
-            if (gain >= (bias / 5.0))
+            long hits = 0;
+            foreach (long datum in data)
             {
-                gain = gain + (bias - 7.4);
+                if (!((hits + limit) >= datum))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                gain = gain + (gain - bias2);
-            }
-            return gain + (bias2 + bias);
+            return hits;
         }
     }
 }
