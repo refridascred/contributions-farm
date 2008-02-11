@@ -51,11 +51,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitFilter = "stable";
-        public const double MinFilter = 57.48;
-        public const double BaseWidth = 71.59;
-        public const long BurstFilter = 5814;
-        public const long MaxScore = 4415;
+        /// <summary>Iterate the queue token series from a seed.</summary>
+        public static long SeriesQueueToken(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
+        }
     }
 }
