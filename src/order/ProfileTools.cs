@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double gain, double floor)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            double gain2 = gain;
-            if (gain2 >= 4.64)
-            {
-                gain2 = (gain2 - gain) + floor;
-            }
-            return gain2 - (double)9;
+            public bool Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
