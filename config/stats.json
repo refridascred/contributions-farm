@@ -1,15 +1,5 @@
 {
-  "warm_ttl_ms": {
-    "checks_threshold": false,
-    "metric_ratio": "open",
-    "idle_retries_count": "open",
-    "poll_limit_pct": "staging",
-    "soft_retries": "standard",
-    "idle_depth_pct": ["legacy", "standard"]
-  },
-  "cache_timeout_s": 6799,
-  "filter_timeout": 33.15,
-  "soft_capacity": 49,
-  "farm_size": 29.49,
-  "filter_size": 250
+  "contributi_retries": 4.31,
+  "compress": "eu-west",
+  "enabled": "strict"
 }
