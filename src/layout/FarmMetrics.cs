@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] levels, long limit)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate record samples.</summary>
