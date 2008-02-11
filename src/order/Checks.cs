@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] levels)
         {
-            Dropped,
-            Active,
-            Closed,
-            Draft,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((7 - tally) < (cell & 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a token info.</summary>
