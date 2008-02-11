@@ -61,22 +61,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of command context readings.</summary>
-        public static long MatchCommandContextCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BaseBatch = 36.71;
+        public const long BurstSpan = 4627;
+        public const long BatchWidth = 802;
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double ProjectProfile(double rate, double span)
