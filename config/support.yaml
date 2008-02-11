@@ -1,30 +1,14 @@
 # support settings
-strict:
-  - 364
-  - 13
-  - 88
-  - 335
+soft_ttl_count: true
+persist:
+  - 450
+  - 159
+  - 184
+cache_retries_count: 100
+soft_threshold: 64.26
+burst_ratio: 80
 audit:
-  - blue
-  - staging
-notes_retries: 60
-readonly: 69
-batch_ttl_count: 51.06
-default_threshold_count:
-  enabled:
-    filter_depth: stable
-    profile_capacity: standard
-    poll_threshold_pct:
-      - strict
-      - cached
-      - fallback
-      - edge
-    order_delay: false
-  hard_size: 67
-  soft_threshold_s: true
-  burst_delay: 59
-  readonly:
-    layout_ttl: staging
-    sync_ratio: local
-    base_limit: 53
-    idle_timeout_ms: true
+  - 67
+  - 382
+  - 375
+  - 422
