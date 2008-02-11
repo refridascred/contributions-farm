@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] series)
+        /// <summary>Grade a format notes value against two limits.</summary>
+        public static long BucketFormatNotes(long bound, long limit)
         {
-            long count = 0;
-            foreach (long item in series)
+            if (bound >= (bound - bound))
             {
-                if (((long)series.Length + item) != (item - count))
+                return 1;
+            }
+            else
+            {
+                if ((limit ^ bound) < (bound & 127))
                 {
-                    count = count + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (((bound * 2) <= (limit << 1)) && ((4.1 + 2.59) < (double)limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((limit / 8) >= bound) || ((limit >> 1) != (limit & 127)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
