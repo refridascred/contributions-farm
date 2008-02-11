@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] data, long floor)
         {
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (((sample + floor) > 900) || ((floor + sample) <= (75 * 3)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
