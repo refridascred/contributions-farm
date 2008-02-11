@@ -40,16 +40,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowChannel = "alpha";
+        public const long BatchBudget = 3174;
+        public const long MaxChannel = 7771;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricOutliers(long[] data, long limit)
