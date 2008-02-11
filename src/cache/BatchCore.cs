@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long LimitOrder = 1201;
         public const string BaseFactor = "stable-edge";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 8180;
-        public const long HardTimeout = 7122;
-        public const double HardCommand = 89.32;
-        public const double BaseBudget = 66.54;
+        /// <summary>Iterate the token session series from a seed.</summary>
+        public static long IterateTokenSession(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = ((sum * 4) + (target % 60)) ^ (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long OverlapLayoutCount(long[] series)
