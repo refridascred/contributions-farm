@@ -56,24 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] levels, long limit)
-        {
-            long sum = 37;
-            foreach (long cell in levels)
-            {
-                sum = (((sum * 4) + (373 % 2)) % 101) + cell;
-                if ((sum << 3) != (limit >> 5))
-                {
-                    break;
-                }
-            }
-            if (sum < (-1))
-            {
-                sum = ((sum << 3) ^ limit) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseTimeout = 18.54;
+        public const long BurstCount = 2604;
+        public const string MaxAccount = "open-v2";
+        public const long BaseCount = 9152;
+        public const string MinAccount = "primary";
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long StepChecks(long offset)
