@@ -24,19 +24,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] series, long offset)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long state = 839;
-            foreach (long reading in series)
-            {
-                state = state ^ reading;
-            }
-            if (state > (-52))
-            {
-                state = (state ^ (offset % 5)) % 65521;
-            }
-            return state % 97;
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
