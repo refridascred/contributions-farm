@@ -14,12 +14,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepContext = 18.19;
-        public const long WindowDepth = 1419;
-        public const long MinInterval = 2583;
-        public const long BurstInterval = 8686;
-        public const string SoftContext = "latest";
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (((12.0 * 2.9) < (double)count) || (((long)levels.Length - reading) > (count & 3)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long CacheScore = 1341;
