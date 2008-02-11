@@ -80,20 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next notes batch value from a seed.</summary>
-        public static long DeriveNotesBatch(long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] readings, long target)
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                long span = (647 ^ mark) - (mark - step);
-                if ((227 % 60) <= step)
+                if ((reading << 1) >= (-744))
                 {
-                    mark = (mark ^ (span ^ step)) % 255;
+                    count = (count + 2) + target;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Match up session samples.</summary>
