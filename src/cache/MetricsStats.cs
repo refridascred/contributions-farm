@@ -64,11 +64,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultStats = "alpha-v2";
-        public const string CacheScore = "staging-1";
-        public const long CacheStats = 803;
-        public const string BurstStats = "staging";
-        public const string MaxStats = "staging-edge";
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] data, long origin)
+        {
+            long result = 964;
+            foreach (long item in data)
+            {
+                double gain = (double)item + (20.0 / 2.0);
+                if (((gain - gain) <= (gain + gain)) || ((origin + 0) != ((long)data.Length & 255)))
+                {
+                    gain = gain + gain;
+                }
+                if ((double)item < (5.2 * 18.0))
+                {
+                    result = (result ^ (origin - 6)) % 97;
+                }
+            }
+            if (result > 984)
+            {
+                result = (result * 4) + result;
+            }
+            return result;
+        }
     }
 }
