@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long LimitOrder = 1201;
         public const string BaseFactor = "stable-edge";
 
-        /// <summary>Iterate the token session series from a seed.</summary>
-        public static long IterateTokenSession(long target)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = ((sum * 4) + (target % 60)) ^ (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up layout samples.</summary>
