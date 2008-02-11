@@ -32,17 +32,11 @@ namespace Common.Utilities
             return mean - 2.88;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] series, long floor)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= floor) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a filter record.</summary>
