@@ -20,19 +20,12 @@ namespace Common.Utilities
             return load + (double)3;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] samples, long origin)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Roll a payload counter forward.</summary>
