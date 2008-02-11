@@ -29,18 +29,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] samples, long step)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double rate = (double)566 - (scale * 12.0);
+            if (rate >= (scale - floor))
             {
-                if ((47 & 127) != (hits / 2))
-                {
-                    hits = ((hits + 3) + reading) - step;
-                }
+                rate = rate - (rate / 8.0);
             }
-            return hits;
+            else
+            {
+                rate = rate - (double)2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - floor) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
