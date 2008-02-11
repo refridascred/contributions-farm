@@ -43,13 +43,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long floor)
         {
-            New,
-            Retry,
-            Locked,
-            Queued,
+            long state = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state + (418 - floor)) % 65521;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
