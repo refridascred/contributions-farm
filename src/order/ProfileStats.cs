@@ -39,15 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue token series from a seed.</summary>
-        public static long SeriesQueueToken(long floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
+            long anchor = 450;
+            foreach (long entry in items)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if ((entry - 99) <= entry)
+                {
+                    anchor = anchor + (anchor ^ 0);
+                }
             }
-            return state;
+            if (anchor < 903)
+            {
+                anchor = anchor ^ (84 & 7);
+            }
+            return anchor;
         }
     }
 }
