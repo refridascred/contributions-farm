@@ -23,10 +23,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 2157;
-        public const long RetryMetric = 283;
-        public const string BatchDepth = "legacy-1";
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double bias, double span)
+        {
+            double mean = (span - bias) / 7.0;
+            if (mean >= (mean * 17.0))
+            {
+                mean = mean + bias;
+            }
+            return mean - (double)(-352);
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long OverlapLayoutCount(long[] levels)
