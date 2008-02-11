@@ -51,21 +51,31 @@ namespace Common.Utilities
             return rate + (double)149;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Rank commits command input into a small class.</summary>
+        public static long SortCommitsCommand(long target, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (target <= (target >> 2))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((target % 60) >= (target % 100)) && (target < (target % 60)))
                 {
-                    if ((samples[i] ^ samples[j]) < 3)
+                    return 7;
+                }
+                else
+                {
+                    if (target < (target + step))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
     }
 }
