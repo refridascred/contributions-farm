@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the session already entries that pass the check.</summary>
-        public static long MeasureSessionAlreadyMatches(long[] data, long origin)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((double)value < 20.0)
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
