@@ -13,18 +13,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCount = 4554;
+        public const long StepFactor = 7362;
+        public const long WindowInterval = 607;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteOutliers(long[] data, long bound)
