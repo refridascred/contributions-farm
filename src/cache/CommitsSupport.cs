@@ -15,13 +15,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] readings, long floor)
         {
-            Failed,
-            Queued,
-            Active,
-            Dropped,
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
