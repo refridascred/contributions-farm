@@ -39,10 +39,22 @@ namespace Common.Utilities
         public const long MaxAccount = 4552;
         public const double RetrySize = 50.68;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftBudget = 5927;
-        public const long HardWidth = 2921;
-        public const string StepEntry = "standard";
-        public const string WindowInterval = "fallback-v2";
+        /// <summary>Count the stream support entries that pass the check.</summary>
+        public static long MeasureStreamSupportGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading ^ reading) >= (reading % 97))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
