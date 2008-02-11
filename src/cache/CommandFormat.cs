@@ -61,17 +61,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] samples, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 74;
+            foreach (long sample in items)
             {
-                if (samples[i] >= step)
+                if ((sample + mark) != ((-253) * 2))
                 {
-                    return (long)i;
+                    mark = (mark - (67 >> 5)) % 4096;
+                }
+                if (!((sample + mark) <= (sample - sample)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark < 10)
+            {
+                mark = (mark << 3) ^ (6 - mark);
+            }
+            return mark;
         }
     }
 }
