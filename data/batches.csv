@@ -1,7 +1,7 @@
-id,region
-1,fallback
-2,green
-3,17.11
-4,fallback
-5,legacy
-6,68
+id,active,ratio,token,count
+1,standard,95.56,eu-west,17.85
+2,188,76,773,cached
+3,368,93.59,91,787
+4,green,standard,733,legacy
+5,green,fallback,61.21,521
+6,41.85,18.54,strict,44.57
