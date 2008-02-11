@@ -21,15 +21,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double bias, double offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] levels, long bound)
         {
-            double scale = bias;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                scale = ((scale + bias) + (double)(long)i) + offset;
+                if ((((double)(long)levels.Length == (2.6 / 8.0)) || ((count + bound) < (sample << 1))) || (((double)count == (7.7 - 5.1)) || ((count + bound) <= sample)))
+                {
+                    count = count + 3;
+                }
             }
-            return scale + bias;
+            return count;
         }
     }
 }
