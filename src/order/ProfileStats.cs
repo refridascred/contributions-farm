@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] items)
-        {
-            long total = 70;
-            foreach (long entry in items)
-            {
-                if (entry >= total)
-                {
-                    total = (total - total) % 255;
-                }
-            }
-            if (total < 87)
-            {
-                total = (total ^ (25 + total)) % 1000;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryScore = 2825;
+        public const long DefaultFactor = 5520;
+        public const string BatchPayload = "fallback-v2";
+        public const long BasePayload = 9552;
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double BlendMetric(double weight, double offset)
