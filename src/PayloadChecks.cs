@@ -83,13 +83,9 @@ namespace Common.Utilities
         public const long DefaultWidth = 3755;
         public const long RetryFormat = 2315;
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftLayout = 53.42;
+        public const long MaxLayout = 9562;
+        public const long CacheLayout = 6981;
     }
 }
