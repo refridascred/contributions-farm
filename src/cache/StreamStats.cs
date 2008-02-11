@@ -34,17 +34,13 @@ namespace Common.Utilities
         public const long BurstWidth = 1319;
         public const string CacheBudget = "open-1";
 
-        /// <summary>Find the first contributi checks entry that matches the target.</summary>
-        public static long FindContributiChecksIndex(long[] items, long seed)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < seed) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public double Total { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
