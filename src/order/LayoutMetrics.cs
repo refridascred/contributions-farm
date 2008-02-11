@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] data, long seed)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long step, long floor)
         {
-            long mix = 90;
-            foreach (long value in data)
+            long next = step ^ floor;
+            if ((floor - floor) > (step + next))
             {
-                if (((mix * 5) <= (value + 14)) && ((16.0 * 3.2) == (double)mix))
+                return 6;
+            }
+            else
+            {
+                if ((double)step < 1.5)
                 {
-                    mix = ((mix + 38) % 1000) + seed;
+                    return 7;
+                }
+                else
+                {
+                    if (!(floor > next))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return mix % 97;
         }
 
         /// <summary>Describe the metrics state values.</summary>
