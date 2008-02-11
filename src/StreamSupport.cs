@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] series, long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                result = ((result << 2) ^ (8 >> 3)) % 97;
-                result = ((result * 2) + (long)i) % 97;
+                if ((-10) < (seen ^ item))
+                {
+                    seen = (seen + 1) + origin;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
