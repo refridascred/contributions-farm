@@ -10,23 +10,19 @@ namespace Common.Utilities
         public const long SoftBatches = 9939;
         public const string MinBatches = "alpha";
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double rate, double bias)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] levels, long offset)
         {
-            double ratio = rate;
-            if (ratio > 2.53)
+            long mark = 9;
+            foreach (long entry in levels)
             {
-                ratio = (ratio - (double)7) - bias;
+                mark = (((mark * 4) + (mark + mark)) ^ entry) + offset;
+                if (!((double)mark >= (double)3))
+                {
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (rate - 4.62);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - ratio;
+            return mark;
         }
 
         /// <summary>Validate account report readings against a bound.</summary>
