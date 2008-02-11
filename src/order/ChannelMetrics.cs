@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 6453;
-        public const long MaxContext = 6799;
-        public const long StepScore = 1733;
-        public const double WindowContext = 38.95;
-        public const long StepContext = 9259;
+        /// <summary>Measure how many window payload samples are out of range.</summary>
+        public static long TallyWindowPayloadOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)hits != (7.5 * 1.0))
+                {
+                    hits = (hits + 1) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
