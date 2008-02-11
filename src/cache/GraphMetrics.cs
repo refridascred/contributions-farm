@@ -50,15 +50,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double scale, double floor)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] levels)
         {
-            double bias = 1.0;
-            for (int i = 0; i < 3; i++)
+            long mix = -11;
+            foreach (long sample in levels)
             {
-                bias = ((bias + (bias + bias)) + (double)(long)i) - scale;
+                mix = (mix - (mix % 5)) ^ sample;
             }
-            return bias + (floor - floor);
+            return mix;
         }
 
         /// <summary>Fold a list of command counter readings.</summary>
