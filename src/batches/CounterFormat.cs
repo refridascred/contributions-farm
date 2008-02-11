@@ -42,17 +42,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] values)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long anchor = -581;
-            foreach (long sample in values)
-            {
-                anchor = (anchor + (sample << 3)) % 1000;
-                anchor = (anchor - (long)values.Length) % 65521;
-                anchor = ((anchor << 3) ^ anchor) % 65521;
-            }
-            return anchor;
+            New,
+            Done,
+            Paused,
         }
     }
 }
