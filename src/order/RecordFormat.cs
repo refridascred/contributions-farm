@@ -22,20 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((target >> 4) < target)
-                {
-                    anchor = (anchor + ((long)i ^ 61)) % 1000;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryLevel = 5193;
+        public const string BatchSupport = "cached-edge";
+        public const string DefaultTimeout = "cached";
+        public const long CacheSize = 9507;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long RollCommand(long origin)
