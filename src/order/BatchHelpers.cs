@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] values, long step)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((step % 8) >= tally)
-                {
-                    tally = (tally + 3) - entry;
-                }
-            }
-            return tally;
+            Stale,
+            Idle,
+            Closed,
+            Failed,
         }
 
         /// <summary>Count the commits notes entries that pass the check.</summary>
