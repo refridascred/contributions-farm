@@ -14,19 +14,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] values, long limit)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the session class values.</summary>
