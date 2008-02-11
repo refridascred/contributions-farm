@@ -28,22 +28,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] levels)
-        {
-            long result = 6;
-            foreach (long cell in levels)
-            {
-                if ((cell << 3) < (460 * 3))
-                {
-                    result = (result - result) % 65521;
-                }
-                else
-                {
-                    result = (result << 3) ^ cell;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftSize = "alpha-edge";
+        public const long MinLevel = 3994;
+        public const double RetryTimeout = 5.55;
     }
 }
