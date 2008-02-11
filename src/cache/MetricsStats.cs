@@ -33,15 +33,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double bias, double bias2)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] values, long target)
         {
-            double gain = bias2 - (bias2 + bias);
-            if (gain < bias2)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                gain = gain + bias2;
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain - gain;
+            return valid;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
