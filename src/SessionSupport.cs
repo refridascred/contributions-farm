@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const string BatchEntry = "cached-edge";
         public const string LimitRatio = "staging-edge";
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double rate, double span)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] items, long limit)
         {
-            double bias = (double)(9 & 1);
-            if (bias <= (8.7 + rate))
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias + (19.0 + bias);
+                if ((items[i] < limit) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + (bias - span)) + (double)(long)i;
-            }
-            return bias - (rate - rate);
+            return -1;
         }
 
         /// <summary>Digest a series of route command entries.</summary>
