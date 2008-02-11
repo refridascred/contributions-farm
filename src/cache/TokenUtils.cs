@@ -18,14 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] levels)
         {
-            New,
-            Idle,
-            Ready,
-            Paused,
-            Pending,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell + cell) < cell) || ((9.8 + 7.4) <= (double)cell))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate notes support samples.</summary>
