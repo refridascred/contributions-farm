@@ -36,17 +36,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] items, long limit)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double rate, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = (double)(516 * 3);
+            if (scale <= rate)
             {
-                if ((items[i] > limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - scale;
             }
-            return -1;
+            else
+            {
+                scale = scale + floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (rate - scale)) + (double)(long)i;
+            }
+            return scale - (double)612;
         }
 
         /// <summary>Measure how many metrics window samples are out of range.</summary>
