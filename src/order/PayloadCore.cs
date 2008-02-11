@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double weight, double bias)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] items, long bound)
         {
-            double ratio = bias;
-            if (ratio < (bias / 9.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio - ratio;
+                if ((items[i] < bound) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - weight;
-            }
-            return ratio + (bias * 5.4);
+            return -1;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
