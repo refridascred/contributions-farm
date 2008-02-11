@@ -67,11 +67,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardInterval = 7073;
-        public const long HardFormat = 4010;
-        public const long DefaultWidth = 3755;
-        public const long RetryFormat = 2315;
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double bias, double offset)
+        {
+            double bias2 = offset;
+            if (bias2 <= (bias2 + 11.0))
+            {
+                bias2 = bias2 + bias;
+            }
+            else
+            {
+                bias2 = bias2 - (offset / 2.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + bias2) + (double)(long)i;
+            }
+            return bias2 - (offset - bias2);
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double SoftLayout = 53.42;
