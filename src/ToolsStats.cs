@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] data)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long sum = 232;
-            foreach (long sample in data)
-            {
-                if (((sum << 3) < (67 << 3)) || ((1.2 / 5.0) != (double)sum))
-                {
-                    sum = ((sum * 5) + ((-691) & 15)) % 1000;
-                }
-                else
-                {
-                    sum = (sum + (75 ^ sample)) % 255;
-                }
-            }
-            if (sum > 0)
-            {
-                sum = ((sum << 3) ^ sum) % 4096;
-            }
-            return sum;
+            Ready,
+            Draft,
+            Synced,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
