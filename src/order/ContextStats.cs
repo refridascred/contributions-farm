@@ -28,22 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit batch context readings against a rule.</summary>
-        public static long TallyBatchContextOutliers(long[] values)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] items)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (((double)56 != (double)tally) && (((tally << 2) > (1 ^ item)) || ((item >> 5) == (item + tally))))
+                if ((2 / 6) >= item)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count command farm pairs that satisfy a relation.</summary>
