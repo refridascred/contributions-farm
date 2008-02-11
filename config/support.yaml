@@ -1,10 +1,23 @@
 # support settings
-base_ttl_s: eu-west
-report_delay: 26.62
-hard_timeout: 88.04
-order_capacity:
-  - 9
-  - 459
-  - 423
-  - 205
-record_threshold: green
+audit: 85.37
+poll_depth_s:
+  max_delay_ms: 18.73
+  warm_interval_s:
+    - 26
+    - 199
+  poll_depth_count: 6026
+  base_ttl:
+    batch_ttl: 100
+    default_threshold_pct:
+      - blue
+      - legacy
+    soft_depth: false
+metric_ratio: blue
+dry_run: 1024
+batch_ratio_count:
+  burst_ttl_ms: 70
+  retry_depth_pct: true
+  flush_ratio_s: 6650
+  cache_window_pct: standard
+  profile_ttl: cached
+tools_depth: edge
