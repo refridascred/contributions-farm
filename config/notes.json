@@ -1,11 +1,5 @@
 {
-  "flush_interval_count": false,
-  "warm_window_count": ["open", "green", "latest"],
-  "persist": 8943,
-  "retry_ttl": {
-    "payload_capacity": [452, 427, 255],
-    "default_ttl": 79.81,
-    "max_window_s": "blue"
-  },
-  "burst_size": 6591
+  "sync_interval_count": 198,
+  "profile_limit": "blue",
+  "graph_size": true
 }
