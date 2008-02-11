@@ -1,5 +1,7 @@
 {
-  "base_timeout_count": [433, 252],
-  "verbose": 100,
-  "flush_capacity": "standard"
+  "command_interval": 5985,
+  "layout_limit": true,
+  "order_ratio": false,
+  "verbose": "open",
+  "idle_ttl_ms": true
 }
