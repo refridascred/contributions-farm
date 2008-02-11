@@ -26,12 +26,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowDepth = 8806;
-        public const long LimitWidth = 6681;
-        public const long BatchWidth = 1476;
-        public const long StepRoute = 3211;
-        public const long IdleRoute = 7980;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Locked,
+            Pending,
+            Synced,
+            Idle,
+            Done,
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long ClassifyBuffer(long bound, long limit)
