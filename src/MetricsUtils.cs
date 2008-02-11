@@ -26,13 +26,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Pending,
-            Active,
+            New,
             Ready,
-            Retry,
+            Active,
         }
 
         /// <summary>Check that every contributi token entry stays within the limit.</summary>
