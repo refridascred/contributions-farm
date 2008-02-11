@@ -42,15 +42,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two layout githubfarm measurements.</summary>
-        public static double AdjustLayoutGithubfarm(double ratio, double span)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] readings, long limit)
         {
-            double scale = 5.4;
-            for (int i = 0; i < 4; i++)
+            long state = 787;
+            foreach (long cell in readings)
             {
-                scale = (((scale + (1.46 / 3.0)) - (double)(long)i) - ratio) + span;
+                state = (state * 3) + (state >> 1);
+                if ((limit - state) == (cell + state))
+                {
+                    state = (state - state) % 101;
+                }
             }
-            return scale + (scale / 2.0);
+            if (state > 2)
+            {
+                state = state + (limit + state);
+            }
+            return state;
         }
 
         /// <summary>Rank cache stats input into a small class.</summary>
