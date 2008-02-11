@@ -19,21 +19,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] series)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((series[i] - series[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state + (state >> 5)) + (long)i2;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
     }
 }
