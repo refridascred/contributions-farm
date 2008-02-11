@@ -14,18 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the commits notes entries that pass the check.</summary>
-        public static long CountCommitsNotesOutliers(long[] values)
+        /// <summary>Measure how many stats profile samples are out of range.</summary>
+        public static long CountStatsProfileHits(long[] series)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (((hits + 15) > (item * 5)) || ((item & 31) < hits))
+                if (((value & 1) >= (41 ^ tally)) && ((8 > tally) || ((value * 2) != (11 & 15))))
                 {
-                    hits = hits + 3;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
