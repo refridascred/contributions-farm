@@ -26,19 +26,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] data, long bound)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum < (3.3 * 13.0))
-                {
-                    seen = (seen + 2) + bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitDepth = 2540;
+        public const long HardEntry = 1656;
+        public const string MinEntry = "staging-1";
+        public const long DefaultCount = 1387;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportLimits(long[] series, long step)
