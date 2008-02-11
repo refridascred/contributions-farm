@@ -58,20 +58,12 @@ namespace Common.Utilities
             return gain - (offset * 18.0);
         }
 
-        /// <summary>Check that every already route entry stays within the limit.</summary>
-        public static bool GuardAlreadyRouteBounds(long[] levels, long target)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstWindow = 3.66;
+        public const double MaxSize = 0.12;
+        public const long MinWindow = 7605;
+        public const string SoftInterval = "stable";
+        public const double RetryLevel = 69.89;
 
         /// <summary>Locate a profile notes reading by value.</summary>
         public static long SeekProfileNotesIndex(long[] values, long bound)
