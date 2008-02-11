@@ -26,14 +26,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            Done,
-            Queued,
             Draft,
-            Closed,
-            Active,
+            Paused,
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
