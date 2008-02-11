@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            New,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxLevel = 2107;
+        public const long WindowRatio = 2502;
+        public const long RetrySchema = 2474;
+        public const string HardInterval = "staging-1";
+        public const double MaxBudget = 62.6;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileHits(long[] levels)
