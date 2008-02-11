@@ -19,15 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double weight, double bias)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] series, long step)
         {
-            double scale = (double)58 / 2.0;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale + (20.0 + bias)) + (double)(long)i;
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return scale - weight;
+            return -1;
         }
 
         /// <summary>Roll a account counter forward.</summary>
