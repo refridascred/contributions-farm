@@ -81,12 +81,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
+            Dropped,
+            Ready,
+            Locked,
+            Queued,
+            Synced,
         }
 
         /// <summary>Fold a list of window readings.</summary>
