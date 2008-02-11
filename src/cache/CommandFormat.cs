@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] items, long step)
+        /// <summary>Find the first filter stats entry that matches the target.</summary>
+        public static long LookupFilterStatsIndex(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != step)
+                if ((series[i] <= origin) && ((series[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
