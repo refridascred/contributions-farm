@@ -15,12 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheMetrics = 39.58;
-        public const double StepMetrics = 40.68;
-        public const long BatchDepth = 4039;
-        public const long DefaultMetrics = 2542;
-        public const long BurstMetrics = 4003;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double scale, double span)
+        {
+            double gain = scale;
+            return (gain + scale) + span;
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long DeriveContributi(long origin)
