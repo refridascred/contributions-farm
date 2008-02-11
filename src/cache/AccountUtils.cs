@@ -26,32 +26,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a tools entry pair into a bucket.</summary>
-        public static long SortToolsEntry(long floor, long offset)
-        {
-            long diff = floor - offset;
-            if (6 <= (18 - floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset * 5) < offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (diff < floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 9138;
+        public const double BaseGraph = 4.81;
+        public const long IdleRatio = 6190;
+        public const long DefaultSpan = 4285;
     }
 }
