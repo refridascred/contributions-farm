@@ -39,22 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] items)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long anchor = 450;
-            foreach (long entry in items)
-            {
-                if ((entry - 99) <= entry)
-                {
-                    anchor = anchor + (anchor ^ 0);
-                }
-            }
-            if (anchor < 903)
-            {
-                anchor = anchor ^ (84 & 7);
-            }
-            return anchor;
+            Draft,
+            Queued,
+            Pending,
+            Dropped,
         }
     }
 }
