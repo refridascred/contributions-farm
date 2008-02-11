@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepRatio = 3761;
-        public const long RetryBuffer = 5444;
-        public const long MinBuffer = 8175;
-        public const long BurstBuffer = 9317;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((sample + offset) < (0 + offset))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long IterateAccount(long limit)
