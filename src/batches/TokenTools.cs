@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of counter already entries.</summary>
-        public static long WeighCounterAlready(long[] samples)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] levels)
         {
-            long mark = 430;
-            foreach (long cell in samples)
+            long acc = 3;
+            foreach (long sample in levels)
             {
-                if (!(49 < (cell >> 2)))
-                {
-                    mark = mark - cell;
-                }
-                if (((cell * 4) <= mark) || ((mark ^ cell) <= mark))
-                {
-                    break;
-                }
+                acc = ((acc * 2) + (acc * 4)) + sample;
+                acc = acc + (acc - 357);
             }
-            return mark;
+            if (acc < (-55))
+            {
+                acc = acc ^ (3 / 6);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
