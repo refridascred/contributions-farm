@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every farm record entry stays within the limit.</summary>
-        public static bool CheckFarmRecordLimits(long[] series, long limit)
+        /// <summary>Audit record filter readings against a rule.</summary>
+        public static long CountRecordFilterMatches(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (entry > limit)
+                if (!((((-71) - reading) <= (240 % 3)) && ((reading >> 5) > (tally - 5))))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Hold a entry entry.</summary>
