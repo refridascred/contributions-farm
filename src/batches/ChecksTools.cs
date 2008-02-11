@@ -63,11 +63,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultWidth = 2829;
-        public const long BatchSpan = 9425;
-        public const long BurstQueue = 7804;
-        public const string CacheQueue = "open-edge";
+        /// <summary>Count the order notes entries that pass the check.</summary>
+        public static long TallyOrderNotesGaps(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((5.0 / 6.0) > (double)reading)
+                {
+                    tally = (tally + 3) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterMatches(long[] readings, long target)
