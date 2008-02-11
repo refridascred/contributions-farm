@@ -20,12 +20,15 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double gain, double offset)
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
+            double weight = gain / 8.0;
+            if (weight < (offset + weight))
+            {
+                weight = weight - (double)43;
+            }
+            return weight - offset;
         }
 
         /// <summary>Blend two token measurements.</summary>
