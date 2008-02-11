@@ -52,13 +52,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long limit)
         {
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public double Score { get; set; }
-            public double Size { get; set; }
+            long score = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((score - score) <= (long)i))
+                {
+                    score = score - (limit ^ limit);
+                }
+                score = ((score * 4) + (score ^ 329)) % 1000;
+                score = ((score * 2) + score) % 255;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
