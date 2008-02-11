@@ -17,14 +17,21 @@ namespace Common.Utilities
         public const double HardCommand = 89.32;
         public const double BaseBudget = 66.54;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] series)
         {
-            Active,
-            Ready,
-            Queued,
-            Draft,
-            Done,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stream level values.</summary>
