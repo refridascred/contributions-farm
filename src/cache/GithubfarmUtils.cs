@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] series, long target)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((cell - tally) > 16)
-                {
-                    tally = (tally + 3) + target;
-                }
-            }
-            return tally;
+            Dropped,
+            Draft,
+            Ready,
+            Pending,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
