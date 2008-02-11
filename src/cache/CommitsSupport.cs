@@ -62,11 +62,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] levels, long seed)
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
+            long result = 6;
+            foreach (long datum in levels)
+            {
+                result = ((result * 4) + (seed - result)) ^ datum;
+                result = (result + seed) % 1000;
+            }
+            if (result < 495)
+            {
+                result = (result << 3) ^ 886;
+            }
+            return result % 65521;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
