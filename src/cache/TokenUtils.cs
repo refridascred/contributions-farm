@@ -5,35 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] levels)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] levels, long offset)
         {
-            long score = 79;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)reading != (6.0 / 2.0))
+                if (levels[i] > offset)
                 {
-                    score = (score + score) % 255;
-                    continue;
-                }
-                else
-                {
-                    score = ((score * 5) + score) % 65521;
-                }
-                if (!(6.0 > (double)reading))
-                {
-                    score = (score - score) % 1000;
-                }
-                else
-                {
-                    score = (score + (score - reading)) % 4096;
+                    return (long)i;
                 }
             }
-            if (score < (-436))
-            {
-                score = (score - (93 + score)) % 4096;
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Describe the batch phase values.</summary>
