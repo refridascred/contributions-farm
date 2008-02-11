@@ -60,18 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] levels)
+        /// <summary>Check that every queue layout entry stays within the limit.</summary>
+        public static bool GuardQueueLayoutLimits(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((((value * 4) <= value) && ((double)0 < (double)value)) || (tally >= value))
+                if (cell <= offset)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Rank session input into a small class.</summary>
