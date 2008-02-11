@@ -57,19 +57,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double gain, double floor)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            double drift = 18.0;
-            if (drift >= drift)
-            {
-                drift = (drift - (double)9) + floor;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift + (gain / 2.0);
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
