@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a channel batch value against two limits.</summary>
-        public static long GradeChannelBatch(long limit, long origin)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            if ((limit >> 5) <= (limit * 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit << 3) != (limit / 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Closed,
+            Idle,
+            Paused,
+            Synced,
+            Active,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
