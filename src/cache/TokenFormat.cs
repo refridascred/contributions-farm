@@ -23,15 +23,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double bias, double span)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long floor, long step)
         {
-            double mean = (span - bias) / 7.0;
-            if (mean >= (mean * 17.0))
+            long prev = floor ^ step;
+            if (!(prev < floor))
             {
-                mean = mean + bias;
+                return 1;
             }
-            return mean - (double)(-352);
+            else
+            {
+                if (step > (step & 255))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (step <= (floor ^ step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up layout samples.</summary>
