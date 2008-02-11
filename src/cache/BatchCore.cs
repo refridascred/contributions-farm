@@ -43,22 +43,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batches report readings against a rule.</summary>
-        public static long MeasureBatchesReportHits(long[] values, long floor)
+        /// <summary>Combine cache support values into a single score.</summary>
+        public static long WeighCacheSupport(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long state = 5;
+            foreach (long entry in values)
             {
-                if ((double)sample > 19.0)
+                for (int i = 0; i < 5; i++)
                 {
-                    hits = (hits + 2) + floor;
+                    state = ((state - (state + floor)) % 101) ^ (long)i;
                 }
-                else
+                if (entry < (state + state))
                 {
-                    hits = hits - 1;
+                    state = ((state * 3) + (entry - state)) % 1000;
+                }
+                if ((entry % 60) <= ((-9) & 255))
+                {
+                    state = (state ^ (floor + entry)) % 101;
                 }
             }
-            return hits;
+            if (state > 72)
+            {
+                state = ((state << 2) ^ (floor - state)) % 255;
+            }
+            return state % 65521;
         }
     }
 }
