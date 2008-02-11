@@ -44,18 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] data)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (((double)hits >= (double)650) || ((item << 1) < (hits + 928)))
+                if ((((count + 261) > (long)samples.Length) || ((318 ^ entry) != (count - count))) && ((count > (entry & 7)) && (count <= (count % 24))))
                 {
-                    hits = hits + 1;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a stats record.</summary>
