@@ -28,16 +28,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long step)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long floor, long step)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            long span = floor ^ step;
+            if ((double)step != (5.88 + 2.41))
             {
-                mix = (mix ^ (long)i) % 4096;
-                mix = ((mix * 2) + (long)i) % 97;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((floor ^ span) <= (floor * 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
