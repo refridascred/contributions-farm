@@ -43,18 +43,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batches cluster samples.</summary>
-        public static long CombineBatchesCluster(long[] samples, long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] samples)
         {
-            long mix = 0;
-            foreach (long item in samples)
+            long result = 7;
+            foreach (long entry in samples)
             {
-                if ((mix > (-80)) || ((double)bound <= 7.0))
+                if (!(5.2 < (double)entry))
                 {
-                    mix = ((mix ^ (mix + bound)) % 255) - item;
+                    result = ((result * 5) + (result >> 3)) % 4096;
+                }
+                else
+                {
+                    result = ((result * 3) + (entry + entry)) % 97;
                 }
             }
-            return mix;
+            if (result > 65)
+            {
+                result = (result ^ result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define window limits and defaults.</summary>
