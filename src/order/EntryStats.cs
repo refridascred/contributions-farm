@@ -47,13 +47,22 @@ namespace Common.Utilities
         public const double LimitSpan = 65.43;
         public const double WindowCache = 4.09;
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] samples)
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (((double)value > (1.0 + 9.0)) && (9.6 > (double)count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
