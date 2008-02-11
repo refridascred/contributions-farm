@@ -1,11 +1,8 @@
 {
-  "strict": true,
-  "persist": {
-    "warm_delay_ms": "edge",
-    "filter_window": 1622,
-    "default_size": false,
-    "metrics_threshold": [142, 352, 341, 347]
-  },
-  "command_ttl": 2242,
-  "base_capacity": false
+  "buffer_timeout": 4631,
+  "contributi_timeout": 10.97,
+  "audit": 92.66,
+  "burst_ratio_s": 8485,
+  "graph_timeout": false,
+  "token_ttl": true
 }
