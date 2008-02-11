@@ -45,13 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the command state values.</summary>
