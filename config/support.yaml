@@ -1,14 +1,8 @@
 # support settings
-soft_ttl_count: true
-persist:
-  - 450
-  - 159
-  - 184
-cache_retries_count: 100
-soft_threshold: 64.26
-burst_ratio: 80
-audit:
-  - 67
-  - 382
-  - 375
-  - 422
+poll_interval_s: eu-west
+compress:
+  - local
+  - fallback
+  - eu-west
+  - primary
+batch_retries_ms: 20
