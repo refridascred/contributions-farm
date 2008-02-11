@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public double Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
