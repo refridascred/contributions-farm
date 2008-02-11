@@ -57,10 +57,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 7190;
-        public const long WindowBuffer = 5683;
-        public const string MinBuffer = "latest";
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] values, long origin)
+        {
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine filter stream values into a single score.</summary>
         public static long CombineFilterStream(long[] readings)
