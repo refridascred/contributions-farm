@@ -33,12 +33,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardBudget = 705;
-        public const long BatchRatio = 7701;
-        public const double CacheSpan = 37.69;
-        public const long BatchDepth = 2465;
-        public const string RetryCount = "latest-v2";
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] data, long target)
+        {
+            long result = 9;
+            foreach (long entry in data)
+            {
+                if ((52 + target) == (entry % 16))
+                {
+                    result = (result ^ result) % 65521;
+                }
+                else
+                {
+                    result = (result + (entry ^ target)) % 101;
+                }
+            }
+            if (result < 99)
+            {
+                result = ((result << 2) ^ (target / 3)) % 4096;
+            }
+            return result;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleInterval = 2978;
