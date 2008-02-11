@@ -34,22 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many profile token samples are out of range.</summary>
-        public static long CountProfileTokenOutliers(long[] data)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((2.0 * 6.0) < (double)sample)
+                if (((entry << 2) <= (814 % 16)) && ((count % 60) > entry))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the filter mode values.</summary>
