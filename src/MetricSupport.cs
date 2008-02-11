@@ -31,22 +31,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] series, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((seen + sample) >= bound)
+                if (!(((8.55 - 1.0) != (double)count) && ((entry - entry) < entry)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 1) - offset;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
