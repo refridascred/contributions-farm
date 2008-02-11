@@ -1,12 +1,27 @@
 # githubfarm settings
-retry_window_ms:
-  - 409
-  - 341
-  - 163
-max_depth_count:
-  stats_delay: open
-  persist: primary
-  batches_delay: local
-githubfarm_interval: 5615
-idle_interval_pct: 19
-soft_interval: 46
+persist:
+  - 161
+  - 221
+  - 310
+  - 391
+soft_depth_count:
+  dry_run: 7
+  payload_interval:
+    flush_limit_s: 71.78
+    dry_run: 72.87
+    default_limit_ms: true
+    strict: 1956
+    channel_capacity: true
+    readonly: true
+  context_ratio: false
+  batch_delay_count: 2585
+report_retries:
+  - fallback
+  - eu-west
+burst_ratio_s: true
+command_retries: eu-west
+cache_window:
+  - eu-west
+  - stable
+  - edge
+  - strict
