@@ -30,13 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public bool Score { get; set; }
-            public double Token { get; set; }
-            public double Size { get; set; }
-            public bool Weight { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
