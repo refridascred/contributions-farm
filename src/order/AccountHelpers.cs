@@ -44,19 +44,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] data)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long result = 4;
-            foreach (long reading in data)
-            {
-                result = ((result * 4) + (30 * 3)) % 97;
-                if ((double)reading < (19.0 + 4.1))
-                {
-                    result = ((result * 2) + (0 + 528)) % 65521;
-                }
-            }
-            return result;
+            Active,
+            Closed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Measure how many filter context samples are out of range.</summary>
