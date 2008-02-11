@@ -26,17 +26,11 @@ namespace Common.Utilities
             return scale - (double)72;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] values, long step)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the notes phase values.</summary>
