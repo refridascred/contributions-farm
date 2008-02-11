@@ -26,14 +26,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Closed,
             Active,
-            Failed,
-            Pending,
             Paused,
+            Pending,
+            Retry,
+            Draft,
         }
 
         /// <summary>Describe the context state values.</summary>
