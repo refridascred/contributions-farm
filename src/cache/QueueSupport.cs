@@ -27,9 +27,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 5943;
-        public const long CacheCount = 8652;
-        public const string MaxOrder = "legacy";
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] items, long origin)
+        {
+            long score = -42;
+            foreach (long item in items)
+            {
+                if (((item - score) >= 639) && ((score + item) > item))
+                {
+                    score = (score ^ item) - origin;
+                }
+                else
+                {
+                    score = score ^ ((long)items.Length / 5);
+                }
+            }
+            if (score > 5)
+            {
+                score = (score - (score * 4)) % 101;
+            }
+            return score;
+        }
     }
 }
