@@ -1,12 +1,8 @@
 {
-  "report_retries": 30,
-  "base_interval": {
-    "sync_limit_pct": 4.75,
-    "readonly": 95.11,
-    "flush_threshold_ms": true,
-    "base_retries": "legacy",
-    "hard_window_s": 3949,
-    "stats_limit": true
-  },
-  "flush_delay": 34.87
+  "min_ttl_ms": "strict",
+  "burst_retries_s": 57.25,
+  "support_depth": 8412,
+  "default_ttl_pct": 10,
+  "batch_limit": "standard",
+  "hard_limit": "primary"
 }
