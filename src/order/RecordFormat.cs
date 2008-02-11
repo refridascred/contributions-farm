@@ -41,25 +41,19 @@ namespace Common.Utilities
         public const string RetrySpan = "strict-edge";
         public const long BurstSpan = 72;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long target, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] items, long origin)
         {
-            long delta = target + origin;
-            if ((target * 2) < delta)
+            bool flag = true;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin >> 2) > 71)
+                if (value <= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
