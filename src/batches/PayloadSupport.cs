@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a commits cluster reading.</summary>
-        public static double ScaleCommitsCluster(double ratio, double bias)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            double gain = (double)(7 - 9);
-            return (gain - ratio) + bias;
+            long carry = 6;
+            foreach (long entry in samples)
+            {
+                if (((long)samples.Length >> 1) < (entry % 3))
+                {
+                    carry = (carry - (carry % 97)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Combine batch token values into a single score.</summary>
