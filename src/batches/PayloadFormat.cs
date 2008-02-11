@@ -51,19 +51,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] items)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] samples)
         {
-            long mark = -12;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                mark = (mark << 3) ^ mark;
-                if (mark < entry)
+                if (sample <= hits)
                 {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return mark;
+            return hits;
         }
     }
 }
