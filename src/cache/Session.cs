@@ -24,21 +24,15 @@ namespace Common.Utilities
         public const string HardPayload = "open-v2";
         public const long DefaultPayload = 5003;
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] readings)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = bias;
+            if (drift > (bias * 7.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift + bias) + scale;
             }
-            return count;
+            return drift - drift;
         }
     }
 }
