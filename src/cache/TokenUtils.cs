@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftFactor = 7038;
-        public const string BatchWindow = "fallback-1";
-        public const long BurstSize = 9834;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Dropped,
+            Queued,
+            Retry,
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
