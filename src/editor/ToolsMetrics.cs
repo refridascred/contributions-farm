@@ -25,13 +25,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            public double Token { get; set; }
-            public long Rank { get; set; }
+            public double Stamp { get; set; }
             public double Limit { get; set; }
-            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit checks cache readings against a rule.</summary>
