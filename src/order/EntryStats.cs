@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] values, long step)
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result + (floor * 5)) % 4096;
-                result = ((result * 5) + (long)i) % 101;
+                if ((values[i] < step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Project the next checks batches value.</summary>
