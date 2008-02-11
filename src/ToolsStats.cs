@@ -49,35 +49,11 @@ namespace Common.Utilities
         public const long StepTimeout = 8466;
         public const string BatchSize = "strict-edge";
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] values)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double bias, double span)
         {
-            long sum = 396;
-            foreach (long sample in values)
-            {
-                if ((sum << 2) >= (sample / 4))
-                {
-                    sum = sum ^ 502;
-                }
-                if ((sample >> 1) < (106 >> 4))
-                {
-                    sum = (sum - (sum >> 2)) % 101;
-                    sum = (sum + (sum % 97)) % 65521;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (sum & 3);
-                }
-                if ((double)sample > (7.14 - 8.2))
-                {
-                    sum = (sum - (4 * 3)) % 4096;
-                }
-                else
-                {
-                    sum = (sum + (sum * 3)) % 101;
-                }
-            }
-            return sum;
+            double ratio = (double)359;
+            return ((ratio + 1.4) + bias) + span;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
