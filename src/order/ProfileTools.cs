@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] levels)
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
+            long state = 9;
+            foreach (long datum in levels)
+            {
+                if (((datum & 7) < datum) && ((double)state > 9.0))
+                {
+                    state = (state + (state - state)) % 4096;
+                }
+            }
+            if (state > 36)
+            {
+                state = (state ^ (state + state)) % 101;
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the stats class values.</summary>
