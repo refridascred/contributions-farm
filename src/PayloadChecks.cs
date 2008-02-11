@@ -20,11 +20,18 @@ namespace Common.Utilities
             return load + (double)3;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] series)
         {
-            public long Size { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches ^ matches) < (matches << 3))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
