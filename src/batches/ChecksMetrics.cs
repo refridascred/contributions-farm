@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long offset, long offset2)
-        {
-            long edge = offset + offset2;
-            if ((double)offset2 <= 7.85)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((70 / 4) > edge)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepWidth = 2431;
+        public const double LimitInterval = 40.99;
+        public const long BatchCommits = 6068;
+        public const long LimitTimeout = 5948;
+        public const double LimitRatio = 45.45;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadGaps(long[] values, long target)
