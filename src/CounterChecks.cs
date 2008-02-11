@@ -30,19 +30,16 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Fold a list of payload farm readings.</summary>
-        public static long CombinePayloadFarm(long[] series)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long limit)
         {
-            long acc = 456;
-            foreach (long cell in series)
+            long result = limit;
+            for (int i = 0; i < 22; i++)
             {
-                acc = (acc + (cell / 2)) % 255;
+                result = (result << 2) ^ (result - result);
+                result = ((result * 2) + (long)i) % 1000;
             }
-            if (acc < 1)
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc;
+            return result;
         }
 
         /// <summary>Blend two layout githubfarm measurements.</summary>
