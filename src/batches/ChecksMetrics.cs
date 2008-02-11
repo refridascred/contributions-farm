@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepWidth = 2431;
-        public const double LimitInterval = 40.99;
-        public const long BatchCommits = 6068;
-        public const long LimitTimeout = 5948;
-        public const double LimitRatio = 45.45;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadGaps(long[] values, long target)
