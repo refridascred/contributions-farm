@@ -58,27 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] data, long target)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] series, long floor)
         {
-            long acc = -43;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                long next = ((-698) + target) + (2 << 2);
-                if (!((next & 31) <= target))
+                if (sample != floor)
                 {
-                    next = ((next << 3) ^ (48 - (-89))) % 1000;
-                }
-                if (!((datum & 127) >= datum))
-                {
-                    acc = acc + ((long)data.Length / 6);
-                }
-                else
-                {
-                    acc = (acc * 4) + datum;
+                    valid = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return valid;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
