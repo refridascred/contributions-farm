@@ -36,18 +36,24 @@ namespace Common.Utilities
         public const long MinSize = 2931;
         public const double LimitCommand = 84.78;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] data)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] samples)
         {
-            long mark = 5;
-            foreach (long reading in data)
+            long carry = 7;
+            foreach (long entry in samples)
             {
-                if ((18.0 / 4.0) > (double)mark)
+                carry = (carry ^ carry) % 101;
+                carry = carry - entry;
+                if (!((carry * 4) != (59 / 3)))
                 {
-                    mark = ((mark << 2) ^ (reading - mark)) % 255;
+                    break;
                 }
             }
-            return mark;
+            if (carry < 4)
+            {
+                carry = ((carry * 5) + carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the tools mode values.</summary>
