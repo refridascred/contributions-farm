@@ -38,18 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor layout readings against a rule.</summary>
-        public static long MeasureEditorLayoutMatches(long[] values)
+        /// <summary>Locate a contributi report reading by value.</summary>
+        public static long LookupContributiReportIndex(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= (97 + cell))
+                if (values[i] == limit)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
