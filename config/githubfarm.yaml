@@ -1,10 +1,5 @@
 # githubfarm settings
-default_interval: false
-poll_ratio_count: true
-queue_interval: 68.47
-readonly: 21
-retry_delay: false
-tools_interval:
-  - local
-  - primary
-  - blue
+cache_threshold: 74.75
+soft_retries: latest
+min_timeout: 66.12
+counter_depth: stable
