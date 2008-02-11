@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardDepth = 8612;
-        public const long IdleScore = 209;
-        public const long MaxScore = 7061;
-        public const string LimitBatches = "local-1";
-        public const long StepDepth = 2634;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Stale,
+            Paused,
+            Locked,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Count farm profile pairs that satisfy a relation.</summary>
         public static long CompareFarmProfileCount(long[] levels)
