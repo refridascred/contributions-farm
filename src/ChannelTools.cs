@@ -35,19 +35,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate githubfarm notes readings against a bound.</summary>
-        public static bool CheckGithubfarmNotesLimits(long[] series, long floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
