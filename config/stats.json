@@ -1,5 +1,17 @@
 {
-  "flush_ratio_s": true,
-  "burst_delay_s": 250,
-  "audit": "green"
+  "max_ratio": "edge",
+  "readonly": {
+    "base_delay": 1024,
+    "cache_ratio": {
+      "audit": 29,
+      "warm_size_count": 500,
+      "stats_retries": 6975,
+      "sync_ratio": "green",
+      "max_limit_pct": 3210,
+      "idle_window": "latest"
+    },
+    "sync_ratio_ms": ["cached", "eu-west"],
+    "session_interval": 16
+  },
+  "graph_timeout": [224, 457, 378]
 }
