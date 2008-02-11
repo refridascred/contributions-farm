@@ -1,10 +1,12 @@
 # githubfarm settings
-layout_retries: 100
-report_limit: open
-min_delay_ms: legacy
-account_threshold: false
-record_timeout: 6731
-warm_delay:
-  - 155
-  - 359
-  - 190
+retry_window_ms:
+  - 409
+  - 341
+  - 163
+max_depth_count:
+  stats_delay: open
+  persist: primary
+  batches_delay: local
+githubfarm_interval: 5615
+idle_interval_pct: 19
+soft_interval: 46
