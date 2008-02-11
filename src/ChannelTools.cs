@@ -38,11 +38,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Count route buffer pairs that satisfy a relation.</summary>
+        public static long OverlapRouteBufferCount(long[] levels)
         {
-            public double Size { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
