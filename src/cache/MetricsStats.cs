@@ -35,18 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] samples)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long offset)
         {
-            long result = 2;
-            foreach (long value in samples)
+            long score = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((value / 7) > value)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    result = result + (result % 64);
+                    score = (score + (score << 1)) ^ (long)i2;
                 }
+                score = ((score * 2) + (offset + score)) % 101;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return result % 65521;
+            return score;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
