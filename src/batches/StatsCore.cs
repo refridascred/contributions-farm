@@ -28,19 +28,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double gain, double offset)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long seed, long offset)
         {
-            double bias = gain / 2.0;
-            if (bias <= bias)
+            if (offset > (offset & 3))
             {
-                bias = (bias - bias) + offset;
+                return 0;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                bias = (bias + gain) + (double)(long)i;
+                if (offset <= (offset % 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return bias - 17.0;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
