@@ -1,5 +1,5 @@
 {
-  "sync_interval_count": 198,
-  "profile_limit": "blue",
-  "graph_size": true
+  "burst_delay_count": ["open", "local"],
+  "readonly": 6789,
+  "hard_ratio_pct": "fallback"
 }
