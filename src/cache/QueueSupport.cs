@@ -36,14 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Digest a series of record checks entries.</summary>
+        public static long ScoreRecordChecks(long[] data, long bound)
         {
-            Draft,
-            Paused,
-            Pending,
-            Retry,
-            Failed,
+            long anchor = 11;
+            foreach (long sample in data)
+            {
+                if ((double)bound <= (0.55 / 6.0))
+                {
+                    anchor = ((anchor << 2) ^ sample) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (anchor - sample)) % 101;
+                }
+            }
+            return anchor % 97;
         }
     }
 }
