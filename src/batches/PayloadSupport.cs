@@ -19,19 +19,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] series, long origin)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Dropped,
+            Locked,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the metric level values.</summary>
