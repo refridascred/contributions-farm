@@ -1,12 +1,10 @@
 # githubfarm settings
-strict: 2.51
-default_timeout: 30
-burst_timeout_ms: standard
-entry_retries:
-  - 160
-  - 204
-checks_limit:
-  - 172
-  - 121
-  - 5
-githubfarm_depth: 834
+base_delay_s: true
+enabled: cached
+batch_size: legacy
+metric_capacity: 70
+min_ratio_pct:
+  - strict
+  - stable
+  - latest
+metric_size: 42.88
