@@ -38,21 +38,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] items)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 7;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 9; i++)
                 {
-                    if ((items[i] + items[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (((state << 2) ^ (offset / 8)) % 255) - (long)i;
+                }
+                if (99 < offset)
+                {
+                    state = (state ^ (reading >> 5)) % 4096;
+                }
+                else
+                {
+                    state = (state + offset) % 65521;
                 }
             }
-            return hits;
+            return state;
         }
     }
 }
