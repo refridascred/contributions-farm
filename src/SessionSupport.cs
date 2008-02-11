@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] samples, long bound)
         {
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + 5) == (bound >> 5))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
