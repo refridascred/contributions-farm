@@ -26,18 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] values)
+        /// <summary>Validate order farm readings against a bound.</summary>
+        public static bool ValidateOrderFarmLimits(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((reading - 48) <= 903)
+                if (sample > bound)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Hold a metrics options.</summary>
