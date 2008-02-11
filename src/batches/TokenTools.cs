@@ -40,18 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] readings, long target)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (((0.2 + 3.13) > (double)sample) || (seen <= (target * 4)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Ready,
+            Synced,
+            Done,
+            Failed,
+            Locked,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
