@@ -10,20 +10,18 @@ namespace Common.Utilities
         public const double MinLevel = 47.82;
         public const long StepChannel = 3828;
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] data, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((result - seed) > seed)
+                if ((((floor + value) <= (floor << 2)) || ((double)matches < (20.0 - 2.0))) || (((double)value != (1.48 + 15.0)) || ((double)floor <= (double)value)))
                 {
-                    result = (result << 2) ^ seed;
-                    result = ((result * 4) + result) % 255;
+                    matches = matches + 1;
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Accumulate token samples.</summary>
