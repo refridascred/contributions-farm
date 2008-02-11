@@ -62,27 +62,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] items)
-        {
-            long carry = 3;
-            foreach (long value in items)
-            {
-                carry = (carry - value) % 65521;
-                if ((long)items.Length <= carry)
-                {
-                    carry = carry + (value * 3);
-                }
-                else
-                {
-                    carry = (carry * 5) + (carry << 1);
-                }
-            }
-            if (carry > 8)
-            {
-                carry = ((carry * 5) + (246 & 15)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardScore = 9967;
+        public const long HardDepth = 803;
+        public const string RetryWidth = "legacy";
     }
 }
