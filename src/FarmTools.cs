@@ -13,22 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] items, long target)
+        /// <summary>Count stats profile pairs that satisfy a relation.</summary>
+        public static long PairStatsProfileCount(long[] series)
         {
-            long score = 71;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((target > (datum & 63)) && ((48 + target) <= (-2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score * 4) + (77 >> 4);
+                    if ((series[i] - series[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score > (-36))
-            {
-                score = (score ^ (score & 31)) % 97;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
