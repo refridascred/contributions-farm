@@ -41,27 +41,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((double)floor >= (10.0 * 0.2))
-                {
-                    sum = sum + floor;
-                }
-                else
-                {
-                    sum = (sum - sum) % 101;
-                }
-                if (sum > (floor * 4))
-                {
-                    sum = sum ^ (sum - sum);
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 1401;
+        public const string LimitBudget = "legacy-1";
+        public const double MinSpan = 22.56;
+        public const long HardCounter = 5836;
+        public const long LimitCounter = 2450;
     }
 }
