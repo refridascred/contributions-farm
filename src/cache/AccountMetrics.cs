@@ -15,14 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long floor)
         {
-            New,
-            Idle,
-            Dropped,
-            Draft,
-            Stale,
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many window graph samples are out of range.</summary>
