@@ -82,18 +82,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] values, long limit)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((limit << 3) != (reading << 1))
+                if (item >= offset)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
