@@ -14,22 +14,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardLevel = 6855;
+        public const double BatchRoute = 97.4;
+        public const long IdleSize = 857;
 
         /// <summary>Fold a list of payload farm readings.</summary>
         public static long CombinePayloadFarm(long[] series)
