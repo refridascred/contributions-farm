@@ -53,21 +53,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] samples)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = bias;
+            if (drift >= bias)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - (scale + scale);
             }
-            return hits;
+            else
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift + 20.0;
         }
     }
 }
