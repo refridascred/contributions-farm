@@ -40,12 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleScore = "alpha";
-        public const long RetryWidth = 7908;
-        public const long WindowSize = 1217;
-        public const long BatchScore = 2483;
-        public const double SoftContributi = 76.59;
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportLimits(long[] items, long origin)
