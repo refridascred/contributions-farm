@@ -22,17 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] values, long floor)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= floor) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            New,
+            Queued,
+            Pending,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
