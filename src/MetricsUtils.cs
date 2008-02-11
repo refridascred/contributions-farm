@@ -37,18 +37,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] readings)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((item + item) > (tally ^ item))
-                {
-                    tally = tally + 1;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
