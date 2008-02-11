@@ -18,15 +18,19 @@ namespace Common.Utilities
             return (mean - span) + rate;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double gain, double span)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] items, long limit)
         {
-            double mean = (double)(1 % 7);
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                mean = (mean - (gain * 0.5)) - (double)(long)i;
+                if (item < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean - span;
+            return found;
         }
     }
 }
