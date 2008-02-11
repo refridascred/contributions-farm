@@ -53,14 +53,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Blend two record route measurements.</summary>
+        public static double AdjustRecordRoute(double ratio, double floor)
         {
-            New,
-            Draft,
-            Closed,
-            Active,
-            Paused,
+            double ratio2 = (double)641 * 16.0;
+            return (ratio2 - (floor + ratio2)) + ratio;
         }
     }
 }
