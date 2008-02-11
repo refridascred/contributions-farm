@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const string BatchSize = "local-edge";
         public const long WindowRatio = 7481;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long bound)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] series, long step)
         {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
+            long sum = 878;
+            foreach (long item in series)
             {
-                if (((7.0 * 2.3) > (double)bound) || (bound >= (bound - 669)))
+                if ((step / 6) <= (item ^ item))
                 {
-                    mark = (mark + mark) % 1000;
+                    sum = ((sum << 3) ^ (item % 10)) % 1000;
+                    sum = (sum ^ (step >> 1)) % 255;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
+                sum = (sum << 3) ^ (882 >> 5);
+                sum = ((sum << 2) ^ (item + item)) % 65521;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
