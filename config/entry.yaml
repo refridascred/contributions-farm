@@ -1,6 +1,6 @@
 # entry settings
-soft_window_s: 1024
-readonly: legacy
-warm_size_ms: 66
-account_window: primary
-channel_threshold: true
+dry_run: eu-west
+cache_timeout_ms:
+  - open
+  - open
+schema_interval: 2409
