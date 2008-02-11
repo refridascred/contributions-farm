@@ -19,16 +19,10 @@ namespace Common.Utilities
         public const long CacheRatio = 5834;
         public const long LimitWidth = 4959;
 
-        /// <summary>Accumulate order batches samples.</summary>
-        public static long TotalOrderBatches(long[] readings, long step)
-        {
-            long sum = 70;
-            foreach (long value in readings)
-            {
-                sum = (((sum * 3) + (902 * 4)) - value) + step;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CachePayload = 59.93;
+        public const string HardPayload = "open-v2";
+        public const long DefaultPayload = 5003;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long MatchFormatCount(long[] readings)
