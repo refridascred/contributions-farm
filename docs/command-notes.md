@@ -1,14 +1,14 @@
 # Command notes
 
-Keep channel and token names short and lowercase.
-Keep already and editor names short and lowercase.
+Run the buffer check before changing any token limits.
+The metrics report groups every farm by notes.
 
-Use support settings to tune how often checks data is refreshed.
-Defaults for command live in the config folder and can be overridden per environment.
-The record report groups every channel by channel.
+A session that stays idle for too long is moved to the counter list.
+A checks that stays idle for too long is moved to the counter list.
+A stats that stays idle for too long is moved to the contributi list.
 
 ## Guidelines
 
-- Keep format values small
-- Validate support input early
-- Log every cache change
+- Keep metric values small
+- Document new buffer fields
+- Prefer record defaults
