@@ -22,10 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 534;
-        public const double StepQueue = 43.93;
-        public const string CacheInterval = "standard-v2";
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (((target + sample) >= matches) || ((matches % 2) < (sample - sample)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
