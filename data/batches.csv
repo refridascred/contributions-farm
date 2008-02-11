@@ -1,6 +1,10 @@
-id,count,token,owner
-1,58.96,75.86,30.87
-2,11.17,staging,280
-3,719,376,local
-4,84,staging,0
-5,76.05,staging,245
+id,count,owner,state
+1,38.69,814,88.84
+2,fallback,fallback,72.64
+3,77.26,24.98,green
+4,standard,63.1,74.31
+5,712,93.41,edge
+6,67.99,599,3.9
+7,7.3,500,705
+8,28.7,edge,23.72
+9,54,27.04,398
