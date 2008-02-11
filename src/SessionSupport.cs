@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const long BatchCache = 931;
         public const long DefaultCache = 2310;
 
-        /// <summary>Count the metrics metric entries that pass the check.</summary>
-        public static long AuditMetricsMetricHits(long[] values)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (!((double)item < (4.79 + 9.9)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Pending,
+            Queued,
+            New,
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
