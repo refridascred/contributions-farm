@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultFactor = 39.66;
-        public const long BurstEntry = 9488;
-        public const long MinEntry = 6588;
-        public const long BatchInterval = 7077;
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = (carry - (origin % 3)) % 97;
+                carry = carry - carry;
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
