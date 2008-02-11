@@ -61,10 +61,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BaseBatch = 36.71;
-        public const long BurstSpan = 4627;
-        public const long BatchWidth = 802;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double ProjectProfile(double rate, double span)
