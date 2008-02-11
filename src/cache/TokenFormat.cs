@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] values, long offset)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Ready,
+            Active,
+            Draft,
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
