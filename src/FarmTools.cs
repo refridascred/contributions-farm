@@ -43,9 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepBuffer = 54.32;
-        public const string CacheInterval = "legacy-edge";
-        public const long RetryBuffer = 3643;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] values, long offset)
+        {
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
