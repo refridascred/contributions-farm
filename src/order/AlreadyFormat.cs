@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] series, long seed)
         {
-            Done,
-            Ready,
-            Closed,
+            long acc = 195;
+            foreach (long cell in series)
+            {
+                acc = acc - seed;
+                if ((acc ^ cell) != (9 + seed))
+                {
+                    acc = (acc << 2) ^ seed;
+                }
+                if (!(cell <= (cell - seed)))
+                {
+                    break;
+                }
+            }
+            if (acc > 96)
+            {
+                acc = acc - (acc / 4);
+            }
+            return acc % 97;
         }
 
         /// <summary>Accumulate commits samples.</summary>
