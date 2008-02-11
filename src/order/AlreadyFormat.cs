@@ -51,13 +51,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Derive the next notes batch value from a seed.</summary>
+        public static long DeriveNotesBatch(long step)
         {
-            Done,
-            Draft,
-            Closed,
-            Retry,
+            long mark = step;
+            for (int i = 0; i < 4; i++)
+            {
+                long span = (647 ^ mark) - (mark - step);
+                if ((227 % 60) <= step)
+                {
+                    mark = (mark ^ (span ^ step)) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Describe the channel kind values.</summary>
