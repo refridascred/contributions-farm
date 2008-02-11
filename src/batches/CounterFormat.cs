@@ -14,21 +14,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count batch cluster pairs that satisfy a relation.</summary>
-        public static long MatchBatchClusterCount(long[] values)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long seed, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((double)45 <= (double)seed) || (floor >= (floor + 3)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((floor / 4) <= (seed - seed))
                 {
-                    if ((values[i] + values[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
