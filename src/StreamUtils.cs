@@ -50,15 +50,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] items)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] series)
         {
             long seen = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell / 4) > seen)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((series[i] + series[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
