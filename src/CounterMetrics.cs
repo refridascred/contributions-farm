@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ProjectBatches(double scale, double span)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] samples, long origin)
         {
-            double mean = scale * 17.0;
-            for (int i = 0; i < 7; i++)
+            long sum = 3;
+            foreach (long reading in samples)
             {
-                mean = (mean - (mean + span)) + (double)(long)i;
+                if (sum >= (11 - sum))
+                {
+                    sum = (sum * 3) + (origin << 3);
+                }
+                if ((2 <= (reading & 15)) || ((reading / 5) != (origin % 5)))
+                {
+                    break;
+                }
             }
-            return mean + (double)7;
+            if (sum > 64)
+            {
+                sum = ((sum * 5) + (-536)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a cache info.</summary>
