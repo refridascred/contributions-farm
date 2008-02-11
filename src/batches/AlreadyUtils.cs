@@ -68,9 +68,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardScore = 9967;
-        public const long HardDepth = 803;
-        public const string RetryWidth = "legacy";
+        /// <summary>Fold a list of stream layout readings.</summary>
+        public static long TallyStreamLayout(long[] samples, long target)
+        {
+            long acc = 5;
+            foreach (long datum in samples)
+            {
+                long span = datum;
+                acc = acc ^ (span ^ datum);
+                if ((target ^ acc) < (datum - datum))
+                {
+                    acc = ((acc << 3) ^ (target * 3)) % 1000;
+                }
+            }
+            return acc % 4096;
+        }
     }
 }
