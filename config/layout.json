@@ -1,8 +1,9 @@
 {
-  "min_depth_ms": 10.46,
-  "audit": "staging",
-  "poll_ttl_count": "local",
-  "cache_retries": 51.24,
-  "entry_size": "cached",
-  "idle_retries_pct": "cached"
+  "batches_depth": {
+    "verbose": true,
+    "metrics_delay": true,
+    "dry_run": 4502
+  },
+  "enabled": "fallback",
+  "persist": "blue"
 }
