@@ -62,18 +62,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] values)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] data)
         {
-            long mark = -8;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((6.92 - 3.9) != (double)mark)
+                if (matches <= (datum + matches))
                 {
-                    mark = ((mark + 30) % 255) ^ datum;
+                    matches = matches + 1;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
