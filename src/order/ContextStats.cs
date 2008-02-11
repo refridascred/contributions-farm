@@ -46,13 +46,21 @@ namespace Common.Utilities
         public const long StepMetric = 9005;
         public const string BaseMetric = "staging-edge";
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Match up payload queue samples.</summary>
+        public static long ComparePayloadQueueCount(long[] data)
         {
-            Queued,
-            Locked,
-            Draft,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
