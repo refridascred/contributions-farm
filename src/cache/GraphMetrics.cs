@@ -30,13 +30,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] values, long limit)
         {
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (((4.97 * 12.0) >= (double)limit) || ((8.3 + 8.69) >= (double)limit))
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
