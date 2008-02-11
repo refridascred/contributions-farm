@@ -35,17 +35,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                state = state + (limit / 5);
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstBudget = 84.9;
+        public const string BaseStats = "fallback-edge";
+        public const long IdleFactor = 7848;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsMatches(long[] samples, long target)
