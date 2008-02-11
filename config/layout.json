@@ -1,6 +1,6 @@
 {
-  "batch_delay": true,
-  "hard_ttl": "primary",
-  "verbose": false,
-  "cache_ratio": 30
+  "warm_ratio": true,
+  "record_size": 53.47,
+  "batch_capacity": true,
+  "default_interval_ms": 45.96
 }
