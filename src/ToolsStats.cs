@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] samples)
         {
-            Active,
-            Pending,
-            Failed,
-            Done,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (!((entry - entry) > entry))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
