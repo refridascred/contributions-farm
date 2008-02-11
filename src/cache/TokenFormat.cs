@@ -17,19 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] items, long origin)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Label { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
