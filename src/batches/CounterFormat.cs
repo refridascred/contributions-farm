@@ -28,21 +28,21 @@ namespace Common.Utilities
             return (mean - span) + rate;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i + bound) <= (bound / 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total + (total + bound)) % 4096;
-                    break;
+                    if ((series[i] - series[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = (total + (bound - total)) % 97;
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return tally;
         }
     }
 }
