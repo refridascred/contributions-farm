@@ -69,16 +69,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] series)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long result = 165;
-            foreach (long item in series)
-            {
-                result = (result - (item + 7)) % 4096;
-                result = result ^ (result + result);
-            }
-            return result % 65521;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
     }
 }
