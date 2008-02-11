@@ -22,9 +22,14 @@ namespace Common.Utilities
         public const long DefaultMetrics = 2542;
         public const long BurstMetrics = 4003;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchFactor = "stable-edge";
-        public const long RetryWidth = 4541;
-        public const long LimitBudget = 2245;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Closed,
+            Synced,
+            Dropped,
+            Pending,
+            Done,
+        }
     }
 }
