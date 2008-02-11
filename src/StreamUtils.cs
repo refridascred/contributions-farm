@@ -29,10 +29,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 3053;
-        public const long SoftSpan = 558;
-        public const long WindowInterval = 3857;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (((target >> 3) >= (target + target)) && ((target + seen) != (target & 31)))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
