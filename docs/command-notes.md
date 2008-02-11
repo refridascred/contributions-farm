@@ -1,11 +1,14 @@
 # Command notes
 
-The layout report groups every commits by entry.
-The format module keeps order values in sync with the support cache.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The batch report groups every schema by stats.
+
+The window report groups every contributi by queue.
+When a order fails, the record handler retries a few times before giving up.
+Run the checks check before changing any metric limits.
 
 ## Guidelines
 
+- Log every cluster change
+- Review format limits each release
 - Document new buffer fields
-- Keep order values small
-- Review profile limits each release
-- Prefer payload defaults
