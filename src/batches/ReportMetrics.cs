@@ -40,15 +40,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double rate, double span)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] readings)
         {
-            double scale = rate * 6.21;
-            if (scale > scale)
+            long carry = 30;
+            foreach (long reading in readings)
             {
-                scale = (scale + 2.4) + span;
+                if ((carry ^ 15) < (reading + carry))
+                {
+                    carry = (carry ^ (carry << 2)) % 65521;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ reading;
+                }
             }
-            return scale - (double)999;
+            if (carry > 8)
+            {
+                carry = ((carry * 3) + carry) % 255;
+            }
+            return carry % 65521;
         }
     }
 }
