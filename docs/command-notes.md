@@ -1,12 +1,16 @@
 # Command notes
 
-Use batches settings to tune how often cache data is refreshed.
-A layout that stays idle for too long is moved to the session list.
-Defaults for batch live in the config folder and can be overridden per environment.
+The graph module keeps buffer values in sync with the batches cache.
+Keep stats and stream names short and lowercase.
+The session module keeps notes values in sync with the token cache.
+
+Defaults for contributi live in the config folder and can be overridden per environment.
+The record helpers are pure functions, so they are safe to call from any thread.
+Keep editor and account names short and lowercase.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Validate format input early
-- Keep metric values small
-- Document new already fields
+- Log every editor change
+- Validate record input early
+- Keep tools values small
+- Review account limits each release
