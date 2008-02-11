@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long seed, long target)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long edge = seed - target;
-            if ((edge >> 1) < edge)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((9 - edge) > 5) || (2 > (edge + edge)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
