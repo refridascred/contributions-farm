@@ -1,10 +1,16 @@
 {
-  "cluster_limit": {
-    "batch_interval_pct": [353, 363, 134],
-    "strict": false,
-    "cache_limit_count": "cached"
+  "burst_window": {
+    "dry_run": {
+      "filter_threshold": 100,
+      "tools_ratio": ["strict", "latest", "latest", "eu-west"],
+      "warm_depth_pct": "open",
+      "sync_threshold": ["stable", "local", "legacy", "blue"],
+      "sync_window_ms": ["open", "edge", "local"]
+    },
+    "default_ttl_count": 59.23,
+    "batch_delay_count": 76.57,
+    "min_ttl_s": "open"
   },
-  "soft_interval_count": 66.13,
-  "poll_size_pct": 42,
-  "base_depth": [293, 388, 271]
+  "context_window": "blue",
+  "max_ratio_s": 16.48
 }
