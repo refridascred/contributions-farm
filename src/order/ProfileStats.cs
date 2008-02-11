@@ -22,18 +22,19 @@ namespace Common.Utilities
             return ratio + 13.0;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] levels)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((count / 2) <= (sample % 100))
+                if (cell != step)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Classify a editor metric pair into a bucket.</summary>
