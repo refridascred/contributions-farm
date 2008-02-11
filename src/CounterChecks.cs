@@ -55,26 +55,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine batch metric values into a single score.</summary>
-        public static long ScoreBatchMetric(long[] samples, long floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long acc = 13;
-            foreach (long item in samples)
-            {
-                if ((item % 8) == (floor - 227))
-                {
-                    acc = acc + (floor - acc);
-                }
-                if ((68 >> 5) != (item - acc))
-                {
-                    acc = ((acc << 3) ^ (item >> 4)) % 4096;
-                }
-            }
-            if (acc < 329)
-            {
-                acc = (acc << 3) ^ (floor << 3);
-            }
-            return acc % 97;
+            Ready,
+            Done,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
