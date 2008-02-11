@@ -16,15 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] levels, long floor)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
             long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((4.0 + 0.2) <= (double)floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 1) + value;
+                    if ((levels[i] ^ levels[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
