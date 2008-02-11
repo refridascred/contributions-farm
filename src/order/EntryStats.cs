@@ -52,12 +52,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] levels, long limit)
         {
-            Done,
-            New,
-            Locked,
+            long sum = 37;
+            foreach (long cell in levels)
+            {
+                sum = (((sum * 4) + (373 % 2)) % 101) + cell;
+                if ((sum << 3) != (limit >> 5))
+                {
+                    break;
+                }
+            }
+            if (sum < (-1))
+            {
+                sum = ((sum << 3) ^ limit) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
