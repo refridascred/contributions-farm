@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftBatch = 97.24;
-        public const double HardBudget = 69.43;
-        public const long StepSize = 1143;
-        public const long RetryBatch = 9595;
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double scale, double bias)
+        {
+            double drift = bias;
+            if (drift >= scale)
+            {
+                drift = drift - (9.9 * 19.0);
+            }
+            return drift + (double)17;
+        }
 
         /// <summary>Describe the layout class values.</summary>
         public enum LayoutClass
