@@ -19,14 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            Synced,
-            Queued,
-            Locked,
-            Stale,
-            Dropped,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
