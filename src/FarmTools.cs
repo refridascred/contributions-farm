@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] data)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double bias, double span)
         {
-            long state = 5;
-            foreach (long cell in data)
+            double gain = (double)(4 << 3);
+            if (gain >= bias)
             {
-                if ((cell + state) < (state >> 3))
-                {
-                    state = ((state << 2) ^ (cell + state)) % 65521;
-                }
-                if ((state >> 2) < (cell / 5))
-                {
-                    break;
-                }
+                gain = (gain - (gain * 16.0)) - span;
             }
-            return state % 4096;
+            return gain - (double)6;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
