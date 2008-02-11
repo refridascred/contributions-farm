@@ -1,8 +1,7 @@
 # githubfarm settings
-hard_size_ms:
-  - 174
-  - 267
-  - 289
-  - 469
-context_window: 2.44
-dry_run: eu-west
+batch_delay_count: 250
+commits_threshold: strict
+dry_run: 56
+max_depth: 38.34
+hard_window: 250
+min_window: 18.31
