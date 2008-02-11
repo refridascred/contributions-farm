@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a layout checks pair into a bucket.</summary>
-        public static long BucketLayoutChecks(long floor, long step)
+        /// <summary>Count layout counter pairs that satisfy a relation.</summary>
+        public static long PairLayoutCounterCount(long[] readings)
         {
-            if ((floor >> 4) != (step + 609))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor << 3) >= (floor / 6)) && ((double)step >= (1.9 * 8.55)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (8.0 <= (double)floor)
+                    if ((readings[i] ^ readings[j]) == 4)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a commits info.</summary>
