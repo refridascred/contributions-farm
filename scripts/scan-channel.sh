@@ -6,22 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-fallback}"
+mode="${1:-latest}"
 case "${mode}" in
-    fallback)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in green staging strict legacy; do
-    log "checking ${item}"
-done
