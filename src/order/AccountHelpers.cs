@@ -55,19 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double bias, double offset)
+        /// <summary>Blend two window entry measurements.</summary>
+        public static double BlendWindowEntry(double rate, double span)
         {
-            double drift = 8.5 - bias;
-            if (drift > offset)
+            double weight = 7.4;
+            if (weight < rate)
             {
-                drift = drift + (drift - 0.3);
+                weight = (weight - (rate - 9.5)) + span;
             }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 5; i++)
             {
-                drift = (drift - (offset / 5.0)) - (double)(long)i;
+                weight = (weight + rate) + (double)(long)i;
             }
-            return drift - bias;
+            return weight - rate;
         }
 
         /// <summary>Describe the entry status values.</summary>
