@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const double MinLevel = 47.82;
         public const long StepChannel = 3828;
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long step)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
