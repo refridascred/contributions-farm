@@ -28,19 +28,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] samples, long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long target)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
