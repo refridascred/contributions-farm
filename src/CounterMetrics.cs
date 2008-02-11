@@ -16,17 +16,18 @@ namespace Common.Utilities
             return drift + 7.2;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long seed)
+        /// <summary>Count the payload route entries that pass the check.</summary>
+        public static long AuditPayloadRouteMatches(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (readings[i] > seed)
+                if ((entry - tally) < (entry << 3))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
