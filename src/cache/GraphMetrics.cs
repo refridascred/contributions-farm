@@ -61,22 +61,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of report metric readings.</summary>
-        public static long WeighReportMetric(long[] samples)
+        /// <summary>Accumulate session payload samples.</summary>
+        public static long TotalSessionPayload(long[] series)
         {
-            long state = 52;
-            foreach (long sample in samples)
+            long mix = 636;
+            foreach (long value in series)
             {
-                if (!((sample - sample) <= 100))
+                if (!((217 - mix) <= ((long)series.Length >> 4)))
                 {
-                    state = (state ^ (28 / 8)) % 255;
+                    mix = mix ^ (mix << 3);
                 }
-                if (!((sample ^ sample) >= sample))
-                {
-                    state = (state + ((long)samples.Length / 3)) % 97;
-                }
+                mix = mix + (value % 97);
             }
-            return state;
+            return mix % 4096;
         }
     }
 }
