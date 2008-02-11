@@ -1,16 +1,5 @@
 {
-  "burst_window": {
-    "dry_run": {
-      "filter_threshold": 100,
-      "tools_ratio": ["strict", "latest", "latest", "eu-west"],
-      "warm_depth_pct": "open",
-      "sync_threshold": ["stable", "local", "legacy", "blue"],
-      "sync_window_ms": ["open", "edge", "local"]
-    },
-    "default_ttl_count": 59.23,
-    "batch_delay_count": 76.57,
-    "min_ttl_s": "open"
-  },
-  "context_window": "blue",
-  "max_ratio_s": 16.48
+  "persist": "primary",
+  "layout_ratio": "eu-west",
+  "soft_depth_pct": 33.66
 }
