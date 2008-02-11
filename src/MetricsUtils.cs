@@ -16,39 +16,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long bound, long origin)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long cur = bound + origin;
-            if (((8.3 / 5.0) >= (double)origin) && ((4.0 - 7.0) <= (double)cur))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((cur - origin) != (cur << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((6.42 - 1.9) > (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound + origin) == (bound + cur))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a account info.</summary>
