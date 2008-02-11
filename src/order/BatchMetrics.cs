@@ -46,18 +46,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] data)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long seed, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long lane = seed + offset;
+            if ((double)lane >= (19.0 * 14.0))
             {
-                if ((6.3 / 4.0) != (double)tally)
+                return 4;
+            }
+            else
+            {
+                if (((seed / 3) > (seed ^ lane)) && ((lane - lane) >= (5 - offset)))
                 {
-                    tally = (tally + 3) + item;
+                    return 8;
+                }
+                else
+                {
+                    if (!((lane << 3) != (lane & 255)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((8.91 + 6.3) >= (double)lane))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every report notes entry stays within the limit.</summary>
