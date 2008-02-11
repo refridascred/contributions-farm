@@ -28,19 +28,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] data, long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long sum = -822;
+            foreach (long item in series)
             {
-                if (item <= floor)
+                if (((double)sum == (20.0 / 3.0)) && (24 > (step << 1)))
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum - sum) % 97) ^ item;
                 }
             }
-            return stale;
+            if (sum > 1)
+            {
+                sum = ((sum << 3) ^ (step - step)) % 65521;
+            }
+            return sum;
         }
     }
 }
