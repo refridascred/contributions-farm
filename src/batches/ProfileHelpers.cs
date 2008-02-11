@@ -39,19 +39,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] levels, long target)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long limit)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long score = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (sample < target)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
