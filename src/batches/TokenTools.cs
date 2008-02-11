@@ -14,15 +14,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long bound)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public long Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the session class values.</summary>
