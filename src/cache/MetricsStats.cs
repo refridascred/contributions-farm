@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] readings)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) == 0)
+                    if ((series[i] + series[j]) > 1)
                     {
                         hits = hits + 1;
                     }
