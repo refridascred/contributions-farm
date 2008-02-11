@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double gain, double floor)
+        /// <summary>Check that every layout already entry stays within the limit.</summary>
+        public static bool GuardLayoutAlreadyLimits(long[] data, long origin)
         {
-            double rate = floor;
-            if (rate <= floor)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                rate = rate - (double)26;
+                if (cell <= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - gain) + (double)(long)i;
-            }
-            return rate + floor;
+            return flag;
         }
 
         /// <summary>Describe the payload status values.</summary>
