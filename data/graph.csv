@@ -1,10 +1,6 @@
-id,owner,region,count
-1,983,green,edge
-2,local,71.4,225
-3,staging,656,862
-4,767,cached,45.43
-5,758,legacy,legacy
-6,942,primary,432
-7,staging,401,456
-8,8.58,latest,892
-9,25.93,202,33.68
+id,rank,count,ratio
+1,311,eu-west,44.92
+2,standard,80.53,local
+3,primary,836,652
+4,563,8.96,57.49
+5,171,72.76,staging
