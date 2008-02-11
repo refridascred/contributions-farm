@@ -46,22 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of context buffer readings.</summary>
-        public static long PairContextBufferCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftFactor = "cached-v2";
+        public const string BatchMetrics = "local";
+        public const long BatchWidth = 3282;
+        public const string BaseSize = "legacy-1";
 
         /// <summary>Check that every report notes entry stays within the limit.</summary>
         public static bool ValidateReportNotesLimits(long[] samples, long bound)
