@@ -26,11 +26,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double ratio, double floor)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            double drift = (double)(3 / 5);
-            return (drift + floor) + ratio;
+            Closed,
+            Active,
+            Failed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the context state values.</summary>
