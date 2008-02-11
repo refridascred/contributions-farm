@@ -83,17 +83,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a channel metrics sample.</summary>
-        public static long FindChannelMetricsIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 999;
+        public const long SoftLevel = 2606;
+        public const long IdleBatch = 9278;
+        public const long RetryFactor = 212;
+        public const double MaxSize = 70.39;
     }
 }
