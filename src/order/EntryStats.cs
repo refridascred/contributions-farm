@@ -37,23 +37,12 @@ namespace Common.Utilities
             return gain - 17.0;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading ^ 7) <= (67 & 15))
-                {
-                    hits = (hits + 1) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardBudget = 705;
+        public const long BatchRatio = 7701;
+        public const double CacheSpan = 37.69;
+        public const long BatchDepth = 2465;
+        public const string RetryCount = "latest-v2";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleInterval = 2978;
