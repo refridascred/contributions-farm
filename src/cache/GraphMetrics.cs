@@ -50,18 +50,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] samples, long floor)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double bias = 1.0;
+            for (int i = 0; i < 3; i++)
             {
-                if ((entry + floor) <= entry)
-                {
-                    hits = hits + 3;
-                }
+                bias = ((bias + (bias + bias)) + (double)(long)i) - scale;
             }
-            return hits;
+            return bias + (floor - floor);
         }
 
         /// <summary>Fold a list of command counter readings.</summary>
