@@ -53,21 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] samples)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
         }
     }
 }
