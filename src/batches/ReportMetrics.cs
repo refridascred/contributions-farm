@@ -11,11 +11,38 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5726;
         public const double HardEditor = 31.17;
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double scale, double span)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long target, long step)
         {
-            double gain = scale;
-            return (gain + scale) + span;
+            if ((step & 255) < (79 & 127))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step * 5) <= (6 - 594))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step <= (step + step)) || ((0.1 - 18.0) >= (double)target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target & 31) <= step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
