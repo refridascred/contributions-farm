@@ -36,18 +36,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] levels, long bound)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double weight, double offset)
         {
-            long carry = 95;
-            foreach (long sample in levels)
+            double load = offset;
+            if (load >= (offset * 4.65))
             {
-                if ((sample - sample) > (bound - sample))
-                {
-                    carry = carry + 30;
-                }
+                load = load + (weight - 16.0);
             }
-            return carry;
+            return load + (offset + weight);
         }
 
         /// <summary>Define report limits and defaults.</summary>
