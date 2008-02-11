@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of tools account readings.</summary>
-        public static long PairToolsAccountCount(long[] data)
+        /// <summary>Derive the next already order value from a seed.</summary>
+        public static long SeriesAlreadyOrder(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = sum ^ (origin % 24);
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Describe the command class values.</summary>
