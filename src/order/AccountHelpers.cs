@@ -31,13 +31,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] values, long origin)
         {
-            Paused,
-            Draft,
-            Retry,
-            Ready,
+            long acc = 6;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    acc = (((acc * 3) + (acc + origin)) % 4096) - (long)i;
+                }
+                if (((origin + sample) > (acc >> 3)) || ((double)origin == (0.6 + 6.77)))
+                {
+                    acc = (acc * 4) + (origin & 255);
+                }
+            }
+            if (acc < 203)
+            {
+                acc = ((acc << 2) ^ (acc ^ acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
