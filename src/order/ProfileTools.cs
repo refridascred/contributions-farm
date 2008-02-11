@@ -26,19 +26,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of order report entries.</summary>
-        public static long CombineOrderReport(long[] readings, long target)
-        {
-            long result = 14;
-            foreach (long entry in readings)
-            {
-                if ((target * 2) <= (result << 1))
-                {
-                    result = (result + (entry - 4)) % 101;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowDepth = 8806;
+        public const long LimitWidth = 6681;
+        public const long BatchWidth = 1476;
+        public const long StepRoute = 3211;
+        public const long IdleRoute = 7980;
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long ClassifyBuffer(long bound, long limit)
