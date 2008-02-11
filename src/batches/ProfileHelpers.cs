@@ -42,11 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 8052;
-        public const string MinBatches = "alpha";
-        public const long BatchLevel = 5128;
-        public const long RetryBatches = 1429;
+        /// <summary>Locate a notes format reading by value.</summary>
+        public static long SeekNotesFormatIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] items)
