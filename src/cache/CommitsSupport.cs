@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] levels)
+        /// <summary>Digest a series of window metrics entries.</summary>
+        public static long TotalWindowMetrics(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long sum = 8;
+            foreach (long cell in items)
             {
-                if (datum >= (seen << 1))
+                if ((cell / 6) < cell)
                 {
-                    seen = seen + 3;
+                    sum = (sum * 2) + (sum << 3);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    sum = ((sum * 5) + (cell & 15)) % 65521;
                 }
             }
-            return seen;
+            if (sum > 0)
+            {
+                sum = (sum << 2) ^ (sum << 1);
+            }
+            return sum;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
