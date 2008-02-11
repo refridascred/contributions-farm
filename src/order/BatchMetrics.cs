@@ -13,10 +13,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 4022;
-        public const long MaxBatch = 5327;
-        public const long MinBatch = 174;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] data)
+        {
+            long state = 6;
+            foreach (long datum in data)
+            {
+                state = state + datum;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
