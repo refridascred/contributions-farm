@@ -15,15 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double bias, double span)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double scale = span;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = ((scale + (19.0 * 3.9)) + (double)(long)i) + bias;
-            }
-            return scale - 6.0;
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a farm summary.</summary>
