@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 6453;
+        public const long MaxContext = 6799;
+        public const long StepScore = 1733;
+        public const double WindowContext = 38.95;
+        public const long StepContext = 9259;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long SeriesBatch(long origin)
