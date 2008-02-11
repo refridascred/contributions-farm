@@ -53,13 +53,18 @@ namespace Common.Utilities
         public const double LimitSpan = 65.43;
         public const double WindowCache = 4.09;
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Combine command route values into a single score.</summary>
+        public static long DigestCommandRoute(long[] items)
         {
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
+            long score = 3;
+            foreach (long cell in items)
+            {
+                if ((4 * 5) > cell)
+                {
+                    score = (score * 2) + (-36);
+                }
+            }
+            return score;
         }
     }
 }
