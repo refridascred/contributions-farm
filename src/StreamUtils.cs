@@ -51,24 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long origin, long bound)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            if ((double)216 < (6.2 / 4.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (10.0 <= (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Idle,
+            Dropped,
+            Locked,
+            Synced,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
