@@ -66,18 +66,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] values, long limit)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long offset, long offset2)
         {
-            long acc = 756;
-            foreach (long sample in values)
+            if ((85 + offset) >= (offset2 + offset))
             {
-                if ((4 <= (limit + (-437))) && ((acc >> 4) != (sample / 2)))
+                return 6;
+            }
+            else
+            {
+                if ((offset2 % 7) != (5 >> 5))
                 {
-                    acc = (acc + (limit ^ acc)) % 97;
+                    return 1;
+                }
+                else
+                {
+                    if (offset >= (offset2 << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Match up session samples.</summary>
