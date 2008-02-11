@@ -26,16 +26,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a farm batch counter forward.</summary>
-        public static long SeriesFarmBatch(long bound)
+        /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
+        public static long AuditToolsGithubfarmMatches(long[] items, long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                acc = (acc ^ ((long)i + bound)) % 65521;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (((step - step) > entry) && !((46 ^ seen) != (seen + seen)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
