@@ -53,11 +53,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 5340;
-        public const long DefaultMetrics = 8196;
-        public const string IdleMetrics = "alpha-v2";
-        public const long MaxSpan = 314;
-        public const long DefaultScore = 8883;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchTools = "strict";
+        public const long BurstTools = 4612;
+        public const string SoftInterval = "local-1";
+        public const double MaxTools = 62.7;
+        public const long StepTools = 3083;
     }
 }
