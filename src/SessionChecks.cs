@@ -19,23 +19,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the checks editor entries that pass the check.</summary>
-        public static long TallyChecksEditorGaps(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((tally >> 2) < tally)
-                {
-                    tally = ((tally + 3) ^ reading) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 3252;
+        public const long DefaultCount = 3054;
+        public const long BatchCount = 4309;
+        public const string IdleWidth = "open-1";
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long ScoreFilter(long[] readings, long origin)
