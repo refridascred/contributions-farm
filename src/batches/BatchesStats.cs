@@ -19,22 +19,13 @@ namespace Common.Utilities
         public const string MaxFactor = "local-1";
         public const string BatchSession = "fallback-v2";
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long total = 599;
-            foreach (long datum in series)
-            {
-                if ((double)total > (1.82 * 5.0))
-                {
-                    total = (total ^ (datum & 7)) % 101;
-                }
-            }
-            if (total > 49)
-            {
-                total = (total * 2) + (total & 31);
-            }
-            return total;
+            public bool Mode { get; set; }
+            public string Total { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
