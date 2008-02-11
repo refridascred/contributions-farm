@@ -33,12 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] values)
         {
-            Synced,
-            Retry,
-            Stale,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((hits & 1) > value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stats record.</summary>
