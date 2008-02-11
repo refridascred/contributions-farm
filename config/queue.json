@@ -1,8 +1,5 @@
 {
-  "entry_retries": false,
-  "checks_capacity": false,
-  "account_ttl": "cached",
-  "soft_capacity": 85,
-  "dry_run": "blue",
-  "warm_threshold": "green"
+  "persist": true,
+  "idle_depth": 5773,
+  "queue_capacity": 100
 }
