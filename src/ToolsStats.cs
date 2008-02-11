@@ -74,13 +74,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Locate a githubfarm tools reading by value.</summary>
+        public static long FindGithubfarmToolsIndex(long[] series, long limit)
         {
-            Stale,
-            New,
-            Paused,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a channel metrics sample.</summary>
