@@ -30,12 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBatches = 50.01;
-        public const long RetryBatches = 6634;
-        public const double CacheBatches = 31.61;
-        public const double BatchBatches = 64.32;
-        public const string BatchWidth = "open-v2";
+        /// <summary>Audit command format readings against a rule.</summary>
+        public static long TallyCommandFormatMatches(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (29 > (hits + entry))
+                {
+                    hits = (hits + 3) + limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a stream graph pair into a bucket.</summary>
         public static long SortStreamGraph(long offset, long offset2)
