@@ -1,7 +1,8 @@
-id,count,score,active
-1,blue,standard,eu-west
-2,82.8,938,fallback
-3,19.35,18.54,eu-west
-4,70.87,594,38.01
-5,71.95,green,14
-6,fallback,794,94.4
+id,rank,ratio,active,token
+1,244,936,96.43,879
+2,76.72,80.02,fallback,57.85
+3,191,blue,local,14
+4,386,latest,primary,44.81
+5,253,27.47,858,209
+6,green,staging,735,843
+7,354,legacy,134,cached
