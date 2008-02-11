@@ -33,14 +33,18 @@ namespace Common.Utilities
         public const double StepInterval = 88.19;
         public const long DefaultWidth = 7245;
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Audit farm tools readings against a rule.</summary>
+        public static long MeasureFarmToolsGaps(long[] samples)
         {
-            Paused,
-            Retry,
-            New,
-            Draft,
-            Idle,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (!((count & 127) <= 648))
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
         }
     }
 }
