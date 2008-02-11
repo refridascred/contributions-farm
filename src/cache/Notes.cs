@@ -38,13 +38,19 @@ namespace Common.Utilities
             return drift + (3.0 + 5.26);
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long target)
         {
-            public bool Level { get; set; }
-            public double Count { get; set; }
-            public bool Total { get; set; }
-            public double Size { get; set; }
+            long mark = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((mark & 1) >= (target + mark)))
+                {
+                    mark = mark + ((long)i / 3);
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate cache samples.</summary>
