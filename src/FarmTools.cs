@@ -21,11 +21,16 @@ namespace Common.Utilities
         public const string RetryAlready = "local-edge";
         public const string MaxAlready = "alpha-1";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardRatio = "stable-v2";
-        public const long CacheFactor = 954;
-        public const long StepRatio = 9733;
-        public const string IdleCache = "staging-edge";
-        public const double BatchCache = 32.15;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = (mark - mark) % 65521;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
