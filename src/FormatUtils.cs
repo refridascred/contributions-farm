@@ -32,13 +32,10 @@ namespace Common.Utilities
             return mean - 2.88;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstTimeout = 6577;
+        public const long LimitBuffer = 4998;
+        public const double MinTimeout = 79.53;
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
