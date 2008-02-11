@@ -27,12 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftFarm = 47.64;
+        public const long BurstWidth = 2240;
+        public const string LimitFarm = "fallback";
+        public const string WindowDepth = "legacy-edge";
+        public const long IdleFarm = 4672;
 
         /// <summary>Project the next context value.</summary>
         public static double BlendContext(double ratio, double floor)
