@@ -1,22 +1,6 @@
 # githubfarm settings
-verbose: 86
-farm_capacity:
-  verbose:
-    - staging
-    - open
-  burst_ttl_s:
-    - local
-    - green
-  enabled: fallback
-  editor_ratio:
-    - 472
-    - 240
-    - 243
-    - 230
-flush_retries_count:
-  audit: local
-  report_ratio: 91
-  readonly: green
-sync_retries_pct: true
-warm_limit: 8.31
-enabled: eu-west
+persist:
+  - fallback
+  - stable
+base_capacity_count: 68.3
+audit: 79
