@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] items)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = bias;
+            if (weight > (2.0 * 16.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = (weight - 8.47) + scale;
             }
-            return hits;
+            else
+            {
+                weight = weight - (bias * 8.0);
+            }
+            return weight - (double)5;
         }
 
         /// <summary>Match up checks samples.</summary>
