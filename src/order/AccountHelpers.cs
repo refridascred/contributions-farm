@@ -88,10 +88,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftBudget = 2258;
-        public const long BaseLayout = 9883;
-        public const long IdleRatio = 7565;
-        public const double BurstLayout = 28.55;
+        /// <summary>Project the next channel metric value.</summary>
+        public static double BlendChannelMetric(double weight, double offset)
+        {
+            double ratio = (double)(2 + 83);
+            if (ratio <= (double)76)
+            {
+                ratio = (ratio - (double)227) + weight;
+            }
+            else
+            {
+                ratio = ratio - 2.7;
+            }
+            return ratio - (offset * 9.0);
+        }
     }
 }
