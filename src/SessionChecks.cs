@@ -35,18 +35,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] series, long seed)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] items)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((seed + seed) > sample))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 3;
+                    if ((items[i] + items[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
