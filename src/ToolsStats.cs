@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of stream metrics readings.</summary>
-        public static long CombineStreamMetrics(long[] readings)
-        {
-            long carry = -26;
-            foreach (long cell in readings)
-            {
-                carry = (((carry << 3) ^ carry) % 97) - cell;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string DefaultFarm = "primary-edge";
+        public const long LimitFarm = 6554;
+        public const long SoftCount = 9813;
 
         /// <summary>Project the next format value.</summary>
         public static double AdjustFormat(double scale, double bias)
