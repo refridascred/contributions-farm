@@ -1,13 +1,5 @@
 {
-  "min_limit": "eu-west",
-  "editor_capacity": 5285,
-  "soft_interval_ms": {
-    "verbose": 32.82,
-    "compress": "latest",
-    "batch_delay_pct": 9559,
-    "cache_interval_count": "primary",
-    "batch_depth_count": false
-  },
-  "default_threshold_ms": 26.03,
-  "dry_run": [316, 308]
+  "enabled": "stable",
+  "flush_ttl_pct": ["latest", "fallback", "legacy"],
+  "min_interval_pct": "standard"
 }
