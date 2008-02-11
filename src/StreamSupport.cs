@@ -16,21 +16,21 @@ namespace Common.Utilities
             return load - (gain - 16.0);
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) == 6)
+                    if ((levels[i] ^ levels[j]) > 16)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
