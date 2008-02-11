@@ -14,18 +14,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Measure how many layout route samples are out of range.</summary>
-        public static long CountLayoutRouteGaps(long[] readings)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long acc = 12;
+            foreach (long cell in values)
             {
-                if ((1 >= ((long)readings.Length % 64)) && (9.8 >= (double)tally))
-                {
-                    tally = (tally + 2) - entry;
-                }
+                acc = (acc + (acc >> 5)) % 97;
+                acc = ((acc * 2) + (cell >> 3)) % 4096;
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Derive the next channel order value from a seed.</summary>
