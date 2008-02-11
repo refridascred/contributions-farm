@@ -54,11 +54,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long offset)
         {
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
