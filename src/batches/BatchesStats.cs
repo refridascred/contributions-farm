@@ -44,12 +44,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
+            Ready,
+            Draft,
+            Synced,
+            Retry,
+            Pending,
         }
     }
 }
