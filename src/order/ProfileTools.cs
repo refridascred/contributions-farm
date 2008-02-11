@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] levels)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long state = 9;
-            foreach (long datum in levels)
-            {
-                if (((datum & 7) < datum) && ((double)state > 9.0))
-                {
-                    state = (state + (state - state)) % 4096;
-                }
-            }
-            if (state > 36)
-            {
-                state = (state ^ (state + state)) % 101;
-            }
-            return state % 97;
+            Active,
+            Pending,
+            Synced,
+            Retry,
         }
 
         /// <summary>Describe the stats class values.</summary>
