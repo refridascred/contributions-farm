@@ -40,10 +40,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxSize = 9947;
-        public const string StepFactor = "primary";
-        public const long IdleSize = 7680;
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string MaxProfile = "cached";
