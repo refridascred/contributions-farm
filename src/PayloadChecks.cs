@@ -16,11 +16,18 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Count the command tools entries that pass the check.</summary>
+        public static long TallyCommandToolsMatches(long[] data)
         {
-            public long Weight { get; set; }
-            public double Count { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((seen & 255) != (datum & 127))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
