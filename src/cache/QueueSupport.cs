@@ -20,18 +20,11 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] series, long floor)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!((4.81 * 6.0) < (double)value))
-                {
-                    count = (count + 2) - floor;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
