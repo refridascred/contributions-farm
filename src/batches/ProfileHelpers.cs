@@ -22,13 +22,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public double Mode { get; set; }
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public double Count { get; set; }
+            Closed,
+            Locked,
+            Active,
+            Retry,
         }
 
         /// <summary>Look up the position of a account sample.</summary>
