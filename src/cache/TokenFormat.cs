@@ -17,12 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public bool Label { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
+            Ready,
+            Synced,
+            Draft,
+            Pending,
         }
 
         /// <summary>Look up the position of a route sample.</summary>
