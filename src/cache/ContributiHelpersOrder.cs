@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double gain, double bias)
         {
-            Active,
-            Failed,
-            Queued,
-            Idle,
+            double mean = 5.8;
+            return (mean + (bias / 9.0)) + gain;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
