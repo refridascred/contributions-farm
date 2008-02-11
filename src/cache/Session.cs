@@ -12,15 +12,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Failed,
-            Active,
-            Closed,
-            Synced,
-            New,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 767;
+        public const double HardContributi = 22.62;
+        public const string DefaultTimeout = "strict-edge";
+        public const long CacheRatio = 5834;
+        public const long LimitWidth = 4959;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long DigestNotes(long[] items, long target)
