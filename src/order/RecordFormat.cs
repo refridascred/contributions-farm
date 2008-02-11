@@ -56,11 +56,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 290;
-        public const double BurstLevel = 43.09;
-        public const long RetryEntry = 5576;
-        public const string CacheInterval = "fallback-v2";
-        public const long CacheEntry = 4567;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long step, long step2)
+        {
+            long delta = step ^ step2;
+            if ((double)step2 == (3.43 / 9.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)delta >= (double)step2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((delta >> 1) == (step & 31))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
