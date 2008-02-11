@@ -26,19 +26,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order farm readings against a bound.</summary>
-        public static bool ValidateOrderFarmLimits(long[] readings, long bound)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long acc = 4;
+            foreach (long value in items)
             {
-                if (sample > bound)
+                if (value > 6)
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc * 3) + (8 - value)) % 97;
+                }
+                if (742 > (acc * 4))
+                {
+                    acc = (acc + 671) % 255;
                 }
             }
-            return ok;
+            if (acc > 2)
+            {
+                acc = ((acc << 2) ^ 48) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a metrics options.</summary>
