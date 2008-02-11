@@ -17,19 +17,22 @@ namespace Common.Utilities
         public const string MaxFactor = "local-1";
         public const string BatchSession = "fallback-v2";
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] readings, long step)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long total = 599;
+            foreach (long datum in series)
             {
-                if (entry > step)
+                if ((double)total > (1.82 * 5.0))
                 {
-                    stale = false;
-                    break;
+                    total = (total ^ (datum & 7)) % 101;
                 }
             }
-            return stale;
+            if (total > 49)
+            {
+                total = (total * 2) + (total & 31);
+            }
+            return total;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
