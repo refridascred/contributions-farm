@@ -44,11 +44,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheSize = 8978;
-        public const double MaxLayout = 39.08;
-        public const long HardLayout = 9641;
-        public const long RetryTimeout = 326;
-        public const string CacheWidth = "standard-edge";
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Paused,
+            Active,
+            Failed,
+            New,
+            Draft,
+        }
     }
 }
