@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] samples, long origin)
+        /// <summary>Count counter notes pairs that satisfy a relation.</summary>
+        public static long PairCounterNotesCount(long[] readings)
         {
-            long sum = 3;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sum >= (11 - sum))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum * 3) + (origin << 3);
-                }
-                if ((2 <= (reading & 15)) || ((reading / 5) != (origin % 5)))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum > 64)
-            {
-                sum = ((sum * 5) + (-536)) % 65521;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Count order batches pairs that satisfy a relation.</summary>
