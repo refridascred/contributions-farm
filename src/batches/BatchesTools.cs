@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a commits cache figure with a bias.</summary>
-        public static double BlendCommitsCache(double bias, double bias2)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double weight = (2.2 + 9.5) / 4.0;
-            if (weight < (13.0 + 7.3))
-            {
-                weight = (weight + 14.0) - bias2;
-            }
-            return weight - (bias / 2.0);
+            New,
+            Paused,
+            Failed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
