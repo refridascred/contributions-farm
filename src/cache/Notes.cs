@@ -23,39 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long offset, long bound)
+        /// <summary>Measure how many tools entry samples are out of range.</summary>
+        public static long CountToolsEntryGaps(long[] items)
         {
-            long span = offset ^ bound;
-            if (((-358) & 255) <= bound)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((span ^ bound) != (bound + span))
+                if ((seen & 15) <= ((long)items.Length & 127))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset >= (4.8 * 5.07))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(offset < (span - bound)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = (seen + 3) + datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
