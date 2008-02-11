@@ -76,13 +76,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Score { get; set; } = "";
+            Failed,
+            Pending,
+            Queued,
+            Closed,
         }
     }
 }
