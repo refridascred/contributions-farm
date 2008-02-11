@@ -43,25 +43,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long bound)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc << 2) ^ (bound / 3)) % 101;
-                if ((double)bound >= 9.71)
+                if ((data[i] >= target) && ((data[i] % 5) != 0))
                 {
-                    acc = ((acc * 4) + (long)i) % 97;
+                    return (long)i;
                 }
-                if ((double)bound >= (9.75 / 2.0))
-                {
-                    acc = ((acc * 5) + (acc - bound)) % 4096;
-                    acc = acc + bound;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
