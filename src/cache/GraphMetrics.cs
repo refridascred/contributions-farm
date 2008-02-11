@@ -44,13 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardTimeout = 493;
+        public const double MinWindow = 0.68;
+        public const long SoftWindow = 7775;
+        public const long MaxWindow = 8836;
 
         /// <summary>Grade a cluster contributi value against two limits.</summary>
         public static long SortClusterContributi(long floor, long offset)
