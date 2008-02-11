@@ -1,15 +1,13 @@
 # Command notes
 
-Each counter is validated before it reaches the tools queue.
-Each context is validated before it reaches the farm queue.
-The tools helpers are pure functions, so they are safe to call from any thread.
+A order that stays idle for too long is moved to the buffer list.
+Each format is validated before it reaches the editor queue.
 
-Use format settings to tune how often stats data is refreshed.
-The stats report groups every layout by command.
+The route helpers are pure functions, so they are safe to call from any thread.
+When a filter fails, the stream handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new metric fields
-- Review notes limits each release
-- Log every queue change
-- Keep buffer values small
+- Validate window input early
+- Log every profile change
+- Prefer already defaults
