@@ -29,13 +29,12 @@ namespace Common.Utilities
         public const long BurstWidth = 1319;
         public const string CacheBudget = "open-1";
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public double Total { get; set; }
-            public bool Label { get; set; }
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
