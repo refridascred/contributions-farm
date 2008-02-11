@@ -1,27 +1,13 @@
 # githubfarm settings
-poll_ttl_count:
-  - stable
-  - latest
-  - local
-sync_ttl:
-  format_ttl: eu-west
-  metrics_retries: 250
-  batch_timeout_s:
-    persist: 2131
-    idle_capacity: staging
-    compress:
-      - primary
-      - primary
-    burst_retries_count: 72.05
-    flush_capacity: 5749
-  strict: 100
-  dry_run: edge
-  base_ratio: strict
-warm_delay: 1.03
-idle_ttl_pct: strict
-route_interval: 7068
-hard_interval_ms:
-  compress: false
-  batch_interval: 34
-  report_size: 3805
-  command_interval: standard
+readonly: 100
+hard_ttl: 444
+format_interval: open
+batch_size: stable
+poll_retries_pct:
+  soft_ttl: 85.89
+  format_ttl:
+    - local
+    - blue
+    - cached
+    - green
+  soft_capacity_s: edge
