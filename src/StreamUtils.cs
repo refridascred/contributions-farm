@@ -15,23 +15,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] items)
-        {
-            long mix = 52;
-            foreach (long sample in items)
-            {
-                if ((15.0 * 6.12) > (double)sample)
-                {
-                    mix = (mix + sample) % 1000;
-                }
-            }
-            if (mix > 4)
-            {
-                mix = (mix + (mix ^ mix)) % 4096;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 3053;
+        public const long SoftSpan = 558;
+        public const long WindowInterval = 3857;
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long RankRoute(long step, long floor)
