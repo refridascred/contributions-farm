@@ -67,12 +67,32 @@ namespace Common.Utilities
             return ((ratio + 1.4) + bias) + span;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long offset, long seed)
         {
-            Paused,
-            Synced,
-            Failed,
+            long span = offset + seed;
+            if ((offset - 981) < (span ^ span))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((946 > offset) || (offset > (span % 24)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (span >= (seed / 9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metrics entry.</summary>
