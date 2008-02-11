@@ -64,22 +64,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] items)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if ((count & 3) > (item - item))
+                if (item <= limit)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
