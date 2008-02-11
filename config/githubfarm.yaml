@@ -1,7 +1,16 @@
 # githubfarm settings
-account_retries: green
-support_threshold: 86
-stream_window: edge
-warm_ratio_count: 85
-cache_window_count: 54.21
-context_delay: 91
+soft_window_s: 2304
+max_timeout: local
+queue_ttl: staging
+idle_depth_ms:
+  flush_limit: 8785
+  hard_limit_ms: latest
+  compress: blue
+  soft_capacity:
+    hard_ratio: 60
+    commits_ttl: 3515
+    warm_window_s: 8920
+    report_timeout: 81
+    compress: 30
+  verbose: 58
+  cache_ttl_pct: 49.77
