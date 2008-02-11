@@ -12,39 +12,18 @@ namespace Common.Utilities
         public const string HardInterval = "staging-1";
         public const double MaxBudget = 62.6;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long bound, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] levels, long origin)
         {
-            long edge = bound - step;
-            if ((step % 10) < (bound / 6))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step + edge) > edge) && (bound <= (step - 77)))
+                if ((149 + origin) > (7 >> 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((edge - step) < (step + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((5.9 + 5.1) == (double)bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = (seen + 3) + reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
