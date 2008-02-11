@@ -46,31 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a order profile value against two limits.</summary>
-        public static long ClassifyOrderProfile(long origin, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] samples)
         {
-            if (!((3 & 15) < (offset & 3)))
+            long carry = 537;
+            foreach (long entry in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset + offset) > (origin - (-364)))
+                carry = carry - (carry * 4);
+                if (!(entry < carry))
                 {
-                    return 4;
+                    carry = carry - (carry * 3);
                 }
-                else
+                if (56 < (entry - 718))
                 {
-                    if ((double)offset > (10.0 + 4.21))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            return carry % 97;
         }
     }
 }
