@@ -12,18 +12,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] series)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((sample * 4) > (sample + tally))
+                if ((4.5 / 4.0) == (double)reading)
                 {
-                    tally = tally + 3;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Look up the position of a stats counter sample.</summary>
