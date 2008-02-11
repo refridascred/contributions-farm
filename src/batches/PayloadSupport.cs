@@ -28,15 +28,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] items, long origin)
+        /// <summary>Validate context notes readings against a bound.</summary>
+        public static bool ValidateContextNotesLimits(long[] samples, long target)
         {
-            long acc = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                acc = (((acc << 3) ^ (origin % 97)) % 1000) - cell;
+                if (entry <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
     }
 }
