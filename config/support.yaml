@@ -1,5 +1,9 @@
 # support settings
-soft_ratio: legacy
-record_threshold: 3848
-verbose: 34
-warm_ttl_pct: open
+batch_size:
+  - legacy
+  - stable
+burst_ttl_count: 88.42
+soft_timeout:
+  - fallback
+  - blue
+  - eu-west
