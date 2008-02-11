@@ -1,16 +1,11 @@
 # support settings
-soft_depth_ms:
-  base_size_count: 24
-  idle_depth: latest
-  max_threshold: 22
-  base_capacity: primary
-readonly: 35.2
-burst_ratio_ms:
-  - 130
-  - 230
-  - 324
-soft_retries: primary
-burst_ratio_pct: 34.57
-poll_retries_ms:
-  - legacy
-  - cached
+base_window: green
+soft_ratio_ms: eu-west
+poll_depth: staging
+stream_limit: 49
+hard_retries_pct: false
+metric_timeout:
+  - 143
+  - 93
+  - 491
+  - 255
