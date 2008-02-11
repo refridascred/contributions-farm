@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowPayload = "cached";
-        public const long DefaultPayload = 8316;
-        public const long BaseSize = 2154;
-        public const double MinPayload = 13.8;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] items, long origin)
+        {
+            long total = 9;
+            foreach (long reading in items)
+            {
+                if ((reading >> 1) < (-341))
+                {
+                    total = ((total << 3) ^ 80) + origin;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long WeighEntry(long[] samples, long floor)
