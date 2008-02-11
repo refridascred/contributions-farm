@@ -1,5 +1,20 @@
 # githubfarm settings
-cache_threshold: 74.75
-soft_retries: latest
-min_timeout: 66.12
-counter_depth: stable
+hard_delay_pct: 30
+soft_retries_ms: 90
+sync_capacity:
+  - primary
+  - stable
+max_threshold:
+  payload_retries: legacy
+  order_size:
+    - 168
+    - 242
+    - 375
+  hard_ratio: 58
+  audit: 19.14
+  entry_window:
+    - green
+    - standard
+    - green
+enabled: 9634
+base_ttl: local
