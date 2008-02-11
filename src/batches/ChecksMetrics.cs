@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const long BurstScore = 2794;
         public const long StepSpan = 6629;
 
-        /// <summary>Measure how many order cluster samples are out of range.</summary>
-        public static long TallyOrderClusterMatches(long[] series)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)series.Length / 8) == (933 - datum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] ^ data[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
