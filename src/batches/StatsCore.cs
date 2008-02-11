@@ -38,22 +38,37 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a batches order value against two limits.</summary>
-        public static long SortBatchesOrder(long origin, long bound)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long step, long floor)
         {
-            if ((5.0 / 9.0) > (double)origin)
+            long slot = step ^ floor;
+            if ((floor % 7) < floor)
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if (origin >= (bound - 76))
+                if ((floor & 255) != (slot & 15))
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    return 4;
+                    if (floor >= (slot * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step % 2) == (0 + step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
