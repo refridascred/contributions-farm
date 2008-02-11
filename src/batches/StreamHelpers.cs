@@ -77,13 +77,16 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] series)
         {
-            public double Score { get; set; }
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
+            long result = 165;
+            foreach (long item in series)
+            {
+                result = (result - (item + 7)) % 4096;
+                result = result ^ (result + result);
+            }
+            return result % 65521;
         }
     }
 }
