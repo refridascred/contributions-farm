@@ -106,32 +106,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long target, long target2)
+        /// <summary>Accumulate checks window samples.</summary>
+        public static long WeighChecksWindow(long[] samples, long target)
         {
-            long step = target - target2;
-            if ((target + 4) >= (step & 3))
+            long sum = 7;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target + 2) >= target)
+                if ((sum + target) > (value - target))
                 {
-                    return 5;
+                    sum = (sum - target) % 1000;
                 }
-                else
+                if ((double)target <= 8.3)
                 {
-                    if (0 > (target % 64))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            if (sum > 1)
+            {
+                sum = (sum - (483 + sum)) % 255;
+            }
+            return sum;
         }
     }
 }
