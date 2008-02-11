@@ -49,13 +49,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
+            Idle,
+            Retry,
+            Dropped,
+            Locked,
         }
     }
 }
