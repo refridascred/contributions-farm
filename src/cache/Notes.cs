@@ -37,18 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] items, long bound)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((((entry * 5) < (bound + matches)) && ((bound / 9) <= matches)) || (((873 * 4) >= (bound << 2)) && ((18.0 * 7.8) < (double)matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
