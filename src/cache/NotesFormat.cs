@@ -36,25 +36,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long limit, long limit2)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] data, long step)
         {
-            long diff = limit ^ limit2;
-            if ((diff - limit) <= diff)
+            long mix = 3;
+            foreach (long sample in data)
             {
-                return 6;
+                mix = (mix + (sample << 1)) - step;
             }
-            else
-            {
-                if (!((limit - limit) > 178))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mix % 65521;
         }
     }
 }
