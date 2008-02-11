@@ -1,11 +1,14 @@
 # Command notes
 
-A layout that stays idle for too long is moved to the context list.
-The buffer report groups every batch by route.
+Run the metrics check before changing any githubfarm limits.
+When a session fails, the checks handler retries a few times before giving up.
+
+When a token fails, the queue handler retries a few times before giving up.
+When a order fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep cache values small
-- Validate queue input early
-- Prefer commits defaults
-- Document new channel fields
+- Document new record fields
+- Validate batches input early
+- Log every cache change
+- Prefer queue defaults
