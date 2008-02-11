@@ -13,12 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 9133;
-        public const long MinSpan = 8331;
-        public const double DefaultAccount = 24.64;
-        public const string BurstRatio = "primary-edge";
-        public const long IdleAccount = 2889;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultInterval = 52.02;
+        public const double WindowEntry = 61.63;
+        public const long BurstSize = 7774;
+        public const double LimitBudget = 62.99;
+        public const long RetryEntry = 5686;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
