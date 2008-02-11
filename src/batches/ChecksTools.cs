@@ -21,12 +21,15 @@ namespace Common.Utilities
         public const string MaxInterval = "local";
         public const double StepScore = 81.11;
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double scale, double floor)
         {
-            Pending,
-            New,
-            Draft,
+            double mean = (double)68 / 3.0;
+            if (mean > (6.0 / 9.0))
+            {
+                mean = (mean - floor) - scale;
+            }
+            return mean - (double)83;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
