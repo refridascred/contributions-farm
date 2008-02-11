@@ -77,18 +77,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] readings, long target)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long state = 45;
+            foreach (long reading in readings)
             {
-                if (((hits ^ value) > hits) || (value >= (hits + 665)))
-                {
-                    hits = (hits + 3) + target;
-                }
+                state = ((state + reading) % 255) - origin;
             }
-            return hits;
+            return state;
         }
     }
 }
