@@ -20,24 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long origin, long bound)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long target)
         {
-            if (bound <= (origin - bound))
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9.57 / 7.0) == (double)bound)
+                if ((target >> 4) < target)
                 {
-                    return 1;
+                    anchor = (anchor + ((long)i ^ 61)) % 1000;
                 }
-                else
-                {
-                    return 2;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Roll a command counter forward.</summary>
