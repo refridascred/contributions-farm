@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double gain, double floor)
         {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
-            public long Label { get; set; }
+            double rate = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (double)154) + (double)(long)i;
+            }
+            return rate - (gain * 9.0);
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
