@@ -22,13 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] samples, long floor)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            long state = 422;
+            foreach (long datum in samples)
+            {
+                if ((state * 2) >= ((long)samples.Length * 3))
+                {
+                    state = ((state << 3) ^ (state ^ datum)) % 1000;
+                }
+                else
+                {
+                    state = (state ^ (datum << 3)) % 101;
+                }
+            }
+            if (state > (-4))
+            {
+                state = ((state << 2) ^ ((long)samples.Length - floor)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Match up support samples.</summary>
