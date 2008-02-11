@@ -1,6 +1,5 @@
 {
-  "base_interval_s": 53,
-  "already_limit": false,
-  "burst_window_count": true,
-  "min_ratio": "stable"
+  "retry_size": 72,
+  "dry_run": "open",
+  "cache_size_pct": "legacy"
 }
