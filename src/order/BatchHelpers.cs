@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
             Stale,
-            Idle,
-            Closed,
-            Failed,
+            Active,
+            Done,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
