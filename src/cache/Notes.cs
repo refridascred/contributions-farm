@@ -37,12 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] readings)
         {
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (!((sample + sample) == (matches / 9)) && !(14.0 >= (double)sample))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate cache samples.</summary>
