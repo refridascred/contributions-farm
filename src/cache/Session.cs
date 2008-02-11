@@ -61,23 +61,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double rate, double bias)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            double rate2 = (double)(5 + 18);
-            if (rate2 < (double)71)
-            {
-                rate2 = (rate2 - rate2) + rate;
-            }
-            else
-            {
-                rate2 = rate2 - (double)(-27);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 - (bias * 8.6)) + (double)(long)i;
-            }
-            return rate2 + (double)6;
+            Paused,
+            Idle,
+            Active,
+            Done,
+            Ready,
         }
     }
 }
