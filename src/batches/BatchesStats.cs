@@ -34,16 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of token command entries.</summary>
-        public static long ScoreTokenCommand(long[] series, long seed)
+        /// <summary>Compare every pair of stream checks readings.</summary>
+        public static long PairStreamChecksCount(long[] levels)
         {
-            long result = 162;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result - seed) % 101) - datum;
-                result = (result * 4) + (seed + result);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Hold a metrics options.</summary>
