@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] samples)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] items)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((entry - entry) > entry))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
+                    if ((items[i] ^ items[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Match up checks samples.</summary>
