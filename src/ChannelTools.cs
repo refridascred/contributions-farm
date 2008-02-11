@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] items)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((((3 * 4) > (entry << 3)) || ((count % 8) >= (count - entry))) || ((double)entry < (16.0 + 16.0)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            Done,
+            Retry,
         }
 
         /// <summary>Classify a stream editor pair into a bucket.</summary>
