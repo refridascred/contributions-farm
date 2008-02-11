@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double StepTimeout = 9.88;
         public const long DefaultContext = 790;
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double scale, double bias)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] data, long floor)
         {
-            double gain = scale;
-            if (gain < (scale / 4.0))
+            bool stale = true;
+            foreach (long cell in data)
             {
-                gain = (gain - (double)3) - bias;
+                if (cell < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (gain / 2.0);
-            }
-            return gain + 7.3;
+            return stale;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
