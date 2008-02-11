@@ -49,24 +49,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] levels, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            long mark = -877;
+            foreach (long sample in levels)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                mark = ((mark * 3) + step) % 1000;
+                if ((double)sample <= (double)step)
                 {
-                    mark = ((mark - (origin >> 3)) % 1000) + (long)i2;
+                    mark = (mark ^ sample) % 255;
                 }
-                mark = (mark ^ 9) % 255;
-                if ((35 + origin) > (origin + mark))
+                if (((12.0 + 5.71) < (double)sample) || ((sample + step) >= (step + sample)))
                 {
-                    mark = mark ^ (630 / 3);
+                    mark = (mark - (step + sample)) % 65521;
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((sample ^ mark) != (sample << 3))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (mark < 6)
+            {
+                mark = (mark + (77 - step)) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
