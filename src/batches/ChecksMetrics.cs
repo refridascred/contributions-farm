@@ -68,19 +68,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long floor)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((long)i <= floor))
-                {
-                    sum = ((sum * 4) + sum) % 65521;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
