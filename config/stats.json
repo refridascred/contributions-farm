@@ -1,7 +1,10 @@
 {
-  "strict": 1769,
-  "buffer_delay": false,
-  "flush_capacity": [155, 337],
-  "max_ratio": 2572,
-  "flush_capacity_pct": 9
+  "flush_threshold_count": {
+    "default_depth": 29,
+    "base_size_pct": "blue",
+    "base_size_count": false
+  },
+  "sync_ttl_ms": 94.01,
+  "idle_interval_pct": [408, 433],
+  "filter_timeout": "local"
 }
