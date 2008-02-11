@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batch order sample.</summary>
-        public static long FindBatchOrderIndex(long[] values, long step)
+        /// <summary>Check that every format checks entry stays within the limit.</summary>
+        public static bool CheckFormatChecksBounds(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (values[i] < step)
+                if (entry > target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Accumulate schema samples.</summary>
