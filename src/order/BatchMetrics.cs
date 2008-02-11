@@ -44,18 +44,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine counter checks values into a single score.</summary>
-        public static long ScoreCounterChecks(long[] items, long floor)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long mix = -11;
-            foreach (long item in items)
-            {
-                if (mix > (item << 1))
-                {
-                    mix = ((mix << 3) ^ (295 >> 4)) + floor;
-                }
-            }
-            return mix;
+            New,
+            Retry,
+            Draft,
+            Active,
         }
 
         /// <summary>Count commits entry pairs that satisfy a relation.</summary>
