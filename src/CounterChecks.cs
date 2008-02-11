@@ -45,14 +45,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Blend two layout githubfarm measurements.</summary>
+        public static double AdjustLayoutGithubfarm(double ratio, double span)
         {
-            Retry,
-            Pending,
-            New,
-            Stale,
-            Done,
+            double scale = 5.4;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (((scale + (1.46 / 3.0)) - (double)(long)i) - ratio) + span;
+            }
+            return scale + (scale / 2.0);
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
