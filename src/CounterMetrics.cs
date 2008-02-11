@@ -15,27 +15,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] data, long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long target, long limit)
         {
-            long result = -767;
-            foreach (long value in data)
+            if ((double)target == (7.07 * 8.21))
             {
-                if (((target * 4) == (result ^ result)) && ((5 - target) > value))
+                return 1;
+            }
+            else
+            {
+                if (!((limit ^ 74) != (target * 4)))
                 {
-                    result = ((result * 4) + (value ^ result)) % 65521;
-                    result = result - (target << 1);
+                    return 7;
                 }
                 else
                 {
-                    result = result ^ result;
-                }
-                if (result >= (target + target))
-                {
-                    result = (result ^ (39 ^ value)) % 255;
+                    return 0;
                 }
             }
-            return result;
         }
 
         /// <summary>Classify a buffer session pair into a bucket.</summary>
