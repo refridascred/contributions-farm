@@ -26,19 +26,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] items, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (item < limit)
+                if (value <= step)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
     }
 }
