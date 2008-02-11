@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate order already readings against a bound.</summary>
-        public static bool ValidateOrderAlreadyLimits(long[] samples, long target)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (datum <= target)
+                if ((12.0 * 3.7) >= (double)sample)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) + target;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the metrics state values.</summary>
