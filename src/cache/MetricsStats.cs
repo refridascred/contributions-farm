@@ -35,15 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] data, long seed)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] samples)
         {
-            long acc = 108;
-            foreach (long entry in data)
+            long result = 2;
+            foreach (long value in samples)
             {
-                acc = ((acc ^ (acc + acc)) - entry) - seed;
+                if ((value / 7) > value)
+                {
+                    result = result + (result % 64);
+                }
             }
-            return acc;
+            return result % 65521;
         }
 
         /// <summary>Hold a command summary.</summary>
