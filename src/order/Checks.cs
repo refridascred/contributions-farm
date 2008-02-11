@@ -31,18 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command format readings against a rule.</summary>
-        public static long TallyCommandFormatMatches(long[] values, long limit)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (29 > (hits + entry))
-                {
-                    hits = (hits + 3) + limit;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a stream graph pair into a bucket.</summary>
