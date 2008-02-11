@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            New,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 9390;
+        public const double MinLevel = 47.82;
+        public const long StepChannel = 3828;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long StepCluster(long step)
