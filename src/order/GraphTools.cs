@@ -46,13 +46,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Pending,
-            Locked,
+            Retry,
+            Synced,
             New,
-            Queued,
         }
 
         /// <summary>Locate a notes reading by value.</summary>
