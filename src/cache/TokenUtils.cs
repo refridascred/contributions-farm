@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            Dropped,
-            Queued,
-            Retry,
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the contributi status values.</summary>
