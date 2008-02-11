@@ -12,26 +12,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] samples, long step)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long mark = 742;
-            foreach (long reading in samples)
-            {
-                if ((mark >= (mark ^ 205)) || ((8.75 - 5.0) == (double)step))
-                {
-                    mark = ((mark - (mark + step)) % 255) + reading;
-                }
-                else
-                {
-                    mark = (mark + (step * 4)) % 101;
-                }
-            }
-            if (mark < (-583))
-            {
-                mark = (mark ^ ((-836) + (long)samples.Length)) % 255;
-            }
-            return mark;
+            Closed,
+            Active,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define support limits and defaults.</summary>
