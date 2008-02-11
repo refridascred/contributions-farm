@@ -22,18 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] samples, long offset)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell ^ cell) >= cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 1) + offset;
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Match up counter samples.</summary>
