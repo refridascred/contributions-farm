@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] levels)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Done,
+            Retry,
         }
 
         /// <summary>Describe the buffer status values.</summary>
