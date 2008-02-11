@@ -60,11 +60,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 7187;
-        public const long WindowBudget = 5013;
-        public const long WindowRecord = 8629;
-        public const long LimitLevel = 4291;
+        /// <summary>Compare every pair of command context readings.</summary>
+        public static long MatchCommandContextCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count metric record pairs that satisfy a relation.</summary>
         public static long CompareMetricRecordCount(long[] readings)
