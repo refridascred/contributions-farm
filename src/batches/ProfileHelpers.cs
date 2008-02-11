@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitSize = 54.62;
-        public const long SoftLayout = 5096;
-        public const long StepScore = 7732;
-        public const double BatchLayout = 70.06;
-        public const long StepLayout = 8359;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double bias, double bias2)
+        {
+            double drift = bias2;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = ((drift + (8.43 * 2.04)) + (double)(long)i) + bias;
+            }
+            return drift + (3.6 * 6.9);
+        }
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double BlendBatches(double bias, double span)
