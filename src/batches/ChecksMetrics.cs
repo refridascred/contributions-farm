@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 5217;
-        public const long DefaultBuffer = 6113;
-        public const long BurstScore = 2794;
-        public const long StepSpan = 6629;
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long offset, long offset2)
+        {
+            long edge = offset + offset2;
+            if ((double)offset2 <= 7.85)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((70 / 4) > edge)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadGaps(long[] values, long target)
