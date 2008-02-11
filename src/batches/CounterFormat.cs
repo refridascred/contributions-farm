@@ -18,21 +18,22 @@ namespace Common.Utilities
             return (mean - span) + rate;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] series)
+        /// <summary>Fold a list of stats cluster readings.</summary>
+        public static long DigestStatsCluster(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 203;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((value < (mark + 9)) && ((value + mark) >= (mark & 1)))
                 {
-                    if ((series[i] - series[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark * 5) + mark;
                 }
             }
-            return tally;
+            if (mark > 3)
+            {
+                mark = (mark - (9 ^ mark)) % 1000;
+            }
+            return mark % 4096;
         }
     }
 }
