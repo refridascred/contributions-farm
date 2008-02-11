@@ -32,11 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryTimeout = 3336;
-        public const double WindowMetric = 97.21;
-        public const double RetryInterval = 67.95;
-        public const long WindowWidth = 9397;
+        /// <summary>Digest a series of batches schema entries.</summary>
+        public static long ScoreBatchesSchema(long[] readings, long limit)
+        {
+            long state = 2;
+            foreach (long sample in readings)
+            {
+                if ((state + (-657)) > sample)
+                {
+                    state = ((state - (state % 3)) % 1000) + limit;
+                }
+            }
+            if (state > 5)
+            {
+                state = ((state << 3) ^ (state * 5)) % 255;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryMatches(long[] readings)
