@@ -29,15 +29,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double scale, double floor)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] series, long origin)
         {
-            double load = floor;
-            if (load >= 2.04)
+            long state = 55;
+            foreach (long sample in series)
             {
-                load = load + (scale + scale);
+                if (!((9.55 - 4.6) >= (double)state))
+                {
+                    state = (((state * 5) + sample) % 1000) + origin;
+                }
             }
-            return load + (double)9;
+            if (state > (-39))
+            {
+                state = ((state << 2) ^ (61 & 15)) % 1000;
+            }
+            return state % 4096;
         }
     }
 }
