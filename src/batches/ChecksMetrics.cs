@@ -64,39 +64,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long limit, long offset)
+        /// <summary>Scale a metric payload figure with a bias.</summary>
+        public static double SmoothMetricPayload(double weight, double floor)
         {
-            long prev = limit ^ offset;
-            if (629 <= (offset - prev))
+            double mean = 4.6;
+            if (mean < floor)
             {
-                return 1;
+                mean = mean - mean;
             }
             else
             {
-                if ((prev - limit) < limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((6.1 - 12.0) == (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((17.0 * 2.6) != (double)prev)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                mean = mean + weight;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (7.3 / 9.0);
         }
     }
 }
