@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a support graph counter forward.</summary>
-        public static long SeriesSupportGraph(long bound)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!(acc < (bound + 452)))
-                {
-                    acc = ((acc * 3) + (bound << 3)) % 97;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
