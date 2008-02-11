@@ -1,17 +1,12 @@
 {
-  "max_ratio": "edge",
-  "readonly": {
-    "base_delay": 1024,
-    "cache_ratio": {
-      "audit": 29,
-      "warm_size_count": 500,
-      "stats_retries": 6975,
-      "sync_ratio": "green",
-      "max_limit_pct": 3210,
-      "idle_window": "latest"
-    },
-    "sync_ratio_ms": ["cached", "eu-west"],
-    "session_interval": 16
+  "already_retries": "local",
+  "soft_threshold_ms": 85,
+  "audit": 56,
+  "layout_window": {
+    "max_depth_s": false,
+    "max_limit_pct": "eu-west",
+    "burst_ratio_count": 10.12
   },
-  "graph_timeout": [224, 457, 378]
+  "idle_depth_s": 43.56,
+  "retry_retries": "standard"
 }
