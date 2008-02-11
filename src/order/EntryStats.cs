@@ -60,19 +60,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate editor cache readings against a bound.</summary>
-        public static bool GuardEditorCacheLimits(long[] values, long target)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a order record.</summary>
