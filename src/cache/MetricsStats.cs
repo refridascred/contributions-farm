@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)(695 - 2);
+            if (drift >= (bias * 5.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift + (bias + bias);
             }
-            return hits;
+            else
+            {
+                drift = drift - (drift - offset);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (drift / 4.0)) + (double)(long)i;
+            }
+            return drift - (drift * 14.0);
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
