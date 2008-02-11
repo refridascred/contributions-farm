@@ -19,15 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long bound)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Paused,
+            Closed,
+            Ready,
+            New,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
