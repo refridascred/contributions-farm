@@ -80,12 +80,30 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] items)
         {
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
+            long anchor = 15;
+            foreach (long cell in items)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = (((anchor << 2) ^ (anchor % 8)) % 97) ^ (long)i;
+                }
+                if (cell >= (423 + 61))
+                {
+                    anchor = (anchor - (cell + anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ (cell / 7)) % 97;
+                }
+            }
+            if (anchor < 50)
+            {
+                anchor = (anchor - (anchor % 3)) % 255;
+            }
+            return anchor;
         }
     }
 }
