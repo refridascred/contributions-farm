@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] values, long floor)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long origin, long floor)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            if ((138 * 2) != (origin - floor))
             {
-                if (datum >= floor)
+                return 2;
+            }
+            else
+            {
+                if (origin <= (origin * 4))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((2.06 - 10.0) == (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
