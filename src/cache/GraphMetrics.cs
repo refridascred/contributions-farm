@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double ratio, double offset)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double ratio, double offset)
         {
-            double mean = (ratio * 3.72) + (ratio - offset);
-            if (mean >= (mean * 5.99))
+            double ratio2 = (double)(21 - 9);
+            for (int i = 0; i < 7; i++)
             {
-                mean = mean + (mean - ratio);
+                ratio2 = ((ratio2 + offset) + (double)(long)i) - ratio;
             }
-            return mean + ratio;
+            return ratio2 - (ratio2 / 6.0);
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
