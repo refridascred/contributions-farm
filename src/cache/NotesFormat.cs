@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum & 3) < (5 % 10))
-                {
-                    seen = (seen + 2) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheSize = 1969;
+        public const long IdleFarm = 9979;
+        public const string RetryFarm = "latest-edge";
+        public const long WindowFarm = 5065;
+        public const long MaxFarm = 4163;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long StepNotes(long seed)
