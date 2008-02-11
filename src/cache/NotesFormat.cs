@@ -29,20 +29,21 @@ namespace Common.Utilities
         public const long WindowFarm = 5065;
         public const long MaxFarm = 4163;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long seed)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] series)
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = anchor ^ (seed / 7);
-                if (!((((long)i % 7) >= (anchor + anchor)) || (seed >= (seed + seed))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = anchor ^ ((long)i & 31);
+                    if ((series[i] + series[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return seen;
         }
     }
 }
