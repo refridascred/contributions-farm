@@ -37,21 +37,18 @@ namespace Common.Utilities
             return gain + 7.3;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long seed)
+        /// <summary>Measure how many format githubfarm samples are out of range.</summary>
+        public static long MeasureFormatGithubfarmHits(long[] readings, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                mark = mark + (seed + mark);
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((datum ^ step) <= (seen << 3))
                 {
-                    mark = (((mark * 5) + seed) % 1000) ^ (long)i2;
+                    seen = seen + 3;
                 }
-                mark = (mark << 3) ^ (seed & 127);
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return seen;
         }
     }
 }
