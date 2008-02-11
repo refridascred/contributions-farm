@@ -1,8 +1,5 @@
 {
-  "compress": ["strict", "cached", "legacy", "latest"],
-  "route_depth": 100,
-  "max_capacity_s": true,
-  "report_depth": [52, 398, 452],
-  "cache_capacity_ms": 6454,
-  "base_ttl_pct": 30
+  "retry_threshold_count": "legacy",
+  "soft_ttl": 50.83,
+  "burst_timeout_count": 1839
 }
