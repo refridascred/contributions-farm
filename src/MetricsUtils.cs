@@ -32,19 +32,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] data, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (cell != seed)
+                if ((item + item) > (tally ^ item))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
