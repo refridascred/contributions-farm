@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long floor, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] items, long offset)
         {
-            long gap = floor ^ seed;
-            if (((double)floor == (double)8) && ((floor + seed) >= seed))
+            long seen = 0;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((4.7 - 11.0) > (double)gap)
+                if ((((sample - sample) <= offset) && ((offset << 2) > sample)) || ((offset >> 3) >= seen))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two notes measurements.</summary>
