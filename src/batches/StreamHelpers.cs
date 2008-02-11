@@ -35,21 +35,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long offset, long offset2)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (8 >= (offset - 40))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((offset2 ^ offset2) >= offset2)
                 {
-                    if ((readings[i] + readings[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
