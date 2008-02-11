@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double WindowSpan = 6.8;
-        public const long CacheToken = 2799;
-        public const long BatchToken = 4500;
+        /// <summary>Roll a window filter counter forward.</summary>
+        public static long IterateWindowFilter(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long TallyPayload(long[] values, long seed)
