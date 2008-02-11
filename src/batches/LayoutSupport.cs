@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit batch session readings against a rule.</summary>
-        public static long MeasureBatchSessionHits(long[] samples, long seed)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample + 98) > (seed ^ 4))
+                if (readings[i] > target)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
