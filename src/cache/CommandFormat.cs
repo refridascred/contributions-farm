@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] levels)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (((long)levels.Length + tally) < 82)
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
