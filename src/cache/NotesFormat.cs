@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheSize = 1969;
-        public const long IdleFarm = 9979;
-        public const string RetryFarm = "latest-edge";
-        public const long WindowFarm = 5065;
-        public const long MaxFarm = 4163;
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = (mix ^ (mix ^ mix)) % 4096;
+                mix = mix ^ (mix * 2);
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long PairCounterCount(long[] series)
