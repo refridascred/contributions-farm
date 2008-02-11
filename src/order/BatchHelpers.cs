@@ -46,15 +46,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double gain, double span)
+        /// <summary>Look up the position of a graph contributi sample.</summary>
+        public static long SeekGraphContributiIndex(long[] readings, long seed)
         {
-            double scale = gain;
-            if (scale <= (6.1 * 12.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = (scale + scale) - span;
+                if ((readings[i] > seed) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + gain;
+            return -1;
         }
     }
 }
