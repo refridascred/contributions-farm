@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            New,
+            Synced,
+            Paused,
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
