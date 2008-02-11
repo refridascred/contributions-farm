@@ -22,17 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first account entry entry that matches the target.</summary>
-        public static long FindAccountEntryIndex(long[] samples, long limit)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define cache limits and defaults.</summary>
