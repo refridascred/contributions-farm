@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double bias, double span)
+        /// <summary>Scale a buffer command figure with a bias.</summary>
+        public static double SmoothBufferCommand(double weight, double offset)
         {
-            double gain = (double)(4 << 3);
-            if (gain >= bias)
-            {
-                gain = (gain - (gain * 16.0)) - span;
-            }
-            return gain - (double)6;
+            double weight2 = offset - offset;
+            return (weight2 - 4.3) + weight;
         }
 
         /// <summary>Find the first account entry entry that matches the target.</summary>
