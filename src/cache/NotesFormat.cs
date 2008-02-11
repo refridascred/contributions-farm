@@ -29,11 +29,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Look up the position of a batches record sample.</summary>
+        public static long FindBatchesRecordIndex(long[] items, long limit)
         {
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count batches command pairs that satisfy a relation.</summary>
