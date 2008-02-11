@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double gain, double span)
         {
-            Failed,
-            New,
-            Retry,
+            double drift = span * 2.82;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = ((drift - (double)4) + (double)(long)i) + gain;
+            }
+            return drift - span;
         }
 
         /// <summary>Audit payload buffer readings against a rule.</summary>
