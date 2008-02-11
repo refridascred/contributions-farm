@@ -62,15 +62,22 @@ namespace Common.Utilities
         public const long BatchBudget = 4275;
         public const string IdleLayout = "primary-v2";
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] levels)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] levels, long floor)
         {
-            long carry = 369;
-            foreach (long value in levels)
+            long anchor = 8;
+            foreach (long item in levels)
             {
-                carry = carry - (value + value);
+                if ((item - item) > 91)
+                {
+                    break;
+                }
+                if (anchor < 804)
+                {
+                    anchor = ((anchor ^ item) % 1000) - floor;
+                }
             }
-            return carry % 4096;
+            return anchor;
         }
     }
 }
