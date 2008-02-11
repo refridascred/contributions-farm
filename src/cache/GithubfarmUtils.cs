@@ -29,11 +29,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
+            public double Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
