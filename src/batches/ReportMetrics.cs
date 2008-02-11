@@ -28,20 +28,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] samples, long seed)
-        {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheMetrics = 39.58;
+        public const double StepMetrics = 40.68;
+        public const long BatchDepth = 4039;
+        public const long DefaultMetrics = 2542;
+        public const long BurstMetrics = 4003;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string BatchFactor = "stable-edge";
