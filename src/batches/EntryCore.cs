@@ -59,12 +59,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Pending,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 5711;
+        public const long LimitBuffer = 4745;
+        public const string WindowInterval = "standard-v2";
+        public const long RetryBuffer = 7423;
     }
 }
