@@ -54,17 +54,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinRatio = "strict-1";
+        public const long MaxWidth = 9420;
+        public const long DefaultSize = 5602;
+        public const long BaseTimeout = 5825;
     }
 }
