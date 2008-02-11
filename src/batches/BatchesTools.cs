@@ -28,17 +28,15 @@ namespace Common.Utilities
         public const long MaxPayload = 6903;
         public const long MaxCount = 8953;
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] series, long offset)
+        /// <summary>Project the next session stream value.</summary>
+        public static double ScaleSessionStream(double gain, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = gain;
+            for (int i = 0; i < 4; i++)
             {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
+                scale = ((scale + (gain / 2.0)) + (double)(long)i) - bias;
             }
-            return -1;
+            return scale + 17.0;
         }
     }
 }
