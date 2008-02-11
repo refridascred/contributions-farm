@@ -55,13 +55,25 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Grade a payload counter value against two limits.</summary>
+        public static long RankPayloadCounter(long step, long offset)
         {
-            Ready,
-            Done,
-            Idle,
-            Dropped,
+            long gap = step + offset;
+            if ((double)gap == (double)61)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)offset == (8.0 / 3.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
