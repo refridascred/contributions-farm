@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit notes tools readings against a rule.</summary>
-        public static long TallyNotesToolsGaps(long[] samples)
+        /// <summary>Look up the position of a batches cluster sample.</summary>
+        public static long LookupBatchesClusterIndex(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((854 + 92) <= matches))
+                if (samples[i] > target)
                 {
-                    matches = (matches + 2) ^ value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
