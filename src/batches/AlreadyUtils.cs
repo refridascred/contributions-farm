@@ -45,12 +45,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Stale,
-            Synced,
-            Ready,
+            Locked,
+            Active,
+            Failed,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
