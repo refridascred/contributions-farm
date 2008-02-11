@@ -41,11 +41,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double rate, double bias)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] items)
         {
-            double gain = (double)(9 >> 2);
-            return ((gain + gain) + rate) + bias;
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((cell / 4) > seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the editor kind values.</summary>
