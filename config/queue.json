@@ -1,6 +1,5 @@
 {
-  "burst_ratio_count": 27.05,
-  "idle_ttl_ms": "primary",
-  "hard_retries_count": 49.25,
-  "batch_threshold_count": 18
+  "base_window_ms": false,
+  "max_retries": 1024,
+  "default_interval": 81
 }
