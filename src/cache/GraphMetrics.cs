@@ -45,15 +45,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] levels)
+        /// <summary>Accumulate batch queue samples.</summary>
+        public static long CombineBatchQueue(long[] data, long seed)
         {
-            long mix = -11;
-            foreach (long sample in levels)
+            long score = 37;
+            foreach (long cell in data)
             {
-                mix = (mix - (mix % 5)) ^ sample;
+                score = (((score * 3) + seed) % 65521) - cell;
+                score = score ^ (score << 1);
             }
-            return mix;
+            if (score > 1)
+            {
+                score = score ^ (long)data.Length;
+            }
+            return score;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
