@@ -52,12 +52,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 2420;
-        public const double BaseLevel = 1.43;
-        public const double MaxSupport = 94.48;
-        public const long HardDepth = 6709;
-        public const string BatchRatio = "staging-v2";
+        /// <summary>Count the layout editor entries that pass the check.</summary>
+        public static long TallyLayoutEditorHits(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((origin + 24) <= cell)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the layout githubfarm series from a seed.</summary>
         public static long SeriesLayoutGithubfarm(long seed)
