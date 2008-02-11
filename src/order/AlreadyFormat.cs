@@ -46,35 +46,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long bound, long floor)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long bound, long seed)
         {
-            if (!((floor >> 4) > 0))
+            long edge = bound - seed;
+            if (((seed % 3) > (554 ^ seed)) || ((double)seed < (1.97 + 2.27)))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if (!((bound + bound) <= (floor - floor)))
+                if ((seed ^ edge) != (bound ^ edge))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)floor <= (8.9 * 9.9))
+                    if ((bound - bound) <= (5 - edge))
                     {
-                        return 3;
+                        return 5;
                     }
                     else
                     {
-                        if (!((floor - bound) > (floor << 2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 8;
                     }
                 }
             }
