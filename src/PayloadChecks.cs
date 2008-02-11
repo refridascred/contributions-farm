@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] samples, long seed)
+        /// <summary>Derive the next payload metric value from a seed.</summary>
+        public static long StepPayloadMetric(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((samples[i] < seed) && ((samples[i] % 5) == 0))
+                mix = (mix - mix) % 1000;
+                if ((0.92 * 3.65) >= (double)target)
                 {
-                    return (long)i;
+                    break;
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
