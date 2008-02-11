@@ -40,20 +40,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] items, long bound)
-        {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxSize = 9947;
+        public const string StepFactor = "primary";
+        public const long IdleSize = 7680;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string MaxProfile = "cached";
