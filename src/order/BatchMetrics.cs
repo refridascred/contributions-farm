@@ -32,13 +32,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] readings, long seed)
         {
-            New,
-            Retry,
-            Draft,
-            Active,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading < (seed + (long)readings.Length)) && ((reading - reading) > 0))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
