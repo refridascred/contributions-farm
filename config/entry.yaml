@@ -1,10 +1,18 @@
 # entry settings
-window_retries: false
-idle_timeout: 7.85
-buffer_ttl: 33.37
-command_ratio: latest
-notes_delay:
-  - 50
-  - 455
-  - 231
-  - 449
+poll_size:
+  - 9
+  - 470
+  - 51
+retry_retries_s:
+  persist: legacy
+  idle_ratio_s: standard
+  min_capacity: 500
+  session_threshold:
+    - 220
+    - 431
+    - 425
+    - 134
+  base_size: 60
+  retry_threshold_ms: 4
+dry_run: green
+min_window: 48.09
