@@ -16,15 +16,21 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] data, long floor)
+        /// <summary>Count window route pairs that satisfy a relation.</summary>
+        public static long OverlapWindowRouteCount(long[] data)
         {
-            long anchor = 56;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor + (cell * 3)) % 101) + floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Describe the channel status values.</summary>
