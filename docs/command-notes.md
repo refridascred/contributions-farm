@@ -1,12 +1,15 @@
 # Command notes
 
-The token module keeps queue values in sync with the metrics cache.
-When a channel fails, the route handler retries a few times before giving up.
-The order module keeps order values in sync with the report cache.
+Each payload is validated before it reaches the already queue.
+Use route settings to tune how often command data is refreshed.
+Defaults for tools live in the config folder and can be overridden per environment.
+
+Keep contributi and batches names short and lowercase.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+A metric that stays idle for too long is moved to the metric list.
 
 ## Guidelines
 
-- Keep contributi values small
-- Validate counter input early
-- Log every batches change
-- Prefer schema defaults
+- Prefer stats defaults
+- Log every contributi change
+- Document new counter fields
