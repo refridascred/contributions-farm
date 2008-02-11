@@ -85,15 +85,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double bias, double offset)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            double scale = offset / 7.0;
-            for (int i = 0; i < 8; i++)
-            {
-                scale = ((scale + offset) - (double)(long)i) - bias;
-            }
-            return scale + (double)321;
+            Retry,
+            Idle,
+            Synced,
         }
     }
 }
