@@ -24,12 +24,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public long Limit { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
+            New,
+            Draft,
+            Retry,
+            Active,
         }
 
         /// <summary>Compare every pair of batches notes readings.</summary>
