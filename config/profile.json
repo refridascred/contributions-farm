@@ -1,6 +1,19 @@
 {
-  "cache_interval": false,
-  "max_capacity_s": ["staging", "local", "local"],
-  "min_depth_s": 12.66,
-  "flush_threshold_pct": "staging"
+  "readonly": false,
+  "audit": [460, 472, 200],
+  "retry_ratio_pct": {
+    "contributi_ratio": [267, 108, 211],
+    "compress": 5031,
+    "context_window": {
+      "burst_interval_ms": ["edge", "strict", "primary", "latest"],
+      "strict": ["local", "open"],
+      "compress": 100,
+      "default_window": "cached",
+      "max_interval_pct": ["stable", "staging", "stable"]
+    },
+    "idle_depth": 30,
+    "retry_ratio_ms": "edge",
+    "batch_ttl_ms": 60
+  },
+  "batch_interval_s": 31
 }
