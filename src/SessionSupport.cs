@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepInterval = 925;
-        public const long WindowEntry = 4748;
-        public const string BatchEntry = "cached-edge";
-        public const string LimitRatio = "staging-edge";
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long SeekTokenIndex(long[] items, long limit)
