@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Retry,
-            Ready,
-            Stale,
-            Locked,
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
