@@ -49,10 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseScore = "local-v2";
-        public const double BaseGithubfarm = 94.99;
-        public const long BatchDepth = 6686;
-        public const long RetrySpan = 4272;
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double bias, double bias2)
+        {
+            double gain = (bias2 - 6.0) / 7.0;
+            if (gain >= (bias / 5.0))
+            {
+                gain = gain + (bias - 7.4);
+            }
+            else
+            {
+                gain = gain + (gain - bias2);
+            }
+            return gain + (bias2 + bias);
+        }
     }
 }
