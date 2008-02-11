@@ -35,18 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] levels)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((double)30 >= (double)item)
+                if (seen < (floor & 7))
                 {
-                    count = count + 2;
+                    seen = (seen + 1) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
