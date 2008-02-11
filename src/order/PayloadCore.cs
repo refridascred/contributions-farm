@@ -30,19 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] items, long step)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] items, long bound)
         {
-            bool found = true;
+            long carry = 52;
             foreach (long entry in items)
             {
-                if (entry > step)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (((carry - 1) % 65521) - entry) - bound;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
