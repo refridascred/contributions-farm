@@ -1,7 +1,8 @@
 {
-  "idle_interval_count": "eu-west",
-  "hard_depth_s": ["local", "open", "staging"],
-  "account_delay": [133, 436, 82],
-  "strict": 28.72,
-  "burst_threshold_s": 50
+  "retry_size_s": [122, 28],
+  "audit": 7.72,
+  "compress": 59,
+  "max_ratio": ["strict", "standard"],
+  "idle_timeout": 70.83,
+  "retry_window_count": "cached"
 }
