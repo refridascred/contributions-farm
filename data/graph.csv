@@ -1,6 +1,9 @@
-id,score,count
-1,32.27,580
-2,702,primary
-3,98.3,280
-4,79.73,132
-5,868,0
+id,count,state,weight
+1,83,49.05,612
+2,eu-west,latest,cached
+3,82.13,566,49
+4,green,34.94,staging
+5,936,staging,3.08
+6,74.06,502,staging
+7,83.31,845,strict
+8,staging,282,37.47
