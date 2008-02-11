@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (!((double)matches >= (7.6 - 1.15)))
-                {
-                    matches = ((matches + 3) + value) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 3645;
+        public const double BurstStats = 13.55;
+        public const double WindowStats = 52.86;
+        public const long BurstInterval = 8449;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
