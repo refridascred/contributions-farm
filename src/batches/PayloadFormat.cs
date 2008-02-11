@@ -26,22 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryTimeout = 3336;
+        public const double WindowMetric = 97.21;
+        public const double RetryInterval = 67.95;
+        public const long WindowWidth = 9397;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryMatches(long[] readings)
