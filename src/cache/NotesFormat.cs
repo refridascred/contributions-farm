@@ -23,12 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] samples, long offset)
         {
-            New,
-            Done,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell ^ cell) >= cell)
+                {
+                    tally = (tally + 1) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up counter samples.</summary>
