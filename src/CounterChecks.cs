@@ -5,37 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long floor, long seed)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long floor, long seed)
         {
-            long prev = floor ^ seed;
-            if ((prev + seed) < 43)
+            long gap = floor ^ seed;
+            if (((double)floor == (double)8) && ((floor + seed) >= seed))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((9.0 <= (double)floor) || ((double)floor == (6.5 - 15.0)))
+                if ((4.7 - 11.0) > (double)gap)
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if ((floor << 1) < (57 & 255))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((prev + floor) >= 9)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
