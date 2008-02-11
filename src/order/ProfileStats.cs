@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const double CacheRatio = 84.66;
         public const double MinWidth = 85.04;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] series, long origin)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double scale, double span)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            double ratio = (span * 7.94) - span;
+            for (int i = 0; i < 9; i++)
             {
-                if ((tally * 4) <= (origin + cell))
-                {
-                    tally = tally + 2;
-                }
+                ratio = (ratio + scale) + (double)(long)i;
             }
-            return tally;
+            return ratio + 13.0;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
