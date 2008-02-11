@@ -16,23 +16,13 @@ namespace Common.Utilities
             return drift + (3.6 * 6.9);
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double bias, double span)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            double drift = span + span;
-            if (drift <= 1.2)
-            {
-                drift = drift + 16.0;
-            }
-            else
-            {
-                drift = drift + (double)(-15);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift - bias;
+            Done,
+            Draft,
+            Locked,
+            Closed,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
