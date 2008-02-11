@@ -27,17 +27,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] readings, long bound)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 7;
+            foreach (long item in series)
             {
-                if (readings[i] == bound)
+                if (!((double)total != (6.0 / 7.0)))
                 {
-                    return (long)i;
+                    break;
                 }
+                total = ((total - (item - (long)series.Length)) % 255) - limit;
             }
-            return -1;
+            return total;
         }
     }
 }
