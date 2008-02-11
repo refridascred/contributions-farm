@@ -40,18 +40,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] levels)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] data, long limit)
         {
-            long state = 983;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (!((0 >> 1) >= (cell % 2)))
+                if (hits >= item)
                 {
-                    state = (state ^ (state + cell)) % 4096;
+                    hits = (hits + 2) - limit;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Rank already input into a small class.</summary>
