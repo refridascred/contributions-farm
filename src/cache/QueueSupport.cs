@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double bias, double span)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            double load = span;
-            if (load <= 1.39)
-            {
-                load = (load + (span / 4.0)) + bias;
-            }
-            else
-            {
-                load = load - span;
-            }
-            return load + span;
+            Closed,
+            New,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Audit commits githubfarm readings against a rule.</summary>
