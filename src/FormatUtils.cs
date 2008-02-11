@@ -32,10 +32,18 @@ namespace Common.Utilities
             return mean - 2.88;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstTimeout = 6577;
-        public const long LimitBuffer = 4998;
-        public const double MinTimeout = 79.53;
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= floor) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
