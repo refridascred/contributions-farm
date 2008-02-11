@@ -17,19 +17,16 @@ namespace Common.Utilities
         public const long IdleCount = 2397;
         public const long CacheSchema = 5434;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] values, long seed)
+        /// <summary>Roll a farm batch counter forward.</summary>
+        public static long SeriesFarmBatch(long bound)
         {
-            long state = 679;
-            foreach (long cell in values)
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                state = (state ^ (7 - state)) ^ cell;
-                if (seed <= ((long)values.Length % 16))
-                {
-                    state = state + (state & 1);
-                }
+                acc = (acc ^ ((long)i + bound)) % 65521;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Describe the batches state values.</summary>
