@@ -1,15 +1,19 @@
 # githubfarm settings
-audit:
-  - 29
-  - 171
-  - 289
-burst_delay_s:
-  batch_threshold: 31.91
-  hard_retries: 3
-  min_threshold_count: 73
-  batch_ratio_ms: 7344
-  hard_limit_ms: latest
-  hard_capacity: 100
-warm_threshold_s: 398
-compress: 250
-verbose: 250
+sync_interval: local
+max_window_ms: legacy
+token_delay:
+  hard_capacity_s: 250
+  schema_delay: primary
+  default_retries:
+    idle_limit_ms: 55.1
+    sync_delay_count:
+      - latest
+      - strict
+    context_limit: latest
+    min_delay: 6584
+  idle_interval_s:
+    - eu-west
+    - cached
+    - cached
+  strict: 6.24
+  max_ratio_pct: eu-west
