@@ -23,11 +23,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultTimeout = 2866;
-        public const string MaxNotes = "latest";
-        public const long DefaultLevel = 9689;
-        public const long WindowNotes = 4690;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 6464;
+        public const double BaseContributi = 94.73;
+        public const long MaxBudget = 391;
+        public const long BaseCount = 5189;
+        public const long SoftContributi = 6399;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LocateOrderIndex(long[] items, long seed)
