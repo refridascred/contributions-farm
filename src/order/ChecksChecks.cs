@@ -37,18 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] readings)
+        /// <summary>Measure how many buffer stats samples are out of range.</summary>
+        public static long AuditBufferStatsMatches(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((tally + tally) != (sample - sample))
+                if (!(((cell - cell) < (seen % 64)) || (origin >= (cell >> 4))))
                 {
-                    tally = tally + 2;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
