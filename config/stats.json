@@ -1,5 +1,8 @@
 {
-  "contributi_retries": 4.31,
-  "compress": "eu-west",
-  "enabled": "strict"
+  "queue_size": 60,
+  "cache_size_ms": "open",
+  "base_size": true,
+  "soft_capacity_pct": ["blue", "primary", "stable", "open"],
+  "cache_window_s": 54,
+  "soft_delay_pct": [146, 252, 386, 183]
 }
