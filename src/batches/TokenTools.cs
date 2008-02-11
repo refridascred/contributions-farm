@@ -23,12 +23,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            Retry,
+            Done,
+            Ready,
             Locked,
-            Failed,
         }
     }
 }
