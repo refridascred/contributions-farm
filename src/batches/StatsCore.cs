@@ -13,12 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCount = 3456;
-        public const long MaxCount = 2035;
-        public const long WindowCluster = 3767;
-        public const long MinCluster = 9111;
-        public const string BatchCluster = "alpha";
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long GradeBatch(long seed, long offset)
