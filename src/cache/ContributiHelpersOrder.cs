@@ -16,11 +16,22 @@ namespace Common.Utilities
             return load + ratio;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheFactor = 59.33;
-        public const string IdleInterval = "primary-v2";
-        public const string CacheNotes = "local-edge";
-        public const long DefaultNotes = 5020;
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long MatchChannelCount(long[] series)
