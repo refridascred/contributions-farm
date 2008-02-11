@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] samples)
         {
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (cell < (cell - 947))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
