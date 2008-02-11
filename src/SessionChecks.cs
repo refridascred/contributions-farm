@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Idle,
-            Closed,
-            Pending,
-            Stale,
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a buffer record.</summary>
