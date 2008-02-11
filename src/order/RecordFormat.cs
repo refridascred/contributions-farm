@@ -49,15 +49,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double ratio, double floor)
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
+            double load = (ratio + ratio) + (ratio / 3.0);
+            if (load > (double)8)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                load = load - 5.8;
             }
-            return total;
+            return load - floor;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
