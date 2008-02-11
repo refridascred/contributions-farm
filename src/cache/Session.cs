@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] levels)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long anchor = 188;
-            foreach (long entry in levels)
-            {
-                anchor = ((anchor * 4) + (entry + anchor)) % 4096;
-            }
-            return anchor;
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
