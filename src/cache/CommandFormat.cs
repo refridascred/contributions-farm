@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] levels)
         {
-            Closed,
-            Idle,
-            Failed,
-            Synced,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((long)levels.Length + tally) < 82)
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
