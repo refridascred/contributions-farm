@@ -46,11 +46,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardTimeout = 493;
-        public const double MinWindow = 0.68;
-        public const long SoftWindow = 7775;
-        public const long MaxWindow = 8836;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long offset, long bound)
+        {
+            if (offset >= (offset + offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if (92 >= (bound ^ bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((-607) <= offset) && ((double)bound > (5.2 - 4.41)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long StepLayout(long target)
