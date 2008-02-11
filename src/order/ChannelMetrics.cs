@@ -20,13 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] readings)
         {
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((85 - tally) >= tally)
+                {
+                    tally = (tally + 2) - value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two farm entry measurements.</summary>
