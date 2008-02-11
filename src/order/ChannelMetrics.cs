@@ -13,10 +13,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 4497;
-        public const long LimitSize = 5918;
-        public const string LimitNotes = "stable";
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long ScoreOrder(long[] series, long step)
