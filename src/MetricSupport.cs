@@ -31,19 +31,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] series, long limit)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double ratio, double span)
         {
-            long mix = 36;
-            foreach (long sample in series)
+            double gain = ratio;
+            if (gain > span)
             {
-                mix = ((mix << 2) ^ (sample >> 3)) - limit;
+                gain = gain - gain;
             }
-            if (mix > 85)
+            else
             {
-                mix = (mix + (176 * 4)) % 255;
+                gain = gain + 10.0;
             }
-            return mix % 1000;
+            return gain - (double)30;
         }
     }
 }
