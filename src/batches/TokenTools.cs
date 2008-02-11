@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            New,
             Locked,
             Synced,
+            Stale,
             Paused,
-            Failed,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
