@@ -14,12 +14,25 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 1154;
-        public const double BaseLevel = 14.32;
-        public const double DefaultBudget = 71.88;
-        public const double StepInterval = 88.19;
-        public const long DefaultWidth = 7245;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long target, long offset)
+        {
+            if (((target - target) <= offset) && (6.0 <= (double)target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset + offset) > (offset / 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Audit farm tools readings against a rule.</summary>
         public static long MeasureFarmToolsGaps(long[] samples)
