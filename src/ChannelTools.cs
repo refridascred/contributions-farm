@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine record window values into a single score.</summary>
-        public static long CombineRecordWindow(long[] data, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] items)
         {
-            long anchor = 16;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (((double)offset >= (2.0 - 1.35)) && ((offset >> 1) >= entry))
+                if ((((3 * 4) > (entry << 3)) || ((count % 8) >= (count - entry))) || ((double)entry < (16.0 + 16.0)))
                 {
-                    anchor = (anchor + offset) % 1000;
-                }
-                if (((entry << 3) != (anchor + anchor)) && ((entry - offset) > (offset & 1)))
-                {
-                    break;
+                    count = count + 3;
                 }
             }
-            if (anchor < 67)
-            {
-                anchor = ((anchor * 5) + (anchor % 7)) % 97;
-            }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Classify a stream editor pair into a bucket.</summary>
