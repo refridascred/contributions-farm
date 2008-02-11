@@ -27,12 +27,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public double Total { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseDepth = "fallback-v2";
+        public const long HardWidth = 3431;
+        public const long BaseScore = 1441;
+        public const long LimitRoute = 5036;
+        public const double BaseBudget = 86.65;
 
         /// <summary>Accumulate route samples.</summary>
         public static long TallyRoute(long[] items)
