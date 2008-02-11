@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] series, long offset)
         {
-            Failed,
-            Stale,
-            Closed,
-            Queued,
+            long state = 839;
+            foreach (long reading in series)
+            {
+                state = state ^ reading;
+            }
+            if (state > (-52))
+            {
+                state = (state ^ (offset % 5)) % 65521;
+            }
+            return state % 97;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
