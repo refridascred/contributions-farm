@@ -39,11 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardScore = "alpha-v2";
-        public const long BurstStats = 7734;
-        public const long LimitCount = 4736;
-        public const long MaxDepth = 3399;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultCommits = "staging-edge";
+        public const string RetryCommits = "cached-edge";
+        public const string CacheTimeout = "fallback-1";
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
