@@ -33,12 +33,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long seed)
         {
-            public double Token { get; set; }
-            public long Total { get; set; }
-            public double Weight { get; set; }
+            long state = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                state = (state << 3) ^ (670 - seed);
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
