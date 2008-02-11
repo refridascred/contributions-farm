@@ -32,18 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] readings, long limit)
+        /// <summary>Measure how many profile token samples are out of range.</summary>
+        public static long CountProfileTokenOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((double)limit > (double)729)
+                if ((2.0 * 6.0) < (double)sample)
                 {
-                    tally = (tally + 3) ^ reading;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the filter mode values.</summary>
