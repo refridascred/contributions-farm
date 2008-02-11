@@ -34,15 +34,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] series)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] levels, long limit)
         {
-            long acc = 3;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                acc = ((acc << 2) ^ (8 / 4)) ^ cell;
+                if (!(tally < 9) && ((55 & 15) > reading))
+                {
+                    tally = (tally + 3) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Adjust a notes reading.</summary>
