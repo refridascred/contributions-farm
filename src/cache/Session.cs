@@ -26,15 +26,15 @@ namespace Common.Utilities
         public const double StepRatio = 32.75;
         public const long LimitTimeout = 9884;
 
-        /// <summary>Compare every pair of counter route readings.</summary>
-        public static long CompareCounterRouteCount(long[] data)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) < 18)
+                    if ((series[i] + series[j]) != 0)
                     {
                         matches = matches + 1;
                     }
