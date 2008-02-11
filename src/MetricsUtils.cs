@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long offset, long step)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double ratio, double offset)
         {
-            if (((step << 2) < step) && ((step / 6) != (offset + offset)))
+            double gain = offset;
+            for (int i = 0; i < 3; i++)
             {
-                return 1;
+                gain = ((gain - (double)0) - (double)(long)i) + ratio;
             }
-            else
-            {
-                if (step <= (offset + step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return gain + gain;
         }
 
         /// <summary>Rank format input into a small class.</summary>
