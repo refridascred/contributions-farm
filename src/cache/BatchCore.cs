@@ -45,13 +45,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Active,
+            Pending,
             Paused,
-            Closed,
-            Synced,
+            Retry,
+            Draft,
+            Active,
         }
     }
 }
