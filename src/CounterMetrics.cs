@@ -35,39 +35,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long limit, long bound)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] data, long limit)
         {
-            long diff = limit + bound;
-            if ((diff + 334) > 403)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((19.0 - 15.0) >= (double)limit)
+                if (data[i] >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)diff >= (double)bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((7 % 2) <= (diff + diff))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
