@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] values, long target)
-        {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 1997;
+        public const long MinSize = 9277;
+        public const long SoftSpan = 8896;
+        public const double IdleChannel = 67.75;
+        public const long BatchFactor = 4539;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool ValidatePayloadBounds(long[] values, long offset)
