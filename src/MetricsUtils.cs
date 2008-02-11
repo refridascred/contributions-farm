@@ -16,18 +16,10 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepScore = "cached-edge";
+        public const string DefaultContributi = "staging-v2";
+        public const double StepInterval = 89.36;
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
