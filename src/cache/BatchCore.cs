@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseSpan = 9316;
-        public const string WindowScore = "legacy-edge";
-        public const long LimitOrder = 1201;
-        public const string BaseFactor = "stable-edge";
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double weight, double offset)
+        {
+            double weight2 = weight;
+            if (weight2 >= (weight + 2.22))
+            {
+                weight2 = weight2 - (weight2 / 9.0);
+            }
+            else
+            {
+                weight2 = weight2 - (offset - weight);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 - (double)4) + (double)(long)i;
+            }
+            return weight2 + weight2;
+        }
 
         /// <summary>Validate entry window readings against a bound.</summary>
         public static bool CheckEntryWindowBounds(long[] items, long offset)
