@@ -26,14 +26,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Roll a batches metric counter forward.</summary>
+        public static long StepBatchesMetric(long bound)
         {
-            Draft,
-            Paused,
-            Synced,
-            Idle,
-            Stale,
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = acc ^ (26 - bound);
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
