@@ -40,21 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] samples)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 2;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((8.0 + 5.8) != (double)mix)
                 {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix * 2) + (entry % 60);
                 }
             }
-            return seen;
+            return mix;
         }
     }
 }
