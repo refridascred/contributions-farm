@@ -1,17 +1,9 @@
 # support settings
-retry_timeout_ms:
-  cache_ttl: 11.96
-  default_retries_count: 64
-  retry_retries_pct: false
-  farm_depth: 56.36
-  warm_ttl_count:
-    - latest
-    - standard
-    - open
-entry_delay: 96.84
-base_ttl_count:
-  - open
-  - staging
+checks_limit:
+  - green
+  - primary
   - fallback
   - green
-hard_window_count: true
+persist: standard
+cache_threshold: strict
+audit: 1241
