@@ -72,32 +72,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long bound, long offset)
+        /// <summary>Count command farm pairs that satisfy a relation.</summary>
+        public static long MatchCommandFarmCount(long[] levels)
         {
-            long diff = bound ^ offset;
-            if (((diff - bound) < (bound * 4)) || ((diff + bound) >= (diff - diff)))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((10.0 * 15.0) == (double)offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((diff << 2) != (offset - diff)) || ((double)diff >= 6.5))
+                    if ((levels[i] + levels[j]) != 15)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
