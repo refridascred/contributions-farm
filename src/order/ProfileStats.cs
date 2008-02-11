@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const double CacheRatio = 84.66;
         public const double MinWidth = 85.04;
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double scale, double span)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] series, long origin)
         {
-            double ratio = (span * 7.94) - span;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio + scale) + (double)(long)i;
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + 13.0;
+            return -1;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
