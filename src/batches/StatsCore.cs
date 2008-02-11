@@ -39,18 +39,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit tools cluster readings against a rule.</summary>
-        public static long CountToolsClusterGaps(long[] data, long limit)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally ^ limit) >= tally)
+                if ((series[i] == step) && ((series[i] % 2) != 0))
                 {
-                    tally = (tally + 1) ^ entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
