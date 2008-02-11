@@ -1,10 +1,6 @@
-id,token,owner
-1,58.83,open
-2,864,63.25
-3,cached,79.37
-4,local,80.95
-5,fallback,553
-6,67.19,898
-7,717,334
-8,813,946
-9,blue,45
+id,ratio,count
+1,open,231
+2,eu-west,87.77
+3,cached,41
+4,620,edge
+5,12.49,eu-west
