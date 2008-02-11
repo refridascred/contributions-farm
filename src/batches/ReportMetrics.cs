@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Roll a contributi commits counter forward.</summary>
+        public static long RollContributiCommits(long bound)
         {
-            public bool Size { get; set; }
-            public bool Level { get; set; }
+            long score = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                score = (score - ((long)i * 3)) % 4096;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
