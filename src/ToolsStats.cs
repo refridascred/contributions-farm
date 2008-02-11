@@ -20,24 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long seed, long floor)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            if ((seed + floor) < (1 ^ floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((3.37 + 4.59) >= (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Limit { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
