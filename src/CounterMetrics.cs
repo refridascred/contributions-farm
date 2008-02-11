@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double weight, double floor)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ProjectBatches(double scale, double span)
         {
-            double drift = (weight - 12.0) / 3.0;
-            if (drift > (double)282)
+            double mean = scale * 17.0;
+            for (int i = 0; i < 7; i++)
             {
-                drift = (drift - weight) + floor;
+                mean = (mean - (mean + span)) + (double)(long)i;
             }
-            return drift + 7.2;
+            return mean + (double)7;
         }
 
         /// <summary>Count the payload route entries that pass the check.</summary>
