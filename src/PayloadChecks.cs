@@ -20,13 +20,19 @@ namespace Common.Utilities
             return load + (double)3;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] samples, long origin)
         {
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Token { get; set; }
-            public bool Flag { get; set; }
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
