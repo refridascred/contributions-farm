@@ -19,10 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleFactor = 3276;
-        public const long HardScore = 6071;
-        public const long LimitAccount = 3662;
+        /// <summary>Accumulate githubfarm command samples.</summary>
+        public static long TotalGithubfarmCommand(long[] series, long limit)
+        {
+            long score = 538;
+            foreach (long entry in series)
+            {
+                if ((double)limit > 0.7)
+                {
+                    score = (score ^ (limit + 7)) + entry;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long CombineSchema(long[] values)
