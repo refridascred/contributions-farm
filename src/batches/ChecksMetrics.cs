@@ -36,24 +36,21 @@ namespace Common.Utilities
         public const long MinSize = 2931;
         public const double LimitCommand = 84.78;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] samples)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] series)
         {
-            long carry = 7;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry ^ carry) % 101;
-                carry = carry - entry;
-                if (!((carry * 4) != (59 / 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] - series[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry < 4)
-            {
-                carry = ((carry * 5) + carry) % 97;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the tools mode values.</summary>
