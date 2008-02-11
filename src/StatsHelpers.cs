@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultInterval = 6.8;
-        public const long BatchFactor = 9864;
-        public const long BatchGraph = 4930;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Dropped,
+            Queued,
+            Paused,
+            Locked,
+            Active,
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long GradeEntry(long origin, long target)
