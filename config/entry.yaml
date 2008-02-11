@@ -1,13 +1,9 @@
 # entry settings
-sync_size: latest
-notes_threshold: true
-editor_ttl:
-  - 215
-  - 230
-  - 221
-min_delay_ms:
-  - staging
-  - open
-  - green
+min_capacity: 1510
+max_timeout_ms: legacy
+readonly: 3762
+compress: 70.84
+cluster_timeout:
+  - strict
   - standard
-hard_ratio_ms: 0.23
+default_ttl_s: 8132
