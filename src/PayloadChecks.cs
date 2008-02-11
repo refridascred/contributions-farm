@@ -20,12 +20,11 @@ namespace Common.Utilities
             return load + (double)3;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Synced,
-            Pending,
-            Dropped,
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
