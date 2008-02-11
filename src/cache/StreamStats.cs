@@ -26,14 +26,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] readings)
         {
-            Active,
-            Paused,
-            Pending,
-            Retry,
-            Draft,
+            long score = 0;
+            foreach (long datum in readings)
+            {
+                if (datum >= score)
+                {
+                    score = ((score << 3) ^ datum) % 65521;
+                    break;
+                }
+                else
+                {
+                    score = (score ^ ((long)readings.Length ^ score)) % 1000;
+                }
+                score = score - (datum + datum);
+            }
+            return score;
         }
 
         /// <summary>Describe the context state values.</summary>
