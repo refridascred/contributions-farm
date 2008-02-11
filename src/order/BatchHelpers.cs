@@ -20,15 +20,18 @@ namespace Common.Utilities
         public const double WindowBudget = 74.94;
         public const long SoftSize = 1062;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] data)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] levels)
         {
-            long total = 176;
-            foreach (long reading in data)
+            long acc = -49;
+            foreach (long value in levels)
             {
-                total = ((total - (total ^ (long)data.Length)) % 97) + reading;
+                if ((double)acc >= (2.67 * 5.5))
+                {
+                    acc = ((acc * 4) + (value << 1)) % 255;
+                }
             }
-            return total % 65521;
+            return acc;
         }
     }
 }
