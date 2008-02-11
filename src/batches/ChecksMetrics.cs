@@ -44,16 +44,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next filter counter value from a seed.</summary>
-        public static long StepFilterCounter(long step)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] samples)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc + step) % 101;
-                acc = ((acc * 2) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Adjust a profile reading.</summary>
