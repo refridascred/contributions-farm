@@ -12,24 +12,22 @@ namespace Common.Utilities
             return (weight - ratio) + floor;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long floor, long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] items)
         {
-            if (floor <= (floor * 5))
+            long score = 415;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound != (5.5 + 5.61))
+                if ((score - score) >= (-62))
                 {
-                    return 2;
+                    score = (score - entry) % 255;
                 }
                 else
                 {
-                    return 4;
+                    score = score + (entry % 12);
                 }
             }
+            return score;
         }
 
         /// <summary>Describe the cluster status values.</summary>
