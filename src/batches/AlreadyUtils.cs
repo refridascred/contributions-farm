@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Measure how many counter metric samples are out of range.</summary>
+        public static long AuditCounterMetricOutliers(long[] data)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (!((6 ^ cell) > (cell + cell)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the order status values.</summary>
