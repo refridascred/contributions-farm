@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Queued,
-            Done,
-            Closed,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepDepth = 9879;
+        public const long MaxDepth = 2468;
+        public const long StepCache = 391;
+        public const long MinWidth = 3826;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long WeighCommits(long[] items)
