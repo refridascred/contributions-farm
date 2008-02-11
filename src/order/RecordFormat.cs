@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] levels, long floor)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double scale, double offset)
         {
-            long state = 63;
-            foreach (long reading in levels)
+            double bias = scale;
+            if (bias > (scale + bias))
             {
-                if (((353 - state) >= (floor + 70)) || ((5.96 * 1.44) >= (double)state))
-                {
-                    state = ((state ^ (floor & 127)) % 97) ^ reading;
-                }
+                bias = bias - bias;
             }
-            if (state > 2)
+            else
             {
-                state = (state + floor) % 1000;
+                bias = bias - (double)(-84);
             }
-            return state;
+            return bias + (offset + scale);
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
