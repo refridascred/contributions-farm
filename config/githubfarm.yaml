@@ -1,22 +1,10 @@
 # githubfarm settings
-hard_threshold_ms:
-  flush_ttl_ms: eu-west
-  layout_size:
-    poll_ratio: primary
-    queue_depth: 3637
-    dry_run: 8171
-    retry_threshold: 57
-    batches_ttl: 41
-    cache_size:
-      - 207
-      - 275
-  audit:
-    - 354
-    - 246
-    - 438
-  context_interval: 1024
-  hard_retries_s: 8725
-hard_limit: standard
-burst_threshold_pct: false
-cluster_capacity: 69.75
-flush_limit_count: stable
+readonly: 9867
+buffer_size: green
+enabled:
+  burst_ratio_pct: 30
+  warm_retries_pct: 250
+  retry_retries_pct: 43
+retry_size_s:
+  - 495
+  - 98
