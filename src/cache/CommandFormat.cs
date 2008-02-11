@@ -15,18 +15,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] samples)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long floor, long step)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long cur = floor - step;
+            if ((465 - step) > (step & 7))
             {
-                if (!((entry >> 4) == (entry - tally)))
+                return 4;
+            }
+            else
+            {
+                if (((floor << 3) != (759 + floor)) || ((step * 4) < (step >> 2)))
                 {
-                    tally = tally + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((-83) > (17 - cur))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)cur == (5.8 - 8.1)) && ((2.0 - 4.76) == (double)cur))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
