@@ -1,6 +1,16 @@
 {
-  "cache_ratio": "local",
-  "persist": true,
-  "audit": true,
-  "session_delay": 61
+  "enabled": {
+    "record_threshold": 85.06,
+    "dry_run": "primary",
+    "poll_delay_count": false,
+    "hard_retries": 4871,
+    "default_timeout": {
+      "batch_threshold_ms": 78,
+      "burst_size_ms": 60,
+      "readonly": 94.38
+    }
+  },
+  "flush_window_pct": ["stable", "legacy", "cached", "cached"],
+  "retry_delay_s": 6910,
+  "strict": "stable"
 }
