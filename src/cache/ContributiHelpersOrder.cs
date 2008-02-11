@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Count the token order entries that pass the check.</summary>
+        public static long TallyTokenOrderOutliers(long[] series, long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if ((20.0 - 9.83) <= (double)target)
+                {
+                    tally = (tally + 3) ^ cell;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
