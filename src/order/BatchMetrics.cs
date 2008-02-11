@@ -13,15 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] data)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long state = 6;
-            foreach (long datum in data)
-            {
-                state = state + datum;
-            }
-            return state % 65521;
+            Failed,
+            Stale,
+            Closed,
+            Queued,
         }
 
         /// <summary>Describe the format state values.</summary>
