@@ -12,20 +12,11 @@ namespace Common.Utilities
             return rate - (floor + weight);
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double bias, double span)
-        {
-            double gain = 3.6;
-            if (gain > bias)
-            {
-                gain = (gain - gain) - span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - (double)59;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleSize = 7753;
+        public const long RetryQueue = 3342;
+        public const double HardLevel = 74.12;
+        public const long BatchQueue = 2976;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long MeasureLayoutMatches(long[] data, long bound)
