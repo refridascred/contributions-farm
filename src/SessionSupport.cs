@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinCache = 69.31;
-        public const string BaseCache = "primary-edge";
-        public const long BatchCache = 931;
-        public const long DefaultCache = 2310;
+        /// <summary>Measure how many already batch samples are out of range.</summary>
+        public static long TallyAlreadyBatchOutliers(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((origin & 1) < (sample * 5))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long DigestReport(long[] levels, long offset)
