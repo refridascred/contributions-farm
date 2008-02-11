@@ -20,10 +20,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 2311;
-        public const long DefaultReport = 6935;
-        public const long LimitReport = 2589;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long seed, long step)
+        {
+            if (step < (step << 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed - seed) > (seed % 97))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Validate githubfarm notes readings against a bound.</summary>
         public static bool CheckGithubfarmNotesLimits(long[] series, long floor)
