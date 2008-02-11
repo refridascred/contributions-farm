@@ -101,11 +101,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryAlready = 23.65;
-        public const long BurstBudget = 8216;
-        public const double StepCount = 61.43;
-        public const long BatchAlready = 8755;
-        public const long BurstAlready = 7696;
+        /// <summary>Combine layout cluster values into a single score.</summary>
+        public static long FoldLayoutCluster(long[] levels, long limit)
+        {
+            long acc = 6;
+            foreach (long entry in levels)
+            {
+                if ((limit % 16) >= (acc + limit))
+                {
+                    acc = acc + (3 + acc);
+                }
+                else
+                {
+                    acc = acc - (entry ^ entry);
+                }
+            }
+            return acc % 65521;
+        }
     }
 }
