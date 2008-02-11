@@ -34,21 +34,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of stream checks readings.</summary>
-        public static long PairStreamChecksCount(long[] levels)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 18;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (23 > (total << 1))
                 {
-                    if ((levels[i] ^ levels[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    total = (((total << 2) ^ total) % 255) - reading;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total - 657)) % 65521;
                 }
             }
-            return count;
+            return total % 1000;
         }
 
         /// <summary>Hold a metrics options.</summary>
