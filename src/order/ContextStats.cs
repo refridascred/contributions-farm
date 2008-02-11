@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double scale, double offset)
+        /// <summary>Combine window farm values into a single score.</summary>
+        public static long WeighWindowFarm(long[] levels, long offset)
         {
-            double gain = 5.89 * 4.92;
-            return ((gain + 1.22) + scale) + offset;
+            long anchor = 59;
+            foreach (long sample in levels)
+            {
+                anchor = ((anchor * 2) + sample) % 4096;
+            }
+            if (anchor < 3)
+            {
+                anchor = anchor ^ (93 + offset);
+            }
+            return anchor;
         }
 
         /// <summary>Audit batch context readings against a rule.</summary>
