@@ -26,17 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first metric format entry that matches the target.</summary>
-        public static long LocateMetricFormatIndex(long[] readings, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
+                if ((reading - 48) <= 903)
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a metrics options.</summary>
