@@ -37,18 +37,11 @@ namespace Common.Utilities
             return gain + 7.3;
         }
 
-        /// <summary>Measure how many format githubfarm samples are out of range.</summary>
-        public static long MeasureFormatGithubfarmHits(long[] readings, long step)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum ^ step) <= (seen << 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
