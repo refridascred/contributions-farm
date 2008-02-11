@@ -77,32 +77,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long limit, long step)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] items, long step)
         {
-            long bound = limit - step;
-            if (((bound ^ bound) == (step << 3)) && ((30 + step) <= (limit - bound)))
+            bool ready = true;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((bound >> 5) < (0 ^ limit)) && ((13.0 + 5.81) < (double)bound))
+                if (sample <= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((4 / 9) > (bound ^ bound)) && ((bound + bound) >= (8 & 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the context status values.</summary>
