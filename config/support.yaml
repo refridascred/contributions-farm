@@ -1,19 +1,17 @@
 # support settings
-commits_ratio: open
-editor_limit:
-  strict: 37.28
-  burst_interval_s:
-    persist: false
-    min_capacity_count:
-      - staging
-      - fallback
-    verbose: false
-    cache_ttl_ms: open
-  retry_capacity: 250
-  audit: 65
-  filter_ttl: cached
-  default_depth_ms:
-    - 305
-    - 101
-githubfarm_timeout: 27.52
-metrics_depth: 60
+retry_timeout_ms:
+  cache_ttl: 11.96
+  default_retries_count: 64
+  retry_retries_pct: false
+  farm_depth: 56.36
+  warm_ttl_count:
+    - latest
+    - standard
+    - open
+entry_delay: 96.84
+base_ttl_count:
+  - open
+  - staging
+  - fallback
+  - green
+hard_window_count: true
