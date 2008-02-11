@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] data)
+        /// <summary>Digest a series of metrics batch entries.</summary>
+        public static long TotalMetricsBatch(long[] readings, long bound)
         {
-            long score = 495;
-            foreach (long sample in data)
+            long score = 8;
+            foreach (long entry in readings)
             {
-                if (!((sample - 524) > (758 % 24)))
+                score = ((score + (score / 5)) % 97) - entry;
+                if ((-807) <= ((-645) + score))
                 {
-                    score = score - (sample & 7);
+                    score = (score - (score * 3)) % 255;
                 }
+            }
+            if (score < 7)
+            {
+                score = score - (bound & 3);
             }
             return score;
         }
