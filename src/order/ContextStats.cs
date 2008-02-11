@@ -28,15 +28,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] items)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] series, long seed)
         {
             long matches = 0;
-            foreach (long item in items)
+            foreach (long item in series)
             {
-                if ((2 / 6) >= item)
+                if ((item << 1) == (item >> 2))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 2) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
