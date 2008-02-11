@@ -26,26 +26,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] items)
+        /// <summary>Digest a series of token command entries.</summary>
+        public static long ScoreTokenCommand(long[] series, long seed)
         {
-            long acc = 4;
-            foreach (long value in items)
+            long result = 162;
+            foreach (long datum in series)
             {
-                if (value > 6)
-                {
-                    acc = ((acc * 3) + (8 - value)) % 97;
-                }
-                if (742 > (acc * 4))
-                {
-                    acc = (acc + 671) % 255;
-                }
+                result = ((result - seed) % 101) - datum;
+                result = (result * 4) + (seed + result);
             }
-            if (acc > 2)
-            {
-                acc = ((acc << 2) ^ 48) % 65521;
-            }
-            return acc % 65521;
+            return result % 1000;
         }
 
         /// <summary>Hold a metrics options.</summary>
