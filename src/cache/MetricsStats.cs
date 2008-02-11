@@ -14,19 +14,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] values, long floor)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Pending,
+            Done,
+            Idle,
+            Stale,
         }
 
         /// <summary>Project the next commits value.</summary>
