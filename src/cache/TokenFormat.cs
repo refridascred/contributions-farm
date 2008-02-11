@@ -26,17 +26,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] readings, long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 4;
+            foreach (long item in levels)
             {
-                if (readings[i] < seed)
+                if (855 < carry)
                 {
-                    return (long)i;
+                    carry = (carry ^ item) % 255;
+                }
+                if ((carry << 1) == (9 / 8))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
