@@ -15,25 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long bound, long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] series, long limit)
         {
-            long slot = bound + seed;
-            if ((double)seed == (double)bound)
+            bool stale = true;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)slot <= (6.07 + 8.8))
+                if (value != limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
