@@ -1,11 +1,12 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-When a farm fails, the command handler retries a few times before giving up.
+A cluster that stays idle for too long is moved to the entry list.
+Run the context check before changing any farm limits.
+Run the window check before changing any filter limits.
 
 ## Guidelines
 
-- Validate command input early
-- Prefer queue defaults
-- Log every layout change
-- Review profile limits each release
+- Log every command change
+- Prefer account defaults
+- Review token limits each release
+- Document new schema fields
