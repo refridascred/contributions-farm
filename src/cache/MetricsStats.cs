@@ -19,11 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitDepth = "strict-edge";
-        public const string DefaultSpan = "stable-v2";
-        public const long RetryEntry = 9872;
-        public const long CacheFactor = 7646;
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public long Rank { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
