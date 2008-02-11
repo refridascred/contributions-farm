@@ -55,19 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two window entry measurements.</summary>
-        public static double BlendWindowEntry(double rate, double span)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] levels)
         {
-            double weight = 7.4;
-            if (weight < rate)
+            long state = 983;
+            foreach (long cell in levels)
             {
-                weight = (weight - (rate - 9.5)) + span;
+                if (!((0 >> 1) >= (cell % 2)))
+                {
+                    state = (state ^ (state + cell)) % 4096;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + rate) + (double)(long)i;
-            }
-            return weight - rate;
+            return state;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
