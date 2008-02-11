@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] levels)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            long anchor = 623;
+            foreach (long reading in levels)
+            {
+                if ((25 << 3) <= (anchor >> 2))
+                {
+                    anchor = ((anchor - (anchor + anchor)) % 255) - reading;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
