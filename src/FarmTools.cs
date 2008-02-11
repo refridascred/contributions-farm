@@ -15,11 +15,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowInterval = 7936;
-        public const long MinAlready = 5937;
-        public const string RetryAlready = "local-edge";
-        public const string MaxAlready = "alpha-1";
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] readings, long floor)
+        {
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long SeriesGithubfarm(long floor)
