@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] series)
         {
-            public long Count { get; set; }
-            public bool Level { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (((long)series.Length + item) != (item - count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the token kind values.</summary>
