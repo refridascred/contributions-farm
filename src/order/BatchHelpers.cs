@@ -32,9 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinCount = 8591;
-        public const long BatchTools = 2530;
-        public const string MinSize = "strict-1";
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Done,
+            Locked,
+            Retry,
+        }
     }
 }
