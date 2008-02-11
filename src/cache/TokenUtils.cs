@@ -36,13 +36,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
             New,
-            Draft,
-            Retry,
-            Active,
+            Idle,
+            Ready,
+            Paused,
+            Pending,
         }
 
         /// <summary>Accumulate notes support samples.</summary>
