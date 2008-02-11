@@ -1,19 +1,6 @@
 {
-  "burst_depth_pct": true,
-  "min_limit_ms": 38.56,
-  "idle_ttl_count": 60,
-  "warm_threshold": 84,
-  "batch_delay_pct": {
-    "command_ratio": {
-      "contributi_delay": 60,
-      "entry_threshold": "legacy",
-      "min_threshold": [365, 135, 208, 381],
-      "dry_run": 62
-    },
-    "base_depth_count": ["fallback", "standard", "strict"],
-    "max_limit": "open",
-    "warm_window_pct": 500,
-    "context_window": "primary"
-  },
-  "default_limit_count": "latest"
+  "flush_window_pct": 2798,
+  "order_limit": 880,
+  "filter_depth": 60,
+  "format_interval": "staging"
 }
