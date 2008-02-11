@@ -12,12 +12,38 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long seed, long seed2)
         {
-            public long Mode { get; set; }
-            public bool Total { get; set; }
-            public bool Label { get; set; }
+            if ((seed2 + 49) >= (seed >> 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed2 + seed) >= (seed << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((1 ^ seed2) == (seed & 15)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (seed2 >= (40 + seed2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
