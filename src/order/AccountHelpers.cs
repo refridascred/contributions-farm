@@ -52,23 +52,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two contributi editor measurements.</summary>
-        public static double ScaleContributiEditor(double gain, double offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long floor, long target)
         {
-            double scale = offset;
-            if (scale <= (scale / 4.0))
+            long next = floor + target;
+            if ((double)floor < 7.6)
             {
-                scale = scale - 6.0;
+                return 4;
             }
             else
             {
-                scale = scale + (double)48;
+                if ((double)floor > (8.5 / 3.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((target + floor) >= (floor << 2)) || ((next ^ floor) == (next - floor)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (gain / 6.0)) - (double)(long)i;
-            }
-            return scale + (1.0 + offset);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
