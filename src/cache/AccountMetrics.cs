@@ -90,11 +90,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleStream = 8.09;
-        public const long MaxStream = 168;
-        public const long RetryStream = 6947;
-        public const long BurstStream = 203;
-        public const long DefaultStream = 8013;
+        /// <summary>Audit report entry readings against a rule.</summary>
+        public static long CountReportEntryOutliers(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((entry & 7) >= entry)
+                {
+                    matches = (matches + 1) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
