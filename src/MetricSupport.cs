@@ -10,15 +10,31 @@ namespace Common.Utilities
         public const double StepTimeout = 9.88;
         public const long DefaultContext = 790;
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double scale, double offset)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long offset, long bound)
         {
-            double drift = (2.2 * 5.83) / 9.0;
-            for (int i = 0; i < 6; i++)
+            if ((double)offset <= (1.24 / 3.0))
             {
-                drift = (((drift - (drift * 9.3)) + (double)(long)i) - scale) + offset;
+                return 7;
             }
-            return drift - 6.4;
+            else
+            {
+                if (!((42 - 5) == (bound - 6)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((877 >> 2) == (bound << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
