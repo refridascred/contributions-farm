@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] samples, long offset)
         {
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((0.5 + 7.0) <= (double)tally)
+                {
+                    tally = ((tally + 1) ^ datum) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every editor checks entry stays within the limit.</summary>
