@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a route metric pair into a bucket.</summary>
-        public static long SortRouteMetric(long seed, long offset)
+        /// <summary>Derive the next support contributi value from a seed.</summary>
+        public static long DeriveSupportContributi(long target)
         {
-            if (((seed % 3) < ((-798) - 15)) && (seed <= (seed << 3)))
+            long mix = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset & 7) < (offset << 1))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return 4;
+                    mix = (((mix * 4) + mix) % 4096) ^ (long)i2;
                 }
-                else
-                {
-                    return 3;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Describe the command class values.</summary>
