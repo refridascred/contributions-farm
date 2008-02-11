@@ -20,10 +20,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 8941;
-        public const string BurstContributi = "staging-v2";
-        public const long MaxDepth = 1066;
+        /// <summary>Classify a commits schema pair into a bucket.</summary>
+        public static long ClassifyCommitsSchema(long seed, long limit)
+        {
+            if ((seed + 86) <= limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit < (1.1 * 16.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit >> 5) < (seed % 24))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((seed + seed) <= limit) && ((double)limit != (2.0 * 5.67)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of route command entries.</summary>
         public static long CombineRouteCommand(long[] data)
