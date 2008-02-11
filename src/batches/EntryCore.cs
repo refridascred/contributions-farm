@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit batches channel readings against a rule.</summary>
-        public static long MeasureBatchesChannelGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((tally ^ (-60)) == (9 << 2))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxFactor = 85.6;
+        public const long SoftTimeout = 4923;
+        public const double MaxCount = 95.12;
+        public const long WindowPayload = 8123;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool GuardBatchesLimits(long[] items, long origin)
