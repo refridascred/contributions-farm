@@ -36,12 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheWidth = 8413;
-        public const long BurstWidth = 6838;
-        public const long SoftRatio = 1459;
-        public const string RetryRatio = "standard-v2";
-        public const double LimitToken = 36.61;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] levels, long bound)
+        {
+            long carry = 95;
+            foreach (long sample in levels)
+            {
+                if ((sample - sample) > (bound - sample))
+                {
+                    carry = carry + 30;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long StepReport = 3560;
