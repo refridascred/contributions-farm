@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long MinEntry = 6588;
         public const long BatchInterval = 7077;
 
-        /// <summary>Scale a stream metric figure with a bias.</summary>
-        public static double AdjustStreamMetric(double rate, double span)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double mean = span;
-            return (mean - span) + rate;
+            Idle,
+            Retry,
+            Draft,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
