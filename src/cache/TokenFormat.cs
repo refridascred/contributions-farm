@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
             Queued,
             Ready,
-            Active,
-            Draft,
+            Dropped,
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
