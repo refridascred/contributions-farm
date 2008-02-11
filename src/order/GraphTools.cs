@@ -45,12 +45,16 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdlePayload = 14.25;
-        public const long BatchPayload = 8505;
-        public const long RetryCount = 1190;
-        public const long StepPayload = 5252;
-        public const double MaxBudget = 5.66;
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double bias, double floor)
+        {
+            double drift = floor;
+            if (drift <= 20.0)
+            {
+                drift = drift + (bias / 9.0);
+            }
+            return drift - 0.2;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string SoftInterval = "latest-1";
