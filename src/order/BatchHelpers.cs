@@ -41,23 +41,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double gain, double span)
         {
-            long carry = -906;
-            foreach (long cell in items)
+            double scale = gain;
+            if (scale <= (6.1 * 12.0))
             {
-                carry = carry ^ (cell / 6);
-                if (carry < (cell ^ 462))
-                {
-                    break;
-                }
+                scale = (scale + scale) - span;
             }
-            if (carry < 37)
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry % 97;
+            return scale + gain;
         }
     }
 }
