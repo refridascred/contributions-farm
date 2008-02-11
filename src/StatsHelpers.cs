@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mean + (5.53 * 2.8);
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] samples, long target)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Retry,
+            Queued,
+            Done,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
