@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepRatio = 3761;
+        public const long RetryBuffer = 5444;
+        public const long MinBuffer = 8175;
+        public const long BurstBuffer = 9317;
 
         /// <summary>Roll a account counter forward.</summary>
         public static long IterateAccount(long limit)
