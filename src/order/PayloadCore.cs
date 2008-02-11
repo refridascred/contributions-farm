@@ -29,11 +29,17 @@ namespace Common.Utilities
         public const long DefaultLevel = 9689;
         public const long WindowNotes = 4690;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 3560;
-        public const double StepSize = 46.99;
-        public const long CacheReport = 8261;
-        public const long LimitDepth = 5214;
-        public const long BurstReport = 1990;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
