@@ -69,24 +69,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next already order value from a seed.</summary>
-        public static long DeriveAlreadyOrder(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((limit - carry) == (limit * 3))
-                {
-                    carry = (carry - 2) % 4096;
-                    carry = (carry + 670) % 255;
-                }
-                else
-                {
-                    carry = carry - carry;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleRatio = 4028;
+        public const long HardCount = 8426;
+        public const long WindowCounter = 3022;
+        public const long SoftDepth = 5721;
+        public const long RetryWidth = 6501;
     }
 }
