@@ -6,15 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in staging standard; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
 mode="${1:-eu-west}"
 case "${mode}" in
-    stable)
+    blue)
         log "fast path"
         ;;
     *)
@@ -22,6 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in blue legacy standard; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=414
+log "limit is ${BUFFER_LIMIT}"
