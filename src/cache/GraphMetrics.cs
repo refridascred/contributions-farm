@@ -51,18 +51,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] levels, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long origin)
         {
-            long state = 1;
-            foreach (long item in levels)
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((seed >> 4) > seed))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    state = ((state << 3) ^ (seed + item)) % 4096;
+                    mark = (((mark * 3) + (mark * 4)) % 65521) ^ (long)i2;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return state;
+            return mark;
         }
     }
 }
