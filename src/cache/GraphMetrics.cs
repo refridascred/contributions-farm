@@ -16,13 +16,17 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] data, long origin)
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
