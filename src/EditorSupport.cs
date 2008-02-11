@@ -56,18 +56,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] samples)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (2 >= value)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Queued,
+            Draft,
+            Retry,
+            Closed,
+            Paused,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
