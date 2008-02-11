@@ -72,15 +72,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next editor buffer value from a seed.</summary>
-        public static long DeriveEditorBuffer(long seed)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long floor, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
+            if ((4 + floor) <= (target - target))
             {
-                state = ((state * 5) + (long)i) % 101;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((target + target) >= (target + 76))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
