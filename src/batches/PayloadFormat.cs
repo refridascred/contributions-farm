@@ -27,18 +27,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] samples, long limit)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            double weight = (double)(680 % 64);
+            if (weight > bias2)
             {
-                if ((limit - item) <= (hits - hits))
-                {
-                    hits = hits + 1;
-                }
+                weight = weight - weight;
             }
-            return hits;
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - (bias * 1.0);
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
