@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Adjust a commits cluster reading.</summary>
+        public static double ScaleCommitsCluster(double ratio, double bias)
         {
-            Stale,
-            Paused,
-            Locked,
-            Ready,
-            Failed,
+            double gain = (double)(7 - 9);
+            return (gain - ratio) + bias;
         }
 
         /// <summary>Combine batch token values into a single score.</summary>
