@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCommand = "primary-1";
-        public const double StepScore = 92.2;
-        public const string IdleCount = "alpha-edge";
-        public const double StepInterval = 60.3;
-        public const double BatchRatio = 38.19;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] readings, long step)
+        {
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many layout route samples are out of range.</summary>
         public static long CountLayoutRouteGaps(long[] readings)
