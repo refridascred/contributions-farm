@@ -40,13 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] levels, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] series)
         {
             long count = 0;
-            foreach (long sample in levels)
+            foreach (long entry in series)
             {
-                if ((((double)(long)levels.Length == (2.6 / 8.0)) || ((count + bound) < (sample << 1))) || (((double)count == (7.7 - 5.1)) || ((count + bound) <= sample)))
+                if ((1.7 - 3.4) == (double)entry)
                 {
                     count = count + 3;
                 }
