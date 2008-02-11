@@ -50,10 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowGraph = 49.37;
-        public const long LimitGraph = 3527;
-        public const string HardLevel = "local-edge";
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public double Total { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long TallyRoute(long[] items)
