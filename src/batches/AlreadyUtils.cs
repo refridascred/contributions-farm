@@ -72,22 +72,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] samples)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] items)
         {
-            long anchor = 758;
-            foreach (long item in samples)
+            long carry = 3;
+            foreach (long value in items)
             {
-                if (((6.0 - 7.7) != (double)anchor) && ((item % 7) < item))
+                carry = (carry - value) % 65521;
+                if ((long)items.Length <= carry)
                 {
-                    anchor = ((anchor << 2) ^ (item * 4)) % 4096;
+                    carry = carry + (value * 3);
                 }
                 else
                 {
-                    anchor = (anchor + (anchor >> 1)) % 4096;
+                    carry = (carry * 5) + (carry << 1);
                 }
             }
-            return anchor;
+            if (carry > 8)
+            {
+                carry = ((carry * 5) + (246 & 15)) % 101;
+            }
+            return carry;
         }
     }
 }
