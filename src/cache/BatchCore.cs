@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result << 2) ^ (floor ^ result)) % 255;
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseSpan = 9316;
+        public const string WindowScore = "legacy-edge";
+        public const long LimitOrder = 1201;
+        public const string BaseFactor = "stable-edge";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BurstCommand = 8180;
