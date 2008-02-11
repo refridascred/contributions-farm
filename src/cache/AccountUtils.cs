@@ -34,19 +34,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate commits record readings against a bound.</summary>
-        public static bool VerifyCommitsRecordBounds(long[] readings, long step)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryReport = "open-edge";
+        public const string BaseBudget = "latest-edge";
+        public const string LimitReport = "standard-edge";
     }
 }
