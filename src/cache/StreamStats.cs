@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 9390;
-        public const double MinLevel = 47.82;
-        public const long StepChannel = 3828;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] data, long origin)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (((count % 16) == (datum % 16)) || ((double)count > (4.52 - 6.57)))
+                {
+                    count = (count + 2) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportGaps(long[] data, long floor)
