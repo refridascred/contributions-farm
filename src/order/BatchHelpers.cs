@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] series)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] values, long target)
         {
-            long sum = 116;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (((datum / 2) <= (4 / 8)) && (datum >= ((long)series.Length - sum)))
+                if (entry <= target)
                 {
-                    sum = (sum << 3) ^ (0 / 8);
-                }
-                if ((sum - 758) > datum)
-                {
-                    sum = ((sum * 3) + datum) % 1000;
-                }
-                else
-                {
-                    sum = sum ^ sum;
+                    flag = false;
+                    break;
                 }
             }
-            if (sum < 450)
-            {
-                sum = sum ^ 33;
-            }
-            return sum % 97;
+            return flag;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
