@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double bias, double bias2)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            double drift = bias2;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = ((drift + (8.43 * 2.04)) + (double)(long)i) + bias;
-            }
-            return drift + (3.6 * 6.9);
+            Retry,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the account class values.</summary>
