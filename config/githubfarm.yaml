@@ -1,6 +1,11 @@
 # githubfarm settings
-persist:
-  - fallback
-  - stable
-base_capacity_count: 68.3
-audit: 79
+warm_ttl_s: 45.54
+editor_ttl: true
+report_delay: true
+max_delay_count: 91
+warm_interval_s:
+  - 182
+  - 29
+  - 107
+  - 141
+queue_interval: 100
