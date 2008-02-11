@@ -49,21 +49,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of metrics counter readings.</summary>
-        public static long OverlapMetricsCounterCount(long[] levels)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 94;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                acc = (acc - origin) ^ datum;
+                if (!((acc ^ 32) >= (origin - 634)))
                 {
-                    if ((levels[i] - levels[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = acc - (origin ^ origin);
+                }
+                if (((-74) <= (long)readings.Length) && ((acc >> 3) >= 8))
+                {
+                    acc = acc - acc;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (origin << 2)) % 101;
                 }
             }
-            return hits;
+            return acc;
         }
     }
 }
