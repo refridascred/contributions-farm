@@ -19,21 +19,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] items)
+        /// <summary>Count the checks editor entries that pass the check.</summary>
+        public static long TallyChecksEditorGaps(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((tally >> 2) < tally)
                 {
-                    if ((items[i] + items[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 3) ^ reading) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
