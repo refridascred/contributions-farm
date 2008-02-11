@@ -13,19 +13,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate entry window readings against a bound.</summary>
-        public static bool CheckEntryWindowBounds(long[] items, long offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample != offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] - items[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
