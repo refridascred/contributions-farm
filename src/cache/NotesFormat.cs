@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of stream cluster entries.</summary>
-        public static long FoldStreamCluster(long[] samples)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long acc = -452;
-            foreach (long cell in samples)
-            {
-                acc = ((acc << 2) ^ (acc >> 5)) % 101;
-                acc = (acc * 3) + cell;
-                if (((-17) + cell) <= (acc << 2))
-                {
-                    acc = (acc ^ (cell - cell)) % 65521;
-                }
-                if (acc > (319 + acc))
-                {
-                    break;
-                }
-            }
-            if (acc < 64)
-            {
-                acc = (acc << 3) ^ (acc % 2);
-            }
-            return acc % 4096;
+            Pending,
+            Failed,
+            Synced,
         }
 
         /// <summary>Audit payload order readings against a rule.</summary>
