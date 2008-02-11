@@ -33,12 +33,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            New,
-            Idle,
-            Draft,
+            Retry,
+            Locked,
+            Failed,
         }
     }
 }
