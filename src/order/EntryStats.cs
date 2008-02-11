@@ -56,12 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseTimeout = 18.54;
-        public const long BurstCount = 2604;
-        public const string MaxAccount = "open-v2";
-        public const long BaseCount = 9152;
-        public const string MinAccount = "primary";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleInterval = 2978;
+        public const double HardCache = 88.54;
+        public const long CacheCount = 2323;
+        public const double LimitSpan = 65.43;
+        public const double WindowCache = 4.09;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long StepChecks(long offset)
