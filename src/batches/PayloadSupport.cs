@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a window filter counter forward.</summary>
-        public static long IterateWindowFilter(long offset)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] samples, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((samples[i] > target) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count farm profile pairs that satisfy a relation.</summary>
