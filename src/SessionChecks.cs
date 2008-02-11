@@ -39,12 +39,11 @@ namespace Common.Utilities
         public const long WindowGraph = 8598;
         public const long IdleCount = 6424;
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Closed,
-            Active,
-            Stale,
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
