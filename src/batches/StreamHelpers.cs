@@ -58,12 +58,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long limit, long seed)
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public string Weight { get; set; } = "";
+            if ((seed % 97) > (seed ^ 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (2.55 < (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the support level values.</summary>
