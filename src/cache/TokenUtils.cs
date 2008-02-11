@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] values)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 108;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)item == (19.0 + 2.51)) && (11.0 < (double)state))
                 {
-                    if ((values[i] - values[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state << 2) ^ (floor >> 4);
+                }
+                if ((floor * 3) < (item + 92))
+                {
+                    state = ((state * 2) + (floor << 2)) % 101;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Rank checks command input into a small class.</summary>
