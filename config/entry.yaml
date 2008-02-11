@@ -1,6 +1,33 @@
 # entry settings
-max_capacity:
-  - 417
-  - 287
-audit: 31
-verbose: stable
+idle_depth:
+  - 310
+  - 230
+  - 354
+default_threshold_count:
+  retry_window_s: 63.5
+  profile_limit: staging
+  cache_delay_count: false
+  max_depth_count: false
+  audit:
+    - strict
+    - legacy
+    - cached
+max_interval_s:
+  - 177
+  - 350
+audit:
+  batch_limit_s:
+    - strict
+    - green
+    - cached
+    - stable
+  warm_interval_pct: latest
+  cache_interval:
+    - 123
+    - 38
+    - 188
+    - 211
+strict:
+  - 17
+  - 314
+  - 178
