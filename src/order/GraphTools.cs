@@ -36,11 +36,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double gain, double offset)
+        /// <summary>Count cluster command pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCommandCount(long[] series)
         {
-            double mean = offset - (double)0;
-            return mean + gain;
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
