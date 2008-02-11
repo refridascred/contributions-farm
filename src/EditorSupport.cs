@@ -33,19 +33,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] levels, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] items)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (value >= step)
+                if ((double)seen != (4.0 - 0.2))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
