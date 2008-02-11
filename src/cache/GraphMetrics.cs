@@ -60,19 +60,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long origin)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] items, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (items[i] == seed)
                 {
-                    mark = (((mark * 3) + (mark * 4)) % 65521) ^ (long)i2;
+                    return (long)i;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
     }
 }
