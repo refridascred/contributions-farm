@@ -12,23 +12,12 @@ namespace Common.Utilities
             return (weight - ratio) + floor;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] items)
-        {
-            long score = 415;
-            foreach (long entry in items)
-            {
-                if ((score - score) >= (-62))
-                {
-                    score = (score - entry) % 255;
-                }
-                else
-                {
-                    score = score + (entry % 12);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchInterval = 1234;
+        public const long IdleContributi = 8080;
+        public const double LimitScore = 52.97;
+        public const double WindowBudget = 74.94;
+        public const long SoftSize = 1062;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
