@@ -11,14 +11,13 @@ namespace Common.Utilities
         public const string CacheSpan = "legacy-1";
         public const long LimitFactor = 6792;
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Draft,
-            Done,
-            Retry,
-            Idle,
-            Failed,
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a channel filter sample.</summary>
