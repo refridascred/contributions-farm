@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxSchema = "strict-v2";
-        public const long SoftScore = 2533;
-        public const long WindowSchema = 4896;
+        /// <summary>Measure how many stream account samples are out of range.</summary>
+        public static long MeasureStreamAccountHits(long[] values, long floor)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((count * 5) == (value * 3))
+                {
+                    count = (count + 2) - floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a channel editor reading.</summary>
         public static double ScaleChannelEditor(double rate, double floor)
