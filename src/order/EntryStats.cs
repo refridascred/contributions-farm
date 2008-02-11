@@ -43,12 +43,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a payload order reading by value.</summary>
-        public static long SeekPayloadOrderIndex(long[] levels, long limit)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] levels, long step)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
+                if (levels[i] >= step)
                 {
                     return (long)i;
                 }
