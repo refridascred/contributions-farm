@@ -27,25 +27,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long floor, long step)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long floor)
         {
-            long span = floor ^ step;
-            if ((double)step != (5.88 + 2.41))
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
             {
-                return 4;
+                acc = ((acc << 2) ^ acc) % 65521;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((floor ^ span) <= (floor * 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return acc;
         }
     }
 }
