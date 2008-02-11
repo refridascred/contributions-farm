@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] readings)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a context record.</summary>
