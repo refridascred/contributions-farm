@@ -13,13 +13,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Compare every pair of format githubfarm readings.</summary>
+        public static long MatchFormatGithubfarmCount(long[] values)
         {
-            Failed,
-            Queued,
-            Pending,
-            Closed,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
