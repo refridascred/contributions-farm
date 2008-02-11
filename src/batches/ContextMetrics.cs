@@ -23,19 +23,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] series)
+        /// <summary>Classify a account farm pair into a bucket.</summary>
+        public static long BucketAccountFarm(long step, long target)
         {
-            long sum = 7;
-            foreach (long value in series)
+            if ((step + target) == (step - step))
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    sum = sum ^ (long)i;
-                }
-                sum = ((sum * 3) + (value ^ 224)) % 65521;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (((7 + step) < 488) || ((step >> 2) <= (step + step)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step >= (13.0 * 6.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((target / 4) < (70 & 15)) || ((target + target) < target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the entry mode values.</summary>
