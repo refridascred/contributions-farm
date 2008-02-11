@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstToken = "standard";
-        public const long LimitSpan = 1092;
-        public const double HardTimeout = 67.99;
-        public const long RetryWidth = 1372;
-        public const long StepToken = 6774;
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double rate, double floor)
+        {
+            double drift = floor;
+            if (drift <= floor)
+            {
+                drift = drift + (rate + drift);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (rate + 2.4)) + (double)(long)i;
+            }
+            return drift - (floor - drift);
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
