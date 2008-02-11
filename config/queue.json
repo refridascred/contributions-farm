@@ -1,17 +1,8 @@
 {
-  "soft_ratio_s": 98.15,
-  "order_ttl": {
-    "batch_window": 73.43,
-    "strict": "cached",
-    "format_window": [214, 219, 243],
-    "base_size_pct": 7901
-  },
-  "sync_limit_s": "strict",
-  "audit": {
-    "persist": 860,
-    "stats_size": false,
-    "profile_interval": 53.4,
-    "buffer_limit": "local"
-  },
-  "flush_threshold_s": 80.53
+  "default_size": 95.38,
+  "account_delay": [276, 89, 393, 146],
+  "hard_retries_s": 18,
+  "default_retries_count": ["cached", "standard", "standard", "strict"],
+  "poll_ratio": "open",
+  "readonly": [465, 454, 358, 152]
 }
