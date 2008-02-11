@@ -18,13 +18,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double ratio, double offset)
         {
-            public double Level { get; set; }
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
+            double weight = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = ((weight + 8.79) + (double)(long)i) - ratio;
+            }
+            return weight + weight;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
