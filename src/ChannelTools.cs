@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] levels)
+        /// <summary>Combine record window values into a single score.</summary>
+        public static long CombineRecordWindow(long[] data, long offset)
         {
-            long anchor = 0;
-            foreach (long datum in levels)
+            long anchor = 16;
+            foreach (long entry in data)
             {
-                anchor = (anchor + (datum + datum)) % 255;
+                if (((double)offset >= (2.0 - 1.35)) && ((offset >> 1) >= entry))
+                {
+                    anchor = (anchor + offset) % 1000;
+                }
+                if (((entry << 3) != (anchor + anchor)) && ((entry - offset) > (offset & 1)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (anchor < 67)
+            {
+                anchor = ((anchor * 5) + (anchor % 7)) % 97;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
