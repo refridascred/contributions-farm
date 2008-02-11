@@ -31,19 +31,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double ratio, double span)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long seed)
         {
-            double gain = ratio;
-            if (gain > span)
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                gain = gain - gain;
+                mark = mark + (seed + mark);
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mark = (((mark * 5) + seed) % 1000) ^ (long)i2;
+                }
+                mark = (mark << 3) ^ (seed & 127);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            else
-            {
-                gain = gain + 10.0;
-            }
-            return gain - (double)30;
+            return mark;
         }
     }
 }
