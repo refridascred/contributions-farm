@@ -18,11 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double bias, double floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long step, long step2)
         {
-            double scale = (double)((-88) % 5);
-            return (scale - (floor * 5.06)) + bias;
+            long slot = step + step2;
+            if (((step / 6) <= step) && ((step << 2) == (step & 15)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (step < (slot ^ step2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
