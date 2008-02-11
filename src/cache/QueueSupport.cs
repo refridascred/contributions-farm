@@ -28,11 +28,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 9086;
-        public const long RetryLevel = 2273;
-        public const double BasePayload = 23.96;
-        public const long IdlePayload = 784;
-        public const long BurstPayload = 2430;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultScore = "open-v2";
+        public const double SoftStats = 38.1;
+        public const long MaxStats = 8269;
     }
 }
