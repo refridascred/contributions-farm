@@ -55,13 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] values, long step)
         {
-            Idle,
-            Dropped,
-            Locked,
-            Synced,
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
