@@ -61,12 +61,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Iterate the layout githubfarm series from a seed.</summary>
+        public static long SeriesLayoutGithubfarm(long seed)
         {
-            Retry,
-            Idle,
-            Synced,
+            long score = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score << 3) ^ seed) % 97;
+                if ((double)score != (9.0 - 6.53))
+                {
+                    score = (score ^ (seed >> 5)) % 255;
+                }
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
