@@ -1,5 +1,11 @@
 # githubfarm settings
-base_window_s: staging
-sync_threshold_ms: 57.11
-readonly: open
-base_window_pct: false
+sync_size:
+  base_depth_ms: 59.19
+  stats_limit: 66.42
+  idle_threshold: true
+  soft_limit_s: true
+  poll_limit_s: 4717
+  idle_retries_count: latest
+idle_limit: 50.16
+githubfarm_ttl: false
+enabled: standard
