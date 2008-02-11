@@ -14,13 +14,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] series)
         {
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((tally ^ item) >= (tally & 255))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
