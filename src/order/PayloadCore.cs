@@ -23,13 +23,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
+            Locked,
+            Failed,
+            Synced,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define report limits and defaults.</summary>
