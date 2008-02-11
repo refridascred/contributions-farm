@@ -43,26 +43,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] readings)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] data)
         {
-            long carry = 30;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((carry ^ 15) < (reading + carry))
+                if (reading >= (matches * 5))
                 {
-                    carry = (carry ^ (carry << 2)) % 65521;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    carry = (carry << 2) ^ reading;
+                    matches = matches - 1;
                 }
             }
-            if (carry > 8)
-            {
-                carry = ((carry * 3) + carry) % 255;
-            }
-            return carry % 65521;
+            return matches;
         }
     }
 }
