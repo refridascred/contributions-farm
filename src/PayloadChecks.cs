@@ -39,18 +39,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] readings)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] readings)
         {
-            long count = 0;
+            long anchor = 721;
             foreach (long sample in readings)
             {
-                if ((double)count == (5.86 * 2.1))
+                if ((12.0 * 9.0) >= (double)sample)
                 {
-                    count = (count + 3) ^ sample;
+                    anchor = (anchor - (anchor - 2)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + 4;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
