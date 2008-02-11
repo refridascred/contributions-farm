@@ -15,11 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleBudget = 708;
-        public const double BurstOrder = 24.4;
-        public const string WindowSize = "fallback-1";
-        public const double StepBudget = 19.86;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (!((entry >> 4) == (entry - tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long DeriveFilter(long seed)
