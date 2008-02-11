@@ -34,18 +34,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] values)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] levels)
         {
-            long mark = 2;
-            foreach (long entry in values)
+            long score = 946;
+            foreach (long datum in levels)
             {
-                if (((double)mark != (8.48 * 5.0)) && (0.9 <= (double)mark))
-                {
-                    mark = ((mark - (49 >> 4)) % 1000) + entry;
-                }
+                score = (((score * 4) + score) % 4096) - datum;
             }
-            return mark;
+            return score % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
