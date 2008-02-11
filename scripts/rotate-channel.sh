@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary fallback local; do
+CHANNEL_LIMIT=412
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in open local stable; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
