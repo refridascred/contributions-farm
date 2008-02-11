@@ -40,20 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two payload githubfarm measurements.</summary>
-        public static double BlendPayloadGithubfarm(double gain, double floor)
-        {
-            double rate = gain;
-            if (rate <= (double)747)
-            {
-                rate = rate - (floor / 8.0);
-            }
-            else
-            {
-                rate = rate + 9.43;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardScore = 7530;
+        public const long BaseQueue = 2971;
+        public const double IdleRatio = 84.62;
+        public const long BatchLevel = 9574;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long CountOrderHits(long[] levels, long seed)
