@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token filter entry stays within the limit.</summary>
-        public static bool CheckTokenFilterLimits(long[] levels, long offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (reading <= offset)
+                if (sample >= floor)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
