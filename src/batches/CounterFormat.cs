@@ -14,13 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Draft,
-            Closed,
             Synced,
-            Queued,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a stats record.</summary>
