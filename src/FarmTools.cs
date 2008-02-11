@@ -43,18 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm tools readings against a rule.</summary>
-        public static long MeasureFarmToolsGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (!((count & 127) <= 648))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardRatio = "stable-v2";
+        public const long CacheFactor = 954;
+        public const long StepRatio = 9733;
+        public const string IdleCache = "staging-edge";
+        public const double BatchCache = 32.15;
     }
 }
