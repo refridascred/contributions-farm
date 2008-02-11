@@ -53,12 +53,33 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultWidth = "primary";
-        public const long BaseCount = 6040;
-        public const long WindowAccount = 3457;
-        public const long MaxAccount = 4552;
-        public const double RetrySize = 50.68;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long limit, long step)
+        {
+            long bound = limit - step;
+            if (((bound ^ bound) == (step << 3)) && ((30 + step) <= (limit - bound)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((bound >> 5) < (0 ^ limit)) && ((13.0 + 5.81) < (double)bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((4 / 9) > (bound ^ bound)) && ((bound + bound) >= (8 & 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the stream support entries that pass the check.</summary>
         public static long MeasureStreamSupportGaps(long[] levels)
