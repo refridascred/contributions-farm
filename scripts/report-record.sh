@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=11
+log "limit is ${RECORD_LIMIT}"
 
 count=0
 while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in green eu-west local stable; do
-    log "checking ${item}"
-done
