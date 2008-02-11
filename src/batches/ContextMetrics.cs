@@ -76,30 +76,9 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] items)
-        {
-            long anchor = 15;
-            foreach (long cell in items)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = (((anchor << 2) ^ (anchor % 8)) % 97) ^ (long)i;
-                }
-                if (cell >= (423 + 61))
-                {
-                    anchor = (anchor - (cell + anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ (cell / 7)) % 97;
-                }
-            }
-            if (anchor < 50)
-            {
-                anchor = (anchor - (anchor % 3)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardRatio = 83.27;
+        public const long HardEntry = 3880;
+        public const long StepEntry = 4543;
     }
 }
