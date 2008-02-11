@@ -25,23 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double scale, double floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] series, long target)
         {
-            double rate = (double)566 - (scale * 12.0);
-            if (rate >= (scale - floor))
+            bool flag = true;
+            foreach (long cell in series)
             {
-                rate = rate - (rate / 8.0);
+                if (cell >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (double)2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - floor) + (double)(long)i;
-            }
-            return rate - rate;
+            return flag;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
