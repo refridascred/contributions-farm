@@ -1,13 +1,7 @@
 {
-  "soft_threshold_s": "stable",
-  "schema_threshold": {
-    "retry_interval_pct": [178, 305, 483, 104],
-    "support_capacity": true,
-    "persist": 7042,
-    "readonly": 1431,
-    "sync_capacity_s": false
-  },
-  "batch_timeout_pct": false,
-  "warm_window_count": 1024,
-  "dry_run": "fallback"
+  "poll_delay_ms": ["legacy", "local", "latest", "strict"],
+  "strict": false,
+  "sync_ratio_s": "strict",
+  "min_window_s": "fallback",
+  "base_interval_pct": "stable"
 }
