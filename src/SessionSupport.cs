@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many already batch samples are out of range.</summary>
-        public static long TallyAlreadyBatchOutliers(long[] items, long origin)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((origin & 1) < (sample * 5))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepInterval = 925;
+        public const long WindowEntry = 4748;
+        public const string BatchEntry = "cached-edge";
+        public const string LimitRatio = "staging-edge";
 
         /// <summary>Blend two cache measurements.</summary>
         public static double SmoothCache(double rate, double span)
