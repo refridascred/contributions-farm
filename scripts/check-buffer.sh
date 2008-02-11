@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=89
+log "limit is ${BUFFER_LIMIT}"
+
 total=0
 for i in $(seq 1 12); do
-    total=$((total + i * 5))
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=338
-log "limit is ${BUFFER_LIMIT}"
-
-for item in edge cached; do
-    log "checking ${item}"
-done
+mode="${1:-latest}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
