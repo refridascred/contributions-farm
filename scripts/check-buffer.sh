@@ -6,13 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-blue}"
+mode="${1:-eu-west}"
 case "${mode}" in
     eu-west)
         log "fast path"
@@ -22,6 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-for item in stable strict legacy fallback; do
-    log "checking ${item}"
+BUFFER_LIMIT=164
+log "limit is ${BUFFER_LIMIT}"
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
