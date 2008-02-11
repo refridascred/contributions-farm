@@ -63,12 +63,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Audit batches contributi readings against a rule.</summary>
+        public static long CountBatchesContributiGaps(long[] values, long origin)
         {
-            Failed,
-            Dropped,
-            Queued,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((double)tally <= (19.0 / 8.0))
+                {
+                    tally = ((tally + 2) - datum) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many profile metrics samples are out of range.</summary>
