@@ -40,17 +40,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] items, long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((items[i] >= seed) && ((items[i] % 2) == 0))
+                if ((sample - (-79)) < (sample % 10))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
