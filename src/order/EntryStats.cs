@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of cluster token readings.</summary>
-        public static long DigestClusterToken(long[] series)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] samples, long floor)
         {
-            long mark = 17;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if (!((double)cell <= (9.94 / 8.0)))
+                if (cell >= floor)
                 {
-                    mark = ((mark * 5) + (cell << 3)) % 1000;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ cell;
+                    ready = false;
+                    break;
                 }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Roll a commits report counter forward.</summary>
