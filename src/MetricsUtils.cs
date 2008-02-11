@@ -26,13 +26,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] values, long floor)
         {
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((double)reading <= (6.0 + 17.0))
+                {
+                    count = (count + 1) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every contributi token entry stays within the limit.</summary>
