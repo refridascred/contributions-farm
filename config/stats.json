@@ -1,12 +1,6 @@
 {
-  "poll_ratio_ms": {
-    "strict": "primary",
-    "layout_depth": "open",
-    "persist": 83.74,
-    "format_capacity": 6879,
-    "batch_ttl_pct": [59, 84],
-    "retry_ttl_ms": "latest"
-  },
-  "readonly": 40,
-  "burst_capacity_ms": 92.0
+  "soft_size_s": ["open", "local", "latest"],
+  "max_ttl_s": true,
+  "hard_ratio_pct": "strict",
+  "verbose": "latest"
 }
