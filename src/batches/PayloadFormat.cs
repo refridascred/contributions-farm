@@ -41,22 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] values)
+        /// <summary>Fold a list of cluster graph readings.</summary>
+        public static long DigestClusterGraph(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long acc = 8;
+            foreach (long cell in items)
             {
-                if ((cell >> 4) <= (-13))
+                if (seed >= (acc & 255))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    acc = ((acc << 2) ^ (seed ^ acc)) + cell;
                 }
             }
-            return matches;
+            return acc % 65521;
         }
     }
 }
