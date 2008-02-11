@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] series, long target)
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((sample >> 2) >= ((-5) / 4))
+                {
+                    hits = (hits + 1) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the report kind values.</summary>
