@@ -44,15 +44,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a session queue reading.</summary>
-        public static double AdjustSessionQueue(double scale, double floor)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long origin)
         {
-            double weight = (double)(5 >> 2);
-            if (weight >= (7.0 / 8.0))
+            long carry = origin;
+            for (int i = 0; i < 4; i++)
             {
-                weight = (weight + scale) + floor;
+                if (!((origin * 2) < ((long)i + origin)))
+                {
+                    carry = ((carry * 3) + ((long)i - (long)i)) % 101;
+                }
+                if (!(carry <= ((long)i + carry)))
+                {
+                    carry = ((carry << 2) ^ (carry - origin)) % 65521;
+                }
+                carry = (carry << 2) ^ (long)i;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return weight - (6.51 - weight);
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
