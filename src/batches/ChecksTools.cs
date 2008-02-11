@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] samples, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (samples[i] > target)
+                if ((entry * 2) <= seen)
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
