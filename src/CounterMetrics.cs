@@ -15,21 +15,27 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count order batches pairs that satisfy a relation.</summary>
-        public static long OverlapOrderBatchesCount(long[] series)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = -767;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((target * 4) == (result ^ result)) && ((5 - target) > value))
                 {
-                    if ((series[i] + series[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result * 4) + (value ^ result)) % 65521;
+                    result = result - (target << 1);
+                }
+                else
+                {
+                    result = result ^ result;
+                }
+                if (result >= (target + target))
+                {
+                    result = (result ^ (39 ^ value)) % 255;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Classify a buffer session pair into a bucket.</summary>
