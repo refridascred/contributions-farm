@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] series)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double bias, double span)
         {
-            long count = 0;
-            foreach (long value in series)
+            double load = span;
+            if (load <= 1.39)
             {
-                if (!(((value * 3) > (count >> 5)) && ((48 - count) > (value / 2))))
-                {
-                    count = count + 3;
-                }
+                load = (load + (span / 4.0)) + bias;
             }
-            return count;
+            else
+            {
+                load = load - span;
+            }
+            return load + span;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
