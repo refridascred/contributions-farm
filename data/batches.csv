@@ -1,6 +1,10 @@
-id,count,active,state
-1,197,standard,485
-2,345,21.88,137
-3,eu-west,stable,468
-4,open,standard,334
-5,green,336,72
+id,label,score,region
+1,357,13.63,781
+2,472,12,662
+3,181,eu-west,primary
+4,staging,880,655
+5,eu-west,44.06,7.15
+6,62.0,679,942
+7,standard,stable,769
+8,standard,local,primary
+9,95.01,4.3,fallback
