@@ -1,10 +1,22 @@
 # githubfarm settings
-base_limit: 76
-commits_threshold: blue
-enabled:
-  stats_ttl: 2879
-  batch_capacity_count: 100
-  warm_size: false
-  burst_ttl: 90
-  readonly: 4171
-compress: 4.75
+batch_depth: 61.55
+audit:
+  - 196
+  - 484
+  - 328
+  - 328
+flush_depth_count:
+  hard_timeout_count: 7701
+  cache_size:
+    enabled: 60
+    batch_delay_pct: staging
+    idle_retries_ms: true
+    default_delay_pct: stable
+    min_retries:
+      - 151
+      - 299
+      - 221
+  warm_ttl_count: 78
+  audit: green
+  readonly: cached
+base_depth_pct: 94
