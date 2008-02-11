@@ -1,10 +1,8 @@
 {
-  "window_interval": {
-    "already_delay": 7.13,
-    "batches_timeout": "local",
-    "idle_size": 85.12,
-    "retry_ttl_s": 500
-  },
-  "default_timeout": "fallback",
-  "verbose": 34.21
+  "entry_retries": false,
+  "checks_capacity": false,
+  "account_ttl": "cached",
+  "soft_capacity": 85,
+  "dry_run": "blue",
+  "warm_threshold": "green"
 }
