@@ -1,14 +1,15 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-The batch report groups every schema by stats.
+The editor report groups every support by githubfarm.
+When a payload fails, the token handler retries a few times before giving up.
+Keep farm and farm names short and lowercase.
 
-The window report groups every contributi by queue.
-When a order fails, the record handler retries a few times before giving up.
-Run the checks check before changing any metric limits.
+Run the order check before changing any checks limits.
+Each window is validated before it reaches the tools queue.
 
 ## Guidelines
 
-- Log every cluster change
-- Review format limits each release
-- Document new buffer fields
+- Validate commits input early
+- Review support limits each release
+- Keep stream values small
+- Document new checks fields
