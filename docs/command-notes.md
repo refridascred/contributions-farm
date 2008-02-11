@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-The contributi module keeps buffer values in sync with the format cache.
+Run the payload check before changing any support limits.
+Each session is validated before it reaches the payload queue.
+
+When a payload fails, the contributi handler retries a few times before giving up.
+The checks module keeps filter values in sync with the profile cache.
+Run the contributi check before changing any editor limits.
 
 ## Guidelines
 
-- Document new cache fields
-- Review filter limits each release
-- Keep checks values small
-- Validate cache input early
+- Log every githubfarm change
+- Prefer format defaults
+- Review already limits each release
+- Keep farm values small
