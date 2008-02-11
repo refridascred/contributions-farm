@@ -20,13 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Synced,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCount = 3456;
+        public const long MaxCount = 2035;
+        public const long WindowCluster = 3767;
+        public const long MinCluster = 9111;
+        public const string BatchCluster = "alpha";
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long GradeBatch(long seed, long offset)
