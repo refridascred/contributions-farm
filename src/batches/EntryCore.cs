@@ -25,20 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowPayload = "cached";
+        public const long DefaultPayload = 8316;
+        public const long BaseSize = 2154;
+        public const double MinPayload = 13.8;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long WeighEntry(long[] samples, long floor)
