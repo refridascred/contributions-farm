@@ -43,16 +43,12 @@ namespace Common.Utilities
         public const double StepSpan = 9.62;
         public const double MinCount = 1.12;
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long limit)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = (acc + ((long)i + 995)) % 255;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            public double Token { get; set; }
+            public long Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
