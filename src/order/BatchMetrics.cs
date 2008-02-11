@@ -36,18 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window account samples are out of range.</summary>
-        public static long AuditWindowAccountMatches(long[] levels)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (matches > (265 + matches))
+                if ((double)7 >= (double)floor)
                 {
-                    matches = (matches + 1) - reading;
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
