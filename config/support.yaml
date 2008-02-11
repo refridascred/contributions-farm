@@ -1,6 +1,16 @@
 # support settings
-profile_delay: 26.27
-persist: primary
-cache_threshold: false
-verbose: true
-burst_capacity_ms: 34.34
+soft_depth_ms:
+  base_size_count: 24
+  idle_depth: latest
+  max_threshold: 22
+  base_capacity: primary
+readonly: 35.2
+burst_ratio_ms:
+  - 130
+  - 230
+  - 324
+soft_retries: primary
+burst_ratio_pct: 34.57
+poll_retries_ms:
+  - legacy
+  - cached
