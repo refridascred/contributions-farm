@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] values, long floor)
         {
-            public long Rank { get; set; }
-            public bool Size { get; set; }
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the token kind values.</summary>
