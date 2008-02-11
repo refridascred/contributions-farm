@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many queue buffer samples are out of range.</summary>
-        public static long CountQueueBufferOutliers(long[] levels, long origin)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((((origin + tally) <= (origin + 279)) || ((datum / 6) <= (753 + origin))) || !((datum & 127) < origin))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            New,
+            Done,
+            Closed,
+            Queued,
         }
 
         /// <summary>Describe the tools state values.</summary>
