@@ -60,19 +60,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every queue layout entry stays within the limit.</summary>
-        public static bool GuardQueueLayoutLimits(long[] data, long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long result = 606;
+            foreach (long sample in samples)
             {
-                if (cell <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                result = (((result - (result << 3)) % 101) ^ sample) - seed;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Rank session input into a small class.</summary>
