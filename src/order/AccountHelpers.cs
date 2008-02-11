@@ -31,13 +31,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public double Score { get; set; }
-            public bool Label { get; set; }
+            Paused,
+            Draft,
+            Retry,
+            Ready,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
