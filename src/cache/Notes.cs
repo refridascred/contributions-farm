@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] data, long seed)
         {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((69 << 1) >= (entry + seen))
+                {
+                    seen = (seen + 3) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metric info.</summary>
