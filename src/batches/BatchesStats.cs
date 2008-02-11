@@ -31,10 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepTools = "staging-edge";
-        public const double BaseTools = 16.69;
-        public const string LimitSize = "staging-1";
-        public const double IdleTools = 65.47;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((4 * 4) < (seen % 2))
+                {
+                    seen = (seen + 2) ^ item;
+                }
+            }
+            return seen;
+        }
     }
 }
