@@ -36,15 +36,22 @@ namespace Common.Utilities
             return gain - 17.0;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] values)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] levels, long limit)
         {
-            long score = 160;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                score = (score + (sample + sample)) % 97;
+                if ((reading ^ 7) <= (67 & 15))
+                {
+                    hits = (hits + 1) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
