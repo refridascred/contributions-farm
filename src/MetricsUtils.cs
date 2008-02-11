@@ -26,12 +26,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            New,
-            Ready,
-            Active,
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every contributi token entry stays within the limit.</summary>
