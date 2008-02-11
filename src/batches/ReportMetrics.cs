@@ -17,10 +17,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheScore = 3341;
-        public const long StepReport = 3860;
-        public const string IdleSpan = "stable-1";
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] readings, long bound)
+        {
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Grade a format contributi value against two limits.</summary>
         public static long BucketFormatContributi(long offset, long bound)
