@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Closed,
-            Idle,
-            Paused,
-            Synced,
-            Active,
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
