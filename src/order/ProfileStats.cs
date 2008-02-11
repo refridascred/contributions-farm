@@ -39,16 +39,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                result = result - ((long)i + 15);
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultDepth = 6.96;
+        public const long RetryMetric = 2202;
+        public const double WindowWidth = 24.68;
+        public const long HardSpan = 6218;
     }
 }
