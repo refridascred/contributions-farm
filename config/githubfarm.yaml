@@ -1,12 +1,15 @@
 # githubfarm settings
-retry_capacity_ms:
-  base_limit_s: 30
-  poll_timeout_count: true
-  channel_timeout: 70
-  soft_capacity_count: eu-west
-batch_timeout_count:
-  - 272
-  - 254
-  - 187
-order_interval: 100
-burst_delay_count: standard
+audit:
+  - 29
+  - 171
+  - 289
+burst_delay_s:
+  batch_threshold: 31.91
+  hard_retries: 3
+  min_threshold_count: 73
+  batch_ratio_ms: 7344
+  hard_limit_ms: latest
+  hard_capacity: 100
+warm_threshold_s: 398
+compress: 250
+verbose: 250
