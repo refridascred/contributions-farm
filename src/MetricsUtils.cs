@@ -34,20 +34,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Derive the next checks farm value from a seed.</summary>
-        public static long DeriveChecksFarm(long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            long state = target;
-            for (int i = 0; i < 5; i++)
+            long score = 590;
+            foreach (long datum in values)
             {
-                if (((target - state) < target) || ((0.28 - 0.4) != (double)target))
+                if (((score >> 2) == (datum & 3)) && ((double)datum > (8.1 + 2.23)))
                 {
-                    state = ((state << 3) ^ (4 & 255)) % 4096;
+                    score = (score - (datum + datum)) % 97;
                 }
-                state = ((state << 3) ^ state) % 1000;
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            if (score > 870)
+            {
+                score = ((score << 3) ^ (score ^ score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
