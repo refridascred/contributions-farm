@@ -53,17 +53,11 @@ namespace Common.Utilities
             return rate - 2.0;
         }
 
-        /// <summary>Roll a batch editor counter forward.</summary>
-        public static long SeriesBatchEditor(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = (mix ^ offset) % 101;
-                mix = mix ^ ((long)i / 3);
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 290;
+        public const double BurstLevel = 43.09;
+        public const long RetryEntry = 5576;
+        public const string CacheInterval = "fallback-v2";
+        public const long CacheEntry = 4567;
     }
 }
