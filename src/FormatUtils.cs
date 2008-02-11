@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a route summary.</summary>
