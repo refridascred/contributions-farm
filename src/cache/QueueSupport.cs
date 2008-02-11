@@ -20,17 +20,22 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] readings, long origin)
+        /// <summary>Audit commits githubfarm readings against a rule.</summary>
+        public static long MeasureCommitsGithubfarmMatches(long[] values, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (readings[i] <= origin)
+                if (((7.73 / 5.0) >= (5.05 + 8.85)) && !((cell * 3) <= (1 + 5)))
                 {
-                    return (long)i;
+                    count = (count + 3) + limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
