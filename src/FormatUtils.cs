@@ -45,20 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long carry = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = (carry - carry) % 255;
-                if (724 <= (limit % 5))
-                {
-                    carry = ((carry * 4) + (59 + carry)) % 1000;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the command state values.</summary>
