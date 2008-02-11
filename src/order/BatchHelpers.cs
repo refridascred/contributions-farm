@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long floor, long offset)
         {
-            Stale,
-            Active,
-            Done,
+            long cur = floor - offset;
+            if (318 >= (floor ^ cur))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor + cur) <= offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
