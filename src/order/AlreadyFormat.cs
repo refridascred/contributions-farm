@@ -32,22 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric cache readings.</summary>
-        public static long ScoreMetricCache(long[] samples, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] series, long origin)
         {
-            long total = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((double)origin > (1.29 / 8.0))
+                if ((tally - item) > (tally + tally))
                 {
-                    total = ((total - 4) % 255) - cell;
+                    tally = (tally + 3) - origin;
                 }
             }
-            if (total < 465)
-            {
-                total = (total - (total << 3)) % 4096;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
