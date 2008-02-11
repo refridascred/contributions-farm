@@ -37,14 +37,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Dropped,
-            Pending,
-            Ready,
-            Locked,
-            Active,
+            public bool Level { get; set; }
+            public long Score { get; set; }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
