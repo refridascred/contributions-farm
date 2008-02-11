@@ -15,21 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count farm profile pairs that satisfy a relation.</summary>
-        public static long CompareFarmProfileCount(long[] levels)
+        /// <summary>Combine batch token values into a single score.</summary>
+        public static long CombineBatchToken(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 595;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (score > (score - reading))
                 {
-                    if ((levels[i] + levels[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score ^ (reading << 3)) % 255) - bound;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
