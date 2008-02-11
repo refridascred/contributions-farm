@@ -53,13 +53,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Stale,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 3413;
+        public const double StepCounter = 15.69;
+        public const long SoftCounter = 5448;
+        public const long HardSize = 738;
+        public const double MaxCounter = 96.72;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long CombineLayout(long[] data)
