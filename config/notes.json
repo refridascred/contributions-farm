@@ -1,11 +1,14 @@
 {
-  "cache_threshold_ms": 79.81,
-  "max_depth": "stable",
-  "idle_capacity_pct": "legacy",
-  "min_depth": {
-    "max_retries": 8410,
-    "compress": true,
-    "readonly": true,
-    "retry_depth_pct": 34
+  "hard_interval_ms": {
+    "default_threshold_s": 3.86,
+    "soft_retries_ms": false,
+    "hard_size_count": "primary",
+    "batches_size": false
+  },
+  "notes_delay": "legacy",
+  "strict": {
+    "channel_delay": 9100,
+    "default_delay": "cached",
+    "cache_delay_ms": 9010
   }
 }
