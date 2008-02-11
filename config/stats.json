@@ -1,8 +1,12 @@
 {
-  "queue_size": 60,
-  "cache_size_ms": "open",
-  "base_size": true,
-  "soft_capacity_pct": ["blue", "primary", "stable", "open"],
-  "cache_window_s": 54,
-  "soft_delay_pct": [146, 252, 386, 183]
+  "poll_ratio_ms": {
+    "strict": "primary",
+    "layout_depth": "open",
+    "persist": 83.74,
+    "format_capacity": 6879,
+    "batch_ttl_pct": [59, 84],
+    "retry_ttl_ms": "latest"
+  },
+  "readonly": 40,
+  "burst_capacity_ms": 92.0
 }
