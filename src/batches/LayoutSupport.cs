@@ -45,22 +45,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] items, long target)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((target + seen) != (target - seen))
+                if ((items[i] > limit) && ((items[i] % 3) == 0))
                 {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
