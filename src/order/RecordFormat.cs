@@ -22,11 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryLevel = 5193;
-        public const string BatchSupport = "cached-edge";
-        public const string DefaultTimeout = "cached";
-        public const long CacheSize = 9507;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((sample - seen) == (sample + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long RollCommand(long origin)
