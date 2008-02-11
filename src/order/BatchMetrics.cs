@@ -34,18 +34,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] values)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] samples, long limit)
         {
-            long acc = 10;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((double)value >= (8.0 * 5.42))
+                if (datum < limit)
                 {
-                    acc = (acc << 2) ^ (value + acc);
+                    valid = false;
+                    break;
                 }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Describe the graph phase values.</summary>
