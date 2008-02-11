@@ -1,6 +1,4 @@
 # githubfarm settings
-queue_ratio: 72.35
-min_retries_pct: 5101
-poll_depth: cached
-enabled: true
-min_timeout: blue
+default_size_pct: 5
+audit: 30
+hard_capacity_pct: true
