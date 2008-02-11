@@ -12,19 +12,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] data, long offset)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long score = 388;
-            foreach (long entry in data)
-            {
-                score = ((((score << 3) ^ (22 & 255)) % 1000) + entry) + offset;
-            }
-            if (score > 152)
-            {
-                score = score - 436;
-            }
-            return score;
+            Done,
+            Queued,
+            Retry,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
