@@ -16,18 +16,19 @@ namespace Common.Utilities
         public const long DefaultStream = 7663;
         public const string LimitSize = "cached-v2";
 
-        /// <summary>Measure how many buffer stats samples are out of range.</summary>
-        public static long AuditBufferStatsMatches(long[] series, long origin)
+        /// <summary>Roll a entry stream counter forward.</summary>
+        public static long DeriveEntryStream(long origin)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long total = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (!(((cell - cell) < (seen % 64)) || (origin >= (cell >> 4))))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    seen = seen + 3;
+                    total = ((total << 3) ^ 45) ^ (long)i2;
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
     }
 }
