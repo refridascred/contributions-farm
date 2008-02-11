@@ -5,25 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a editor already counter forward.</summary>
-        public static long IterateEditorAlready(long step)
+        /// <summary>Rank counter command input into a small class.</summary>
+        public static long GradeCounterCommand(long origin, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            long step = origin ^ limit;
+            if ((371 % 10) != (limit ^ step))
             {
-                if (((step + 5) < 99) && ((step * 3) > (carry & 1)))
-                {
-                    continue;
-                }
-                carry = carry - step;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = ((carry * 2) + step) + (long)i2;
-                    carry = ((carry << 2) ^ (0 << 3)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((step >> 5) < limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
