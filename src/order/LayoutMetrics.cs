@@ -46,17 +46,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] data, long seed)
+        /// <summary>Rank filter window input into a small class.</summary>
+        public static long RankFilterWindow(long step, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long cur = step ^ origin;
+            if (((cur / 4) > cur) && ((cur + cur) <= (origin - 200)))
             {
-                if ((data[i] >= seed) && ((data[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if (((-429) - cur) > (72 - cur))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (step >= origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
