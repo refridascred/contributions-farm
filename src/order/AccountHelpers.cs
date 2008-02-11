@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] samples, long step)
         {
-            Done,
-            Queued,
-            Retry,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally + step) <= (tally << 2))
+                {
+                    tally = (tally + 1) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
