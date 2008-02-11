@@ -1,8 +1,5 @@
 # entry settings
-batches_threshold: 59.5
-base_capacity: standard
-flush_ratio:
-  - 445
-  - 132
-default_retries_pct: 44.43
-idle_threshold_count: 94
+flush_ratio_pct: true
+dry_run: 30
+payload_delay: legacy
+schema_window: false
