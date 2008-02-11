@@ -13,24 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a stream editor pair into a bucket.</summary>
-        public static long BucketStreamEditor(long target, long offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] items)
         {
-            if ((4.2 - 2.52) != (double)target)
+            long mix = 31;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset >= (72 + target)) || ((target * 3) == (offset % 5)))
+                if ((5.0 - 3.82) <= (double)sample)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    mix = mix - ((-187) - 18);
                 }
             }
+            return mix;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
