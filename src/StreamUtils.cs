@@ -23,19 +23,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] items, long seed)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long step, long floor)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long slot = step - floor;
+            if (((3 >> 5) >= (slot + floor)) || (step > (step + slot)))
             {
-                if (value > seed)
+                return 0;
+            }
+            else
+            {
+                if ((740 - 634) == (3 ^ step))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((step ^ floor) > (floor >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
