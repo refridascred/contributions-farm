@@ -81,14 +81,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Retry,
-            Dropped,
-            Idle,
-            Synced,
-            Ready,
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public double Token { get; set; }
         }
     }
 }
