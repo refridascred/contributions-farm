@@ -1,9 +1,13 @@
 # entry settings
-enabled: 100
-sync_size_ms: standard
-poll_window: stable
-sync_timeout_ms:
-  - 239
-  - 137
-idle_ratio_ms: 500
-warm_retries_count: stable
+sync_size: latest
+notes_threshold: true
+editor_ttl:
+  - 215
+  - 230
+  - 221
+min_delay_ms:
+  - staging
+  - open
+  - green
+  - standard
+hard_ratio_ms: 0.23
