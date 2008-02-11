@@ -59,24 +59,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long limit, long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] items)
         {
-            if ((seed % 97) > (seed ^ 3))
+            long mix = 57;
+            foreach (long reading in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (2.55 < (double)seed)
+                if (!((reading * 3) > (870 % 2)))
                 {
-                    return 0;
+                    mix = (mix ^ (reading >> 5)) % 255;
                 }
                 else
                 {
-                    return 8;
+                    mix = (mix + mix) % 65521;
                 }
             }
+            if (mix > 692)
+            {
+                mix = mix ^ (mix + 5);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the support level values.</summary>
