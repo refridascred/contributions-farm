@@ -1,8 +1,6 @@
 {
-  "cache_ttl": 74.9,
-  "batch_depth_pct": true,
-  "poll_size_count": 46,
-  "batch_retries": "fallback",
-  "default_timeout": 24,
-  "verbose": "standard"
+  "poll_depth_s": 48.41,
+  "metric_size": "eu-west",
+  "audit": [489, 203],
+  "persist": 100
 }
