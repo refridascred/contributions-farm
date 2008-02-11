@@ -1,16 +1,6 @@
 # githubfarm settings
-soft_window_s: 2304
-max_timeout: local
-queue_ttl: staging
-idle_depth_ms:
-  flush_limit: 8785
-  hard_limit_ms: latest
-  compress: blue
-  soft_capacity:
-    hard_ratio: 60
-    commits_ttl: 3515
-    warm_window_s: 8920
-    report_timeout: 81
-    compress: 30
-  verbose: 58
-  cache_ttl_pct: 49.77
+queue_ratio: 72.35
+min_retries_pct: 5101
+poll_depth: cached
+enabled: true
+min_timeout: blue
