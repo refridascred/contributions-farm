@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 4251;
-        public const double StepRoute = 90.29;
-        public const long RetrySize = 1275;
-        public const long HardWidth = 9577;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Dropped,
+            Locked,
+            Done,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long WindowGraph = 9138;
