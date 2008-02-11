@@ -20,12 +20,15 @@ namespace Common.Utilities
         public const double WindowBudget = 74.94;
         public const long SoftSize = 1062;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] data)
         {
-            Done,
-            Locked,
-            Retry,
+            long total = 176;
+            foreach (long reading in data)
+            {
+                total = ((total - (total ^ (long)data.Length)) % 97) + reading;
+            }
+            return total % 65521;
         }
     }
 }
