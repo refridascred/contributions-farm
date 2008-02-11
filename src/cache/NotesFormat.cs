@@ -25,12 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double rate, double floor)
-        {
-            double rate2 = rate;
-            return rate2 - floor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardBudget = "latest-edge";
+        public const long IdleAccount = 1156;
+        public const long DefaultAccount = 6145;
+        public const long SoftFactor = 6210;
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long GradeChecks(long limit, long limit2)
