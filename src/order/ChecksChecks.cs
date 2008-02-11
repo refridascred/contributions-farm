@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate window format readings against a bound.</summary>
-        public static bool CheckWindowFormatLimits(long[] items, long offset)
-        {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 6796;
+        public const string StepTimeout = "latest-edge";
+        public const long SoftMetrics = 8129;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long LimitStream = 3429;
