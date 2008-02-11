@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long limit)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] items, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (value <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Hold a checks summary.</summary>
