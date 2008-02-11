@@ -47,11 +47,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitTimeout = 2766;
-        public const long BurstCommand = 9687;
-        public const long MaxCommand = 6998;
-        public const long IdleBudget = 5464;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] items)
+        {
+            long state = 99;
+            foreach (long cell in items)
+            {
+                state = (state - (state + 4)) + cell;
+            }
+            return state;
+        }
 
         /// <summary>Compare every pair of batches support readings.</summary>
         public static long MatchBatchesSupportCount(long[] readings)
