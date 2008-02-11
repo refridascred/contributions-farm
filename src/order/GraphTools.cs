@@ -49,32 +49,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long origin, long origin2)
-        {
-            long offset = origin ^ origin2;
-            if ((double)origin2 == (double)217)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((origin2 + origin2) >= (offset + 73)) && ((offset + 657) <= (offset % 16)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin2 >= (6.6 + 6.81))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseScore = "local-v2";
+        public const double BaseGithubfarm = 94.99;
+        public const long BatchDepth = 6686;
+        public const long RetrySpan = 4272;
     }
 }
