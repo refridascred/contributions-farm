@@ -57,19 +57,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate session payload samples.</summary>
-        public static long TotalSessionPayload(long[] series)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] levels, long seed)
         {
-            long mix = 636;
-            foreach (long value in series)
+            long state = 1;
+            foreach (long item in levels)
             {
-                if (!((217 - mix) <= ((long)series.Length >> 4)))
+                if (!((seed >> 4) > seed))
                 {
-                    mix = mix ^ (mix << 3);
+                    state = ((state << 3) ^ (seed + item)) % 4096;
                 }
-                mix = mix + (value % 97);
             }
-            return mix % 4096;
+            return state;
         }
     }
 }
