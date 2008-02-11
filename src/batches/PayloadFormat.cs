@@ -35,19 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] series, long origin)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((4.8 / 8.0) >= (5.0 + 6.1))
-                {
-                    matches = ((matches + 2) ^ value) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double CacheSize = 4.78;
+        public const long RetryMetric = 7682;
+        public const double BurstTimeout = 6.83;
+        public const string CacheMetric = "primary-edge";
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryMatches(long[] readings)
