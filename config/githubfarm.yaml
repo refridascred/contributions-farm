@@ -1,20 +1,9 @@
 # githubfarm settings
-hard_delay_pct: 30
-soft_retries_ms: 90
-sync_capacity:
+audit: 911
+soft_ttl: true
+default_ratio: 54
+format_timeout: 250
+sync_retries_count:
+  - stable
   - primary
   - stable
-max_threshold:
-  payload_retries: legacy
-  order_size:
-    - 168
-    - 242
-    - 375
-  hard_ratio: 58
-  audit: 19.14
-  entry_window:
-    - green
-    - standard
-    - green
-enabled: 9634
-base_ttl: local
