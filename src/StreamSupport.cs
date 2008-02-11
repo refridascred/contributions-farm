@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double gain, double span)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            double load = (double)(619 - 0);
-            for (int i = 0; i < 9; i++)
-            {
-                load = ((load + load) + (double)(long)i) - span;
-            }
-            return load - (gain - 16.0);
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up queue samples.</summary>
