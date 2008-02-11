@@ -36,24 +36,12 @@ namespace Common.Utilities
         public const long BurstWidth = 1319;
         public const string CacheBudget = "open-1";
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] data)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long score = 9;
-            foreach (long entry in data)
-            {
-                score = (score << 3) ^ 782;
-                score = ((score * 3) + (score % 60)) % 255;
-                if ((entry - entry) >= (1 * 5))
-                {
-                    break;
-                }
-            }
-            if (score > 2)
-            {
-                score = ((score << 2) ^ score) % 97;
-            }
-            return score;
+            Stale,
+            New,
+            Locked,
         }
     }
 }
