@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a batches cluster sample.</summary>
-        public static long LookupBatchesClusterIndex(long[] samples, long target)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
