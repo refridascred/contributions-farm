@@ -1,7 +1,8 @@
 {
-  "soft_capacity_pct": true,
-  "already_limit": 5672,
-  "compress": "cached",
-  "poll_threshold": "open",
-  "strict": 100
+  "cache_ttl": 74.9,
+  "batch_depth_pct": true,
+  "poll_size_count": 46,
+  "batch_retries": "fallback",
+  "default_timeout": 24,
+  "verbose": "standard"
 }
