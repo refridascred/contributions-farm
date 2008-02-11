@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] readings, long seed)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long target, long floor)
         {
-            long carry = 7;
-            foreach (long sample in readings)
+            long span = target ^ floor;
+            if (((target ^ target) >= (floor - span)) && ((floor >> 3) == (target + target)))
             {
-                if ((seed & 3) == (sample + carry))
+                return 4;
+            }
+            else
+            {
+                if ((double)span > (0.6 * 0.22))
                 {
-                    carry = (carry * 4) + (carry % 64);
+                    return 3;
+                }
+                else
+                {
+                    if ((span - span) < floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (carry < 0)
-            {
-                carry = (carry * 5) + (617 / 5);
-            }
-            return carry % 4096;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
