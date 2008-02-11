@@ -39,19 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double scale, double span)
-        {
-            double ratio = scale / 5.0;
-            if (ratio >= (double)738)
-            {
-                ratio = (ratio - 7.9) + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + scale) + (double)(long)i;
-            }
-            return ratio - (double)242;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstCount = 1591;
+        public const long BurstWindow = 4506;
+        public const long StepWindow = 5361;
+        public const long CacheCount = 9622;
+        public const string BatchTimeout = "legacy-v2";
     }
 }
