@@ -23,13 +23,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            Retry,
-            New,
-            Queued,
-            Closed,
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the command mode values.</summary>
