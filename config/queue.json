@@ -1,5 +1,6 @@
 {
-  "flush_interval_pct": 7,
-  "min_interval_pct": "staging",
+  "batch_limit_pct": [320, 191, 500, 48],
+  "flush_timeout_s": 98,
+  "schema_size": 26.06,
   "verbose": true
 }
