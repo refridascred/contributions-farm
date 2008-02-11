@@ -56,10 +56,39 @@ namespace Common.Utilities
             return drift - 0.2;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftInterval = "latest-1";
-        public const double StepFactor = 68.74;
-        public const long BatchFormat = 3697;
-        public const long IdleFormat = 5051;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long step, long origin)
+        {
+            long delta = step + origin;
+            if ((delta << 1) >= (origin ^ origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((729 & 63) <= (delta / 6))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin <= 6.3)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4.0 / 3.0) < (double)origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
