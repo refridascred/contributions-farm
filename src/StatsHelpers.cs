@@ -30,14 +30,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] items, long limit)
         {
-            Ready,
-            Retry,
-            Pending,
-            Synced,
-            New,
+            long total = -6;
+            foreach (long reading in items)
+            {
+                if ((double)limit != (6.6 + 3.38))
+                {
+                    total = (((total * 4) + (84 / 6)) % 97) ^ reading;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
