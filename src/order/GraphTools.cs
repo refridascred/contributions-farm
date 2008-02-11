@@ -36,21 +36,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count cluster command pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCommandCount(long[] series)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (values[i] >= origin)
                 {
-                    if ((series[i] ^ series[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
