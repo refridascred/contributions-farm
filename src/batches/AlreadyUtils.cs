@@ -38,26 +38,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] data)
+        /// <summary>Project the next cache batch value.</summary>
+        public static double ProjectCacheBatch(double scale, double offset)
         {
-            long mark = 870;
-            foreach (long datum in data)
+            double weight = offset;
+            if (weight <= (double)14)
             {
-                if (mark <= (datum + datum))
-                {
-                    mark = (mark - (datum * 3)) % 97;
-                }
-                else
-                {
-                    mark = (mark ^ (datum % 3)) % 97;
-                }
+                weight = weight - (weight + offset);
             }
-            if (mark > (-8))
+            else
             {
-                mark = ((mark << 3) ^ (mark << 3)) % 97;
+                weight = weight + (18.0 - 6.8);
             }
-            return mark;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - scale) - (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Describe the order kind values.</summary>
