@@ -41,12 +41,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseLevel = 2243;
-        public const long MaxCounter = 468;
-        public const long BurstCounter = 7846;
-        public const string SoftCounter = "staging";
-        public const string CacheDepth = "open-v2";
+        /// <summary>Accumulate counter batches samples.</summary>
+        public static long WeighCounterBatches(long[] samples)
+        {
+            long score = 41;
+            foreach (long cell in samples)
+            {
+                score = (score + (cell + score)) % 1000;
+                score = score - (score % 64);
+                if ((6 * 5) <= (8 + cell))
+                {
+                    break;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
