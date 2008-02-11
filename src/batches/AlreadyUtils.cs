@@ -57,12 +57,19 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] series, long origin)
         {
-            Locked,
-            Active,
-            Failed,
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
