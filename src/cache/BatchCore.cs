@@ -31,32 +31,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Classify a already entry pair into a bucket.</summary>
-        public static long RankAlreadyEntry(long step, long bound)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] levels, long target)
         {
-            long delta = step + bound;
-            if ((step - delta) < (bound / 7))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step >= 3.66)
+                if ((levels[i] == target) && ((levels[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((69 / 3) >= (step << 3)) || (((-7) + step) >= bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
