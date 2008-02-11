@@ -28,18 +28,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] samples, long limit)
+        /// <summary>Blend two contributi already measurements.</summary>
+        public static double SmoothContributiAlready(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (!((tally / 4) <= (9 + (-7))))
-                {
-                    tally = ((tally + 1) + value) - limit;
-                }
-            }
-            return tally;
+            double weight2 = (floor - floor) / 4.0;
+            return weight2 + (weight + weight);
         }
 
         /// <summary>Digest a series of stream entries.</summary>
