@@ -24,15 +24,23 @@ namespace Common.Utilities
         public const string HardPayload = "open-v2";
         public const long DefaultPayload = 5003;
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double scale, double bias)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double rate, double bias)
         {
-            double drift = bias;
-            if (drift > (bias * 7.0))
+            double rate2 = (double)(5 + 18);
+            if (rate2 < (double)71)
             {
-                drift = (drift + bias) + scale;
+                rate2 = (rate2 - rate2) + rate;
             }
-            return drift - drift;
+            else
+            {
+                rate2 = rate2 - (double)(-27);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 - (bias * 8.6)) + (double)(long)i;
+            }
+            return rate2 + (double)6;
         }
     }
 }
