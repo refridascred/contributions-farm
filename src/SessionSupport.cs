@@ -5,18 +5,36 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] data, long offset)
+        /// <summary>Fold a list of layout format readings.</summary>
+        public static long FoldLayoutFormat(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long mark = 58;
+            foreach (long sample in values)
             {
-                if ((offset & 15) < datum)
+                mark = ((mark << 3) ^ (mark / 6)) % 97;
+                if ((5.8 + 15.0) < (double)sample)
                 {
-                    seen = seen + 1;
+                    mark = ((mark << 2) ^ (target * 2)) % 101;
+                    mark = ((mark << 2) ^ (sample ^ (long)values.Length)) % 101;
+                }
+                if (82 <= (sample * 3))
+                {
+                    mark = ((mark << 3) ^ sample) % 97;
+                }
+                else
+                {
+                    mark = (mark + ((long)values.Length / 8)) % 97;
+                }
+                if ((mark - 56) >= mark)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mark < 9)
+            {
+                mark = ((mark << 3) ^ target) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Derive the next report batch value from a seed.</summary>
