@@ -32,21 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long limit)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double gain, double offset)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            double scale = offset * 5.56;
+            if (scale > (double)0)
             {
-                if (!((score - score) <= (long)i))
-                {
-                    score = score - (limit ^ limit);
-                }
-                score = ((score * 4) + (score ^ 329)) % 1000;
-                score = ((score * 2) + score) % 255;
-                score = ((score * 3) + (long)i) % 1000;
+                scale = (scale - offset) - gain;
             }
-            return score;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (scale / 4.0)) + (double)(long)i;
+            }
+            return scale + offset;
         }
     }
 }
