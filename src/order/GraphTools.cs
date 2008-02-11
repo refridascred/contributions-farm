@@ -44,15 +44,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double bias, double floor)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double gain, double offset)
         {
-            double drift = floor;
-            if (drift <= 20.0)
-            {
-                drift = drift + (bias / 9.0);
-            }
-            return drift - 0.2;
+            double mean = offset - (double)0;
+            return mean + gain;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
