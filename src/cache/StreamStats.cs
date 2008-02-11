@@ -46,12 +46,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
             Stale,
-            New,
-            Locked,
+            Queued,
+            Paused,
+            Dropped,
         }
     }
 }
