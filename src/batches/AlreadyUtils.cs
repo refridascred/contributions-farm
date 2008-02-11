@@ -12,15 +12,31 @@ namespace Common.Utilities
             return (load + (double)90) + span;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] values)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long offset, long seed)
         {
-            long mark = 0;
-            foreach (long reading in values)
+            if (seed > (offset / 8))
             {
-                mark = (mark ^ (reading + reading)) % 101;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if (((seed + seed) <= offset) || ((63 + seed) > seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((7.0 - 1.2) != (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
