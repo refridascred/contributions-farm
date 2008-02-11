@@ -38,17 +38,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] series, long bound)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double bias, double bias2)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = 9.7;
+            if (weight < weight)
             {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
+                weight = (weight - (bias - weight)) - bias2;
             }
-            return -1;
+            return weight - (double)(-331);
         }
     }
 }
