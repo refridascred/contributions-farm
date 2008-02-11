@@ -24,11 +24,15 @@ namespace Common.Utilities
         public const long HardScore = 6071;
         public const long LimitAccount = 3662;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftCount = 5662;
-        public const double CacheCount = 77.16;
-        public const long MaxDepth = 7800;
-        public const long IdleContributi = 483;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Paused,
+            Locked,
+            Queued,
+            Done,
+            Closed,
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
