@@ -48,21 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] samples)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double gain = (double)(9 >> 2);
+            return ((gain + gain) + rate) + bias;
         }
 
         /// <summary>Describe the editor kind values.</summary>
