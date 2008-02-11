@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] levels, long bound)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long target)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long result = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((9.82 * 9.18) > (double)datum) && (((double)datum >= (double)seen) && ((datum << 2) < (bound / 8))))
-                {
-                    seen = seen + 1;
-                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
