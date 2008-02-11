@@ -58,12 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long offset)
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Offset { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
