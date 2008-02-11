@@ -13,13 +13,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
             public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Audit window readings against a rule.</summary>
