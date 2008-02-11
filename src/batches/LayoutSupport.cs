@@ -22,19 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every cache layout entry stays within the limit.</summary>
-        public static bool GuardCacheLayoutBounds(long[] readings, long offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= offset)
+                if (items[i] > offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
