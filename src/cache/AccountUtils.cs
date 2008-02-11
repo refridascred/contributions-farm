@@ -18,26 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long step, long step2)
-        {
-            long slot = step + step2;
-            if (((step / 6) <= step) && ((step << 2) == (step & 15)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (step < (slot ^ step2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftBudget = "local-v2";
+        public const double BurstScore = 68.24;
+        public const string IdleSpan = "standard-1";
+        public const string BaseReport = "primary-v2";
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsMatches(long[] series, long bound)
