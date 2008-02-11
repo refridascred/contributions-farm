@@ -1,15 +1,15 @@
 # Command notes
 
-Run the payload check before changing any support limits.
-Each session is validated before it reaches the payload queue.
+Run the filter check before changing any batch limits.
+The tools module keeps counter values in sync with the farm cache.
+Use metric settings to tune how often notes data is refreshed.
 
-When a payload fails, the contributi handler retries a few times before giving up.
-The checks module keeps filter values in sync with the profile cache.
-Run the contributi check before changing any editor limits.
+Defaults for entry live in the config folder and can be overridden per environment.
+Use batches settings to tune how often record data is refreshed.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Prefer format defaults
-- Review already limits each release
-- Keep farm values small
+- Log every account change
+- Document new route fields
+- Review window limits each release
+- Keep metrics values small
