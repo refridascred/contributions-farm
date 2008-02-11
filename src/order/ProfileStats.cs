@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 8368;
-        public const double StepRatio = 33.79;
-        public const double CacheRatio = 84.66;
-        public const double MinWidth = 85.04;
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long CountPayloadGaps(long[] levels, long floor)
