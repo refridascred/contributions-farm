@@ -16,22 +16,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] values, long seed)
+        /// <summary>Count farm profile pairs that satisfy a relation.</summary>
+        public static long CompareFarmProfileCount(long[] levels)
         {
-            long score = 88;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= score)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = score ^ (score ^ seed);
+                    if ((levels[i] + levels[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score < 8)
-            {
-                score = ((score << 3) ^ seed) % 255;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Validate context notes readings against a bound.</summary>
