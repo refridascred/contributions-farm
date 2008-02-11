@@ -74,11 +74,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a order record.</summary>
