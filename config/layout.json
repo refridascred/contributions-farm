@@ -1,6 +1,25 @@
 {
-  "dry_run": "cached",
-  "sync_window": 4178,
-  "token_retries": true,
-  "flush_depth_ms": "blue"
+  "tools_depth": 96,
+  "poll_timeout_count": {
+    "dry_run": {
+      "warm_depth_count": false,
+      "retry_ttl": "fallback",
+      "context_size": "cached",
+      "persist": 4496,
+      "editor_timeout": [483, 459, 477, 450]
+    },
+    "burst_timeout_ms": "cached",
+    "hard_delay": false,
+    "min_capacity_s": "legacy",
+    "max_threshold_pct": 30
+  },
+  "warm_threshold": false,
+  "verbose": "primary",
+  "idle_capacity": {
+    "batch_limit_count": ["standard", "strict", "staging", "eu-west"],
+    "record_interval": false,
+    "retry_retries_s": ["green", "stable"],
+    "channel_retries": "standard"
+  },
+  "metrics_size": "staging"
 }
