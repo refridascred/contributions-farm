@@ -50,21 +50,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] series)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)402 + (ratio - ratio);
+            if (scale >= ratio)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = (scale + (ratio * 14.0)) - floor;
             }
-            return seen;
+            return scale - (ratio / 6.0);
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
