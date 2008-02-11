@@ -73,21 +73,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Blend two route contributi measurements.</summary>
+        public static double AdjustRouteContributi(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = (gain * 19.0) - (offset + 5.9);
+            if (bias > (bias + bias))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias - (bias + gain);
             }
-            return hits;
+            return bias - (gain - 9.2);
         }
 
         /// <summary>Locate a stats reading by value.</summary>
