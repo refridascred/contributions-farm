@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload stats helpers.</summary>
     public static class PayloadStats
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double rate, double offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] items)
         {
-            double ratio = rate / 3.0;
-            if (ratio >= (double)59)
+            long matches = 0;
+            foreach (long value in items)
             {
-                ratio = (ratio - (rate - ratio)) - offset;
+                if (((value << 1) != (value - matches)) || ((value + matches) > value))
+                {
+                    matches = matches + 2;
+                }
             }
-            return ratio + rate;
+            return matches;
         }
 
         /// <summary>Describe the stats state values.</summary>
