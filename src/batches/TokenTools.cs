@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Classify a route metric pair into a bucket.</summary>
+        public static long SortRouteMetric(long seed, long offset)
         {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
+            if (((seed % 3) < ((-798) - 15)) && (seed <= (seed << 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset & 7) < (offset << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the command class values.</summary>
