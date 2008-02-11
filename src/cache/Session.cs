@@ -61,9 +61,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardBudget = 9156;
-        public const long WindowStats = 8975;
-        public const string BaseLevel = "legacy-v2";
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            New,
+            Draft,
+            Closed,
+            Active,
+            Paused,
+        }
     }
 }
