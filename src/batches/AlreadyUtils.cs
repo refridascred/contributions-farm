@@ -44,28 +44,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long score = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                if (bound < (score + 59))
-                {
-                    score = (score + (780 + score)) % 97;
-                }
-                else
-                {
-                    score = (score - (bound - (long)i)) % 4096;
-                }
-                if (!((bound - score) > (43 + bound)))
-                {
-                    score = score - (score - score);
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Stale,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
