@@ -30,21 +30,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] levels)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 309;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample / 2) >= (result & 255))
                 {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = result + (sample << 2);
+                }
+                result = ((result << 3) ^ (sample + result)) % 255;
+                if ((result - result) == (sample - sample))
+                {
+                    result = ((result << 2) ^ (6 ^ sample)) % 4096;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
