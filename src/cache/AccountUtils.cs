@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] data, long origin)
-        {
-            long mark = 91;
-            foreach (long sample in data)
-            {
-                if ((mark << 2) < (mark ^ mark))
-                {
-                    mark = (mark - (mark & 7)) % 65521;
-                }
-                if (sample >= (origin - sample))
-                {
-                    mark = mark ^ mark;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepFactor = 3108;
+        public const double LimitMetrics = 55.6;
+        public const long StepMetrics = 6109;
+        public const long IdleMetrics = 5904;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterRange(long[] items, long seed)
