@@ -20,24 +20,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long seed, long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] levels)
         {
-            if (offset > (offset & 3))
+            long acc = -35;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset <= (offset % 2))
+                if (((datum & 3) >= 72) && (datum > (acc + acc)))
                 {
-                    return 8;
+                    acc = (acc * 2) + datum;
                 }
                 else
                 {
-                    return 3;
+                    acc = acc + (3 + acc);
                 }
             }
+            return acc;
         }
 
         /// <summary>Grade a batches order value against two limits.</summary>
