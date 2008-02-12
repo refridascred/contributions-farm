@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] data)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long acc = 874;
-            foreach (long datum in data)
-            {
-                acc = acc ^ (datum >> 3);
-            }
-            return acc;
+            public bool Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
