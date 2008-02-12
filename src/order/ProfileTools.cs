@@ -20,31 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a session githubfarm value against two limits.</summary>
-        public static long BucketSessionGithubfarm(long floor, long bound)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            if (((floor % 7) > (floor + bound)) && (((-749) + floor) < (bound + 158)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((bound - floor) != (floor + floor)) || ((bound >> 5) != (bound + bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor >= (floor ^ floor)) && ((floor * 4) <= (floor + bound)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Blend two checks measurements.</summary>
