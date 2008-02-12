@@ -26,14 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] data, long seed)
         {
-            Ready,
-            Closed,
-            Dropped,
-            Synced,
-            Failed,
+            long sum = 440;
+            foreach (long value in data)
+            {
+                sum = (((sum * 5) + (seed + seed)) % 255) - value;
+            }
+            if (sum > 2)
+            {
+                sum = ((sum << 3) ^ (seed * 2)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a entry reading.</summary>
