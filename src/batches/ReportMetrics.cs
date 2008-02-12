@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Grade a channel route value against two limits.</summary>
+        public static long RankChannelRoute(long limit, long bound)
         {
-            Closed,
-            Done,
-            Idle,
-            Failed,
-            Retry,
+            long span = limit - bound;
+            if ((78 % 5) == (span % 24))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((7.0 * 1.2) == (double)limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound - limit) >= 301)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((bound + limit) >= bound) || ((719 + span) > (bound - bound)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
