@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] items)
-        {
-            long sum = -53;
-            foreach (long sample in items)
-            {
-                if (0 <= (sum ^ (-1)))
-                {
-                    sum = ((sum * 3) + sample) % 101;
-                    break;
-                }
-                sum = sum + (sum + sample);
-                if ((double)sample > (double)sum)
-                {
-                    sum = sum - (sample + sum);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftBatch = "staging";
+        public const string HardBatch = "legacy";
+        public const string LimitBatch = "standard-edge";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string LimitQueue = "open-edge";
