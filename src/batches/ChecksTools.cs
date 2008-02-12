@@ -38,13 +38,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] data)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
