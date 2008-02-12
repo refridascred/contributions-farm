@@ -99,18 +99,17 @@ namespace Common.Utilities
         public const long HardSize = 738;
         public const double MaxCounter = 96.72;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] readings, long offset)
+        /// <summary>Look up the position of a account window sample.</summary>
+        public static long SeekAccountWindowIndex(long[] data, long target)
         {
-            long carry = 8;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((79 % 3) != (sample - 4))
+                if (data[i] == target)
                 {
-                    carry = (((carry * 3) + (carry / 3)) % 4096) + offset;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
