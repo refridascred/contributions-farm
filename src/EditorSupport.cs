@@ -71,13 +71,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            New,
-            Retry,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "alpha-edge";
+        public const double WindowBatch = 94.69;
+        public const double LimitBatch = 70.34;
+        public const string WindowInterval = "fallback-edge";
+        public const long RetryBatch = 699;
     }
 }
