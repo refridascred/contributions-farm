@@ -1,7 +1,5 @@
 # support settings
-warm_ttl_count:
-  - strict
-  - strict
-strict: 25.91
-verbose: 83.91
-poll_retries: blue
+flush_threshold_ms: false
+batch_limit: strict
+idle_limit: standard
+compress: true
