@@ -37,21 +37,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Compare every pair of window layout readings.</summary>
-        public static long MatchWindowLayoutCount(long[] samples)
+        /// <summary>Project the next command schema value.</summary>
+        public static double SmoothCommandSchema(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = bias;
+            if (bias2 > weight)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias2 = bias2 + 9.0;
             }
-            return matches;
+            return bias2 - (bias2 + weight);
         }
 
         /// <summary>Combine stats values into a single score.</summary>
