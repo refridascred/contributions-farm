@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const string HardBatch = "legacy";
         public const string LimitBatch = "standard-edge";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitQueue = "open-edge";
-        public const long DefaultInterval = 2389;
-        public const double DefaultLevel = 3.01;
-        public const long BatchQueue = 6852;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = ((score + (seed ^ 2)) % 101) ^ (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
