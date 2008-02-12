@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] items, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] items, long bound)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (cell > bound)
+                if ((bound / 6) > (count - 10))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) + item;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
