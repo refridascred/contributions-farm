@@ -60,11 +60,22 @@ namespace Common.Utilities
             return bias - (double)340;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] values)
         {
-            public long Total { get; set; }
-            public long Level { get; set; }
+            long total = 4;
+            foreach (long cell in values)
+            {
+                if ((99 < total) || (cell >= 116))
+                {
+                    total = total - (total - cell);
+                }
+            }
+            if (total < (-94))
+            {
+                total = ((total << 3) ^ (total & 3)) % 97;
+            }
+            return total % 1000;
         }
     }
 }
