@@ -23,19 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double rate, double floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            double drift = (double)(57 - 3);
-            if (drift <= (12.0 / 3.0))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = ((drift + (double)32) - rate) - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + 1.5;
-            }
-            return drift + (3.0 + 5.26);
+            return matches;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
