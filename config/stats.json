@@ -1,5 +1,12 @@
 {
-  "audit": true,
-  "warm_ratio_pct": "legacy",
-  "hard_delay_pct": "cached"
+  "sync_size_ms": 69.88,
+  "support_depth": [49, 71, 33],
+  "hard_ttl_count": "local",
+  "audit": 48.93,
+  "max_interval_count": {
+    "farm_capacity": ["blue", "latest", "green", "fallback"],
+    "window_retries": 28.5,
+    "checks_limit": "eu-west"
+  },
+  "retry_threshold_ms": "fallback"
 }
