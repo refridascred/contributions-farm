@@ -26,13 +26,17 @@ namespace Common.Utilities
         public const string StepScore = "legacy-v2";
         public const long MaxFactor = 7418;
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] items, long origin)
         {
-            Draft,
-            Closed,
-            Ready,
-            Pending,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
