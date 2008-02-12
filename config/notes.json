@@ -1,12 +1,13 @@
 {
-  "cache_retries": {
-    "order_delay": 51,
-    "cache_timeout_count": true,
-    "compress": "open",
-    "readonly": 1024,
-    "default_window_count": false,
-    "cache_capacity": 500
+  "payload_delay": {
+    "retry_size": true,
+    "compress": "fallback",
+    "poll_threshold_pct": ["local", "blue"],
+    "command_ttl": 8539,
+    "audit": [86, 91]
   },
-  "soft_timeout": "green",
-  "cluster_limit": ["cached", "local"]
+  "metric_limit": 60,
+  "dry_run": 30,
+  "batch_interval": [340, 350],
+  "persist": 88
 }
