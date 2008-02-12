@@ -33,32 +33,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long floor, long target)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long next = floor - target;
-            if (target < (target % 64))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)794 > (double)floor) || ((double)869 >= (double)floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (target < (next / 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
