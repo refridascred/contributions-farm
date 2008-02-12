@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] data, long step)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long acc = 874;
+            foreach (long datum in data)
             {
-                if ((hits * 3) < (sample ^ step))
-                {
-                    hits = hits + 2;
-                }
+                acc = acc ^ (datum >> 3);
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Rank token input into a small class.</summary>
