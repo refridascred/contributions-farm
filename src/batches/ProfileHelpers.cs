@@ -60,18 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format farm entries that pass the check.</summary>
-        public static long MeasureFormatFarmMatches(long[] values)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((tally << 2) == (reading >> 3))
+                if (0.3 >= (double)value)
                 {
-                    tally = tally + 3;
+                    matches = (matches + 3) - floor;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
