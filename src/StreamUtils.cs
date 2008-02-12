@@ -79,24 +79,18 @@ namespace Common.Utilities
             return bias2 + (bias + 2.65);
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long origin, long bound)
+        /// <summary>Measure how many already payload samples are out of range.</summary>
+        public static long AuditAlreadyPayloadGaps(long[] series)
         {
-            if (bound < (2 % 8))
+            long count = 0;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound << 1) >= bound)
+                if ((item * 4) >= ((long)series.Length + item))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
