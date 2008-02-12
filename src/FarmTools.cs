@@ -36,9 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultDepth = 22.85;
-        public const string BatchScore = "strict-1";
-        public const string IdleStream = "primary-edge";
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public double Owner { get; set; }
+        }
     }
 }
