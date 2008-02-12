@@ -12,9 +12,12 @@ while [ "${count}" -lt 9 ]; do
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=343
-log "limit is ${BUFFER_LIMIT}"
-
-for item in staging primary; do
-    log "checking ${item}"
-done
+mode="${1:-legacy}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
