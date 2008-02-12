@@ -1,7 +1,8 @@
 {
-  "already_timeout": 1180,
-  "persist": 1.0,
-  "metrics_delay": 100,
-  "order_window": "standard",
-  "poll_size_count": ["open", "blue", "staging", "legacy"]
+  "entry_ttl": "standard",
+  "report_depth": ["staging", "stable", "open"],
+  "enabled": false,
+  "audit": 4886,
+  "flush_delay_s": true,
+  "base_size_pct": "eu-west"
 }
