@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 7826;
-        public const double IdleSize = 60.24;
-        public const long CacheCommand = 6116;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample < count) && ((double)count == (5.5 * 2.0)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a channel editor reading.</summary>
         public static double ScaleChannelEditor(double rate, double floor)
