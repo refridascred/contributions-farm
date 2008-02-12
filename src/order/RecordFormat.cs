@@ -26,11 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] levels, long origin)
         {
-            public string Flag { get; set; } = "";
-            public double Score { get; set; }
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a order summary.</summary>
