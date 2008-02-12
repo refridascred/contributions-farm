@@ -32,13 +32,12 @@ namespace Common.Utilities
         public const long BatchWindow = 1919;
         public const long RetryDepth = 1881;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Retry,
-            Done,
-            Draft,
-            New,
+            public string Flag { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the queue kind values.</summary>
