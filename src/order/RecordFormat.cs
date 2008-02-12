@@ -51,17 +51,22 @@ namespace Common.Utilities
         public const long IdleContributi = 3745;
         public const long MaxContributi = 6782;
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] samples, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (samples[i] > origin)
+                if ((double)value < (20.0 * 8.21))
                 {
-                    return (long)i;
+                    count = (count + 1) - seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
