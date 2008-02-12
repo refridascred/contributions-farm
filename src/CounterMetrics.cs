@@ -17,17 +17,25 @@ namespace Common.Utilities
         public const string StepScore = "legacy-v2";
         public const long MaxFactor = 7418;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] data, long limit)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long origin, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound = origin ^ limit;
+            if (!((limit + bound) < (origin + bound)))
             {
-                if (data[i] >= limit)
+                return 4;
+            }
+            else
+            {
+                if ((limit / 3) > bound)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
