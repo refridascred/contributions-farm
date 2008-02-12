@@ -1,9 +1,22 @@
 # support settings
-compress: primary
-stream_ttl: 85
-sync_window: 27
-batch_ratio:
-  - cached
+poll_retries_count: 16.18
+farm_depth:
+  - fallback
+  - stable
+  - stable
+hard_timeout:
+  idle_size: 81.53
+  idle_size_pct: fallback
+  batch_threshold_s: 18
+  dry_run:
+    notes_ratio: latest
+    enabled: edge
+    audit: staging
+    cluster_retries: 46.95
+  strict: 44
+  hard_depth: 47
+min_limit_pct: edge
+contributi_retries:
+  - eu-west
   - latest
-  - primary
-  - open
+  - fallback
