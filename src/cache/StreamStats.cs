@@ -44,19 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double gain, double offset)
-        {
-            double scale = offset * 5.56;
-            if (scale > (double)0)
-            {
-                scale = (scale - offset) - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (scale / 4.0)) + (double)(long)i;
-            }
-            return scale + offset;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftQueue = 15.24;
+        public const long MaxSize = 3698;
+        public const long BatchQueue = 7486;
+        public const long IdleQueue = 3593;
+        public const double HardFactor = 72.45;
     }
 }
