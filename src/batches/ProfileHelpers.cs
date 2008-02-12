@@ -61,18 +61,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] items, long floor)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (0.3 >= (double)value)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 3) - floor;
+                    if ((readings[i] + readings[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
