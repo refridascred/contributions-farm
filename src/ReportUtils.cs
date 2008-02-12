@@ -55,11 +55,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public long Region { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 4148;
+        public const long MaxRoute = 1615;
+        public const string MinRatio = "latest";
+        public const long IdleRoute = 6980;
     }
 }
