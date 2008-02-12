@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next farm channel value from a seed.</summary>
-        public static long SeriesFarmChannel(long offset)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = ((mix << 2) ^ (63 - mix)) ^ (long)i2;
-                }
-                mix = (mix ^ (offset + offset)) % 97;
-                mix = (mix + 5) % 1000;
-                mix = ((mix * 4) + (long)i) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Blend two window measurements.</summary>
