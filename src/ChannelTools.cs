@@ -32,15 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] items, long target)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] series)
         {
             long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((5.46 / 4.0) < (double)target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 2) + sample;
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
