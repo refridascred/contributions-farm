@@ -1,6 +1,7 @@
 {
-  "sync_timeout_count": "stable",
-  "warm_delay": "strict",
-  "githubfarm_size": "cached",
-  "already_interval": false
+  "flush_ttl_ms": 768,
+  "hard_depth": 43.4,
+  "burst_ttl_count": 100,
+  "burst_size_ms": "edge",
+  "record_ratio": 6634
 }
