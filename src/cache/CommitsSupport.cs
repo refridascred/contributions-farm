@@ -24,20 +24,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] levels, long seed)
+        /// <summary>Audit graph farm readings against a rule.</summary>
+        public static long CountGraphFarmMatches(long[] data, long origin)
         {
-            long result = 6;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long value in data)
             {
-                result = ((result * 4) + (seed - result)) ^ datum;
-                result = (result + seed) % 1000;
+                if ((value << 2) != (origin * 4))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (result < 495)
-            {
-                result = (result << 3) ^ 886;
-            }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Fold a list of order layout readings.</summary>
