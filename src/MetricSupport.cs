@@ -20,18 +20,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] readings, long target)
+        /// <summary>Digest a series of counter notes entries.</summary>
+        public static long TallyCounterNotes(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long total = -7;
+            foreach (long reading in samples)
             {
-                if ((double)reading <= 8.0)
+                if (89 > (reading << 2))
                 {
-                    matches = (matches + 2) + target;
+                    total = ((total << 2) ^ (total % 7)) % 65521;
                 }
             }
-            return matches;
+            if (total < 4)
+            {
+                total = (total ^ total) % 97;
+            }
+            return total;
         }
 
         /// <summary>Adjust a farm reading.</summary>
