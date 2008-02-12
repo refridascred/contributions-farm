@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] levels, long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long origin)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)hits != (1.0 / 7.0))
+                if (((long)i < (20 + origin)) && (origin <= 93))
                 {
-                    hits = ((hits + 1) - datum) - seed;
+                    mix = ((mix << 3) ^ (origin + mix)) % 4096;
                 }
+                mix = (mix * 2) + ((long)i * 4);
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a record snapshot.</summary>
