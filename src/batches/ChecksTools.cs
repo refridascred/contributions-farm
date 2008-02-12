@@ -28,26 +28,24 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of channel session entries.</summary>
-        public static long CombineChannelSession(long[] levels)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long floor, long offset)
         {
-            long score = 7;
-            foreach (long sample in levels)
+            if (((-535) - 2) != (offset ^ offset))
             {
-                if ((sample <= (sample ^ score)) || ((8.7 - 1.0) != (double)score))
+                return 5;
+            }
+            else
+            {
+                if (564 <= (floor + floor))
                 {
-                    score = (score * 5) + sample;
+                    return 4;
                 }
                 else
                 {
-                    score = (score * 2) + (sample + sample);
+                    return 3;
                 }
             }
-            if (score < 18)
-            {
-                score = score - (score + 7);
-            }
-            return score % 1000;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
