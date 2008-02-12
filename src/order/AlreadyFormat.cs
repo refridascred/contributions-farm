@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 6670;
+        public const long DefaultTimeout = 9629;
+        public const long IdleBuffer = 5222;
+        public const long SoftBuffer = 2630;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long TallyRecordOutliers(long[] values, long step)
