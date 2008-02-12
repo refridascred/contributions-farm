@@ -1,8 +1,16 @@
 {
-  "default_depth_count": "stable",
-  "audit": true,
-  "persist": true,
-  "idle_timeout": "open",
-  "layout_size": "open",
-  "sync_timeout": true
+  "audit": {
+    "dry_run": "staging",
+    "retry_capacity_s": {
+      "hard_interval": "cached",
+      "enabled": true,
+      "schema_size": 500,
+      "base_retries": 60,
+      "min_size_pct": "eu-west"
+    },
+    "graph_depth": true
+  },
+  "flush_depth_s": "latest",
+  "min_timeout": 49.98,
+  "poll_depth_pct": 58
 }
