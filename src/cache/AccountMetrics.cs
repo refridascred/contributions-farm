@@ -17,21 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] samples)
+        /// <summary>Check that every batch order entry stays within the limit.</summary>
+        public static bool CheckBatchOrderRange(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item > limit)
                 {
-                    if ((samples[i] ^ samples[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the record class values.</summary>
