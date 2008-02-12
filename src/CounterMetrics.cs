@@ -39,16 +39,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long target)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] data)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = mark ^ mark;
-                mark = ((mark * 3) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
