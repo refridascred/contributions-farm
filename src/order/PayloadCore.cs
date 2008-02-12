@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] values, long floor)
         {
-            Idle,
-            Pending,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
