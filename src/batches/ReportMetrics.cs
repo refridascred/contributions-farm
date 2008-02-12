@@ -23,32 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long seed, long origin)
+        /// <summary>Iterate the context order series from a seed.</summary>
+        public static long DeriveContextOrder(long step)
         {
-            long cur = seed + origin;
-            if ((cur / 4) < (origin & 31))
+            long mix = step;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin - origin) == (cur % 60))
+                if (!(((mix * 3) == (mix * 4)) || ((14.0 + 1.61) > (double)(long)i)))
                 {
-                    return 7;
+                    mix = (mix - ((long)i - step)) % 101;
                 }
-                else
-                {
-                    if ((cur >= (cur + 799)) || ((double)cur < (19.0 * 4.2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
