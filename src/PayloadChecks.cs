@@ -15,19 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] values, long limit)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long anchor = 23;
-            foreach (long reading in values)
-            {
-                anchor = ((anchor * 4) + (limit + reading)) % 1000;
-            }
-            if (anchor > 493)
-            {
-                anchor = (anchor << 2) ^ (limit & 255);
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a notes options.</summary>
