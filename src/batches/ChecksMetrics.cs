@@ -20,18 +20,15 @@ namespace Common.Utilities
             return mean + (4.91 * 2.33);
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)7 < (double)hits)
                 {
-                    if ((series[i] - series[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) + cell;
                 }
             }
             return hits;
