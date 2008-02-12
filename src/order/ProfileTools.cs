@@ -20,18 +20,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] levels, long target)
+        /// <summary>Grade a session githubfarm value against two limits.</summary>
+        public static long BucketSessionGithubfarm(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            if (((floor % 7) > (floor + bound)) && (((-749) + floor) < (bound + 158)))
             {
-                if (!((double)target == (3.0 - 2.6)))
+                return 8;
+            }
+            else
+            {
+                if (((bound - floor) != (floor + floor)) || ((bound >> 5) != (bound + bound)))
                 {
-                    seen = (seen + 1) + value;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor >= (floor ^ floor)) && ((floor * 4) <= (floor + bound)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a schema record.</summary>
