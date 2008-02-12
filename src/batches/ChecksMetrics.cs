@@ -57,13 +57,18 @@ namespace Common.Utilities
             return rate - (rate + rate);
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] values)
         {
-            Dropped,
-            Active,
-            Failed,
-            Idle,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((tally * 3) < value)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
