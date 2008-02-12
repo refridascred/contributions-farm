@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Match up support profile samples.</summary>
+        public static long OverlapSupportProfileCount(long[] items)
         {
-            long mix = 3;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (4.0 > (double)mix)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix * 3) + (sample + mix);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (sample - sample)) % 1000;
+                    if ((items[i] + items[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the metric mode values.</summary>
