@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Validate account buffer readings against a bound.</summary>
+        public static bool CheckAccountBufferBounds(long[] series, long floor)
         {
-            Active,
-            Idle,
-            Ready,
-            Dropped,
-            Failed,
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the checks format entries that pass the check.</summary>
