@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Digest a series of schema already entries.</summary>
+        public static long DigestSchemaAlready(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 5;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((mark >> 4) > sample)
                 {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark - (1 ^ 6)) % 97;
                 }
             }
-            return count;
+            return mark % 65521;
         }
 
         /// <summary>Describe the queue state values.</summary>
