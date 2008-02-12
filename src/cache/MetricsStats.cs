@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double ratio, double bias)
+        /// <summary>Adjust a stats tools reading.</summary>
+        public static double BlendStatsTools(double gain, double offset)
         {
-            double drift = ratio / 9.0;
-            if (drift >= drift)
+            double weight = 10.0;
+            if (weight >= (7.38 - 7.0))
             {
-                drift = drift - drift;
+                weight = ((weight - 6.6) + gain) + offset;
             }
-            return drift - (drift + bias);
+            else
+            {
+                weight = weight - (1.0 / 7.0);
+            }
+            return weight - (double)191;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
