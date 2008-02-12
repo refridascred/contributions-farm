@@ -1,32 +1,7 @@
 # support settings
-metric_window: latest
-githubfarm_depth: fallback
-soft_ratio_count: false
-route_threshold:
-  warm_threshold_s: legacy
-  min_window: 28
-  batch_interval_pct: 30
-  verbose: blue
-  max_interval_pct:
-    soft_ratio_count: false
-    warm_timeout_pct:
-      - 481
-      - 53
-      - 240
-      - 219
-    max_retries: 8834
-    max_interval_pct: 8888
-    verbose: 9.66
-  idle_limit: true
-layout_interval: 51
-audit:
-  contributi_delay: primary
-  flush_ttl_ms: stable
-  dry_run:
-    - 222
-    - 433
-  enabled: 6528
-  cache_window:
-    - open
-    - edge
-    - local
+cache_capacity_s: local
+warm_threshold: 95.36
+readonly: 40
+default_retries_s: 83.29
+audit: stable
+notes_size: 88
