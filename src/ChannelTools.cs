@@ -38,19 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the buffer payload series from a seed.</summary>
-        public static long DeriveBufferPayload(long seed)
+        /// <summary>Project the next cluster stats value.</summary>
+        public static double ScaleClusterStats(double rate, double span)
         {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
+            double scale = (double)7 * 16.0;
+            if (scale < 8.58)
             {
-                if ((total + seed) <= (total - seed))
-                {
-                    total = (total + (total + total)) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 1000;
+                scale = (scale - (double)16) - rate;
             }
-            return total;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (span + span)) - (double)(long)i;
+            }
+            return scale - 7.27;
         }
     }
 }
