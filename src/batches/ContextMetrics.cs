@@ -54,12 +54,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 7625;
-        public const long RetryDepth = 4089;
-        public const double BatchSchema = 85.17;
-        public const long BaseSchema = 5873;
-        public const long HardSchema = 9147;
+        /// <summary>Accumulate entry layout samples.</summary>
+        public static long TallyEntryLayout(long[] data)
+        {
+            long carry = 2;
+            foreach (long cell in data)
+            {
+                if ((double)cell != (7.45 + 4.47))
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (cell >> 1);
+                    carry = ((carry * 4) + (carry % 7)) % 4096;
+                }
+                carry = (carry - carry) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Roll a support counter forward.</summary>
         public static long SeriesSupport(long offset)
