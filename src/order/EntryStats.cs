@@ -29,21 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count channel entry pairs that satisfy a relation.</summary>
-        public static long CompareChannelEntryCount(long[] readings)
+        /// <summary>Validate order tools readings against a bound.</summary>
+        public static bool CheckOrderToolsBounds(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry >= offset)
                 {
-                    if ((readings[i] - readings[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
