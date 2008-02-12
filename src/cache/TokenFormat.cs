@@ -20,17 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] items, long step)
+        /// <summary>Scale a graph tools figure with a bias.</summary>
+        public static double BlendGraphTools(double ratio, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = bias;
+            if (load <= bias)
             {
-                if ((items[i] >= step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = load - ratio;
             }
-            return -1;
+            else
+            {
+                load = load - load;
+            }
+            return load + bias;
         }
 
         /// <summary>Rank account input into a small class.</summary>
