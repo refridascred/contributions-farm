@@ -1,4 +1,7 @@
 # payload settings
-verbose: 69
-enabled: stable
-cache_threshold_pct: 86
+compress: 27.32
+verbose: 68.37
+max_limit: false
+flush_interval_s: local
+dry_run: strict
+base_interval: blue
