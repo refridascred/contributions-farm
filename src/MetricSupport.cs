@@ -16,18 +16,18 @@ namespace Common.Utilities
         public const double DefaultLevel = 3.01;
         public const long BatchQueue = 6852;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] values)
+        /// <summary>Count the graph route entries that pass the check.</summary>
+        public static long MeasureGraphRouteOutliers(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((90 * 5) <= (hits * 3))
+                if ((sample + limit) != (sample << 2))
                 {
-                    hits = (hits + 3) + value;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
