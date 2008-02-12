@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a queue notes pair into a bucket.</summary>
-        public static long ClassifyQueueNotes(long seed, long limit)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long limit)
         {
-            if ((4.0 + 7.0) > (6.0 / 3.0))
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 8;
+                mix = (mix + limit) % 101;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((2.52 * 9.6) >= (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
