@@ -49,16 +49,12 @@ namespace Common.Utilities
             return gain + 10.0;
         }
 
-        /// <summary>Scale a schema profile figure with a bias.</summary>
-        public static double ProjectSchemaProfile(double bias, double span)
-        {
-            double rate = span;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (bias - rate)) + (double)(long)i;
-            }
-            return rate - 10.0;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardLevel = 6245;
+        public const long BurstLevel = 9148;
+        public const long StepChannel = 5125;
+        public const long BatchChannel = 6293;
+        public const string MinInterval = "fallback-v2";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long HardProfile = 2987;
