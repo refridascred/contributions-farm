@@ -54,18 +54,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] levels, long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] levels)
         {
-            long result = 276;
+            long score = 486;
             foreach (long value in levels)
             {
-                if (result >= (41 + bound))
+                if ((26 + score) > ((-5) + (long)levels.Length))
                 {
-                    result = ((result - (1 << 1)) % 1000) ^ value;
+                    score = (score + value) % 255;
                 }
+                else
+                {
+                    score = (score ^ (score - score)) % 1000;
+                }
+                score = ((score << 2) ^ (score / 7)) % 101;
             }
-            return result % 1000;
+            if (score > 0)
+            {
+                score = score - (score - score);
+            }
+            return score % 97;
         }
 
         /// <summary>Derive the next tools contributi value from a seed.</summary>
