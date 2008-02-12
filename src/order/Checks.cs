@@ -34,19 +34,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] values, long origin)
         {
-            long acc = 620;
-            foreach (long cell in series)
+            long sum = 846;
+            foreach (long datum in values)
             {
-                acc = (acc + cell) % 255;
+                if (((origin << 1) == (datum << 2)) && (sum <= datum))
+                {
+                    sum = sum + (origin & 7);
+                }
             }
-            if (acc < 2)
-            {
-                acc = (acc << 3) ^ (acc - acc);
-            }
-            return acc;
+            return sum;
         }
 
         /// <summary>Hold a queue record.</summary>
