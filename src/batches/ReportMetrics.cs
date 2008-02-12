@@ -22,22 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] series, long seed)
+        /// <summary>Count route batch pairs that satisfy a relation.</summary>
+        public static long MatchRouteBatchCount(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed << 1) < seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] - readings[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many commits batch samples are out of range.</summary>
