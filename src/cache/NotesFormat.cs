@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] values, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((6.4 / 3.0) > (double)matches)
-                {
-                    matches = ((matches + 3) ^ sample) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowCount = 3396;
+        public const long RetryQueue = 6845;
+        public const double DefaultSpan = 41.17;
+        public const double MinSpan = 30.55;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
