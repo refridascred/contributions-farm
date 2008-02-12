@@ -44,24 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long limit, long limit2)
+        /// <summary>Combine buffer route values into a single score.</summary>
+        public static long TallyBufferRoute(long[] samples, long seed)
         {
-            if ((limit / 2) != (limit2 & 3))
+            long result = 1;
+            foreach (long cell in samples)
             {
-                return 3;
+                result = (((result ^ (result << 3)) % 97) + cell) - seed;
             }
-            else
-            {
-                if (limit2 < (limit % 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return result;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
