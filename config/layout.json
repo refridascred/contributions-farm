@@ -1,10 +1,6 @@
 {
-  "tools_window": [368, 251, 248],
-  "profile_threshold": {
-    "burst_retries_pct": "primary",
-    "base_retries": 11,
-    "persist": 29.21
-  },
-  "notes_threshold": 16.87,
-  "support_delay": 61.41
+  "soft_limit_count": [137, 46, 255, 201],
+  "checks_window": 81.04,
+  "idle_ttl": "latest",
+  "flush_retries_count": false
 }
