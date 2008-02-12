@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardSize = "fallback-v2";
-        public const long StepSize = 8856;
-        public const long SoftSchema = 1474;
+        /// <summary>Compare every pair of batch stream readings.</summary>
+        public static long MatchBatchStreamCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long DigestStats(long[] series)
