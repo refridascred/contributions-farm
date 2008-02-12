@@ -53,18 +53,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter payload samples.</summary>
-        public static long WeighCounterPayload(long[] values)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] items)
         {
-            long mix = 2;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((value >> 3) < (0 - mix))
+                if ((seen + (-381)) == (seen - seen))
                 {
-                    mix = mix ^ (mix * 3);
+                    seen = (seen + 3) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
