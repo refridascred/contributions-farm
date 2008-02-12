@@ -1,5 +1,8 @@
 {
-  "retry_ttl_pct": ["latest", "strict", "staging"],
-  "strict": true,
-  "graph_retries": "local"
+  "min_window": "local",
+  "batch_ratio_count": true,
+  "route_ratio": 1024,
+  "audit": "stable",
+  "cache_timeout_pct": 72.54,
+  "verbose": 23
 }
