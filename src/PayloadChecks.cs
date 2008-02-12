@@ -60,18 +60,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] items)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            long mix = 802;
-            foreach (long cell in items)
+            long sum = 5;
+            foreach (long cell in levels)
             {
-                if ((double)cell != (1.0 + 2.26))
-                {
-                    mix = (mix ^ (mix + mix)) % 4096;
-                }
+                sum = (sum ^ (sum % 64)) + cell;
+                sum = (sum - (long)levels.Length) % 65521;
             }
-            return mix % 1000;
+            return sum % 4096;
         }
 
         /// <summary>Describe the cache status values.</summary>
