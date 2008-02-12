@@ -14,22 +14,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] series, long floor)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] items)
         {
-            long result = 751;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((floor - result) != (result / 5)) || (3 >= (result % 12)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = ((result ^ ((-696) & 7)) % 97) + reading;
-                }
-                if (!((3.61 + 8.0) <= (double)result))
-                {
-                    break;
+                    if ((items[i] - items[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Describe the already state values.</summary>
