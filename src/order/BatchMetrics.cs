@@ -24,19 +24,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] data, long target)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a contributi entry.</summary>
