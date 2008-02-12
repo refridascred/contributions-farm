@@ -39,21 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count token profile pairs that satisfy a relation.</summary>
-        public static long CompareTokenProfileCount(long[] items)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a session command reading by value.</summary>
