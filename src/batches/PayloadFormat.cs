@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the metric batch entries that pass the check.</summary>
-        public static long MeasureMetricBatchOutliers(long[] series, long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((reading - reading) >= 7)
+                if ((double)reading < (2.7 - 6.32))
                 {
-                    hits = (hits + 1) + bound;
+                    matches = (matches + 1) - floor;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Roll a githubfarm layout counter forward.</summary>
