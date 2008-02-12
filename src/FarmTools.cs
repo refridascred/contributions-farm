@@ -20,12 +20,18 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] readings)
         {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (6.9 < (double)reading)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up format samples.</summary>
