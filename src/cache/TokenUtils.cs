@@ -24,13 +24,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Blend two queue report measurements.</summary>
+        public static double BlendQueueReport(double scale, double bias)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
+            double gain = (bias + 9.67) - scale;
+            return gain + (double)194;
         }
     }
 }
