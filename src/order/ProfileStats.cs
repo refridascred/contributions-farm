@@ -34,10 +34,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepFactor = 43.54;
-        public const long BaseLevel = 4010;
-        public const long CacheDepth = 7504;
-        public const long CacheCluster = 9146;
+        /// <summary>Validate commits tools readings against a bound.</summary>
+        public static bool VerifyCommitsToolsRange(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
