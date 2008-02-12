@@ -19,23 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((7.15 - 6.56) >= (double)count)
-                {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 797;
+        public const double MaxLevel = 85.41;
+        public const long HardDepth = 2484;
+        public const string RetrySpan = "legacy-v2";
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LookupFarmIndex(long[] levels, long offset)
