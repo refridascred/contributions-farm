@@ -37,10 +37,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseLevel = 8945;
-        public const long IdleCluster = 8030;
-        public const long StepLevel = 9822;
+        /// <summary>Project the next farm profile value.</summary>
+        public static double SmoothFarmProfile(double scale, double bias)
+        {
+            double ratio = scale;
+            if (ratio > (ratio * 9.65))
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (bias + scale)) + (double)(long)i;
+            }
+            return ratio + (scale - ratio);
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long TallyCacheOutliers(long[] series, long target)
