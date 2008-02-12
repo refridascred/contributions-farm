@@ -20,19 +20,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] items, long target)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
+            public double Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Match up account order samples.</summary>
