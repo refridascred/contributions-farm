@@ -20,18 +20,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many tools queue samples are out of range.</summary>
-        public static long AuditToolsQueueHits(long[] data)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long acc = 0;
+            foreach (long entry in items)
             {
-                if (seen < 13)
+                if ((acc + origin) > ((long)items.Length - acc))
                 {
-                    seen = (seen + 2) + sample;
+                    acc = (((acc * 5) + origin) % 4096) + entry;
                 }
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
