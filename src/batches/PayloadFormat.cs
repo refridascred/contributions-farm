@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every cluster format entry stays within the limit.</summary>
-        public static bool GuardClusterFormatBounds(long[] data, long seed)
+        /// <summary>Count the metric batch entries that pass the check.</summary>
+        public static long MeasureMetricBatchOutliers(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (sample <= seed)
+                if ((reading - reading) >= 7)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) + bound;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the schema state values.</summary>
