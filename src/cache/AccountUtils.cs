@@ -36,11 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxSize = 676;
-        public const long CacheWidth = 5930;
-        public const double BatchFactor = 15.77;
-        public const double BatchDepth = 90.1;
-        public const long BaseSize = 517;
+        /// <summary>Locate a session command reading by value.</summary>
+        public static long LookupSessionCommandIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
