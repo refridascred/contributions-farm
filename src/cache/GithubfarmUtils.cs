@@ -19,21 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] samples)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 74;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)item > 9.3) || (((long)readings.Length ^ item) > (seed - 0)))
                 {
-                    if ((samples[i] + samples[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total ^ (total + (long)readings.Length)) % 4096;
+                }
+                if ((total / 7) <= (total - total))
+                {
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Describe the editor class values.</summary>
