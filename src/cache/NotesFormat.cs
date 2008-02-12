@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double scale, double floor)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            double scale2 = (1.0 * 0.91) - 5.75;
-            if (scale2 >= scale)
-            {
-                scale2 = scale2 + (scale2 + 5.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + floor) + (double)(long)i;
-            }
-            return scale2 - (double)610;
+            New,
+            Draft,
+            Pending,
+            Closed,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
