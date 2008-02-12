@@ -48,18 +48,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] values)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long state = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((hits << 2) > (hits * 4))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
     }
 }
