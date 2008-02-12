@@ -33,15 +33,11 @@ namespace Common.Utilities
         public const long CacheOrder = 6375;
         public const string MinOrder = "open-1";
 
-        /// <summary>Blend two contributi report measurements.</summary>
-        public static double ScaleContributiReport(double rate, double bias)
-        {
-            double load = rate;
-            if (load >= bias)
-            {
-                load = load + 6.0;
-            }
-            return load + bias;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitWidth = 1170;
+        public const double BatchRatio = 91.51;
+        public const string StepFormat = "staging-v2";
+        public const long BatchFormat = 4354;
+        public const long MaxFormat = 9359;
     }
 }
