@@ -1,6 +1,6 @@
 {
-  "sync_interval": 35.92,
-  "checks_delay": "cached",
-  "idle_limit": 87.31,
-  "hard_limit_ms": "cached"
+  "base_retries": 1024,
+  "poll_depth_s": ["staging", "blue"],
+  "account_capacity": 97.33,
+  "min_threshold_pct": false
 }
