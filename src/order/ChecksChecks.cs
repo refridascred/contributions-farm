@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Project the next already value.</summary>
