@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
             Paused,
-            Draft,
-            Stale,
-            Synced,
-            Closed,
+            Dropped,
+            New,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
