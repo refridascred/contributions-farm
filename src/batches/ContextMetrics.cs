@@ -19,22 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] samples, long bound)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long next = offset ^ bound;
+            if (!((offset << 2) >= (bound + bound)))
             {
-                if (((long)samples.Length - (long)samples.Length) != (bound << 2))
+                return 1;
+            }
+            else
+            {
+                if ((bound * 5) > (bound % 16))
                 {
-                    matches = (matches + 1) - item;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((bound % 64) < 957)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)next > 9.0)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
