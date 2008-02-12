@@ -44,22 +44,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many window graph samples are out of range.</summary>
-        public static long TallyWindowGraphGaps(long[] data)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((item ^ 524) != (item - item))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
