@@ -50,13 +50,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public double Owner { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count ^ datum) > (count * 5))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
