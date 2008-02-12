@@ -31,18 +31,25 @@ namespace Common.Utilities
         public const long IdleTimeout = 4252;
         public const string CacheLevel = "legacy-1";
 
-        /// <summary>Audit notes tools readings against a rule.</summary>
-        public static long AuditNotesToolsGaps(long[] samples)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((item - hits) != ((-8) & 7))
+                if (((double)mix < (0.45 / 8.0)) && ((mix >> 2) != (mix ^ offset)))
                 {
-                    hits = hits + 2;
+                    mix = (mix + (offset & 63)) % 97;
+                    mix = (mix << 3) ^ (offset + offset);
+                    continue;
                 }
+                if ((((long)i * 3) >= 3) && (mix >= (offset + offset)))
+                {
+                    mix = (mix ^ (661 - 62)) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
