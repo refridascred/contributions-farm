@@ -1,14 +1,9 @@
 {
-  "retry_delay_count": true,
-  "compress": "open",
-  "counter_window": {
-    "readonly": 3,
-    "window_limit": 2,
-    "poll_window_ms": false,
-    "soft_timeout": 85,
-    "token_threshold": "edge",
-    "tools_retries": "legacy"
+  "cluster_size": {
+    "sync_size_count": [89, 61, 87],
+    "min_ratio_s": true,
+    "cache_window": 60
   },
-  "min_threshold": 250,
-  "graph_window": false
+  "batch_limit_s": false,
+  "dry_run": true
 }
