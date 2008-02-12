@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Combine filter metrics values into a single score.</summary>
+        public static long TotalFilterMetrics(long[] series, long step)
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            long mix = 56;
+            foreach (long entry in series)
+            {
+                if (((step * 5) < step) && ((step >> 2) < (entry / 9)))
+                {
+                    mix = (mix ^ (entry + mix)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (step + 898)) % 255;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
