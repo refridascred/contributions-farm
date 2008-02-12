@@ -1,4 +1,14 @@
 # entry settings
-soft_interval: 350
-cache_size_s: 30
-warm_ttl_pct: standard
+batch_retries: staging
+enabled: 1024
+cache_threshold_pct:
+  poll_ttl: 31.11
+  flush_size: primary
+  sync_interval_pct:
+    flush_capacity_s: latest
+    min_ratio_pct: 79.94
+    verbose: true
+    idle_window_ms: 80
+  batch_retries: 99
+audit: false
+max_ttl_count: 500
