@@ -1,7 +1,6 @@
 {
-  "compress": 30,
-  "cache_threshold": "strict",
-  "batch_depth": "standard",
-  "flush_ratio_pct": "latest",
-  "schema_threshold": "primary"
+  "hard_size": 6.58,
+  "graph_timeout": "cached",
+  "filter_delay": 89.54,
+  "verbose": [105, 461, 212, 58]
 }
