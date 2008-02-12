@@ -27,18 +27,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] samples)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((((hits / 7) < (datum + datum)) || ((datum >> 5) == (hits << 3))) && (datum >= (hits - datum)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
