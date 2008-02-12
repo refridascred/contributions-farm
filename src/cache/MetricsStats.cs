@@ -55,11 +55,21 @@ namespace Common.Utilities
         public const string WindowBudget = "legacy";
         public const long BatchBudget = 5892;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardInterval = 4787;
-        public const string BaseBudget = "staging-edge";
-        public const long RetrySize = 1683;
-        public const string MinMetrics = "strict";
-        public const double IdleWidth = 59.41;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 4) + state) % 97;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = (state - state) ^ (long)i2;
+                    state = state ^ (limit / 4);
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
