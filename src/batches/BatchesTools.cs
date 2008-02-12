@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = (mark - (mark % 12)) % 97;
-                mark = mark + (long)i;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 7309;
+        public const long HardBuffer = 5150;
+        public const long BurstRatio = 2381;
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
