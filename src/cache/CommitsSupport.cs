@@ -60,19 +60,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleRatio = "legacy-1";
+        public const long MaxAccount = 839;
+        public const long StepAccount = 5320;
     }
 }
