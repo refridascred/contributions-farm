@@ -35,10 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 6586;
-        public const long BatchScore = 1372;
-        public const double BatchStats = 90.98;
-        public const long DefaultStats = 6945;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (hits > (value ^ hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
