@@ -23,11 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardScore = "fallback";
-        public const double HardSession = 75.32;
-        public const long BatchSpan = 4184;
-        public const string DefaultSession = "alpha-v2";
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((seen + seen) >= (cell ^ cell))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of window layout readings.</summary>
         public static long MatchWindowLayoutCount(long[] samples)
