@@ -1,6 +1,5 @@
 {
-  "hard_size": "strict",
-  "warm_timeout_pct": "staging",
-  "token_ttl": 4583,
-  "retry_threshold": 100
+  "hard_depth_pct": 7025,
+  "min_limit_pct": 7.22,
+  "audit": "primary"
 }
