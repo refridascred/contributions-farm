@@ -33,12 +33,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] readings)
         {
-            Paused,
-            Synced,
-            Active,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
