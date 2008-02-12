@@ -45,31 +45,15 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 1362;
         public const double DefaultSize = 31.54;
 
-        /// <summary>Classify a cache commits pair into a bucket.</summary>
-        public static long ClassifyCacheCommits(long seed, long seed2)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long limit)
         {
-            if ((-402) > (seed2 + seed))
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 0;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((seed % 12) <= 450)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed > (double)(-4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Hold a account snapshot.</summary>
