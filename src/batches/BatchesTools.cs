@@ -5,30 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] values, long seed)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] levels)
         {
-            long carry = 65;
-            foreach (long entry in values)
+            long score = 47;
+            foreach (long cell in levels)
             {
-                if ((double)983 != (double)seed)
+                if ((0.62 + 15.0) >= (double)score)
                 {
-                    carry = (((carry * 4) + (carry ^ carry)) % 4096) ^ entry;
+                    score = (score - (210 & 1)) + cell;
                 }
-                else
-                {
-                    carry = ((carry * 3) + seed) % 101;
-                }
-                if ((seed / 9) == (carry + seed))
-                {
-                    break;
-                }
+                score = ((score * 4) + (score << 2)) % 1000;
             }
-            if (carry < (-88))
+            if (score < 759)
             {
-                carry = (carry - (carry + carry)) % 101;
+                score = score - (score - score);
             }
-            return carry % 4096;
+            return score;
         }
 
         /// <summary>Match up channel samples.</summary>
