@@ -1,14 +1,7 @@
 {
-  "enabled": [103, 369],
-  "default_interval": [375, 109],
-  "cache_size_ms": {
-    "entry_window": "blue",
-    "min_depth": false,
-    "account_depth": 30,
-    "schema_limit": true,
-    "retry_timeout_ms": 250,
-    "persist": ["legacy", "strict", "local", "strict"]
-  },
-  "base_interval_pct": 100,
-  "warm_interval": "legacy"
+  "cache_ttl_ms": 8120,
+  "base_window": "cached",
+  "warm_interval_ms": true,
+  "min_threshold_s": false,
+  "retry_retries_s": 100
 }
