@@ -27,13 +27,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] items, long bound)
         {
-            Queued,
-            Locked,
-            Idle,
-            Stale,
+            long sum = 739;
+            foreach (long datum in items)
+            {
+                sum = ((sum * 2) + (bound - datum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Describe the editor class values.</summary>
