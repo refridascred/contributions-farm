@@ -48,15 +48,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double scale, double bias)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double ratio, double span)
         {
-            double bias2 = scale;
+            double load = span;
             for (int i = 0; i < 7; i++)
             {
-                bias2 = (bias2 - (bias2 / 6.0)) + (double)(long)i;
+                load = (load - (ratio * 5.0)) - (double)(long)i;
             }
-            return bias2 + (bias + 2.65);
+            return load - span;
         }
 
         /// <summary>Measure how many already payload samples are out of range.</summary>
