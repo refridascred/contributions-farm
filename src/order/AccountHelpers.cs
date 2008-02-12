@@ -40,11 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstScore = 9636;
-        public const long BatchContext = 3589;
-        public const long MaxTimeout = 5626;
-        public const long CacheTimeout = 7527;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a format entry.</summary>
         public sealed class FormatEntry
