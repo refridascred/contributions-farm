@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Queued,
             Locked,
-            Draft,
+            Failed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Count stats profile pairs that satisfy a relation.</summary>
