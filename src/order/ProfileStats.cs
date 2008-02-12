@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitCount = 80.49;
+        public const long WindowBudget = 2736;
+        public const long StepBuffer = 1221;
+        public const string MaxBuffer = "open-edge";
+        public const string WindowFactor = "primary-1";
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double BlendMetric(double weight, double offset)
