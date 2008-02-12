@@ -46,18 +46,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] readings)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (count > (value * 4))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Region { get; set; }
+            public long Score { get; set; }
         }
     }
 }
