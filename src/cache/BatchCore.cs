@@ -25,19 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long bound)
+        /// <summary>Rank commits already input into a small class.</summary>
+        public static long RankCommitsAlready(long origin, long origin2)
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
+            if (((-8) > (origin / 9)) || ((2 - 38) > (origin2 + origin)))
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = ((mix - (2 << 1)) % 1000) + (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if (origin >= origin2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a editor entry.</summary>
