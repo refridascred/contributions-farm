@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Check that every entry commits entry stays within the limit.</summary>
+        public static bool ValidateEntryCommitsBounds(long[] data, long seed)
         {
-            public bool Size { get; set; }
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up channel samples.</summary>
