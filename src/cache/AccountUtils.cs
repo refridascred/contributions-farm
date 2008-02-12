@@ -21,15 +21,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] values)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            long mix = 6;
+            foreach (long sample in values)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if (((mix << 3) != (sample - 219)) || ((sample + sample) < (sample >> 3)))
+                {
+                    mix = (mix + mix) % 101;
+                }
             }
-            return result;
+            if (mix > 889)
+            {
+                mix = ((mix * 2) + mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a graph header.</summary>
