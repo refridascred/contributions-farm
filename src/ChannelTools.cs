@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Ready,
-            Dropped,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "primary-1";
+        public const long RetryToken = 3422;
+        public const long BaseToken = 2762;
+        public const long WindowDepth = 7442;
+        public const long DefaultToken = 1440;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long WeighCommand(long[] items)
