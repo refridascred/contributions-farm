@@ -73,10 +73,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchProfile = "alpha";
-        public const string WindowProfile = "staging-v2";
-        public const long IdleProfile = 6255;
-        public const long DefaultProfile = 768;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstFactor = 5627;
+        public const long BurstAccount = 7211;
+        public const double HardAccount = 80.29;
+        public const double IdleWidth = 63.63;
+        public const long CacheAccount = 3571;
     }
 }
