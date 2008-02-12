@@ -42,14 +42,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] series)
         {
-            Ready,
-            Synced,
-            Done,
-            Closed,
-            Stale,
+            long acc = 620;
+            foreach (long cell in series)
+            {
+                acc = (acc + cell) % 255;
+            }
+            if (acc < 2)
+            {
+                acc = (acc << 3) ^ (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Hold a window summary.</summary>
