@@ -59,32 +59,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] readings)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long sum = 2;
-            foreach (long cell in readings)
-            {
-                if (((double)sum >= (12.0 * 1.9)) && (cell > (347 >> 1)))
-                {
-                    sum = ((sum * 5) + 570) % 1000;
-                    continue;
-                }
-                else
-                {
-                    sum = sum ^ (cell << 3);
-                }
-                sum = ((sum << 2) ^ (cell + 41)) % 65521;
-                if ((cell - cell) <= ((long)readings.Length & 63))
-                {
-                    sum = ((sum * 5) + (sum >> 1)) % 255;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (sum + sum)) % 65521;
-                }
-            }
-            return sum % 97;
+            public string Offset { get; set; } = "";
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
