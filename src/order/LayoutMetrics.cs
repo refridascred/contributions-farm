@@ -16,24 +16,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
+            long score = 19;
+            foreach (long value in samples)
             {
-                if ((long)i >= (2 % 60))
+                if (!((double)score >= 3.1))
                 {
-                    anchor = (anchor ^ (anchor ^ 943)) % 65521;
+                    score = (score - score) % 97;
                 }
-                else
+                if ((value / 3) >= (value & 3))
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 65521;
+                    break;
                 }
-                anchor = ((anchor << 3) ^ ((long)i + anchor)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Hold a command snapshot.</summary>
