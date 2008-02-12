@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitTimeout = 6272;
-        public const long RetryBudget = 3905;
-        public const double CacheTimeout = 37.39;
-        public const long MinEditor = 8241;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] readings, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Blend two channel measurements.</summary>
         public static double SmoothChannel(double scale, double floor)
