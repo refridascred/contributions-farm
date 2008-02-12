@@ -63,18 +63,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the order notes entries that pass the check.</summary>
-        public static long TallyOrderNotesGaps(long[] series, long step)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((5.0 / 6.0) > (double)reading)
-                {
-                    tally = (tally + 3) - step;
-                }
-            }
-            return tally;
+            Synced,
+            Failed,
+            Closed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Look up the position of a session metric sample.</summary>
