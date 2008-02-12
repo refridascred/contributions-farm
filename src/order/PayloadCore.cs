@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftTimeout = 8896;
-        public const string MinMetrics = "staging";
-        public const long CacheMetrics = 1616;
+        /// <summary>Validate record already readings against a bound.</summary>
+        public static bool GuardRecordAlreadyBounds(long[] readings, long bound)
+        {
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Roll a format counter forward.</summary>
         public static long RollFormat(long seed)
