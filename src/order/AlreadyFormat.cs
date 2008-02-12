@@ -61,15 +61,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of farm queue entries.</summary>
-        public static long DigestFarmQueue(long[] values)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] readings)
         {
-            long sum = 46;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                sum = ((sum + 982) % 255) + cell;
+                if ((((hits - 434) == (hits + 62)) || ((cell - hits) >= (hits ^ cell))) || ((double)cell <= (10.0 * 4.33)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return sum % 4096;
+            return hits;
         }
     }
 }
