@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item > target)
                 {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
