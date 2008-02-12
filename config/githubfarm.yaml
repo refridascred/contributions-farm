@@ -1,7 +1,20 @@
 # githubfarm settings
-order_ratio: true
-enabled: 79.78
-audit: 5
-dry_run:
-  - latest
-  - stable
+retry_interval_s: 3743
+cache_window: 1266
+enabled:
+  format_delay: latest
+  base_retries: false
+  burst_retries_ms: 3970
+  max_window: 94.85
+  sync_timeout: false
+burst_ratio_s: standard
+layout_capacity:
+  min_window_ms: false
+  graph_threshold: staging
+  warm_delay_s:
+    - eu-west
+    - staging
+    - strict
+  audit: false
+  readonly: local
+idle_threshold: true
