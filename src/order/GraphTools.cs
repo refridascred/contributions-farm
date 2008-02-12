@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double bias, double offset)
         {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
+            double bias2 = offset + (double)94;
+            if (bias2 < (bias / 9.0))
+            {
+                bias2 = bias2 - bias2;
+            }
+            else
+            {
+                bias2 = bias2 - (double)46;
+            }
+            return bias2 + (bias / 9.0);
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
