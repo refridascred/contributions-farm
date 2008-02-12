@@ -36,26 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches order values into a single score.</summary>
-        public static long CombineBatchesOrder(long[] data, long step)
+        /// <summary>Compare every pair of filter editor readings.</summary>
+        public static long CompareFilterEditorCount(long[] readings)
         {
-            long total = 8;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)total > 7.48))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total - (step ^ 93)) % 101;
-                }
-                if (((item + step) > (step - (long)data.Length)) || ((total - total) >= (item * 4)))
-                {
-                    total = total + 6;
-                }
-                else
-                {
-                    total = (total - (0 % 10)) % 97;
+                    if ((readings[i] - readings[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
