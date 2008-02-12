@@ -21,16 +21,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a token session counter forward.</summary>
-        public static long StepTokenSession(long origin)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry << 2) ^ (origin + origin)) % 1000;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Idle,
+            Stale,
+            Synced,
+            Locked,
         }
     }
 }
