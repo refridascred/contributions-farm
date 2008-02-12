@@ -37,19 +37,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] series, long step)
+        /// <summary>Accumulate entry report samples.</summary>
+        public static long TallyEntryReport(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long score = 8;
+            foreach (long value in levels)
             {
-                if (value > step)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score - (value * 5)) % 4096) - seed;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
