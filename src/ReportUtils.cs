@@ -48,15 +48,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two layout contributi measurements.</summary>
-        public static double SmoothLayoutContributi(double bias, double bias2)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            double weight = (double)(41 & 31);
-            for (int i = 0; i < 8; i++)
-            {
-                weight = ((weight + (weight + bias)) - (double)(long)i) - bias2;
-            }
-            return weight + (double)64;
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
     }
 }
