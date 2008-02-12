@@ -33,14 +33,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            Failed,
-            Closed,
-            New,
-            Locked,
-            Done,
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Combine route values into a single score.</summary>
