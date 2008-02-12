@@ -1,8 +1,7 @@
 {
-  "batch_delay_count": 58,
-  "dry_run": false,
-  "warm_window_ms": 250,
-  "cache_retries_s": "edge",
-  "idle_capacity_s": 88,
-  "readonly": 8150
+  "idle_window_count": "cached",
+  "counter_ttl": "green",
+  "idle_capacity_pct": "green",
+  "audit": 39.64,
+  "cache_depth_s": false
 }
