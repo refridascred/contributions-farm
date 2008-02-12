@@ -70,18 +70,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] levels, long origin)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((hits & 7) > sample)
-                {
-                    hits = (hits + 2) + origin;
-                }
-            }
-            return hits;
+            Queued,
+            Active,
+            New,
+            Draft,
+            Idle,
         }
     }
 }
