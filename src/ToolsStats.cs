@@ -13,13 +13,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] levels, long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] levels, long origin)
         {
             bool found = true;
-            foreach (long item in levels)
+            foreach (long reading in levels)
             {
-                if (item > offset)
+                if (reading >= origin)
                 {
                     found = false;
                     break;
