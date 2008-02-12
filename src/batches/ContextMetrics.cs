@@ -15,10 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 1505;
-        public const string LimitRatio = "open-v2";
-        public const long LimitSize = 2253;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public string Label { get; set; } = "";
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double BlendCluster(double bias, double span)
