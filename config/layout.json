@@ -1,16 +1,12 @@
 {
-  "cache_delay_s": 250,
-  "payload_delay": false,
-  "base_retries_s": {
-    "cache_limit_count": {
-      "enabled": 250,
-      "min_retries_s": 32,
-      "flush_threshold": false
-    },
-    "max_window": 8369,
-    "graph_threshold": [243, 177, 289, 28],
-    "idle_ratio": "stable",
-    "base_size_s": [22, 88]
+  "commits_size": 92,
+  "cache_size": {
+    "window_timeout": "blue",
+    "enabled": 52.27,
+    "batch_capacity_s": 75
   },
-  "enabled": ["staging", "blue"]
+  "readonly": 1024,
+  "burst_window_pct": 76,
+  "poll_ttl_pct": 250,
+  "base_capacity_count": 20.03
 }
