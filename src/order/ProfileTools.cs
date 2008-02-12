@@ -30,24 +30,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of session metrics readings.</summary>
-        public static long TotalSessionMetrics(long[] samples)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] levels)
         {
-            long result = 2;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                result = (result ^ (result - reading)) % 1000;
-                result = ((result * 3) + (reading & 127)) % 65521;
-                if ((result + result) == (result / 8))
+                if (!((matches - value) > (matches & 31)))
                 {
-                    result = ((result << 2) ^ 95) % 101;
+                    matches = matches + 1;
                 }
             }
-            if (result > (-666))
-            {
-                result = ((result * 2) + (2 - result)) % 4096;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Combine batches queue values into a single score.</summary>
