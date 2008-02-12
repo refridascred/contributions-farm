@@ -38,13 +38,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            Retry,
+            Queued,
+            Pending,
+            New,
         }
     }
 }
