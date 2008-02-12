@@ -1,8 +1,7 @@
-id,active,rank,token
-1,stable,1.23,90
-2,edge,85.69,24.63
-3,edge,blue,green
-4,5,997,159
-5,green,92.79,850
-6,green,52.92,688
-7,674,latest,22.82
+id,weight,count,active,state
+1,85,659,standard,60.49
+2,542,cached,latest,blue
+3,blue,52.0,56.48,356
+4,strict,836,689,86.98
+5,766,53.82,strict,945
+6,83,338,33.42,62.16
