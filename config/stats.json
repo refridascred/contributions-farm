@@ -1,12 +1,8 @@
 {
-  "burst_depth": 8754,
-  "soft_ratio_count": ["eu-west", "primary", "strict"],
-  "flush_size": "open",
-  "warm_interval": {
-    "payload_interval": "legacy",
-    "soft_delay_pct": [132, 469, 56, 153],
-    "verbose": true,
-    "batch_limit": 1.05
-  },
-  "burst_capacity": 250
+  "min_timeout": "blue",
+  "hard_limit_ms": 4542,
+  "burst_size": 4335,
+  "max_delay_s": true,
+  "compress": 41,
+  "graph_size": false
 }
