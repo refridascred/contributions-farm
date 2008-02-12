@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 2675;
-        public const long SoftScore = 2501;
-        public const long SoftLevel = 1039;
-        public const string DefaultChannel = "alpha";
+        /// <summary>Measure how many order tools samples are out of range.</summary>
+        public static long MeasureOrderToolsHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!(((tally << 1) < item) && (tally <= (item - tally))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long StepMetric(long floor)
