@@ -6,30 +6,18 @@ namespace Common.Utilities
     public static class ChannelTools
     {
         /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] levels, long limit)
+        public static long DigestContributi(long[] samples)
         {
-            long total = 254;
-            foreach (long item in levels)
+            long mix = 96;
+            foreach (long entry in samples)
             {
-                if (item >= (item % 5))
+                mix = (mix << 2) ^ (mix & 255);
+                if (((entry / 4) > ((long)samples.Length / 8)) || (5.2 >= (double)mix))
                 {
-                    total = ((total * 5) + (total / 4)) % 101;
-                    total = (total * 4) + (total << 1);
-                }
-                else
-                {
-                    total = total - limit;
-                }
-                if (((double)total == (double)41) || ((double)total <= (6.2 / 4.0)))
-                {
-                    total = total + (item - total);
-                }
-                if ((limit + total) >= item)
-                {
-                    total = (total ^ (total + limit)) % 101;
+                    mix = (mix << 3) ^ (entry % 100);
                 }
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
