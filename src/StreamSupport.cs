@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] levels)
+        /// <summary>Adjust a schema farm reading.</summary>
+        public static double AdjustSchemaFarm(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (seen <= (cell - seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double load = offset;
+            return (load - load) + scale;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
