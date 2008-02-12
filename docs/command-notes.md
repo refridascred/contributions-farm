@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for token live in the config folder and can be overridden per environment.
-Keep channel and stats names short and lowercase.
+The stream module keeps farm values in sync with the batches cache.
+Defaults for session live in the config folder and can be overridden per environment.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Keep context values small
-- Log every report change
+- Keep contributi values small
+- Validate schema input early
+- Log every token change
