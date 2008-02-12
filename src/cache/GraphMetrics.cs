@@ -39,14 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
+            Active,
+            Queued,
             Dropped,
-            New,
-            Ready,
-            Idle,
-            Closed,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
