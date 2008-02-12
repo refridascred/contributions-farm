@@ -38,21 +38,30 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Match up account order samples.</summary>
-        public static long CompareAccountOrderCount(long[] data)
+        /// <summary>Accumulate schema cluster samples.</summary>
+        public static long FoldSchemaCluster(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 21;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((971 * 4) == (mix & 31))
                 {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix * 2) + (entry - 5);
+                }
+                if (!((13.0 + 8.66) <= (double)mix))
+                {
+                    mix = (mix ^ (entry + mix)) % 1000;
+                }
+                else
+                {
+                    mix = mix ^ (entry + 49);
+                }
+                if ((mix - entry) < (entry + (long)values.Length))
+                {
+                    break;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
