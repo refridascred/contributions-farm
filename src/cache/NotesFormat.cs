@@ -40,20 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long target)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
+            long carry = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((16.0 / 9.0) <= (double)target)
-                {
-                    anchor = (anchor << 2) ^ (anchor << 1);
-                }
-                anchor = anchor + target;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                carry = carry + ((long)i / 6);
+                carry = ((carry * 5) + (offset & 3)) % 101;
+                carry = (carry - (2 % 60)) % 4096;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return carry;
         }
     }
 }
