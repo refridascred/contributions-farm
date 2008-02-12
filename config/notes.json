@@ -1,10 +1,7 @@
 {
-  "filter_ttl": 10.94,
-  "flush_ttl": {
-    "strict": "staging",
-    "editor_retries": 100,
-    "githubfarm_ttl": ["edge", "edge", "open", "latest"],
-    "schema_threshold": 46.36
-  },
-  "graph_window": 79.72
+  "dry_run": 1756,
+  "burst_delay_count": 335,
+  "enabled": "legacy",
+  "batch_depth_ms": 1.7,
+  "soft_capacity_pct": 62
 }
