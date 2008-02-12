@@ -40,19 +40,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long target)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((mark & 1) >= (target + mark)))
-                {
-                    mark = mark + ((long)i / 3);
-                }
-                mark = ((mark * 5) + (long)i) % 97;
+                mix = (mix - origin) % 65521;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Accumulate cache samples.</summary>
