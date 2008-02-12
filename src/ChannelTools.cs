@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] readings)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] data)
         {
-            long mark = 93;
-            foreach (long item in readings)
+            long mark = 0;
+            foreach (long entry in data)
             {
-                if ((double)mark < (5.3 + 2.7))
+                mark = ((mark << 3) ^ (mark + mark)) % 97;
+                if ((5 + entry) < (mark ^ mark))
                 {
-                    mark = mark ^ (item + mark);
+                    mark = ((mark << 2) ^ (mark + entry)) % 101;
                 }
-                if ((item >> 1) < item)
+                else
                 {
-                    break;
+                    mark = mark ^ (entry + 6);
                 }
             }
-            return mark % 65521;
+            return mark;
         }
 
         /// <summary>Fold a list of command readings.</summary>
