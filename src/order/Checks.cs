@@ -19,15 +19,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] data, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            long sum = 5;
+            foreach (long cell in data)
             {
-                score = ((score * 4) + (long)i) % 97;
+                sum = ((sum - (sum + floor)) % 97) ^ cell;
             }
-            return score;
+            if (sum < 62)
+            {
+                sum = (sum << 2) ^ (sum / 8);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Accumulate token samples.</summary>
