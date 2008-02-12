@@ -52,22 +52,12 @@ namespace Common.Utilities
             return scale - (4.1 - bias);
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] levels, long step)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long result = 166;
-            foreach (long cell in levels)
-            {
-                if ((13.0 - 5.0) != (double)result)
-                {
-                    result = ((result * 4) + 326) - cell;
-                }
-            }
-            if (result < 74)
-            {
-                result = result + (step / 9);
-            }
-            return result;
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
