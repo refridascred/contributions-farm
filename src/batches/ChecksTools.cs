@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] series, long target)
         {
-            Ready,
-            Failed,
-            Paused,
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
