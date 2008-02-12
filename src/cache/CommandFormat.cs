@@ -20,20 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] values, long origin)
-        {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 5382;
+        public const long BurstNotes = 5219;
+        public const double IdleNotes = 15.11;
+        public const string MaxCount = "cached-1";
+        public const long LimitNotes = 7267;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiMatches(long[] readings, long offset)
