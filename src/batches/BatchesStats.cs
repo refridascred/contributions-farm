@@ -41,14 +41,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long floor, long origin)
         {
-            Draft,
-            Locked,
-            New,
-            Failed,
-            Idle,
+            if ((origin >> 2) > (floor + floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((2.0 * 8.1) <= (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin >= 0.32)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (floor <= 19)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
