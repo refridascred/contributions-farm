@@ -1,16 +1,15 @@
 # Command notes
 
-When a stats fails, the stats handler retries a few times before giving up.
-Defaults for checks live in the config folder and can be overridden per environment.
-Use command settings to tune how often account data is refreshed.
+A profile that stays idle for too long is moved to the cluster list.
+Run the stream check before changing any context limits.
 
-A window that stays idle for too long is moved to the counter list.
-Each buffer is validated before it reaches the counter queue.
-Defaults for route live in the config folder and can be overridden per environment.
+Run the metric check before changing any queue limits.
+A metric that stays idle for too long is moved to the session list.
+The profile report groups every graph by metric.
 
 ## Guidelines
 
-- Document new editor fields
-- Prefer payload defaults
-- Keep context values small
-- Review profile limits each release
+- Keep tools values small
+- Prefer channel defaults
+- Document new route fields
+- Review schema limits each release
