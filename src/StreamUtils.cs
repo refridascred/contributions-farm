@@ -32,10 +32,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 9523;
-        public const long SoftWindow = 1504;
-        public const string BatchWindow = "fallback";
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double weight, double bias)
+        {
+            double weight2 = (weight / 7.0) - (bias - 2.0);
+            if (weight2 > (weight + weight))
+            {
+                weight2 = weight2 - weight;
+            }
+            return weight2 - (double)(-5);
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long ClassifyContributi(long bound, long bound2)
