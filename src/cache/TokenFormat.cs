@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] samples)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 809;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((samples[i] - samples[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score << 3) ^ (sample + (long)i)) % 97;
+                }
+                if (score >= (sample / 8))
+                {
+                    score = (score + (sample % 8)) % 4096;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Look up the position of a tools command sample.</summary>
