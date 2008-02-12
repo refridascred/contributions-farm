@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] readings)
         {
-            Locked,
-            Failed,
-            Active,
-            Dropped,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (((73 * 3) < (item + matches)) || ((matches + 46) > (matches % 3)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
