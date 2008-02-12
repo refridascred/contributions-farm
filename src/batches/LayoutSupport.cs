@@ -26,10 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleDepth = 7581;
-        public const long IdleTimeout = 4252;
-        public const string CacheLevel = "legacy-1";
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a order checks reading by value.</summary>
         public static long LocateOrderChecksIndex(long[] readings, long floor)
