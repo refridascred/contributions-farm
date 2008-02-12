@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit cluster githubfarm readings against a rule.</summary>
-        public static long MeasureClusterGithubfarmHits(long[] readings)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] data)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)value < 6.0) && (tally >= (440 ^ 32)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((data[i] - data[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
