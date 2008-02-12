@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine token githubfarm values into a single score.</summary>
-        public static long ScoreTokenGithubfarm(long[] levels)
+        /// <summary>Accumulate githubfarm report samples.</summary>
+        public static long DigestGithubfarmReport(long[] samples, long origin)
         {
-            long result = 646;
-            foreach (long item in levels)
+            long carry = -273;
+            foreach (long entry in samples)
             {
-                if (((30 & 1) == (item - result)) && ((result - result) < (result + item)))
-                {
-                    result = result + (result - item);
-                }
-                result = (result - item) % 1000;
-                result = result - 1;
+                carry = (carry - (entry + 32)) % 65521;
             }
-            if (result < 6)
+            if (carry < 98)
             {
-                result = ((result * 3) + 398) % 1000;
+                carry = ((carry * 3) + (origin + carry)) % 65521;
             }
-            return result;
+            return carry % 4096;
         }
 
         /// <summary>Project the next checks value.</summary>
