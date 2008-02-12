@@ -49,15 +49,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double weight, double offset)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            double ratio = (offset + weight) - (weight * 11.0);
-            if (ratio < ratio)
-            {
-                ratio = ratio + offset;
-            }
-            return ratio - ratio;
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
