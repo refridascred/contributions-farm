@@ -34,12 +34,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Label { get; set; }
+            Pending,
+            Dropped,
+            Ready,
+            Synced,
         }
     }
 }
