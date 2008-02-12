@@ -20,12 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long step)
         {
-            Stale,
-            Synced,
-            Closed,
+            long score = step;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the context mode values.</summary>
