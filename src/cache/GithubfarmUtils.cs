@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 8705;
-        public const string StepWidth = "open";
-        public const long DefaultTimeout = 2213;
-        public const double DefaultBudget = 76.7;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] values, long target)
+        {
+            long acc = 1;
+            foreach (long reading in values)
+            {
+                if ((0 ^ acc) > (target ^ target))
+                {
+                    acc = ((acc * 2) + (80 + target)) % 97;
+                }
+                if ((reading + reading) >= (reading + acc))
+                {
+                    acc = acc + (target + reading);
+                }
+                acc = ((acc * 4) + acc) % 1000;
+            }
+            if (acc > 526)
+            {
+                acc = (acc ^ (acc ^ target)) % 255;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long DigestStats(long[] series)
