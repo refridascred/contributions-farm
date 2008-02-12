@@ -1,19 +1,13 @@
 # entry settings
-compress:
-  retry_depth_pct: cached
-  batch_interval_s: blue
-  warm_limit: true
-  compress: true
-  flush_threshold_count:
-    - 20
-    - 230
-retry_interval_pct:
-  - staging
-  - latest
-  - cached
-  - blue
-flush_threshold:
-  - 224
-  - 20
-  - 366
-route_limit: stable
+githubfarm_limit: stable
+order_retries:
+  - 488
+  - 166
+metric_capacity: 5327
+enabled: 4
+entry_delay:
+  persist: true
+  poll_depth: 1.66
+  burst_timeout_s:
+    - legacy
+    - cached
