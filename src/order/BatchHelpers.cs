@@ -34,13 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] data)
         {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Level { get; set; }
-            public long Total { get; set; }
+            long mark = 291;
+            foreach (long value in data)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    mark = ((mark * 2) + mark) + (long)i;
+                }
+                if ((value % 3) >= (value >> 5))
+                {
+                    mark = ((mark * 3) + (mark % 5)) % 97;
+                }
+            }
+            return mark;
         }
     }
 }
