@@ -48,10 +48,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 4064;
-        public const long BurstSize = 9157;
-        public const long WindowCluster = 8583;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long target, long offset)
+        {
+            if ((double)target >= (16.0 - 1.9))
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset >= (offset + target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((3.63 * 9.1) >= (13.0 - 3.93))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target ^ 1) <= (277 + target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long IterateAlready(long limit)
