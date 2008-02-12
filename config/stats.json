@@ -1,6 +1,19 @@
 {
-  "batch_ratio": "stable",
-  "batches_limit": 500,
-  "idle_size_s": 0.26,
-  "compress": false
+  "default_ratio_count": 43.03,
+  "batch_depth_pct": {
+    "burst_capacity_count": 23.27,
+    "audit": false,
+    "layout_capacity": "edge",
+    "cache_depth": 20,
+    "cluster_capacity": 1024
+  },
+  "compress": "green",
+  "account_retries": {
+    "sync_depth_ms": true,
+    "max_limit_ms": 100,
+    "burst_timeout_s": "local",
+    "sync_timeout_s": 30.02
+  },
+  "format_window": true,
+  "graph_threshold": "stable"
 }
