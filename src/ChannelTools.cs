@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] samples, long origin)
+        /// <summary>Digest a series of context cache entries.</summary>
+        public static long FoldContextCache(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long anchor = 0;
+            foreach (long datum in levels)
             {
-                if (reading >= origin)
+                if (anchor >= limit)
                 {
-                    ok = false;
-                    break;
+                    anchor = ((anchor * 5) + 4) - datum;
                 }
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
