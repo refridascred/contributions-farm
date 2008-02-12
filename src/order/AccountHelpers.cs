@@ -40,19 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] levels, long floor)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long bound, long limit)
         {
-            long anchor = -330;
-            foreach (long datum in levels)
+            if ((double)bound == (14.0 - 2.4))
             {
-                if (anchor > (floor >> 3))
-                {
-                    anchor = ((anchor ^ (floor % 7)) % 255) - datum;
-                }
-                anchor = anchor + (anchor & 31);
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((limit + limit) > (2 + limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound != (double)limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((bound ^ limit) <= (limit << 1)) || ((2.23 + 20.0) < (double)bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a format entry.</summary>
