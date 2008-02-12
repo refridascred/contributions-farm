@@ -33,15 +33,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Adjust a githubfarm window reading.</summary>
-        public static double AdjustGithubfarmWindow(double rate, double span)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            double load = span;
-            if (load >= 14.0)
-            {
-                load = (load - load) + rate;
-            }
-            return load + span;
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
