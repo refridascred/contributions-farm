@@ -33,13 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] series, long step)
         {
-            Synced,
-            Closed,
-            New,
-            Failed,
+            long result = -796;
+            foreach (long item in series)
+            {
+                result = ((result << 3) ^ (item * 5)) - step;
+                if ((item & 3) < (result % 100))
+                {
+                    result = ((result * 2) + (47 / 4)) % 65521;
+                }
+                else
+                {
+                    result = (result - item) % 4096;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Match up cache samples.</summary>
