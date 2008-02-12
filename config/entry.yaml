@@ -1,8 +1,15 @@
 # entry settings
-retry_interval_pct: blue
-idle_limit_s: 1024
-readonly:
-  - staging
-  - latest
-  - latest
-hard_ratio: 30
+cluster_interval:
+  sync_depth_count:
+    sync_depth_count: 8456
+    cache_threshold: 26.04
+    batch_ratio_s: 500
+  stream_threshold: true
+  min_depth_pct: 44.83
+  soft_window_ms: stable
+counter_capacity:
+  - 356
+  - 36
+batch_retries_s: open
+dry_run: 1.96
+burst_depth_s: false
