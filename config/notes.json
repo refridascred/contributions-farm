@@ -1,7 +1,6 @@
 {
-  "base_window_count": 5693,
-  "idle_limit": 60,
-  "max_limit": 92.89,
-  "cluster_size": 30,
-  "commits_retries": ["legacy", "stable", "green"]
+  "base_threshold_pct": 14.09,
+  "poll_ratio": ["blue", "latest"],
+  "audit": true,
+  "record_threshold": 15
 }
