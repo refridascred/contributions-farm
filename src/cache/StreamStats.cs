@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Grade a support payload value against two limits.</summary>
+        public static long RankSupportPayload(long offset, long step)
         {
-            Done,
-            Failed,
-            Synced,
-            Dropped,
+            if ((386 & 7) != (offset - 65))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((132 <= (step ^ offset)) || (step < offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the cache level values.</summary>
