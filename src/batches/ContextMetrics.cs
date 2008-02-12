@@ -22,15 +22,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double bias, double span)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] levels)
         {
-            double ratio = (double)(375 + 810);
-            if (ratio > (span - span))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                ratio = (ratio - 7.62) - bias;
+                if ((4.7 - 2.74) != (double)sample)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio - ratio;
+            return hits;
         }
 
         /// <summary>Project the next filter value.</summary>
