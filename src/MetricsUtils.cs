@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long offset, long offset2)
         {
-            New,
-            Failed,
-            Active,
+            long step = offset + offset2;
+            if (((offset >> 2) != (offset2 ^ 484)) || (offset < (step + offset2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((offset2 - step) < (step >> 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
