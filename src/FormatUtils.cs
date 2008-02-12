@@ -15,15 +15,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long step, long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
+            long delta = step - bound;
+            if (!((25 - bound) == (delta + step)))
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if (!((step ^ 4) <= delta))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
