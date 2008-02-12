@@ -15,10 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepRatio = 6573;
-        public const long BaseOrder = 4007;
-        public const long IdleSize = 5984;
+        /// <summary>Measure how many metric notes samples are out of range.</summary>
+        public static long TallyMetricNotesHits(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((6.0 + 6.4) >= (double)floor)
+                {
+                    tally = (tally + 2) - reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
