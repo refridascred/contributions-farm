@@ -1,11 +1,6 @@
 {
-  "flush_threshold": true,
-  "poll_capacity_count": {
-    "burst_capacity_s": false,
-    "persist": [396, 169, 87, 426],
-    "filter_capacity": [247, 91, 87],
-    "batch_size_count": 75.28,
-    "soft_timeout": true
-  },
-  "order_threshold": 67.49
+  "sync_timeout_count": "stable",
+  "warm_delay": "strict",
+  "githubfarm_size": "cached",
+  "already_interval": false
 }
