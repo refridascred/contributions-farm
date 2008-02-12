@@ -22,11 +22,25 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long limit, long origin)
         {
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
+            long step = limit - origin;
+            if ((step + step) >= step)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((origin ^ limit) != (origin + 982)) && ((double)limit > (double)origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Digest a series of record entries.</summary>
