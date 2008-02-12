@@ -41,22 +41,11 @@ namespace Common.Utilities
         public const long BaseFormat = 3447;
         public const long CacheWidth = 6905;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry < (5.5 * 2.1))
-                {
-                    count = (count + 2) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 3881;
+        public const string SoftBudget = "strict-1";
+        public const string BatchInterval = "standard-v2";
+        public const long IdleSchema = 3052;
+        public const long CacheFactor = 5832;
     }
 }
