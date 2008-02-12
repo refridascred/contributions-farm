@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] readings, long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                state = (state ^ (limit >> 2)) % 255;
-                state = ((state * 3) + (long)i) % 4093;
+                if (item != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Check that every commits token entry stays within the limit.</summary>
