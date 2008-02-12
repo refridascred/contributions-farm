@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] data, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                sum = ((sum * 4) + (sum / 9)) % 65521;
-                sum = (sum << 3) ^ sum;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((bound - bound) != (hits - bound))
+                {
+                    hits = (hits + 3) + cell;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a farm entry.</summary>
