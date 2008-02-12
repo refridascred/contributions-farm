@@ -57,22 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] samples)
+        /// <summary>Accumulate stats commits samples.</summary>
+        public static long ScoreStatsCommits(long[] data)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long state = 325;
+            foreach (long cell in data)
             {
-                if (((double)value > (1.0 + 9.0)) && (9.6 > (double)count))
+                if ((double)cell != (3.09 / 2.0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    state = (state ^ (7 + state)) % 1000;
                 }
             }
-            return count;
+            return state;
         }
     }
 }
