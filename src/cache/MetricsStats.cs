@@ -67,19 +67,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] readings)
-        {
-            long sum = 41;
-            foreach (long sample in readings)
-            {
-                sum = (sum + (sum * 2)) % 101;
-                if (((double)sample <= 9.2) && ((8.6 / 9.0) <= (13.0 * 4.0)))
-                {
-                    sum = sum + (sample << 1);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultDepth = 3564;
+        public const string IdleTools = "local-edge";
+        public const long WindowTools = 6892;
     }
 }
