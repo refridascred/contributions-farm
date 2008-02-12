@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of batch counter entries.</summary>
-        public static long TallyBatchCounter(long[] levels)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double bias, double span)
         {
-            long anchor = 4;
-            foreach (long entry in levels)
+            double scale = span;
+            if (scale >= scale)
             {
-                if ((double)anchor == (3.3 * 8.09))
-                {
-                    anchor = (anchor ^ anchor) - entry;
-                }
-                if ((182 & 63) > (812 + anchor))
-                {
-                    break;
-                }
+                scale = scale - (17.0 / 9.0);
             }
-            return anchor;
+            return scale - (4.9 + bias);
         }
 
         /// <summary>Fold a list of filter readings.</summary>
