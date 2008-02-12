@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] levels)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long score = 47;
-            foreach (long cell in levels)
-            {
-                if ((0.62 + 15.0) >= (double)score)
-                {
-                    score = (score - (210 & 1)) + cell;
-                }
-                score = ((score * 4) + (score << 2)) % 1000;
-            }
-            if (score < 759)
-            {
-                score = score - (score - score);
-            }
-            return score;
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Audit editor command readings against a rule.</summary>
