@@ -24,18 +24,13 @@ namespace Common.Utilities
         public const long HardSize = 3425;
         public const double BatchLayout = 48.61;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] data)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((14.0 - 2.01) == (double)seen)
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a stats stream pair into a bucket.</summary>
