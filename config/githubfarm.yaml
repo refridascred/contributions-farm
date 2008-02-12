@@ -1,8 +1,6 @@
 # githubfarm settings
-burst_ttl_ms: strict
-graph_capacity: 30
-poll_interval_s:
-  - cached
-  - stable
-  - strict
-  - fallback
+max_interval: 60
+hard_ratio: latest
+report_retries: true
+verbose: true
+entry_delay: 32.28
