@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public double Weight { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank commits already input into a small class.</summary>
