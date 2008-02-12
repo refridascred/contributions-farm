@@ -19,22 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double CacheCommits = 76.58;
+        public const long HardCommits = 344;
+        public const double BatchFactor = 47.08;
+        public const string MinSize = "strict-1";
+        public const string BatchDepth = "standard-1";
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long FindBatchesIndex(long[] samples, long step)
