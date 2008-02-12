@@ -1,6 +1,6 @@
 # entry settings
-max_capacity_s: 9928
-idle_delay_s: 100
-verbose: true
-githubfarm_interval: 5754
-notes_delay: local
+hard_retries_pct: staging
+flush_delay_count: stable
+support_window: staging
+compress: 71.14
+verbose: strict
