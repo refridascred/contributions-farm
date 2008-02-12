@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public bool Size { get; set; }
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
+            Failed,
+            Synced,
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
