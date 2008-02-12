@@ -58,39 +58,18 @@ namespace Common.Utilities
             return mean - 12.0;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long seed, long bound)
+        /// <summary>Measure how many notes counter samples are out of range.</summary>
+        public static long MeasureNotesCounterOutliers(long[] readings)
         {
-            long next = seed ^ bound;
-            if (((next + 33) < (seed & 31)) && ((bound & 7) <= 9))
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (next <= bound)
+                if ((cell - cell) == (57 + 686))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + 996) >= (bound ^ next))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((4.0 + 9.6) <= (double)next)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
