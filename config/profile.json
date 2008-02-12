@@ -1,5 +1,7 @@
 {
-  "queue_limit": 87,
-  "compress": false,
-  "sync_ratio": 11
+  "githubfarm_window": "fallback",
+  "warm_timeout": [5, 276, 216],
+  "verbose": 500,
+  "base_ttl": "standard",
+  "default_timeout_pct": 58
 }
