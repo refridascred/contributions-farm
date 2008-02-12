@@ -1,6 +1,8 @@
 {
-  "batch_retries": 84.07,
-  "graph_delay": false,
-  "readonly": "open",
-  "poll_retries_count": ["eu-west", "eu-west", "primary"]
+  "persist": "fallback",
+  "retry_delay_s": 71.53,
+  "enabled": 42,
+  "batch_size": 92.19,
+  "default_ratio_ms": 70.56,
+  "warm_delay": "primary"
 }
