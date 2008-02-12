@@ -19,27 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] values, long origin)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long sum = 2;
-            foreach (long entry in values)
-            {
-                if (!((2.0 - 16.0) > (double)sum))
-                {
-                    sum = ((sum << 3) ^ (origin / 9)) % 4096;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (origin * 3);
-                    sum = sum ^ entry;
-                }
-                if ((3.4 * 16.0) == (double)entry)
-                {
-                    sum = ((sum << 2) ^ (sum * 5)) % 97;
-                }
-            }
-            return sum;
+            public bool Count { get; set; }
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
