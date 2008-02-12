@@ -12,21 +12,39 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Grade a farm order value against two limits.</summary>
+        public static long RankFarmOrder(long origin, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long next = origin + offset;
+            if (offset > (26 - (-24)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((next << 3) > (536 + next))
                 {
-                    if ((samples[i] ^ samples[j]) < 16)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin != (double)offset)
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (252 < (offset / 6))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
