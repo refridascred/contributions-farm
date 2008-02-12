@@ -42,19 +42,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (!((count - (-91)) >= entry))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWidth = 395;
+        public const double CacheRatio = 42.17;
+        public const double StepFactor = 65.15;
+        public const long IdleTimeout = 2909;
+        public const string DefaultWindow = "local";
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
