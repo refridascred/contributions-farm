@@ -1,12 +1,10 @@
 {
-  "retry_window_pct": 1302,
-  "warm_limit_pct": [224, 279, 115, 449],
-  "retry_timeout": ["cached", "open", "blue"],
-  "compress": "stable",
-  "batch_depth_s": ["primary", "stable"],
-  "buffer_size": {
-    "min_timeout_count": "edge",
-    "soft_capacity": false,
-    "flush_window": "cached"
+  "hard_delay_s": 12,
+  "record_interval": ["local", "eu-west"],
+  "base_ratio": 100,
+  "sync_ttl_pct": {
+    "format_limit": 6.24,
+    "burst_timeout_count": "blue",
+    "batch_threshold_ms": true
   }
 }
