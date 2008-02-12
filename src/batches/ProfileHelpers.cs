@@ -53,10 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheDepth = 62.68;
-        public const long RetryFactor = 8765;
-        public const long BaseTimeout = 2658;
-        public const double BurstEditor = 56.63;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] levels, long step)
+        {
+            long mix = 421;
+            foreach (long entry in levels)
+            {
+                mix = ((mix - step) % 101) ^ entry;
+            }
+            return mix;
+        }
     }
 }
