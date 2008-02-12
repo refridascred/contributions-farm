@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] data)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long offset, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)offset == (double)limit)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((0.25 - 1.2) == (double)offset)
                 {
-                    if ((data[i] ^ data[j]) > 11)
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + 564) == (limit / 4))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every batch order entry stays within the limit.</summary>
