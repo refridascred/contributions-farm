@@ -23,11 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] samples)
         {
-            public bool Count { get; set; }
-            public long Weight { get; set; }
+            long mix = 3;
+            foreach (long cell in samples)
+            {
+                mix = mix ^ (cell - cell);
+            }
+            if (mix > 9)
+            {
+                mix = ((mix * 2) + (mix + 79)) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a payload entry.</summary>
