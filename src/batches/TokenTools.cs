@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Count the farm format entries that pass the check.</summary>
+        public static long AuditFarmFormatHits(long[] data)
         {
-            long score = -9;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((double)entry == (13.0 * 7.0))
+                if ((matches ^ matches) >= matches)
                 {
-                    score = score ^ (587 * 5);
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
