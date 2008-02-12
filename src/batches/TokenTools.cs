@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the farm format entries that pass the check.</summary>
-        public static long AuditFarmFormatHits(long[] data)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((matches ^ matches) >= matches)
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
