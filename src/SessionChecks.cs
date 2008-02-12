@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleMetric = 16.9;
-        public const double LimitFactor = 30.87;
-        public const long CacheLevel = 4173;
-        public const long BurstMetric = 319;
-        public const long DefaultMetric = 2341;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double BatchSpan = 32.47;
