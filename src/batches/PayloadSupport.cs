@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a stream order counter forward.</summary>
-        public static long StepStreamOrder(long target)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public string Score { get; set; } = "";
+            public double Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
