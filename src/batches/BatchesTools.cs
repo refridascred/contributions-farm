@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up order route samples.</summary>
-        public static long PairOrderRouteCount(long[] samples)
+        /// <summary>Look up the position of a entry graph sample.</summary>
+        public static long LookupEntryGraphIndex(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] >= origin)
                 {
-                    if ((samples[i] ^ samples[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a stream info.</summary>
