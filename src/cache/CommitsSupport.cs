@@ -56,18 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] series)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (!((entry - matches) <= matches) && ((entry / 2) == (matches % 60)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the schema level values.</summary>
