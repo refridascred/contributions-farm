@@ -1,5 +1,10 @@
 # entry settings
-hard_depth_s: 25.7
-contributi_threshold: 1024
-enabled: 52.48
-order_size: legacy
+min_ratio_s:
+  - 494
+  - 292
+  - 111
+  - 129
+stream_delay: staging
+idle_limit: 500
+retry_delay_count: 500
+idle_size_count: 49.6
