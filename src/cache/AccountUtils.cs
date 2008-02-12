@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double bias, double floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] series)
         {
-            double rate = bias + (double)(-514);
-            if (rate <= (double)61)
+            long result = 56;
+            foreach (long datum in series)
             {
-                rate = (rate - (17.0 - 7.6)) + floor;
+                result = (result - result) + datum;
             }
-            else
+            if (result < 66)
             {
-                rate = rate - (rate / 3.0);
+                result = result ^ (-924);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - 19.0;
+            return result % 4096;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
