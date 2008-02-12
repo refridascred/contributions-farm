@@ -27,9 +27,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepDepth = "alpha-1";
-        public const long CacheMetric = 7033;
-        public const string WindowMetric = "latest";
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] items, long origin)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
