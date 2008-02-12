@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] series)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = (bias - bias) + 5.7;
+            if (gain >= (bias + gain))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain - scale;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (gain - scale)) + (double)(long)i;
+            }
+            return gain + (scale - bias);
         }
 
         /// <summary>Count route batch pairs that satisfy a relation.</summary>
