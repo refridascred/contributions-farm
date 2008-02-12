@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] samples, long origin)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleFactor = 6274;
+        public const long StepDepth = 7554;
+        public const string IdleWidth = "open-edge";
 
         /// <summary>Combine account values into a single score.</summary>
         public static long CombineAccount(long[] levels, long offset)
