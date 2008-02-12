@@ -42,17 +42,30 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] levels, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 1;
+            foreach (long sample in levels)
             {
-                if (levels[i] <= step)
+                if ((anchor & 63) < (sample - sample))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + (anchor >> 4)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor / 8)) % 4096;
+                }
+                if (!(4.0 < (double)sample))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor < 762)
+            {
+                anchor = anchor ^ (anchor & 255);
+            }
+            return anchor;
         }
     }
 }
