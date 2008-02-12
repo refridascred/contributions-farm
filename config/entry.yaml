@@ -1,6 +1,5 @@
 # entry settings
-readonly: 17.99
-dry_run: 500
-min_interval_ms: 32.09
-retry_delay_count: cached
-metrics_threshold: 38.56
+base_limit_s: eu-west
+contributi_retries: 4526
+retry_limit_ms: 48
+burst_interval: false
