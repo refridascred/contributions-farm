@@ -30,27 +30,14 @@ namespace Common.Utilities
         public const long LimitBudget = 1012;
         public const double MaxAlready = 48.0;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] readings, long origin)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long acc = 94;
-            foreach (long datum in readings)
-            {
-                acc = (acc - origin) ^ datum;
-                if (!((acc ^ 32) >= (origin - 634)))
-                {
-                    acc = acc - (origin ^ origin);
-                }
-                if (((-74) <= (long)readings.Length) && ((acc >> 3) >= 8))
-                {
-                    acc = acc - acc;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (origin << 2)) % 101;
-                }
-            }
-            return acc;
+            Pending,
+            Synced,
+            Idle,
+            Stale,
+            Failed,
         }
     }
 }
