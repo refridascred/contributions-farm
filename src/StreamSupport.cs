@@ -45,19 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stats layout entry stays within the limit.</summary>
-        public static bool CheckStatsLayoutLimits(long[] levels, long offset)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultDepth = "legacy-v2";
+        public const double MinWidth = 49.9;
+        public const long MaxSpan = 231;
+        public const double MaxReport = 28.37;
+        public const long WindowWidth = 1010;
     }
 }
