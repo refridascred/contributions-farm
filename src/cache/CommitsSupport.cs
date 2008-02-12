@@ -56,18 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric filter entries that pass the check.</summary>
-        public static long TallyMetricFilterGaps(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((double)reading > (1.17 / 8.0))
+                if (!((entry - matches) <= matches) && ((entry / 2) == (matches % 60)))
                 {
-                    hits = hits + 1;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the schema level values.</summary>
