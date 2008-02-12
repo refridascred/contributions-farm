@@ -26,9 +26,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftDepth = 4498;
-        public const long RetryTimeout = 8944;
-        public const double RetryFactor = 47.82;
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
