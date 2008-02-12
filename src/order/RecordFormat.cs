@@ -32,18 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context account entries that pass the check.</summary>
-        public static long MeasureContextAccountGaps(long[] values)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((seen % 16) >= seen)
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
