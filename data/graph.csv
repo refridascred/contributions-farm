@@ -1,10 +1,6 @@
-id,label,score,weight,token
-1,fallback,394,3.99,98.44
-2,open,46.91,50.95,75.02
-3,fallback,837,415,legacy
-4,91.72,2.01,standard,local
-5,green,215,green,37
-6,782,stable,288,strict
-7,94.22,185,971,786
-8,stable,526,549,46
-9,3.69,open,284,399
+id,ratio,count
+1,730,250
+2,9,178
+3,37.47,legacy
+4,790,stable
+5,73.99,730
