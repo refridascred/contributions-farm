@@ -54,12 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] items, long offset)
         {
-            Retry,
-            Active,
-            Paused,
+            long score = 686;
+            foreach (long sample in items)
+            {
+                score = score ^ (score + 625);
+                if ((double)sample < (double)offset)
+                {
+                    break;
+                }
+            }
+            return score % 1000;
         }
     }
 }
