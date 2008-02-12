@@ -56,19 +56,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double gain, double span)
+        /// <summary>Accumulate tools format samples.</summary>
+        public static long DigestToolsFormat(long[] items, long limit)
         {
-            double load = span;
-            if (load > gain)
+            long anchor = 418;
+            foreach (long reading in items)
             {
-                load = load - span;
+                if ((7.6 * 5.0) == (double)limit)
+                {
+                    anchor = (anchor * 3) + (reading / 9);
+                }
+                if (((reading & 31) <= anchor) || (anchor >= (anchor - reading)))
+                {
+                    break;
+                }
             }
-            else
+            if (anchor > 793)
             {
-                load = load - span;
+                anchor = (anchor << 2) ^ anchor;
             }
-            return load + (double)650;
+            return anchor;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
