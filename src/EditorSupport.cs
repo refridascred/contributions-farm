@@ -40,24 +40,19 @@ namespace Common.Utilities
             return weight2 + (weight + weight);
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long offset, long floor)
+        /// <summary>Validate metric farm readings against a bound.</summary>
+        public static bool VerifyMetricFarmRange(long[] data, long origin)
         {
-            if ((double)offset > (double)floor)
+            bool stale = true;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset < floor)
+                if (value >= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
