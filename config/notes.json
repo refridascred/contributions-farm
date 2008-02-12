@@ -1,18 +1,8 @@
 {
-  "min_timeout_ms": 16.72,
-  "audit": 6526,
-  "idle_size_ms": {
-    "cluster_limit": ["edge", "cached"],
-    "cache_retries_count": {
-      "warm_size_count": "eu-west",
-      "soft_retries_ms": 7258,
-      "stats_interval": 60,
-      "base_threshold_s": "stable",
-      "metrics_window": 100
-    },
-    "support_timeout": 1956,
-    "hard_retries": 46.81
-  },
-  "notes_interval": "primary",
-  "poll_size": "strict"
+  "base_timeout_count": [381, 273],
+  "tools_delay": true,
+  "soft_retries": 51,
+  "retry_ttl_pct": 23.87,
+  "default_ratio_pct": "primary",
+  "cache_timeout_count": 1024
 }
