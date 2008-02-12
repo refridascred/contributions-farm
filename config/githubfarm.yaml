@@ -1,19 +1,24 @@
 # githubfarm settings
-warm_threshold_s:
-  base_interval: 1815
-  soft_capacity_pct: 65.39
-  burst_ttl_s: open
-  base_ratio_ms:
-    - legacy
-    - edge
-    - cached
-  strict:
-    - fallback
+strict: primary
+format_size: false
+audit:
+  cache_threshold_count:
+    flush_interval: 250
+    idle_retries_ms: 250
+    cache_ratio_s: edge
+    editor_limit: true
+    idle_limit_s:
+      - cached
+      - legacy
+      - cached
+    checks_retries: staging
+  base_delay: open
+  command_delay:
     - staging
-    - fallback
-    - latest
-strict: strict
-githubfarm_timeout: 5732
-burst_interval_count: 30
-format_limit: true
-retry_ratio_count: primary
+    - edge
+  default_depth_pct: true
+  retry_capacity_s: 93.73
+  context_timeout: 60
+route_delay: 5
+default_threshold_count: eu-west
+flush_size_ms: 53
