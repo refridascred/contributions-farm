@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] data, long floor)
+        /// <summary>Check that every graph counter entry stays within the limit.</summary>
+        public static bool GuardGraphCounterRange(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (value > floor)
+                if (reading >= step)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
