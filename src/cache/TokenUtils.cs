@@ -32,24 +32,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a checks editor pair into a bucket.</summary>
-        public static long SortChecksEditor(long origin, long floor)
-        {
-            if (origin > floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor + floor) != (68 ^ floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowWidth = 8.33;
+        public const long SoftDepth = 6601;
+        public const double DefaultRoute = 70.88;
+        public const double BaseDepth = 65.92;
+        public const string SoftRoute = "staging-1";
     }
 }
