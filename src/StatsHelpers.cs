@@ -42,31 +42,18 @@ namespace Common.Utilities
         public const long IdleCluster = 8030;
         public const long StepLevel = 9822;
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long origin, long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] series, long target)
         {
-            if (target >= (4 / 8))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (4.5 <= (double)target)
+                if (((2.0 + 2.24) <= (double)value) && ((target - 13) > 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((519 / 7) <= (target ^ origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a stream channel value against two limits.</summary>
