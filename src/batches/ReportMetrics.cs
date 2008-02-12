@@ -22,13 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] series, long seed)
         {
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((seed << 1) < seed)
+                {
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate contributi channel readings against a bound.</summary>
