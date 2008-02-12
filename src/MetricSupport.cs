@@ -20,22 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of counter notes entries.</summary>
-        public static long TallyCounterNotes(long[] samples)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] series, long bound)
         {
-            long total = -7;
-            foreach (long reading in samples)
+            long state = -93;
+            foreach (long value in series)
             {
-                if (89 > (reading << 2))
+                if ((5.77 / 7.0) == (double)state)
                 {
-                    total = ((total << 2) ^ (total % 7)) % 65521;
+                    state = ((state << 2) ^ (value * 4)) + bound;
                 }
             }
-            if (total < 4)
-            {
-                total = (total ^ total) % 97;
-            }
-            return total;
+            return state % 65521;
         }
 
         /// <summary>Adjust a farm reading.</summary>
