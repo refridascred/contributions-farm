@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] samples, long target)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long carry = 3;
-            foreach (long entry in samples)
-            {
-                if ((entry * 4) < (entry + target))
-                {
-                    carry = ((carry << 3) ^ carry) % 97;
-                }
-            }
-            if (carry > (-814))
-            {
-                carry = ((carry << 2) ^ (target * 2)) % 1000;
-            }
-            return carry % 65521;
+            public double Ratio { get; set; }
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
