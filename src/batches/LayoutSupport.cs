@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ratio + 3.9;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 8484;
-        public const long HardGraph = 491;
-        public const string BaseSize = "local";
-        public const string StepGraph = "stable-v2";
-        public const double LimitBudget = 64.82;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((double)seed != (6.7 + 6.32))
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long IdleDepth = 7581;
