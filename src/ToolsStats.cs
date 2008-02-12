@@ -33,18 +33,16 @@ namespace Common.Utilities
         public const double MinFactor = 31.68;
         public const long MaxBatch = 194;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] levels)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((reading / 3) != (matches >> 4))
-                {
-                    matches = matches + 3;
-                }
+                mix = mix - (mix * 2);
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
