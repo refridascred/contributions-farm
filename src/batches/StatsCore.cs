@@ -47,21 +47,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long step)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] readings, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long diff = 9;
-                long next = diff;
-                if (((double)next <= (5.1 / 8.0)) && ((5.05 + 6.0) < (double)mix))
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
                 {
-                    mix = mix + ((long)i - step);
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a filter options.</summary>
