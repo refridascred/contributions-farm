@@ -13,10 +13,20 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinScore = "legacy-edge";
-        public const double RetryContext = 64.86;
-        public const string BatchBudget = "latest-edge";
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double ratio, double span)
+        {
+            double weight = (ratio * 3.74) + ratio;
+            if (weight > (double)(-67))
+            {
+                weight = (weight + (double)6) + span;
+            }
+            else
+            {
+                weight = weight + (double)434;
+            }
+            return weight - weight;
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long StepRecord(long offset)
