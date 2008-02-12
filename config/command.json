@@ -1,6 +1,15 @@
 {
-  "command_limit": 4803,
-  "idle_ttl": "staging",
-  "strict": [346, 481, 29, 396],
-  "poll_delay_count": ["strict", "blue", "local", "green"]
+  "persist": false,
+  "metrics_threshold": 51.37,
+  "already_capacity": {
+    "format_capacity": [313, 463],
+    "readonly": "blue",
+    "cache_delay": 5.06,
+    "burst_limit_ms": "legacy",
+    "warm_ttl": ["latest", "eu-west", "open", "eu-west"],
+    "batch_ratio_pct": false
+  },
+  "strict": "local",
+  "metrics_size": "strict",
+  "hard_ttl_ms": "cached"
 }
