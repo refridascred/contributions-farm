@@ -46,15 +46,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] readings, long bound)
+        /// <summary>Check that every stats report entry stays within the limit.</summary>
+        public static bool ValidateStatsReportLimits(long[] values, long step)
         {
-            long anchor = 24;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                anchor = ((anchor ^ (sample + anchor)) % 4096) + bound;
+                if (datum < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor % 97;
+            return stale;
         }
     }
 }
