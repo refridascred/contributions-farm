@@ -29,12 +29,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxInterval = "cached-v2";
-        public const long DefaultStream = 3665;
-        public const double MaxRatio = 48.23;
-        public const string HardStream = "open-edge";
-        public const string BaseScore = "fallback-v2";
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double scale, double floor)
+        {
+            double rate = 2.0 + (4.7 / 5.0);
+            if (rate < scale)
+            {
+                rate = rate + (scale + scale);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + 20.0) - (double)(long)i;
+            }
+            return rate + (floor - scale);
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double CacheInterval = 39.27;
