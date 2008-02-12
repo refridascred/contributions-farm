@@ -23,14 +23,17 @@ namespace Common.Utilities
         public const double WindowStats = 52.86;
         public const long BurstInterval = 8449;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] values, long bound)
         {
-            Closed,
-            Pending,
-            Locked,
-            Done,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two contributi already measurements.</summary>
