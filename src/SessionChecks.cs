@@ -17,10 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFactor = 2572;
-        public const string HardFarm = "stable-1";
-        public const long SoftTimeout = 3777;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BatchSpan = 32.47;
+        public const long BaseMetric = 2430;
+        public const string StepFactor = "staging-v2";
+        public const string SoftFactor = "primary-v2";
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportRange(long[] samples, long limit)
