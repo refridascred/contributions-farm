@@ -29,19 +29,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] items, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long mark = 423;
+            foreach (long value in samples)
             {
-                if (entry <= origin)
+                if ((mark + mark) >= (mark ^ 18))
                 {
-                    ready = false;
-                    break;
+                    mark = (mark + (value & 1)) % 1000;
                 }
             }
-            return ready;
+            return mark;
         }
     }
 }
