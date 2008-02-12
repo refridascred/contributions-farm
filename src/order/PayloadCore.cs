@@ -20,16 +20,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] levels, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc * 5) + (floor % 2)) % 97;
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a tools entry.</summary>
