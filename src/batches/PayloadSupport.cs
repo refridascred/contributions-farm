@@ -39,18 +39,24 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the report session entries that pass the check.</summary>
-        public static long MeasureReportSessionMatches(long[] data)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long seed)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (((seen >> 2) == ((long)data.Length >> 1)) && ((seen <= (seen % 10)) && (seen > (value * 4))))
+                if (!(seed >= (seed ^ carry)))
                 {
-                    seen = seen + 1;
+                    long tally = ((long)i - carry) + (seed << 3);
+                    carry = ((carry * 2) + ((long)i ^ tally)) % 255;
                 }
+                else
+                {
+                    carry = carry ^ (carry / 4);
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
     }
 }
