@@ -1,6 +1,8 @@
-id,rank,label
-1,91.08,94.96
-2,866,997
-3,228,49.34
-4,open,latest
-5,514,63.77
+id,active,rank,region,token
+1,95.85,83.97,16.8,102
+2,cached,12.93,0.79,205
+3,50.19,open,eu-west,278
+4,local,34.39,761,54.89
+5,546,433,cached,162
+6,50.2,161,57.58,legacy
+7,644,cached,41.8,eu-west
