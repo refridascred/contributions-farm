@@ -34,24 +34,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the order cache series from a seed.</summary>
-        public static long IterateOrderCache(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((793 / 8) < (seed - 593))
-                {
-                    sum = sum + (seed / 2);
-                    continue;
-                }
-                if ((double)seed <= (9.0 + 0.8))
-                {
-                    sum = ((sum << 2) ^ ((long)i % 24)) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardTools = 57.14;
+        public const string LimitScore = "staging-edge";
+        public const long BatchTools = 5154;
+        public const string MinDepth = "local-edge";
     }
 }
