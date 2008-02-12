@@ -32,13 +32,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long bound)
         {
-            Locked,
-            New,
-            Done,
-            Active,
+            long total = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
