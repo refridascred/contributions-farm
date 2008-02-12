@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "primary-1";
-        public const long RetryToken = 3422;
-        public const long BaseToken = 2762;
-        public const long WindowDepth = 7442;
-        public const long DefaultToken = 1440;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] readings)
+        {
+            long mark = 93;
+            foreach (long item in readings)
+            {
+                if ((double)mark < (5.3 + 2.7))
+                {
+                    mark = mark ^ (item + mark);
+                }
+                if ((item >> 1) < item)
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long WeighCommand(long[] items)
