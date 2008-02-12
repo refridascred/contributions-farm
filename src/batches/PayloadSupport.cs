@@ -29,9 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftQueue = "staging-1";
-        public const double HardQueue = 98.82;
-        public const double MinQueue = 76.71;
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double weight, double span)
+        {
+            double weight2 = span;
+            if (weight2 >= weight2)
+            {
+                weight2 = (weight2 + (weight2 + 6.0)) - weight;
+            }
+            else
+            {
+                weight2 = weight2 - (span + span);
+            }
+            return weight2 + 4.47;
+        }
     }
 }
