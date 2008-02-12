@@ -32,27 +32,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] items, long seed)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] series)
         {
-            long state = 299;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1.48 / 9.0) < (double)cell)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = state - (state - cell);
-                }
-                state = ((state * 3) + (cell >> 4)) % 1000;
-                if ((double)seed < 8.1)
-                {
-                    state = (state ^ (cell / 9)) % 255;
+                    if ((series[i] - series[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state > (-8))
-            {
-                state = (state - 96) % 97;
-            }
-            return state % 97;
+            return tally;
         }
     }
 }
