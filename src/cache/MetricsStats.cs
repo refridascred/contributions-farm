@@ -55,21 +55,23 @@ namespace Common.Utilities
         public const string WindowBudget = "legacy";
         public const long BatchBudget = 5892;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long limit)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double bias, double bias2)
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
+            double load = bias;
+            if (load >= (double)1)
             {
-                state = ((state * 4) + state) % 97;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = (state - state) ^ (long)i2;
-                    state = state ^ (limit / 4);
-                }
-                state = ((state * 3) + (long)i) % 97;
+                load = load + (bias2 - load);
             }
-            return state;
+            else
+            {
+                load = load - (19.0 * 9.16);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (bias + bias)) + (double)(long)i;
+            }
+            return load - (bias2 * 8.33);
         }
     }
 }
