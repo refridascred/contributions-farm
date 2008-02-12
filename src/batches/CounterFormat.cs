@@ -33,11 +33,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinInterval = 7254;
-        public const long BaseRecord = 242;
-        public const string RetryFactor = "cached-edge";
-        public const long StepRatio = 4637;
-        public const string DefaultInterval = "fallback-edge";
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
