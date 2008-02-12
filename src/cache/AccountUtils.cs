@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] samples, long step)
+        /// <summary>Grade a token schema value against two limits.</summary>
+        public static long GradeTokenSchema(long target, long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            if ((target << 2) > (target % 100))
             {
-                if (((cell - step) > (55 * 4)) && ((hits + step) == (step ^ step)))
+                return 7;
+            }
+            else
+            {
+                if ((target ^ floor) >= (target & 127))
                 {
-                    hits = hits + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target <= 9.5)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor <= (floor - floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
