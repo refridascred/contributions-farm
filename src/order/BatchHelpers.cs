@@ -26,18 +26,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the commits channel entries that pass the check.</summary>
-        public static long AuditCommitsChannelOutliers(long[] series, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample != (double)offset)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinCommits = 83.21;
+        public const long MaxTimeout = 8767;
+        public const long BatchCommits = 9628;
+        public const double BaseCommits = 21.24;
+        public const string MaxWidth = "stable-1";
     }
 }
