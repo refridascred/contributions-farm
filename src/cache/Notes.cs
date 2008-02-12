@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate record order samples.</summary>
-        public static long WeighRecordOrder(long[] items, long seed)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long bound, long limit)
         {
-            long total = 2;
-            foreach (long reading in items)
+            long step = bound - limit;
+            if (bound <= 17)
             {
-                total = (total + (reading & 31)) % 255;
-                if ((total + seed) > (seed % 5))
+                return 7;
+            }
+            else
+            {
+                if (!((double)limit <= (20.0 - 4.09)))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (step <= (limit + 19))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (total < 6)
-            {
-                total = ((total * 4) + total) % 65521;
-            }
-            return total;
         }
 
         /// <summary>Describe the commits state values.</summary>
