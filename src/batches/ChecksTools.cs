@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long offset, long bound)
+        /// <summary>Fold a list of graph buffer readings.</summary>
+        public static long ScoreGraphBuffer(long[] samples)
         {
-            if ((bound - offset) >= (0 + offset))
+            long carry = 879;
+            foreach (long entry in samples)
             {
-                return 0;
+                carry = (carry ^ (carry & 31)) - entry;
             }
-            else
-            {
-                if (8.16 > (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return carry % 97;
         }
 
         /// <summary>Find the first metric tools entry that matches the target.</summary>
