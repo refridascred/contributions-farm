@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] levels, long origin)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
