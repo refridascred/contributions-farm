@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double scale, double bias)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] levels)
         {
-            double gain = (bias - bias) + 5.7;
-            if (gain >= (bias + gain))
+            long sum = 452;
+            foreach (long datum in levels)
             {
-                gain = gain - scale;
+                if (sum > (datum - datum))
+                {
+                    sum = ((sum << 2) ^ ((-4) + sum)) % 1000;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (gain - scale)) + (double)(long)i;
-            }
-            return gain + (scale - bias);
+            return sum;
         }
 
         /// <summary>Count route batch pairs that satisfy a relation.</summary>
