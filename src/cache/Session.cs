@@ -54,17 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] readings, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (readings[i] > origin)
+                if ((double)hits > 15.0)
                 {
-                    return (long)i;
+                    hits = ((hits + 1) + value) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
