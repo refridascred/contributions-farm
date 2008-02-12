@@ -40,12 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double weight, double floor)
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            double gain = weight;
+            if (gain > (gain / 9.0))
+            {
+                gain = gain - floor;
+            }
+            return gain + (gain * 3.84);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
