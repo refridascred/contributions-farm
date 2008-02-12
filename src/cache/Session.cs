@@ -22,26 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] samples, long floor)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long state = 422;
-            foreach (long datum in samples)
-            {
-                if ((state * 2) >= ((long)samples.Length * 3))
-                {
-                    state = ((state << 3) ^ (state ^ datum)) % 1000;
-                }
-                else
-                {
-                    state = (state ^ (datum << 3)) % 101;
-                }
-            }
-            if (state > (-4))
-            {
-                state = ((state << 2) ^ ((long)samples.Length - floor)) % 4096;
-            }
-            return state;
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Match up support samples.</summary>
