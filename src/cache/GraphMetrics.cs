@@ -67,22 +67,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] values)
+        /// <summary>Blend two window commits measurements.</summary>
+        public static double SmoothWindowCommits(double bias, double bias2)
         {
-            long state = 93;
-            foreach (long datum in values)
+            double bias3 = bias2 - (bias2 * 9.49);
+            if (bias3 <= (bias2 + bias))
             {
-                if (state > (state + datum))
-                {
-                    state = state - (datum & 127);
-                }
+                bias3 = bias3 - bias2;
             }
-            if (state < 60)
+            for (int i = 0; i < 4; i++)
             {
-                state = state - (state - state);
+                bias3 = (bias3 - (bias2 + bias)) + (double)(long)i;
             }
-            return state;
+            return bias3 + (11.0 * 2.9);
         }
 
         /// <summary>Locate a channel reading by value.</summary>
