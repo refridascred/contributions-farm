@@ -39,39 +39,21 @@ namespace Common.Utilities
             return load + (5.5 + offset);
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long origin, long bound)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] data)
         {
-            long delta = origin + bound;
-            if ((delta + bound) < origin)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin + 84) >= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound << 1) >= (origin * 4))
+                    if ((data[i] + data[j]) == 8)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (bound > (bound % 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the session state values.</summary>
