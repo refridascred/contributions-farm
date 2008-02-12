@@ -22,13 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            Retry,
-            Done,
-            Queued,
-            Closed,
+            Paused,
+            Failed,
+            Pending,
+            Synced,
+            Stale,
         }
 
         /// <summary>Classify a checks editor pair into a bucket.</summary>
