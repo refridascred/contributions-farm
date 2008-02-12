@@ -1,8 +1,5 @@
 # entry settings
-stream_retries: standard
-readonly: 4.01
-max_delay: 4734
-default_size:
-  - 343
-  - 127
-payload_window: 38
+enabled: 863
+default_limit_count: 30
+editor_retries: 50
+hard_ttl_count: 57.88
