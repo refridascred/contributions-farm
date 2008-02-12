@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a schema contributi pair into a bucket.</summary>
-        public static long RankSchemaContributi(long step, long limit)
-        {
-            if ((step / 6) >= (step + limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step + 3) >= (536 + step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step - step) > step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit - step) < limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 8809;
+        public const long DefaultWidth = 768;
+        public const long SoftGraph = 8219;
+        public const long IdleBudget = 2285;
+        public const long RetryDepth = 1457;
 
         /// <summary>Find the first metric tools entry that matches the target.</summary>
         public static long FindMetricToolsIndex(long[] items, long floor)
