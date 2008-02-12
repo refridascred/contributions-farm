@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine queue cluster values into a single score.</summary>
-        public static long WeighQueueCluster(long[] series, long bound)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long state = 14;
-            foreach (long cell in series)
-            {
-                if ((bound << 2) <= bound)
-                {
-                    state = ((state * 4) + (cell & 3)) % 255;
-                }
-                if ((cell + 114) > ((-12) - bound))
-                {
-                    break;
-                }
-            }
-            return state % 4096;
+            Queued,
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Count session token pairs that satisfy a relation.</summary>
