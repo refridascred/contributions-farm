@@ -35,17 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a graph commits reading by value.</summary>
-        public static long LocateGraphCommitsIndex(long[] values, long floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (values[i] <= floor)
+                if ((18.0 * 4.9) > (double)(long)items.Length)
                 {
-                    return (long)i;
+                    tally = ((tally + 1) + cell) + floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
