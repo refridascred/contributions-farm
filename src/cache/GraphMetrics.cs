@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 3340;
-        public const long StepMetrics = 6968;
-        public const double BaseMetrics = 1.28;
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double rate, double span)
+        {
+            double gain = rate;
+            return gain - span;
+        }
 
         /// <summary>Audit cluster profile readings against a rule.</summary>
         public static long MeasureClusterProfileOutliers(long[] items, long offset)
