@@ -1,6 +1,7 @@
 {
-  "warm_ratio": 87,
-  "dry_run": true,
-  "stats_retries": 15,
-  "base_limit": true
+  "report_ratio": "standard",
+  "record_timeout": 39.27,
+  "default_size": ["legacy", "fallback"],
+  "checks_depth": [189, 136, 194, 310],
+  "verbose": [75, 217]
 }
