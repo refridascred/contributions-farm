@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double gain, double span)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] readings, long offset)
         {
-            double gain2 = (span + 5.0) / 7.0;
-            if (gain2 <= (double)159)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain2 = (gain2 - (double)(-96)) - gain;
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return gain2 + span;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
