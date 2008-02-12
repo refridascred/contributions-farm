@@ -14,18 +14,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit metric batch readings against a rule.</summary>
-        public static long AuditMetricBatchGaps(long[] items)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long offset)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((cell % 8) > seen)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    seen = seen + 2;
+                    sum = (sum - (49 % 60)) ^ (long)i2;
                 }
+                sum = (sum ^ offset) % 4096;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
