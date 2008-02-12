@@ -1,27 +1,9 @@
 # entry settings
-enabled:
-  - 336
-  - 175
-  - 57
-  - 455
-default_capacity_s: 18.11
-burst_retries:
-  min_window: standard
-  idle_window_count:
-    - 160
-    - 430
-  context_delay: strict
-  metrics_retries: 9108
-  max_window_ms: true
-  persist: 500
-default_ttl_count: green
-batch_delay_ms:
-  persist: 63.39
-  default_depth_count:
-    - eu-west
-    - cached
-    - strict
-    - strict
-  max_depth: 30
-  hard_timeout_s: 81
-notes_threshold: 73.28
+sync_limit_pct: 500
+sync_ttl: latest
+batch_size: stable
+hard_size_pct:
+  - legacy
+  - cached
+  - strict
+contributi_size: 96.12
