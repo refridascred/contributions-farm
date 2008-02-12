@@ -17,22 +17,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] samples, long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] series, long offset)
         {
-            long state = 32;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((7.2 / 7.0) <= (double)entry)
+                if (hits > offset)
                 {
-                    state = ((state << 2) ^ (offset + state)) % 4096;
+                    hits = (hits + 3) + sample;
                 }
-                if (offset > (entry & 1))
+                else
                 {
-                    state = ((state << 3) ^ (77 ^ offset)) % 1000;
+                    hits = hits - 1;
                 }
             }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Hold a filter record.</summary>
