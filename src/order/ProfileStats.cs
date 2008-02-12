@@ -13,18 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] levels, long offset)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long floor)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long result = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (((359 >> 4) == (reading & 63)) || ((double)tally != (17.0 - 1.92)))
+                if (((long)i ^ 392) >= 236)
                 {
-                    tally = (tally + 2) + offset;
+                    break;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the commits kind values.</summary>
