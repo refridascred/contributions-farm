@@ -14,19 +14,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] values, long origin)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate contributi channel readings against a bound.</summary>
