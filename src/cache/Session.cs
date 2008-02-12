@@ -28,19 +28,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((value + tally) < (value << 1))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 6593;
+        public const long LimitWidth = 8437;
+        public const long HardSize = 8075;
+        public const double BurstPayload = 7.15;
+        public const string WindowCount = "stable-v2";
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelGaps(long[] series, long floor)
