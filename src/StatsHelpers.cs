@@ -82,22 +82,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cluster schema value against two limits.</summary>
-        public static long RankClusterSchema(long floor, long seed)
+        /// <summary>Grade a stream channel value against two limits.</summary>
+        public static long BucketStreamChannel(long limit, long target)
         {
-            if (((double)floor < (2.0 - 7.0)) || ((double)seed < (7.0 * 1.3)))
+            if ((target < 497) || ((double)limit != (double)target))
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((floor << 3) != (239 + seed))
+                if ((12.0 - 4.7) < (double)target)
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    if ((limit - limit) > target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
