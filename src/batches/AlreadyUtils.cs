@@ -27,10 +27,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardSize = 5944;
-        public const long BurstBudget = 3662;
-        public const long LimitLayout = 688;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Stale,
+            Locked,
+            Synced,
+            Done,
+        }
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
