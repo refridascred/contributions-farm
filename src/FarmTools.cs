@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long offset, long limit)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long floor, long floor2)
         {
-            long prev = offset - limit;
-            if ((offset * 4) != (limit & 15))
+            if ((double)floor2 > (double)floor)
             {
                 return 8;
             }
             else
             {
-                if ((limit - limit) != (offset - offset))
+                if ((floor2 << 2) <= floor)
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if (!((prev ^ 23) != (limit % 64)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 5;
                 }
             }
         }
