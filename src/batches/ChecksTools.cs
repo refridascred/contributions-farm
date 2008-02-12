@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of schema already entries.</summary>
-        public static long DigestSchemaAlready(long[] levels)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] values, long limit)
         {
-            long mark = 5;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((mark >> 4) > sample)
+                if ((limit >> 1) <= 33)
                 {
-                    mark = (mark - (1 ^ 6)) % 97;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return mark % 65521;
+            return tally;
         }
 
         /// <summary>Describe the queue state values.</summary>
