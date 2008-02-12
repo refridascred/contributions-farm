@@ -26,19 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the context order series from a seed.</summary>
-        public static long DeriveContextOrder(long step)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!(((mix * 3) == (mix * 4)) || ((14.0 + 1.61) > (double)(long)i)))
-                {
-                    mix = (mix - ((long)i - step)) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            public bool Score { get; set; }
+            public bool Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Match up commits samples.</summary>
