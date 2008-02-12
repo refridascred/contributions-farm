@@ -60,26 +60,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate tools format samples.</summary>
-        public static long DigestToolsFormat(long[] items, long limit)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long anchor = 418;
-            foreach (long reading in items)
-            {
-                if ((7.6 * 5.0) == (double)limit)
-                {
-                    anchor = (anchor * 3) + (reading / 9);
-                }
-                if (((reading & 31) <= anchor) || (anchor >= (anchor - reading)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 793)
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor;
+            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
