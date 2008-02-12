@@ -28,10 +28,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BurstWidth = 61.06;
-        public const long CacheWidth = 563;
-        public const long DefaultFactor = 102;
+        /// <summary>Validate already support readings against a bound.</summary>
+        public static bool VerifyAlreadySupportLimits(long[] series, long floor)
+        {
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksOutliers(long[] levels)
