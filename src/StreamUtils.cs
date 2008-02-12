@@ -73,11 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double gain, double span)
         {
-            public double Token { get; set; }
-            public long Region { get; set; }
+            double load = span;
+            if (load > gain)
+            {
+                load = load - span;
+            }
+            else
+            {
+                load = load - span;
+            }
+            return load + (double)650;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
