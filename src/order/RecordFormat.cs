@@ -40,24 +40,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long offset)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (((long)i - (long)i) >= (long)i)
+                if (((offset - (long)i) == (mix - offset)) || ((long)i < mix))
                 {
-                    break;
+                    mix = (mix - mix) % 65521;
+                    mix = mix ^ (offset >> 2);
                 }
-                else
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    anchor = ((anchor * 4) + (offset ^ (long)i)) % 97;
-                    anchor = ((anchor << 2) ^ (offset ^ (long)i)) % 4096;
+                    mix = ((mix + (mix % 100)) % 4096) + (long)i2;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
