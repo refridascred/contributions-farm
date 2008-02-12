@@ -28,14 +28,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Validate window channel readings against a bound.</summary>
+        public static bool CheckWindowChannelBounds(long[] values, long target)
         {
-            Stale,
-            Closed,
-            Pending,
-            Locked,
-            Synced,
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a record reading.</summary>
