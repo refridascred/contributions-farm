@@ -33,19 +33,16 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] items, long origin)
+        /// <summary>Roll a githubfarm batches counter forward.</summary>
+        public static long IterateGithubfarmBatches(long offset)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long total = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading > origin)
-                {
-                    found = false;
-                    break;
-                }
+                total = (total ^ (622 - 147)) % 255;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
