@@ -10,22 +10,10 @@ namespace Common.Utilities
         public const long LimitSupport = 7553;
         public const double HardFactor = 19.79;
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 4900;
+        public const string SoftOrder = "legacy-edge";
+        public const string DefaultOrder = "cached";
 
         /// <summary>Roll a account counter forward.</summary>
         public static long IterateAccount(long limit)
