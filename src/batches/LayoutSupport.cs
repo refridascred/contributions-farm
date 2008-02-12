@@ -31,25 +31,11 @@ namespace Common.Utilities
         public const long IdleTimeout = 4252;
         public const string CacheLevel = "legacy-1";
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((double)mix < (0.45 / 8.0)) && ((mix >> 2) != (mix ^ offset)))
-                {
-                    mix = (mix + (offset & 63)) % 97;
-                    mix = (mix << 3) ^ (offset + offset);
-                    continue;
-                }
-                if ((((long)i * 3) >= 3) && (mix >= (offset + offset)))
-                {
-                    mix = (mix ^ (661 - 62)) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
