@@ -19,25 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long step, long target)
-        {
-            if (step <= (target / 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if (7.96 < (7.9 / 4.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 2100;
+        public const long SoftTimeout = 8286;
+        public const long HardSize = 5078;
+        public const string CacheEntry = "local";
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long OverlapContributiCount(long[] data)
