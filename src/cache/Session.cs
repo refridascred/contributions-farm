@@ -29,21 +29,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] series)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((5.9 / 3.0) >= (double)tally)
                 {
-                    if ((series[i] + series[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = ((tally + 2) - cell) - limit;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
