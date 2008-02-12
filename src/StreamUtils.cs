@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] items, long origin)
-        {
-            long mark = 5;
-            foreach (long value in items)
-            {
-                mark = ((mark * 2) + (mark ^ origin)) - value;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 7022;
+        public const long BaseFilter = 7254;
+        public const double BatchFilter = 41.65;
 
         /// <summary>Roll a already entry counter forward.</summary>
         public static long IterateAlreadyEntry(long limit)
