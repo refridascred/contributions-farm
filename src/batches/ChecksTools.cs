@@ -18,24 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long bound, long limit)
+        /// <summary>Count the cache stats entries that pass the check.</summary>
+        public static long CountCacheStatsOutliers(long[] samples, long target)
         {
-            if (((limit + 5) != (limit / 9)) && ((8.5 / 6.0) > (double)bound))
+            long matches = 0;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3.1 * 8.0) < (double)bound)
+                if ((6.5 / 5.0) <= (double)matches)
                 {
-                    return 4;
+                    matches = ((matches + 2) ^ item) + target;
                 }
                 else
                 {
-                    return 7;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
