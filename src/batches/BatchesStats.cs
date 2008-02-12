@@ -18,10 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 6805;
-        public const double WindowQueue = 88.2;
-        public const long MinQueue = 5996;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= seed) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long MatchContextCount(long[] samples)
