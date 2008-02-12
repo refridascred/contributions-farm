@@ -1,7 +1,6 @@
 {
-  "max_ratio_pct": [223, 392, 313],
-  "support_timeout": false,
-  "persist": 2489,
-  "retry_delay_pct": 4281,
-  "idle_delay_ms": true
+  "warm_ratio": 87,
+  "dry_run": true,
+  "stats_retries": 15,
+  "base_limit": true
 }
