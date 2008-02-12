@@ -1,9 +1,7 @@
 {
-  "flush_capacity_pct": "eu-west",
-  "retry_threshold": 7802,
-  "default_capacity_ms": {
-    "base_timeout_ms": "stable",
-    "command_window": 6650,
-    "githubfarm_delay": 59
-  }
+  "already_timeout": 1180,
+  "persist": 1.0,
+  "metrics_delay": 100,
+  "order_window": "standard",
+  "poll_size_count": ["open", "blue", "staging", "legacy"]
 }
