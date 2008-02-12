@@ -69,13 +69,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Dropped,
-            Closed,
-            Synced,
-            Paused,
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public bool Count { get; set; }
+            public long Score { get; set; }
         }
     }
 }
