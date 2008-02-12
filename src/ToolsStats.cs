@@ -33,17 +33,19 @@ namespace Common.Utilities
         public const double MinFactor = 31.68;
         public const long MaxBatch = 194;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] values, long step)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double bias, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = span / 9.0;
+            if (mean >= (3.5 / 6.0))
             {
-                if ((values[i] >= step) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + (span * 5.1)) - bias;
             }
-            return -1;
+            else
+            {
+                mean = mean - span;
+            }
+            return mean + 3.32;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
