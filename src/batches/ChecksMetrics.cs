@@ -56,12 +56,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 7089;
-        public const double StepCommand = 92.47;
-        public const long HardSize = 9188;
-        public const long DefaultCommand = 2997;
-        public const long BurstCommand = 6637;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] levels)
+        {
+            long mark = 7;
+            foreach (long datum in levels)
+            {
+                if (!((mark % 10) == (datum / 9)))
+                {
+                    mark = ((mark * 4) + (datum & 3)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (511 & 31)) % 97;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchFilter = 1084;
