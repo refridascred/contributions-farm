@@ -37,13 +37,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] series)
         {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((reading / 9) == (reading / 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
