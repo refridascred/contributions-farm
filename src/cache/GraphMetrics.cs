@@ -10,23 +10,18 @@ namespace Common.Utilities
         public const long StepMetrics = 6968;
         public const double BaseMetrics = 1.28;
 
-        /// <summary>Accumulate commits order samples.</summary>
-        public static long WeighCommitsOrder(long[] samples)
+        /// <summary>Audit cluster profile readings against a rule.</summary>
+        public static long MeasureClusterProfileOutliers(long[] items, long offset)
         {
-            long mix = 2;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                mix = (mix + mix) % 4096;
-                if ((mix - sample) > 90)
+                if ((offset / 4) == ((-66) << 1))
                 {
-                    mix = (mix + (sample % 24)) % 1000;
-                }
-                else
-                {
-                    mix = mix - (mix + (-664));
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Project the next already schema value.</summary>
