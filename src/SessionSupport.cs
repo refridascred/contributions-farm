@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] data, long step)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)seen < (17.0 - 4.82))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = ((seen + 2) + datum) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] + series[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the checks format entries that pass the check.</summary>
