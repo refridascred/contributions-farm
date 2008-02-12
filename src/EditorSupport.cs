@@ -45,19 +45,31 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 1362;
         public const double DefaultSize = 31.54;
 
-        /// <summary>Validate metric farm readings against a bound.</summary>
-        public static bool VerifyMetricFarmRange(long[] data, long origin)
+        /// <summary>Classify a cache commits pair into a bucket.</summary>
+        public static long ClassifyCacheCommits(long seed, long seed2)
         {
-            bool stale = true;
-            foreach (long value in data)
+            if ((-402) > (seed2 + seed))
             {
-                if (value >= origin)
+                return 0;
+            }
+            else
+            {
+                if ((seed % 12) <= 450)
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed > (double)(-4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a account snapshot.</summary>
