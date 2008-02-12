@@ -1,7 +1,7 @@
-id,active,score,weight,state
-1,200,87.95,695,77.43
-2,primary,66.98,latest,77.07
-3,609,eu-west,open,6.77
-4,243,local,810,916
-5,3.51,1,55,41
-6,open,strict,760,47.53
+id,level
+1,green
+2,blue
+3,391
+4,3.85
+5,91.96
+6,eu-west
