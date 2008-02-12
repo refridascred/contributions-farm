@@ -12,26 +12,18 @@ namespace Common.Utilities
         public const long DefaultAccount = 1912;
         public const long MaxRatio = 6014;
 
-        /// <summary>Accumulate metric contributi samples.</summary>
-        public static long WeighMetricContributi(long[] data, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] levels, long offset)
         {
-            long score = 476;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((origin << 3) < (entry - score))
+                if (((359 >> 4) == (reading & 63)) || ((double)tally != (17.0 - 1.92)))
                 {
-                    score = score - (560 >> 5);
-                }
-                if ((origin << 1) < 9)
-                {
-                    break;
+                    tally = (tally + 2) + offset;
                 }
             }
-            if (score > 1)
-            {
-                score = score ^ 3;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the commits kind values.</summary>
