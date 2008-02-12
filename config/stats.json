@@ -1,7 +1,7 @@
 {
-  "cache_ttl_ms": 8120,
-  "base_window": "cached",
-  "warm_interval_ms": true,
-  "min_threshold_s": false,
-  "retry_retries_s": 100
+  "hard_window_count": ["green", "strict"],
+  "dry_run": true,
+  "min_retries_count": "open",
+  "retry_retries": true,
+  "stream_delay": "latest"
 }
