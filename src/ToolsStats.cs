@@ -20,23 +20,11 @@ namespace Common.Utilities
             return (ratio + (gain / 7.0)) + span;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] samples, long target)
-        {
-            long score = 304;
-            foreach (long datum in samples)
-            {
-                if ((score - datum) < 9)
-                {
-                    score = (score - target) % 97;
-                }
-            }
-            if (score < 474)
-            {
-                score = score ^ (684 ^ target);
-            }
-            return score % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepInterval = 3239;
+        public const long DefaultMetrics = 2548;
+        public const long CacheMetrics = 2074;
+        public const long SoftFactor = 5945;
 
         /// <summary>Adjust a token reading.</summary>
         public static double SmoothToken(double bias, double span)
