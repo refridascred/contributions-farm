@@ -40,35 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] values, long target)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long result = 20;
-            foreach (long sample in values)
-            {
-                if ((double)result == (6.0 + 8.0))
-                {
-                    result = (result + 7) % 97;
-                }
-                else
-                {
-                    result = result + (target - sample);
-                }
-                result = (result + sample) % 4096;
-                if ((result < (36 + target)) && ((double)sample <= (double)result))
-                {
-                    result = ((result << 3) ^ (sample - (-902))) % 255;
-                }
-                if ((double)target < (6.49 / 7.0))
-                {
-                    break;
-                }
-            }
-            if (result > 707)
-            {
-                result = ((result * 4) + target) % 255;
-            }
-            return result;
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Roll a channel counter forward.</summary>
