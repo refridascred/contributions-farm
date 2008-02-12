@@ -34,19 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] data, long floor)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long sum = 5;
-            foreach (long cell in data)
-            {
-                sum = ((sum - (sum + floor)) % 97) ^ cell;
-            }
-            if (sum < 62)
-            {
-                sum = (sum << 2) ^ (sum / 8);
-            }
-            return sum % 1000;
+            public double Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
