@@ -35,17 +35,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a cluster stream reading by value.</summary>
-        public static long LookupClusterStreamIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= floor) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinInterval = 7254;
+        public const long BaseRecord = 242;
+        public const string RetryFactor = "cached-edge";
+        public const long StepRatio = 4637;
+        public const string DefaultInterval = "fallback-edge";
     }
 }
