@@ -36,21 +36,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long origin)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                total = (total << 2) ^ (total >> 3);
-                total = (total << 2) ^ (origin >> 1);
-                if (((origin ^ total) == ((long)i & 15)) || ((double)total > (double)95))
-                {
-                    total = ((total * 4) + (total & 7)) % 101;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            Done,
+            Ready,
+            Synced,
+            Pending,
+            Draft,
         }
     }
 }
