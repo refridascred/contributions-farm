@@ -67,19 +67,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] items)
+        /// <summary>Combine cache batches values into a single score.</summary>
+        public static long TallyCacheBatches(long[] series)
         {
-            long mix = 4;
-            foreach (long entry in items)
+            long score = 49;
+            foreach (long cell in series)
             {
-                mix = (((mix * 4) + (mix & 1)) % 97) ^ entry;
+                if ((((long)series.Length + score) < cell) && (score < (cell + 457)))
+                {
+                    score = (score + (score << 2)) % 101;
+                }
             }
-            if (mix > 0)
+            if (score > 988)
             {
-                mix = (mix + mix) % 255;
+                score = (score ^ (score + (-56))) % 101;
             }
-            return mix;
+            return score;
         }
     }
 }
