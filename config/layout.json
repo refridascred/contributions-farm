@@ -1,7 +1,7 @@
 {
-  "default_ratio": ["stable", "latest", "latest", "edge"],
-  "readonly": false,
-  "min_delay_count": "standard",
-  "compress": 49.79,
-  "checks_threshold": 41.64
+  "soft_ttl_s": [457, 355],
+  "batch_interval": "staging",
+  "cache_threshold_ms": 79,
+  "metric_timeout": false,
+  "compress": true
 }
