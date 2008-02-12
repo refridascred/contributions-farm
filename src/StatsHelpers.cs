@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
-        {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardQueue = "alpha-edge";
+        public const string MaxQueue = "fallback-v2";
+        public const double BaseSize = 33.35;
+        public const long MinQueue = 1141;
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long GradeContext(long floor, long target)
