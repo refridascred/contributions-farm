@@ -19,38 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long bound, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] data, long seed)
         {
-            if (!((bound / 8) >= step))
+            long count = 0;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 15) >= (47 << 3))
+                if (value < (count - value))
                 {
-                    return 8;
+                    count = (count + 2) + seed;
                 }
                 else
                 {
-                    if ((-935) > (bound % 16))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((3.95 / 5.0) >= (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
