@@ -12,22 +12,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the counter profile entries that pass the check.</summary>
-        public static long MeasureCounterProfileMatches(long[] readings)
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally - item) > (tally & 31))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] - levels[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
