@@ -30,20 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] items)
+        /// <summary>Compare every pair of context notes readings.</summary>
+        public static long MatchContextNotesCount(long[] items)
         {
-            long score = 982;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score - (930 + score)) % 4096;
-                score = score + (item % 64);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (score < 11)
-            {
-                score = ((score * 4) + (score ^ score)) % 97;
-            }
-            return score;
+            return matches;
         }
     }
 }
