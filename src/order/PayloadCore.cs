@@ -30,17 +30,16 @@ namespace Common.Utilities
         public const long BaseCount = 5189;
         public const long SoftContributi = 6399;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] items, long seed)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
+                result = (result * 2) + result;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
     }
 }
