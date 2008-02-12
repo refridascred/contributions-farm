@@ -40,16 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double weight, double floor)
-        {
-            double bias = floor;
-            if (bias <= (bias + bias))
-            {
-                bias = (bias - bias) + weight;
-            }
-            return bias - (double)340;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepWidth = 71.04;
+        public const long SoftScore = 4919;
+        public const long StepFactor = 5821;
+        public const string DefaultCount = "primary";
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long TotalSchema(long[] values)
