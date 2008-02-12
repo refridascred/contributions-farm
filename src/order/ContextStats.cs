@@ -39,9 +39,13 @@ namespace Common.Utilities
             return gain + (gain * 3.84);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheEntry = "alpha-1";
-        public const long LimitEntry = 4027;
-        public const string CacheSize = "cached-v2";
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
