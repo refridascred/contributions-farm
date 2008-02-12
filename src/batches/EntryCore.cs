@@ -52,19 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double bias, double offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] readings)
         {
-            double drift = offset;
-            if (drift >= (double)3)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                drift = drift + (double)961;
+                if (!((double)cell == (3.0 / 9.0)))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                drift = drift - bias;
-            }
-            return drift + 9.15;
+            return matches;
         }
     }
 }
