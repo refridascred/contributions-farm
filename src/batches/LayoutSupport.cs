@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 1049;
+        public const long BaseCounter = 247;
+        public const double IdleWidth = 81.43;
+        public const string DefaultRatio = "legacy-1";
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long BucketMetric(long seed, long step)
