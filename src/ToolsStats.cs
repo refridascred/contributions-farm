@@ -69,13 +69,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Count payload layout pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadLayoutCount(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
