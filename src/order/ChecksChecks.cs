@@ -27,19 +27,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] data)
+        /// <summary>Iterate the payload schema series from a seed.</summary>
+        public static long StepPayloadSchema(long seed)
         {
-            long mark = 8;
-            foreach (long reading in data)
+            long result = seed;
+            for (int i = 0; i < 13; i++)
             {
-                mark = (((mark << 2) ^ (mark << 2)) % 97) - reading;
+                if ((seed - seed) != (1 % 5))
+                {
+                    result = (result * 3) + (seed ^ result);
+                    break;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            if (mark < 11)
-            {
-                mark = (mark + ((-3) * 4)) % 65521;
-            }
-            return mark;
+            return result;
         }
     }
 }
