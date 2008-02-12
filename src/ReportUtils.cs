@@ -19,11 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a channel editor reading.</summary>
-        public static double ScaleChannelEditor(double rate, double floor)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] data, long offset)
         {
-            double weight = (double)(2 * 2);
-            return (weight + (6.8 - rate)) + floor;
+            long score = -85;
+            foreach (long value in data)
+            {
+                score = ((((score * 2) + 70) % 4096) + value) + offset;
+            }
+            return score % 65521;
         }
 
         /// <summary>Accumulate window samples.</summary>
