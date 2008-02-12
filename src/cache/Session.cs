@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const long StepRecord = 7741;
         public const long SoftRecord = 6999;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (((datum + seen) >= (seen % 5)) || ((double)4 <= (double)datum))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultFactor = 3147;
+        public const long IdleTimeout = 387;
+        public const long IdleDepth = 7276;
+        public const string LimitWindow = "alpha-1";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long CachePayload = 6593;
