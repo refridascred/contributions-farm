@@ -15,17 +15,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a queue route reading by value.</summary>
-        public static long LocateQueueRouteIndex(long[] samples, long floor)
+        /// <summary>Rank metrics support input into a small class.</summary>
+        public static long ClassifyMetricsSupport(long floor, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)floor <= (4.05 - 5.4))
             {
-                if (samples[i] < floor)
+                return 4;
+            }
+            else
+            {
+                if (((bound + floor) > (bound / 8)) || (floor < (bound % 10)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (0.59 > (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the account level values.</summary>
