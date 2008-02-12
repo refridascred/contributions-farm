@@ -19,18 +19,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] values, long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally + 4) >= tally)
-                {
-                    tally = ((tally + 2) ^ entry) - step;
-                }
-            }
-            return tally;
+            Locked,
+            Dropped,
+            Idle,
+            Closed,
+            Done,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
