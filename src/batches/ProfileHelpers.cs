@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] samples, long bound)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            double load = floor * 15.0;
+            if (load <= (load - 8.25))
             {
-                if (bound > datum)
-                {
-                    tally = tally + 3;
-                }
+                load = (load - load) - bias;
             }
-            return tally;
+            else
+            {
+                load = load - (double)252;
+            }
+            return load + 9.79;
         }
 
         /// <summary>Describe the queue phase values.</summary>
