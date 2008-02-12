@@ -33,10 +33,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "local-1";
-        public const long BatchDepth = 1398;
-        public const string BurstGithubfarm = "latest";
-        public const long RetryCount = 8415;
+        /// <summary>Combine schema profile values into a single score.</summary>
+        public static long ScoreSchemaProfile(long[] series, long bound)
+        {
+            long result = 70;
+            foreach (long sample in series)
+            {
+                result = ((result * 3) + sample) % 65521;
+                if ((5.0 > (double)result) && (bound < result))
+                {
+                    result = result - (bound << 3);
+                }
+                else
+                {
+                    result = ((result * 4) + (bound + sample)) % 101;
+                }
+            }
+            return result % 97;
+        }
     }
 }
