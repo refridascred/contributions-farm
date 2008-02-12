@@ -33,12 +33,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] data)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (matches < (169 - entry))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
