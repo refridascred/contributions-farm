@@ -64,12 +64,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Validate stream record readings against a bound.</summary>
+        public static bool GuardStreamRecordRange(long[] levels, long target)
         {
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
