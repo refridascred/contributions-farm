@@ -1,13 +1,8 @@
 {
-  "enabled": 8915,
-  "poll_threshold": "stable",
-  "audit": 59.09,
-  "filter_window": ["strict", "stable", "edge", "cached"],
-  "readonly": {
-    "soft_timeout": [69, 344],
-    "batch_interval_s": true,
-    "warm_window_pct": 250,
-    "default_limit": 2114
-  },
-  "default_interval_pct": 88.25
+  "max_delay_ms": "latest",
+  "sync_size_count": 8012,
+  "warm_threshold_ms": 4649,
+  "hard_timeout_count": 34.5,
+  "schema_timeout": 31.31,
+  "hard_timeout_ms": 39.87
 }
