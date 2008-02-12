@@ -65,19 +65,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] values, long step)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long acc = 947;
-            foreach (long value in values)
-            {
-                acc = ((acc * 5) + acc) ^ value;
-                if (step >= (step * 5))
-                {
-                    break;
-                }
-            }
-            return acc % 97;
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public double Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the command state values.</summary>
