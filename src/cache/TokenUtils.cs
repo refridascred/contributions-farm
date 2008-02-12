@@ -14,19 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every already token entry stays within the limit.</summary>
-        public static bool ValidateAlreadyTokenRange(long[] data, long seed)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the tools kind values.</summary>
