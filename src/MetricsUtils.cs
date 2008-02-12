@@ -34,18 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] samples)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((cell & 255) < matches) || ((matches > (cell << 3)) || (cell <= (matches - cell))))
+                if ((series[i] > limit) && ((series[i] % 3) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
