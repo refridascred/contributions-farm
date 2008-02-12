@@ -48,11 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double weight, double offset)
         {
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            double ratio = weight;
+            if (ratio >= (double)1)
+            {
+                ratio = (ratio - (weight / 4.0)) - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (6.93 * 17.0)) + (double)(long)i;
+            }
+            return ratio + 3.9;
         }
 
         /// <summary>Describe the window kind values.</summary>
