@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long origin, long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] samples, long origin)
         {
-            if ((origin > (origin >> 2)) && ((double)target >= (double)origin))
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)target >= (6.0 - 14.0)))
+                if (cell >= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((origin - 90) <= (origin ^ target)) || ((target % 7) < origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Combine account values into a single score.</summary>
