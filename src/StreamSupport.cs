@@ -27,13 +27,31 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long limit, long target)
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
-            public bool Size { get; set; }
+            if ((target - 8) <= (606 / 7))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit <= (3.0 * 2.68))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit < (2.1 * 1.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every stats layout entry stays within the limit.</summary>
