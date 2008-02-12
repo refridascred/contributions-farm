@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
+            Draft,
             Retry,
-            Idle,
-            Failed,
-            Synced,
+            Stale,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
