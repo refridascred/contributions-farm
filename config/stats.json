@@ -1,6 +1,12 @@
 {
-  "readonly": 78.76,
-  "audit": 58.31,
-  "warm_delay_count": true,
-  "hard_threshold_pct": true
+  "burst_depth": 8754,
+  "soft_ratio_count": ["eu-west", "primary", "strict"],
+  "flush_size": "open",
+  "warm_interval": {
+    "payload_interval": "legacy",
+    "soft_delay_pct": [132, 469, 56, 153],
+    "verbose": true,
+    "batch_limit": 1.05
+  },
+  "burst_capacity": 250
 }
