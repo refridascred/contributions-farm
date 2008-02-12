@@ -34,22 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] data)
+        /// <summary>Count the commits channel entries that pass the check.</summary>
+        public static long AuditCommitsChannelOutliers(long[] series, long offset)
         {
-            long mark = 291;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                for (int i = 0; i < 4; i++)
+                if ((double)sample != (double)offset)
                 {
-                    mark = ((mark * 2) + mark) + (long)i;
-                }
-                if ((value % 3) >= (value >> 5))
-                {
-                    mark = ((mark * 3) + (mark % 5)) % 97;
+                    matches = matches + 3;
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
