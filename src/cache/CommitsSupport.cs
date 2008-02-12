@@ -67,9 +67,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleRatio = "legacy-1";
-        public const long MaxAccount = 839;
-        public const long StepAccount = 5320;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (tally >= (793 + entry))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
