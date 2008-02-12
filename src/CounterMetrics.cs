@@ -38,14 +38,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] data)
         {
-            Draft,
-            Closed,
-            Stale,
-            Pending,
-            Idle,
+            long carry = 2;
+            foreach (long item in data)
+            {
+                if ((17.0 + 4.31) >= (double)carry)
+                {
+                    carry = (carry ^ item) % 1000;
+                }
+                else
+                {
+                    carry = (carry - 504) % 65521;
+                }
+            }
+            if (carry > 96)
+            {
+                carry = ((carry * 4) + (carry ^ carry)) % 65521;
+            }
+            return carry;
         }
     }
 }
