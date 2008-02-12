@@ -12,19 +12,23 @@ namespace Common.Utilities
         public const double IdleChannel = 67.75;
         public const long BatchFactor = 4539;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] values, long offset)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            double bias = rate;
+            if (bias < (rate * 5.62))
             {
-                if (datum != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = (bias + (bias + rate)) - floor;
             }
-            return valid;
+            else
+            {
+                bias = bias - (bias / 5.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (2.3 / 4.0)) + (double)(long)i;
+            }
+            return bias - (bias - rate);
         }
 
         /// <summary>Digest a series of order entries.</summary>
