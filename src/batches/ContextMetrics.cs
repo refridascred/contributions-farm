@@ -49,11 +49,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryRatio = 7726;
-        public const long RetryTools = 6191;
-        public const string BaseSpan = "strict";
-        public const long MinWidth = 7622;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double bias, double span)
+        {
+            double ratio = (double)(375 + 810);
+            if (ratio > (span - span))
+            {
+                ratio = (ratio - 7.62) - bias;
+            }
+            return ratio - ratio;
+        }
 
         /// <summary>Project the next filter value.</summary>
         public static double SmoothFilter(double weight, double floor)
