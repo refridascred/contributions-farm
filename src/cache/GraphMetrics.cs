@@ -70,20 +70,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batch queue samples.</summary>
-        public static long CombineBatchQueue(long[] data, long seed)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] values)
         {
-            long score = 37;
-            foreach (long cell in data)
+            long state = 93;
+            foreach (long datum in values)
             {
-                score = (((score * 3) + seed) % 65521) - cell;
-                score = score ^ (score << 1);
+                if (state > (state + datum))
+                {
+                    state = state - (datum & 127);
+                }
             }
-            if (score > 1)
+            if (state < 60)
             {
-                score = score ^ (long)data.Length;
+                state = state - (state - state);
             }
-            return score;
+            return state;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
