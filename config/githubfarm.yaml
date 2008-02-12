@@ -1,4 +1,8 @@
 # githubfarm settings
-persist: 17.29
-max_ratio_s: false
-cache_ratio_count: 17.55
+retry_limit_ms:
+  - primary
+  - edge
+  - local
+  - open
+hard_ttl_count: stable
+readonly: 500
