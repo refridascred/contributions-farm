@@ -26,13 +26,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long target)
         {
-            public double Size { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
+            long total = target;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total << 2) ^ (target + 7)) % 65521;
+                total = ((total << 2) ^ (total & 15)) % 101;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
