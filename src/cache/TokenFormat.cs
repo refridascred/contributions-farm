@@ -15,18 +15,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] values, long bound)
+        /// <summary>Look up the position of a tools command sample.</summary>
+        public static long FindToolsCommandIndex(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound ^ reading) != (reading & 127))
+                if (levels[i] > bound)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
