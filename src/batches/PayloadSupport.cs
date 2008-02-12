@@ -13,20 +13,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long offset)
+        /// <summary>Compare every pair of buffer commits readings.</summary>
+        public static long OverlapBufferCommitsCount(long[] series)
         {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i3 = 0; i3 < 6; i3++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score * 2) + (offset >> 5)) ^ (long)i3;
+                    if ((series[i] + series[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = (score + (score * 2)) % 255;
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Blend two notes measurements.</summary>
