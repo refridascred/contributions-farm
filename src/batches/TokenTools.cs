@@ -29,18 +29,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the channel batches entries that pass the check.</summary>
-        public static long MeasureChannelBatchesMatches(long[] samples, long seed)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)seed >= (10.0 / 8.0))
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
