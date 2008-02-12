@@ -27,17 +27,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a channel buffer sample.</summary>
-        public static long SeekChannelBufferIndex(long[] series, long floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 2;
+            foreach (long value in values)
             {
-                if (series[i] > floor)
+                state = state + (24 ^ value);
+                if ((limit - 23) >= (value << 3))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state > 962)
+            {
+                state = state - (state >> 4);
+            }
+            return state;
         }
     }
 }
