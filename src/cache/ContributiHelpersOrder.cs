@@ -36,32 +36,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a schema order value against two limits.</summary>
-        public static long RankSchemaOrder(long origin, long bound)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long bound2 = origin ^ bound;
-            if ((bound - origin) > 76)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin ^ bound2) >= (origin + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((8.2 / 2.0) >= (double)bound2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
