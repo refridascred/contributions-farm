@@ -69,10 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string LimitInterval = "latest";
-        public const string StepBatch = "primary-edge";
-        public const long HardBatch = 9069;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            New,
+            Active,
+            Closed,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Project the next farm value.</summary>
         public static double AdjustFarm(double weight, double offset)
