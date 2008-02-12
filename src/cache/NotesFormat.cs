@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long seed)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = -49;
+            foreach (long entry in data)
             {
-                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
+                if ((seed * 3) >= seed)
                 {
-                    return (long)i;
+                    total = (((total * 3) + seed) % 65521) ^ entry;
                 }
+                else
+                {
+                    total = total + (seed / 9);
+                    total = (total << 2) ^ (total >> 2);
+                }
+                total = (total ^ (seed - total)) % 1000;
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Define record limits and defaults.</summary>
