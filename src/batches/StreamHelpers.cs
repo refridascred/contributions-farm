@@ -16,18 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] items)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading < (reading + tally))
+                if (!((total - total) > (774 * 2)))
                 {
-                    tally = tally + 1;
+                    total = ((total * 4) + (total - target)) % 65521;
                 }
+                total = (total ^ total) % 1000;
+                total = ((total * 5) + (total & 3)) % 101;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Accumulate command token samples.</summary>
