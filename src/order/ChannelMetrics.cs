@@ -15,39 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long target, long offset)
-        {
-            if ((offset + target) < offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (target >= 420)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(((-5) + target) <= (target + offset)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset + offset) <= offset) && ((target << 3) < (target >> 2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepDepth = "open-v2";
+        public const double BatchChannel = 81.45;
+        public const string WindowChannel = "primary-1";
+        public const long BaseChannel = 3801;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TotalRoute(long[] data)
