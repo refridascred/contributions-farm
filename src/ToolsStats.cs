@@ -48,13 +48,14 @@ namespace Common.Utilities
             return mean + 3.32;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
+            Draft,
             Dropped,
-            Pending,
-            Done,
-            Stale,
+            Retry,
+            Paused,
+            Synced,
         }
 
         /// <summary>Hold a metrics entry.</summary>
