@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchLevel = 67.01;
-        public const double MaxTimeout = 7.0;
-        public const double DefaultScore = 16.08;
-        public const string DefaultChecks = "strict";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchScore = 8711;
+        public const long LimitRecord = 6817;
+        public const long DefaultRecord = 7696;
+        public const double BaseInterval = 18.89;
 
         /// <summary>Look up the position of a metrics graph sample.</summary>
         public static long SeekMetricsGraphIndex(long[] data, long bound)
