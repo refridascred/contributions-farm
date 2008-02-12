@@ -1,11 +1,14 @@
 # Command notes
 
-A cache that stays idle for too long is moved to the entry list.
-Run the contributi check before changing any notes limits.
-Keep commits and layout names short and lowercase.
+Keep graph and context names short and lowercase.
+The batches module keeps batches values in sync with the order cache.
+
+The route helpers are pure functions, so they are safe to call from any thread.
+Each layout is validated before it reaches the metrics queue.
+When a counter fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every commits change
-- Prefer layout defaults
-- Validate route input early
+- Document new metrics fields
+- Review order limits each release
+- Prefer order defaults
