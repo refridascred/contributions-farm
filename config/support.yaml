@@ -1,8 +1,19 @@
 # support settings
-soft_ttl: true
-queue_threshold: 68
+max_timeout_count: local
 dry_run:
-  - blue
-  - standard
-cache_threshold_pct: 78
-schema_size: 76
+  hard_retries_s: 100
+  poll_retries_count: true
+  cache_capacity_count:
+    - green
+    - open
+    - eu-west
+    - legacy
+  dry_run: 75
+  default_capacity_s: primary
+  cache_size_s: 5629
+max_depth_count: eu-west
+flush_threshold_count:
+  farm_delay: open
+  batch_interval_count: 1024
+  hard_limit_s: eu-west
+  hard_size: stable
