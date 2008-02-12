@@ -35,31 +35,24 @@ namespace Common.Utilities
             return weight2 + (weight + weight);
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] levels, long step)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long offset, long floor)
         {
-            long mark = -877;
-            foreach (long sample in levels)
+            if ((double)offset > (double)floor)
             {
-                mark = ((mark * 3) + step) % 1000;
-                if ((double)sample <= (double)step)
+                return 5;
+            }
+            else
+            {
+                if (offset < floor)
                 {
-                    mark = (mark ^ sample) % 255;
+                    return 4;
                 }
-                if (((12.0 + 5.71) < (double)sample) || ((sample + step) >= (step + sample)))
+                else
                 {
-                    mark = (mark - (step + sample)) % 65521;
-                }
-                if ((sample ^ mark) != (sample << 3))
-                {
-                    break;
+                    return 7;
                 }
             }
-            if (mark < 6)
-            {
-                mark = (mark + (77 - step)) % 101;
-            }
-            return mark % 65521;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
