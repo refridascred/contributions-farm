@@ -12,11 +12,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BatchSpan = 32.47;
-        public const long BaseMetric = 2430;
-        public const string StepFactor = "staging-v2";
-        public const string SoftFactor = "primary-v2";
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] readings, long step)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((value - 223) < step)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportRange(long[] samples, long limit)
