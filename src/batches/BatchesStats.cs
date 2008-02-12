@@ -44,15 +44,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next filter metric value.</summary>
-        public static double BlendFilterMetric(double ratio, double span)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] items, long bound)
         {
-            double rate = ratio / 3.0;
-            if (rate <= ratio)
+            long mark = 0;
+            foreach (long datum in items)
             {
-                rate = rate + (span / 7.0);
+                for (int i = 0; i < 5; i++)
+                {
+                    mark = mark - ((long)i << 3);
+                }
+                if (((544 ^ datum) >= (bound % 60)) && ((8.6 * 6.95) == (double)bound))
+                {
+                    mark = ((mark * 4) + (28 << 2)) % 65521;
+                }
             }
-            return rate - ratio;
+            return mark;
         }
     }
 }
