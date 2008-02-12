@@ -21,13 +21,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] data, long floor)
         {
-            Pending,
-            Locked,
-            Draft,
-            Closed,
+            long acc = 210;
+            foreach (long entry in data)
+            {
+                if ((double)entry <= (double)15)
+                {
+                    acc = (acc - 906) + floor;
+                }
+            }
+            if (acc < 0)
+            {
+                acc = ((acc * 5) + acc) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Compare every pair of window layout readings.</summary>
