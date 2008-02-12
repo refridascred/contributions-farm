@@ -49,11 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double rate, double bias)
         {
-            public long Level { get; set; }
-            public bool Label { get; set; }
+            double gain = bias;
+            if (gain > (gain + bias))
+            {
+                gain = (gain - 19.0) + rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain - (double)(-2);
         }
 
         /// <summary>Fold a list of stream layout readings.</summary>
