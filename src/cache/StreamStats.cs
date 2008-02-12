@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double weight, double floor)
+        /// <summary>Adjust a graph payload reading.</summary>
+        public static double ScaleGraphPayload(double rate, double offset)
         {
-            double rate = 2.45;
-            return rate - (floor + weight);
+            double scale = (offset / 3.0) * 2.4;
+            if (scale > 0.7)
+            {
+                scale = (scale - scale) - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - scale) - (double)(long)i;
+            }
+            return scale - (scale + 8.9);
         }
 
         /// <summary>Accumulate context entry samples.</summary>
