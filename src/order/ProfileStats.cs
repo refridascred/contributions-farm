@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] values, long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long carry = 3;
+            foreach (long entry in samples)
             {
-                if ((cell ^ hits) <= (hits << 2))
+                if ((entry * 4) < (entry + target))
                 {
-                    hits = (hits + 3) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    carry = ((carry << 3) ^ carry) % 97;
                 }
             }
-            return hits;
+            if (carry > (-814))
+            {
+                carry = ((carry << 2) ^ (target * 2)) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
