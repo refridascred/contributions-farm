@@ -14,19 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate graph entry readings against a bound.</summary>
-        public static bool ValidateGraphEntryLimits(long[] samples, long step)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < step)
+                if ((readings[i] >= origin) && ((readings[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
