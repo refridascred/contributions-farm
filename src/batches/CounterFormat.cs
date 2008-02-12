@@ -52,19 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] samples, long step)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
