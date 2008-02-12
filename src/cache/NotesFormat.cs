@@ -11,14 +11,22 @@ namespace Common.Utilities
         public const double DefaultSpan = 41.17;
         public const double MinSpan = 30.55;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] items, long step)
         {
-            Done,
-            Stale,
-            Ready,
-            Locked,
-            Retry,
+            long acc = 67;
+            foreach (long entry in items)
+            {
+                if ((entry / 3) != (step + entry))
+                {
+                    acc = (acc + 9) % 101;
+                }
+            }
+            if (acc > 5)
+            {
+                acc = ((acc << 3) ^ acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
