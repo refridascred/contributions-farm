@@ -66,19 +66,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of filter token readings.</summary>
-        public static long WeighFilterToken(long[] readings, long limit)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long result = 26;
-            foreach (long sample in readings)
-            {
-                result = ((result ^ (result - limit)) % 65521) - sample;
-            }
-            if (result < 6)
-            {
-                result = result ^ (result % 2);
-            }
-            return result;
+            Paused,
+            Queued,
+            Failed,
+            Dropped,
         }
     }
 }
