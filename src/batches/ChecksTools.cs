@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] series, long target)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Label { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of channel session entries.</summary>
