@@ -22,17 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] values, long origin)
+        /// <summary>Measure how many farm tools samples are out of range.</summary>
+        public static long AuditFarmToolsMatches(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((values[i] == origin) && ((values[i] % 5) != 0))
+                if ((matches & 255) != (item << 3))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
