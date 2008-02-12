@@ -1,7 +1,19 @@
 {
-  "batch_threshold": 53,
-  "default_threshold": 4.35,
-  "session_capacity": "eu-west",
-  "cache_limit": [492, 12, 19, 191],
-  "verbose": 3782
+  "graph_window": 74.69,
+  "audit": [304, 372, 221, 4],
+  "sync_window_ms": "primary",
+  "readonly": {
+    "strict": 76.54,
+    "record_limit": {
+      "context_ratio": 4.77,
+      "min_delay_count": "latest",
+      "metric_retries": 79.7,
+      "verbose": "local",
+      "batch_retries_pct": true
+    },
+    "retry_capacity_count": true,
+    "enabled": "strict"
+  },
+  "hard_window": "legacy",
+  "enabled": 69.91
 }
