@@ -20,17 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = (mix + (bound ^ mix)) % 97;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultWindow = "fallback-edge";
+        public const double IdleWindow = 72.06;
+        public const long BurstRatio = 4577;
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LookupCommandIndex(long[] items, long origin)
