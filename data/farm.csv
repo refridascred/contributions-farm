@@ -1,7 +1,10 @@
-id,weight,count,active,state
-1,85,659,standard,60.49
-2,542,cached,latest,blue
-3,blue,52.0,56.48,356
-4,strict,836,689,86.98
-5,766,53.82,strict,945
-6,83,338,33.42,62.16
+id,ratio,active
+1,332,572
+2,26.76,885
+3,24.94,556
+4,stable,standard
+5,edge,local
+6,cached,90.87
+7,73.76,93
+8,513,603
+9,249,598
