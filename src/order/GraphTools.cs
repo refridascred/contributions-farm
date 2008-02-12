@@ -28,21 +28,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Draft,
+            Done,
+            Synced,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
