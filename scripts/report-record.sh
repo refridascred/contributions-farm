@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open cached legacy; do
+for item in primary edge; do
     log "checking ${item}"
 done
 
-mode="${1:-local}"
+mode="${1:-blue}"
 case "${mode}" in
-    green)
+    blue)
         log "fast path"
         ;;
     *)
@@ -20,8 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+RECORD_LIMIT=106
+log "limit is ${RECORD_LIMIT}"
