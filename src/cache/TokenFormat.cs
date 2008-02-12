@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up stats batch samples.</summary>
-        public static long OverlapStatsBatchCount(long[] data)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double ratio, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = ratio / 8.0;
+            if (mean > (mean + 7.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean + (5.03 - mean)) + floor;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean - (mean / 5.0);
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
