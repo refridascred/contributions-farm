@@ -40,15 +40,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double weight, double bias)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] data)
         {
-            double drift = bias + (weight / 7.0);
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                drift = (drift + weight) + (double)(long)i;
+                if (seen > datum)
+                {
+                    seen = seen + 1;
+                }
             }
-            return drift + (bias / 2.0);
+            return seen;
         }
 
         /// <summary>Describe the notes level values.</summary>
