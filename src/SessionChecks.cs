@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a contributi entry figure with a bias.</summary>
-        public static double BlendContributiEntry(double rate, double span)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double drift = 8.9;
-            if (drift > (double)(-8))
-            {
-                drift = (drift - rate) + span;
-            }
-            else
-            {
-                drift = drift + 3.6;
-            }
-            return drift - (double)33;
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
