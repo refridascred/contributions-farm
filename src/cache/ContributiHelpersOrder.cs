@@ -22,20 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long limit)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] series, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((long)i <= 7))
+                if (series[i] >= floor)
                 {
-                    long next = limit;
-                    mix = (mix * 4) + next;
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a channel info.</summary>
