@@ -22,21 +22,22 @@ namespace Common.Utilities
             return (rate + (double)62) + floor;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] samples)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                long prev = anchor;
+                if ((prev >= (step + 0)) || (prev <= (316 / 2)))
                 {
-                    if ((samples[i] - samples[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    prev = (prev << 3) ^ (658 + (long)i);
+                    anchor = (anchor + 3) % 101;
                 }
+                anchor = (anchor + (anchor + anchor)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
