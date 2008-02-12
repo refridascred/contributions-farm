@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double gain, double span)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            double mean = span;
-            if (mean > 4.0)
-            {
-                mean = mean + (gain - span);
-            }
-            else
-            {
-                mean = mean - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (mean - span)) + (double)(long)i;
-            }
-            return mean + (double)42;
+            Idle,
+            Dropped,
+            Queued,
+            Stale,
+            Pending,
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
