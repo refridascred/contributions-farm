@@ -31,23 +31,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double bias, double span)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long limit)
         {
-            double bias2 = (double)(4 - 0);
-            if (bias2 < 3.9)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                bias2 = (bias2 + bias2) - span;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            else
-            {
-                bias2 = bias2 - bias2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - bias2) - (double)(long)i;
-            }
-            return bias2 + bias;
+            return mix;
         }
 
         /// <summary>Locate a token metric reading by value.</summary>
