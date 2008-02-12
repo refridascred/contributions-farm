@@ -1,12 +1,8 @@
 # entry settings
-soft_ratio_s: 2369
+strict: 11.66
+default_size: 45.4
 cache_capacity_count:
-  - 39
-  - 132
-  - 154
-persist: true
-default_size_ms:
+  - edge
   - stable
-  - eu-west
-max_retries: 20.6
-hard_size: 18.38
+  - staging
+  - standard
