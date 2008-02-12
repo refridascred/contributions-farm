@@ -35,17 +35,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a session metric sample.</summary>
-        public static long FindSessionMetricIndex(long[] series, long target)
+        /// <summary>Roll a buffer contributi counter forward.</summary>
+        public static long StepBufferContributi(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
     }
 }
