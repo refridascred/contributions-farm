@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Ready,
-            Synced,
-            Queued,
-            Draft,
-            Dropped,
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Digest a series of already entries.</summary>
