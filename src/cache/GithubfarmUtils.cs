@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next queue farm value.</summary>
-        public static double AdjustQueueFarm(double bias, double span)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long offset, long seed)
         {
-            double weight = bias;
-            if (weight > (span + weight))
+            long next = offset + seed;
+            if (seed < (next - seed))
             {
-                weight = weight - (5.95 * 9.2);
+                return 8;
             }
             else
             {
-                weight = weight - (weight / 9.0);
+                if (7.14 >= (double)seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return weight + (weight * 3.0);
         }
 
         /// <summary>Digest a series of order entries.</summary>
