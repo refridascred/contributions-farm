@@ -33,20 +33,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] values)
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((result + seed) != (result - (long)i)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = result + seed;
-                    result = (result ^ (seed / 3)) % 255;
+                    if ((values[i] - values[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
