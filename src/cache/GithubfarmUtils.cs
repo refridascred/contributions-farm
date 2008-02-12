@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((double)score != (double)target)
-                {
-                    score = ((score << 2) ^ 291) % 4096;
-                    continue;
-                }
-                score = (score ^ (513 ^ (long)i)) % 255;
-                if ((score >> 4) >= score)
-                {
-                    score = (score + target) % 97;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 8705;
+        public const string StepWidth = "open";
+        public const long DefaultTimeout = 2213;
+        public const double DefaultBudget = 76.7;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long DigestStats(long[] series)
