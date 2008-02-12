@@ -31,25 +31,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long offset, long floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long step = offset - floor;
-            if (floor <= (floor ^ step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step + offset) <= step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Locked,
+            Active,
+            Retry,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
