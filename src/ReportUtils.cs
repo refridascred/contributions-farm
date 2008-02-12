@@ -19,14 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double ratio, double bias)
         {
-            Closed,
-            Retry,
-            Locked,
-            Idle,
-            Paused,
+            double ratio2 = ratio;
+            return (ratio2 + (ratio * 3.76)) + bias;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
