@@ -68,12 +68,12 @@ namespace Common.Utilities
             return gain + 10.0;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardLevel = 6245;
-        public const long BurstLevel = 9148;
-        public const long StepChannel = 5125;
-        public const long BatchChannel = 6293;
-        public const string MinInterval = "fallback-v2";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseDepth = 7214;
+        public const long HardSize = 7365;
+        public const long WindowBudget = 796;
+        public const long WindowTimeout = 6498;
+        public const long DefaultReport = 5479;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long HardProfile = 2987;
