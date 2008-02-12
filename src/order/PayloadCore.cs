@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Stale,
-            Dropped,
-            Failed,
-            Active,
-            Synced,
+            Idle,
+            Pending,
+            Ready,
         }
 
         /// <summary>Hold a filter header.</summary>
