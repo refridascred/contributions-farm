@@ -38,16 +38,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long step)
+        /// <summary>Blend two metric record measurements.</summary>
+        public static double ProjectMetricRecord(double ratio, double span)
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
+            double gain = (double)(9 % 8);
+            if (gain <= gain)
             {
-                sum = ((sum * 4) + (step * 4)) % 97;
-                sum = ((sum * 4) + (long)i) % 97;
+                gain = (gain + ratio) - span;
             }
-            return sum;
+            return gain + 10.0;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
