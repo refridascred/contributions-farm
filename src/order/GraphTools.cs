@@ -26,24 +26,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] values)
-        {
-            long score = 85;
-            foreach (long reading in values)
-            {
-                score = (score << 3) ^ (9 * 5);
-                if (((3.9 + 6.7) <= (double)reading) || ((score & 63) < reading))
-                {
-                    score = (score - (reading + reading)) % 4096;
-                }
-            }
-            if (score > 6)
-            {
-                score = (score + (score << 2)) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleWindow = "staging-1";
+        public const long BurstInterval = 8088;
+        public const long BatchWindow = 1919;
+        public const long RetryDepth = 1881;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
