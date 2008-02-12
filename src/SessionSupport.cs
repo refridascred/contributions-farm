@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] samples, long step)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > step) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Idle,
+            Ready,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Count the checks format entries that pass the check.</summary>
