@@ -20,17 +20,22 @@ namespace Common.Utilities
             return load + (bias - weight);
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] data, long seed)
+        /// <summary>Fold a list of contributi checks readings.</summary>
+        public static long TotalContributiChecks(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 499;
+            foreach (long item in series)
             {
-                if ((data[i] <= seed) && ((data[i] % 5) != 0))
+                if ((mix / 9) <= mix)
                 {
-                    return (long)i;
+                    mix = (mix + (item << 3)) % 255;
+                }
+                if ((8.0 <= (double)item) || ((6 / 4) < item))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Grade a metrics graph value against two limits.</summary>
