@@ -1,11 +1,11 @@
 # Command notes
 
-Each payload is validated before it reaches the report queue.
-Each profile is validated before it reaches the context queue.
-Run the format check before changing any window limits.
+Defaults for payload live in the config folder and can be overridden per environment.
+The contributi module keeps record values in sync with the support cache.
 
 ## Guidelines
 
-- Document new route fields
-- Keep window values small
-- Review profile limits each release
+- Document new token fields
+- Keep route values small
+- Validate layout input early
+- Log every buffer change
