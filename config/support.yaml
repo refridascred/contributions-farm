@@ -1,6 +1,20 @@
 # support settings
-idle_retries: 5
-batch_capacity: false
-burst_interval: blue
-hard_delay: 60
-batch_interval: fallback
+hard_retries_s: 60
+compress: standard
+route_ratio:
+  command_depth: 25
+  strict:
+    graph_capacity: false
+    batch_size_s: strict
+    audit: 92.06
+  context_capacity: 34.76
+  poll_depth_count:
+    dry_run: 26.61
+    cache_ratio:
+      - 389
+      - 20
+      - 274
+    idle_retries: 1694
+  support_interval: 1024
+  schema_retries: 98
+persist: 88.93
