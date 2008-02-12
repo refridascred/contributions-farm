@@ -16,12 +16,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] readings, long target)
         {
-            Closed,
-            New,
-            Paused,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading <= 8.0)
+                {
+                    matches = (matches + 2) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
