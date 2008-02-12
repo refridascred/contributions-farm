@@ -35,19 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches notes entry stays within the limit.</summary>
-        public static bool GuardBatchesNotesLimits(long[] levels, long limit)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Dropped,
+            Pending,
+            Active,
         }
     }
 }
