@@ -12,23 +12,24 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double gain, double bias)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long seed, long step)
         {
-            double mean = 3.0;
-            if (mean <= (8.0 / 4.0))
+            if (((double)step != (double)924) || ((step * 3) > seed))
             {
-                mean = mean - gain;
+                return 8;
             }
             else
             {
-                mean = mean - (mean / 9.0);
+                if (!((step + seed) <= (seed >> 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (bias / 3.0)) + (double)(long)i;
-            }
-            return mean - (bias - mean);
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
