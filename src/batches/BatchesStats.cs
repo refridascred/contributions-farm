@@ -44,30 +44,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Project the next filter metric value.</summary>
+        public static double BlendFilterMetric(double ratio, double span)
         {
-            long anchor = 1;
-            foreach (long sample in levels)
+            double rate = ratio / 3.0;
+            if (rate <= ratio)
             {
-                if ((anchor & 63) < (sample - sample))
-                {
-                    anchor = ((anchor * 4) + (anchor >> 4)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor / 8)) % 4096;
-                }
-                if (!(4.0 < (double)sample))
-                {
-                    break;
-                }
+                rate = rate + (span / 7.0);
             }
-            if (anchor < 762)
-            {
-                anchor = anchor ^ (anchor & 255);
-            }
-            return anchor;
+            return rate - ratio;
         }
     }
 }
