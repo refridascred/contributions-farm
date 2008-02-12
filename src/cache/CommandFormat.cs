@@ -27,19 +27,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] values, long origin)
+        /// <summary>Validate entry batches readings against a bound.</summary>
+        public static bool ValidateEntryBatchesBounds(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (cell < origin)
+                if (value != offset)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
