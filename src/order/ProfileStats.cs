@@ -33,11 +33,26 @@ namespace Common.Utilities
             return scale - (double)72;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] data)
         {
-            public bool Owner { get; set; }
-            public double Rank { get; set; }
+            long total = 11;
+            foreach (long reading in data)
+            {
+                if ((reading - total) >= (reading - reading))
+                {
+                    continue;
+                }
+                if (((2 - reading) <= (total << 3)) && ((double)total <= (3.6 / 5.0)))
+                {
+                    total = total ^ reading;
+                }
+                if ((57 & 127) != (total - reading))
+                {
+                    break;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
