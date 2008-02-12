@@ -1,14 +1,6 @@
 {
-  "retry_window": false,
-  "base_ratio_ms": {
-    "hard_depth_ms": true,
-    "layout_threshold": 33.95,
-    "hard_window": 7895,
-    "farm_threshold": 88.51,
-    "flush_limit_count": 3749
-  },
-  "flush_size_s": 89,
-  "retry_interval": [462, 320],
-  "burst_window_count": 250,
-  "layout_timeout": "legacy"
+  "sync_interval": 35.92,
+  "checks_delay": "cached",
+  "idle_limit": 87.31,
+  "hard_limit_ms": "cached"
 }
