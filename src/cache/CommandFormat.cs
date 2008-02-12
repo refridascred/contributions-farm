@@ -42,31 +42,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long bound, long limit)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] levels)
         {
-            if (3 < ((-68) - bound))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit ^ bound) > (60 * 2))
+                if (!((3.0 * 0.04) >= (double)item) && ((item + item) == (item >> 2)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit != (7.5 * 17.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
