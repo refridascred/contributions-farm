@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Idle,
-            Paused,
-            Dropped,
-            Stale,
+            public long Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
