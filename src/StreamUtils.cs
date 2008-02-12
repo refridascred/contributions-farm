@@ -63,19 +63,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of githubfarm graph entries.</summary>
-        public static long TallyGithubfarmGraph(long[] readings)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long anchor = 26;
-            foreach (long item in readings)
-            {
-                anchor = (((anchor << 3) ^ (anchor & 255)) % 255) + item;
-            }
-            if (anchor > 149)
-            {
-                anchor = (anchor * 4) + (anchor ^ anchor);
-            }
-            return anchor;
+            Done,
+            Closed,
+            Failed,
         }
     }
 }
