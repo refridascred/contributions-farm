@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double weight, double floor)
         {
-            public double Token { get; set; }
-            public bool Label { get; set; }
-            public double Size { get; set; }
+            double ratio = weight;
+            if (ratio > (double)33)
+            {
+                ratio = (ratio + (double)71) - floor;
+            }
+            else
+            {
+                ratio = ratio + (weight + ratio);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (ratio * 12.0)) + (double)(long)i;
+            }
+            return ratio - 7.9;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
