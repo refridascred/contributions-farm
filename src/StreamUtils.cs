@@ -32,15 +32,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double weight, double bias)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long limit, long limit2)
         {
-            double weight2 = (weight / 7.0) - (bias - 2.0);
-            if (weight2 > (weight + weight))
+            long prev = limit - limit2;
+            if (!((double)prev > (7.0 / 3.0)))
             {
-                weight2 = weight2 - weight;
+                return 5;
             }
-            return weight2 - (double)(-5);
+            else
+            {
+                if (!((limit2 + prev) > limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
