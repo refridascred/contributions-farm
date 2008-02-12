@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] samples, long origin)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((((origin + tally) >= origin) || (tally >= origin)) || ((tally / 4) > (origin / 2)))
-                {
-                    tally = (tally + 1) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryInterval = 1480;
+        public const string MaxCache = "local-edge";
+        public const long IdleCache = 452;
+        public const double HardInterval = 82.74;
+        public const long BurstCache = 7054;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double StepBudget = 7.38;
