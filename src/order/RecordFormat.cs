@@ -28,12 +28,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Active,
-            Paused,
-            Draft,
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
