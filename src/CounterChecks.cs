@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSupport = "latest";
-        public const long LimitSupport = 7553;
-        public const double HardFactor = 19.79;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Synced,
+            Failed,
+            New,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MinOrder = 4900;
