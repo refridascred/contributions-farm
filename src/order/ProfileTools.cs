@@ -42,15 +42,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long bound)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long origin, long origin2)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            if ((double)origin2 < (6.87 * 3.0))
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((481 >> 1) > (origin2 & 127))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((origin << 3) < (origin & 255)) && (origin < (7 - origin)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((905 % 60) != (origin2 - origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the farm class values.</summary>
