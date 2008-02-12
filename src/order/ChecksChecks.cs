@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long limit, long limit2)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double ratio, double bias)
         {
-            if ((limit2 - limit2) < (limit2 * 5))
+            double mean = ratio / 3.0;
+            for (int i = 0; i < 7; i++)
             {
-                return 6;
+                mean = ((mean - (3.31 * 11.0)) + (double)(long)i) + bias;
             }
-            else
-            {
-                if ((limit2 & 15) != (limit2 << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mean - 1.33;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
