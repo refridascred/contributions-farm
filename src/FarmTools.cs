@@ -29,17 +29,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] series, long floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 3;
+            foreach (long entry in readings)
             {
-                if (series[i] < floor)
+                if ((state < (state & 63)) || ((entry ^ 6) > (state / 3)))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ state) % 255;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
