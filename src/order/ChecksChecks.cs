@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long limit, long limit2)
         {
-            Closed,
-            Paused,
-            New,
+            if ((limit2 - limit2) < (limit2 * 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit2 & 15) != (limit2 << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
