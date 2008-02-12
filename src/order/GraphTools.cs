@@ -51,18 +51,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] levels)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long carry = 4;
+            foreach (long reading in readings)
             {
-                if ((seen >> 1) > cell)
-                {
-                    seen = seen + 2;
-                }
+                carry = (((carry << 2) ^ (carry >> 3)) % 65521) ^ reading;
             }
-            return seen;
+            return carry % 65521;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
