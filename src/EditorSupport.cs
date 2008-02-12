@@ -71,11 +71,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "alpha-edge";
-        public const double WindowBatch = 94.69;
-        public const double LimitBatch = 70.34;
-        public const string WindowInterval = "fallback-edge";
-        public const long RetryBatch = 699;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] samples, long bound)
+        {
+            long acc = 520;
+            foreach (long reading in samples)
+            {
+                if ((bound & 255) < (3 * 2))
+                {
+                    acc = (((acc << 3) ^ (64 + bound)) % 97) + reading;
+                }
+            }
+            return acc;
+        }
     }
 }
