@@ -76,18 +76,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 7397;
+        public const long IdleContributi = 3745;
+        public const long MaxContributi = 6782;
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long BucketCache(long floor, long floor2)
