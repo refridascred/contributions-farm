@@ -1,7 +1,13 @@
 # support settings
-sync_interval: 79.13
-max_threshold_ms: 9.76
-batch_window: green
-checks_depth: true
-metric_depth: strict
-idle_window_s: 93.51
+base_retries: local
+idle_ratio_s:
+  burst_delay_pct:
+    - 391
+    - 149
+    - 25
+  account_ttl: strict
+  warm_window: 90.93
+  context_ttl: 64
+  queue_ttl: 42.05
+  strict: 9257
+readonly: 45.77
