@@ -39,10 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstBudget = 84.9;
-        public const string BaseStats = "fallback-edge";
-        public const long IdleFactor = 7848;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] values)
+        {
+            long state = 7;
+            foreach (long sample in values)
+            {
+                state = (state ^ state) ^ sample;
+            }
+            if (state < 295)
+            {
+                state = (state - state) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsMatches(long[] samples, long target)
