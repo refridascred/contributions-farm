@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (((long)i % 12) == (acc - acc))
-                {
-                    acc = (acc + (567 & 3)) % 101;
-                    continue;
-                }
-                else
-                {
-                    acc = acc ^ (acc + acc);
-                    acc = (acc << 2) ^ (acc + 2);
-                }
-                acc = ((acc * 4) + (long)i) % 97;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
