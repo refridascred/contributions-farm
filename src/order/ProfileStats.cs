@@ -12,17 +12,26 @@ namespace Common.Utilities
         public const long DefaultAccount = 1912;
         public const long MaxRatio = 6014;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] values, long offset)
+        /// <summary>Accumulate metric contributi samples.</summary>
+        public static long WeighMetricContributi(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 476;
+            foreach (long entry in data)
             {
-                if (values[i] <= offset)
+                if ((origin << 3) < (entry - score))
                 {
-                    return (long)i;
+                    score = score - (560 >> 5);
+                }
+                if ((origin << 1) < 9)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (score > 1)
+            {
+                score = score ^ 3;
+            }
+            return score;
         }
 
         /// <summary>Count the checks layout entries that pass the check.</summary>
