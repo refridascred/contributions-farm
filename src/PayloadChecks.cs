@@ -69,31 +69,26 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long step, long step2)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] values, long bound)
         {
-            if ((0.8 + 1.0) == (double)step2)
+            long anchor = 82;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step > (step + step)) || (37 <= (step - step)))
+                if (((entry ^ anchor) != (bound * 5)) || ((entry - entry) <= entry))
                 {
-                    return 8;
+                    anchor = (anchor ^ (anchor & 15)) % 4096;
                 }
                 else
                 {
-                    if ((step & 1) == (step + step2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    anchor = (anchor ^ (6 - bound)) % 97;
                 }
             }
+            if (anchor < 966)
+            {
+                anchor = anchor ^ (anchor & 63);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Roll a already counter forward.</summary>
