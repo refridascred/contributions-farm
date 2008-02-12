@@ -28,19 +28,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a support batches reading.</summary>
-        public static double BlendSupportBatches(double weight, double span)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            double drift = (8.42 / 2.0) * 20.0;
-            if (drift >= 5.16)
-            {
-                drift = drift - (span + span);
-            }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift + weight;
+            Stale,
+            Closed,
+            Pending,
+            Locked,
+            Synced,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
