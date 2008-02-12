@@ -32,12 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public bool Region { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
+            Draft,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
