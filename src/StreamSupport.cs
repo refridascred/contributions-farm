@@ -24,11 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double weight, double span)
         {
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
+            double bias = (double)(840 ^ 99);
+            if (bias <= span)
+            {
+                bias = (bias + (9.5 + span)) + weight;
+            }
+            return bias + (bias + bias);
         }
     }
 }
