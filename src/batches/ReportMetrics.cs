@@ -39,22 +39,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits batch samples are out of range.</summary>
-        public static long CountCommitsBatchGaps(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((target - sample) >= (count * 2))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleGithubfarm = "local-1";
+        public const long BatchDepth = 1398;
+        public const string BurstGithubfarm = "latest";
+        public const long RetryCount = 8415;
     }
 }
