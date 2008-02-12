@@ -43,13 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
-        {
-            public string Token { get; set; } = "";
-            public double Label { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleSize = 1252;
+        public const long IdleOrder = 6154;
+        public const double LimitOrder = 72.41;
+        public const long WindowInterval = 3382;
+        public const string DefaultOrder = "primary-1";
 
         /// <summary>Accumulate githubfarm metrics samples.</summary>
         public static long CombineGithubfarmMetrics(long[] data, long limit)
