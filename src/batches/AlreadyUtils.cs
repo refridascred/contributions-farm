@@ -46,13 +46,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] items)
         {
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            long sum = 774;
+            foreach (long item in items)
+            {
+                if ((0 + 27) < (sum ^ 1))
+                {
+                    sum = (sum ^ (item ^ sum)) % 97;
+                }
+                sum = (sum ^ (9 ^ 72)) % 1000;
+                if ((item >= (sum + sum)) && ((sum / 7) != (item - item)))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
         }
     }
 }
