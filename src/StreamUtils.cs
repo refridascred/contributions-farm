@@ -67,18 +67,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] levels, long target)
+        /// <summary>Digest a series of githubfarm graph entries.</summary>
+        public static long TallyGithubfarmGraph(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long anchor = 26;
+            foreach (long item in readings)
             {
-                if (313 < (target - seen))
-                {
-                    seen = (seen + 3) + entry;
-                }
+                anchor = (((anchor << 3) ^ (anchor & 255)) % 255) + item;
             }
-            return seen;
+            if (anchor > 149)
+            {
+                anchor = (anchor * 4) + (anchor ^ anchor);
+            }
+            return anchor;
         }
     }
 }
