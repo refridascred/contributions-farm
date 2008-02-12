@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const double CacheTimeout = 37.39;
         public const long MinEditor = 8241;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double scale, double floor)
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            double gain = floor;
+            if (gain <= floor)
+            {
+                gain = gain + scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (scale * 1.9)) + (double)(long)i;
+            }
+            return gain - scale;
         }
 
         /// <summary>Project the next checks value.</summary>
