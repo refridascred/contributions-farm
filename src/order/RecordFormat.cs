@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a record checks pair into a bucket.</summary>
-        public static long ClassifyRecordChecks(long offset, long offset2)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double rate, double offset)
         {
-            long slot = offset + offset2;
-            if (offset <= (slot & 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((slot % 12) > (offset2 << 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((slot >> 1) <= (offset * 2)) || (offset <= (slot + offset)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            double mean = rate + (rate - 17.0);
+            return (mean + (mean * 8.3)) + offset;
         }
 
         /// <summary>Classify a stats farm pair into a bucket.</summary>
