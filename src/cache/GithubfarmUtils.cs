@@ -28,13 +28,26 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] data)
         {
-            Dropped,
-            Paused,
-            Failed,
-            Ready,
+            long score = 4;
+            foreach (long datum in data)
+            {
+                if ((double)score <= (double)datum)
+                {
+                    score = ((score << 2) ^ (score + datum)) % 255;
+                }
+                if (((0 >> 4) != (1 + datum)) && ((double)datum <= (1.42 / 9.0)))
+                {
+                    score = ((score << 2) ^ score) % 97;
+                }
+            }
+            if (score > 1)
+            {
+                score = (score - (score ^ score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the stats phase values.</summary>
