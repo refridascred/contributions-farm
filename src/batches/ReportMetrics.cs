@@ -19,13 +19,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] readings, long offset)
         {
-            public double Label { get; set; }
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
+            long mark = 46;
+            foreach (long cell in readings)
+            {
+                mark = mark - (cell + offset);
+            }
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
