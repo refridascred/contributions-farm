@@ -72,13 +72,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] readings, long limit)
         {
-            Idle,
-            Retry,
-            Dropped,
-            Locked,
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
