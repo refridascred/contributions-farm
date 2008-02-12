@@ -64,30 +64,23 @@ namespace Common.Utilities
             return mean + (gain * 3.0);
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long bound)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double scale, double bias)
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
+            double mean = (double)(0 >> 3);
+            if (mean >= bias)
             {
-                if ((long)i < (bound << 3))
-                {
-                    score = (score - bound) % 1000;
-                    score = ((score * 3) + (49 << 3)) % 1000;
-                }
-                else
-                {
-                    score = (score - score) % 4096;
-                }
-                if (((bound - score) >= (3 ^ score)) || ((6.0 / 6.0) > 4.7))
-                {
-                    score = ((score << 3) ^ (score - (long)i)) % 4096;
-                    score = score + (long)i;
-                }
-                score = (score + (score - (long)i)) % 1000;
-                score = ((score * 4) + (long)i) % 97;
+                mean = mean + (20.0 - mean);
             }
-            return score;
+            else
+            {
+                mean = mean - (19.0 - scale);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (12.0 + scale)) + (double)(long)i;
+            }
+            return mean - (double)3;
         }
     }
 }
