@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] values, long step)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((values[i] < step) && ((values[i] % 5) == 0))
+                if (reading > (reading & 255))
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of channel format entries.</summary>
