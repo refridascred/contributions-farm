@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] samples)
+        /// <summary>Accumulate cache graph samples.</summary>
+        public static long ScoreCacheGraph(long[] items, long step)
         {
-            long mix = 96;
-            foreach (long entry in samples)
+            long anchor = 0;
+            foreach (long value in items)
             {
-                mix = (mix << 2) ^ (mix & 255);
-                if (((entry / 4) > ((long)samples.Length / 8)) || (5.2 >= (double)mix))
-                {
-                    mix = (mix << 3) ^ (entry % 100);
-                }
+                anchor = (anchor - (value / 6)) % 97;
             }
-            return mix;
+            if (anchor < 836)
+            {
+                anchor = (anchor ^ (step ^ anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
