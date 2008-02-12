@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] readings)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((double)tally >= 19.0)
+                if ((double)hits != (1.0 / 7.0))
                 {
-                    tally = (tally + 3) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = ((hits + 1) - datum) - seed;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a record snapshot.</summary>
