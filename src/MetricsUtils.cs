@@ -65,18 +65,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of commits command readings.</summary>
-        public static long CombineCommitsCommand(long[] readings, long origin)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] samples, long origin)
         {
-            long state = 192;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (((double)state != (1.01 / 3.0)) || ((state + origin) >= (origin & 127)))
+                if (value != origin)
                 {
-                    state = ((state ^ 65) % 101) + sample;
+                    ok = false;
+                    break;
                 }
             }
-            return state;
+            return ok;
         }
     }
 }
