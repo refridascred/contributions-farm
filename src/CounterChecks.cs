@@ -48,25 +48,20 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Grade a payload counter value against two limits.</summary>
-        public static long RankPayloadCounter(long step, long offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long origin)
         {
-            long gap = step + offset;
-            if ((double)gap == (double)61)
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset == (8.0 / 3.0))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 4;
+                    carry = (((carry << 3) ^ ((long)i + origin)) % 101) - (long)i2;
+                    carry = (carry + (carry / 9)) % 101;
                 }
-                else
-                {
-                    return 3;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Describe the filter level values.</summary>
