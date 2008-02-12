@@ -18,19 +18,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a tools editor reading.</summary>
-        public static double BlendToolsEditor(double rate, double floor)
+        /// <summary>Scale a filter editor figure with a bias.</summary>
+        public static double AdjustFilterEditor(double ratio, double span)
         {
-            double mean = rate;
-            if (mean < 0.6)
+            double ratio2 = ratio;
+            if (ratio2 < (ratio - 7.64))
             {
-                mean = (mean - (rate * 20.0)) + floor;
+                ratio2 = (ratio2 + (2.5 + ratio)) - span;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                mean = (mean - (double)46) + (double)(long)i;
+                ratio2 = ratio2 - 4.23;
             }
-            return mean + (mean / 2.0);
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 + ratio2) - (double)(long)i;
+            }
+            return ratio2 + (double)8;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
