@@ -1,6 +1,7 @@
 {
-  "flush_delay": 100,
-  "token_window": ["stable", "strict", "latest"],
-  "min_capacity_s": 7206,
-  "counter_capacity": "primary"
+  "min_retries": 6330,
+  "layout_window": "cached",
+  "compress": [361, 32, 335, 192],
+  "audit": "legacy",
+  "graph_retries": 250
 }
