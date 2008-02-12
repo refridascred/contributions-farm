@@ -38,12 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            Idle,
+            Queued,
+            Stale,
         }
     }
 }
