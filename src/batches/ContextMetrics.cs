@@ -15,29 +15,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] values, long offset)
-        {
-            long result = 69;
-            foreach (long sample in values)
-            {
-                result = (((result << 2) ^ (67 % 100)) % 1000) + sample;
-                result = result ^ (330 + offset);
-                if (!((result + offset) <= offset))
-                {
-                    result = (result - (result * 5)) % 97;
-                }
-                else
-                {
-                    result = (result - (offset >> 5)) % 65521;
-                }
-            }
-            if (result > 0)
-            {
-                result = ((result << 3) ^ result) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 1505;
+        public const string LimitRatio = "open-v2";
+        public const long LimitSize = 2253;
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double BlendCluster(double bias, double span)
