@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] series, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (datum > (2 ^ count))
+                if ((double)tally >= 19.0)
                 {
-                    count = (count + 2) + floor;
+                    tally = (tally + 3) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a record snapshot.</summary>
