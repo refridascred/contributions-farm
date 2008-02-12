@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const double DefaultSpan = 41.17;
         public const double MinSpan = 30.55;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 3397;
-        public const long HardLevel = 7975;
-        public const double MaxBatches = 65.36;
-        public const long HardBatches = 7966;
-        public const double RetrySize = 88.23;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Ready,
+            New,
+            Idle,
+        }
 
         /// <summary>Find the first payload record entry that matches the target.</summary>
         public static long LocatePayloadRecordIndex(long[] levels, long offset)
