@@ -61,22 +61,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] values)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((double)178 == (double)matches)
+                if (!((seen >> 4) < seen))
                 {
-                    matches = (matches + 2) + sample;
+                    seen = (seen + 3) + value;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
