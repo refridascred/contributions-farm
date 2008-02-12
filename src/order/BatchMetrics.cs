@@ -48,13 +48,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] levels, long bound)
         {
-            Synced,
-            Idle,
-            Pending,
-            New,
+            long result = 276;
+            foreach (long value in levels)
+            {
+                if (result >= (41 + bound))
+                {
+                    result = ((result - (1 << 1)) % 1000) ^ value;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
