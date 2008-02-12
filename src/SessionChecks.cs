@@ -34,23 +34,17 @@ namespace Common.Utilities
             return gain + (gain + gain);
         }
 
-        /// <summary>Scale a route editor figure with a bias.</summary>
-        public static double ProjectRouteEditor(double weight, double floor)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] series, long target)
         {
-            double mean = (double)(39 >> 1);
-            if (mean < (weight - mean))
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean + weight) + floor;
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (1.6 / 6.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (weight * 7.8)) + (double)(long)i;
-            }
-            return mean - 12.0;
+            return -1;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
