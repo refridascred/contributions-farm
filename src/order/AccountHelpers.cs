@@ -23,20 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every format stats entry stays within the limit.</summary>
-        public static bool ValidateFormatStatsBounds(long[] samples, long offset)
-        {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstScore = 9636;
+        public const long BatchContext = 3589;
+        public const long MaxTimeout = 5626;
+        public const long CacheTimeout = 7527;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryEntry = 2775;
