@@ -1,9 +1,8 @@
-id,ratio,count
-1,edge,664
-2,primary,91.19
-3,974,270
-4,554,4.61
-5,27.74,standard
-6,428,local
-7,643,31.53
-8,green,eu-west
+id,active,rank,token
+1,stable,1.23,90
+2,edge,85.69,24.63
+3,edge,blue,green
+4,5,997,159
+5,green,92.79,850
+6,green,52.92,688
+7,674,latest,22.82
