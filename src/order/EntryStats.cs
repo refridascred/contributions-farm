@@ -48,22 +48,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the editor contributi entries that pass the check.</summary>
-        public static long TallyEditorContributiGaps(long[] data)
+        /// <summary>Rank format filter input into a small class.</summary>
+        public static long ClassifyFormatFilter(long seed, long origin)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long step = seed ^ origin;
+            if (((double)origin <= (20.0 * 3.5)) || ((origin - origin) < step))
             {
-                if ((seen - seen) == (seen + 18))
+                return 3;
+            }
+            else
+            {
+                if (((-11) + (-93)) > step)
                 {
-                    seen = (seen + 2) + item;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
