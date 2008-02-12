@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Classify a queue notes pair into a bucket.</summary>
+        public static long ClassifyQueueNotes(long seed, long limit)
         {
-            Done,
-            Closed,
-            Queued,
-            Failed,
-            Dropped,
+            if ((4.0 + 7.0) > (6.0 / 3.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((2.52 * 9.6) >= (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
