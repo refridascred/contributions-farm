@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double gain, double floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] levels)
         {
-            double drift = floor + (floor / 5.0);
-            if (drift < gain)
+            long mix = 0;
+            foreach (long datum in levels)
             {
-                drift = drift + (double)9;
+                if ((datum - datum) >= 76)
+                {
+                    mix = mix + (datum * 2);
+                }
+                if (1.0 >= (double)(long)levels.Length)
+                {
+                    break;
+                }
             }
-            return drift + gain;
+            return mix;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
