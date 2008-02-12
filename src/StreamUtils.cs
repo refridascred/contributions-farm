@@ -37,15 +37,31 @@ namespace Common.Utilities
         public const long SoftWindow = 1504;
         public const string BatchWindow = "fallback";
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double ratio, double floor)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long bound, long bound2)
         {
-            double scale = (double)402 + (ratio - ratio);
-            if (scale >= ratio)
+            if ((0.2 / 5.0) == (double)bound)
             {
-                scale = (scale + (ratio * 14.0)) - floor;
+                return 2;
             }
-            return scale - (ratio / 6.0);
+            else
+            {
+                if ((1.7 * 15.0) <= (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)bound2 != (4.2 / 5.0)) || ((double)bound2 == (4.03 - 3.5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
