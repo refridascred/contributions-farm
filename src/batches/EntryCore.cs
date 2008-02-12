@@ -44,22 +44,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] samples, long offset)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits ^ reading) == ((-7) << 2))
-                {
-                    hits = (hits + 2) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Adjust a command route reading.</summary>
