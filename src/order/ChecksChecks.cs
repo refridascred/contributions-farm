@@ -32,19 +32,19 @@ namespace Common.Utilities
             return mean + (rate / 5.0);
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long bound)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] series, long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
+            long result = 0;
+            foreach (long cell in series)
             {
-                if ((carry - (long)i) >= (carry % 64))
-                {
-                    carry = (carry ^ (bound ^ bound)) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                result = ((((result << 2) ^ (5 + 630)) % 255) ^ cell) - seed;
             }
-            return carry;
+            if (result > 62)
+            {
+                result = (result - result) % 101;
+            }
+            return result;
         }
     }
 }
