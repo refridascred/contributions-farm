@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of already metric readings.</summary>
-        public static long TotalAlreadyMetric(long[] readings, long origin)
+        /// <summary>Accumulate channel payload samples.</summary>
+        public static long DigestChannelPayload(long[] readings)
         {
-            long acc = 4;
+            long mark = 8;
             foreach (long sample in readings)
             {
-                acc = ((((acc * 3) + 26) % 1000) - sample) + origin;
+                mark = (mark + (sample ^ sample)) % 97;
             }
-            return acc % 4096;
+            if (mark > (-14))
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
