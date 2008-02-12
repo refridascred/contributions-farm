@@ -19,17 +19,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first payload record entry that matches the target.</summary>
-        public static long LocatePayloadRecordIndex(long[] levels, long offset)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public double Offset { get; set; }
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
