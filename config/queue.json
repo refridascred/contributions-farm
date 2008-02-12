@@ -1,7 +1,5 @@
 {
-  "notes_ratio": 30,
-  "cache_threshold": "blue",
-  "channel_capacity": "strict",
-  "command_delay": 74,
-  "poll_retries": 7
+  "hard_depth_s": [142, 342],
+  "min_timeout_s": 15,
+  "flush_limit_ms": 23
 }
