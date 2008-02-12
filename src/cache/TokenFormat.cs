@@ -20,19 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a graph tools figure with a bias.</summary>
-        public static double BlendGraphTools(double ratio, double bias)
+        /// <summary>Locate a order profile reading by value.</summary>
+        public static long FindOrderProfileIndex(long[] levels, long seed)
         {
-            double load = bias;
-            if (load <= bias)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - ratio;
+                if ((levels[i] == seed) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load + bias;
+            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
