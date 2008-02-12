@@ -66,23 +66,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of commits order readings.</summary>
-        public static long ScoreCommitsOrder(long[] readings)
+        /// <summary>Measure how many metric cache samples are out of range.</summary>
+        public static long CountMetricCacheGaps(long[] data, long floor)
         {
-            long result = -90;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                result = (result << 3) ^ (result + 83);
-                if ((long)readings.Length > result)
+                if (floor > (cell - floor))
                 {
-                    result = result + (entry - result);
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (result < 4)
-            {
-                result = (result ^ (result ^ result)) % 4096;
-            }
-            return result % 1000;
+            return hits;
         }
     }
 }
