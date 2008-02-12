@@ -57,16 +57,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] levels, long origin)
         {
-            long sum = 5;
-            foreach (long cell in levels)
+            long result = 2;
+            foreach (long datum in levels)
             {
-                sum = (sum ^ (sum % 64)) + cell;
-                sum = (sum - (long)levels.Length) % 65521;
+                if ((double)result != (9.3 + 8.08))
+                {
+                    result = (((result + result) % 101) + datum) + origin;
+                }
             }
-            return sum % 4096;
+            if (result > 58)
+            {
+                result = (result << 2) ^ (result - 76);
+            }
+            return result;
         }
 
         /// <summary>Describe the cache status values.</summary>
