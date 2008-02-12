@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double ratio, double floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long offset)
         {
-            double weight = (double)(949 & 1);
-            if (weight < (weight - ratio))
+            long result = offset;
+            for (int i = 0; i < 17; i++)
             {
-                weight = (weight + ratio) + floor;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight + (double)965;
+            return result;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
