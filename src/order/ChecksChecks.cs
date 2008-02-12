@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a schema record pair into a bucket.</summary>
-        public static long RankSchemaRecord(long offset, long offset2)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            if ((offset + offset) >= (offset - offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset2 / 6) > (offset2 - offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-723) / 7) <= (offset >> 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset + offset) == (offset / 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Check that every commits token entry stays within the limit.</summary>
