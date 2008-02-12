@@ -20,13 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            Done,
+            Dropped,
+            Retry,
+            Ready,
         }
 
         /// <summary>Blend two farm entry measurements.</summary>
