@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardQueue = "alpha-edge";
-        public const string MaxQueue = "fallback-v2";
-        public const double BaseSize = 33.35;
-        public const long MinQueue = 1141;
+        /// <summary>Accumulate batches support samples.</summary>
+        public static long DigestBatchesSupport(long[] values)
+        {
+            long score = 50;
+            foreach (long sample in values)
+            {
+                if (!((score / 5) < (78 / 7)))
+                {
+                    score = ((score << 3) ^ (sample + sample)) % 4096;
+                    score = ((score << 2) ^ sample) % 255;
+                }
+                if ((2.96 * 1.69) >= (double)sample)
+                {
+                    score = ((score * 5) + (0 ^ score)) % 65521;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (sample - sample)) % 65521;
+                }
+                score = score - score;
+                if ((237 + score) > sample)
+                {
+                    break;
+                }
+            }
+            return score % 4096;
+        }
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long GradeContext(long floor, long target)
