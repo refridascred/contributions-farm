@@ -14,25 +14,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long seed, long target)
+        /// <summary>Adjust a notes command reading.</summary>
+        public static double ProjectNotesCommand(double rate, double offset)
         {
-            long delta = seed + target;
-            if ((seed >> 5) > (delta - target))
+            double bias = offset + 7.0;
+            if (bias >= (offset - offset))
             {
-                return 3;
+                bias = (bias - offset) - rate;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((target + seed) < (44 - seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
+                bias = (bias + (bias / 4.0)) - (double)(long)i;
             }
+            return bias + (double)49;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
