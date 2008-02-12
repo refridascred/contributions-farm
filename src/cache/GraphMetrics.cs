@@ -12,18 +12,17 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Audit cluster profile readings against a rule.</summary>
-        public static long MeasureClusterProfileOutliers(long[] items, long offset)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((offset / 4) == ((-66) << 1))
+                if (readings[i] <= offset)
                 {
-                    tally = (tally + 2) ^ datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Project the next already schema value.</summary>
