@@ -39,24 +39,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long seed)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!(seed >= (seed ^ carry)))
-                {
-                    long tally = ((long)i - carry) + (seed << 3);
-                    carry = ((carry * 2) + ((long)i ^ tally)) % 255;
-                }
-                else
-                {
-                    carry = carry ^ (carry / 4);
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            Done,
+            Dropped,
+            Locked,
+            Active,
         }
     }
 }
