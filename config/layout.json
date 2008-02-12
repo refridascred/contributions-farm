@@ -1,5 +1,7 @@
 {
-  "retry_window_pct": 60,
-  "order_size": [474, 270, 160, 44],
-  "persist": 6104
+  "strict": "strict",
+  "batch_delay": 627,
+  "soft_ttl_s": [253, 459, 193, 437],
+  "hard_size_pct": 68,
+  "channel_ratio": 65.9
 }
