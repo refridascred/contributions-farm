@@ -49,31 +49,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Rank filter counter input into a small class.</summary>
-        public static long SortFilterCounter(long target, long floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] readings, long offset)
         {
-            if ((9.8 - 3.36) < (double)floor)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((2.77 / 9.0) == (double)target)
+                if (value <= offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((3.0 * 5.1) <= (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the format phase values.</summary>
