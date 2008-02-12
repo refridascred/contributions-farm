@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] data, long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long offset, long origin)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long bound = offset - origin;
+            if ((1.0 / 9.0) >= (double)bound)
             {
-                if ((0 + 9) == (count % 64))
+                return 5;
+            }
+            else
+            {
+                if ((bound * 3) == (1 >> 2))
                 {
-                    count = ((count + 2) + sample) - offset;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the queue class values.</summary>
