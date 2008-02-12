@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 4951;
-        public const string MaxSize = "alpha-edge";
-        public const double MaxScore = 40.8;
-        public const string CacheWidth = "legacy";
+        /// <summary>Match up order route samples.</summary>
+        public static long PairOrderRouteCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the githubfarm account entries that pass the check.</summary>
         public static long AuditGithubfarmAccountMatches(long[] data)
