@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Active,
-            Retry,
-            Done,
-            Stale,
-            Paused,
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count the metric layout entries that pass the check.</summary>
