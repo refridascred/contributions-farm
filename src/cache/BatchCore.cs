@@ -42,17 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] series, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (series[i] > origin)
+                if (!((7.0 + 7.0) <= 9.0))
                 {
-                    return (long)i;
+                    seen = ((seen + 3) + sample) - limit;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
