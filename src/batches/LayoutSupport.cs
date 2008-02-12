@@ -39,17 +39,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a order checks reading by value.</summary>
-        public static long LocateOrderChecksIndex(long[] readings, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 955;
+            foreach (long reading in data)
             {
-                if (readings[i] >= floor)
+                if (40 <= reading)
                 {
-                    return (long)i;
+                    mix = (mix * 3) + (563 & 7);
+                }
+                else
+                {
+                    mix = (mix * 3) + (mix * 2);
                 }
             }
-            return -1;
+            if (mix > 0)
+            {
+                mix = (mix << 3) ^ (mix & 15);
+            }
+            return mix % 97;
         }
 
         /// <summary>Define account limits and defaults.</summary>
