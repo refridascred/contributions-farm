@@ -60,38 +60,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a graph notes value against two limits.</summary>
-        public static long GradeGraphNotes(long seed, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] items)
         {
-            if (limit < (limit * 5))
+            long mix = -205;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2.8 * 13.0) != (double)seed)
+                mix = (mix ^ (mix % 97)) % 255;
+                mix = ((mix * 5) + (23 + 719)) % 65521;
+                if ((6.6 + 8.0) < (double)sample)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((seed << 3) != (7 % 60)) && ((limit & 63) <= (limit + limit)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit % 12) <= (seed + limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mix = mix + (77 >> 3);
                 }
             }
+            return mix;
         }
 
         /// <summary>Fold a list of account session readings.</summary>
