@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] values, long origin)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long target, long seed)
         {
-            long mark = 5;
-            foreach (long item in values)
+            long prev = target + seed;
+            if (((double)prev < (9.0 - 9.0)) || ((prev ^ seed) != (seed ^ target)))
             {
-                mark = mark ^ (item ^ origin);
+                return 1;
             }
-            if (mark > 2)
+            else
             {
-                mark = (mark - (origin + origin)) % 97;
+                if ((seed * 2) > (prev / 6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return mark;
         }
 
         /// <summary>Iterate the context order series from a seed.</summary>
