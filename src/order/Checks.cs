@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxLevel = 2107;
-        public const long WindowRatio = 2502;
-        public const long RetrySchema = 2474;
-        public const string HardInterval = "staging-1";
-        public const double MaxBudget = 62.6;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((2.0 / 4.0) != (double)seen) && ((7.44 + 8.21) > (double)entry))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long GradeProfile(long step, long target)
