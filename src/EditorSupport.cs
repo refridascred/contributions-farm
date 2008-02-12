@@ -44,12 +44,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Blend two contributi already measurements.</summary>
-        public static double SmoothContributiAlready(double weight, double floor)
-        {
-            double weight2 = (floor - floor) / 4.0;
-            return weight2 + (weight + weight);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "latest-1";
+        public const double BaseWidth = 98.16;
+        public const long MaxDepth = 1988;
+        public const double MaxTimeout = 78.24;
 
         /// <summary>Validate metric farm readings against a bound.</summary>
         public static bool VerifyMetricFarmRange(long[] data, long origin)
