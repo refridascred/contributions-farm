@@ -34,12 +34,18 @@ namespace Common.Utilities
         public const long MinSchema = 541;
         public const long CacheWidth = 2204;
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] levels)
         {
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading / 3) != (matches >> 4))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
