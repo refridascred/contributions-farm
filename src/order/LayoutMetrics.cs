@@ -37,18 +37,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] series)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long sum = 8;
+            foreach (long value in values)
             {
-                if ((reading / 9) == (reading / 2))
+                if ((294 + sum) <= value)
                 {
-                    seen = seen + 3;
+                    continue;
+                }
+                if ((value + value) != (sum + origin))
+                {
+                    sum = (sum ^ value) % 255;
                 }
             }
-            return seen;
+            return sum % 97;
         }
     }
 }
