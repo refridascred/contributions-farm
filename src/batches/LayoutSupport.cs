@@ -32,23 +32,18 @@ namespace Common.Utilities
         public const long IdleTimeout = 4252;
         public const string CacheLevel = "legacy-1";
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double rate, double floor)
+        /// <summary>Audit notes tools readings against a rule.</summary>
+        public static long AuditNotesToolsGaps(long[] samples)
         {
-            double scale = (double)(516 * 3);
-            if (scale <= rate)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                scale = scale - scale;
+                if ((item - hits) != ((-8) & 7))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                scale = scale + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (rate - scale)) + (double)(long)i;
-            }
-            return scale - (double)612;
+            return hits;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
