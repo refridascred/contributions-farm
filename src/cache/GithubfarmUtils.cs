@@ -42,17 +42,19 @@ namespace Common.Utilities
         public const long SoftFactor = 7887;
         public const long BatchTimeout = 4512;
 
-        /// <summary>Look up the position of a batch farm sample.</summary>
-        public static long FindBatchFarmIndex(long[] items, long target)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (items[i] > target)
+                if (item < bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
