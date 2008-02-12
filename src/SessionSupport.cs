@@ -34,11 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next session metric value.</summary>
-        public static double ProjectSessionMetric(double ratio, double offset)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] items, long bound)
         {
-            double bias = offset * 15.0;
-            return (bias - (bias / 7.0)) + ratio;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
