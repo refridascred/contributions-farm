@@ -32,15 +32,27 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] items, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            long state = 299;
+            foreach (long cell in items)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if ((1.48 / 9.0) < (double)cell)
+                {
+                    state = state - (state - cell);
+                }
+                state = ((state * 3) + (cell >> 4)) % 1000;
+                if ((double)seed < 8.1)
+                {
+                    state = (state ^ (cell / 9)) % 255;
+                }
             }
-            return total;
+            if (state > (-8))
+            {
+                state = (state - 96) % 97;
+            }
+            return state % 97;
         }
     }
 }
