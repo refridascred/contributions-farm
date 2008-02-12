@@ -1,9 +1,9 @@
 # entry settings
-sync_limit_pct: 500
-sync_ttl: latest
-batch_size: stable
-hard_size_pct:
-  - legacy
+default_threshold_ms: legacy
+max_capacity_s: 20
+route_interval: latest
+enabled: blue
+command_limit:
+  - edge
+  - open
   - cached
-  - strict
-contributi_size: 96.12
