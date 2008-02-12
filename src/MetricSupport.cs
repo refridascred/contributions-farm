@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long origin, long limit)
         {
-            New,
-            Pending,
-            Failed,
-            Closed,
+            long gap = origin ^ limit;
+            if ((1.2 < (double)gap) || ((gap & 1) >= (origin & 127)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)gap > (14.0 + 7.5)) || ((950 + 40) <= (origin + origin)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin > (gap % 64))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
