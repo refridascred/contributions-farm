@@ -24,18 +24,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] levels)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((count * 5) >= sample)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Digest a series of channel entry entries.</summary>
