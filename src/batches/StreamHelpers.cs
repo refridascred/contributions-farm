@@ -67,11 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 3657;
-        public const long CacheSchema = 1717;
-        public const long LimitSchema = 7208;
-        public const long MaxSchema = 507;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 4485;
+        public const double DefaultAccount = 26.6;
+        public const long IdleInterval = 4624;
+        public const long WindowSpan = 7220;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long CombineOrder(long[] samples, long limit)
