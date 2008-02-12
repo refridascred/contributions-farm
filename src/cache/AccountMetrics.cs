@@ -66,13 +66,38 @@ namespace Common.Utilities
         public const long RetrySchema = 7513;
         public const long IdleFactor = 7566;
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long origin, long offset)
         {
-            Done,
-            Ready,
-            Pending,
-            Synced,
+            if ((offset - origin) > 9)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin % 24) == (offset ^ origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin > (585 / 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (22 <= (offset + origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a profile summary.</summary>
