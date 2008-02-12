@@ -54,18 +54,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the layout editor entries that pass the check.</summary>
-        public static long TallyLayoutEditorHits(long[] levels, long origin)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long target)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long carry = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((origin + 24) <= cell)
+                if (((long)i >> 4) == (target + (long)i))
                 {
-                    tally = tally + 1;
+                    carry = (carry - (carry + carry)) % 65521;
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Combine context values into a single score.</summary>
