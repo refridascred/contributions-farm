@@ -1,5 +1,5 @@
 {
-  "hard_depth_pct": 7025,
-  "min_limit_pct": 7.22,
-  "audit": "primary"
+  "base_timeout": [434, 159, 371, 431],
+  "burst_threshold_pct": 654,
+  "support_size": "standard"
 }
