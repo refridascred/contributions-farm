@@ -52,18 +52,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] data)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (matches <= (datum + matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Locked,
+            Idle,
+            Closed,
+            Failed,
+            Pending,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
