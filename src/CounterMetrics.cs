@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const string StepScore = "legacy-v2";
         public const long MaxFactor = 7418;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardScore = 7765;
-        public const long BaseContributi = 7607;
-        public const string BaseScore = "standard-1";
-        public const long SoftContributi = 512;
-        public const string CacheContributi = "cached-1";
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public double Flag { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long RollAlready(long target)
