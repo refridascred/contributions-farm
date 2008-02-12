@@ -16,31 +16,38 @@ namespace Common.Utilities
             return scale - (4.9 + bias);
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] samples, long limit)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long target, long offset)
         {
-            long result = -115;
-            foreach (long datum in samples)
+            if ((offset + target) < offset)
             {
-                if (((double)limit != (0.3 + 0.69)) || ((double)limit < (1.9 + 8.73)))
+                return 6;
+            }
+            else
+            {
+                if (target >= 420)
                 {
-                    long lane = (limit << 3) + limit;
-                    result = (result - (datum - lane)) % 4096;
-                }
-                if ((double)limit != (double)52)
-                {
-                    result = (result - ((-601) >> 2)) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    result = (result ^ (long)samples.Length) % 4096;
+                    if (!(((-5) + target) <= (target + offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((offset + offset) <= offset) && ((target << 3) < (target >> 2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (result < 376)
-            {
-                result = ((result * 2) + (result - limit)) % 1000;
-            }
-            return result;
         }
 
         /// <summary>Fold a list of route readings.</summary>
