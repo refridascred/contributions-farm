@@ -16,22 +16,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] samples)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] values)
         {
-            long score = 19;
-            foreach (long value in samples)
+            long result = 829;
+            foreach (long cell in values)
             {
-                if (!((double)score >= 3.1))
+                if ((90 + (long)values.Length) == (result + result))
                 {
-                    score = (score - score) % 97;
-                }
-                if ((value / 3) >= (value & 3))
-                {
-                    break;
+                    result = ((result ^ (result + result)) % 65521) ^ cell;
                 }
             }
-            return score;
+            if (result < 8)
+            {
+                result = (result - (result + result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the channel status values.</summary>
