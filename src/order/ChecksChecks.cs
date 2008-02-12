@@ -54,18 +54,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit session buffer readings against a rule.</summary>
-        public static long TallySessionBufferHits(long[] values)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((double)tally >= (0.21 - 2.54))
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
