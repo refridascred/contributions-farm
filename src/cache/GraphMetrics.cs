@@ -52,22 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] values, long limit)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (((4.97 * 12.0) >= (double)limit) || ((8.3 + 8.69) >= (double)limit))
+                if (item != step)
                 {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
