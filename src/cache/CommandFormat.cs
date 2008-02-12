@@ -27,13 +27,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Validate already support readings against a bound.</summary>
-        public static bool VerifyAlreadySupportLimits(long[] series, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] values, long origin)
         {
             bool ok = true;
-            foreach (long reading in series)
+            foreach (long cell in values)
             {
-                if (reading < floor)
+                if (cell < origin)
                 {
                     ok = false;
                     break;
