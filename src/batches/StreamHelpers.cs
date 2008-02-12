@@ -23,18 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] values)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((seen + seen) >= (cell ^ cell))
+                if (cell > limit)
                 {
-                    seen = seen + 2;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Compare every pair of window layout readings.</summary>
