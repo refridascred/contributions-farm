@@ -33,19 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] series, long limit)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] items, long target)
         {
-            bool found = true;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell > limit)
+                if (items[i] > target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Compare every pair of window layout readings.</summary>
