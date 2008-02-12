@@ -5,39 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a token order pair into a bucket.</summary>
-        public static long ClassifyTokenOrder(long step, long target)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long origin)
         {
-            long diff = step + target;
-            if (step < target)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((135 >= diff) && ((step % 16) < target))
+                if ((double)(long)i > (14.0 + 3.79))
                 {
-                    return 7;
+                    mix = mix + (mix ^ origin);
+                    continue;
                 }
-                else
-                {
-                    if (target >= diff)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((diff < target) && ((double)step != (6.36 - 6.0)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
