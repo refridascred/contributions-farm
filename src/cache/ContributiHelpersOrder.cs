@@ -40,12 +40,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] readings, long target)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long acc = -928;
+            foreach (long cell in readings)
+            {
+                acc = ((acc << 2) ^ cell) + target;
+            }
+            return acc;
         }
     }
 }
