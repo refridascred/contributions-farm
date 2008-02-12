@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                state = ((state * 2) + (long)i) % 101;
+                sum = sum + (3 >> 3);
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
