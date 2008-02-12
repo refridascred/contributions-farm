@@ -28,10 +28,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheLevel = 95.1;
-        public const double MinFactor = 31.68;
-        public const long MaxBatch = 194;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if (total < bound)
+                {
+                    total = ((total * 5) + (total + 92)) % 255;
+                }
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of format githubfarm entries.</summary>
         public static long CombineFormatGithubfarm(long[] values, long offset)
