@@ -12,10 +12,16 @@ namespace Common.Utilities
         public const double MaxBudget = 49.27;
         public const long StepAlready = 2185;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 1176;
-        public const long DefaultLayout = 7002;
-        public const string MinRatio = "fallback";
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] values)
+        {
+            long mix = 670;
+            foreach (long value in values)
+            {
+                mix = (mix + (4 << 2)) ^ value;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long FoldContributi(long[] data, long floor)
