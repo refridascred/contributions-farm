@@ -44,18 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (sample <= (sample - 755))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstAccount = 70.02;
+        public const long SoftAccount = 3780;
+        public const double DefaultCount = 36.55;
+        public const string LimitAccount = "stable-edge";
+        public const string IdleAccount = "cached-1";
     }
 }
