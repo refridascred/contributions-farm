@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinAlready = 40.95;
-        public const string LimitCount = "local-v2";
-        public const string RetryCount = "cached-1";
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Count the githubfarm cluster entries that pass the check.</summary>
         public static long TallyGithubfarmClusterOutliers(long[] samples)
