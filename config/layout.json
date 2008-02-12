@@ -1,7 +1,13 @@
 {
-  "strict": "strict",
-  "batch_delay": 627,
-  "soft_ttl_s": [253, 459, 193, 437],
-  "hard_size_pct": 68,
-  "channel_ratio": 65.9
+  "verbose": 91.37,
+  "hard_capacity_ms": 250,
+  "max_ttl_pct": "stable",
+  "sync_limit_pct": 29,
+  "notes_limit": "stable",
+  "sync_delay": {
+    "default_threshold": "open",
+    "persist": false,
+    "retry_retries": "latest",
+    "idle_timeout": "edge"
+  }
 }
