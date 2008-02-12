@@ -5,25 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long offset, long seed)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long target)
         {
-            long next = offset + seed;
-            if (seed < (next - seed))
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (7.14 >= (double)seed)
+                if ((double)score != (double)target)
                 {
-                    return 5;
+                    score = ((score << 2) ^ 291) % 4096;
+                    continue;
                 }
-                else
+                score = (score ^ (513 ^ (long)i)) % 255;
+                if ((score >> 4) >= score)
                 {
-                    return 0;
+                    score = (score + target) % 97;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Digest a series of order entries.</summary>
