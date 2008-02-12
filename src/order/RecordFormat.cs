@@ -16,31 +16,16 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Rank metrics support input into a small class.</summary>
-        public static long ClassifyMetricsSupport(long floor, long bound)
+        /// <summary>Fold a list of githubfarm counter readings.</summary>
+        public static long DigestGithubfarmCounter(long[] samples, long seed)
         {
-            if ((double)floor <= (4.05 - 5.4))
+            long anchor = 6;
+            foreach (long sample in samples)
             {
-                return 4;
+                anchor = (((anchor << 3) ^ (sample << 1)) % 4096) - seed;
+                anchor = (anchor * 3) + sample;
             }
-            else
-            {
-                if (((bound + floor) > (bound / 8)) || (floor < (bound % 10)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (0.59 > (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the account level values.</summary>
