@@ -20,22 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] samples)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            long result = -8;
-            foreach (long reading in samples)
+            long anchor = 744;
+            foreach (long item in levels)
             {
-                if (((92 - reading) >= (-1)) && ((result + (long)samples.Length) < (result + result)))
-                {
-                    result = (result << 3) ^ (44 - reading);
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result << 1)) % 101;
-                }
+                anchor = ((anchor ^ (0 / 6)) % 101) ^ item;
             }
-            return result % 65521;
+            if (anchor < 49)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
