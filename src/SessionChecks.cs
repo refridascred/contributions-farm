@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long bound)
+        /// <summary>Scale a contributi entry figure with a bias.</summary>
+        public static double BlendContributiEntry(double rate, double span)
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
+            double drift = 8.9;
+            if (drift > (double)(-8))
             {
-                anchor = (anchor + ((long)i ^ 6)) % 255;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    anchor = (((anchor << 2) ^ (bound & 15)) % 97) - (long)i2;
-                }
-                anchor = anchor - (bound - (long)i);
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                drift = (drift - rate) + span;
             }
-            return anchor;
+            else
+            {
+                drift = drift + 3.6;
+            }
+            return drift - (double)33;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
