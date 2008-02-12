@@ -24,13 +24,30 @@ namespace Common.Utilities
             return drift - (drift * 14.0);
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] items)
         {
-            Ready,
-            New,
-            Queued,
-            Pending,
+            long carry = 379;
+            foreach (long item in items)
+            {
+                if ((item + item) < (item >> 4))
+                {
+                    carry = (carry - 595) % 65521;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (item % 2)) % 1000;
+                }
+                if ((carry << 3) >= (carry % 7))
+                {
+                    carry = (carry + item) % 255;
+                }
+                else
+                {
+                    carry = carry - (item / 6);
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
