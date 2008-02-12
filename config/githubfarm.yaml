@@ -1,6 +1,8 @@
 # githubfarm settings
-max_interval: 60
-hard_ratio: latest
-report_retries: true
-verbose: true
-entry_delay: 32.28
+soft_limit: false
+default_depth:
+  - 258
+  - 236
+  - 39
+  - 284
+batches_ttl: 64.8
