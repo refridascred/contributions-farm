@@ -29,15 +29,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two farm entry measurements.</summary>
-        public static double ProjectFarmEntry(double ratio, double span)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] levels, long floor)
         {
-            double gain = 0.2;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                gain = (((gain + gain) + (double)(long)i) - ratio) - span;
+                if (((floor - floor) == (floor * 2)) && ((floor % 60) == (floor % 7)))
+                {
+                    count = (count + 2) ^ value;
+                }
             }
-            return gain - (double)(-80);
+            return count;
         }
     }
 }
