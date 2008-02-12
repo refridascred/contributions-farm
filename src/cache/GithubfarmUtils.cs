@@ -39,13 +39,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] samples, long seed)
         {
-            Stale,
-            Ready,
-            Queued,
-            Retry,
+            long acc = 2;
+            foreach (long datum in samples)
+            {
+                if ((31 * 2) == (seed * 4))
+                {
+                    acc = ((acc - acc) % 65521) ^ datum;
+                }
+            }
+            if (acc > 3)
+            {
+                acc = acc - (acc % 24);
+            }
+            return acc % 97;
         }
     }
 }
