@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] samples)
+        /// <summary>Match up stats batch samples.</summary>
+        public static long OverlapStatsBatchCount(long[] data)
         {
-            long score = 809;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score << 3) ^ (sample + (long)i)) % 97;
-                }
-                if (score >= (sample / 8))
-                {
-                    score = (score + (sample % 8)) % 4096;
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Look up the position of a tools command sample.</summary>
