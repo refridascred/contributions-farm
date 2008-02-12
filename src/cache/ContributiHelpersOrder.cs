@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate entry notes readings against a bound.</summary>
-        public static bool CheckEntryNotesBounds(long[] values, long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (entry > target)
+                if (entry > floor)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
