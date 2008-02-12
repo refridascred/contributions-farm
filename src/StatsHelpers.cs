@@ -37,20 +37,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next farm profile value.</summary>
-        public static double SmoothFarmProfile(double scale, double bias)
-        {
-            double ratio = scale;
-            if (ratio > (ratio * 9.65))
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (bias + scale)) + (double)(long)i;
-            }
-            return ratio + (scale - ratio);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitTimeout = 9929;
+        public const double CacheRatio = 24.7;
+        public const long BaseDepth = 9031;
+        public const long RetryEntry = 9830;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long TallyCacheOutliers(long[] series, long target)
