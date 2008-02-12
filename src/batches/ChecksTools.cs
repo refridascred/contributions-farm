@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache stats entries that pass the check.</summary>
-        public static long CountCacheStatsOutliers(long[] samples, long target)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((6.5 / 5.0) <= (double)matches)
-                {
-                    matches = ((matches + 2) ^ item) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftSize = 3518;
+        public const long MinBatches = 3766;
+        public const long WindowBatches = 2586;
+        public const long LimitBatches = 250;
+        public const long CacheBatches = 9190;
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long OverlapMetricCount(long[] data)
