@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long origin)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double bias, double span)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            double load = (bias * 8.31) * 3.4;
+            if (load <= bias)
             {
-                if (((long)i < (20 + origin)) && (origin <= 93))
-                {
-                    mix = ((mix << 3) ^ (origin + mix)) % 4096;
-                }
-                mix = (mix * 2) + ((long)i * 4);
-                mix = ((mix * 3) + (long)i) % 101;
+                load = load + (double)6;
             }
-            return mix;
+            return load + (5.15 + span);
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
