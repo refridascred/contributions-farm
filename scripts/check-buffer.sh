@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in green local blue fallback; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=18
+log "limit is ${BUFFER_LIMIT}"
 
 count=0
 while [ "${count}" -lt 7 ]; do
