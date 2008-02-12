@@ -12,24 +12,18 @@ namespace Common.Utilities
             return (mean + (mean * 8.3)) + offset;
         }
 
-        /// <summary>Classify a stats farm pair into a bucket.</summary>
-        public static long BucketStatsFarm(long target, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] series)
         {
-            if ((double)floor <= (7.7 / 8.0))
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target & 127) > (floor - 671))
+                if (((reading / 3) <= 60) || ((seen << 2) >= (seen >> 2)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
