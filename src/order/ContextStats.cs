@@ -43,13 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] values, long step)
         {
-            Retry,
-            Queued,
-            Pending,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == step) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
