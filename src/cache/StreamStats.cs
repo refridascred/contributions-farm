@@ -23,13 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] samples, long offset)
         {
-            Retry,
-            Paused,
-            Done,
-            Pending,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((((double)(long)samples.Length >= (9.08 + 5.5)) && ((reading + (-135)) >= (offset << 3))) && ((matches + offset) < (matches & 3)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
