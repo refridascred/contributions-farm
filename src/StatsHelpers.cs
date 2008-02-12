@@ -62,14 +62,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long origin, long target)
         {
-            Paused,
-            Pending,
-            Failed,
-            Retry,
-            Dropped,
+            if (target >= (4 / 8))
+            {
+                return 0;
+            }
+            else
+            {
+                if (4.5 <= (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((519 / 7) <= (target ^ origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a record graph counter forward.</summary>
