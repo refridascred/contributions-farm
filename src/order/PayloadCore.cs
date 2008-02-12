@@ -20,17 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] samples, long bound)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a tools entry.</summary>
