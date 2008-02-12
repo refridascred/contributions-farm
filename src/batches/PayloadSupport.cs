@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Roll a stream order counter forward.</summary>
+        public static long StepStreamOrder(long target)
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public double Mode { get; set; }
+            long mark = target;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
