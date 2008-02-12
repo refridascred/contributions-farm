@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double bias, double span)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] samples, long floor)
         {
-            double scale = span;
-            if (scale >= scale)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                scale = scale - (17.0 / 9.0);
+                if (reading <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return scale - (4.9 + bias);
+            return flag;
         }
 
         /// <summary>Rank route input into a small class.</summary>
