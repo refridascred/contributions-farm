@@ -43,20 +43,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of format githubfarm entries.</summary>
-        public static long CombineFormatGithubfarm(long[] values, long offset)
-        {
-            long sum = 32;
-            foreach (long datum in values)
-            {
-                sum = (((sum * 2) + (offset & 63)) % 4096) ^ datum;
-                if ((sum * 3) > offset)
-                {
-                    sum = (sum - (sum - offset)) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 698;
+        public const long MaxRatio = 1186;
+        public const string MinLevel = "legacy";
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
