@@ -43,19 +43,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double gain, double offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] items)
         {
-            double bias = (double)(4 & 63);
-            if (bias > offset)
+            long mix = 732;
+            foreach (long datum in items)
             {
-                bias = bias - (9.5 - gain);
+                if (mix >= (long)items.Length)
+                {
+                    mix = (((mix * 4) + ((long)items.Length ^ mix)) % 4096) ^ datum;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (bias / 7.0)) + (double)(long)i;
-            }
-            return bias + offset;
+            return mix % 1000;
         }
     }
 }
