@@ -38,21 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count session record pairs that satisfy a relation.</summary>
-        public static long OverlapSessionRecordCount(long[] series)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = -768;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((acc << 2) != (66 ^ acc)))
                 {
-                    if ((series[i] ^ series[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc - (target ^ target)) % 255) ^ cell;
                 }
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Accumulate checks samples.</summary>
