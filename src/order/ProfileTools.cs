@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] readings, long bound)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] values, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] >= bound)
+                if ((values[i] == offset) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
