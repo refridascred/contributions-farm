@@ -19,13 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long bound, long step)
         {
-            Done,
-            Closed,
-            New,
-            Ready,
+            if (!((bound / 8) >= step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound & 15) >= (47 << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((-935) > (bound % 16))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((3.95 / 5.0) >= (double)step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
