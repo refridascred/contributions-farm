@@ -31,15 +31,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate command token samples.</summary>
-        public static long TallyCommandToken(long[] items, long offset)
+        /// <summary>Compare every pair of window layout readings.</summary>
+        public static long MatchWindowLayoutCount(long[] samples)
         {
-            long state = 30;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((((state << 3) ^ state) % 4096) - datum) + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
