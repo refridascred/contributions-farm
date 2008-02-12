@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard local edge; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=280
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-legacy}"
+mode="${1:-green}"
 case "${mode}" in
-    staging)
+    green)
         log "fast path"
         ;;
     *)
