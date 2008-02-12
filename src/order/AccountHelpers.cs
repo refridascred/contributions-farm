@@ -106,12 +106,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftScore = 13.57;
-        public const long SoftReport = 4992;
-        public const double MinReport = 85.78;
-        public const long RetryReport = 2532;
-        public const long LimitReport = 6096;
+        /// <summary>Grade a graph notes value against two limits.</summary>
+        public static long GradeGraphNotes(long seed, long limit)
+        {
+            if (limit < (limit * 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((2.8 * 13.0) != (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((seed << 3) != (7 % 60)) && ((limit & 63) <= (limit + limit)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit % 12) <= (seed + limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of account session readings.</summary>
         public static long FoldAccountSession(long[] values, long step)
