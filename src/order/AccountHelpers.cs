@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] readings)
         {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
+            long result = -507;
+            foreach (long item in readings)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((1.9 + 6.67) <= (double)item)
+                {
+                    result = ((result << 2) ^ result) % 65521;
+                }
+                if ((452 - item) <= (1 + item))
+                {
+                    result = result + (item & 255);
+                }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Check that every format stats entry stays within the limit.</summary>
