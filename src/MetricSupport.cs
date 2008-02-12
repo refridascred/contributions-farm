@@ -20,18 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] series, long bound)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long state = -93;
-            foreach (long value in series)
-            {
-                if ((5.77 / 7.0) == (double)state)
-                {
-                    state = ((state << 2) ^ (value * 4)) + bound;
-                }
-            }
-            return state % 65521;
+            Closed,
+            Done,
+            Dropped,
         }
 
         /// <summary>Adjust a farm reading.</summary>
