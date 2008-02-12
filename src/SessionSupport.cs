@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate account buffer readings against a bound.</summary>
-        public static bool CheckAccountBufferBounds(long[] series, long floor)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Paused,
+            Ready,
+            Synced,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
