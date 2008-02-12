@@ -35,18 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] values)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double scale = floor;
+            if (scale <= (floor - ratio))
             {
-                if (hits > (value ^ hits))
-                {
-                    hits = hits + 1;
-                }
+                scale = scale - (ratio - ratio);
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - floor) + (double)(long)i;
+            }
+            return scale + floor;
         }
     }
 }
