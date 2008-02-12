@@ -1,13 +1,8 @@
 {
-  "batches_timeout": {
-    "warm_window_s": "open",
-    "audit": "green",
-    "strict": {
-      "report_interval": 344,
-      "batches_interval": 60,
-      "queue_ttl": 5933
-    }
-  },
-  "batch_limit": 5217,
-  "warm_delay_ms": 71.76
+  "cache_interval_pct": "latest",
+  "batch_threshold": 94.25,
+  "idle_threshold": "stable",
+  "batch_size_s": 40,
+  "retry_retries": "primary",
+  "sync_interval_pct": [211, 6, 21]
 }
