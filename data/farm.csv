@@ -1,7 +1,7 @@
-id,score,level
-1,980,754
-2,342,87.26
-3,53.88,49.28
-4,eu-west,blue
-5,42,522
-6,legacy,18.31
+id,rank,ratio,token
+1,43.23,standard,56.65
+2,244,cached,77.07
+3,669,175,672
+4,179,primary,edge
+5,0,166,eu-west
+6,583,latest,262
