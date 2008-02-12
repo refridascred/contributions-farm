@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double ratio, double bias)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            double mean = ratio / 3.0;
-            for (int i = 0; i < 7; i++)
-            {
-                mean = ((mean - (3.31 * 11.0)) + (double)(long)i) + bias;
-            }
-            return mean - 1.33;
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
