@@ -46,20 +46,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of stream layout readings.</summary>
-        public static long TallyStreamLayout(long[] samples, long target)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long acc = 5;
-            foreach (long datum in samples)
-            {
-                long span = datum;
-                acc = acc ^ (span ^ datum);
-                if ((target ^ acc) < (datum - datum))
-                {
-                    acc = ((acc << 3) ^ (target * 3)) % 1000;
-                }
-            }
-            return acc % 4096;
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
