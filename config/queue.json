@@ -1,5 +1,12 @@
 {
-  "sync_timeout_s": "edge",
-  "max_interval": 9222,
-  "idle_ttl": 30
+  "retry_window_pct": 1302,
+  "warm_limit_pct": [224, 279, 115, 449],
+  "retry_timeout": ["cached", "open", "blue"],
+  "compress": "stable",
+  "batch_depth_s": ["primary", "stable"],
+  "buffer_size": {
+    "min_timeout_count": "edge",
+    "soft_capacity": false,
+    "flush_window": "cached"
+  }
 }
