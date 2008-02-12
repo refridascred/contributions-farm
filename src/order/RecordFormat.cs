@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] readings, long offset)
         {
-            Locked,
-            Ready,
-            Pending,
-            Dropped,
-            Idle,
+            long total = 5;
+            foreach (long datum in readings)
+            {
+                total = (((total << 2) ^ (total - offset)) % 4096) - datum;
+            }
+            return total % 1000;
         }
 
         /// <summary>Rank metrics support input into a small class.</summary>
