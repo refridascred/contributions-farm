@@ -22,14 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            New,
-            Pending,
-            Failed,
-            Done,
-            Dropped,
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
