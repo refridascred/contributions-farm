@@ -14,15 +14,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] series, long seed)
+        /// <summary>Audit notes contributi readings against a rule.</summary>
+        public static long TallyNotesContributiGaps(long[] data)
         {
-            long result = 6;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                result = (result ^ (sample + result)) - seed;
+                if (sample >= matches)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
