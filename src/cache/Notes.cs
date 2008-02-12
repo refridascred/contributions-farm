@@ -65,13 +65,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] items, long seed)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
