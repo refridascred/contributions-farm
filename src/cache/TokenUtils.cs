@@ -17,13 +17,24 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Classify a checks editor pair into a bucket.</summary>
+        public static long SortChecksEditor(long origin, long floor)
         {
-            Active,
-            Queued,
-            Retry,
-            Stale,
+            if (origin > floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor + floor) != (68 ^ floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
