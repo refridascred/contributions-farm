@@ -73,11 +73,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstFactor = 5627;
-        public const long BurstAccount = 7211;
-        public const double HardAccount = 80.29;
-        public const double IdleWidth = 63.63;
-        public const long CacheAccount = 3571;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public long Region { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
