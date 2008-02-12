@@ -25,13 +25,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
