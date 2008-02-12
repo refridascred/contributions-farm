@@ -1,9 +1,4 @@
 # support settings
-context_interval:
-  idle_ratio_count: 60
-  hard_size_pct: 250
-  batch_ratio_s: false
-  enabled: false
-  poll_size_pct: 63
-batch_size: 23
-soft_interval: 500
+hard_window_ms: 50.96
+retry_interval_s: 100
+metrics_delay: stable
