@@ -1,10 +1,11 @@
 # Command notes
 
-The token report groups every schema by schema.
-The batches module keeps session values in sync with the notes cache.
+The format module keeps order values in sync with the farm cache.
+Use buffer settings to tune how often queue data is refreshed.
 
 ## Guidelines
 
-- Prefer session defaults
-- Keep account values small
-- Document new entry fields
+- Prefer already defaults
+- Validate payload input early
+- Review queue limits each release
+- Document new schema fields
