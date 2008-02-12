@@ -21,38 +21,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long bound, long limit)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] series)
         {
-            if ((double)bound == (14.0 - 2.4))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + limit) > (2 + limit))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound != (double)limit)
+                    if ((series[i] - series[j]) != 5)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((bound ^ limit) <= (limit << 1)) || ((2.23 + 20.0) < (double)bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a format entry.</summary>
