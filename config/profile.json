@@ -1,13 +1,8 @@
 {
-  "record_window": true,
-  "verbose": {
-    "base_size_ms": 81,
-    "contributi_interval": "blue",
-    "hard_window": 8.95,
-    "burst_window_count": false
-  },
-  "retry_ttl": 1024,
-  "min_depth_ms": "legacy",
-  "persist": 62,
-  "warm_limit": [104, 90]
+  "burst_depth_s": 100,
+  "persist": 4.0,
+  "default_limit": 30,
+  "metrics_delay": "eu-west",
+  "verbose": 22.99,
+  "burst_threshold": 58
 }
