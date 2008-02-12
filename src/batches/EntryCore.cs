@@ -65,18 +65,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] readings)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (!((double)cell == (3.0 / 9.0)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
