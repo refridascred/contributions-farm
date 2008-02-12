@@ -16,19 +16,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] series)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long step)
         {
-            long anchor = 416;
-            foreach (long item in series)
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = (anchor + (90 << 1)) ^ item;
+                if ((long)i >= (2 % 60))
+                {
+                    anchor = (anchor ^ (anchor ^ 943)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 65521;
+                }
+                anchor = ((anchor << 3) ^ ((long)i + anchor)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            if (anchor < 60)
-            {
-                anchor = anchor ^ 1;
-            }
-            return anchor % 97;
+            return anchor;
         }
 
         /// <summary>Digest a series of order entries.</summary>
