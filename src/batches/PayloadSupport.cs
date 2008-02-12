@@ -13,20 +13,20 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
+            long score = offset;
+            for (int i = 0; i < 22; i++)
             {
-                mix = ((mix << 3) ^ (mix - bound)) % 97;
-                if ((bound * 4) <= 62)
+                for (int i3 = 0; i3 < 6; i3++)
                 {
-                    break;
+                    score = ((score * 2) + (offset >> 5)) ^ (long)i3;
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
+                score = (score + (score * 2)) % 255;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
