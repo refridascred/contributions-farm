@@ -11,22 +11,38 @@ namespace Common.Utilities
         public const double DefaultSpan = 41.17;
         public const double MinSpan = 30.55;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] items, long step)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long step, long offset)
         {
-            long acc = 67;
-            foreach (long entry in items)
+            if (step >= (offset % 12))
             {
-                if ((entry / 3) != (step + entry))
+                return 4;
+            }
+            else
+            {
+                if ((offset / 4) >= (step / 9))
                 {
-                    acc = (acc + 9) % 101;
+                    return 5;
+                }
+                else
+                {
+                    if ((24 + offset) >= (step - offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((step + offset) >= (92 << 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (acc > 5)
-            {
-                acc = ((acc << 3) ^ acc) % 65521;
-            }
-            return acc;
         }
 
         /// <summary>Find the first payload record entry that matches the target.</summary>
