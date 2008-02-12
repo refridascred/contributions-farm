@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] levels)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((item + item) > 66)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Active,
+            Locked,
+            Ready,
         }
 
         /// <summary>Digest a series of batch graph entries.</summary>
