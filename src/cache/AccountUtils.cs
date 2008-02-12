@@ -24,18 +24,17 @@ namespace Common.Utilities
             return rate - 19.0;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] series, long origin)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((102 + 28) > tally)
+                if (series[i] < bound)
                 {
-                    tally = ((tally + 1) + datum) + origin;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of support entries.</summary>
