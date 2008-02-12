@@ -64,11 +64,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double bias, double span)
+        /// <summary>Roll a record graph counter forward.</summary>
+        public static long SeriesRecordGraph(long limit)
         {
-            double weight = bias;
-            return (weight - (double)1) + span;
+            long total = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
