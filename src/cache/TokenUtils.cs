@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the report queue series from a seed.</summary>
-        public static long IterateReportQueue(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = (mix * 4) + (seed >> 1);
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 7824;
+        public const double SoftLevel = 85.19;
+        public const long CacheEntry = 5345;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long DefaultSpan = 6144;
