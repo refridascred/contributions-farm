@@ -14,19 +14,23 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Adjust a notes command reading.</summary>
-        public static double ProjectNotesCommand(double rate, double offset)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double ratio, double offset)
         {
-            double bias = offset + 7.0;
-            if (bias >= (offset - offset))
+            double mean = (offset / 8.0) + (double)22;
+            if (mean <= offset)
             {
-                bias = (bias - offset) - rate;
+                mean = (mean + 18.0) + ratio;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                bias = (bias + (bias / 4.0)) - (double)(long)i;
+                mean = mean + mean;
             }
-            return bias + (double)49;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - 3.3;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
