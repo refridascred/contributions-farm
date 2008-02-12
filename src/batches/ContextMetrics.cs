@@ -61,18 +61,15 @@ namespace Common.Utilities
         public const long BaseSchema = 5873;
         public const long HardSchema = 9147;
 
-        /// <summary>Combine filter stream values into a single score.</summary>
-        public static long CombineFilterStream(long[] readings)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long offset)
         {
-            long total = 9;
-            foreach (long datum in readings)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum > 596)
-                {
-                    total = ((total * 2) + 848) % 1000;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return total % 4096;
+            return score;
         }
 
         /// <summary>Hold a account entry.</summary>
