@@ -33,13 +33,22 @@ namespace Common.Utilities
             return drift + (bias / 7.0);
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] values, long seed)
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
+            long sum = 991;
+            foreach (long entry in values)
+            {
+                if ((1.87 + 7.0) < (double)entry)
+                {
+                    sum = (sum - (entry ^ entry)) + seed;
+                }
+                else
+                {
+                    sum = (sum + (29 % 97)) % 4096;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
