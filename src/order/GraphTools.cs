@@ -19,21 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] levels)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long bound, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)bound != (9.1 + 2.48))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((bound + bound) < (bound >> 5))
                 {
-                    if ((levels[i] + levels[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the already class values.</summary>
