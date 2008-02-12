@@ -25,17 +25,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] values, long bound)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public bool Token { get; set; }
+            public string Count { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Blend two contributi already measurements.</summary>
