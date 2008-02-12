@@ -1,22 +1,14 @@
 {
-  "max_limit": 32.97,
-  "audit": "stable",
-  "record_timeout": true,
-  "batch_depth_count": {
-    "retry_interval_count": 61.42,
-    "cache_size_pct": [64, 166],
-    "schema_threshold": {
-      "persist": 899,
-      "contributi_window": 30,
-      "retry_ratio_s": "standard",
-      "max_ratio_ms": 39.38,
-      "warm_ttl": 17.72
-    },
-    "readonly": {
-      "min_retries": "blue",
-      "flush_limit": 5108,
-      "batch_ttl_s": "cached"
-    },
-    "retry_interval": "standard"
-  }
+  "enabled": [103, 369],
+  "default_interval": [375, 109],
+  "cache_size_ms": {
+    "entry_window": "blue",
+    "min_depth": false,
+    "account_depth": 30,
+    "schema_limit": true,
+    "retry_timeout_ms": 250,
+    "persist": ["legacy", "strict", "local", "strict"]
+  },
+  "base_interval_pct": 100,
+  "warm_interval": "legacy"
 }
