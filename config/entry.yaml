@@ -1,6 +1,19 @@
 # entry settings
-burst_window: 25.83
-batch_depth:
-  - open
-  - standard
-hard_timeout_count: 42
+compress:
+  retry_depth_pct: cached
+  batch_interval_s: blue
+  warm_limit: true
+  compress: true
+  flush_threshold_count:
+    - 20
+    - 230
+retry_interval_pct:
+  - staging
+  - latest
+  - cached
+  - blue
+flush_threshold:
+  - 224
+  - 20
+  - 366
+route_limit: stable
