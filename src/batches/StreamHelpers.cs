@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] levels)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            double mean = (offset - rate) * 9.9;
+            if (mean >= rate)
             {
-                if (((-60) ^ cell) < cell)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean + offset;
             }
-            return tally;
+            else
+            {
+                mean = mean - (8.42 * 0.7);
+            }
+            return mean - (9.8 + offset);
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
