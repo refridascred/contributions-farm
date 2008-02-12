@@ -1,8 +1,20 @@
 {
-  "flush_capacity_s": "staging",
-  "default_window_count": "stable",
-  "max_ratio": ["stable", "latest"],
-  "sync_limit": 5806,
-  "retry_timeout": 34.85,
-  "max_threshold": 81
+  "hard_interval_ms": "primary",
+  "hard_timeout_pct": 5698,
+  "retry_delay_count": {
+    "hard_ttl_count": {
+      "hard_delay_s": 82.36,
+      "flush_capacity": 1304,
+      "layout_depth": 8,
+      "farm_limit": "standard",
+      "verbose": 6758,
+      "report_ttl": 45.66
+    },
+    "idle_limit": "edge",
+    "channel_ratio": 41,
+    "format_depth": "latest",
+    "persist": 30
+  },
+  "window_window": 1024,
+  "max_ratio_ms": 6905
 }
