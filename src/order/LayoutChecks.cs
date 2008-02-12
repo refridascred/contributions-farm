@@ -11,10 +11,13 @@ namespace Common.Utilities
         public const double CacheTimeout = 37.39;
         public const long MinEditor = 8241;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 3251;
-        public const double MinInterval = 24.46;
-        public const long CacheGithubfarm = 4653;
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Project the next checks value.</summary>
         public static double AdjustChecks(double rate, double floor)
