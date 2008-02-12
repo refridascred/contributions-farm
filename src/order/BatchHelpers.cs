@@ -21,19 +21,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] samples, long offset)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > offset)
+                if ((series[i] == step) && ((series[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Fold a list of farm payload readings.</summary>
