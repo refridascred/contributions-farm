@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long limit, long origin)
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            if ((91 - limit) > (origin & 7))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin >> 3) <= 122)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((119 * 2) < (origin + limit)) || ((origin << 3) >= origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)limit < (3.77 * 13.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
