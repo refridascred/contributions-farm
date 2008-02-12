@@ -40,11 +40,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowWidth = 8.33;
-        public const long SoftDepth = 6601;
-        public const double DefaultRoute = 70.88;
-        public const double BaseDepth = 65.92;
-        public const string SoftRoute = "staging-1";
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] series)
+        {
+            long mix = 821;
+            foreach (long item in series)
+            {
+                mix = mix ^ (479 ^ item);
+            }
+            return mix;
+        }
     }
 }
