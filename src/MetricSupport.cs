@@ -16,18 +16,12 @@ namespace Common.Utilities
         public const double DefaultLevel = 3.01;
         public const long BatchQueue = 6852;
 
-        /// <summary>Count the graph route entries that pass the check.</summary>
-        public static long MeasureGraphRouteOutliers(long[] series, long limit)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((sample + limit) != (sample << 2))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Retry,
+            Synced,
+            Done,
         }
     }
 }
