@@ -91,27 +91,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] readings, long origin)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] items, long origin)
         {
-            long total = 2;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 3) + (origin + entry)) % 255;
-                if (((8.06 * 3.0) == (double)origin) || ((entry << 1) <= (entry >> 2)))
+                if ((items[i] > origin) && ((items[i] % 2) != 0))
                 {
-                    total = ((total * 4) + 58) % 4096;
-                }
-                if ((total - total) < (total + 71))
-                {
-                    total = (total + entry) % 65521;
-                }
-                else
-                {
-                    total = ((total * 2) + (entry - total)) % 101;
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
     }
 }
