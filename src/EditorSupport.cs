@@ -14,12 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultTimeout = 3692;
-        public const long WindowCommand = 8599;
-        public const double WindowCount = 59.61;
-        public const double BurstFactor = 88.0;
-        public const string MaxCommand = "primary";
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a context reading.</summary>
         public static double ProjectContext(double bias, double span)
