@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] data, long offset)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double mean = (double)(468 + 21);
+            if (mean > floor)
             {
-                if ((reading >> 1) > reading)
-                {
-                    tally = (tally + 2) + offset;
-                }
+                mean = mean + (weight / 6.0);
             }
-            return tally;
+            else
+            {
+                mean = mean - (weight + floor);
+            }
+            return mean + (4.91 * 2.33);
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
