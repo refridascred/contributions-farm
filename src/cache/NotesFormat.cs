@@ -29,14 +29,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Find the first payload record entry that matches the target.</summary>
+        public static long LocatePayloadRecordIndex(long[] levels, long offset)
         {
-            Done,
-            Synced,
-            Pending,
-            Locked,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
