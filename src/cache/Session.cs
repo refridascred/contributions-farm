@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepDepth = 4084;
-        public const string MaxCount = "staging-v2";
-        public const double MinCount = 53.32;
-        public const long StepRecord = 7741;
-        public const long SoftRecord = 6999;
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((long)i % 12) == (acc - acc))
+                {
+                    acc = (acc + (567 & 3)) % 101;
+                    continue;
+                }
+                else
+                {
+                    acc = acc ^ (acc + acc);
+                    acc = (acc << 2) ^ (acc + 2);
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long DefaultFactor = 3147;
