@@ -47,19 +47,38 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] readings, long limit)
+        /// <summary>Rank batches commits input into a small class.</summary>
+        public static long GradeBatchesCommits(long limit, long target)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            if ((limit + limit) >= (target + target))
             {
-                if (entry <= limit)
+                return 8;
+            }
+            else
+            {
+                if ((double)target == (2.9 + 1.95))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((95 + limit) != (target - target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((1.89 * 2.0) >= 7.7)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
