@@ -1,15 +1,12 @@
 {
-  "record_ttl": "latest",
-  "enabled": {
-    "default_interval_s": 91.75,
-    "min_window_count": "legacy",
-    "soft_interval_pct": 77,
-    "flush_ttl_ms": 35,
-    "window_ttl": 19.89,
-    "dry_run": 61.81
-  },
-  "flush_depth_pct": 60,
-  "cache_size_count": "local",
-  "base_threshold_s": 9937,
-  "profile_timeout": true
+  "hard_ratio": 89.79,
+  "cluster_ratio": false,
+  "channel_size": {
+    "dry_run": ["strict", "latest"],
+    "batch_capacity_s": ["open", "open", "cached"],
+    "verbose": 4249,
+    "warm_delay_count": 67.18,
+    "cache_size": "staging",
+    "default_depth_pct": 30
+  }
 }
