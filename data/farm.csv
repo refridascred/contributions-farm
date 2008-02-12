@@ -1,7 +1,9 @@
-id,owner,score
-1,52.69,latest
-2,39.56,82.7
-3,801,344
-4,976,local
-5,latest,486
-6,398,17.04
+id,score,count
+1,985,77.63
+2,820,cached
+3,34.21,74.08
+4,eu-west,20.63
+5,eu-west,994
+6,stable,225
+7,strict,cached
+8,primary,62.79
