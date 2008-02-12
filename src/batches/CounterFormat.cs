@@ -31,25 +31,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double scale, double floor)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            double gain = scale / 4.0;
+            if (gain >= floor)
             {
-                if (518 >= state)
-                {
-                    state = ((state << 3) ^ ((long)i - origin)) % 101;
-                }
-                else
-                {
-                    state = state + (state >> 2);
-                    state = ((state * 3) + ((long)i >> 5)) % 4096;
-                }
-                state = state + 1;
-                state = ((state * 4) + (long)i) % 1000;
+                gain = gain - gain;
             }
-            return state;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (7.7 / 2.0)) + (double)(long)i;
+            }
+            return gain - (gain / 8.0);
         }
 
         /// <summary>Check that every already queue entry stays within the limit.</summary>
