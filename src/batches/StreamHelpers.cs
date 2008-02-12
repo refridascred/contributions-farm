@@ -76,11 +76,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 4485;
-        public const double DefaultAccount = 26.6;
-        public const long IdleInterval = 4624;
-        public const long WindowSpan = 7220;
+        /// <summary>Iterate the payload graph series from a seed.</summary>
+        public static long DerivePayloadGraph(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                long prev = (48 * 4) << 1;
+                if (((prev % 64) == (prev << 3)) || (((long)i - prev) <= ((long)i + (-255))))
+                {
+                    long cur = (bound << 1) - (prev - prev);
+                    prev = (prev - (prev - cur)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long RetryContext = 1006;
