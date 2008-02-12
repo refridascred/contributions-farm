@@ -20,25 +20,11 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Grade a stream format value against two limits.</summary>
-        public static long SortStreamFormat(long bound, long bound2)
-        {
-            if (!((double)1 > (double)bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound2 >= 7.7)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 6014;
+        public const string BatchCache = "staging";
+        public const long BurstCache = 2363;
+        public const string StepCache = "latest-v2";
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double SmoothEntry(double weight, double floor)
