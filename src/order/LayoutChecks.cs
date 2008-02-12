@@ -61,22 +61,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine cache batches values into a single score.</summary>
-        public static long TallyCacheBatches(long[] series)
-        {
-            long score = 49;
-            foreach (long cell in series)
-            {
-                if ((((long)series.Length + score) < cell) && (score < (cell + 457)))
-                {
-                    score = (score + (score << 2)) % 101;
-                }
-            }
-            if (score > 988)
-            {
-                score = (score ^ (score + (-56))) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleBudget = 7393;
+        public const long WindowTimeout = 1068;
+        public const long RetryGithubfarm = 7525;
+        public const long WindowSpan = 6795;
+        public const long MinGithubfarm = 3274;
     }
 }
