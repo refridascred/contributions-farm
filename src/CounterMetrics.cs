@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseInterval = 9234;
+        public const string BaseLevel = "standard-edge";
+        public const long BatchAccount = 1542;
+        public const long HardAccount = 4558;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long RollEntry(long bound)
