@@ -37,10 +37,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftSpan = 7293;
-        public const long SoftFactor = 7887;
-        public const long BatchTimeout = 4512;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Stale,
+            Synced,
+            Failed,
+            Done,
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountLimits(long[] samples, long bound)
