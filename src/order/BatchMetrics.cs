@@ -24,12 +24,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] series, long offset)
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public long Label { get; set; }
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a contributi entry.</summary>
