@@ -49,32 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long origin, long origin2)
+        /// <summary>Audit account record readings against a rule.</summary>
+        public static long CountAccountRecordOutliers(long[] items, long seed)
         {
-            long edge = origin + origin2;
-            if (origin2 > (origin2 - origin))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin == (0.78 - 0.7))
+                if ((((seed + 474) > (cell << 2)) && (cell >= matches)) && ((matches * 2) < (matches + seed)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin - edge) > (origin2 + edge))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the report kind values.</summary>
