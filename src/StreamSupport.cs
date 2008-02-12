@@ -12,31 +12,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long limit, long target)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] items, long limit)
         {
-            if ((target - 8) <= (606 / 7))
+            bool valid = true;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit <= (3.0 * 2.68))
+                if (value > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit < (2.1 * 1.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
