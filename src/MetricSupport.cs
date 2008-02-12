@@ -25,39 +25,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long seed, long seed2)
-        {
-            if ((seed2 + 49) >= (seed >> 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed2 + seed) >= (seed << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((1 ^ seed2) == (seed & 15)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (seed2 >= (40 + seed2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitQueue = "open-edge";
+        public const long DefaultInterval = 2389;
+        public const double DefaultLevel = 3.01;
+        public const long BatchQueue = 6852;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long TallyGraphOutliers(long[] values)
