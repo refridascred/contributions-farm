@@ -62,12 +62,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Count the format farm entries that pass the check.</summary>
+        public static long MeasureFormatFarmMatches(long[] values)
         {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally << 2) == (reading >> 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
