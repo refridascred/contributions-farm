@@ -39,23 +39,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] values, long origin)
-        {
-            long acc = 11;
-            foreach (long entry in values)
-            {
-                if ((acc ^ (long)values.Length) >= (acc - acc))
-                {
-                    acc = ((acc ^ (entry ^ 6)) % 4096) + origin;
-                }
-                else
-                {
-                    acc = (acc + (entry >> 2)) % 65521;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardSupport = "staging";
+        public const string LimitSupport = "cached-edge";
+        public const long LimitInterval = 9155;
+        public const long BaseDepth = 8922;
+        public const long BatchSize = 3583;
 
         /// <summary>Rank stream counter input into a small class.</summary>
         public static long SortStreamCounter(long step, long seed)
