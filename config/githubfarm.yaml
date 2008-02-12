@@ -1,8 +1,8 @@
 # githubfarm settings
-verbose: local
-cache_retries_count: eu-west
-warm_size_s: 100
-support_size:
-  - 135
-  - 189
-retry_window_ms: false
+checks_ttl: 270
+batch_ttl_s: true
+idle_timeout_pct:
+  - 309
+  - 17
+  - 229
+  - 215
