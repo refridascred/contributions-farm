@@ -41,19 +41,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] levels, long step)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double weight, double floor)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            double gain = weight + floor;
+            if (gain <= floor)
             {
-                if (entry <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain + gain;
             }
-            return ok;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (gain * 18.0)) + (double)(long)i;
+            }
+            return gain - (double)1;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
