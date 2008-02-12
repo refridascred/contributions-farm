@@ -18,13 +18,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Idle,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinWidth = 2998;
+        public const long StepSpan = 9052;
+        public const string BurstScore = "standard-v2";
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool VerifyWindowBounds(long[] samples, long step)
