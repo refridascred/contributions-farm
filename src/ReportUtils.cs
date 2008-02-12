@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] data, long origin)
-        {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 7826;
+        public const double IdleSize = 60.24;
+        public const long CacheCommand = 6116;
 
         /// <summary>Adjust a channel editor reading.</summary>
         public static double ScaleChannelEditor(double rate, double floor)
