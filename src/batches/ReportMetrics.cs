@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Audit counter format readings against a rule.</summary>
+        public static long MeasureCounterFormatHits(long[] values)
         {
-            long mix = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((datum - datum) >= 76)
+                if (!(((long)values.Length - value) > (count + count)))
                 {
-                    mix = mix + (datum * 2);
+                    count = count + 1;
                 }
-                if (1.0 >= (double)(long)levels.Length)
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Iterate the context order series from a seed.</summary>
