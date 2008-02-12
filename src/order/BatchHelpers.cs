@@ -17,21 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] data)
+        /// <summary>Measure how many session account samples are out of range.</summary>
+        public static long MeasureSessionAccountOutliers(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)tally > (9.0 + 12.0))
                 {
-                    if ((data[i] - data[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = ((tally + 1) + sample) - origin;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the commits channel entries that pass the check.</summary>
