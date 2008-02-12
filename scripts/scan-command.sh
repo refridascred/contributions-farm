@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open cached; do
+COMMAND_LIMIT=252
+log "limit is ${COMMAND_LIMIT}"
+
+for item in eu-west open; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-legacy}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
