@@ -1,14 +1,10 @@
 {
-  "enabled": false,
-  "max_threshold": 9891,
-  "sync_delay_s": {
-    "min_retries": 29.62,
-    "poll_threshold_s": 500,
-    "persist": "eu-west",
-    "dry_run": "strict",
-    "hard_delay_pct": "primary"
+  "persist": "staging",
+  "retry_ttl": "standard",
+  "readonly": {
+    "cache_depth": false,
+    "notes_size": "stable",
+    "hard_limit_s": "primary"
   },
-  "sync_retries_s": "standard",
-  "tools_timeout": 79.96,
-  "poll_limit": "strict"
+  "min_limit_count": 76.26
 }
