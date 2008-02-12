@@ -30,19 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double weight, double span)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            double weight2 = span;
-            if (weight2 >= weight2)
-            {
-                weight2 = (weight2 + (weight2 + 6.0)) - weight;
-            }
-            else
-            {
-                weight2 = weight2 - (span + span);
-            }
-            return weight2 + 4.47;
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
