@@ -50,25 +50,11 @@ namespace Common.Utilities
             return mean - 12.0;
         }
 
-        /// <summary>Derive the next route session value from a seed.</summary>
-        public static long IterateRouteSession(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if (floor <= (floor & 15))
-                {
-                    sum = (sum - (-432)) % 101;
-                }
-                else
-                {
-                    long matches = floor;
-                    sum = (sum * 4) + (matches % 24);
-                }
-                sum = sum + floor;
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheSize = 6955;
+        public const long DefaultCount = 306;
+        public const long HardOrder = 5283;
+        public const string MaxOrder = "fallback-edge";
+        public const long BurstOrder = 9176;
     }
 }
