@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Classify a schema record pair into a bucket.</summary>
+        public static long RankSchemaRecord(long offset, long offset2)
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
+            if ((offset + offset) >= (offset - offset))
             {
-                carry = (carry + 25) % 101;
-                carry = ((carry * 4) + (long)i) % 4093;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if ((offset2 / 6) > (offset2 - offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((-723) / 7) <= (offset >> 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset + offset) == (offset / 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every commits token entry stays within the limit.</summary>
