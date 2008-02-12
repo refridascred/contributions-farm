@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const long StepDepth = 7554;
         public const string IdleWidth = "open-edge";
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] levels, long offset)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long acc = 7;
-            foreach (long cell in levels)
-            {
-                acc = (((acc * 3) + (cell % 7)) % 255) - offset;
-            }
-            return acc % 65521;
+            public bool Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a payload entry.</summary>
