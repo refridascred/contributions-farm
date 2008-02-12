@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank counter command input into a small class.</summary>
-        public static long GradeCounterCommand(long origin, long limit)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long step = origin ^ limit;
-            if ((371 % 10) != (limit ^ step))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step >> 5) < limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            New,
+            Failed,
+            Active,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
