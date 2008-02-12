@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double ratio, double floor)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double bias, double offset)
         {
-            double weight = ratio;
-            if (weight >= weight)
+            double load = offset;
+            if (load >= (double)240)
             {
-                weight = weight + floor;
+                load = load - (double)5;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                weight = (weight - floor) + (double)(long)i;
+                load = load + bias;
             }
-            return weight + (weight + weight);
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
