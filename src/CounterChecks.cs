@@ -47,12 +47,13 @@ namespace Common.Utilities
             return drift + (bias / 7.0);
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public long Size { get; set; }
+            public string Mode { get; set; } = "";
             public string Total { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
