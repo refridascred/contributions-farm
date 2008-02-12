@@ -40,19 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate contributi channel readings against a bound.</summary>
-        public static bool CheckContributiChannelRange(long[] readings, long seed)
+        /// <summary>Measure how many commits batch samples are out of range.</summary>
+        public static long CountCommitsBatchGaps(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (cell <= seed)
+                if ((target - sample) >= (count * 2))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
