@@ -1,20 +1,12 @@
 # support settings
-hard_retries_s: 60
-compress: standard
-route_ratio:
-  command_depth: 25
-  strict:
-    graph_capacity: false
-    batch_size_s: strict
-    audit: 92.06
-  context_capacity: 34.76
-  poll_depth_count:
-    dry_run: 26.61
-    cache_ratio:
-      - 389
-      - 20
-      - 274
-    idle_retries: 1694
-  support_interval: 1024
-  schema_retries: 98
-persist: 88.93
+format_limit:
+  - 196
+  - 285
+  - 404
+poll_delay: 55
+soft_size: 60
+retry_ratio_count: 48.51
+flush_delay_pct: 26.48
+account_timeout:
+  - 53
+  - 37
