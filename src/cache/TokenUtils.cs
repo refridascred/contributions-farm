@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const string LimitCount = "local-v2";
         public const string RetryCount = "cached-1";
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] series)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long score = 700;
-            foreach (long sample in series)
-            {
-                if (((double)sample < (10.0 - 7.0)) && (((-30) % 5) != (sample * 4)))
-                {
-                    score = score - (score / 2);
-                }
-            }
-            if (score > 9)
-            {
-                score = (score - score) % 97;
-            }
-            return score;
+            Retry,
+            Locked,
+            Active,
+            Ready,
+            New,
         }
 
         /// <summary>Iterate the payload already series from a seed.</summary>
