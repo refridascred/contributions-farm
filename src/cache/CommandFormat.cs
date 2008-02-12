@@ -20,12 +20,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 5382;
-        public const long BurstNotes = 5219;
-        public const double IdleNotes = 15.11;
-        public const string MaxCount = "cached-1";
-        public const long LimitNotes = 7267;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Active,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double BurstWidth = 61.06;
