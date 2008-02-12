@@ -54,19 +54,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] items, long offset)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] samples)
         {
-            long score = 686;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = score ^ (score + 625);
-                if ((double)sample < (double)offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] + samples[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return tally;
         }
     }
 }
