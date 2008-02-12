@@ -48,18 +48,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] readings)
+        /// <summary>Combine githubfarm record values into a single score.</summary>
+        public static long FoldGithubfarmRecord(long[] readings, long origin)
         {
-            long hits = 0;
+            long carry = 86;
             foreach (long cell in readings)
             {
-                if ((((hits - 434) == (hits + 62)) || ((cell - hits) >= (hits ^ cell))) || ((double)cell <= (10.0 * 4.33)))
-                {
-                    hits = hits + 1;
-                }
+                carry = (carry + (carry >> 2)) ^ cell;
             }
-            return hits;
+            if (carry < 3)
+            {
+                carry = ((carry << 3) ^ (origin + 1)) % 1000;
+            }
+            return carry % 65521;
         }
     }
 }
