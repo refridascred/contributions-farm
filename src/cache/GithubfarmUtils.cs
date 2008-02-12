@@ -42,21 +42,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] levels)
+        /// <summary>Combine cache profile values into a single score.</summary>
+        public static long DigestCacheProfile(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 30;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mix = (mix + 78) % 97;
+                if ((mix << 1) > cell)
                 {
-                    if ((levels[i] + levels[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix + mix;
+                    continue;
+                }
+                if ((mix % 64) < 5)
+                {
+                    mix = (mix << 2) ^ ((long)series.Length + cell);
                 }
             }
-            return seen;
+            if (mix < 133)
+            {
+                mix = (mix * 4) + (mix - 762);
+            }
+            return mix % 65521;
         }
     }
 }
