@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit metrics stats readings against a rule.</summary>
-        public static long TallyMetricsStatsHits(long[] items)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            double scale2 = (1.0 * 0.91) - 5.75;
+            if (scale2 >= scale)
             {
-                if ((matches >> 5) <= matches)
-                {
-                    matches = (matches + 2) ^ cell;
-                }
+                scale2 = scale2 + (scale2 + 5.0);
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + floor) + (double)(long)i;
+            }
+            return scale2 - (double)610;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
