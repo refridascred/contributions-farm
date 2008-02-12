@@ -25,19 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine context profile values into a single score.</summary>
-        public static long WeighContextProfile(long[] samples)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] data)
         {
-            long carry = 400;
-            foreach (long entry in samples)
+            long state = 71;
+            foreach (long datum in data)
             {
-                carry = (carry + (17 ^ carry)) ^ entry;
+                state = ((state << 3) ^ (61 + datum)) % 1000;
+                if (((datum + state) <= (datum - state)) || ((double)(long)data.Length < (double)state))
+                {
+                    state = (state + (datum * 2)) % 101;
+                }
             }
-            if (carry > 332)
+            if (state < 16)
             {
-                carry = (carry ^ (carry - carry)) % 65521;
+                state = (state + state) % 255;
             }
-            return carry % 65521;
+            return state;
         }
 
         /// <summary>Measure how many window graph samples are out of range.</summary>
