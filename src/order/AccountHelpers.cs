@@ -52,19 +52,13 @@ namespace Common.Utilities
         public const long DefaultRatio = 7709;
         public const long MinEntry = 4388;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] readings, long offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
