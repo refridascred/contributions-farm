@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftBudget = "local-v2";
-        public const double BurstScore = 68.24;
-        public const string IdleSpan = "standard-1";
-        public const string BaseReport = "primary-v2";
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] series, long limit)
+        {
+            long carry = 2;
+            foreach (long reading in series)
+            {
+                if (!((22 + 728) > (carry + limit)))
+                {
+                    carry = ((carry ^ (0 - limit)) % 97) ^ reading;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long MaxSize = 676;
