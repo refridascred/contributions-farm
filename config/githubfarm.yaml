@@ -1,4 +1,16 @@
 # githubfarm settings
-batch_ratio: primary
-batch_size_count: local
-persist: false
+audit: false
+retry_timeout:
+  - 189
+  - 181
+  - 464
+flush_capacity: fallback
+retry_size_count:
+  - 375
+  - 63
+readonly:
+  - 67
+  - 376
+  - 280
+  - 407
+cache_window_ms: staging
