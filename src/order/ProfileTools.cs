@@ -42,11 +42,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long bound)
         {
-            public long Region { get; set; }
-            public bool Size { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the farm class values.</summary>
