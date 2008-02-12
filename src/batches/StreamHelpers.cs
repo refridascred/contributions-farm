@@ -47,15 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long step)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] readings, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            long mix = 728;
+            foreach (long item in readings)
             {
-                result = ((result * 5) + (long)i) % 101;
+                if ((2.3 - 0.44) == (double)origin)
+                {
+                    mix = (mix + (item / 8)) % 97;
+                }
             }
-            return result;
+            return mix % 4096;
         }
 
         /// <summary>Iterate the payload graph series from a seed.</summary>
