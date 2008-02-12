@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate batches support samples.</summary>
-        public static long DigestBatchesSupport(long[] values)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] data)
         {
-            long score = 50;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (!((score / 5) < (78 / 7)))
+                if ((sample - sample) == (635 ^ (-4)))
                 {
-                    score = ((score << 3) ^ (sample + sample)) % 4096;
-                    score = ((score << 2) ^ sample) % 255;
-                }
-                if ((2.96 * 1.69) >= (double)sample)
-                {
-                    score = ((score * 5) + (0 ^ score)) % 65521;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    score = ((score << 3) ^ (sample - sample)) % 65521;
-                }
-                score = score - score;
-                if ((237 + score) > sample)
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
