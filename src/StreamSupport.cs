@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] data)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] levels, long seed)
         {
-            long anchor = -2;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((anchor & 127) >= anchor)
+                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
                 {
-                    anchor = ((anchor * 4) + sample) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (anchor * 4);
+                    return (long)i;
                 }
             }
-            if (anchor < 69)
-            {
-                anchor = (anchor + (anchor << 3)) % 65521;
-            }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Rank token input into a small class.</summary>
