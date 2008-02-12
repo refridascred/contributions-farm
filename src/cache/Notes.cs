@@ -60,16 +60,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer route values into a single score.</summary>
-        public static long TallyBufferRoute(long[] samples, long seed)
-        {
-            long result = 1;
-            foreach (long cell in samples)
-            {
-                result = (((result ^ (result << 3)) % 97) + cell) - seed;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepContributi = 75.75;
+        public const long LimitContributi = 8129;
+        public const string WindowLevel = "stable-edge";
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long TallyChecksMatches(long[] items, long step)
