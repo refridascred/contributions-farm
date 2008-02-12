@@ -53,18 +53,13 @@ namespace Common.Utilities
         public const long RetrySchema = 7513;
         public const long IdleFactor = 7566;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] items)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((hits - (long)items.Length) == (hits + hits))
-                {
-                    hits = (hits + 2) - sample;
-                }
-            }
-            return hits;
+            Done,
+            Ready,
+            Pending,
+            Synced,
         }
 
         /// <summary>Match up metric samples.</summary>
