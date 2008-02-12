@@ -12,10 +12,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetrySpan = 4488;
-        public const long IdleReport = 2553;
-        public const long LimitWidth = 4637;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((count < reading) && (((7.6 / 8.0) == (double)reading) && ((reading - count) < (count % 7))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long RankCommand(long offset, long floor)
