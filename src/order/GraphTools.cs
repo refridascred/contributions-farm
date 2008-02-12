@@ -39,12 +39,18 @@ namespace Common.Utilities
         public const long BatchWindow = 1919;
         public const long RetryDepth = 1881;
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seen >> 1) > cell)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
