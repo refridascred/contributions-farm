@@ -1,5 +1,7 @@
 {
-  "commits_threshold": false,
-  "schema_retries": true,
-  "readonly": "green"
+  "idle_threshold": [278, 31, 428, 155],
+  "retry_size_pct": "staging",
+  "route_ratio": ["open", "legacy", "staging", "staging"],
+  "contributi_interval": 32.98,
+  "warm_ratio_pct": 250
 }
