@@ -1,10 +1,6 @@
 # githubfarm settings
-min_threshold: 86
-filter_capacity: 100
-batch_limit: 8592
-verbose: 88.2
-metric_size:
-  - staging
-  - edge
-  - green
-strict: legacy
+readonly: staging
+tools_size: eu-west
+hard_limit_s: staging
+audit: blue
+max_delay_count: 17.83
