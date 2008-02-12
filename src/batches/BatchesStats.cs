@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi checks readings.</summary>
-        public static long TotalContributiChecks(long[] series)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long mix = 499;
-            foreach (long item in series)
-            {
-                if ((mix / 9) <= mix)
-                {
-                    mix = (mix + (item << 3)) % 255;
-                }
-                if ((8.0 <= (double)item) || ((6 / 4) < item))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
+            public double Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the metrics kind values.</summary>
