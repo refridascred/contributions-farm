@@ -60,11 +60,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
