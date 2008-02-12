@@ -1,13 +1,12 @@
 # entry settings
-githubfarm_limit: stable
-order_retries:
-  - 488
-  - 166
-metric_capacity: 5327
-enabled: 4
-entry_delay:
-  persist: true
-  poll_depth: 1.66
-  burst_timeout_s:
-    - legacy
-    - cached
+soft_ratio_s: 2369
+cache_capacity_count:
+  - 39
+  - 132
+  - 154
+persist: true
+default_size_ms:
+  - stable
+  - eu-west
+max_retries: 20.6
+hard_size: 18.38
