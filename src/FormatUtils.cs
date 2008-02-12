@@ -43,31 +43,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank filter session input into a small class.</summary>
-        public static long SortFilterSession(long limit, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] values, long step)
         {
-            if ((double)seed != (3.0 + 2.0))
+            long acc = 947;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed >= (limit - seed))
+                acc = ((acc * 5) + acc) ^ value;
+                if (step >= (step * 5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((3 + seed) > (51 - seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return acc % 97;
         }
 
         /// <summary>Describe the command state values.</summary>
