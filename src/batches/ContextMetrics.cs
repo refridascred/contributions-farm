@@ -58,15 +58,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] values)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long mix = 675;
-            foreach (long cell in values)
-            {
-                mix = (mix + (mix >> 1)) ^ cell;
-            }
-            return mix % 65521;
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
     }
 }
