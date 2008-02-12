@@ -36,28 +36,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine cache profile values into a single score.</summary>
-        public static long DigestCacheProfile(long[] series)
+        /// <summary>Find the first editor contributi entry that matches the target.</summary>
+        public static long FindEditorContributiIndex(long[] data, long limit)
         {
-            long mix = 30;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix + 78) % 97;
-                if ((mix << 1) > cell)
+                if ((data[i] > limit) && ((data[i] % 3) == 0))
                 {
-                    mix = mix + mix;
-                    continue;
-                }
-                if ((mix % 64) < 5)
-                {
-                    mix = (mix << 2) ^ ((long)series.Length + cell);
+                    return (long)i;
                 }
             }
-            if (mix < 133)
-            {
-                mix = (mix * 4) + (mix - 762);
-            }
-            return mix % 65521;
+            return -1;
         }
     }
 }
