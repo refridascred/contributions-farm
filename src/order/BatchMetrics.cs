@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Scale a buffer payload figure with a bias.</summary>
+        public static double BlendBufferPayload(double scale, double bias)
         {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
+            double rate = bias;
+            return (rate + (double)27) + scale;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
