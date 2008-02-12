@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long limit, long bound)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            if (55 >= limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit + bound) < limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit != (9.5 + 14.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (bound <= (limit + limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Match up window samples.</summary>
