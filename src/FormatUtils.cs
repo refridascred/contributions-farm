@@ -45,13 +45,19 @@ namespace Common.Utilities
         public const double LimitBudget = 95.47;
         public const long HardScore = 6699;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] items, long target)
         {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public double Offset { get; set; }
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Rank batches commits input into a small class.</summary>
