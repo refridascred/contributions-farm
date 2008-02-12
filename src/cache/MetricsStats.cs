@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] series)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double ratio, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = ratio;
+            if (weight >= weight)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = weight + floor;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight + (weight + weight);
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
