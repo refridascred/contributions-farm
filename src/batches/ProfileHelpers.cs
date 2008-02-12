@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Retry,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitCommand = 52.4;
+        public const long SoftCommand = 8533;
+        public const long StepWidth = 9609;
+        public const string HardLevel = "legacy";
+        public const long MaxCommand = 330;
 
         /// <summary>Define record limits and defaults.</summary>
         public const double WindowCount = 7.9;
