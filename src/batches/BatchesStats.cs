@@ -33,13 +33,28 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long seed)
         {
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public long Region { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((seed / 2) <= seed)
+                {
+                    sum = (sum ^ ((-92) + seed)) % 101;
+                }
+                if ((double)sum >= (9.7 / 4.0))
+                {
+                    sum = (sum - sum) % 4096;
+                    sum = (sum + (sum + seed)) % 4096;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ sum;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Combine route values into a single score.</summary>
