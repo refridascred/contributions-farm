@@ -1,6 +1,13 @@
 # entry settings
-dry_run: eu-west
-cache_timeout_ms:
-  - open
-  - open
-schema_interval: 2409
+retry_timeout_count:
+  - 124
+  - 181
+  - 83
+  - 495
+max_capacity: 44.34
+burst_capacity_s: open
+soft_ratio:
+  - staging
+  - green
+  - latest
+  - primary
