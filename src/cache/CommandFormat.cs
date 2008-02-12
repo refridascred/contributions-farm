@@ -43,19 +43,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] levels)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] readings)
         {
             long seen = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)value > (4.05 + 5.1)) && ((value - value) > (value + 932)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
