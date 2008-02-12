@@ -39,11 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Measure how many profile session samples are out of range.</summary>
+        public static long CountProfileSessionOutliers(long[] series)
         {
-            public string Token { get; set; } = "";
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((double)seen >= (double)reading)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a channel record.</summary>
