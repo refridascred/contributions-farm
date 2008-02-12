@@ -36,12 +36,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Grade a schema order value against two limits.</summary>
+        public static long RankSchemaOrder(long origin, long bound)
         {
-            Idle,
-            Queued,
-            Stale,
+            long bound2 = origin ^ bound;
+            if ((bound - origin) > 76)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin ^ bound2) >= (origin + bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((8.2 / 2.0) >= (double)bound2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
