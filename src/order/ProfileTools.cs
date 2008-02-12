@@ -48,19 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double weight, double offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] readings)
         {
-            double ratio = weight;
-            if (ratio >= (double)1)
+            long sum = 31;
+            foreach (long entry in readings)
             {
-                ratio = (ratio - (weight / 4.0)) - offset;
+                if ((double)sum > (0.9 - 4.0))
+                {
+                    sum = (sum + (sum - 7)) % 101;
+                }
+                if ((entry / 6) < (sum + entry))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (6.93 * 17.0)) + (double)(long)i;
-            }
-            return ratio + 3.9;
+            return sum % 65521;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
