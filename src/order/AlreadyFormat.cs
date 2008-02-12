@@ -32,25 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long step, long offset)
-        {
-            if (step >= offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if (offset < (offset - 69))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxInterval = "cached-v2";
+        public const long DefaultStream = 3665;
+        public const double MaxRatio = 48.23;
+        public const string HardStream = "open-edge";
+        public const string BaseScore = "fallback-v2";
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
