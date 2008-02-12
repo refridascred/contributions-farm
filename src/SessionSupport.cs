@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] samples)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (((tally - 78) > reading) || (((tally >> 2) == (tally + tally)) && ((double)68 <= (double)reading)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Retry,
+            Idle,
+            Closed,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
