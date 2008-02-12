@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 4) + mark) % 97;
-                if ((9.08 / 8.0) >= (double)mark)
-                {
-                    mark = (mark - (mark << 3)) % 4096;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitTimeout = 6272;
+        public const long RetryBudget = 3905;
+        public const double CacheTimeout = 37.39;
+        public const long MinEditor = 8241;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MinGithubfarm = 3251;
