@@ -25,12 +25,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] items)
         {
-            Retry,
-            Synced,
-            Done,
+            long mix = 815;
+            foreach (long datum in items)
+            {
+                if (datum >= 373)
+                {
+                    mix = ((mix * 2) + (104 ^ datum)) % 97;
+                }
+            }
+            return mix;
         }
     }
 }
