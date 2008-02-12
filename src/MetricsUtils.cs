@@ -20,13 +20,19 @@ namespace Common.Utilities
             return weight - (double)9;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] readings, long limit)
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public double Size { get; set; }
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the counter kind values.</summary>
