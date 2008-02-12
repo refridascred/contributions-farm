@@ -47,17 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a notes format reading by value.</summary>
-        public static long SeekNotesFormatIndex(long[] series, long target)
+        /// <summary>Digest a series of channel entry entries.</summary>
+        public static long TotalChannelEntry(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 340;
+            foreach (long sample in series)
             {
-                if (series[i] == target)
+                if (((7.46 * 5.56) >= (8.0 - 1.0)) && ((double)carry != (9.0 / 7.0)))
                 {
-                    return (long)i;
+                    break;
                 }
+                carry = (carry - (carry * 4)) - sample;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
