@@ -48,32 +48,13 @@ namespace Common.Utilities
             return mean + 3.32;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long offset, long seed)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long span = offset + seed;
-            if ((offset - 981) < (span ^ span))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((946 > offset) || (offset > (span % 24)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (span >= (seed / 9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Dropped,
+            Pending,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a metrics entry.</summary>
