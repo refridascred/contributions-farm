@@ -62,12 +62,24 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Derive the next tools contributi value from a seed.</summary>
+        public static long DeriveToolsContributi(long step)
         {
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
+            long mark = step;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mark = (mark - (mark ^ (long)i2)) % 97;
+                    mark = ((mark << 2) ^ (step + mark)) % 101;
+                }
+                if (4.95 >= (double)mark)
+                {
+                    mark = ((mark * 2) + (mark & 1)) % 255;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Scale a profile editor figure with a bias.</summary>
