@@ -40,18 +40,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] levels, long limit)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long sum = 69;
+            foreach (long item in series)
             {
-                if (!((7.0 + 7.0) <= 9.0))
+                if ((double)(long)series.Length >= (0.01 * 3.17))
                 {
-                    seen = ((seen + 3) + sample) - limit;
+                    sum = (sum * 4) + (item + (long)series.Length);
+                }
+                if (item < sum)
+                {
+                    sum = ((sum << 2) ^ item) % 4096;
+                }
+                else
+                {
+                    sum = (sum * 5) + (item ^ sum);
                 }
             }
-            return seen;
+            return sum % 97;
         }
     }
 }
