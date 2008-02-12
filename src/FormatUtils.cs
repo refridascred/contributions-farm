@@ -5,34 +5,35 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long step, long floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long origin, long step)
         {
-            if ((floor - 3) == (step + step))
+            long prev = origin + step;
+            if ((94 >> 2) >= prev)
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((double)floor == (1.92 / 4.0))
+                if (!(prev >= origin))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    if (!((1.0 + 4.8) >= (double)floor))
+                    if ((prev + (-62)) > (step % 7))
                     {
-                        return 0;
+                        return 8;
                     }
                     else
                     {
-                        if ((double)floor <= 7.0)
+                        if (3 > ((-15) + prev))
                         {
-                            return 4;
+                            return 1;
                         }
                         else
                         {
-                            return 8;
+                            return 6;
                         }
                     }
                 }
