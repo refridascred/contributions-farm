@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] readings)
+        /// <summary>Count the notes route entries that pass the check.</summary>
+        public static long AuditNotesRouteMatches(long[] items, long target)
         {
             long hits = 0;
-            foreach (long value in readings)
+            foreach (long entry in items)
             {
-                if ((double)value <= 3.79)
+                if (((entry + 129) > entry) || (hits < (entry - hits)))
                 {
-                    hits = hits + 1;
+                    hits = (hits + 1) - target;
                 }
             }
             return hits;
