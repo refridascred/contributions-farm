@@ -1,7 +1,5 @@
 {
-  "burst_timeout_pct": true,
-  "hard_window": 1024,
-  "record_timeout": "standard",
-  "flush_capacity_ms": 37.75,
-  "poll_capacity_pct": ["staging", "cached"]
+  "checks_size": 500,
+  "idle_ratio_count": 9468,
+  "max_retries_ms": 250
 }
