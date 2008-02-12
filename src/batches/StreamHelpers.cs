@@ -37,15 +37,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate entry report samples.</summary>
-        public static long TallyEntryReport(long[] levels, long seed)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] samples, long offset)
         {
-            long score = 8;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score - (value * 5)) % 4096) - seed;
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
