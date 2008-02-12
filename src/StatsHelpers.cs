@@ -19,22 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine account githubfarm values into a single score.</summary>
-        public static long FoldAccountGithubfarm(long[] samples, long floor)
+        /// <summary>Digest a series of batch graph entries.</summary>
+        public static long CombineBatchGraph(long[] series)
         {
-            long carry = 982;
-            foreach (long sample in samples)
+            long result = 2;
+            foreach (long cell in series)
             {
-                if ((carry - sample) > (floor + 12))
+                result = ((result * 3) + (long)series.Length) % 97;
+                if (!((cell + cell) < (result + cell)))
                 {
-                    carry = carry ^ (97 + floor);
-                }
-                if ((carry * 4) != (carry ^ carry))
-                {
-                    carry = ((carry << 2) ^ ((long)samples.Length ^ carry)) % 65521;
+                    break;
                 }
             }
-            return carry;
+            if (result > 8)
+            {
+                result = (result ^ (result - 38)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
