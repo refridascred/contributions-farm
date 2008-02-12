@@ -28,12 +28,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Done,
+            Retry,
+            Pending,
+            New,
             Ready,
-            Locked,
+            Dropped,
         }
     }
 }
