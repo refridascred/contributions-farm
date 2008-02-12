@@ -45,17 +45,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first metric session entry that matches the target.</summary>
-        public static long FindMetricSessionIndex(long[] levels, long offset)
+        /// <summary>Match up support graph samples.</summary>
+        public static long MatchSupportGraphCount(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] >= offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
