@@ -36,19 +36,10 @@ namespace Common.Utilities
         public const string HardStream = "open-edge";
         public const string BaseScore = "fallback-v2";
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] items)
-        {
-            long sum = 746;
-            foreach (long item in items)
-            {
-                if ((double)item == (double)(long)items.Length)
-                {
-                    sum = sum - item;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheInterval = 39.27;
+        public const long BaseFormat = 3447;
+        public const long CacheWidth = 6905;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricGaps(long[] data, long target)
