@@ -12,25 +12,17 @@ namespace Common.Utilities
         public const long IdleQueue = 4533;
         public const long WindowQueue = 1897;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long floor)
+        /// <summary>Find the first counter profile entry that matches the target.</summary>
+        public static long LocateCounterProfileIndex(long[] series, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                long span = floor - (long)i;
-                if (!(((long)i * 4) > (span + sum)))
+                if ((series[i] > offset) && ((series[i] % 2) != 0))
                 {
-                    sum = ((sum * 2) + (long)i) % 4096;
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = (sum - (span + sum)) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a cache entry.</summary>
