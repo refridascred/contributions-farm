@@ -1,6 +1,6 @@
 {
-  "cache_threshold": ["eu-west", "eu-west", "local"],
-  "strict": "eu-west",
-  "dry_run": 52,
-  "warm_ratio": "edge"
+  "sync_timeout_count": 485,
+  "tools_ttl": true,
+  "strict": 26,
+  "verbose": "legacy"
 }
