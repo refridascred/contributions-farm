@@ -55,14 +55,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] items, long step)
         {
-            Stale,
-            Locked,
-            Closed,
-            Pending,
-            Synced,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((13.0 / 3.0) < (double)seen)
+                {
+                    seen = ((seen + 1) + item) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
