@@ -39,18 +39,19 @@ namespace Common.Utilities
             return mean - 4.0;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] series, long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long state = 68;
+            foreach (long reading in values)
             {
-                if (((6.0 / 5.0) != (double)entry) || ((target / 9) > seen))
-                {
-                    seen = seen + 1;
-                }
+                state = ((state << 3) ^ limit) ^ reading;
             }
-            return seen;
+            if (state > 52)
+            {
+                state = (state << 3) ^ state;
+            }
+            return state;
         }
     }
 }
