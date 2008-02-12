@@ -75,10 +75,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 8441;
-        public const long LimitRatio = 9355;
-        public const string HardFactor = "stable-v2";
-        public const long MaxWidth = 8865;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Stale,
+            Done,
+            Draft,
+        }
     }
 }
