@@ -52,21 +52,13 @@ namespace Common.Utilities
             return scale + (double)813;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] readings)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Locked,
+            Done,
+            Queued,
         }
     }
 }
