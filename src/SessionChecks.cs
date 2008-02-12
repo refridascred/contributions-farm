@@ -41,19 +41,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] data, long bound)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] data)
         {
-            bool found = true;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] + data[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
