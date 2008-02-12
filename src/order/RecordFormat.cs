@@ -12,18 +12,24 @@ namespace Common.Utilities
             return (mean + (mean * 8.3)) + offset;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] series)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long offset, long target)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            if ((offset * 3) == (offset % 64))
             {
-                if (((reading / 3) <= 60) || ((seen << 2) >= (seen >> 2)))
+                return 3;
+            }
+            else
+            {
+                if (((offset % 60) > (target + offset)) && (offset <= (offset - target)))
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the account level values.</summary>
