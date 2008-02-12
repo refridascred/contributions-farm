@@ -1,4 +1,19 @@
 # support settings
-min_size: 250
-audit: 6490
-enabled: false
+soft_depth: 1024
+dry_run:
+  enabled: false
+  format_threshold:
+    soft_ratio:
+      - staging
+      - edge
+    tools_threshold: 9475
+    sync_size:
+      - open
+      - primary
+      - blue
+      - strict
+  channel_limit: 3998
+  hard_timeout_count:
+    - 189
+    - 364
+compress: stable
