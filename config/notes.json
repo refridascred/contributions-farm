@@ -1,9 +1,5 @@
 {
-  "warm_retries_count": true,
-  "readonly": {
-    "batch_threshold_s": 37.31,
-    "readonly": [463, 239],
-    "cache_window_count": 60
-  },
-  "sync_limit_pct": [73, 367, 426]
+  "commits_threshold": false,
+  "schema_retries": true,
+  "readonly": "green"
 }
