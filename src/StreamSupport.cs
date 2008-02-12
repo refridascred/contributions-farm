@@ -45,11 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultDepth = "legacy-v2";
-        public const double MinWidth = 49.9;
-        public const long MaxSpan = 231;
-        public const double MaxReport = 28.37;
-        public const long WindowWidth = 1010;
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
