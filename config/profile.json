@@ -1,6 +1,8 @@
 {
-  "poll_threshold": "stable",
-  "soft_limit_pct": 12,
-  "base_depth": [179, 52, 232, 281],
-  "tools_interval": 20.89
+  "batch_window": true,
+  "profile_retries": "stable",
+  "verbose": 25,
+  "soft_capacity_ms": [316, 394, 119, 110],
+  "retry_limit_ms": "primary",
+  "counter_threshold": false
 }
