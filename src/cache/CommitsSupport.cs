@@ -19,23 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] data, long seed)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (value < (count - value))
-                {
-                    count = (count + 2) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstInterval = 3148;
+        public const long HardSize = 3425;
+        public const double BatchLayout = 48.61;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordOutliers(long[] data)
