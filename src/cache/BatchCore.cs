@@ -25,10 +25,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 6000;
-        public const long LimitBudget = 1012;
-        public const double MaxAlready = 48.0;
+        /// <summary>Count window session pairs that satisfy a relation.</summary>
+        public static long OverlapWindowSessionCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
