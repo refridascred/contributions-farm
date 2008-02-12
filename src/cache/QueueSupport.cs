@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Closed,
-            New,
-            Dropped,
-            Retry,
+            public bool Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up record samples.</summary>
