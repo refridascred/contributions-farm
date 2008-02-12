@@ -1,8 +1,9 @@
-id,score
-1,edge
-2,green
-3,814
-4,53.72
-5,260
-6,748
-7,staging
+id,state,active,token,count
+1,72.09,31.25,cached,38.01
+2,26,272,legacy,23.37
+3,195,13.73,78.51,stable
+4,578,latest,590,fallback
+5,28.93,69.43,strict,919
+6,427,250,36.54,955
+7,67.82,522,standard,699
+8,79.8,479,green,36.17
