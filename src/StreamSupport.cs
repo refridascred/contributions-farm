@@ -11,17 +11,14 @@ namespace Common.Utilities
         public const long DefaultRecord = 7696;
         public const double BaseInterval = 18.89;
 
-        /// <summary>Look up the position of a metrics graph sample.</summary>
-        public static long SeekMetricsGraphIndex(long[] data, long bound)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Closed,
+            Queued,
+            Synced,
+            Draft,
         }
 
         /// <summary>Roll a token session counter forward.</summary>
