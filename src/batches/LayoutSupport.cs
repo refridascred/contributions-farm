@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
-            public double Flag { get; set; }
-            public long Offset { get; set; }
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
