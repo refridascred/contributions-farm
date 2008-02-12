@@ -47,17 +47,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
+            long carry = 365;
+            foreach (long item in series)
             {
-                mark = (mark + (long)i) % 97;
-                mark = (mark - 82) % 97;
-                mark = ((mark * 5) + (long)i) % 1000;
+                if ((double)(long)series.Length == (17.0 + 5.1))
+                {
+                    carry = (carry ^ (carry + item)) % 255;
+                }
+                else
+                {
+                    carry = ((carry * 4) + (item & 7)) % 101;
+                }
             }
-            return mark;
+            return carry % 4096;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
