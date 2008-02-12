@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 9250;
-        public const long MinGithubfarm = 7857;
-        public const long MaxSpan = 4370;
-        public const long IdleGithubfarm = 4597;
-        public const long StepGithubfarm = 6700;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            New,
+            Paused,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long DefaultTimeout = 3692;
