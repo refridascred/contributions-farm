@@ -64,12 +64,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Idle,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxRecord = "standard-1";
+        public const double SoftSpan = 98.36;
+        public const long RetryRecord = 5482;
+        public const double DefaultRecord = 2.12;
+        public const long BurstScore = 5403;
     }
 }
