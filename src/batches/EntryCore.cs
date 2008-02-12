@@ -29,13 +29,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Check that every buffer checks entry stays within the limit.</summary>
+        public static bool VerifyBufferChecksBounds(long[] items, long bound)
         {
-            public string Flag { get; set; } = "";
-            public bool Total { get; set; }
-            public double Count { get; set; }
-            public double Stamp { get; set; }
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate schema cluster samples.</summary>
