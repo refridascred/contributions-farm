@@ -36,22 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] samples, long target)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long limit)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((771 <= (matches + target)) || ((73 / 4) != (matches - 75)))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    matches = (matches + 1) ^ item;
+                    carry = (carry - (8 + carry)) ^ (long)i2;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = (carry + (carry & 1)) % 255;
+                carry = (carry * 3) + (carry >> 2);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
