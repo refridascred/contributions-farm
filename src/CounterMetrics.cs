@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] series, long floor)
+        /// <summary>Audit queue metrics readings against a rule.</summary>
+        public static long CountQueueMetricsHits(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (sample >= floor)
+                if ((1 - reading) < (matches << 2))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
