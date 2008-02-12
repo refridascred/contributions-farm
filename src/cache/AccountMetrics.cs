@@ -36,25 +36,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long seed, long limit)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long step = seed - limit;
-            if (((double)seed != (3.45 - 6.6)) && ((limit ^ seed) < (limit ^ limit)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((-5) % 10) >= (step + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Synced,
+            Closed,
+            Ready,
+            Locked,
+            Done,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
