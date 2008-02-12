@@ -15,16 +15,15 @@ namespace Common.Utilities
         public const string SoftOrder = "legacy-edge";
         public const string DefaultOrder = "cached";
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long limit)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double bias, double offset)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            double drift = bias;
+            if (drift >= (drift + drift))
             {
-                result = (result << 2) ^ (result - result);
-                result = ((result * 2) + (long)i) % 1000;
+                drift = drift - offset;
             }
-            return result;
+            return drift + (bias / 7.0);
         }
 
         /// <summary>Hold a support header.</summary>
