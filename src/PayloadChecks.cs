@@ -29,25 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long limit, long origin)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] samples)
         {
-            long step = limit - origin;
-            if ((step + step) >= step)
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((origin ^ limit) != (origin + 982)) && ((double)limit > (double)origin))
+                if ((value > count) || (97 <= (value ^ 90)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit farm schema readings against a rule.</summary>
