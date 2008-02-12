@@ -40,18 +40,18 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] values)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((double)0 <= (double)item)
+                if ((((seen - reading) != (seen + reading)) || ((double)seen <= (3.44 - 2.35))) && !(reading >= (seen >> 1)))
                 {
-                    hits = hits + 3;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
