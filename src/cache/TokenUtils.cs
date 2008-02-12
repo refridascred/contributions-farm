@@ -29,17 +29,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a commits graph sample.</summary>
-        public static long FindCommitsGraphIndex(long[] data, long seed)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Stale,
+            Paused,
+            Queued,
         }
     }
 }
