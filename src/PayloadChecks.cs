@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            New,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseScore = 431;
+        public const long IdleProfile = 5975;
+        public const long BatchDepth = 9407;
+        public const long LimitSpan = 750;
+        public const long LimitProfile = 8605;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string LimitBuffer = "latest";
