@@ -33,16 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long origin)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] levels, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix - origin) % 65521;
-                mix = ((mix * 3) + (long)i) % 101;
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Accumulate cache samples.</summary>
