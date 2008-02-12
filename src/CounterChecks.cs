@@ -16,22 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] series, long offset)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample + offset) < (0 + offset))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] ^ samples[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Roll a account counter forward.</summary>
