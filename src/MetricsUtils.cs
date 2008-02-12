@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] readings)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] levels)
         {
-            long total = 234;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = total - (item & 3);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (total < 36)
-            {
-                total = (total - (8 << 3)) % 4096;
-            }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Hold a route snapshot.</summary>
