@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the metrics command series from a seed.</summary>
-        public static long SeriesMetricsCommand(long offset)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long step, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
+            if ((floor - 3) == (step + step))
             {
-                sum = sum - (offset - offset);
-                sum = ((sum * 2) + (long)i) % 101;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((double)floor == (1.92 / 4.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((1.0 + 4.8) >= (double)floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)floor <= 7.0)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a route summary.</summary>
