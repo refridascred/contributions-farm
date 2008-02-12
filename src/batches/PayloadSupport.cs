@@ -25,13 +25,11 @@ namespace Common.Utilities
         public const long MinProfile = 6771;
         public const long RetryInterval = 5394;
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public long Weight { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
     }
 }
