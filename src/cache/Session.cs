@@ -35,18 +35,20 @@ namespace Common.Utilities
             return rate - (span * 10.0);
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] values, long limit)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long seed)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((5.9 / 3.0) >= (double)tally)
+                carry = ((carry * 3) + (seed - (long)i)) % 97;
+                if (carry >= (seed + carry))
                 {
-                    tally = ((tally + 2) - cell) - limit;
+                    carry = (carry ^ carry) % 97;
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
