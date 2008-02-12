@@ -1,6 +1,14 @@
 {
-  "hard_size": 6.58,
-  "graph_timeout": "cached",
-  "filter_delay": 89.54,
-  "verbose": [105, 461, 212, 58]
+  "retry_window": false,
+  "base_ratio_ms": {
+    "hard_depth_ms": true,
+    "layout_threshold": 33.95,
+    "hard_window": 7895,
+    "farm_threshold": 88.51,
+    "flush_limit_count": 3749
+  },
+  "flush_size_s": 89,
+  "retry_interval": [462, 320],
+  "burst_window_count": 250,
+  "layout_timeout": "legacy"
 }
