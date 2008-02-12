@@ -13,31 +13,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long floor, long offset)
+        /// <summary>Check that every metric order entry stays within the limit.</summary>
+        public static bool CheckMetricOrderRange(long[] values, long bound)
         {
-            if (((floor << 2) > (offset & 3)) || ((offset * 2) < (offset ^ 364)))
+            bool valid = true;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((4 ^ offset) > 44))
+                if (value >= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((537 % 60) <= floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
