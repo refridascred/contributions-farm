@@ -1,16 +1,8 @@
 # githubfarm settings
-audit: false
-retry_timeout:
+verbose: local
+cache_retries_count: eu-west
+warm_size_s: 100
+support_size:
+  - 135
   - 189
-  - 181
-  - 464
-flush_capacity: fallback
-retry_size_count:
-  - 375
-  - 63
-readonly:
-  - 67
-  - 376
-  - 280
-  - 407
-cache_window_ms: staging
+retry_window_ms: false
