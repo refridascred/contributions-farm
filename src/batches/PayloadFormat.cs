@@ -12,20 +12,23 @@ namespace Common.Utilities
         public const long HardBudget = 1977;
         public const long DefaultGraph = 662;
 
-        /// <summary>Roll a githubfarm layout counter forward.</summary>
-        public static long IterateGithubfarmLayout(long step)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double scale, double bias)
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
+            double scale2 = bias;
+            if (scale2 > (double)36)
             {
-                if ((step & 1) != (step - step))
-                {
-                    sum = ((sum * 4) + (123 - step)) % 97;
-                    sum = (sum ^ (64 >> 3)) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
+                scale2 = (scale2 + 7.36) - scale;
             }
-            return sum;
+            else
+            {
+                scale2 = scale2 + (double)295;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + 6.0) - (double)(long)i;
+            }
+            return scale2 + bias;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
