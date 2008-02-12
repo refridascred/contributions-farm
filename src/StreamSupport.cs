@@ -30,19 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] readings, long target)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
