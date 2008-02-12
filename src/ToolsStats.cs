@@ -13,11 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double gain, double span)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] levels, long offset)
         {
-            double ratio = (gain * 5.4) - (gain / 7.0);
-            return (ratio + (gain / 7.0)) + span;
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
