@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] series, long target)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] samples)
         {
             long hits = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample >> 2) >= ((-5) / 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 1) + target;
+                    if ((samples[i] - samples[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
