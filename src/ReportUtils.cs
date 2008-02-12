@@ -32,19 +32,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] readings, long origin)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Active,
+            New,
+            Failed,
         }
 
         /// <summary>Hold a graph entry.</summary>
