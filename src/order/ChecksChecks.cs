@@ -13,19 +13,23 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double gain, double span)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double rate, double offset)
         {
-            double weight = span / 8.0;
-            if (weight < (span + 0.85))
+            double mean = (double)(3 / 2);
+            if (mean >= (rate / 3.0))
             {
-                weight = (weight + (span / 5.0)) - gain;
+                mean = mean + 7.09;
             }
             else
             {
-                weight = weight + weight;
+                mean = mean - offset;
             }
-            return weight + (double)393;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (1.0 + rate)) - (double)(long)i;
+            }
+            return mean + (rate / 5.0);
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
