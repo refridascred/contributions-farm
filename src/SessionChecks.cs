@@ -52,18 +52,25 @@ namespace Common.Utilities
             return mean - 12.0;
         }
 
-        /// <summary>Measure how many notes counter samples are out of range.</summary>
-        public static long MeasureNotesCounterOutliers(long[] readings)
+        /// <summary>Derive the next route session value from a seed.</summary>
+        public static long IterateRouteSession(long floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((cell - cell) == (57 + 686))
+                if (floor <= (floor & 15))
                 {
-                    matches = matches + 3;
+                    sum = (sum - (-432)) % 101;
                 }
+                else
+                {
+                    long matches = floor;
+                    sum = (sum * 4) + (matches % 24);
+                }
+                sum = sum + floor;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
     }
 }
