@@ -1,9 +1,8 @@
 # entry settings
-default_threshold_ms: legacy
-max_capacity_s: 20
-route_interval: latest
-enabled: blue
-command_limit:
-  - edge
-  - open
-  - cached
+stream_retries: standard
+readonly: 4.01
+max_delay: 4734
+default_size:
+  - 343
+  - 127
+payload_window: 38
