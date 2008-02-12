@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string WindowFactor = "latest-1";
-        public const long CacheGraph = 126;
-        public const double LimitCount = 91.21;
-        public const string MinFactor = "fallback-v2";
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] data, long limit)
+        {
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long ScoreChannel(long[] samples)
