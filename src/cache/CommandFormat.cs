@@ -22,13 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
+            Retry,
+            Closed,
+            New,
+            Active,
+            Pending,
         }
 
         /// <summary>Compare every pair of session readings.</summary>
