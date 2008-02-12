@@ -1,12 +1,10 @@
 # githubfarm settings
-compress: false
-default_delay_count: 25.86
-cache_ttl: 4346
-max_delay_pct:
-  context_interval: 8981
-  flush_capacity_s: 9141
-  command_delay: true
-  strict: strict
-  poll_delay_count:
-    - 126
-    - 491
+readonly:
+  - 100
+  - 498
+  - 199
+  - 248
+stream_depth: 1.74
+hard_timeout: 60.88
+poll_ttl: 4591
+flush_capacity_ms: 8.87
