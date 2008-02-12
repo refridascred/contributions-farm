@@ -38,19 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] levels, long offset)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long mark = 74;
-            foreach (long cell in levels)
-            {
-                mark = (mark + (cell & 63)) % 97;
-                if ((12.0 - 3.0) >= (double)offset)
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            Draft,
+            Closed,
+            Stale,
+            Pending,
+            Idle,
         }
     }
 }
