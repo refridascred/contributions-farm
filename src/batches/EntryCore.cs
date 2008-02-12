@@ -25,12 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] items, long target)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
