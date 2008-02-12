@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] items)
+        /// <summary>Count the stream command entries that pass the check.</summary>
+        public static long MeasureStreamCommandGaps(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((item & 1) >= (tally & 127)))
                 {
-                    if ((items[i] ^ items[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the counter level values.</summary>
