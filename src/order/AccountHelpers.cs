@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] readings)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long result = -507;
-            foreach (long item in readings)
-            {
-                if ((1.9 + 6.67) <= (double)item)
-                {
-                    result = ((result << 2) ^ result) % 65521;
-                }
-                if ((452 - item) <= (1 + item))
-                {
-                    result = result + (item & 255);
-                }
-            }
-            return result;
+            Draft,
+            Closed,
+            Active,
+            Retry,
         }
 
         /// <summary>Define context limits and defaults.</summary>
