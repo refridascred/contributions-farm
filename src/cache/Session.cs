@@ -51,19 +51,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate token contributi readings against a bound.</summary>
-        public static bool VerifyTokenContributiLimits(long[] items, long step)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > step)
+                if (readings[i] > origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
