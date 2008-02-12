@@ -19,22 +19,17 @@ namespace Common.Utilities
         public const double BurstFactor = 88.0;
         public const string MaxCommand = "primary";
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] samples)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] levels, long step)
         {
-            long score = 866;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((value - 6) >= (score & 255)))
+                if (levels[i] == step)
                 {
-                    score = ((score << 2) ^ (value & 3)) % 1000;
+                    return (long)i;
                 }
             }
-            if (score > 814)
-            {
-                score = (score ^ (score + score)) % 1000;
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
