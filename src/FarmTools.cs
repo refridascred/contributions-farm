@@ -25,12 +25,38 @@ namespace Common.Utilities
         public const long BurstBudget = 8055;
         public const double BurstInterval = 72.39;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long step, long bound)
         {
-            Active,
-            Closed,
-            Failed,
+            if ((2.46 - 3.51) <= (double)step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)bound != (double)65)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (bound >= (step / 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound * 5) > (bound + step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
