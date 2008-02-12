@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            public double Token { get; set; }
+            public bool Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
