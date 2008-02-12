@@ -29,19 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] items, long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (reading <= seed)
+                if (item < limit)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
