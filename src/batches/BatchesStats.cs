@@ -33,17 +33,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] readings, long step)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > step) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
