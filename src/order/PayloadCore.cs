@@ -33,12 +33,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] series, long step)
         {
-            Ready,
-            Dropped,
-            Closed,
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
