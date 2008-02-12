@@ -40,19 +40,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] readings, long offset)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of tools entries.</summary>
