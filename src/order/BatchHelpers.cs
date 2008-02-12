@@ -27,12 +27,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a graph contributi sample.</summary>
-        public static long SeekGraphContributiIndex(long[] readings, long seed)
+        /// <summary>Look up the position of a channel buffer sample.</summary>
+        public static long SeekChannelBufferIndex(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] > seed) && ((readings[i] % 2) != 0))
+                if (series[i] > floor)
                 {
                     return (long)i;
                 }
