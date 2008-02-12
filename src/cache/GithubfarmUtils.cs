@@ -46,12 +46,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first editor contributi entry that matches the target.</summary>
-        public static long FindEditorContributiIndex(long[] data, long limit)
+        /// <summary>Look up the position of a batch farm sample.</summary>
+        public static long FindBatchFarmIndex(long[] items, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] > limit) && ((data[i] % 3) == 0))
+                if (items[i] > target)
                 {
                     return (long)i;
                 }
