@@ -33,15 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter command samples are out of range.</summary>
-        public static long TallyFilterCommandOutliers(long[] samples)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] items)
         {
             long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally ^ tally) < cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
