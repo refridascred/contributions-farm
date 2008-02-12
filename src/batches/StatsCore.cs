@@ -33,12 +33,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] items, long origin)
         {
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
