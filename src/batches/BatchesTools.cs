@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long bound)
         {
-            long mix = 11;
-            foreach (long datum in values)
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
             {
-                mix = ((mix * 5) + (datum - (long)values.Length)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return mix % 4096;
+            return anchor;
         }
 
         /// <summary>Audit editor command readings against a rule.</summary>
