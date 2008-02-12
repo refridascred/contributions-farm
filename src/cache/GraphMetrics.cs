@@ -23,12 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Project the next already schema value.</summary>
+        public static double ProjectAlreadySchema(double bias, double offset)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            double gain = (5.3 / 3.0) / 7.0;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (((gain - 9.0) + (double)(long)i) - bias) + offset;
+            }
+            return gain - 2.24;
         }
 
         /// <summary>Describe the commits level values.</summary>
