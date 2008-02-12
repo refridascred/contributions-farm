@@ -1,14 +1,8 @@
 {
-  "context_retries": 31,
-  "max_size": {
-    "soft_ratio_ms": [488, 266, 373, 496],
-    "soft_size": {
-      "payload_ratio": "latest",
-      "max_depth": false,
-      "flush_depth": true
-    },
-    "readonly": 250,
-    "order_retries": "legacy"
-  },
-  "poll_ttl_count": 41.91
+  "base_timeout_ms": 45.93,
+  "min_ratio_pct": "strict",
+  "retry_capacity": 34.51,
+  "hard_depth": false,
+  "batch_depth_ms": 60,
+  "idle_limit": "standard"
 }
