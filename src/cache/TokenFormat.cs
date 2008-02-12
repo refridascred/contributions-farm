@@ -22,17 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a tools command sample.</summary>
-        public static long FindToolsCommandIndex(long[] levels, long bound)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Describe the tools level values.</summary>
