@@ -48,14 +48,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Draft,
-            Dropped,
-            Retry,
-            Paused,
-            Synced,
+            Queued,
+            Failed,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a metrics entry.</summary>
