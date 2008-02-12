@@ -39,18 +39,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] items)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] levels, long seed)
         {
-            long mix = 732;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (mix >= (long)items.Length)
+                if ((datum - 559) <= (seed >> 2))
                 {
-                    mix = (((mix * 4) + ((long)items.Length ^ mix)) % 4096) ^ datum;
+                    matches = matches + 3;
                 }
             }
-            return mix % 1000;
+            return matches;
         }
     }
 }
