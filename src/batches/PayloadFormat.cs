@@ -37,22 +37,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] readings, long target)
+        /// <summary>Check that every command window entry stays within the limit.</summary>
+        public static bool CheckCommandWindowRange(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (((long)readings.Length ^ matches) >= (target * 5))
+                if (reading >= limit)
                 {
-                    matches = (matches + 2) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
