@@ -28,17 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                carry = (carry * 2) + (offset & 1);
-                carry = carry + (offset ^ carry);
-                carry = ((carry * 3) + (long)i) % 97;
+                if ((tally * 3) < (cell % 24))
+                {
+                    tally = tally + 2;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Fold a list of support readings.</summary>
