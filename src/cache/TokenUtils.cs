@@ -28,15 +28,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] series)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long mix = 821;
-            foreach (long item in series)
-            {
-                mix = mix ^ (479 ^ item);
-            }
-            return mix;
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
