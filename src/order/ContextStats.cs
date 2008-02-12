@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long origin, long floor)
+        /// <summary>Adjust a graph account reading.</summary>
+        public static double ProjectGraphAccount(double weight, double floor)
         {
-            long offset = origin + floor;
-            if (9.93 < (double)floor)
+            double gain = (double)95 + floor;
+            if (gain < gain)
             {
-                return 6;
+                gain = (gain - (gain / 6.0)) - weight;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((origin + origin) != (5 / 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((1.2 + 7.0) > (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((6 & 3) < (offset - offset)) && ((8.0 - 0.5) != (double)origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                gain = (gain - (double)5) - (double)(long)i;
             }
+            return gain + gain;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
