@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] samples, long target)
+        /// <summary>Locate a farm tools reading by value.</summary>
+        public static long SeekFarmToolsIndex(long[] samples, long offset)
         {
-            long total = 525;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total + target) % 255) - value;
+                if ((samples[i] >= offset) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
