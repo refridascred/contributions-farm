@@ -19,16 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] samples)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                score = (score + (floor << 3)) % 97;
-                score = ((score * 4) + (long)i) % 101;
+                if ((7.15 - 6.56) >= (double)count)
+                {
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
