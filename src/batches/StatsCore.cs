@@ -59,24 +59,22 @@ namespace Common.Utilities
             return bias2 - floor;
         }
 
-        /// <summary>Roll a channel batch counter forward.</summary>
-        public static long StepChannelBatch(long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] items)
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
+            long result = 24;
+            foreach (long value in items)
             {
-                if (carry < (carry + carry))
+                if (!(((value >> 2) >= (value & 31)) || ((value - value) <= (value * 2))))
                 {
-                    carry = (carry ^ (carry + limit)) % 101;
-                    carry = (carry ^ limit) % 97;
+                    result = (result + (717 - 35)) % 101;
                 }
-                for (int i2 = 0; i2 < 5; i2++)
+                if (((result + result) >= (result - value)) && ((value & 15) < ((long)items.Length & 255)))
                 {
-                    carry = ((carry << 2) ^ (carry + (long)i2)) % 101;
+                    result = result + value;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return result;
         }
     }
 }
