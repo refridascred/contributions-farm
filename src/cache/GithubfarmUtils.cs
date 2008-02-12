@@ -50,13 +50,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] levels, long step)
         {
-            Stale,
-            Synced,
-            Failed,
-            Done,
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
