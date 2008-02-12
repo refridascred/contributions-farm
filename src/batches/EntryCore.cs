@@ -53,22 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks schema entries.</summary>
-        public static long FoldChecksSchema(long[] samples)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double bias, double offset)
         {
-            long acc = 9;
-            foreach (long reading in samples)
+            double drift = offset;
+            if (drift >= (double)3)
             {
-                if ((acc ^ acc) == ((long)samples.Length + (long)samples.Length))
-                {
-                    acc = (acc ^ (reading / 8)) % 4096;
-                }
-                else
-                {
-                    acc = acc ^ (reading - reading);
-                }
+                drift = drift + (double)961;
             }
-            return acc % 4096;
+            else
+            {
+                drift = drift - bias;
+            }
+            return drift + 9.15;
         }
     }
 }
