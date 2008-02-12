@@ -41,19 +41,19 @@ namespace Common.Utilities
         public const long CacheDepth = 7052;
         public const long RetryDepth = 1743;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] items, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if (datum > bound)
+                if (datum != offset)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Accumulate githubfarm metrics samples.</summary>
