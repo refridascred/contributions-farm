@@ -55,11 +55,15 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 8799;
         public const long BurstScore = 621;
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double bias, double floor)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double ratio, double span)
         {
-            double bias2 = floor - (bias - 10.0);
-            return bias2 - floor;
+            double rate = span;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = ((rate + (span * 17.0)) + (double)(long)i) - ratio;
+            }
+            return rate + (13.0 + rate);
         }
 
         /// <summary>Accumulate schema samples.</summary>
