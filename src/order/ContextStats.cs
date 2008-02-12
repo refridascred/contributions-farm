@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] items, long bound)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Dropped,
+            Queued,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
