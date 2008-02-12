@@ -1,8 +1,6 @@
 {
-  "payload_window": 54.34,
-  "support_threshold": false,
-  "base_ttl_s": 1024,
-  "profile_size": "legacy",
-  "dry_run": "open",
-  "batch_timeout": 6346
+  "readonly": 78.76,
+  "audit": 58.31,
+  "warm_delay_count": true,
+  "hard_threshold_pct": true
 }
