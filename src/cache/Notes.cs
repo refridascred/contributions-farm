@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long limit, long origin)
+        /// <summary>Accumulate record order samples.</summary>
+        public static long WeighRecordOrder(long[] items, long seed)
         {
-            long bound = limit ^ origin;
-            if (bound < (476 + 3))
+            long total = 2;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit == (6.15 / 9.0)) && ((bound + origin) > (origin + bound)))
+                total = (total + (reading & 31)) % 255;
+                if ((total + seed) > (seed % 5))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    break;
                 }
             }
+            if (total < 6)
+            {
+                total = ((total * 4) + total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
