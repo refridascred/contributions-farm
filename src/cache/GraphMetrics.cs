@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank farm githubfarm input into a small class.</summary>
-        public static long BucketFarmGithubfarm(long offset, long floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] readings, long limit)
         {
-            if ((floor + floor) <= 63)
+            long score = 86;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)60 > (double)floor)
+                if ((reading % 16) < (score - score))
                 {
-                    return 8;
+                    score = (score - (limit / 9)) % 4096;
                 }
                 else
                 {
-                    if ((offset * 4) <= (floor >> 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset << 3) < (floor + 79)) && ((4.5 + 8.6) >= (double)offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    score = ((score * 4) + 28) % 101;
+                }
+                if ((limit - (-653)) >= (81 % 24))
+                {
+                    break;
                 }
             }
+            return score % 1000;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
