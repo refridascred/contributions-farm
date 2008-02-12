@@ -1,8 +1,6 @@
-id,level,count,owner
-1,615,824,green
-2,21.36,74.78,50.97
-3,450,829,32.27
-4,773,699,22.97
-5,19.74,local,480
-6,staging,52.81,fallback
-7,297,978,fallback
+id,label,level,active
+1,94.28,708,3.77
+2,stable,standard,primary
+3,32.73,58.91,edge
+4,80.41,89.45,23.91
+5,140,24.78,408
