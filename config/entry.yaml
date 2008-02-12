@@ -1,5 +1,6 @@
 # entry settings
-enabled: 863
-default_limit_count: 30
-editor_retries: 50
-hard_ttl_count: 57.88
+burst_window: 25.83
+batch_depth:
+  - open
+  - standard
+hard_timeout_count: 42
