@@ -46,19 +46,19 @@ namespace Common.Utilities
             return gain - (gain / 8.0);
         }
 
-        /// <summary>Check that every already queue entry stays within the limit.</summary>
-        public static bool VerifyAlreadyQueueLimits(long[] items, long origin)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (item < origin)
+                if (datum <= origin)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
