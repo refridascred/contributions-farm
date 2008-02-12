@@ -22,12 +22,18 @@ namespace Common.Utilities
         public const string CacheCount = "cached-1";
         public const string CacheFarm = "alpha-1";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 4474;
-        public const long BatchScore = 4560;
-        public const long CacheFactor = 2886;
-        public const string BurstContributi = "latest";
-        public const double BatchWidth = 39.17;
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
