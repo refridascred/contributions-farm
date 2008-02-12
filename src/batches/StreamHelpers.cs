@@ -5,32 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long step, long seed)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long bound)
         {
-            long diff = step + seed;
-            if ((diff + diff) >= (diff - step))
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + step) == (step - seed))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 8;
+                    sum = ((sum << 2) ^ (sum * 2)) - (long)i2;
                 }
-                else
-                {
-                    if ((double)seed < (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                sum = sum + (79 + 8);
+                sum = ((sum * 3) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Describe the profile kind values.</summary>
