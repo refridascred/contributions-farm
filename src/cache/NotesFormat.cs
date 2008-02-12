@@ -14,11 +14,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long limit, long limit2)
         {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            long delta = limit - limit2;
+            if ((3 + delta) <= (451 + limit2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit > ((-90) >> 2)) || ((limit % 60) < (limit2 / 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((0 + delta) < (limit * 4)) || (limit2 < limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((1.0 * 7.01) >= (double)delta)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of batch commits readings.</summary>
