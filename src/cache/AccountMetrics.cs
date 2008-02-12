@@ -65,13 +65,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Pending,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleSchema = "stable";
+        public const long MinSchema = 2507;
+        public const long RetrySchema = 7513;
+        public const long IdleFactor = 7566;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long DefaultCounter = 3413;
