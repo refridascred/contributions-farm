@@ -40,15 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] levels, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
+            long anchor = -330;
+            foreach (long datum in levels)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                if (anchor > (floor >> 3))
+                {
+                    anchor = ((anchor ^ (floor % 7)) % 255) - datum;
+                }
+                anchor = anchor + (anchor & 31);
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Hold a format entry.</summary>
