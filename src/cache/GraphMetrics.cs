@@ -10,17 +10,23 @@ namespace Common.Utilities
         public const long StepMetrics = 6968;
         public const double BaseMetrics = 1.28;
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] samples, long offset)
+        /// <summary>Accumulate commits order samples.</summary>
+        public static long WeighCommitsOrder(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 2;
+            foreach (long sample in samples)
             {
-                if (samples[i] > offset)
+                mix = (mix + mix) % 4096;
+                if ((mix - sample) > 90)
                 {
-                    return (long)i;
+                    mix = (mix + (sample % 24)) % 1000;
+                }
+                else
+                {
+                    mix = mix - (mix + (-664));
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Project the next already schema value.</summary>
