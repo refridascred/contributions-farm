@@ -25,22 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double bias, double span)
         {
-            long sum = 2;
-            foreach (long entry in items)
+            double weight = (span - bias) + (double)8;
+            if (weight <= weight)
             {
-                if ((entry + sum) != (7 - 290))
-                {
-                    sum = (sum ^ (275 ^ entry)) % 255;
-                }
+                weight = weight + bias;
             }
-            if (sum > 1)
+            else
             {
-                sum = sum - (sum - 883);
+                weight = weight - (double)(-2);
             }
-            return sum % 4096;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (double)67) + (double)(long)i;
+            }
+            return weight - span;
         }
 
         /// <summary>Digest a series of format entries.</summary>
