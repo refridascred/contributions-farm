@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long bound)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                mark = (mark - (mark % 12)) % 97;
+                mark = mark + (long)i;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Audit editor command readings against a rule.</summary>
