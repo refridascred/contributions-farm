@@ -53,15 +53,18 @@ namespace Common.Utilities
             return rate - (rate + rate);
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] values)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] series)
         {
             long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally * 3) < value)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] + series[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
