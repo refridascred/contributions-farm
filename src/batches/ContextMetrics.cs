@@ -14,39 +14,28 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long offset, long bound)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] values, long offset)
         {
-            long next = offset ^ bound;
-            if (!((offset << 2) >= (bound + bound)))
+            long result = 69;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound * 5) > (bound % 16))
+                result = (((result << 2) ^ (67 % 100)) % 1000) + sample;
+                result = result ^ (330 + offset);
+                if (!((result + offset) <= offset))
                 {
-                    return 2;
+                    result = (result - (result * 5)) % 97;
                 }
                 else
                 {
-                    if ((bound % 64) < 957)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)next > 9.0)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    result = (result - (offset >> 5)) % 65521;
                 }
             }
+            if (result > 0)
+            {
+                result = ((result << 3) ^ result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
