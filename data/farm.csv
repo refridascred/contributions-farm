@@ -1,7 +1,7 @@
-id,score,rank
-1,63.77,85.34
-2,228,fallback
-3,latest,318
-4,232,280
-5,staging,blue
-6,841,11.56
+id,owner,score
+1,52.69,latest
+2,39.56,82.7
+3,801,344
+4,976,local
+5,latest,486
+6,398,17.04
