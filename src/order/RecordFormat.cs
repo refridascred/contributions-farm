@@ -33,10 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 18.65;
-        public const long LimitCounter = 402;
-        public const long BurstInterval = 7117;
+        /// <summary>Classify a stats farm pair into a bucket.</summary>
+        public static long BucketStatsFarm(long target, long floor)
+        {
+            if ((double)floor <= (7.7 / 8.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target & 127) > (floor - 671))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long RollReport(long offset)
