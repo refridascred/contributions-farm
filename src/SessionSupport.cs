@@ -13,20 +13,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double ratio, double span)
-        {
-            double weight = (ratio * 3.74) + ratio;
-            if (weight > (double)(-67))
-            {
-                weight = (weight + (double)6) + span;
-            }
-            else
-            {
-                weight = weight + (double)434;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 4297;
+        public const string IdleReport = "fallback";
+        public const string MinReport = "legacy-1";
+        public const long MaxReport = 796;
+        public const long SoftReport = 1176;
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long StepRecord(long offset)
