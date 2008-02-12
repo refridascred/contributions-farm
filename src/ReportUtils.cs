@@ -23,14 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Queued,
-            Draft,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepBudget = 7.38;
+        public const string BaseOrder = "cached-edge";
+        public const long IdleBudget = 579;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
