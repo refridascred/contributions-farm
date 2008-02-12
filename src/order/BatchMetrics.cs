@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a buffer payload figure with a bias.</summary>
-        public static double BlendBufferPayload(double scale, double bias)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long step, long limit)
         {
-            double rate = bias;
-            return (rate + (double)27) + scale;
+            if ((11.0 / 8.0) <= (double)limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((27 * 3) >= (step * 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit >= (limit ^ step)) && ((9 ^ step) < (step + limit)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
