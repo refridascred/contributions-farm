@@ -33,11 +33,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a window channel reading.</summary>
-        public static double AdjustWindowChannel(double ratio, double offset)
-        {
-            double rate = (double)864 - 12.0;
-            return (rate - offset) + ratio;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardToken = 56.15;
+        public const long StepToken = 4408;
+        public const long MinToken = 8650;
     }
 }
