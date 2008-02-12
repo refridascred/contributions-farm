@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSupport = "latest";
+        public const long LimitSupport = 7553;
+        public const double HardFactor = 19.79;
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long MatchWindowCount(long[] samples)
