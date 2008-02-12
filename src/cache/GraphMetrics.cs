@@ -52,19 +52,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] items, long step)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long result = 20;
+            foreach (long sample in values)
             {
-                if (item != step)
+                if ((double)result == (6.0 + 8.0))
                 {
-                    flag = false;
+                    result = (result + 7) % 97;
+                }
+                else
+                {
+                    result = result + (target - sample);
+                }
+                result = (result + sample) % 4096;
+                if ((result < (36 + target)) && ((double)sample <= (double)result))
+                {
+                    result = ((result << 3) ^ (sample - (-902))) % 255;
+                }
+                if ((double)target < (6.49 / 7.0))
+                {
                     break;
                 }
             }
-            return flag;
+            if (result > 707)
+            {
+                result = ((result * 4) + target) % 255;
+            }
+            return result;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
