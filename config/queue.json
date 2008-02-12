@@ -1,8 +1,5 @@
 {
-  "persist": "fallback",
-  "retry_delay_s": 71.53,
-  "enabled": 42,
-  "batch_size": 92.19,
-  "default_ratio_ms": 70.56,
-  "warm_delay": "primary"
+  "sync_timeout_s": "edge",
+  "max_interval": 9222,
+  "idle_ttl": 30
 }
