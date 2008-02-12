@@ -1,19 +1,8 @@
 {
-  "graph_window": 74.69,
-  "audit": [304, 372, 221, 4],
-  "sync_window_ms": "primary",
-  "readonly": {
-    "strict": 76.54,
-    "record_limit": {
-      "context_ratio": 4.77,
-      "min_delay_count": "latest",
-      "metric_retries": 79.7,
-      "verbose": "local",
-      "batch_retries_pct": true
-    },
-    "retry_capacity_count": true,
-    "enabled": "strict"
-  },
-  "hard_window": "legacy",
-  "enabled": 69.91
+  "burst_size_pct": 21,
+  "soft_interval_count": "primary",
+  "session_ratio": 41,
+  "batch_ratio_s": "standard",
+  "batch_retries": "fallback",
+  "persist": 41
 }
