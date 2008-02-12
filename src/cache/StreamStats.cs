@@ -14,18 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] readings)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((((seen >> 2) != (seen % 7)) && (seen >= (long)readings.Length)) || ((reading + 80) <= (seen + seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Retry,
+            Paused,
+            Done,
+            Pending,
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
