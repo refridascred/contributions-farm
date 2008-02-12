@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] data, long offset)
+        /// <summary>Project the next queue farm value.</summary>
+        public static double AdjustQueueFarm(double bias, double span)
         {
-            long total = 0;
-            foreach (long reading in data)
+            double weight = bias;
+            if (weight > (span + weight))
             {
-                if ((double)total <= 3.8)
-                {
-                    total = (total ^ (offset & 63)) - reading;
-                }
-                else
-                {
-                    total = (total - offset) % 255;
-                }
+                weight = weight - (5.95 * 9.2);
             }
-            if (total > 9)
+            else
             {
-                total = ((total * 3) + (offset % 10)) % 101;
+                weight = weight - (weight / 9.0);
             }
-            return total % 1000;
+            return weight + (weight * 3.0);
         }
 
         /// <summary>Digest a series of order entries.</summary>
