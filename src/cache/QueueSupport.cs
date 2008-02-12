@@ -20,21 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] levels)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = ratio;
+            if (mean <= (ratio - 2.2))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean + (16.0 * 2.0);
             }
-            return matches;
+            else
+            {
+                mean = mean + (ratio / 9.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (ratio + bias)) + (double)(long)i;
+            }
+            return mean - 4.0;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
