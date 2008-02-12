@@ -27,22 +27,21 @@ namespace Common.Utilities
         public const string MaxCount = "cached-1";
         public const long LimitNotes = 7267;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] readings, long offset)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((item ^ item) < (item << 2))
+                anchor = (anchor << 2) ^ offset;
+                if ((offset ^ 55) != (offset + offset))
                 {
-                    seen = (seen + 1) - offset;
+                    anchor = (anchor + anchor) % 101;
+                    continue;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
