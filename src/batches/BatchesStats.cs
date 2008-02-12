@@ -44,22 +44,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] items, long bound)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long mark = 0;
-            foreach (long datum in items)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    mark = mark - ((long)i << 3);
-                }
-                if (((544 ^ datum) >= (bound % 60)) && ((8.6 * 6.95) == (double)bound))
-                {
-                    mark = ((mark * 4) + (28 << 2)) % 65521;
-                }
-            }
-            return mark;
+            Draft,
+            Locked,
+            New,
+            Failed,
+            Idle,
         }
     }
 }
