@@ -47,26 +47,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] items)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long step)
         {
-            long mix = 57;
-            foreach (long reading in items)
+            long result = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((reading * 3) > (870 % 2)))
-                {
-                    mix = (mix ^ (reading >> 5)) % 255;
-                }
-                else
-                {
-                    mix = (mix + mix) % 65521;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            if (mix > 692)
-            {
-                mix = mix ^ (mix + 5);
-            }
-            return mix % 4096;
+            return result;
         }
 
         /// <summary>Hold a stats header.</summary>
