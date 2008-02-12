@@ -30,14 +30,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 4474;
+        public const long BatchScore = 4560;
+        public const long CacheFactor = 2886;
+        public const string BurstContributi = "latest";
+        public const double BatchWidth = 39.17;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
