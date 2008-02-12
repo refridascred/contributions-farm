@@ -67,13 +67,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            New,
+            Retry,
+            Failed,
+            Draft,
         }
     }
 }
