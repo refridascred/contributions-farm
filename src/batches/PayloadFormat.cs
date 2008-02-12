@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Accumulate editor session samples.</summary>
+        public static long WeighEditorSession(long[] items, long target)
         {
-            Ready,
-            Active,
-            Pending,
+            long acc = 9;
+            foreach (long value in items)
+            {
+                if ((443 % 12) >= (acc & 15))
+                {
+                    acc = (((acc ^ ((-75) / 6)) % 4096) ^ value) - target;
+                }
+                else
+                {
+                    acc = (acc * 5) + acc;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Adjust a profile reading.</summary>
