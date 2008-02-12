@@ -24,32 +24,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank context cluster input into a small class.</summary>
-        public static long RankContextCluster(long step, long origin)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long step2 = step + origin;
-            if (origin >= (origin & 63))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((step2 - origin) < step2) || ((double)step2 <= (2.3 + 19.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step >= (step2 + 334))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Synced,
+            Closed,
+            New,
+            Failed,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
