@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 1660;
-        public const long SoftDepth = 6560;
-        public const long DefaultQueue = 3839;
-        public const long IdleQueue = 4533;
-        public const long WindowQueue = 1897;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] values, long target)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
