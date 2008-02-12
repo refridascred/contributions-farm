@@ -67,21 +67,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up payload queue samples.</summary>
-        public static long ComparePayloadQueueCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheEntry = "alpha-1";
+        public const long LimitEntry = 4027;
+        public const string CacheSize = "cached-v2";
     }
 }
