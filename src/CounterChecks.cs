@@ -19,12 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 9979;
-        public const long BurstSize = 1078;
-        public const double RetryFactor = 1.76;
-        public const string RetryAccount = "open";
-        public const long StepAccount = 3847;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Ready,
+            Closed,
+            Dropped,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Adjust a entry reading.</summary>
         public static double AdjustEntry(double bias, double offset)
