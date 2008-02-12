@@ -25,21 +25,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count window session pairs that satisfy a relation.</summary>
-        public static long OverlapWindowSessionCount(long[] items)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit command readings against a rule.</summary>
