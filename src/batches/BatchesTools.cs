@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            public bool Mode { get; set; }
-            public bool Count { get; set; }
-            public double Weight { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the stream level values.</summary>
