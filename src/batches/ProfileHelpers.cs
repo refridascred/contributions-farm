@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const string HardLevel = "legacy";
         public const long MaxCommand = 330;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] samples, long offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long total = 3;
-            foreach (long datum in samples)
-            {
-                total = (total + (total << 2)) % 101;
-                if (((long)samples.Length - datum) < (offset * 5))
-                {
-                    break;
-                }
-            }
-            return total;
+            Dropped,
+            Queued,
+            Done,
+            Stale,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
