@@ -33,11 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleWindow = "staging-1";
-        public const long BurstInterval = 8088;
-        public const long BatchWindow = 1919;
-        public const long RetryDepth = 1881;
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long CountCacheMatches(long[] levels)
