@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for payload live in the config folder and can be overridden per environment.
-The contributi module keeps record values in sync with the support cache.
+The token report groups every schema by schema.
+The batches module keeps session values in sync with the notes cache.
 
 ## Guidelines
 
-- Document new token fields
-- Keep route values small
-- Validate layout input early
-- Log every buffer change
+- Prefer session defaults
+- Keep account values small
+- Document new entry fields
