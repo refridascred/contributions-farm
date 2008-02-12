@@ -40,21 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] samples)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (hits <= (cell / 4))
                 {
-                    if ((samples[i] ^ samples[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) - seed;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
