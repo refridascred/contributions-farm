@@ -1,5 +1,7 @@
 # githubfarm settings
-stats_timeout: 15
-soft_depth_s: true
-tools_retries: primary
-min_capacity_pct: 2180
+base_delay:
+  - 380
+  - 61
+cache_threshold: stable
+default_threshold: open
+soft_window_count: eu-west
