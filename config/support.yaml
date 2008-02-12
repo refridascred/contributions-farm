@@ -1,59 +1,9 @@
 # support settings
-burst_limit_ms:
-  persist: eu-west
-  default_ttl_pct:
-    - standard
-    - legacy
-    - latest
-    - latest
-  compress:
-    default_timeout_pct:
-      - 454
-      - 259
-    batch_threshold_s: local
-    min_limit_ms: 3989
-  entry_limit: stable
-  max_retries_ms:
-    hard_ratio_pct: 4152
-    checks_retries: cached
-    batch_limit_count: 54.23
-    retry_ratio_pct:
-      - 179
-      - 158
-      - 333
-      - 60
-  order_ratio: false
-min_ttl_s:
-  stats_size: 20.18
-  farm_size: 26.27
-  compress: 500
-  audit: false
-  stats_ratio:
-    - 21
-    - 494
-    - 154
-    - 41
-  retry_capacity_s: staging
-burst_ttl: local
-cache_capacity:
-  - staging
-  - eu-west
-  - local
-  - legacy
-max_threshold: true
-verbose:
-  min_timeout_pct:
-    batch_timeout: false
-    retry_limit: 100
-    warm_interval_count: 5999
-    min_window_pct: 500
-    persist: 250
-  support_interval:
-    base_retries_s: 75.51
-    poll_delay_pct: stable
-    layout_window: 51
-    batch_limit: strict
-    filter_retries: 8378
-  max_window_s: cached
-  max_ratio_ms: green
-  min_retries_count: 84
+context_interval:
+  idle_ratio_count: 60
+  hard_size_pct: 250
+  batch_ratio_s: false
+  enabled: false
+  poll_size_pct: 63
+batch_size: 23
+soft_interval: 500
