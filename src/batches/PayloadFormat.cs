@@ -19,21 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] series)
+        /// <summary>Roll a githubfarm layout counter forward.</summary>
+        public static long IterateGithubfarmLayout(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((step & 1) != (step - step))
                 {
-                    if ((series[i] ^ series[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum * 4) + (123 - step)) % 97;
+                    sum = (sum ^ (64 >> 3)) % 65521;
                 }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the payload kind values.</summary>
