@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a schema farm reading.</summary>
-        public static double AdjustSchemaFarm(double scale, double offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            double load = offset;
-            return (load - load) + scale;
+            Dropped,
+            Locked,
+            Failed,
+            Synced,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
