@@ -47,18 +47,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxSize = "cached-edge";
+        public const long IdleGithubfarm = 8799;
+        public const long BurstScore = 621;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
