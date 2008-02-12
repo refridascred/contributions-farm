@@ -49,21 +49,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up support graph samples.</summary>
-        public static long MatchSupportGraphCount(long[] data)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)item != (8.4 / 5.0))
                 {
-                    if ((data[i] ^ data[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
