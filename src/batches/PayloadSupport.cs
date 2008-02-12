@@ -20,22 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of buffer commits readings.</summary>
-        public static long OverlapBufferCommitsCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 83.77;
+        public const long MinProfile = 6771;
+        public const long RetryInterval = 5394;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
