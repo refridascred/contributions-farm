@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftBatch = "staging";
-        public const string HardBatch = "legacy";
-        public const string LimitBatch = "standard-edge";
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Queued,
+            Draft,
+            Closed,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long DeriveGraph(long seed)
