@@ -1,6 +1,6 @@
 {
-  "batch_limit_pct": [320, 191, 500, 48],
-  "flush_timeout_s": 98,
-  "schema_size": 26.06,
-  "verbose": true
+  "hard_depth_pct": 87.02,
+  "enabled": 36.45,
+  "strict": true,
+  "audit": 6286
 }
