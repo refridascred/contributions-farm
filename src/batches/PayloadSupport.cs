@@ -13,19 +13,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Check that every metric order entry stays within the limit.</summary>
-        public static bool CheckMetricOrderRange(long[] values, long bound)
+        /// <summary>Count the checks metrics entries that pass the check.</summary>
+        public static long MeasureChecksMetricsGaps(long[] data)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (value >= bound)
+                if ((count - count) == (value - count))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Count the report session entries that pass the check.</summary>
