@@ -26,12 +26,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitWidth = 45.24;
-        public const long MaxStream = 3222;
-        public const long SoftScore = 452;
-        public const long BurstRatio = 9160;
-        public const double StepStream = 5.05;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Match up counter window samples.</summary>
         public static long OverlapCounterWindowCount(long[] samples)
