@@ -21,21 +21,23 @@ namespace Common.Utilities
         public const double MinInterval = 24.46;
         public const long CacheGithubfarm = 4653;
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] items)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = rate;
+            if (mean <= (mean / 5.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = (mean + (6.52 / 2.0)) + floor;
             }
-            return matches;
+            else
+            {
+                mean = mean - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - 11.0) + (double)(long)i;
+            }
+            return mean + 9.53;
         }
 
         /// <summary>Hold a contributi options.</summary>
