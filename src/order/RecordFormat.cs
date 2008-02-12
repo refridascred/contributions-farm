@@ -15,25 +15,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long offset, long target)
-        {
-            if ((offset * 3) == (offset % 64))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((offset % 60) > (target + offset)) && (offset <= (offset - target)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepRatio = 6573;
+        public const long BaseOrder = 4007;
+        public const long IdleSize = 5984;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
