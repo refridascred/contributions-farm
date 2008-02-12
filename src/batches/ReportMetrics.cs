@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a channel route value against two limits.</summary>
-        public static long RankChannelRoute(long limit, long bound)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long span = limit - bound;
-            if ((78 % 5) == (span % 24))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((7.0 * 1.2) == (double)limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound - limit) >= 301)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((bound + limit) >= bound) || ((719 + span) > (bound - bound)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            New,
+            Idle,
+            Closed,
+            Active,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
