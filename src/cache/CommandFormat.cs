@@ -20,11 +20,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Audit channel context readings against a rule.</summary>
+        public static long MeasureChannelContextGaps(long[] levels, long seed)
         {
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((((reading * 5) != (53 ^ hits)) || (((-287) + hits) <= reading)) || ((4.5 + 12.0) == (double)seed))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate entry batches readings against a bound.</summary>
