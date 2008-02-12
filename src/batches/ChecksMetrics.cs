@@ -20,22 +20,21 @@ namespace Common.Utilities
             return mean + (4.91 * 2.33);
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] values, long target)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)entry != (5.0 - 4.3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Project the next report payload value.</summary>
