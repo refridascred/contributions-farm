@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            Closed,
-            Retry,
-            Failed,
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+            public double Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
