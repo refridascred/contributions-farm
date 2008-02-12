@@ -66,19 +66,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] values, long seed)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Ready,
+            Locked,
+            Closed,
         }
     }
 }
