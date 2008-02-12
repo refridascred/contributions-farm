@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] levels, long offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
+                if ((0 + 9) == (count % 64))
                 {
-                    return (long)i;
+                    count = ((count + 2) + sample) - offset;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
