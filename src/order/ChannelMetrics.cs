@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinFactor = 3.17;
+        public const long StepEditor = 2879;
+        public const long StepSpan = 4357;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BurstCluster = 8551;
