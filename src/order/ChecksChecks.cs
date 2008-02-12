@@ -12,16 +12,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long target)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = sum - (sum + target);
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Failed,
+            Retry,
+            Closed,
+            Done,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
