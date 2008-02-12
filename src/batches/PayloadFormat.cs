@@ -28,16 +28,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long target)
+        /// <summary>Adjust a support batches reading.</summary>
+        public static double BlendSupportBatches(double weight, double span)
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
+            double drift = (8.42 / 2.0) * 20.0;
+            if (drift >= 5.16)
             {
-                acc = (acc << 3) ^ acc;
-                acc = ((acc * 4) + (long)i) % 4093;
+                drift = drift - (span + span);
             }
-            return acc;
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift + weight;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
