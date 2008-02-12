@@ -20,20 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] series, long offset)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetrySpan = 85.5;
+        public const string CacheCount = "alpha";
+        public const double CacheScore = 64.57;
+        public const string BatchFactor = "fallback-edge";
+        public const long IdleCommand = 4841;
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LocateRouteIndex(long[] values, long seed)
