@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double bias, double span)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double bias, double floor)
         {
-            double load = (bias * 8.31) * 3.4;
-            if (load <= bias)
+            double rate = bias + (double)(-514);
+            if (rate <= (double)61)
             {
-                load = load + (double)6;
+                rate = (rate - (17.0 - 7.6)) + floor;
             }
-            return load + (5.15 + span);
+            else
+            {
+                rate = rate - (rate / 3.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - 19.0;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
