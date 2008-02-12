@@ -20,14 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Failed,
-            Queued,
-            Retry,
-            Paused,
-            Closed,
+            public double Offset { get; set; }
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
