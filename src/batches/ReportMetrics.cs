@@ -29,21 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading <= seed)
                 {
-                    if ((values[i] - values[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
