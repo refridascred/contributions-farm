@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] levels)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((sample < count) && ((double)count == (5.5 * 2.0)))
+                if ((((origin + tally) >= origin) || (tally >= origin)) || ((tally / 4) > (origin / 2)))
                 {
-                    count = count + 2;
+                    tally = (tally + 1) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the metric state values.</summary>
