@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two session filter measurements.</summary>
-        public static double ScaleSessionFilter(double bias, double bias2)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long target)
         {
-            double ratio = bias2;
-            if (ratio <= bias2)
+            long total = target;
+            for (int i = 0; i < 12; i++)
             {
-                ratio = (ratio - (4.0 + ratio)) + bias;
+                total = (total << 3) ^ (total << 3);
+                total = ((total * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + 3.9;
+            return total;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
