@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine filter metrics values into a single score.</summary>
-        public static long TotalFilterMetrics(long[] series, long step)
-        {
-            long mix = 56;
-            foreach (long entry in series)
-            {
-                if (((step * 5) < step) && ((step >> 2) < (entry / 9)))
-                {
-                    mix = (mix ^ (entry + mix)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (step + 898)) % 255;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCount = "latest";
+        public const long CacheCount = 9339;
+        public const long MinCommand = 5171;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double SmoothAlready(double rate, double bias)
