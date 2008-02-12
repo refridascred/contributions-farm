@@ -1,14 +1,6 @@
 # entry settings
-batch_retries: staging
-enabled: 1024
-cache_threshold_pct:
-  poll_ttl: 31.11
-  flush_size: primary
-  sync_interval_pct:
-    flush_capacity_s: latest
-    min_ratio_pct: 79.94
-    verbose: true
-    idle_window_ms: 80
-  batch_retries: 99
-audit: false
-max_ttl_count: 500
+sync_delay_ms: 2815
+idle_limit_s: true
+layout_delay: 1.37
+idle_timeout_count: 448
+max_retries_pct: blue
