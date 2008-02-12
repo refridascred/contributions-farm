@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] series, long floor)
+        /// <summary>Iterate the report queue series from a seed.</summary>
+        public static long IterateReportQueue(long seed)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(floor > 21))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
+                mix = (mix * 4) + (seed >> 1);
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
