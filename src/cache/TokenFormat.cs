@@ -35,21 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of filter editor readings.</summary>
-        public static long CompareFilterEditorCount(long[] readings)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Synced,
+            Active,
         }
     }
 }
