@@ -40,15 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] readings, long offset)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] items)
         {
-            long mark = 46;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark - (cell + offset);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
