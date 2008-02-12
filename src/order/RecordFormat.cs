@@ -53,27 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long offset)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark ^ (mark ^ offset)) % 101;
-                if (!((offset & 3) > 442))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = ((mark * 3) + (745 * 4)) % 255;
-                    break;
+                    if ((items[i] + items[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    mark = (mark - (offset + (long)i)) % 1000;
-                    mark = (mark ^ (0 << 3)) % 1000;
-                }
-                mark = (mark ^ mark) % 65521;
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
