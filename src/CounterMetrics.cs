@@ -26,11 +26,13 @@ namespace Common.Utilities
         public const string StepScore = "legacy-v2";
         public const long MaxFactor = 7418;
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public double Flag { get; set; }
-            public long Weight { get; set; }
+            Draft,
+            Closed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
