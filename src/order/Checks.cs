@@ -12,14 +12,10 @@ namespace Common.Utilities
         public const double MaxBudget = 49.27;
         public const long StepAlready = 2185;
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Active,
-            Idle,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 1176;
+        public const long DefaultLayout = 7002;
+        public const string MinRatio = "fallback";
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long FoldContributi(long[] data, long floor)
