@@ -23,12 +23,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleRatio = 3245;
-        public const long MinSpan = 8719;
-        public const string MinAccount = "open-edge";
-        public const string BatchAccount = "open-v2";
-        public const double CacheWidth = 53.87;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 6000;
+        public const long LimitBudget = 1012;
+        public const double MaxAlready = 48.0;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long WeighTools(long[] readings, long origin)
