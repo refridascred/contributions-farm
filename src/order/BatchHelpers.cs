@@ -34,13 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Region { get; set; }
-            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
     }
 }
