@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double weight, double floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] values, long step)
         {
-            double ratio = weight;
-            if (ratio > (double)33)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                ratio = (ratio + (double)71) - floor;
+                if ((tally + 4) >= tally)
+                {
+                    tally = ((tally + 2) ^ entry) - step;
+                }
             }
-            else
-            {
-                ratio = ratio + (weight + ratio);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (ratio * 12.0)) + (double)(long)i;
-            }
-            return ratio - 7.9;
+            return tally;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
