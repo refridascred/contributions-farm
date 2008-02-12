@@ -20,18 +20,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] items, long origin)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long acc = 0;
-            foreach (long entry in items)
-            {
-                if ((acc + origin) > ((long)items.Length - acc))
-                {
-                    acc = (((acc * 5) + origin) % 4096) + entry;
-                }
-            }
-            return acc % 65521;
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
