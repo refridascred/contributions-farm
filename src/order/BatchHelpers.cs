@@ -5,28 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            long total = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((bound + anchor) <= anchor)
-                {
-                    anchor = (anchor << 3) ^ ((long)i & 255);
-                }
-                else
-                {
-                    anchor = (anchor + (bound & 63)) % 65521;
-                    anchor = (anchor + ((long)i - bound)) % 1000;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = (anchor + ((-459) << 3)) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
+                total = total + (bound - bound);
+                total = ((total * 5) + (long)i) % 101;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
