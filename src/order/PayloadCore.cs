@@ -21,12 +21,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 6464;
-        public const double BaseContributi = 94.73;
-        public const long MaxBudget = 391;
-        public const long BaseCount = 5189;
-        public const long SoftContributi = 6399;
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long SeriesBatches(long target)
