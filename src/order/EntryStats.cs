@@ -72,19 +72,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] series, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (seed >= (seed + tally))
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstTimeout = 6633;
+        public const long HardDepth = 5929;
+        public const double BurstRatio = 8.93;
+        public const long IdleWidth = 8747;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string MaxRecord = "standard-1";
