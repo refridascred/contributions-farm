@@ -14,13 +14,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public bool Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public bool Total { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
