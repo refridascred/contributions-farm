@@ -1,7 +1,8 @@
 # entry settings
-report_size: blue
-support_ratio: 6175
-githubfarm_depth: 7597
-flush_limit: green
-default_size: true
-soft_ratio_s: 37
+retry_interval_pct: blue
+idle_limit_s: 1024
+readonly:
+  - staging
+  - latest
+  - latest
+hard_ratio: 30
