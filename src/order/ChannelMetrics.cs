@@ -38,11 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two schema githubfarm measurements.</summary>
-        public static double AdjustSchemaGithubfarm(double weight, double offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] data)
         {
-            double bias = offset;
-            return (bias + (double)919) + weight;
+            long sum = 6;
+            foreach (long reading in data)
+            {
+                sum = ((sum * 5) + (reading + sum)) % 1000;
+                if ((reading ^ sum) >= (96 + reading))
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
