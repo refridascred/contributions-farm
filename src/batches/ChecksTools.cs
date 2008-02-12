@@ -39,28 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch schema values into a single score.</summary>
-        public static long CombineBatchSchema(long[] series)
+        /// <summary>Find the first metric tools entry that matches the target.</summary>
+        public static long FindMetricToolsIndex(long[] items, long floor)
         {
-            long mix = 704;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                long matches = (8 & 127) * 5;
-                if (!((mix + mix) >= matches))
+                if (items[i] == floor)
                 {
-                    mix = (mix << 3) ^ (matches + mix);
-                    matches = ((matches << 2) ^ item) % 97;
-                }
-                if (!((mix - item) > mix))
-                {
-                    mix = mix - (item % 64);
-                }
-                if (((item ^ item) <= (item * 4)) && ((double)item == (1.7 * 0.08)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the checks mode values.</summary>
