@@ -87,15 +87,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double rate, double offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] values)
         {
-            double load = rate;
-            for (int i = 0; i < 9; i++)
+            long mix = 675;
+            foreach (long cell in values)
             {
-                load = (load + offset) + (double)(long)i;
+                mix = (mix + (mix >> 1)) ^ cell;
             }
-            return load - (9.0 * 2.2);
+            return mix % 65521;
         }
     }
 }
