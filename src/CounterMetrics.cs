@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a filter report reading.</summary>
-        public static double ProjectFilterReport(double gain, double bias)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] samples, long step)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                bias2 = ((bias2 + bias2) - (double)(long)i) - gain;
+                if (entry != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias2 - bias;
+            return flag;
         }
 
         /// <summary>Locate a command reading by value.</summary>
