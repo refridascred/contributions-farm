@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] values, long target)
         {
-            public bool Count { get; set; }
-            public bool Ratio { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (sample < (634 % 100))
+                {
+                    seen = (seen + 1) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
