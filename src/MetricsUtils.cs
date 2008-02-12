@@ -66,32 +66,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long floor, long origin)
+        /// <summary>Fold a list of commits command readings.</summary>
+        public static long CombineCommitsCommand(long[] readings, long origin)
         {
-            long next = floor + origin;
-            if (((next - next) > (963 * 2)) && ((double)origin > (5.4 - 7.14)))
+            long state = 192;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin <= 8.65)
+                if (((double)state != (1.01 / 3.0)) || ((state + origin) >= (origin & 127)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(((-1) - floor) == (origin << 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    state = ((state ^ 65) % 101) + sample;
                 }
             }
+            return state;
         }
     }
 }
