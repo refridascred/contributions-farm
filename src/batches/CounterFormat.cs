@@ -33,20 +33,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long floor)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = (sum + (sum >> 3)) % 1000;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = (sum + (85 - (long)i)) ^ (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Ready,
+            Paused,
+            Locked,
+            New,
+            Synced,
         }
     }
 }
