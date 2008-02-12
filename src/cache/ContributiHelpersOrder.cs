@@ -20,22 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] data)
+        /// <summary>Roll a stream route counter forward.</summary>
+        public static long StepStreamRoute(long offset)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample > (matches % 97))
+                state = (state ^ (offset % 64)) % 97;
+                if ((double)(long)i > (double)state)
                 {
-                    matches = matches + 3;
+                    break;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
