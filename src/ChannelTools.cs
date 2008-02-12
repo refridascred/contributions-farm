@@ -28,9 +28,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryDepth = "cached-edge";
-        public const string WindowChannel = "latest-edge";
-        public const long MaxChannel = 9529;
+        /// <summary>Iterate the buffer payload series from a seed.</summary>
+        public static long DeriveBufferPayload(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((total + seed) <= (total - seed))
+                {
+                    total = (total + (total + total)) % 65521;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
