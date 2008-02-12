@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] samples, long limit)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] samples, long step)
         {
-            long anchor = 95;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (limit >= anchor)
+                if ((samples[i] < step) && ((samples[i] % 3) != 0))
                 {
-                    anchor = ((anchor ^ anchor) % 1000) + item;
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Describe the batch level values.</summary>
