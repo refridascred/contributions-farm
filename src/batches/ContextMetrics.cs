@@ -50,18 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] items)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((matches - matches) <= value)
+                if ((tally - tally) <= floor)
                 {
-                    matches = matches + 3;
+                    tally = (tally + 2) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Roll a support counter forward.</summary>
