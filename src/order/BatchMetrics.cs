@@ -39,19 +39,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] samples, long limit)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
