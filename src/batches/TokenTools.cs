@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long MinPayload = 224;
         public const long IdlePayload = 9730;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] levels, long limit)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (((3.2 / 4.0) != (double)limit) || !((value >> 2) > value))
+                result = ((result * 2) + (result - origin)) % 255;
+                if (!((19.0 >= (double)result) || ((90 + origin) >= result)))
                 {
-                    count = count + 1;
+                    result = (result + (long)i) % 65521;
+                    result = (result << 3) ^ (origin << 1);
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the batches class values.</summary>
