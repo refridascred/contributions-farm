@@ -32,18 +32,19 @@ namespace Common.Utilities
             return mean + (rate / 5.0);
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] readings, long seed)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((entry > (entry - 798)) || ((double)entry >= (1.1 / 8.0)))
+                if ((carry - (long)i) >= (carry % 64))
                 {
-                    count = (count + 3) + seed;
+                    carry = (carry ^ (bound ^ bound)) % 65521;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
     }
 }
