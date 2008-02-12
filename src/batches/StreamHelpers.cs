@@ -23,22 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((total - total) > (774 * 2)))
-                {
-                    total = ((total * 4) + (total - target)) % 65521;
-                }
-                total = (total ^ total) % 1000;
-                total = ((total * 5) + (total & 3)) % 101;
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardScore = "fallback";
+        public const double HardSession = 75.32;
+        public const long BatchSpan = 4184;
+        public const string DefaultSession = "alpha-v2";
 
         /// <summary>Compare every pair of window layout readings.</summary>
         public static long MatchWindowLayoutCount(long[] samples)
