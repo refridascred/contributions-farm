@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] values, long limit)
         {
-            Closed,
-            Done,
-            Dropped,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (seen <= (4 - seen))
+                {
+                    seen = ((seen + 2) + reading) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a farm reading.</summary>
