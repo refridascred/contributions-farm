@@ -46,19 +46,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] items, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] data, long target)
         {
-            long mark = 11;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((floor - 19) < (item ^ mark))
+                if ((double)entry < (5.5 * 2.1))
                 {
-                    break;
+                    count = (count + 2) - target;
                 }
-                mark = (mark ^ (floor / 7)) % 4096;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
