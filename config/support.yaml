@@ -1,5 +1,5 @@
 # support settings
-batches_interval: latest
-default_interval_ms: 5734
-order_depth: standard
-idle_capacity_ms: 36
+idle_timeout_ms: 60
+payload_limit: local
+record_timeout: local
+stats_retries: 90
