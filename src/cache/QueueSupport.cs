@@ -35,13 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] values)
         {
-            Idle,
-            Dropped,
-            Pending,
-            Active,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
