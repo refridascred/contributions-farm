@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const string MaxBuffer = "open-edge";
         public const string WindowFactor = "primary-1";
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double weight, double offset)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] series, long floor)
         {
-            double scale = offset;
-            if (scale >= scale)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale - (offset - weight);
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - offset;
-            }
-            return scale - (double)72;
+            return -1;
         }
 
         /// <summary>Combine session values into a single score.</summary>
