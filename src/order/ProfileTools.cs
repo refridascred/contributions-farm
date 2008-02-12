@@ -49,10 +49,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseWindow = "local-1";
-        public const string HardWindow = "standard-edge";
-        public const string CacheWindow = "alpha-v2";
-        public const double IdleWindow = 31.68;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Queued,
+            Synced,
+            Idle,
+        }
     }
 }
