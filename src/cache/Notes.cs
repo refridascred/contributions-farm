@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long bound, long limit)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long step = bound - limit;
-            if (bound <= 17)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)limit <= (20.0 - 4.09)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (step <= (limit + 19))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Closed,
+            Pending,
+            Ready,
+            Draft,
+            Failed,
         }
 
         /// <summary>Fold a list of report readings.</summary>
