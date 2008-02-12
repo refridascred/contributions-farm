@@ -38,19 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every format profile entry stays within the limit.</summary>
-        public static bool ValidateFormatProfileRange(long[] levels, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (reading > offset)
+                if (count > (value * 4))
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
