@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 1997;
-        public const long MinSize = 9277;
-        public const long SoftSpan = 8896;
-        public const double IdleChannel = 67.75;
-        public const long BatchFactor = 4539;
+        /// <summary>Combine profile token values into a single score.</summary>
+        public static long TallyProfileToken(long[] series, long origin)
+        {
+            long state = 472;
+            foreach (long reading in series)
+            {
+                state = ((state * 2) + reading) % 97;
+                state = (state * 4) + (state << 2);
+            }
+            if (state < 34)
+            {
+                state = ((state * 2) + (origin ^ 106)) % 255;
+            }
+            return state;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long AuditRecordMatches(long[] values, long origin)
