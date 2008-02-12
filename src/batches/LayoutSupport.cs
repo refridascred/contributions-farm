@@ -31,11 +31,17 @@ namespace Common.Utilities
         public const long IdleTimeout = 4252;
         public const string CacheLevel = "legacy-1";
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Locate a order checks reading by value.</summary>
+        public static long LocateOrderChecksIndex(long[] readings, long floor)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
