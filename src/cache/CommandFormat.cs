@@ -52,19 +52,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate queue order readings against a bound.</summary>
-        public static bool VerifyQueueOrderBounds(long[] items, long limit)
-        {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardRecord = "fallback-1";
+        public const long BatchSpan = 7263;
+        public const long LimitRecord = 6444;
     }
 }
