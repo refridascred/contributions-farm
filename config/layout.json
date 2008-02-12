@@ -1,20 +1,7 @@
 {
-  "batch_delay": "standard",
-  "idle_window_count": 3818,
-  "burst_capacity": true,
-  "warm_size": {
-    "dry_run": {
-      "enabled": 5620,
-      "counter_threshold": 100,
-      "strict": "open",
-      "hard_size": 63
-    },
-    "compress": 4759,
-    "burst_ratio": "fallback"
-  },
-  "stats_delay": {
-    "already_ttl": 78.9,
-    "verbose": true,
-    "audit": [106, 405, 132]
-  }
+  "default_ratio": ["stable", "latest", "latest", "edge"],
+  "readonly": false,
+  "min_delay_count": "standard",
+  "compress": 49.79,
+  "checks_threshold": 41.64
 }
