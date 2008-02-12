@@ -20,19 +20,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double scale, double span)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            double rate = span;
-            if (rate >= (span * 6.6))
-            {
-                rate = (rate + (rate - 9.8)) + scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (double)77) + (double)(long)i;
-            }
-            return rate - (span * 10.0);
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
