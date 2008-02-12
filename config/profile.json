@@ -1,5 +1,5 @@
 {
-  "base_window": "blue",
-  "persist": ["staging", "latest", "open", "latest"],
-  "counter_limit": 6933
+  "sync_threshold": "staging",
+  "max_retries": [283, 454, 51, 230],
+  "cache_ratio": 250
 }
