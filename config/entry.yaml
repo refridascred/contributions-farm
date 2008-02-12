@@ -1,5 +1,14 @@
 # entry settings
-base_limit_s: eu-west
-contributi_retries: 4526
-retry_limit_ms: 48
-burst_interval: false
+warm_depth_count: local
+payload_ratio:
+  metric_capacity:
+    base_interval_count: primary
+    idle_timeout: true
+    editor_size: legacy
+    max_ttl_ms: true
+    readonly: legacy
+  batch_ratio_s: 92
+  farm_delay: cached
+  idle_timeout_count: blue
+cache_ttl_pct: latest
+batches_limit: true
