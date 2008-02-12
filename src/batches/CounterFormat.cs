@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] data, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                carry = (carry - (origin % 3)) % 97;
-                carry = carry - carry;
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (sample != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Hold a report snapshot.</summary>
