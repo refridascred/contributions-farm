@@ -56,11 +56,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public long Score { get; set; }
-            public double Label { get; set; }
+            New,
+            Failed,
+            Done,
+            Pending,
         }
     }
 }
