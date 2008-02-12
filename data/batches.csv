@@ -1,6 +1,10 @@
-id,token,weight,state
-1,299,84.48,67.5
-2,298,46.18,strict
-3,primary,cached,green
-4,211,eu-west,15.46
-5,17.12,70.04,256
+id,rank,token,state,label
+1,fallback,edge,fallback,cached
+2,133,32.56,137,standard
+3,747,94,491,39
+4,53.09,676,474,stable
+5,792,58,latest,legacy
+6,446,935,standard,101
+7,latest,fallback,85,775
+8,9.14,73.29,36.21,36.13
+9,869,7.73,0.52,fallback
