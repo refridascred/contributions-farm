@@ -19,11 +19,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] readings)
         {
-            public long Token { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (matches <= (matches / 3))
+                {
+                    matches = (matches + 2) - datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the tools kind values.</summary>
