@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] readings, long limit)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((count >> 5) <= datum) && (limit > count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Idle,
+            Paused,
+            Stale,
+            Closed,
+            Locked,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
