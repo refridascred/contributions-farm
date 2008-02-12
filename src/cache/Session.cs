@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] samples)
-        {
-            long carry = -77;
-            foreach (long reading in samples)
-            {
-                carry = ((carry << 3) ^ (reading + carry)) % 97;
-            }
-            if (carry > 93)
-            {
-                carry = ((carry * 5) + carry) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepDepth = 4084;
+        public const string MaxCount = "staging-v2";
+        public const double MinCount = 53.32;
+        public const long StepRecord = 7741;
+        public const long SoftRecord = 6999;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long CountStreamOutliers(long[] items)
