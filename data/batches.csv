@@ -1,6 +1,7 @@
-id,count,weight,level
-1,69.78,37.8,eu-west
-2,14.04,92.49,222
-3,local,latest,89.14
-4,516,cached,371
-5,498,legacy,790
+id,weight,level,region,active
+1,latest,stable,stable,386
+2,primary,146,864,latest
+3,fallback,83,766,839
+4,open,edge,cached,888
+5,latest,791,41.21,legacy
+6,local,30.56,984,cached
