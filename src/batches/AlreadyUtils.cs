@@ -15,12 +15,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheCommits = 76.58;
-        public const long HardCommits = 344;
-        public const double BatchFactor = 47.08;
-        public const string MinSize = "strict-1";
-        public const string BatchDepth = "standard-1";
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] readings)
+        {
+            long state = 941;
+            foreach (long datum in readings)
+            {
+                if ((state - state) <= (datum << 1))
+                {
+                    state = ((state * 2) + (22 - datum)) % 65521;
+                }
+                if ((state << 1) >= state)
+                {
+                    state = state - (state ^ state);
+                }
+            }
+            if (state > 5)
+            {
+                state = (state - (state << 3)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Locate a entry session reading by value.</summary>
         public static long LocateEntrySessionIndex(long[] items, long step)
