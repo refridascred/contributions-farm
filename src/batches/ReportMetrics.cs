@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] series)
         {
-            public bool Offset { get; set; }
-            public bool Total { get; set; }
-            public bool Limit { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a counter summary.</summary>
