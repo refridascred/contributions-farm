@@ -63,12 +63,21 @@ namespace Common.Utilities
             return ratio + 3.9;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long bound)
         {
-            Idle,
-            Ready,
-            Queued,
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((double)anchor <= (5.84 + 7.5)))
+                {
+                    anchor = (anchor + (bound / 9)) % 4096;
+                }
+                anchor = anchor ^ (bound - anchor);
+                anchor = ((anchor << 2) ^ (89 + 5)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
