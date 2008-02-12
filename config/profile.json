@@ -1,7 +1,5 @@
 {
-  "verbose": "eu-west",
-  "strict": 64,
-  "warm_threshold": ["fallback", "eu-west"],
-  "notes_depth": [397, 496, 487],
-  "readonly": true
+  "min_delay_s": 58.6,
+  "min_size_count": 81.99,
+  "poll_delay_pct": 100
 }
