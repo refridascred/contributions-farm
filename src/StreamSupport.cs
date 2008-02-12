@@ -24,18 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] items)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((value / 6) <= (matches - matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
