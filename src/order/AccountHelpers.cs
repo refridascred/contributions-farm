@@ -67,13 +67,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((double)178 == (double)matches)
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
