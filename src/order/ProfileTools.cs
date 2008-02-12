@@ -47,19 +47,23 @@ namespace Common.Utilities
             return scale + (2.0 * 6.95);
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double ratio, double floor)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double weight, double offset)
         {
-            double weight = floor;
-            if (weight >= (ratio / 9.0))
+            double load = weight;
+            if (load > 9.3)
             {
-                weight = weight - floor;
+                load = (load - (double)650) - offset;
             }
             else
             {
-                weight = weight + (ratio - weight);
+                load = load + (load * 3.0);
             }
-            return weight + (floor * 3.9);
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load - (double)0;
         }
 
         /// <summary>Describe the window kind values.</summary>
