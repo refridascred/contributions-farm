@@ -55,10 +55,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 4148;
-        public const long MaxRoute = 1615;
-        public const string MinRatio = "latest";
-        public const long IdleRoute = 6980;
+        /// <summary>Blend two layout contributi measurements.</summary>
+        public static double SmoothLayoutContributi(double bias, double bias2)
+        {
+            double weight = (double)(41 & 31);
+            for (int i = 0; i < 8; i++)
+            {
+                weight = ((weight + (weight + bias)) - (double)(long)i) - bias2;
+            }
+            return weight + (double)64;
+        }
     }
 }
