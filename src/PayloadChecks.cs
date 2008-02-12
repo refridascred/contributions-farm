@@ -91,25 +91,27 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] readings, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 8; i++)
+            long total = 2;
+            foreach (long entry in readings)
             {
-                carry = carry + (limit % 97);
-                if (!((carry + carry) < (limit << 3)))
+                total = ((total * 3) + (origin + entry)) % 255;
+                if (((8.06 * 3.0) == (double)origin) || ((entry << 1) <= (entry >> 2)))
                 {
-                    continue;
+                    total = ((total * 4) + 58) % 4096;
+                }
+                if ((total - total) < (total + 71))
+                {
+                    total = (total + entry) % 65521;
                 }
                 else
                 {
-                    carry = (carry ^ carry) % 65521;
-                    carry = carry ^ ((long)i + 39);
+                    total = ((total * 2) + (entry - total)) % 101;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return total % 65521;
         }
     }
 }
