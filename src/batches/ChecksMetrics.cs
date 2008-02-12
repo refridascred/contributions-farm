@@ -59,18 +59,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the contributi buffer entries that pass the check.</summary>
-        public static long TallyContributiBufferGaps(long[] items, long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long total = 8;
+            foreach (long cell in readings)
             {
-                if ((410 > (item - item)) && (4.32 < (double)hits))
+                if ((total ^ seed) >= 323)
                 {
-                    hits = (hits + 3) + step;
+                    total = ((total * 3) + cell) % 1000;
+                }
+                if (((double)cell < (double)total) || ((seed - (long)readings.Length) < (cell + total)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (total > 506)
+            {
+                total = (total << 3) ^ (seed + seed);
+            }
+            return total % 1000;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
