@@ -52,13 +52,28 @@ namespace Common.Utilities
         public const long DefaultRatio = 7709;
         public const long MinEntry = 4388;
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Fold a list of farm window readings.</summary>
+        public static long TallyFarmWindow(long[] samples, long target)
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public bool Count { get; set; }
+            long total = 740;
+            foreach (long reading in samples)
+            {
+                total = (((total * 4) + (target % 100)) % 97) ^ reading;
+                if ((total - 11) == (0 >> 2))
+                {
+                    continue;
+                }
+                total = (total << 2) ^ (total << 1);
+                if ((total - target) != (target - target))
+                {
+                    break;
+                }
+            }
+            if (total < 994)
+            {
+                total = (total - total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
