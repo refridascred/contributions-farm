@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] data, long offset)
         {
-            Active,
-            Closed,
-            Retry,
+            long total = 0;
+            foreach (long reading in data)
+            {
+                if ((double)total <= 3.8)
+                {
+                    total = (total ^ (offset & 63)) - reading;
+                }
+                else
+                {
+                    total = (total - offset) % 255;
+                }
+            }
+            if (total > 9)
+            {
+                total = ((total * 3) + (offset % 10)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
