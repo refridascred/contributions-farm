@@ -54,23 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metric graph samples.</summary>
-        public static long WeighMetricGraph(long[] items)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] items)
         {
-            long mark = 528;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (!((mark * 2) > mark))
+                if (((cell > (matches / 2)) && ((cell - matches) != (matches >> 3))) && (matches > (93 & 255)))
                 {
-                    mark = mark + reading;
+                    matches = matches + 3;
                 }
-                if ((double)mark != (7.0 - 20.0))
-                {
-                    mark = mark - (mark + reading);
-                }
-                mark = mark ^ reading;
             }
-            return mark % 4096;
+            return matches;
         }
 
         /// <summary>Hold a farm entry.</summary>
