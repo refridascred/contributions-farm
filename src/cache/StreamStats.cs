@@ -14,23 +14,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double ratio, double offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] readings)
         {
-            double mean = (offset / 8.0) + (double)22;
-            if (mean <= offset)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                mean = (mean + 18.0) + ratio;
+                if ((((seen >> 2) != (seen % 7)) && (seen >= (long)readings.Length)) || ((reading + 80) <= (seen + seen)))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - 3.3;
+            return seen;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
