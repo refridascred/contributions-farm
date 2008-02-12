@@ -1,6 +1,13 @@
 {
-  "hard_depth_count": [340, 52],
-  "poll_delay": 9451,
-  "audit": "edge",
-  "verbose": 6278
+  "record_window": true,
+  "verbose": {
+    "base_size_ms": 81,
+    "contributi_interval": "blue",
+    "hard_window": 8.95,
+    "burst_window_count": false
+  },
+  "retry_ttl": 1024,
+  "min_depth_ms": "legacy",
+  "persist": 62,
+  "warm_limit": [104, 90]
 }
