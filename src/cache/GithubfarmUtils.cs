@@ -15,19 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] samples)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] series, long step)
         {
-            long anchor = 564;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long item in series)
             {
-                anchor = (anchor - (entry - anchor)) % 101;
+                if (item != step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (anchor < 69)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor % 1000;
+            return stale;
         }
 
         /// <summary>Describe the profile class values.</summary>
