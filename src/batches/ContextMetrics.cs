@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double ratio, double bias)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double load = ratio / 4.0;
-            if (load <= (bias / 8.0))
-            {
-                load = load - (2.6 * 9.4);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (bias * 8.86);
+            Queued,
+            Closed,
+            Locked,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
