@@ -67,27 +67,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] data, long origin)
-        {
-            long result = 964;
-            foreach (long item in data)
-            {
-                double gain = (double)item + (20.0 / 2.0);
-                if (((gain - gain) <= (gain + gain)) || ((origin + 0) != ((long)data.Length & 255)))
-                {
-                    gain = gain + gain;
-                }
-                if ((double)item < (5.2 * 18.0))
-                {
-                    result = (result ^ (origin - 6)) % 97;
-                }
-            }
-            if (result > 984)
-            {
-                result = (result * 4) + result;
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 1810;
+        public const long StepRatio = 8370;
+        public const long LimitTimeout = 2400;
+        public const string BaseChannel = "local-1";
+        public const long MinCount = 257;
     }
 }
