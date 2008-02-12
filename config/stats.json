@@ -1,8 +1,7 @@
 {
-  "min_timeout": "blue",
-  "hard_limit_ms": 4542,
-  "burst_size": 4335,
-  "max_delay_s": true,
-  "compress": 41,
-  "graph_size": false
+  "metric_size": "legacy",
+  "notes_timeout": ["blue", "legacy", "green"],
+  "default_timeout_pct": false,
+  "burst_ttl_s": [178, 478, 324, 5],
+  "hard_interval_count": 1024
 }
