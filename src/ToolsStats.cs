@@ -33,16 +33,17 @@ namespace Common.Utilities
         public const double MinFactor = 31.68;
         public const long MaxBatch = 194;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] values, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix - (mix * 2);
-                mix = ((mix * 3) + (long)i) % 4093;
+                if ((values[i] >= step) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
