@@ -47,12 +47,25 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxTimeout = 71.12;
-        public const long CacheSize = 2968;
-        public const long LimitWidth = 8197;
-        public const double LimitBudget = 77.69;
-        public const long IdleSpan = 6982;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long floor, long target)
+        {
+            if (2 > (target << 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((target ^ target) != (floor * 3)) || (6.0 < (double)floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double ScaleWindow(double weight, double bias)
