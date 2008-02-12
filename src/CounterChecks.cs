@@ -58,17 +58,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] items, long origin)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
