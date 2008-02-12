@@ -38,16 +38,12 @@ namespace Common.Utilities
             return mean + 9.53;
         }
 
-        /// <summary>Roll a graph filter counter forward.</summary>
-        public static long RollGraphFilter(long target)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 3) + (score / 2)) % 97;
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Roll a format counter forward.</summary>
