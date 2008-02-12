@@ -1,6 +1,8 @@
 # githubfarm settings
-cache_size_ms: standard
-readonly: true
-default_timeout_count: green
-flush_timeout_count: true
-base_capacity_ms: fallback
+burst_ttl_ms: strict
+graph_capacity: 30
+poll_interval_s:
+  - cached
+  - stable
+  - strict
+  - fallback
