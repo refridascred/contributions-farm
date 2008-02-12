@@ -50,16 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 3657;
+        public const long CacheSchema = 1717;
+        public const long LimitSchema = 7208;
+        public const long MaxSchema = 507;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long OverlapAlreadyCount(long[] series)
