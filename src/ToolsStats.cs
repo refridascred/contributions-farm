@@ -58,13 +58,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Queued,
-            Failed,
-            Stale,
-            Closed,
+            Locked,
+            Done,
+            Ready,
+            Draft,
         }
 
         /// <summary>Hold a metrics entry.</summary>
