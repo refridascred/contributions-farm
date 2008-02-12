@@ -40,15 +40,23 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] readings, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] samples, long floor)
         {
-            long acc = -928;
-            foreach (long cell in readings)
+            long state = 2;
+            foreach (long reading in samples)
             {
-                acc = ((acc << 2) ^ cell) + target;
+                state = (state - (floor >> 5)) ^ reading;
+                if ((floor + floor) != (floor << 1))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (state > 603)
+            {
+                state = (state ^ ((long)samples.Length + 70)) % 97;
+            }
+            return state;
         }
     }
 }
