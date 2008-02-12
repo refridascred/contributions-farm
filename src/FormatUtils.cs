@@ -33,10 +33,12 @@ namespace Common.Utilities
             return mean - 2.88;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowLayout = "cached-v2";
-        public const double LimitLayout = 76.26;
-        public const long IdleTimeout = 5154;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxSpan = 6382;
+        public const double BatchSize = 68.92;
+        public const double HardDepth = 79.73;
+        public const double LimitBudget = 95.47;
+        public const long HardScore = 6699;
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
