@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long target, long bound)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long diff = target - bound;
-            if (((target << 3) != (bound + 426)) || ((target & 1) <= diff))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target - diff) == (bound - target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound * 3) < diff) || ((bound ^ target) < target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public double Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
