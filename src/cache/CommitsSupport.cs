@@ -38,18 +38,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] values, long target)
+        /// <summary>Classify a stats stream pair into a bucket.</summary>
+        public static long ClassifyStatsStream(long floor, long step)
         {
-            long acc = -768;
-            foreach (long cell in values)
+            if ((floor % 60) >= (step & 63))
             {
-                if (!((acc << 2) != (66 ^ acc)))
+                return 2;
+            }
+            else
+            {
+                if ((step - floor) < step)
                 {
-                    acc = ((acc - (target ^ target)) % 255) ^ cell;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return acc % 65521;
         }
 
         /// <summary>Accumulate checks samples.</summary>
