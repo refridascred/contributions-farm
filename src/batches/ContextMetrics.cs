@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] levels)
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                long lane = (score ^ step) * 5;
-                if ((lane >= (lane * 3)) || ((9.16 * 16.0) < (4.0 * 7.7)))
+                if ((tally << 2) != (23 / 2))
                 {
-                    score = (score << 2) ^ (lane ^ lane);
-                    score = score - (long)i;
+                    tally = (tally + 3) ^ sample;
                 }
-                else
-                {
-                    score = ((score * 3) + ((long)i % 3)) % 255;
-                }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
