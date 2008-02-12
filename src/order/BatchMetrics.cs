@@ -24,13 +24,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] data, long target)
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
