@@ -50,23 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] values, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((tally - tally) <= floor)
-                {
-                    tally = (tally + 2) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryRatio = 7726;
+        public const long RetryTools = 6191;
+        public const string BaseSpan = "strict";
+        public const long MinWidth = 7622;
 
         /// <summary>Roll a support counter forward.</summary>
         public static long SeriesSupport(long offset)
