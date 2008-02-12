@@ -50,19 +50,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile session samples are out of range.</summary>
-        public static long CountProfileSessionOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((double)seen >= (double)reading)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string LimitInterval = "latest";
+        public const string StepBatch = "primary-edge";
+        public const long HardBatch = 9069;
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
