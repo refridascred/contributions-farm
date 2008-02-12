@@ -46,22 +46,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 9299;
+        public const double DefaultTools = 67.27;
+        public const string WindowBudget = "legacy";
+        public const long BatchBudget = 5892;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long HardInterval = 4787;
