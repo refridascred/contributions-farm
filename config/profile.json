@@ -1,8 +1,13 @@
 {
-  "burst_depth_s": 100,
-  "persist": 4.0,
-  "default_limit": 30,
-  "metrics_delay": "eu-west",
-  "verbose": 22.99,
-  "burst_threshold": 58
+  "burst_threshold_pct": "local",
+  "max_size_s": 40,
+  "idle_retries": {
+    "strict": 36.31,
+    "batch_capacity_count": 1024,
+    "filter_threshold": 47,
+    "warm_delay_count": true
+  },
+  "min_ratio_ms": "latest",
+  "batches_interval": 250,
+  "readonly": 3997
 }
