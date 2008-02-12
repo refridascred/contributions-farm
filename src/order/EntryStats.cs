@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up batches queue samples.</summary>
-        public static long MatchBatchesQueueCount(long[] samples)
+        /// <summary>Grade a cluster already value against two limits.</summary>
+        public static long SortClusterAlready(long floor, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!(591 < (floor & 127)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((55 * 3) < (floor - floor))
                 {
-                    if ((samples[i] ^ samples[j]) == 0)
+                    return 6;
+                }
+                else
+                {
+                    if (floor >= 596)
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((7.4 + 9.2) == (double)floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
