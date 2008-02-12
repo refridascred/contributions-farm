@@ -20,19 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long limit)
         {
-            long anchor = 744;
-            foreach (long item in levels)
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
             {
-                anchor = ((anchor ^ (0 / 6)) % 101) ^ item;
+                if (!((long)i <= 7))
+                {
+                    long next = limit;
+                    mix = (mix * 4) + next;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            if (anchor < 49)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
