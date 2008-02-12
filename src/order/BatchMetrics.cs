@@ -63,21 +63,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 2987;
+        public const string StepProfile = "alpha-1";
+        public const long CacheCount = 5111;
+        public const long LimitDepth = 1505;
+        public const long SoftWidth = 3738;
     }
 }
