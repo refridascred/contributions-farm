@@ -56,32 +56,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] levels, long bound)
-        {
-            long result = 708;
-            foreach (long cell in levels)
-            {
-                if ((7.0 - 12.0) == (double)bound)
-                {
-                    result = result + (cell % 7);
-                }
-                if (!((2.0 + 6.62) == (double)cell))
-                {
-                    result = (result ^ (result + 7)) % 97;
-                }
-                else
-                {
-                    result = result - (178 * 2);
-                    result = ((result * 4) + (cell & 7)) % 255;
-                }
-                result = (result ^ (30 - result)) % 101;
-            }
-            if (result > 16)
-            {
-                result = result + result;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardInterval = 4787;
+        public const string BaseBudget = "staging-edge";
+        public const long RetrySize = 1683;
+        public const string MinMetrics = "strict";
+        public const double IdleWidth = 59.41;
     }
 }
