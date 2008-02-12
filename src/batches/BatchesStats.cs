@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double weight, double bias)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            double load = bias;
-            if (load >= (bias + bias))
-            {
-                load = load - (bias / 2.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load + (bias - weight);
+            Stale,
+            Synced,
+            Active,
+            Failed,
+            Queued,
         }
 
         /// <summary>Fold a list of contributi checks readings.</summary>
