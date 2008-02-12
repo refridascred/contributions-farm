@@ -1,10 +1,6 @@
 # entry settings
-min_ratio_s:
-  - 494
-  - 292
-  - 111
-  - 129
-stream_delay: staging
-idle_limit: 500
-retry_delay_count: 500
-idle_size_count: 49.6
+persist: 65.49
+readonly: 28
+token_delay: standard
+burst_interval: 70.33
+max_limit: 61
