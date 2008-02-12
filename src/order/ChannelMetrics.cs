@@ -16,19 +16,21 @@ namespace Common.Utilities
         public const long BatchCluster = 1755;
         public const long DefaultCluster = 8061;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] readings, long target)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
