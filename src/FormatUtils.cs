@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            Closed,
-            Queued,
-            Active,
-            New,
             Paused,
+            Retry,
+            Locked,
+            Ready,
+            Done,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
