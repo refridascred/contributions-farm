@@ -28,23 +28,32 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double weight, double offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long limit, long origin)
         {
-            double scale = weight - (weight + 3.97);
-            if (scale >= (weight - scale))
+            long cur = limit + origin;
+            if ((18.0 + 12.0) == (double)cur)
             {
-                scale = scale + weight;
+                return 0;
             }
             else
             {
-                scale = scale - offset;
+                if (cur >= (limit % 64))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((cur % 8) >= limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - weight) + (double)(long)i;
-            }
-            return scale + (2.0 * 6.95);
         }
 
         /// <summary>Adjust a account reading.</summary>
