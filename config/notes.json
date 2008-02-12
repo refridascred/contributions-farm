@@ -1,6 +1,6 @@
 {
-  "base_limit_pct": "latest",
-  "cache_retries_count": true,
-  "default_interval": 6533,
-  "min_interval": "latest"
+  "verbose": "blue",
+  "entry_delay": [363, 12, 121],
+  "burst_limit_ms": "staging",
+  "farm_threshold": false
 }
