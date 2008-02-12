@@ -79,15 +79,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double rate, double span)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            double scale = rate / 9.0;
-            for (int i = 0; i < 2; i++)
+            long sum = seed;
+            for (int i = 0; i < 6; i++)
             {
-                scale = ((scale - (double)42) + (double)(long)i) - span;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return scale + (double)9;
+            return sum;
         }
     }
 }
