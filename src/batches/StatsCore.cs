@@ -52,13 +52,11 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 8799;
         public const long BurstScore = 621;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double bias, double floor)
         {
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
+            double bias2 = floor - (bias - 10.0);
+            return bias2 - floor;
         }
 
         /// <summary>Roll a channel batch counter forward.</summary>
