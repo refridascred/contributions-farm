@@ -29,18 +29,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] readings)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] samples)
         {
-            long state = 3;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((state < (state & 63)) || ((entry ^ 6) > (state / 3)))
+                if ((((hits / 7) < (datum + datum)) || ((datum >> 5) == (hits << 3))) && (datum >= (hits - datum)))
                 {
-                    state = ((state << 2) ^ state) % 255;
+                    hits = hits + 2;
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
