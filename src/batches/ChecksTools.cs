@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] values, long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 5;
+            foreach (long datum in samples)
             {
-                if (values[i] > origin)
+                if (((anchor - anchor) < datum) && ((4.0 + 3.54) >= (double)datum))
                 {
-                    return (long)i;
+                    anchor = anchor + (datum & 1);
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
