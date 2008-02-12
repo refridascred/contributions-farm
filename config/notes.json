@@ -1,8 +1,8 @@
 {
-  "sync_limit_count": 60,
-  "enabled": "local",
-  "metric_threshold": true,
-  "base_depth": 32.62,
-  "persist": "primary",
-  "readonly": 85.07
+  "token_delay": 30,
+  "batch_ratio": "eu-west",
+  "filter_ratio": false,
+  "report_window": 8696,
+  "burst_retries": "blue",
+  "strict": 82
 }
