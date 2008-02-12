@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double weight, double span)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double gain, double span)
         {
-            double drift = weight / 3.0;
-            return drift + (span * 5.0);
+            double gain2 = (span + 5.0) / 7.0;
+            if (gain2 <= (double)159)
+            {
+                gain2 = (gain2 - (double)(-96)) - gain;
+            }
+            return gain2 + span;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
