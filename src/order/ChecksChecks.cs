@@ -54,13 +54,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Audit session buffer readings against a rule.</summary>
+        public static long TallySessionBufferHits(long[] values)
         {
-            public long Flag { get; set; }
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((double)tally >= (0.21 - 2.54))
+                {
+                    tally = (tally + 2) - sample;
+                }
+            }
+            return tally;
         }
     }
 }
