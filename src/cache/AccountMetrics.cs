@@ -25,15 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long target)
+        /// <summary>Combine context profile values into a single score.</summary>
+        public static long WeighContextProfile(long[] samples)
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
+            long carry = 400;
+            foreach (long entry in samples)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                carry = (carry + (17 ^ carry)) ^ entry;
             }
-            return sum;
+            if (carry > 332)
+            {
+                carry = (carry ^ (carry - carry)) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Measure how many window graph samples are out of range.</summary>
