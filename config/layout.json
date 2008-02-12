@@ -1,12 +1,5 @@
 {
-  "commits_size": 92,
-  "cache_size": {
-    "window_timeout": "blue",
-    "enabled": 52.27,
-    "batch_capacity_s": 75
-  },
-  "readonly": 1024,
-  "burst_window_pct": 76,
-  "poll_ttl_pct": 250,
-  "base_capacity_count": 20.03
+  "idle_delay_pct": 4380,
+  "warm_threshold_ms": ["eu-west", "latest", "primary"],
+  "readonly": false
 }
