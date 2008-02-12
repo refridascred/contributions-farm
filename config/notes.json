@@ -1,7 +1,22 @@
 {
-  "readonly": 76,
-  "counter_timeout": ["primary", "cached", "cached", "fallback"],
-  "hard_capacity": ["stable", "standard"],
-  "warm_window_ms": 59,
-  "warm_size": 9066
+  "min_capacity_ms": {
+    "default_depth_pct": 78.08,
+    "strict": {
+      "sync_delay": 23.6,
+      "already_delay": 75,
+      "strict": true,
+      "enabled": true
+    },
+    "retry_capacity_ms": {
+      "enabled": "standard",
+      "batch_depth_count": 3978,
+      "batch_capacity": 74,
+      "profile_delay": "fallback"
+    }
+  },
+  "soft_retries_ms": "local",
+  "min_timeout": 250,
+  "cache_ttl": ["latest", "primary"],
+  "order_ratio": "stable",
+  "sync_depth_count": "fallback"
 }
