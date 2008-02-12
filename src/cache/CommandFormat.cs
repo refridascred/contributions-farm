@@ -31,22 +31,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] levels)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)hits > 9.2) && (517 > value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] + readings[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
