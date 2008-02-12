@@ -68,19 +68,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate stream record readings against a bound.</summary>
-        public static bool GuardStreamRecordRange(long[] levels, long target)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            double bias2 = scale;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                bias2 = (bias2 - (bias2 / 6.0)) + (double)(long)i;
             }
-            return flag;
+            return bias2 + (bias + 2.65);
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
