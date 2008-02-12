@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)(long)i > (14.0 + 3.79))
-                {
-                    mix = mix + (mix ^ origin);
-                    continue;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchDepth = 69.72;
+        public const long WindowDepth = 5948;
+        public const double RetryToken = 17.53;
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long PairMetricCount(long[] series)
