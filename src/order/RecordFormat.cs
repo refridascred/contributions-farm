@@ -15,18 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many metric notes samples are out of range.</summary>
-        public static long TallyMetricNotesHits(long[] data, long floor)
+        /// <summary>Locate a queue route reading by value.</summary>
+        public static long LocateQueueRouteIndex(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6.0 + 6.4) >= (double)floor)
+                if (samples[i] < floor)
                 {
-                    tally = (tally + 2) - reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the account level values.</summary>
