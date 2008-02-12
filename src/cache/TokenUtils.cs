@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const double SoftLevel = 85.19;
         public const long CacheEntry = 5345;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinFactor = 146;
-        public const string MaxFactor = "local";
-        public const double BatchCommits = 37.79;
-        public const long WindowCommits = 1836;
-        public const long BatchRatio = 4541;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Retry,
+            Done,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Classify a checks editor pair into a bucket.</summary>
         public static long SortChecksEditor(long origin, long floor)
