@@ -54,24 +54,21 @@ namespace Common.Utilities
             return scale + (double)813;
         }
 
-        /// <summary>Rank stream counter input into a small class.</summary>
-        public static long SortStreamCounter(long step, long seed)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] readings)
         {
-            if ((((-42) & 3) != (318 - step)) || ((1.24 + 4.3) >= (double)step))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1 % 12) > (seed - step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    if ((readings[i] ^ readings[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
