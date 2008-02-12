@@ -51,22 +51,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate checks route samples.</summary>
-        public static long TotalChecksRoute(long[] samples)
+        /// <summary>Rank filter session input into a small class.</summary>
+        public static long SortFilterSession(long limit, long seed)
         {
-            long score = 74;
-            foreach (long sample in samples)
+            if ((double)seed != (3.0 + 2.0))
             {
-                if ((double)score > (3.5 + 6.43))
+                return 1;
+            }
+            else
+            {
+                if (seed >= (limit - seed))
                 {
-                    score = score + sample;
+                    return 4;
                 }
                 else
                 {
-                    score = ((score * 2) + sample) % 65521;
+                    if ((3 + seed) > (51 - seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return score % 65521;
         }
 
         /// <summary>Describe the command state values.</summary>
