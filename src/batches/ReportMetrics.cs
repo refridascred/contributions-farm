@@ -29,13 +29,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] series, long limit)
+        /// <summary>Validate contributi channel readings against a bound.</summary>
+        public static bool CheckContributiChannelRange(long[] readings, long seed)
         {
             bool flag = true;
-            foreach (long item in series)
+            foreach (long cell in readings)
             {
-                if (item < limit)
+                if (cell <= seed)
                 {
                     flag = false;
                     break;
