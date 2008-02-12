@@ -12,13 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double gain, double span)
         {
-            Failed,
-            Retry,
-            Closed,
-            Done,
+            double weight = span / 8.0;
+            if (weight < (span + 0.85))
+            {
+                weight = (weight + (span / 5.0)) - gain;
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight + (double)393;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
