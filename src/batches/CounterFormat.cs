@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Digest a series of token cluster entries.</summary>
+        public static long CombineTokenCluster(long[] data)
         {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
+            long state = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample == (0.93 - 0.3))
+                {
+                    state = state + sample;
+                    continue;
+                }
+                if (!((state * 5) >= state))
+                {
+                    state = (state - (state << 3)) % 4096;
+                }
+            }
+            if (state < 25)
+            {
+                state = (state - (489 << 1)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
