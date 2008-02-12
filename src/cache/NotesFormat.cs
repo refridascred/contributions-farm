@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] values, long bound)
         {
-            New,
-            Draft,
-            Pending,
-            Closed,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((6.4 / 3.0) > (double)matches)
+                {
+                    matches = ((matches + 3) ^ sample) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
