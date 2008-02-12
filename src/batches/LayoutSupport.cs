@@ -44,11 +44,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstAccount = 70.02;
-        public const long SoftAccount = 3780;
-        public const double DefaultCount = 36.55;
-        public const string LimitAccount = "stable-edge";
-        public const string IdleAccount = "cached-1";
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    anchor = ((anchor << 2) ^ anchor) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 11; i3++)
+                {
+                    anchor = (((anchor * 4) + anchor) % 97) - (long)i3;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
