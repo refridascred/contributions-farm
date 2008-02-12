@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            Failed,
+            Paused,
+            Draft,
+            Queued,
         }
 
         /// <summary>Check that every already token entry stays within the limit.</summary>
