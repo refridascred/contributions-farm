@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] samples)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 76;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = ((sum - (sum - 723)) % 4096) ^ datum;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
