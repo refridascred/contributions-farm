@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit counter format readings against a rule.</summary>
-        public static long MeasureCounterFormatHits(long[] values)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (!(((long)values.Length - value) > (count + count)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 5264;
+        public const string RetryTimeout = "cached-1";
+        public const double WindowEntry = 21.92;
+        public const string BaseEntry = "cached-1";
 
         /// <summary>Iterate the context order series from a seed.</summary>
         public static long DeriveContextOrder(long step)
