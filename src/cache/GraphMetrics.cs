@@ -86,17 +86,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] items, long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (items[i] == seed)
+                if (item < limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
