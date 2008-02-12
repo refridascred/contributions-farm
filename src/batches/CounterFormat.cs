@@ -37,19 +37,19 @@ namespace Common.Utilities
             return gain - (gain / 8.0);
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] values, long origin)
+        /// <summary>Fold a list of command cluster readings.</summary>
+        public static long DigestCommandCluster(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long carry = 2;
+            foreach (long entry in samples)
             {
-                if (datum <= origin)
+                carry = (carry + (8 << 3)) % 101;
+                if (((6.4 * 9.0) == (double)entry) || (entry <= (0 * 3)))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return carry % 97;
         }
     }
 }
