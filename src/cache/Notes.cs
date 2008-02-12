@@ -33,17 +33,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] levels, long floor)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long seed, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long next = seed + floor;
+            if ((seed / 4) <= (2 + seed))
             {
-                if (levels[i] < floor)
+                return 5;
+            }
+            else
+            {
+                if ((floor - seed) <= (next / 7))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (4 < (seed << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine buffer route values into a single score.</summary>
