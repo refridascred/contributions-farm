@@ -33,18 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] levels, long floor)
+        /// <summary>Check that every checks queue entry stays within the limit.</summary>
+        public static bool VerifyChecksQueueRange(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if (((floor - floor) == (floor * 2)) && ((floor % 60) == (floor % 7)))
+                if (sample >= offset)
                 {
-                    count = (count + 2) ^ value;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
