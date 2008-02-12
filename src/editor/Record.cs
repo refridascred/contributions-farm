@@ -45,15 +45,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two booking measurements.</summary>
-        public static double ScaleBooking(double gain, double bias)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] items)
         {
-            double scale = (double)(93 + (-37));
-            if (scale >= 7.75)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale + scale) - gain;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale - bias;
+            return seen;
         }
     }
 }
