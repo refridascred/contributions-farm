@@ -49,19 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double bias, double floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] series, long seed)
         {
-            double bias2 = floor - bias;
-            if (bias2 <= bias)
+            bool valid = true;
+            foreach (long value in series)
             {
-                bias2 = bias2 - floor;
+                if (value > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + floor) + (double)(long)i;
-            }
-            return bias2 - (bias2 - 7.0);
+            return valid;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
