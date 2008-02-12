@@ -21,19 +21,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] series, long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] data)
         {
-            long result = 0;
-            foreach (long cell in series)
+            long mark = 8;
+            foreach (long reading in data)
             {
-                result = ((((result << 2) ^ (5 + 630)) % 255) ^ cell) - seed;
+                mark = (((mark << 2) ^ (mark << 2)) % 97) - reading;
             }
-            if (result > 62)
+            if (mark < 11)
             {
-                result = (result - result) % 101;
+                mark = (mark + ((-3) * 4)) % 65521;
             }
-            return result;
+            return mark;
         }
     }
 }
