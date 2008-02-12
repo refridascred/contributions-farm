@@ -14,18 +14,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the metric layout entries that pass the check.</summary>
-        public static long MeasureMetricLayoutGaps(long[] values)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (((9 ^ sample) != (sample + count)) || ((5.48 * 5.0) >= (double)count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Failed,
+            Queued,
         }
 
         /// <summary>Roll a graph counter forward.</summary>
