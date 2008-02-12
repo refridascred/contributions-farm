@@ -41,18 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] items)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (((cell > (matches / 2)) && ((cell - matches) != (matches >> 3))) && (matches > (93 & 255)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two layout contributi measurements.</summary>
