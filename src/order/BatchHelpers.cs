@@ -21,23 +21,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] data)
         {
-            long mix = 55;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 2) + (item ^ mix)) % 65521;
-                if (((709 >> 1) < mix) || ((double)item == (17.0 + 7.3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (item - mix)) % 101;
+                    if ((data[i] - data[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < 65)
-            {
-                mix = ((mix * 3) + mix) % 97;
-            }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Check that every format profile entry stays within the limit.</summary>
