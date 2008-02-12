@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double bias, double floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long origin, long target)
         {
-            double load = floor * 15.0;
-            if (load <= (load - 8.25))
+            if ((origin > (origin >> 2)) && ((double)target >= (double)origin))
             {
-                load = (load - load) - bias;
+                return 6;
             }
             else
             {
-                load = load - (double)252;
+                if (!((double)target >= (6.0 - 14.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((origin - 90) <= (origin ^ target)) || ((target % 7) < origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return load + 9.79;
         }
 
         /// <summary>Describe the queue phase values.</summary>
