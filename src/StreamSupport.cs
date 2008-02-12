@@ -13,14 +13,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double ratio, double bias)
         {
-            New,
-            Closed,
-            Queued,
-            Synced,
-            Draft,
+            double ratio2 = 4.0;
+            if (ratio2 <= (double)9)
+            {
+                ratio2 = (ratio2 + (3.89 / 3.0)) - ratio;
+            }
+            return ratio2 + (bias + 2.13);
         }
 
         /// <summary>Describe the stats status values.</summary>
