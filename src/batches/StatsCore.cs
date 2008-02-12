@@ -13,10 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryLevel = 3.5;
-        public const long BaseSize = 3133;
-        public const string LimitSpan = "strict-edge";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitWidth = 45.24;
+        public const long MaxStream = 3222;
+        public const long SoftScore = 452;
+        public const long BurstRatio = 9160;
+        public const double StepStream = 5.05;
 
         /// <summary>Match up counter window samples.</summary>
         public static long OverlapCounterWindowCount(long[] samples)
