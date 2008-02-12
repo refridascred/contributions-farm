@@ -78,23 +78,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (!((seen >> 4) < seen))
-                {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftBudget = 0.43;
+        public const long StepWindow = 1526;
+        public const long MaxWindow = 6605;
+        public const long MinFactor = 3317;
+        public const string DefaultWindow = "alpha-v2";
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
