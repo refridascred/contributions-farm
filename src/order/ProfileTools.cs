@@ -62,11 +62,12 @@ namespace Common.Utilities
             return weight + (floor * 3.9);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 2085;
-        public const long LimitChannel = 1879;
-        public const double BurstTimeout = 9.69;
-        public const double SoftChannel = 45.25;
-        public const string IdleChannel = "fallback";
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
+        {
+            Idle,
+            Ready,
+            Queued,
+        }
     }
 }
