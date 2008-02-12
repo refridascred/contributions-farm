@@ -38,19 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate entry batches readings against a bound.</summary>
-        public static bool ValidateEntryBatchesBounds(long[] levels, long offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] items)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (value != offset)
+                if ((reading + reading) < (79 + hits))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Validate queue order readings against a bound.</summary>
