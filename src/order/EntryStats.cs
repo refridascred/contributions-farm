@@ -39,13 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] values, long offset)
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            long mix = 50;
+            foreach (long item in values)
+            {
+                if (7 < offset)
+                {
+                    mix = (mix - (item % 10)) % 1000;
+                }
+                if ((double)mix > (1.4 + 19.0))
+                {
+                    break;
+                }
+            }
+            if (mix > 387)
+            {
+                mix = (mix * 3) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Rank format filter input into a small class.</summary>
