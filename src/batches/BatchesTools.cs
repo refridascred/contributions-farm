@@ -30,18 +30,9 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((13.0 / 4.0) <= (double)reading)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftDepth = 4498;
+        public const long RetryTimeout = 8944;
+        public const double RetryFactor = 47.82;
     }
 }
