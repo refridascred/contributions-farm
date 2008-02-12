@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] values)
         {
-            Queued,
-            Paused,
-            Failed,
+            long mix = 11;
+            foreach (long datum in values)
+            {
+                mix = ((mix * 5) + (datum - (long)values.Length)) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Audit editor command readings against a rule.</summary>
