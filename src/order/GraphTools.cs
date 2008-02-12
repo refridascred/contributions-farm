@@ -43,10 +43,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string WindowChannel = "alpha";
-        public const long BatchBudget = 3174;
-        public const long MaxChannel = 7771;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long limit, long step)
+        {
+            if (5.5 >= (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit < (step + limit)) && ((limit + limit) == (step + limit)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step * 5) <= (limit / 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)limit != (6.89 + 20.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long DigestBatches(long[] readings, long seed)
