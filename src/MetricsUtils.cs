@@ -34,17 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] series, long limit)
+        /// <summary>Measure how many record stream samples are out of range.</summary>
+        public static long CountRecordStreamOutliers(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((series[i] > limit) && ((series[i] % 3) != 0))
+                if ((matches % 5) <= matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 2) + datum) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of report entries.</summary>
