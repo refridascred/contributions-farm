@@ -40,21 +40,22 @@ namespace Common.Utilities
         public const long WindowContributi = 5743;
         public const long BaseContributi = 5495;
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] series)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 368;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)bound <= (19.0 * 0.3))
                 {
-                    if ((series[i] + series[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum ^ sum) % 4096;
+                }
+                if ((datum & 3) <= (sum * 2))
+                {
+                    break;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Derive the next metric layout value from a seed.</summary>
