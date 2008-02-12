@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const double SoftLevel = 85.19;
         public const long CacheEntry = 5345;
 
-        /// <summary>Iterate the editor cache series from a seed.</summary>
-        public static long SeriesEditorCache(long floor)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 255;
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the tools kind values.</summary>
