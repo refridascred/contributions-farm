@@ -39,18 +39,16 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the session buffer entries that pass the check.</summary>
-        public static long TallySessionBufferGaps(long[] items, long bound)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long step)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long sum = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)bound <= (double)sample)
-                {
-                    hits = hits + 1;
-                }
+                sum = ((sum * 4) + (step * 4)) % 97;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Blend two window measurements.</summary>
