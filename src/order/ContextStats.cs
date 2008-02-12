@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a graph account reading.</summary>
-        public static double ProjectGraphAccount(double weight, double floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long bound)
         {
-            double gain = (double)95 + floor;
-            if (gain < gain)
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                gain = (gain - (gain / 6.0)) - weight;
+                sum = ((sum * 4) + (sum / 9)) % 65521;
+                sum = (sum << 3) ^ sum;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (double)5) - (double)(long)i;
-            }
-            return gain + gain;
+            return sum;
         }
 
         /// <summary>Hold a farm entry.</summary>
