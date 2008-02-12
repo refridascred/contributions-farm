@@ -1,13 +1,5 @@
 # support settings
-base_retries: local
-idle_ratio_s:
-  burst_delay_pct:
-    - 391
-    - 149
-    - 25
-  account_ttl: strict
-  warm_window: 90.93
-  context_ttl: 64
-  queue_ttl: 42.05
-  strict: 9257
-readonly: 45.77
+min_ratio: true
+stats_limit: edge
+poll_size_s: 30.96
+schema_retries: green
