@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryInterval = 9226;
-        public const long DefaultSize = 7284;
-        public const double DefaultDepth = 96.43;
-        public const long BatchWidth = 3290;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (bound > datum)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
