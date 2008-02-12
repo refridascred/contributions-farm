@@ -29,14 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Project the next session metric value.</summary>
+        public static double ProjectSessionMetric(double ratio, double offset)
         {
-            Done,
-            Ready,
-            Synced,
-            Pending,
-            Draft,
+            double bias = offset * 15.0;
+            return (bias - (bias / 7.0)) + ratio;
         }
     }
 }
