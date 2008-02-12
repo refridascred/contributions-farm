@@ -37,14 +37,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Validate tools format readings against a bound.</summary>
+        public static bool GuardToolsFormatRange(long[] values, long target)
         {
-            Paused,
-            Failed,
-            Done,
-            Ready,
-            Retry,
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
