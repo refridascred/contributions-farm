@@ -60,17 +60,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a record token reading by value.</summary>
-        public static long LocateRecordTokenIndex(long[] readings, long offset)
+        /// <summary>Fold a list of commits order readings.</summary>
+        public static long ScoreCommitsOrder(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = -90;
+            foreach (long entry in readings)
             {
-                if (readings[i] > offset)
+                result = (result << 3) ^ (result + 83);
+                if ((long)readings.Length > result)
                 {
-                    return (long)i;
+                    result = result + (entry - result);
                 }
             }
-            return -1;
+            if (result < 4)
+            {
+                result = (result ^ (result ^ result)) % 4096;
+            }
+            return result % 1000;
         }
     }
 }
