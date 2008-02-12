@@ -27,15 +27,10 @@ namespace Common.Utilities
         public const string StepGraph = "stable-v2";
         public const double LimitBudget = 64.82;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Stale,
-            Locked,
-            Idle,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleDepth = 7581;
+        public const long IdleTimeout = 4252;
+        public const string CacheLevel = "legacy-1";
 
         /// <summary>Blend two schema measurements.</summary>
         public static double BlendSchema(double rate, double floor)
