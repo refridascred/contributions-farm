@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long origin, long seed)
         {
-            Ready,
-            Done,
-            Paused,
+            long next = origin - seed;
+            if ((7 + seed) > (origin - origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((seed - seed) <= next) || ((seed << 2) > next))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Match up window samples.</summary>
