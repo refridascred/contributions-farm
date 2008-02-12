@@ -1,10 +1,6 @@
 {
-  "hard_delay_s": 12,
-  "record_interval": ["local", "eu-west"],
-  "base_ratio": 100,
-  "sync_ttl_pct": {
-    "format_limit": 6.24,
-    "burst_timeout_count": "blue",
-    "batch_threshold_ms": true
-  }
+  "flush_delay": 100,
+  "token_window": ["stable", "strict", "latest"],
+  "min_capacity_s": 7206,
+  "counter_capacity": "primary"
 }
