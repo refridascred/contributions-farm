@@ -64,19 +64,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] samples)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long total = 388;
-            foreach (long item in samples)
-            {
-                total = total - item;
-                if ((item & 3) == (item % 3))
-                {
-                    total = ((total << 3) ^ (item % 100)) % 101;
-                }
-            }
-            return total;
+            Active,
+            Synced,
+            Closed,
+            Dropped,
         }
     }
 }
