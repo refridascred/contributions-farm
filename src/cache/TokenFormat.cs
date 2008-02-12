@@ -22,12 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] readings)
         {
-            Queued,
-            Dropped,
-            Locked,
+            long carry = 4;
+            foreach (long reading in readings)
+            {
+                carry = (((carry << 2) ^ (carry * 3)) % 97) ^ reading;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the tools level values.</summary>
