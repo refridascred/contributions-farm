@@ -53,11 +53,31 @@ namespace Common.Utilities
             return mean - 12.0;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheSize = 6955;
-        public const long DefaultCount = 306;
-        public const long HardOrder = 5283;
-        public const string MaxOrder = "fallback-edge";
-        public const long BurstOrder = 9176;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long offset, long floor)
+        {
+            if (offset <= (floor % 10))
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor > 398)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((11.0 / 9.0) >= (0.08 - 11.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
