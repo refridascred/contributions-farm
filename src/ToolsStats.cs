@@ -33,19 +33,19 @@ namespace Common.Utilities
         public const double MinFactor = 31.68;
         public const long MaxBatch = 194;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double bias, double span)
+        /// <summary>Digest a series of format githubfarm entries.</summary>
+        public static long CombineFormatGithubfarm(long[] values, long offset)
         {
-            double mean = span / 9.0;
-            if (mean >= (3.5 / 6.0))
+            long sum = 32;
+            foreach (long datum in values)
             {
-                mean = (mean + (span * 5.1)) - bias;
+                sum = (((sum * 2) + (offset & 63)) % 4096) ^ datum;
+                if ((sum * 3) > offset)
+                {
+                    sum = (sum - (sum - offset)) % 65521;
+                }
             }
-            else
-            {
-                mean = mean - span;
-            }
-            return mean + 3.32;
+            return sum;
         }
 
         /// <summary>Describe the format state values.</summary>
