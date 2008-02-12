@@ -30,22 +30,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] levels)
+        /// <summary>Fold a list of session metrics readings.</summary>
+        public static long TotalSessionMetrics(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long result = 2;
+            foreach (long reading in samples)
             {
-                if ((cell < (cell * 2)) || ((62 + 50) <= (tally - tally)))
+                result = (result ^ (result - reading)) % 1000;
+                result = ((result * 3) + (reading & 127)) % 65521;
+                if ((result + result) == (result / 8))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    result = ((result << 2) ^ 95) % 101;
                 }
             }
-            return tally;
+            if (result > (-666))
+            {
+                result = ((result * 2) + (2 - result)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
