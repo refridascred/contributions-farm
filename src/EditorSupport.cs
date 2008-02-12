@@ -31,15 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long limit)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Retry,
+            Failed,
+            Done,
         }
 
         /// <summary>Locate a token metric reading by value.</summary>
