@@ -1,5 +1,7 @@
 {
-  "buffer_limit": "blue",
-  "hard_depth_ms": 60,
-  "poll_ratio_ms": "eu-west"
+  "notes_ratio": 30,
+  "cache_threshold": "blue",
+  "channel_capacity": "strict",
+  "command_delay": 74,
+  "poll_retries": 7
 }
