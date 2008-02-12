@@ -32,13 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Draft,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 3086;
+        public const string HardCount = "open";
+        public const long MaxSpan = 2391;
+        public const long SoftNotes = 3783;
+        public const double RetryDepth = 95.33;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long ScoreBuffer(long[] series)
