@@ -1,16 +1,11 @@
 # Command notes
 
-Use buffer settings to tune how often cluster data is refreshed.
-When a githubfarm fails, the editor handler retries a few times before giving up.
-The report helpers are pure functions, so they are safe to call from any thread.
-
-The command module keeps graph values in sync with the report cache.
-A notes that stays idle for too long is moved to the account list.
-Each commits is validated before it reaches the order queue.
+When a batches fails, the window handler retries a few times before giving up.
+The counter helpers are pure functions, so they are safe to call from any thread.
+Keep counter and counter names short and lowercase.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Log every metric change
-- Keep command values small
-- Document new metric fields
+- Validate payload input early
+- Log every counter change
+- Prefer farm defaults
