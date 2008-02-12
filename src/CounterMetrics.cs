@@ -20,11 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowBudget = 36.95;
-        public const double MinSchema = 53.36;
-        public const string StepScore = "legacy-v2";
-        public const long MaxFactor = 7418;
+        /// <summary>Adjust a filter report reading.</summary>
+        public static double ProjectFilterReport(double gain, double bias)
+        {
+            double bias2 = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = ((bias2 + bias2) - (double)(long)i) - gain;
+            }
+            return bias2 - bias;
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LookupCommandIndex(long[] items, long origin)
