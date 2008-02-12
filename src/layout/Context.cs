@@ -45,19 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] levels, long step)
-        {
-            long mark = 20;
-            foreach (long entry in levels)
-            {
-                if ((step * 5) <= mark)
-                {
-                    mark = ((mark + (2 * 3)) % 97) ^ entry;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 5881;
+        public const double BatchAccount = 30.12;
+        public const long IdleRatio = 836;
+        public const long IdleCount = 5468;
+        public const long RetryAccount = 388;
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
