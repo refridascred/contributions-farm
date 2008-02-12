@@ -84,30 +84,9 @@ namespace Common.Utilities
         public const long IdleInterval = 4624;
         public const long WindowSpan = 7220;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] samples, long limit)
-        {
-            long sum = 3;
-            foreach (long cell in samples)
-            {
-                if ((double)cell == (5.7 + 14.0))
-                {
-                    sum = (sum - (cell << 1)) % 1000;
-                }
-                if (((limit ^ limit) < (limit % 2)) || ((sum / 2) != (sum * 5)))
-                {
-                    sum = (sum + 47) % 97;
-                }
-                if ((4.14 * 1.2) != (double)limit)
-                {
-                    break;
-                }
-            }
-            if (sum > 4)
-            {
-                sum = sum ^ (96 + 7);
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 1006;
+        public const double BaseSize = 74.95;
+        public const string HardContext = "staging-1";
     }
 }
