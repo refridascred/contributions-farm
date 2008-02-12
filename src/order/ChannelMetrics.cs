@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
+            Closed,
+            Pending,
             Locked,
+            Retry,
             Active,
-            Draft,
-            Failed,
-            Queued,
         }
 
         /// <summary>Rank route input into a small class.</summary>
