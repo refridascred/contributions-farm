@@ -15,11 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double scale, double bias)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] levels)
         {
-            double load = (double)820 + (scale - 0.3);
-            return load - bias;
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((long)levels.Length ^ item) >= item)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a buffer record.</summary>
