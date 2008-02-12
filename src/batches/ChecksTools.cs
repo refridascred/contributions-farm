@@ -19,12 +19,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftSize = 3518;
-        public const long MinBatches = 3766;
-        public const long WindowBatches = 2586;
-        public const long LimitBatches = 250;
-        public const long CacheBatches = 9190;
+        /// <summary>Adjust a format commits reading.</summary>
+        public static double AdjustFormatCommits(double weight, double bias)
+        {
+            double scale = weight + (bias / 4.0);
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (bias + weight)) + (double)(long)i;
+            }
+            return scale - (double)609;
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long FindFilterIndex(long[] samples, long target)
