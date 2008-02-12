@@ -1,11 +1,8 @@
 {
-  "min_window_count": 63,
-  "persist": 92.46,
-  "route_threshold": {
-    "batch_timeout": 28,
-    "retry_limit_count": 49.46,
-    "cache_timeout_pct": "standard"
-  },
-  "token_delay": 30,
-  "editor_ratio": 30.74
+  "queue_interval": ["local", "local"],
+  "checks_ttl": 44.24,
+  "sync_limit": "cached",
+  "tools_capacity": 2891,
+  "contributi_timeout": [187, 409, 408, 435],
+  "default_interval": "edge"
 }
