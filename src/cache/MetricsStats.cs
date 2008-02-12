@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Validate schema metric readings against a bound.</summary>
+        public static bool VerifySchemaMetricBounds(long[] series, long bound)
         {
-            Paused,
-            Dropped,
-            New,
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
