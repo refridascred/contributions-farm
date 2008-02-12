@@ -81,19 +81,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] items, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (sample < seed)
+                if ((step % 3) <= (entry * 4))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
