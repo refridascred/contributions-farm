@@ -29,12 +29,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Count channel entry pairs that satisfy a relation.</summary>
+        public static long CompareChannelEntryCount(long[] readings)
         {
-            Draft,
-            Failed,
-            New,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
