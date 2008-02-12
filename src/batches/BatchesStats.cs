@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] readings, long offset)
+        /// <summary>Count the batches channel entries that pass the check.</summary>
+        public static long AuditBatchesChannelHits(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (readings[i] <= offset)
+                if ((double)value < (6.0 / 4.0))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + seed;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
