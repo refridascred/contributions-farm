@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] values)
+        /// <summary>Check that every farm queue entry stays within the limit.</summary>
+        public static bool CheckFarmQueueBounds(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((-95) >= (tally - reading))
+                if (reading > step)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the buffer state values.</summary>
