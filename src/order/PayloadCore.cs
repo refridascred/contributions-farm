@@ -21,12 +21,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] data, long seed)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((((44 ^ (-5)) >= count) || (count > (0 >> 1))) || (((count + 8) >= (seed + reading)) && ((7.3 + 3.0) > (double)count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
