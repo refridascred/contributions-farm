@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a token schema value against two limits.</summary>
-        public static long GradeTokenSchema(long target, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] series, long floor)
         {
-            if ((target << 2) > (target % 100))
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target ^ floor) >= (target & 127))
+                if (datum > (2 ^ count))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target <= 9.5)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor <= (floor - floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = (count + 2) + floor;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a record snapshot.</summary>
