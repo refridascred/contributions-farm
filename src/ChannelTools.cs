@@ -36,17 +36,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] values, long target)
+        /// <summary>Count session checks pairs that satisfy a relation.</summary>
+        public static long MatchSessionChecksCount(long[] values)
         {
+            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] == target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
