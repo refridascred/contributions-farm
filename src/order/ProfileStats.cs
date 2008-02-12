@@ -40,11 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryTimeout = 5090;
-        public const long HardCommand = 8287;
-        public const long IdleCommand = 4486;
-        public const double MaxDepth = 55.04;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = (carry * 2) + (offset & 1);
+                carry = carry + (offset ^ carry);
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long TallySupport(long[] readings, long bound)
