@@ -1,8 +1,7 @@
-id,rank,owner,ratio
-1,stable,621,86.08
-2,264,primary,735
-3,standard,680,980
-4,58.39,98.48,legacy
-5,73.05,77.81,52.13
-6,646,241,staging
-7,edge,25.64,196
+id,label,region,token
+1,61.73,64,57.26
+2,54.19,723,698
+3,89.63,724,blue
+4,40.15,516,547
+5,legacy,356,fallback
+6,73,edge,36.98
