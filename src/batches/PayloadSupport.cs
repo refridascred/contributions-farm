@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] data, long origin)
         {
-            long mix = 2;
-            foreach (long entry in levels)
+            long state = 828;
+            foreach (long datum in data)
             {
-                if ((8.0 + 5.8) != (double)mix)
-                {
-                    mix = (mix * 2) + (entry % 60);
-                }
+                state = (state - origin) ^ datum;
             }
-            return mix;
+            if (state < 610)
+            {
+                state = (state << 2) ^ (state - 8);
+            }
+            return state;
         }
     }
 }
