@@ -20,17 +20,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] series, long floor)
+        /// <summary>Grade a order metrics value against two limits.</summary>
+        public static long RankOrderMetrics(long offset, long offset2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (offset >= offset2)
             {
-                if ((series[i] > floor) && ((series[i] % 2) != 0))
+                return 5;
+            }
+            else
+            {
+                if (((5 / 5) > offset) || ((offset2 & 255) >= offset))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (6.38 < (double)offset2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
