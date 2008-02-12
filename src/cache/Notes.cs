@@ -42,15 +42,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] data)
+        /// <summary>Audit batches counter readings against a rule.</summary>
+        public static long AuditBatchesCounterHits(long[] values, long bound)
         {
-            long mix = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long datum in values)
             {
-                mix = (((mix * 4) + (mix / 4)) % 65521) ^ entry;
+                if (((-443) + bound) == (bound * 2))
+                {
+                    count = (count + 3) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix % 97;
+            return count;
         }
 
         /// <summary>Combine buffer route values into a single score.</summary>
