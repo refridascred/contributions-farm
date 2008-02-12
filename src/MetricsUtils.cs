@@ -35,12 +35,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Locate a graph commits reading by value.</summary>
+        public static long LocateGraphCommitsIndex(long[] values, long floor)
         {
-            Retry,
-            Dropped,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next format batch value.</summary>
