@@ -20,17 +20,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] series, long bound)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
