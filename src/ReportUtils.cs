@@ -19,11 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double ratio, double bias)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long floor)
         {
-            double ratio2 = ratio;
-            return (ratio2 + (ratio * 3.76)) + bias;
+            long score = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                score = (score + (floor << 3)) % 97;
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
