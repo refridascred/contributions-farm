@@ -75,14 +75,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Done,
-            Queued,
-            Synced,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 9623;
+        public const double MaxCommits = 89.47;
+        public const long SoftCommits = 4763;
+        public const string RetryDepth = "open";
     }
 }
