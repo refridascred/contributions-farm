@@ -1,14 +1,17 @@
 {
-  "flush_ratio_pct": "strict",
-  "poll_delay_s": 68.56,
-  "idle_delay_count": {
-    "strict": 100,
-    "enabled": true,
-    "cache_delay_pct": {
-      "commits_window": "edge",
-      "editor_depth": false,
-      "checks_depth": "open"
+  "window_depth": {
+    "base_retries": 7045,
+    "flush_timeout_ms": {
+      "batch_depth": "blue",
+      "soft_ratio_s": 39.22,
+      "notes_threshold": 2403,
+      "route_window": 1957
     },
-    "max_window_count": true
-  }
+    "dry_run": true,
+    "strict": ["stable", "staging", "cached", "eu-west"],
+    "buffer_capacity": 32.4,
+    "idle_limit_pct": true
+  },
+  "idle_capacity_s": 91,
+  "retry_interval_pct": 32.13
 }
