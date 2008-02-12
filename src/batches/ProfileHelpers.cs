@@ -27,14 +27,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Closed,
-            Locked,
-            Active,
-            Retry,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 7867;
+        public const string IdleLevel = "stable-v2";
+        public const double SoftSpan = 11.57;
+        public const string WindowCount = "local-v2";
+        public const string RetryCount = "strict-edge";
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] series, long seed)
