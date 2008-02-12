@@ -36,26 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] data)
+        /// <summary>Scale a report stream figure with a bias.</summary>
+        public static double AdjustReportStream(double gain, double floor)
         {
-            long total = 11;
-            foreach (long reading in data)
-            {
-                if ((reading - total) >= (reading - reading))
-                {
-                    continue;
-                }
-                if (((2 - reading) <= (total << 3)) && ((double)total <= (3.6 / 5.0)))
-                {
-                    total = total ^ reading;
-                }
-                if ((57 & 127) != (total - reading))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
+            double drift = 2.0;
+            return ((drift - drift) + gain) + floor;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
