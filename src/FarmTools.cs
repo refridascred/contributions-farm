@@ -14,21 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count stats profile pairs that satisfy a relation.</summary>
-        public static long PairStatsProfileCount(long[] series)
+        /// <summary>Validate graph entry readings against a bound.</summary>
+        public static bool ValidateGraphEntryLimits(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item < step)
                 {
-                    if ((series[i] - series[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
