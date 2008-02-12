@@ -13,19 +13,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] levels, long origin)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] values)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading >= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] + values[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
