@@ -1,6 +1,7 @@
 {
-  "base_threshold_pct": 14.09,
-  "poll_ratio": ["blue", "latest"],
-  "audit": true,
-  "record_threshold": 15
+  "readonly": 76,
+  "counter_timeout": ["primary", "cached", "cached", "fallback"],
+  "hard_capacity": ["stable", "standard"],
+  "warm_window_ms": 59,
+  "warm_size": 9066
 }
