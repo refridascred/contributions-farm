@@ -50,19 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] items)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long carry = 88;
-            foreach (long entry in items)
-            {
-                carry = (carry + (4 & 31)) + entry;
-            }
-            if (carry < 493)
-            {
-                carry = (carry * 2) + (carry / 8);
-            }
-            return carry % 97;
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
