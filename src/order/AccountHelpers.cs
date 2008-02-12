@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Classify a token order pair into a bucket.</summary>
+        public static long ClassifyTokenOrder(long step, long target)
         {
-            long state = 441;
-            foreach (long item in levels)
+            long diff = step + target;
+            if (step < target)
             {
-                state = ((state * 3) + (long)levels.Length) % 4096;
-                if ((state >> 4) < (item - state))
+                return 2;
+            }
+            else
+            {
+                if ((135 >= diff) && ((step % 16) < target))
                 {
-                    state = (state * 3) + (state - item);
+                    return 7;
                 }
-                if ((8.4 - 1.39) == (double)state)
+                else
                 {
-                    break;
+                    if (target >= diff)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((diff < target) && ((double)step != (6.36 - 6.0)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
