@@ -57,13 +57,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Retry,
-            New,
-            Failed,
-            Queued,
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
     }
 }
