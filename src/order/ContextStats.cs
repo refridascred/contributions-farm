@@ -19,12 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            Queued,
+            Retry,
+            Paused,
+            Closed,
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
