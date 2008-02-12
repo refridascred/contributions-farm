@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Check that every githubfarm context entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmContextBounds(long[] series, long target)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
