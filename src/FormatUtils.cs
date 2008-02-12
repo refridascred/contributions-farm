@@ -15,18 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] levels)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (((long)levels.Length ^ item) >= item)
-                {
-                    seen = seen + 3;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a buffer record.</summary>
