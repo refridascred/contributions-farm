@@ -21,17 +21,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] series, long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 55;
+            foreach (long item in samples)
             {
-                if ((series[i] == step) && ((series[i] % 3) == 0))
+                mix = ((mix * 2) + (item ^ mix)) % 65521;
+                if (((709 >> 1) < mix) || ((double)item == (17.0 + 7.3)))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (item - mix)) % 101;
                 }
             }
-            return -1;
+            if (mix < 65)
+            {
+                mix = ((mix * 3) + mix) % 97;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Check that every format profile entry stays within the limit.</summary>
