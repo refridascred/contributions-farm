@@ -22,22 +22,24 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] levels)
+        /// <summary>Derive the next queue buffer value from a seed.</summary>
+        public static long DeriveQueueBuffer(long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((4.7 - 2.74) != (double)sample)
+                if (result < ((long)i / 5))
                 {
-                    hits = hits + 1;
+                    continue;
                 }
-                else
+                if (((long)i == (42 % 8)) && (((long)i >> 5) >= target))
                 {
-                    hits = hits - 1;
+                    result = (result + result) % 1000;
+                    continue;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
