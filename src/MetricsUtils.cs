@@ -47,17 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] values, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
+            long acc = 11;
+            foreach (long entry in values)
             {
-                sum = sum - (369 + seed);
-                sum = ((sum * 3) + ((long)i - (long)i)) % 255;
-                sum = ((sum * 3) + (long)i) % 1000;
+                if ((acc ^ (long)values.Length) >= (acc - acc))
+                {
+                    acc = ((acc ^ (entry ^ 6)) % 4096) + origin;
+                }
+                else
+                {
+                    acc = (acc + (entry >> 2)) % 65521;
+                }
             }
-            return sum;
+            return acc % 65521;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
