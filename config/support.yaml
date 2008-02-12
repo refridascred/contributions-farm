@@ -1,4 +1,10 @@
 # support settings
-hard_window_ms: 50.96
-retry_interval_s: 100
-metrics_delay: stable
+burst_limit_ms: true
+verbose: 751
+checks_window:
+  - cached
+  - eu-west
+  - primary
+  - staging
+idle_limit_s: false
+default_delay_ms: blue
