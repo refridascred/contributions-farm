@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of graph buffer readings.</summary>
-        public static long ScoreGraphBuffer(long[] samples)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] samples)
         {
-            long carry = 879;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (carry ^ (carry & 31)) - entry;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Accumulate route graph samples.</summary>
