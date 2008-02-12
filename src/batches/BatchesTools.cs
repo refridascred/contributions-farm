@@ -48,22 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] samples, long target)
-        {
-            long mix = 534;
-            foreach (long item in samples)
-            {
-                if ((target ^ mix) > item)
-                {
-                    mix = mix + target;
-                }
-                if ((mix % 5) >= target)
-                {
-                    mix = ((mix << 2) ^ mix) % 1000;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstSpan = 3998;
+        public const long WindowStream = 1192;
+        public const long BurstStream = 7883;
+        public const long CacheDepth = 9747;
+        public const long HardStream = 6355;
     }
 }
