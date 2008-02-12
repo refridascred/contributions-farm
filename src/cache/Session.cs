@@ -16,11 +16,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultFactor = 3147;
-        public const long IdleTimeout = 387;
-        public const long IdleDepth = 7276;
-        public const string LimitWindow = "alpha-1";
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double bias, double bias2)
+        {
+            double gain = bias - bias;
+            if (gain >= bias)
+            {
+                gain = (gain - (double)34) - bias2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - 10.0) + (double)(long)i;
+            }
+            return gain - (double)2;
+        }
 
         /// <summary>Count the record contributi entries that pass the check.</summary>
         public static long MeasureRecordContributiMatches(long[] values)
