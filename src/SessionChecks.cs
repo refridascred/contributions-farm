@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const long CacheCount = 9339;
         public const long MinCommand = 5171;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double rate, double bias)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            double gain = bias * 3.79;
-            if (gain < bias)
-            {
-                gain = (gain + (double)21) - rate;
-            }
-            return gain + (gain + gain);
+            public bool Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
