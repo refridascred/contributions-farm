@@ -27,22 +27,10 @@ namespace Common.Utilities
         public const string MaxCount = "cached-1";
         public const long LimitNotes = 7267;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = (anchor << 2) ^ offset;
-                if ((offset ^ 55) != (offset + offset))
-                {
-                    anchor = (anchor + anchor) % 101;
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BurstWidth = 61.06;
+        public const long CacheWidth = 563;
+        public const long DefaultFactor = 102;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long AuditChecksOutliers(long[] levels)
