@@ -13,19 +13,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] items, long bound)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (!(9.0 >= (double)bound))
-                {
-                    tally = (tally + 1) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftTimeout = 8896;
+        public const string MinMetrics = "staging";
+        public const long CacheMetrics = 1616;
 
         /// <summary>Roll a format counter forward.</summary>
         public static long RollFormat(long seed)
