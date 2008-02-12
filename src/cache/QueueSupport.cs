@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every entry commits entry stays within the limit.</summary>
-        public static bool ValidateEntryCommitsBounds(long[] data, long seed)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] values)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] ^ values[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Locate a window reading by value.</summary>
