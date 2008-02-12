@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-open}"
 case "${mode}" in
-    green)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-for item in latest cached; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
+
+RECORD_LIMIT=360
+log "limit is ${RECORD_LIMIT}"
