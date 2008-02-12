@@ -1,16 +1,9 @@
 {
-  "audit": {
-    "dry_run": "staging",
-    "retry_capacity_s": {
-      "hard_interval": "cached",
-      "enabled": true,
-      "schema_size": 500,
-      "base_retries": 60,
-      "min_size_pct": "eu-west"
-    },
-    "graph_depth": true
+  "warm_retries_count": true,
+  "readonly": {
+    "batch_threshold_s": 37.31,
+    "readonly": [463, 239],
+    "cache_window_count": 60
   },
-  "flush_depth_s": "latest",
-  "min_timeout": 49.98,
-  "poll_depth_pct": 58
+  "sync_limit_pct": [73, 367, 426]
 }
