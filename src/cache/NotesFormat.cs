@@ -25,15 +25,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the checks entry entries that pass the check.</summary>
-        public static long CountChecksEntryGaps(long[] readings)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] samples, long origin)
         {
             long seen = 0;
-            foreach (long value in readings)
+            foreach (long cell in samples)
             {
-                if ((0.07 > (double)value) && ((seen - value) >= (value * 4)))
+                if (((double)seen >= (double)(long)samples.Length) && (origin >= (cell + origin)))
                 {
-                    seen = seen + 3;
+                    seen = seen + 2;
                 }
             }
             return seen;
