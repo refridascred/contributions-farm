@@ -20,19 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] data, long limit)
+        /// <summary>Count the cluster window entries that pass the check.</summary>
+        public static long AuditClusterWindowHits(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (sample > limit)
+                if (!((cell >> 1) <= (884 + floor)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
