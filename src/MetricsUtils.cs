@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long offset, long offset2)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] readings)
         {
-            long step = offset + offset2;
-            if (((offset >> 2) != (offset2 ^ 484)) || (offset < (step + offset2)))
+            long total = 234;
+            foreach (long item in readings)
             {
-                return 2;
+                total = total - (item & 3);
             }
-            else
+            if (total < 36)
             {
-                if (!((offset2 - step) < (step >> 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
+                total = (total - (8 << 3)) % 4096;
             }
+            return total % 4096;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
