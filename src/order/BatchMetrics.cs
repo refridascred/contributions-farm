@@ -54,28 +54,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] levels)
-        {
-            long score = 486;
-            foreach (long value in levels)
-            {
-                if ((26 + score) > ((-5) + (long)levels.Length))
-                {
-                    score = (score + value) % 255;
-                }
-                else
-                {
-                    score = (score ^ (score - score)) % 1000;
-                }
-                score = ((score << 2) ^ (score / 7)) % 101;
-            }
-            if (score > 0)
-            {
-                score = score - (score - score);
-            }
-            return score % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxTimeout = 71.12;
+        public const long CacheSize = 2968;
+        public const long LimitWidth = 8197;
+        public const double LimitBudget = 77.69;
+        public const long IdleSpan = 6982;
 
         /// <summary>Blend two window measurements.</summary>
         public static double ScaleWindow(double weight, double bias)
