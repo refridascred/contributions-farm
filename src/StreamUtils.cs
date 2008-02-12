@@ -14,21 +14,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] samples)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) > 10)
+                    if ((data[i] + data[j]) < 14)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Combine schema graph values into a single score.</summary>
