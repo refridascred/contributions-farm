@@ -13,18 +13,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] values, long offset)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double scale = bias - (bias * 15.0);
+            if (scale >= (rate / 9.0))
             {
-                if ((value < (offset << 3)) && ((value & 127) > (offset << 3)))
-                {
-                    matches = matches + 2;
-                }
+                scale = scale - scale;
             }
-            return matches;
+            return scale + (0.28 / 6.0);
         }
 
         /// <summary>Iterate the payload schema series from a seed.</summary>
