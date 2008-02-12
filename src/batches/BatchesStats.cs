@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the batches channel entries that pass the check.</summary>
-        public static long AuditBatchesChannelHits(long[] samples, long seed)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long score = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)value < (6.0 / 4.0))
-                {
-                    matches = (matches + 3) + seed;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
