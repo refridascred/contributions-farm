@@ -28,18 +28,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the batches checks entries that pass the check.</summary>
-        public static long TallyBatchesChecksMatches(long[] data)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long target)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((cell << 3) != (long)data.Length)
-                {
-                    tally = tally + 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Combine command values into a single score.</summary>
