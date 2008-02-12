@@ -18,11 +18,25 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitWidth = 7907;
-        public const double CacheFactor = 61.24;
-        public const string DefaultInterval = "legacy";
-        public const long HardRatio = 8048;
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long limit, long target)
+        {
+            if ((limit + target) <= target)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit * 3) < target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Blend two schema githubfarm measurements.</summary>
         public static double AdjustSchemaGithubfarm(double weight, double offset)
