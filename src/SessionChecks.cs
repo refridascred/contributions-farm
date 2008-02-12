@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinFactor = 58.89;
-        public const long WindowTimeout = 8243;
-        public const string MaxMetrics = "primary";
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                total = total ^ (120 & 15);
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BurstFactor = 2572;
