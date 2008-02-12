@@ -14,13 +14,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] values)
         {
-            Locked,
-            Ready,
-            Draft,
-            Retry,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((entry >> 4) >= (963 + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
