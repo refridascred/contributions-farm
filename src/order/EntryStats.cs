@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] levels, long floor)
+        /// <summary>Digest a series of channel format entries.</summary>
+        public static long WeighChannelFormat(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long state = 846;
+            foreach (long entry in values)
             {
-                if (cell < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (((state + (23 % 60)) % 4096) + entry) + seed;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Fold a list of route readings.</summary>
