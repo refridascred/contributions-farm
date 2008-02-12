@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            Closed,
+            Retry,
+            Failed,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
