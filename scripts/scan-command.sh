@@ -12,16 +12,12 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-primary}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    standard)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in eu-west local fallback staging; do
-    log "checking ${item}"
-done
