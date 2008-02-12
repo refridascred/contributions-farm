@@ -12,12 +12,24 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchRatio = 42.89;
-        public const string WindowWidth = "latest-edge";
-        public const long RetryChannel = 7910;
-        public const long StepChannel = 7366;
-        public const string MaxInterval = "local-edge";
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double gain, double bias)
+        {
+            double mean = 3.0;
+            if (mean <= (8.0 / 4.0))
+            {
+                mean = mean - gain;
+            }
+            else
+            {
+                mean = mean - (mean / 9.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (bias / 3.0)) + (double)(long)i;
+            }
+            return mean - (bias - mean);
+        }
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LocateGraphIndex(long[] data, long offset)
