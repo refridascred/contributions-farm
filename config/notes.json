@@ -1,8 +1,7 @@
 {
-  "base_timeout_count": [381, 273],
-  "tools_delay": true,
-  "soft_retries": 51,
-  "retry_ttl_pct": 23.87,
-  "default_ratio_pct": "primary",
-  "cache_timeout_count": 1024
+  "compress": 30,
+  "cache_threshold": "strict",
+  "batch_depth": "standard",
+  "flush_ratio_pct": "latest",
+  "schema_threshold": "primary"
 }
