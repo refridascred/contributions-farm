@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the session state values.</summary>
