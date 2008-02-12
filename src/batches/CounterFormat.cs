@@ -12,19 +12,23 @@ namespace Common.Utilities
         public const double MaxSpan = 28.4;
         public const double BaseLayout = 73.8;
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double scale, double floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] series, long seed)
         {
-            double gain = scale / 4.0;
-            if (gain >= floor)
+            long acc = -985;
+            foreach (long datum in series)
             {
-                gain = gain - gain;
+                acc = ((acc + seed) % 255) + datum;
+                if (!((1.02 + 4.76) <= (double)seed))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (acc < 32)
             {
-                gain = (gain + (7.7 / 2.0)) + (double)(long)i;
+                acc = (acc + (915 - acc)) % 255;
             }
-            return gain - (gain / 8.0);
+            return acc % 1000;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
