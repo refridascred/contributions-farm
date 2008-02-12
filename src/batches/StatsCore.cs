@@ -49,15 +49,18 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 8799;
         public const long BurstScore = 621;
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double ratio, double span)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] levels, long seed)
         {
-            double rate = span;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                rate = ((rate + (span * 17.0)) + (double)(long)i) - ratio;
+                if ((matches + seed) > (seed >> 4))
+                {
+                    matches = (matches + 2) + reading;
+                }
             }
-            return rate + (13.0 + rate);
+            return matches;
         }
 
         /// <summary>Accumulate schema samples.</summary>
