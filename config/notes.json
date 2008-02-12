@@ -1,15 +1,6 @@
 {
-  "idle_threshold": false,
-  "max_ttl_ms": [390, 80],
-  "warm_interval": {
-    "dry_run": 18,
-    "flush_window": 30,
-    "soft_retries_count": "standard",
-    "warm_ratio": {
-      "flush_ratio": "legacy",
-      "metrics_timeout": false,
-      "idle_window": "staging"
-    },
-    "burst_size_count": 94.91
-  }
+  "base_limit_pct": "latest",
+  "cache_retries_count": true,
+  "default_interval": 6533,
+  "min_interval": "latest"
 }
