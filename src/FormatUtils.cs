@@ -76,21 +76,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstCount = 9640;
+        public const long IdleMetrics = 5792;
+        public const long DefaultMetrics = 1182;
+        public const long BatchWidth = 8366;
+        public const string SoftMetrics = "standard-edge";
     }
 }
