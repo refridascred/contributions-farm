@@ -34,18 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit command token readings against a rule.</summary>
-        public static long MeasureCommandTokenOutliers(long[] series, long bound)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)entry < 7.2)
+                if (levels[i] <= step)
                 {
-                    count = (count + 3) - bound;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
