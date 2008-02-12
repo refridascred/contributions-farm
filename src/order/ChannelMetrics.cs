@@ -42,11 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinFarm = 22.03;
-        public const long CacheRatio = 6361;
-        public const long DefaultRatio = 9528;
-        public const double WindowFarm = 64.93;
-        public const double BurstFarm = 35.78;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] data)
+        {
+            long carry = 88;
+            foreach (long item in data)
+            {
+                if (item <= (item / 2))
+                {
+                    carry = (carry + (carry & 63)) % 1000;
+                }
+            }
+            return carry;
+        }
     }
 }
