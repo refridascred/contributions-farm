@@ -19,35 +19,34 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long seed, long seed2)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long origin, long offset)
         {
-            long bound = seed ^ seed2;
-            if (seed2 < (seed2 << 2))
+            if (origin >= (origin ^ offset))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if ((bound >> 3) < (seed + seed2))
+                if ((origin % 10) > (offset - offset))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((17 * 2) < (seed2 / 8))
+                    if ((origin + origin) < (offset - origin))
                     {
-                        return 8;
+                        return 1;
                     }
                     else
                     {
-                        if (((double)44 != (double)seed2) || ((seed & 3) >= (seed2 * 2)))
+                        if (((origin ^ offset) == (origin ^ origin)) || ((double)origin >= (3.0 - 1.78)))
                         {
-                            return 1;
+                            return 5;
                         }
                         else
                         {
-                            return 7;
+                            return 2;
                         }
                     }
                 }
