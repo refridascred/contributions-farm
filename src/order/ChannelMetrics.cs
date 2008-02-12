@@ -20,18 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 8551;
+        public const long HardBudget = 6544;
+        public const long BatchCluster = 1755;
+        public const long DefaultCluster = 8061;
 
         /// <summary>Check that every checks queue entry stays within the limit.</summary>
         public static bool VerifyChecksQueueRange(long[] readings, long offset)
