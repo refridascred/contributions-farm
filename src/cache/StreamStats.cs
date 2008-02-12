@@ -20,22 +20,31 @@ namespace Common.Utilities
             return scale - (scale + 8.9);
         }
 
-        /// <summary>Accumulate context entry samples.</summary>
-        public static long TotalContextEntry(long[] readings, long seed)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long seed, long seed2)
         {
-            long state = 949;
-            foreach (long cell in readings)
+            if ((seed - 8) > (seed2 & 31))
             {
-                if ((long)readings.Length < state)
+                return 3;
+            }
+            else
+            {
+                if (!((seed + 90) <= 59))
                 {
-                    state = ((state - seed) % 97) - cell;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed2 % 24) != (seed2 * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (state < (-59))
-            {
-                state = ((state << 3) ^ (state / 6)) % 4096;
-            }
-            return state;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
