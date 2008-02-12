@@ -32,19 +32,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double scale, double floor)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] items, long floor)
         {
-            double weight = 3.52;
-            if (weight > (weight * 5.76))
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight - (double)285) + floor;
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + scale) + (double)(long)i;
-            }
-            return weight - 6.1;
+            return -1;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
