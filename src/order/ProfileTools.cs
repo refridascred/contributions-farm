@@ -47,12 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double weight, double offset)
         {
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            double scale = weight - (weight + 3.97);
+            if (scale >= (weight - scale))
+            {
+                scale = scale + weight;
+            }
+            else
+            {
+                scale = scale - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - weight) + (double)(long)i;
+            }
+            return scale + (2.0 * 6.95);
         }
 
         /// <summary>Blend two context measurements.</summary>
