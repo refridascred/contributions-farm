@@ -25,10 +25,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchWidth = 1458;
-        public const double RetryScore = 96.68;
-        public const double SoftCount = 35.71;
+        /// <summary>Count the checks entry entries that pass the check.</summary>
+        public static long CountChecksEntryGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((0.07 > (double)value) && ((seen - value) >= (value * 4)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long PairCounterCount(long[] series)
