@@ -53,19 +53,16 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] values, long bound)
+        /// <summary>Accumulate githubfarm metrics samples.</summary>
+        public static long CombineGithubfarmMetrics(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long anchor = 835;
+            foreach (long cell in data)
             {
-                if (entry > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor - (limit / 8)) % 101) + cell;
+                anchor = anchor ^ limit;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Hold a cache stats.</summary>
