@@ -1,11 +1,7 @@
 {
-  "readonly": true,
-  "idle_size": 42.25,
-  "cache_threshold_pct": {
-    "soft_capacity_pct": 95,
-    "enabled": "cached",
-    "min_ratio_count": true,
-    "burst_capacity_ms": "strict",
-    "burst_size_ms": [260, 332]
-  }
+  "account_delay": 1024,
+  "readonly": "open",
+  "cache_size": false,
+  "metrics_ratio": "stable",
+  "account_depth": 500
 }
