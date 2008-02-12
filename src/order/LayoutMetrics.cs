@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] values, long seed)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] series)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long anchor = 416;
+            foreach (long item in series)
             {
-                if (item < seed)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = (anchor + (90 << 1)) ^ item;
             }
-            return flag;
+            if (anchor < 60)
+            {
+                anchor = anchor ^ 1;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the farm mode values.</summary>
