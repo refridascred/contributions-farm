@@ -67,18 +67,10 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit order account readings against a rule.</summary>
-        public static long TallyOrderAccountGaps(long[] series, long offset)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((1.8 - 2.0) <= (double)count)
-                {
-                    count = ((count + 3) ^ cell) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchProfile = "alpha";
+        public const string WindowProfile = "staging-v2";
+        public const long IdleProfile = 6255;
+        public const long DefaultProfile = 768;
     }
 }
