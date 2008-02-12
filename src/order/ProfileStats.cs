@@ -46,11 +46,15 @@ namespace Common.Utilities
         public const long IdleCommand = 4486;
         public const double MaxDepth = 55.04;
 
-        /// <summary>Scale a report route figure with a bias.</summary>
-        public static double SmoothReportRoute(double gain, double bias)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] readings, long bound)
         {
-            double drift = gain;
-            return drift - bias;
+            long anchor = 24;
+            foreach (long sample in readings)
+            {
+                anchor = ((anchor ^ (sample + anchor)) % 4096) + bound;
+            }
+            return anchor % 97;
         }
     }
 }
