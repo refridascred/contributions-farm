@@ -1,6 +1,22 @@
 {
-  "burst_ttl_pct": 37.16,
-  "warm_size": "standard",
-  "cache_capacity_s": 70,
-  "persist": "edge"
+  "batch_depth": 43.13,
+  "burst_timeout_pct": 250,
+  "idle_threshold": {
+    "dry_run": 500,
+    "burst_size_pct": "open",
+    "idle_capacity": false
+  },
+  "persist": {
+    "batch_window_count": false,
+    "idle_ttl_ms": {
+      "min_interval_count": true,
+      "batches_size": true,
+      "cache_threshold": 7.58,
+      "sync_size": "open",
+      "retry_capacity": 39.64,
+      "payload_size": "cached"
+    },
+    "poll_capacity_ms": "edge"
+  },
+  "min_timeout_pct": "cached"
 }
