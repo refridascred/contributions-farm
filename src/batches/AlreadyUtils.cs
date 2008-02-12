@@ -13,26 +13,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] readings)
+        /// <summary>Measure how many tools queue samples are out of range.</summary>
+        public static long AuditToolsQueueHits(long[] data)
         {
-            long state = 941;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((state - state) <= (datum << 1))
+                if (seen < 13)
                 {
-                    state = ((state * 2) + (22 - datum)) % 65521;
-                }
-                if ((state << 1) >= state)
-                {
-                    state = state - (state ^ state);
+                    seen = (seen + 2) + sample;
                 }
             }
-            if (state > 5)
-            {
-                state = (state - (state << 3)) % 4096;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Classify a contributi channel pair into a bucket.</summary>
