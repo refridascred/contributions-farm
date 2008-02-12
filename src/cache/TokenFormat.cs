@@ -35,21 +35,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] readings)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long limit, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long next = limit ^ floor;
+            if (next > (floor * 5))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((next ^ floor) != (limit - next))
                 {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
     }
 }
