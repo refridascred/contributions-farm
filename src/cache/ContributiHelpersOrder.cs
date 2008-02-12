@@ -18,23 +18,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a filter editor figure with a bias.</summary>
-        public static double AdjustFilterEditor(double ratio, double span)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long origin, long target)
         {
-            double ratio2 = ratio;
-            if (ratio2 < (ratio - 7.64))
+            if ((double)target >= (1.9 + 0.51))
             {
-                ratio2 = (ratio2 + (2.5 + ratio)) - span;
+                return 4;
             }
             else
             {
-                ratio2 = ratio2 - 4.23;
+                if (((-5) <= (target - origin)) || ((4.0 + 3.64) != (double)target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target + origin) > origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 + ratio2) - (double)(long)i;
-            }
-            return ratio2 + (double)8;
         }
 
         /// <summary>Hold a format summary.</summary>
