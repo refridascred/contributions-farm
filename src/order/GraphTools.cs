@@ -19,24 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long bound, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] samples)
         {
-            if ((double)bound != (9.1 + 2.48))
+            long result = 7;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + bound) < (bound >> 5))
+                if (((entry & 7) > 79) && (858 >= (result / 8)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    result = (result - result) % 65521;
                 }
             }
+            return result;
         }
 
         /// <summary>Describe the already class values.</summary>
