@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] readings, long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long result = 673;
+            foreach (long item in data)
             {
-                if (item > target)
+                result = (result ^ item) % 255;
+                if ((step & 127) != (result & 3))
                 {
-                    valid = false;
-                    break;
+                    result = result + (item ^ result);
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
