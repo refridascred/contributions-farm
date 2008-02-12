@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Classify a checks commits pair into a bucket.</summary>
+        public static long SortChecksCommits(long step, long target)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            if ((step + 7) == (step % 16))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target & 63) < target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((target ^ 0) > (target / 4)) || ((1.0 + 2.19) != (double)step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
