@@ -20,12 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Active,
-            Retry,
-            Draft,
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Validate already support readings against a bound.</summary>
