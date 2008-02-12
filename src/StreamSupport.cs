@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public bool Rank { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchLevel = 67.01;
+        public const double MaxTimeout = 7.0;
+        public const double DefaultScore = 16.08;
+        public const string DefaultChecks = "strict";
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchLimits(long[] items, long limit)
