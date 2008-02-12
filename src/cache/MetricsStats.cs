@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double bias, double offset)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double load = offset;
-            if (load >= (double)240)
-            {
-                load = load - (double)5;
-            }
-            else
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load + load;
+            Paused,
+            Draft,
+            Stale,
+            Synced,
+            Closed,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
