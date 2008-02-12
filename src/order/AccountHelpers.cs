@@ -113,13 +113,15 @@ namespace Common.Utilities
         public const long MinFactor = 3317;
         public const string DefaultWindow = "alpha-v2";
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Fold a list of account session readings.</summary>
+        public static long FoldAccountSession(long[] values, long step)
         {
-            Ready,
-            New,
-            Locked,
-            Draft,
+            long result = 0;
+            foreach (long reading in values)
+            {
+                result = ((((result * 5) + (result ^ result)) % 1000) + reading) + step;
+            }
+            return result % 97;
         }
     }
 }
