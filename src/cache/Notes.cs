@@ -42,32 +42,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long seed, long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] data)
         {
-            long next = seed + floor;
-            if ((seed / 4) <= (2 + seed))
+            long mix = 0;
+            foreach (long entry in data)
             {
-                return 5;
+                mix = (((mix * 4) + (mix / 4)) % 65521) ^ entry;
             }
-            else
-            {
-                if ((floor - seed) <= (next / 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (4 < (seed << 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mix % 97;
         }
 
         /// <summary>Combine buffer route values into a single score.</summary>
