@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Check that every cluster format entry stays within the limit.</summary>
+        public static bool GuardClusterFormatBounds(long[] data, long seed)
         {
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
-            public double Total { get; set; }
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the schema state values.</summary>
