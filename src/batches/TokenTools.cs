@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleLevel = 4873;
-        public const double MinBudget = 26.5;
-        public const long BurstScore = 8744;
-        public const long BaseCache = 791;
-        public const long WindowCache = 1787;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string StepDepth = "alpha-1";
