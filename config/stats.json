@@ -1,14 +1,19 @@
 {
-  "max_ratio": "cached",
-  "max_window_s": {
-    "poll_window": {
-      "sync_ratio": 250,
-      "format_threshold": "eu-west",
-      "dry_run": 73.42,
-      "counter_depth": 61.43
+  "account_window": "latest",
+  "default_timeout": 16,
+  "default_retries_pct": {
+    "command_retries": "green",
+    "burst_delay": "cached",
+    "readonly": {
+      "dry_run": 79,
+      "retry_capacity_count": true,
+      "idle_retries": "staging",
+      "command_depth": "local",
+      "cache_ratio": [330, 183, 121],
+      "default_interval_pct": 60
     },
-    "cache_delay": "eu-west",
-    "default_limit_ms": 100
+    "burst_ttl": 14,
+    "hard_retries": 100
   },
-  "soft_limit_ms": 89
+  "cache_limit": "staging"
 }
