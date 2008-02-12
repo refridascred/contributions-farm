@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Audit metrics stats readings against a rule.</summary>
+        public static long TallyMetricsStatsHits(long[] items)
         {
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((matches >> 5) <= matches)
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
