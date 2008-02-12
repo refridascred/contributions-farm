@@ -42,18 +42,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] values, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] samples)
         {
-            long sum = 846;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (((origin << 1) == (datum << 2)) && (sum <= datum))
+                if ((8.0 * 0.3) == (double)item)
                 {
-                    sum = sum + (origin & 7);
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the format phase values.</summary>
