@@ -24,20 +24,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] series, long offset)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepScore = 17.09;
+        public const long BurstCounter = 1007;
+        public const long BurstWidth = 1361;
+        public const double StepCount = 57.33;
+        public const double LimitCounter = 66.6;
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
