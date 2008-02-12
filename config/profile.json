@@ -1,22 +1,5 @@
 {
-  "stats_limit": 89.66,
-  "max_limit_pct": {
-    "compress": [207, 291],
-    "retry_threshold": false,
-    "retry_capacity_s": 73,
-    "warm_timeout": 76,
-    "sync_capacity_ms": false
-  },
-  "command_capacity": {
-    "idle_threshold": {
-      "cache_retries": 6374,
-      "default_threshold": true,
-      "poll_window_pct": "cached"
-    },
-    "batch_retries_s": 7405,
-    "warm_retries_count": [12, 416],
-    "retry_size_pct": "fallback"
-  },
-  "cache_capacity": 69.2,
-  "min_depth_s": [275, 20]
+  "batch_delay": 85,
+  "warm_limit": 1024,
+  "soft_retries_count": "blue"
 }
