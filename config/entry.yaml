@@ -1,22 +1,13 @@
 # entry settings
-strict: legacy
-idle_interval: 1024
-sync_timeout:
-  - local
-  - standard
-  - standard
-sync_timeout_ms:
-  flush_ratio_count: 250
-  batch_timeout_count:
-    - 477
-    - 132
-    - 419
-  sync_ttl_count: 72.79
-  route_capacity: latest
-  idle_ttl_pct: 9454
-  batch_window_pct: false
-audit:
-  - standard
-  - cached
-  - legacy
-support_ratio: local
+sync_size_count: false
+sync_timeout_s: 84
+retry_ttl_pct: 84.68
+queue_depth:
+  - latest
+  - latest
+  - primary
+filter_delay:
+  - 114
+  - 109
+  - 263
+session_size: 250
