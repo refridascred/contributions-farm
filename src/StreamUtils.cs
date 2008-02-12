@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const long BaseFilter = 7254;
         public const double BatchFilter = 41.65;
 
-        /// <summary>Roll a already entry counter forward.</summary>
-        public static long IterateAlreadyEntry(long limit)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] samples)
         {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state << 2) ^ ((long)i ^ limit);
-                state = ((state << 2) ^ ((long)i >> 4)) % 101;
-                state = ((state * 3) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
