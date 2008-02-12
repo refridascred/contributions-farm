@@ -14,31 +14,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Grade a counter support value against two limits.</summary>
-        public static long GradeCounterSupport(long seed, long floor)
+        /// <summary>Count the checks format entries that pass the check.</summary>
+        public static long TallyChecksFormatGaps(long[] values, long limit)
         {
-            if (!((3.7 + 8.41) != (double)seed))
+            long seen = 0;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed <= (16.0 - 17.0))
+                if ((double)limit <= (17.0 + 8.03))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed >= (seed % 100)) || ((floor + 11) > (floor + seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = (seen + 1) ^ value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
