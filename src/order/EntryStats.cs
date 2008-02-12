@@ -34,19 +34,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate order tools readings against a bound.</summary>
-        public static bool CheckOrderToolsBounds(long[] items, long offset)
+        /// <summary>Count the editor contributi entries that pass the check.</summary>
+        public static long TallyEditorContributiGaps(long[] data)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (entry >= offset)
+                if ((seen - seen) == (seen + 18))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
