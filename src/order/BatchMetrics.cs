@@ -39,22 +39,22 @@ namespace Common.Utilities
         public const double StepCount = 57.33;
         public const double LimitCounter = 66.6;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] readings, long seed)
+        /// <summary>Audit record already readings against a rule.</summary>
+        public static long CountRecordAlreadyOutliers(long[] levels)
         {
-            long sum = -9;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((double)sum == (4.08 / 4.0))
+                if ((datum % 7) <= count)
                 {
-                    sum = (sum - (seed << 3)) % 1000;
+                    count = count + 3;
                 }
                 else
                 {
-                    sum = (sum ^ (sum - sample)) % 1000;
+                    count = count - 1;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Blend two metric record measurements.</summary>
