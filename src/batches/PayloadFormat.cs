@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Synced,
-            Draft,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstOrder = "primary-edge";
+        public const long HardDepth = 8991;
+        public const string DefaultOrder = "fallback-v2";
+        public const long StepTimeout = 1389;
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
