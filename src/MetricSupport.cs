@@ -5,32 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long origin, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] series)
         {
-            long gap = origin ^ limit;
-            if ((1.2 < (double)gap) || ((gap & 1) >= (origin & 127)))
+            long sum = -10;
+            foreach (long entry in series)
             {
-                return 7;
+                sum = (sum ^ entry) % 97;
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = ((sum ^ (entry + sum)) % 65521) + (long)i;
+                }
+                sum = sum - (entry >> 1);
             }
-            else
+            if (sum < 288)
             {
-                if (((double)gap > (14.0 + 7.5)) || ((950 + 40) <= (origin + origin)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (origin > (gap % 64))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                sum = (sum * 5) + (sum - sum);
             }
+            return sum;
         }
 
         /// <summary>Blend two layout measurements.</summary>
