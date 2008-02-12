@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 385;
-        public const double DefaultBudget = 10.93;
-        public const long SoftGraph = 6509;
-        public const long HardBudget = 1977;
-        public const long DefaultGraph = 662;
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Ready,
+            Active,
+            Pending,
+        }
 
         /// <summary>Adjust a profile reading.</summary>
         public static double ProjectProfile(double scale, double bias)
