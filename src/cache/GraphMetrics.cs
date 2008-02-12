@@ -67,19 +67,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two window commits measurements.</summary>
-        public static double SmoothWindowCommits(double bias, double bias2)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long bound)
         {
-            double bias3 = bias2 - (bias2 * 9.49);
-            if (bias3 <= (bias2 + bias))
+            long result = bound;
+            for (int i = 0; i < 8; i++)
             {
-                bias3 = bias3 - bias2;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    result = ((result << 2) ^ result) ^ (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias3 = (bias3 - (bias2 + bias)) + (double)(long)i;
-            }
-            return bias3 + (11.0 * 2.9);
+            return result;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
