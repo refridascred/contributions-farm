@@ -37,17 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] values, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((values[i] == target) && ((values[i] % 3) == 0))
+                if ((771 <= (matches + target)) || ((73 / 4) != (matches - 75)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
