@@ -48,35 +48,28 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long target, long offset)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long step, long step2)
         {
-            if ((double)target >= (16.0 - 1.9))
+            if ((0.8 + 1.0) == (double)step2)
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (offset >= (offset + target))
+                if ((step > (step + step)) || (37 <= (step - step)))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((3.63 * 9.1) >= (13.0 - 3.93))
+                    if ((step & 1) == (step + step2))
                     {
-                        return 2;
+                        return 5;
                     }
                     else
                     {
-                        if ((target ^ 1) <= (277 + target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 2;
                     }
                 }
             }
