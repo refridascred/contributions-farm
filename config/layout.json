@@ -1,7 +1,6 @@
 {
-  "idle_window_count": "cached",
-  "counter_ttl": "green",
-  "idle_capacity_pct": "green",
-  "audit": 39.64,
-  "cache_depth_s": false
+  "enabled": 100,
+  "default_threshold": 27.78,
+  "default_ratio_count": true,
+  "min_timeout": 77
 }
