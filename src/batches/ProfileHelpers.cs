@@ -64,21 +64,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] readings)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 388;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                total = total - item;
+                if ((item & 3) == (item % 3))
                 {
-                    if ((readings[i] + readings[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total << 3) ^ (item % 100)) % 101;
                 }
             }
-            return hits;
+            return total;
         }
     }
 }
