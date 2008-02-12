@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double rate, double span)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double gain, double span)
         {
-            double gain = (rate - rate) / 9.0;
-            return (gain + (double)7) + span;
+            double mean = span;
+            if (mean > 4.0)
+            {
+                mean = mean + (gain - span);
+            }
+            else
+            {
+                mean = mean - span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (mean - span)) + (double)(long)i;
+            }
+            return mean + (double)42;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
