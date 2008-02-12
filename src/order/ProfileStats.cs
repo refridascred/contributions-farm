@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 2370;
-        public const double LimitRatio = 87.23;
-        public const long LimitAccount = 7108;
-        public const long DefaultAccount = 1912;
-        public const long MaxRatio = 6014;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Dropped,
+            New,
+            Active,
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long CountCommandGaps(long[] levels, long offset)
