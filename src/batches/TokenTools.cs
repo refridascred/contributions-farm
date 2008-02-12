@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 521;
-        public const long RetrySize = 602;
-        public const long MinPayload = 224;
-        public const long IdlePayload = 9730;
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Ready,
+            Done,
+            Paused,
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long OverlapWindowCount(long[] readings)
