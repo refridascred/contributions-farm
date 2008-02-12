@@ -39,12 +39,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
