@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 7022;
-        public const long BaseFilter = 7254;
-        public const double BatchFilter = 41.65;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long MatchBufferCount(long[] samples)
