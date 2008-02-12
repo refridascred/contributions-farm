@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardBudget = 2191;
-        public const long LimitFactor = 4763;
-        public const string StepFactor = "fallback";
-        public const string CacheCount = "cached-1";
-        public const string CacheFarm = "alpha-1";
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long LookupBatchIndex(long[] readings, long offset)
