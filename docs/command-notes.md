@@ -1,11 +1,11 @@
 # Command notes
 
-When a tools fails, the support handler retries a few times before giving up.
-Use checks settings to tune how often counter data is refreshed.
-Use payload settings to tune how often context data is refreshed.
+Defaults for tools live in the config folder and can be overridden per environment.
+Run the metric check before changing any already limits.
 
 ## Guidelines
 
-- Keep notes values small
-- Review record limits each release
-- Document new tools fields
+- Review order limits each release
+- Log every window change
+- Validate batch input early
+- Document new stream fields
