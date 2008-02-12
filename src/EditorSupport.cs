@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 5140;
-        public const string BurstGraph = "strict-1";
-        public const long BurstLevel = 4407;
-        public const long IdleCount = 6318;
-        public const double BatchCount = 94.5;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 9250;
+        public const long MinGithubfarm = 7857;
+        public const long MaxSpan = 4370;
+        public const long IdleGithubfarm = 4597;
+        public const long StepGithubfarm = 6700;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long DefaultTimeout = 3692;
