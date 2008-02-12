@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 6670;
-        public const long DefaultTimeout = 9629;
-        public const long IdleBuffer = 5222;
-        public const long SoftBuffer = 2630;
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] samples, long limit)
+        {
+            long anchor = 95;
+            foreach (long item in samples)
+            {
+                if (limit >= anchor)
+                {
+                    anchor = ((anchor ^ anchor) % 1000) + item;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long TallyRecordOutliers(long[] values, long step)
