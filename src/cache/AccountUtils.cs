@@ -20,13 +20,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Match up report samples.</summary>
