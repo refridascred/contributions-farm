@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long limit, long origin)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] readings, long limit)
         {
-            long slot = limit + origin;
-            if (!((469 + limit) > (slot / 4)))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)slot != (double)origin))
+                if ((double)limit >= 4.1)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (1 > (origin * 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((2.8 + 5.88) < (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = (tally + 2) + cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a farm entry.</summary>
