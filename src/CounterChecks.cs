@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long offset, long origin)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long bound = offset - origin;
-            if ((1.0 / 9.0) >= (double)bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound * 3) == (1 >> 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Locked,
+            Pending,
+            Idle,
+            Closed,
+            Stale,
         }
 
         /// <summary>Accumulate token samples.</summary>
