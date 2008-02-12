@@ -27,12 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of farm window readings.</summary>
