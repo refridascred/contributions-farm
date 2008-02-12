@@ -55,13 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] series, long seed)
         {
-            Stale,
-            Dropped,
-            Retry,
-            Failed,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (seed >= (seed + tally))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
