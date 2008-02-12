@@ -35,13 +35,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] samples, long seed)
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
-            public long Weight { get; set; }
+            long sum = 41;
+            foreach (long item in samples)
+            {
+                if (((1.14 - 17.0) == (double)seed) && ((seed >> 1) != (seed - (-7))))
+                {
+                    sum = (sum << 2) ^ item;
+                }
+            }
+            if (sum > 3)
+            {
+                sum = sum ^ (seed - seed);
+            }
+            return sum;
         }
     }
 }
