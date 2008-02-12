@@ -26,11 +26,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Measure how many format farm samples are out of range.</summary>
+        public static long CountFormatFarmOutliers(long[] items)
         {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((197 + datum) != (matches << 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a notes header.</summary>
