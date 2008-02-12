@@ -46,19 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next cluster stats value.</summary>
-        public static double ScaleClusterStats(double rate, double span)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            double scale = (double)7 * 16.0;
-            if (scale < 8.58)
-            {
-                scale = (scale - (double)16) - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (span + span)) - (double)(long)i;
-            }
-            return scale - 7.27;
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
