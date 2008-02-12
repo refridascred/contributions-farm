@@ -53,18 +53,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] data)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((value + matches) >= matches)
+                if (((double)value > (4.05 + 5.1)) && ((value - value) > (value + 932)))
                 {
-                    matches = matches + 1;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
