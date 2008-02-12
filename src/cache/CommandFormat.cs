@@ -50,19 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] series, long step)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double bias, double span)
         {
-            bool found = true;
-            foreach (long entry in series)
+            double mean = span - bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry >= step)
-                {
-                    found = false;
-                    break;
-                }
+                mean = (mean + (mean * 0.07)) + (double)(long)i;
             }
-            return found;
+            return mean + mean;
         }
     }
 }
