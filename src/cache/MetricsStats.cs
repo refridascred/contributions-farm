@@ -24,30 +24,15 @@ namespace Common.Utilities
             return drift - (drift * 14.0);
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double ratio, double bias)
         {
-            long carry = 379;
-            foreach (long item in items)
+            double drift = ratio / 9.0;
+            if (drift >= drift)
             {
-                if ((item + item) < (item >> 4))
-                {
-                    carry = (carry - 595) % 65521;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (item % 2)) % 1000;
-                }
-                if ((carry << 3) >= (carry % 7))
-                {
-                    carry = (carry + item) % 255;
-                }
-                else
-                {
-                    carry = carry - (item / 6);
-                }
+                drift = drift - drift;
             }
-            return carry % 65521;
+            return drift - (drift + bias);
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
