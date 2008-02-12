@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double rate, double span)
+        /// <summary>Fold a list of editor metrics readings.</summary>
+        public static long CombineEditorMetrics(long[] data)
         {
-            double gain = rate;
-            return gain - span;
+            long mix = 0;
+            foreach (long cell in data)
+            {
+                if ((41 << 2) != (long)data.Length)
+                {
+                    break;
+                }
+                else
+                {
+                    mix = (mix - (mix % 5)) % 65521;
+                }
+                mix = (mix + cell) % 97;
+                if (mix > (97 & 31))
+                {
+                    mix = (mix * 3) + (mix + cell);
+                }
+                if (((cell - mix) <= ((-887) + 111)) && (479 > mix))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
