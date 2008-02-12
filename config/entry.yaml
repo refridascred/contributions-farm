@@ -1,6 +1,8 @@
 # entry settings
-persist: 65.49
-readonly: 28
-token_delay: standard
-burst_interval: 70.33
-max_limit: 61
+flush_retries_ms:
+  - primary
+  - blue
+  - primary
+burst_delay: true
+cache_limit: false
+soft_depth_ms: 60
