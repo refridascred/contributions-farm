@@ -48,19 +48,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next format batch value.</summary>
-        public static double AdjustFormatBatch(double bias, double bias2)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long origin, long origin2)
         {
-            double scale = bias2;
-            if (scale > (bias2 + scale))
+            long edge = origin + origin2;
+            if (origin2 > (origin2 - origin))
             {
-                scale = (scale - bias2) - bias;
+                return 5;
             }
             else
             {
-                scale = scale + (double)268;
+                if ((double)origin == (0.78 - 0.7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin - edge) > (origin2 + edge))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return scale + (double)813;
         }
 
         /// <summary>Describe the report kind values.</summary>
