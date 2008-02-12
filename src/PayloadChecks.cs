@@ -48,15 +48,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Dropped,
-            Ready,
-            Locked,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 4064;
+        public const long BurstSize = 9157;
+        public const long WindowCluster = 8583;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long IterateAlready(long limit)
