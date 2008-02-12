@@ -1,10 +1,11 @@
 # Command notes
 
-Run the channel check before changing any buffer limits.
-Keep contributi and schema names short and lowercase.
+When a tools fails, the support handler retries a few times before giving up.
+Use checks settings to tune how often counter data is refreshed.
+Use payload settings to tune how often context data is refreshed.
 
 ## Guidelines
 
-- Keep payload values small
-- Document new githubfarm fields
-- Log every contributi change
+- Keep notes values small
+- Review record limits each release
+- Document new tools fields
