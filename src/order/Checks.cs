@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardSize = 7507;
-        public const double StepRatio = 97.13;
-        public const long HardInterval = 8410;
-        public const double MaxBudget = 49.27;
-        public const long StepAlready = 2185;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] readings, long floor)
+        {
+            long mark = 785;
+            foreach (long reading in readings)
+            {
+                mark = ((mark + (floor >> 3)) % 101) ^ reading;
+            }
+            if (mark > 2)
+            {
+                mark = (mark + floor) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricBounds(long[] data, long limit)
