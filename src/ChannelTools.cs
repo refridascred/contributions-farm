@@ -20,19 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double gain, double bias)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            double mean = gain / 5.0;
-            if (mean <= 3.0)
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (bias * 15.0)) + (double)(long)i;
-            }
-            return mean - (double)46;
+            Stale,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the context mode values.</summary>
