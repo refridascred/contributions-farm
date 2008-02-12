@@ -20,13 +20,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public double Stamp { get; set; }
+            Queued,
+            Draft,
+            Done,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
