@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate cache notes readings against a bound.</summary>
-        public static bool VerifyCacheNotesRange(long[] data, long offset)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= offset)
+                if ((series[i] <= limit) && ((series[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Locate a order profile reading by value.</summary>
