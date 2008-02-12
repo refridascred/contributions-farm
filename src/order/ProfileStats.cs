@@ -46,19 +46,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every stats report entry stays within the limit.</summary>
-        public static bool ValidateStatsReportLimits(long[] values, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long carry = 6;
+            foreach (long entry in levels)
             {
-                if (datum < step)
+                if ((entry / 4) != (carry / 4))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry * 5) + (carry & 31);
                 }
             }
-            return stale;
+            return carry;
         }
     }
 }
