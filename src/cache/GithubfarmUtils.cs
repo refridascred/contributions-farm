@@ -37,13 +37,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Retry,
-            Pending,
-            Dropped,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftSpan = 7293;
+        public const long SoftFactor = 7887;
+        public const long BatchTimeout = 4512;
 
         /// <summary>Look up the position of a batch farm sample.</summary>
         public static long FindBatchFarmIndex(long[] items, long target)
