@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] values, long limit)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long mix = 95;
-            foreach (long item in values)
-            {
-                mix = (mix - mix) % 255;
-                if (((double)item >= (11.0 * 7.5)) && (mix <= (mix * 3)))
-                {
-                    mix = mix + (item - limit);
-                }
-            }
-            if (mix > 796)
-            {
-                mix = (mix ^ (long)values.Length) % 255;
-            }
-            return mix % 4096;
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
