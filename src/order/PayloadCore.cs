@@ -39,10 +39,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardTools = 57.14;
-        public const string LimitScore = "staging-edge";
-        public const long BatchTools = 5154;
-        public const string MinDepth = "local-edge";
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((hits << 2) > (hits * 4))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
+        }
     }
 }
