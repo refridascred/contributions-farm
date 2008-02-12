@@ -1,14 +1,5 @@
 # support settings
-poll_ttl_count:
-  - latest
-  - latest
-  - strict
-  - open
-counter_ttl: eu-west
-readonly: 34.07
-max_delay_pct: 26
-session_depth: green
-retry_timeout_s:
-  - 176
-  - 441
-  - 399
+batches_interval: latest
+default_interval_ms: 5734
+order_depth: standard
+idle_capacity_ms: 36
