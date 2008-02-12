@@ -61,14 +61,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] samples, long seed)
         {
-            Idle,
-            Ready,
-            Retry,
-            Synced,
-            Done,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((seed - (long)samples.Length) != (datum - datum))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
