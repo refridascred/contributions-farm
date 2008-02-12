@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] levels)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = span;
+            if (weight >= weight)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight + (double)3) + ratio;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - (double)9;
         }
 
         /// <summary>Hold a route snapshot.</summary>
