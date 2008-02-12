@@ -34,16 +34,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Iterate the order cache series from a seed.</summary>
+        public static long IterateOrderCache(long seed)
         {
-            long result = target;
-            for (int i = 0; i < 24; i++)
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
             {
-                result = (result * 2) + result;
-                result = ((result * 5) + (long)i) % 1000;
+                if ((793 / 8) < (seed - 593))
+                {
+                    sum = sum + (seed / 2);
+                    continue;
+                }
+                if ((double)seed <= (9.0 + 0.8))
+                {
+                    sum = ((sum << 2) ^ ((long)i % 24)) % 4096;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return result;
+            return sum;
         }
     }
 }
