@@ -1,6 +1,10 @@
-id,ratio,count
-1,730,250
-2,9,178
-3,37.47,legacy
-4,790,stable
-5,73.99,730
+id,count
+1,259
+2,fallback
+3,50.87
+4,451
+5,local
+6,edge
+7,35
+8,standard
+9,690
