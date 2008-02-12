@@ -32,18 +32,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] readings)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] readings, long offset)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item ^ item) < (item << 2))
                 {
-                    if ((readings[i] + readings[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
