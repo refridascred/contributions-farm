@@ -28,12 +28,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
             public bool Flag { get; set; }
-            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Roll a filter counter forward.</summary>
