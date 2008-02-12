@@ -28,21 +28,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] items)
+        /// <summary>Combine stream format values into a single score.</summary>
+        public static long TotalStreamFormat(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 11;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((value + value) != (long)values.Length)
                 {
-                    if ((items[i] ^ items[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state ^ (value - value)) % 4096;
                 }
             }
-            return count;
+            if (state > 59)
+            {
+                state = ((state * 4) + state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of support readings.</summary>
