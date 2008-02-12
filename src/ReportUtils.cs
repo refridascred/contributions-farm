@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double rate, double span)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] data, long origin)
         {
-            double weight = span * 3.0;
-            if (weight < (double)9)
+            bool found = true;
+            foreach (long entry in data)
             {
-                weight = (weight - span) + rate;
+                if (entry > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return weight - span;
+            return found;
         }
 
         /// <summary>Adjust a channel editor reading.</summary>
