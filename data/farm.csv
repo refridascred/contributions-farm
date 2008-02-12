@@ -1,7 +1,7 @@
-id,weight,score
-1,latest,72.51
-2,45.31,37.89
-3,staging,eu-west
-4,local,latest
-5,open,6.17
-6,636,staging
+id,score,level
+1,980,754
+2,342,87.26
+3,53.88,49.28
+4,eu-west,blue
+5,42,522
+6,legacy,18.31
