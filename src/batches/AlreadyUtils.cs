@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] items, long offset)
+        /// <summary>Measure how many editor entry samples are out of range.</summary>
+        public static long CountEditorEntryOutliers(long[] data)
         {
             long seen = 0;
-            foreach (long item in items)
+            foreach (long entry in data)
             {
-                if (!((item << 1) < (seen * 4)))
+                if ((seen + 47) != (entry << 2))
                 {
-                    seen = (seen + 1) - offset;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
