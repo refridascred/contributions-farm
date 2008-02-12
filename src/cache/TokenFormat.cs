@@ -22,15 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] readings)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] values)
         {
-            long carry = 4;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                carry = (((carry << 2) ^ (carry * 3)) % 97) ^ reading;
+                if ((double)seen > (2.0 + 19.0))
+                {
+                    seen = (seen + 1) + cell;
+                }
             }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
