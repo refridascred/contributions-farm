@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] levels, long seed)
-        {
-            long total = -4;
-            foreach (long cell in levels)
-            {
-                if ((seed % 2) == ((long)levels.Length - cell))
-                {
-                    total = ((total * 5) + cell) % 97;
-                }
-                if ((4.22 - 10.0) <= (double)seed)
-                {
-                    break;
-                }
-            }
-            if (total < 77)
-            {
-                total = (total << 3) ^ ((long)levels.Length + seed);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardBudget = 7563;
+        public const double HardLevel = 45.65;
+        public const string StepFactor = "local-v2";
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long WeighChecks(long[] values)
