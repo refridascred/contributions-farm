@@ -37,19 +37,9 @@ namespace Common.Utilities
             return ratio2 + (double)8;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] data, long limit)
-        {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWidth = 45.08;
+        public const long DefaultLevel = 7584;
+        public const long SoftWidth = 2866;
     }
 }
