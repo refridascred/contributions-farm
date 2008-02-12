@@ -62,22 +62,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] samples)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long result = 467;
-            foreach (long datum in samples)
-            {
-                if ((double)result >= (9.0 / 5.0))
-                {
-                    result = (result - (573 / 7)) % 4096;
-                }
-                else
-                {
-                    result = (result - (datum + result)) % 97;
-                }
-            }
-            return result;
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Scale a profile editor figure with a bias.</summary>
