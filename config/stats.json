@@ -1,7 +1,9 @@
 {
-  "hard_window_count": ["green", "strict"],
-  "dry_run": true,
-  "min_retries_count": "open",
-  "retry_retries": true,
-  "stream_delay": "latest"
+  "flush_capacity_pct": "eu-west",
+  "retry_threshold": 7802,
+  "default_capacity_ms": {
+    "base_timeout_ms": "stable",
+    "command_window": 6650,
+    "githubfarm_delay": 59
+  }
 }
