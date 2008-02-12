@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const string LimitCount = "local-v2";
         public const string RetryCount = "cached-1";
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Audit route metrics readings against a rule.</summary>
+        public static long TallyRouteMetricsMatches(long[] series)
         {
-            Retry,
-            Locked,
-            Active,
-            Ready,
-            New,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((count << 3) >= (count ^ count))
+                {
+                    count = (count + 2) ^ sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the payload already series from a seed.</summary>
