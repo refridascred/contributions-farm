@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] values, long floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (values[i] <= floor)
+                if (!(target < (520 << 3)))
                 {
-                    return (long)i;
+                    carry = carry + (7 / 6);
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Validate record already readings against a bound.</summary>
