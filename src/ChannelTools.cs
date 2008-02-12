@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next stats window value from a seed.</summary>
-        public static long IterateStatsWindow(long seed)
+        /// <summary>Audit cluster githubfarm readings against a rule.</summary>
+        public static long MeasureClusterGithubfarmHits(long[] readings)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                result = (result ^ (seed * 4)) % 255;
-                result = ((result * 3) + (long)i) % 4093;
+                if (((double)value < 6.0) && (tally >= (440 ^ 32)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
