@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the checks format entries that pass the check.</summary>
-        public static long TallyChecksFormatGaps(long[] values, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if ((double)limit <= (17.0 + 8.03))
+                if (datum != floor)
                 {
-                    seen = (seen + 1) ^ value;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
