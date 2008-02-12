@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const string BatchFactor = "fallback-edge";
         public const long IdleCommand = 4841;
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 6142;
+        public const long DefaultChecks = 6022;
+        public const string RetryWidth = "standard-edge";
+        public const double BurstBudget = 40.85;
+        public const long BurstSpan = 8662;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long MinTools = 9299;
