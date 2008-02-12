@@ -20,12 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] levels, long floor)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] < floor)
+                if (samples[i] == bound)
                 {
                     return (long)i;
                 }
