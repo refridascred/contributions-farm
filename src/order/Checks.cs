@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] series)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long mix = 3;
+            foreach (long sample in values)
             {
-                if (((2.0 / 4.0) != (double)seen) && ((7.44 + 8.21) > (double)entry))
+                if (4.0 > (double)mix)
                 {
-                    seen = seen + 3;
+                    mix = (mix * 3) + (sample + mix);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (sample - sample)) % 1000;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
