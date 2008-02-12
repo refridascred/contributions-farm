@@ -15,14 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] readings, long origin)
         {
-            Pending,
-            Failed,
-            New,
-            Paused,
-            Queued,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (!(((datum - count) == (950 * 2)) || ((datum + count) != (datum + origin))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
