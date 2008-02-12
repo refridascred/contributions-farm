@@ -43,11 +43,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxStream = 21.03;
-        public const long BurstStream = 5678;
-        public const long StepStream = 6227;
-        public const double DefaultTimeout = 73.59;
-        public const long LimitStream = 879;
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
