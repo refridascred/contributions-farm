@@ -64,19 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] values, long step)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
