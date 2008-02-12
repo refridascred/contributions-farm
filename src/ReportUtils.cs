@@ -28,17 +28,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] levels, long offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (levels[i] >= offset)
+                if (datum >= origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a graph entry.</summary>
