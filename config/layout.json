@@ -1,6 +1,5 @@
 {
-  "poll_threshold_pct": true,
-  "base_threshold": "eu-west",
-  "default_depth": 69.06,
-  "batches_depth": 250
+  "retry_window_pct": 60,
+  "order_size": [474, 270, 160, 44],
+  "persist": 6104
 }
