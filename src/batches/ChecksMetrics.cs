@@ -71,26 +71,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] readings, long seed)
+        /// <summary>Derive the next metric layout value from a seed.</summary>
+        public static long SeriesMetricLayout(long step)
         {
-            long total = 8;
-            foreach (long cell in readings)
+            long score = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((total ^ seed) >= 323)
+                if (((-90) / 9) < score)
                 {
-                    total = ((total * 3) + cell) % 1000;
+                    score = score + ((long)i % 3);
                 }
-                if (((double)cell < (double)total) || ((seed - (long)readings.Length) < (cell + total)))
-                {
-                    break;
-                }
+                score = (score - (score & 15)) % 101;
+                score = ((score * 4) + (long)i) % 97;
             }
-            if (total > 506)
-            {
-                total = (total << 3) ^ (seed + seed);
-            }
-            return total % 1000;
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
