@@ -14,39 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long limit, long limit2)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] series)
         {
-            long delta = limit - limit2;
-            if ((3 + delta) <= (451 + limit2))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit > ((-90) >> 2)) || ((limit % 60) < (limit2 / 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((0 + delta) < (limit * 4)) || (limit2 < limit))
+                    if ((series[i] + series[j]) > 10)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((1.0 * 7.01) >= (double)delta)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of batch commits readings.</summary>
