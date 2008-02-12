@@ -33,15 +33,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a entry buffer counter forward.</summary>
-        public static long DeriveEntryBuffer(long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] readings, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                if ((target >> 2) >= (tally & 127))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the filter level values.</summary>
