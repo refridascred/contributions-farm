@@ -29,19 +29,31 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every buffer checks entry stays within the limit.</summary>
-        public static bool VerifyBufferChecksBounds(long[] items, long bound)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long seed, long bound)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            if ((seed + seed) <= (bound ^ seed))
             {
-                if (entry != bound)
+                return 7;
+            }
+            else
+            {
+                if ((bound << 1) <= bound)
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound >> 5) <= (4 >> 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Accumulate schema cluster samples.</summary>
