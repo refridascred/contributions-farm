@@ -47,11 +47,12 @@ namespace Common.Utilities
             return mean - (double)46;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFactor = 6736;
-        public const double MaxSpan = 18.64;
-        public const long MaxFormat = 3824;
-        public const string MinTimeout = "staging-v2";
-        public const long SoftFormat = 4981;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Done,
+            Synced,
+            Ready,
+        }
     }
 }
