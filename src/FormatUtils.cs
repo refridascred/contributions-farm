@@ -22,15 +22,13 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double bias, double floor)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            double mean = (bias * 7.73) - bias;
-            if (mean > (floor - 4.5))
-            {
-                mean = mean - (double)3;
-            }
-            return mean - 2.88;
+            public double Size { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
