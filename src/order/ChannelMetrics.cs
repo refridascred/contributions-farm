@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinFactor = 3.17;
-        public const long StepEditor = 2879;
-        public const long StepSpan = 4357;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] levels, long bound)
+        {
+            long mix = 545;
+            foreach (long value in levels)
+            {
+                mix = ((mix << 3) ^ mix) + bound;
+                mix = mix - (value << 2);
+                mix = mix + (mix << 2);
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long LimitWidth = 7907;
