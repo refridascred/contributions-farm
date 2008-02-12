@@ -24,22 +24,19 @@ namespace Common.Utilities
         public const string IdleSpan = "standard-1";
         public const string BaseReport = "primary-v2";
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] series, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((1.8 - 6.4) == (double)bound)
+                if (entry > target)
                 {
-                    seen = (seen + 1) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
