@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] values, long limit)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((limit >> 1) <= 33)
+                if (values[i] > origin)
                 {
-                    tally = (tally + 3) + entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
