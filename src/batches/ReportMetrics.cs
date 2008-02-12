@@ -33,23 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine schema profile values into a single score.</summary>
-        public static long ScoreSchemaProfile(long[] series, long bound)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] items)
         {
-            long result = 70;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 3) + sample) % 65521;
-                if ((5.0 > (double)result) && (bound < result))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = result - (bound << 3);
-                }
-                else
-                {
-                    result = ((result * 4) + (bound + sample)) % 101;
+                    if ((items[i] ^ items[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 97;
+            return matches;
         }
     }
 }
