@@ -46,12 +46,15 @@ namespace Common.Utilities
         public const long RetryFactor = 4839;
         public const string WindowCounter = "strict";
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double ratio, double offset)
         {
-            Active,
-            Queued,
-            Dropped,
+            double bias = 5.7;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (((bias - (double)76) + (double)(long)i) - ratio) + offset;
+            }
+            return bias + bias;
         }
 
         /// <summary>Hold a filter options.</summary>
