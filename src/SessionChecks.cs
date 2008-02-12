@@ -47,17 +47,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] series, long target)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (series[i] <= target)
+                if (value > limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
