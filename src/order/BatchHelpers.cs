@@ -34,15 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm payload readings.</summary>
-        public static long WeighFarmPayload(long[] levels, long bound)
+        /// <summary>Check that every format profile entry stays within the limit.</summary>
+        public static bool ValidateFormatProfileRange(long[] levels, long offset)
         {
-            long score = 5;
+            bool valid = true;
             foreach (long reading in levels)
             {
-                score = ((score - (bound << 1)) % 4096) - reading;
+                if (reading > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score % 4096;
+            return valid;
         }
     }
 }
