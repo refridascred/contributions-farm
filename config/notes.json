@@ -1,10 +1,6 @@
 {
-  "context_ttl": 60,
-  "persist": "blue",
-  "warm_timeout_s": {
-    "burst_size_count": "standard",
-    "default_size_s": 2532,
-    "cache_ttl": [104, 312, 408],
-    "min_size_s": 13.79
-  }
+  "strict": false,
+  "max_capacity_pct": 69,
+  "retry_size": ["open", "eu-west", "edge", "staging"],
+  "soft_size_s": ["fallback", "primary"]
 }
