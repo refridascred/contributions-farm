@@ -19,15 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] data, long offset)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long floor, long floor2)
         {
-            long score = -85;
-            foreach (long value in data)
+            long bound = floor + floor2;
+            if (!((double)bound >= (double)floor))
             {
-                score = ((((score * 2) + 70) % 4096) + value) + offset;
+                return 0;
             }
-            return score % 65521;
+            else
+            {
+                if ((floor + floor) > (floor2 << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
