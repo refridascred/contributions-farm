@@ -26,17 +26,19 @@ namespace Common.Utilities
             return (weight + (6.8 - rate)) + floor;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] readings, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = -8;
+            foreach (long value in values)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix + value) % 4096;
             }
-            return -1;
+            if (mix < (-92))
+            {
+                mix = mix + (87 << 2);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Accumulate metric graph samples.</summary>
