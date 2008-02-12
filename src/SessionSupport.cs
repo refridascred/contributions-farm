@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] samples)
         {
-            Idle,
-            Paused,
-            Ready,
-            Synced,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((tally - 78) > reading) || (((tally >> 2) == (tally + tally)) && ((double)68 <= (double)reading)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
