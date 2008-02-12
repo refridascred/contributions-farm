@@ -32,12 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] levels, long offset)
         {
-            Draft,
-            Retry,
-            Pending,
+            long acc = 7;
+            foreach (long cell in levels)
+            {
+                acc = (((acc * 3) + (cell % 7)) % 255) - offset;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a payload entry.</summary>
