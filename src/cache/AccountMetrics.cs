@@ -37,14 +37,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] values)
         {
-            Synced,
-            Closed,
-            Ready,
-            Locked,
-            Done,
+            long mark = -5;
+            foreach (long reading in values)
+            {
+                mark = ((mark + (mark ^ 6)) % 1000) + reading;
+            }
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
