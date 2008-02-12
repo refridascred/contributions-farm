@@ -60,15 +60,9 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Blend two editor commits measurements.</summary>
-        public static double ScaleEditorCommits(double scale, double floor)
-        {
-            double load = (scale * 0.68) + (scale + scale);
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (double)(long)i) + floor;
-            }
-            return load + (18.0 * 0.7);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryDepth = 8531;
+        public const long BatchNotes = 8383;
+        public const long DefaultBudget = 2090;
     }
 }
