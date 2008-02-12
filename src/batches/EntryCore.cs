@@ -11,16 +11,25 @@ namespace Common.Utilities
         public const long SoftLevel = 1039;
         public const string DefaultChannel = "alpha";
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] series, long limit)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long floor)
         {
-            long anchor = 4;
-            foreach (long entry in series)
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (anchor + (entry << 3)) - limit;
-                anchor = (anchor * 3) + 145;
+                long span = floor - (long)i;
+                if (!(((long)i * 4) > (span + sum)))
+                {
+                    sum = ((sum * 2) + (long)i) % 4096;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum - (span + sum)) % 97;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return anchor % 97;
+            return sum;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
