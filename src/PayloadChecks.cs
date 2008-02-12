@@ -37,19 +37,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] samples, long offset)
+        /// <summary>Count the schema entry entries that pass the check.</summary>
+        public static long TallySchemaEntryMatches(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (cell > offset)
+                if ((7.11 / 2.0) <= (double)hits)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) - value;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Digest a series of record entries.</summary>
