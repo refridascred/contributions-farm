@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] items, long floor)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)tally > (double)floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) + entry;
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
