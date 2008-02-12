@@ -1,7 +1,8 @@
 # support settings
-soft_timeout_s: strict
-support_delay: latest
-cache_depth: 90.34
-base_size_s: false
-commits_interval: false
-verbose: primary
+soft_ttl: true
+queue_threshold: 68
+dry_run:
+  - blue
+  - standard
+cache_threshold_pct: 78
+schema_size: 76
