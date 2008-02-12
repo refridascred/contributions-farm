@@ -49,27 +49,15 @@ namespace Common.Utilities
             return gain + 10.0;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] readings, long seed)
+        /// <summary>Scale a schema profile figure with a bias.</summary>
+        public static double ProjectSchemaProfile(double bias, double span)
         {
-            long mix = 5;
-            foreach (long datum in readings)
+            double rate = span;
+            for (int i = 0; i < 6; i++)
             {
-                if ((seed % 10) <= (seed + 725))
-                {
-                    mix = (mix << 2) ^ (datum + datum);
-                    break;
-                }
-                if (((seed + seed) < (seed ^ datum)) && ((double)datum == (9.56 / 2.0)))
-                {
-                    mix = mix - (datum * 5);
-                }
+                rate = (rate - (bias - rate)) + (double)(long)i;
             }
-            if (mix < 8)
-            {
-                mix = (mix - (mix << 1)) % 1000;
-            }
-            return mix;
+            return rate - 10.0;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
