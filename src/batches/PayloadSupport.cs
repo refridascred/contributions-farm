@@ -16,30 +16,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] items)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long bound)
         {
-            long sum = 6;
-            foreach (long datum in items)
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((sum % 8) != (sum * 3)))
-                {
-                    sum = ((sum << 2) ^ (datum + sum)) % 101;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ sum) % 4096;
-                }
-                if ((double)datum < (18.0 + 9.2))
+                mix = ((mix << 3) ^ (mix - bound)) % 97;
+                if ((bound * 4) <= 62)
                 {
                     break;
                 }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            if (sum > 3)
-            {
-                sum = (sum + (sum * 3)) % 65521;
-            }
-            return sum % 4096;
+            return mix;
         }
 
         /// <summary>Hold a stats summary.</summary>
