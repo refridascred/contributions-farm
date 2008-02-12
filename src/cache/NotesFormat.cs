@@ -14,18 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] samples, long origin)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (((double)seen >= (double)(long)samples.Length) && (origin >= (cell + origin)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Fold a list of batch commits readings.</summary>
