@@ -1,5 +1,7 @@
 {
-  "verbose": 54,
-  "max_window": 48,
-  "filter_size": "open"
+  "max_ratio_pct": [223, 392, 313],
+  "support_timeout": false,
+  "persist": 2489,
+  "retry_delay_pct": 4281,
+  "idle_delay_ms": true
 }
