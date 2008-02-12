@@ -12,19 +12,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (matches <= (-14))
-                {
-                    matches = ((matches + 2) + datum) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchRatio = 42.89;
+        public const string WindowWidth = "latest-edge";
+        public const long RetryChannel = 7910;
+        public const long StepChannel = 7366;
+        public const string MaxInterval = "local-edge";
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LocateGraphIndex(long[] data, long offset)
