@@ -52,13 +52,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepFactor = 8063;
+        public const long MaxReport = 5671;
+        public const long MinReport = 7420;
     }
 }
