@@ -1,5 +1,6 @@
 # support settings
-verbose: 35
-warm_interval_count: 9915
-base_timeout_s: true
-min_window_pct: 1
+idle_retries: 5
+batch_capacity: false
+burst_interval: blue
+hard_delay: 60
+batch_interval: fallback
