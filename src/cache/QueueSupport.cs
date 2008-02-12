@@ -33,19 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] values, long limit)
+        /// <summary>Check that every batches notes entry stays within the limit.</summary>
+        public static bool GuardBatchesNotesLimits(long[] levels, long limit)
         {
-            long state = 68;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                state = ((state << 3) ^ limit) ^ reading;
+                if (datum > limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (state > 52)
-            {
-                state = (state << 3) ^ state;
-            }
-            return state;
+            return valid;
         }
     }
 }
