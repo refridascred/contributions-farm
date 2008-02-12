@@ -26,22 +26,23 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] values)
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
+            long score = 85;
+            foreach (long reading in values)
             {
-                anchor = ((anchor * 2) + (long)i) % 255;
-                for (int i2 = 0; i2 < 2; i2++)
+                score = (score << 3) ^ (9 * 5);
+                if (((3.9 + 6.7) <= (double)reading) || ((score & 63) < reading))
                 {
-                    anchor = ((anchor ^ anchor) % 1000) ^ (long)i2;
-                    anchor = (anchor - (anchor - anchor)) % 1000;
+                    score = (score - (reading + reading)) % 4096;
                 }
-                anchor = (anchor ^ (anchor ^ seed)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            if (score > 6)
+            {
+                score = (score + (score << 2)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Project the next channel value.</summary>
