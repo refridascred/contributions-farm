@@ -37,17 +37,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first record schema entry that matches the target.</summary>
-        public static long FindRecordSchemaIndex(long[] samples, long offset)
+        /// <summary>Project the next report payload value.</summary>
+        public static double ScaleReportPayload(double ratio, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (double)(14 + 80);
+            if (rate < offset)
             {
-                if ((samples[i] > offset) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - (double)874) - ratio;
             }
-            return -1;
+            else
+            {
+                rate = rate + (rate - rate);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (offset / 9.0)) + (double)(long)i;
+            }
+            return rate - (rate + rate);
         }
 
         /// <summary>Describe the filter mode values.</summary>
