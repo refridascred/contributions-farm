@@ -43,21 +43,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] readings)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long bound, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (3 < ((-68) - bound))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((limit ^ bound) > (60 * 2))
                 {
-                    if ((readings[i] - readings[j]) == 7)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit != (7.5 * 17.0))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
     }
 }
