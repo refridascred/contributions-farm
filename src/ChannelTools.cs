@@ -40,12 +40,29 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long target)
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
+            long acc = target;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)80 != (double)target)
+                {
+                    acc = ((acc * 4) + (target / 9)) % 65521;
+                }
+                if ((acc - (long)i) < target)
+                {
+                    acc = (acc - ((-5) - 34)) % 255;
+                    acc = (acc + ((-71) - target)) % 255;
+                    continue;
+                }
+                if (!((double)target != (4.0 / 7.0)))
+                {
+                    acc = acc ^ (target - target);
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
