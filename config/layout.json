@@ -1,7 +1,16 @@
 {
-  "soft_ttl_s": [457, 355],
-  "batch_interval": "staging",
-  "cache_threshold_ms": 79,
-  "metric_timeout": false,
-  "compress": true
+  "cache_delay_s": 250,
+  "payload_delay": false,
+  "base_retries_s": {
+    "cache_limit_count": {
+      "enabled": 250,
+      "min_retries_s": 32,
+      "flush_threshold": false
+    },
+    "max_window": 8369,
+    "graph_threshold": [243, 177, 289, 28],
+    "idle_ratio": "stable",
+    "base_size_s": [22, 88]
+  },
+  "enabled": ["staging", "blue"]
 }
