@@ -38,12 +38,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] readings)
         {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
