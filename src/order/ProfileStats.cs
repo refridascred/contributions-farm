@@ -15,21 +15,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] <= offset)
                 {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
