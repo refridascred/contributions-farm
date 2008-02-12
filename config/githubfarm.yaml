@@ -1,7 +1,4 @@
 # githubfarm settings
-base_delay:
-  - 380
-  - 61
-cache_threshold: stable
-default_threshold: open
-soft_window_count: eu-west
+persist: 17.29
+max_ratio_s: false
+cache_ratio_count: 17.55
