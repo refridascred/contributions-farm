@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] items, long target)
         {
-            Paused,
-            Dropped,
-            Queued,
-            Retry,
-            Ready,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (!((target / 7) < sample) || (((1 / 8) <= (tally & 15)) && ((double)tally != (double)4)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
