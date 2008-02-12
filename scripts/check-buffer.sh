@@ -6,8 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=295
-log "limit is ${BUFFER_LIMIT}"
+for item in green edge; do
+    log "checking ${item}"
+done
 
 total=0
 for i in $(seq 1 12); do
