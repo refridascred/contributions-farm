@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long total = target;
-            for (int i = 0; i < 12; i++)
-            {
-                total = (total << 3) ^ (total << 3);
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
