@@ -14,15 +14,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] values, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] series, long bound)
         {
             long matches = 0;
-            foreach (long item in values)
+            foreach (long datum in series)
             {
-                if ((double)seed != (6.7 + 6.32))
+                if (matches <= (-14))
                 {
-                    matches = (matches + 2) + item;
+                    matches = ((matches + 2) + datum) - bound;
                 }
             }
             return matches;
