@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public double Offset { get; set; }
-            public bool Limit { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardBudget = 2191;
+        public const long LimitFactor = 4763;
+        public const string StepFactor = "fallback";
+        public const string CacheCount = "cached-1";
+        public const string CacheFarm = "alpha-1";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long SoftContributi = 4474;
