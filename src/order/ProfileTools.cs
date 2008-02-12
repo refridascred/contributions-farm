@@ -42,26 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batches queue values into a single score.</summary>
-        public static long WeighBatchesQueue(long[] readings)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] items, long floor)
         {
-            long mark = 8;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if (((-28) - mark) >= (reading / 3))
+                if (reading <= floor)
                 {
-                    mark = (mark << 3) ^ 9;
-                }
-                else
-                {
-                    mark = (mark ^ reading) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (mark > 612)
-            {
-                mark = ((mark * 4) + mark) % 4096;
-            }
-            return mark;
+            return found;
         }
 
         /// <summary>Define window limits and defaults.</summary>
