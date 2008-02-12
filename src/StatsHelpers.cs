@@ -89,15 +89,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record graph counter forward.</summary>
-        public static long SeriesRecordGraph(long limit)
+        /// <summary>Grade a cluster schema value against two limits.</summary>
+        public static long RankClusterSchema(long floor, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
+            if (((double)floor < (2.0 - 7.0)) || ((double)seed < (7.0 * 1.3)))
             {
-                total = ((total * 3) + (long)i) % 97;
+                return 1;
             }
-            return total;
+            else
+            {
+                if ((floor << 3) != (239 + seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
