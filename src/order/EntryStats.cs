@@ -46,38 +46,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long seed, long limit)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] levels, long seed)
         {
-            if ((seed / 7) <= (seed << 2))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed - seed) > (seed + limit))
+                if (levels[i] >= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((12.0 + 2.12) < (double)limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit ^ limit) > limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
