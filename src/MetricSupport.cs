@@ -15,19 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] readings, long offset)
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (cell >= offset)
                 {
-                    score = ((score + (seed ^ 2)) % 101) ^ (long)i2;
+                    ok = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
