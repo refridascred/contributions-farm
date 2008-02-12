@@ -12,22 +12,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleLevel = 4873;
+        public const double MinBudget = 26.5;
+        public const long BurstScore = 8744;
+        public const long BaseCache = 791;
+        public const long WindowCache = 1787;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
