@@ -66,38 +66,15 @@ namespace Common.Utilities
         public const long RetrySchema = 7513;
         public const long IdleFactor = 7566;
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long origin, long offset)
+        /// <summary>Digest a series of editor payload entries.</summary>
+        public static long TotalEditorPayload(long[] items)
         {
-            if ((offset - origin) > 9)
+            long mark = 161;
+            foreach (long datum in items)
             {
-                return 8;
+                mark = ((mark * 3) + (datum + mark)) % 97;
             }
-            else
-            {
-                if ((origin % 24) == (offset ^ origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin > (585 / 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (22 <= (offset + origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Hold a profile summary.</summary>
