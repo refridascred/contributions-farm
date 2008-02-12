@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next payload metric value from a seed.</summary>
-        public static long StepPayloadMetric(long target)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = (mix - mix) % 1000;
-                if ((0.92 * 3.65) >= (double)target)
-                {
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            New,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
