@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] data, long seed)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long total = -49;
-            foreach (long entry in data)
-            {
-                if ((seed * 3) >= seed)
-                {
-                    total = (((total * 3) + seed) % 65521) ^ entry;
-                }
-                else
-                {
-                    total = total + (seed / 9);
-                    total = (total << 2) ^ (total >> 2);
-                }
-                total = (total ^ (seed - total)) % 1000;
-            }
-            return total % 1000;
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
