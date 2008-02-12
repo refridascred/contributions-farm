@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] readings)
+        /// <summary>Validate entry notes readings against a bound.</summary>
+        public static bool CheckEntryNotesBounds(long[] values, long target)
         {
-            long sum = 76;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                sum = ((sum - (sum - 723)) % 4096) ^ datum;
+                if (entry > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
