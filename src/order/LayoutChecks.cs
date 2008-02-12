@@ -63,12 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] series)
         {
-            Stale,
-            Done,
-            Draft,
+            long total = 80;
+            foreach (long datum in series)
+            {
+                total = (total ^ (total - 486)) % 1000;
+                if ((total + datum) < datum)
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
