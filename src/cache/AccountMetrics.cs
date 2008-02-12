@@ -78,17 +78,21 @@ namespace Common.Utilities
         public const long HardSize = 738;
         public const double MaxCounter = 96.72;
 
-        /// <summary>Look up the position of a account window sample.</summary>
-        public static long SeekAccountWindowIndex(long[] data, long target)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] data)
         {
+            long hits = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] == target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
