@@ -38,18 +38,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order layout readings.</summary>
-        public static long FoldOrderLayout(long[] levels, long target)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] items)
         {
-            long carry = 18;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry + entry) <= carry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = ((carry ^ carry) % 97) - target;
+                    if ((items[i] - items[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count the metric filter entries that pass the check.</summary>
