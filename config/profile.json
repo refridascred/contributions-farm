@@ -1,8 +1,6 @@
 {
-  "retry_size_s": [122, 28],
-  "audit": 7.72,
-  "compress": 59,
-  "max_ratio": ["strict", "standard"],
-  "idle_timeout": 70.83,
-  "retry_window_count": "cached"
+  "format_ttl": ["eu-west", "standard"],
+  "hard_limit_count": "staging",
+  "retry_limit": "local",
+  "idle_ratio_count": 500
 }
