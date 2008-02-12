@@ -42,19 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] readings, long seed)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long bound)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return stale;
+            return state;
         }
     }
 }
