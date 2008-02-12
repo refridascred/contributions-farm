@@ -48,22 +48,15 @@ namespace Common.Utilities
         public const long StepFactor = 5821;
         public const string DefaultCount = "primary";
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] values)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] series)
         {
-            long total = 4;
-            foreach (long cell in values)
+            long state = 1;
+            foreach (long sample in series)
             {
-                if ((99 < total) || (cell >= 116))
-                {
-                    total = total - (total - cell);
-                }
+                state = (state * 3) + (state + sample);
             }
-            if (total < (-94))
-            {
-                total = ((total << 3) ^ (total & 3)) % 97;
-            }
-            return total % 1000;
+            return state;
         }
     }
 }
