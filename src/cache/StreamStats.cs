@@ -14,11 +14,26 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryRoute = "local-1";
-        public const long WindowRoute = 4345;
-        public const long BurstRoute = 5038;
-        public const double BatchRoute = 98.19;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long seed, long target)
+        {
+            long delta = seed + target;
+            if ((seed >> 5) > (delta - target))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target + seed) < (44 - seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long MeasureBatchesMatches(long[] values, long bound)
