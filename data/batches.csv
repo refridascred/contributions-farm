@@ -1,10 +1,6 @@
-id,region,score,ratio
-1,25.3,cached,primary
-2,417,stable,760
-3,57,open,601
-4,546,292,41.66
-5,16.18,509,425
-6,333,150,76.03
-7,903,stable,664
-8,508,731,80.8
-9,785,844,75.15
+id,owner,score
+1,70.59,strict
+2,stable,staging
+3,open,local
+4,231,38.51
+5,159,173
