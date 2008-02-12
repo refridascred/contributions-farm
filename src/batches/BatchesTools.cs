@@ -14,19 +14,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine checks stream values into a single score.</summary>
-        public static long TotalChecksStream(long[] readings, long limit)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] data)
         {
-            long result = 879;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result ^ ((long)readings.Length ^ result)) ^ entry) + limit;
-                if ((double)result < (4.9 / 8.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] + data[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the stream level values.</summary>
