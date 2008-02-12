@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] series, long limit)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long MatchChecksCount(long[] items)
         {
-            long carry = 2;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((22 + 728) > (carry + limit)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = ((carry ^ (0 - limit)) % 97) ^ reading;
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
