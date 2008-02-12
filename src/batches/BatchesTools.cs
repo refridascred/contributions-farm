@@ -41,11 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstSpan = 3998;
-        public const long WindowStream = 1192;
-        public const long BurstStream = 7883;
-        public const long CacheDepth = 9747;
-        public const long HardStream = 6355;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] levels, long limit)
+        {
+            long score = 92;
+            foreach (long entry in levels)
+            {
+                score = score + entry;
+            }
+            if (score > 963)
+            {
+                score = (score << 3) ^ limit;
+            }
+            return score;
+        }
     }
 }
