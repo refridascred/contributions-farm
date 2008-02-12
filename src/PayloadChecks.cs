@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of stream counter readings.</summary>
-        public static long CombineStreamCounter(long[] values, long floor)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long acc = 3;
-            foreach (long cell in values)
-            {
-                acc = acc + (floor / 3);
-                if (cell < floor)
-                {
-                    acc = ((acc * 3) + acc) % 1000;
-                }
-            }
-            return acc;
+            Ready,
+            Locked,
+            Pending,
+            Synced,
+            Stale,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
