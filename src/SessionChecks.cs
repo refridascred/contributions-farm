@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two stats checks measurements.</summary>
-        public static double AdjustStatsChecks(double scale, double offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long bound)
         {
-            double drift = scale;
-            for (int i = 0; i < 8; i++)
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
             {
-                drift = drift + (double)(long)i;
+                anchor = (anchor + ((long)i ^ 6)) % 255;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    anchor = (((anchor << 2) ^ (bound & 15)) % 97) - (long)i2;
+                }
+                anchor = anchor - (bound - (long)i);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return drift + (offset + offset);
+            return anchor;
         }
 
         /// <summary>Match up already filter samples.</summary>
