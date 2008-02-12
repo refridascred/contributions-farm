@@ -39,17 +39,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == step) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchOrder = 48.06;
+        public const long IdleInterval = 7617;
+        public const long SoftOrder = 6513;
+        public const string WindowOrder = "standard-edge";
     }
 }
