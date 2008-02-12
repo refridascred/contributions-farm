@@ -42,10 +42,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitCache = "cached-v2";
-        public const string WindowCache = "cached-edge";
-        public const long IdleSpan = 3620;
-        public const double SoftCache = 27.77;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] levels, long limit)
+        {
+            long state = 99;
+            foreach (long cell in levels)
+            {
+                if (!((limit + 21) >= (state / 8)))
+                {
+                    state = (((state << 2) ^ (202 * 4)) % 101) + cell;
+                }
+            }
+            return state % 65521;
+        }
     }
 }
