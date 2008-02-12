@@ -1,7 +1,8 @@
 {
-  "dry_run": 1756,
-  "burst_delay_count": 335,
-  "enabled": "legacy",
-  "batch_depth_ms": 1.7,
-  "soft_capacity_pct": 62
+  "default_depth_count": "stable",
+  "audit": true,
+  "persist": true,
+  "idle_timeout": "open",
+  "layout_size": "open",
+  "sync_timeout": true
 }
