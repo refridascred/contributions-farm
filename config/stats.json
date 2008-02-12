@@ -1,9 +1,19 @@
 {
-  "cluster_size": {
-    "sync_size_count": [89, 61, 87],
-    "min_ratio_s": true,
-    "cache_window": 60
+  "burst_depth_pct": {
+    "cluster_delay": "blue",
+    "profile_ratio": 24.12,
+    "record_timeout": 10.51,
+    "stream_interval": "green"
   },
-  "batch_limit_s": false,
-  "dry_run": true
+  "base_depth_s": 88,
+  "cache_interval_pct": {
+    "idle_depth_ms": "blue",
+    "enabled": {
+      "burst_ratio": [247, 81, 68],
+      "sync_size": 70,
+      "batch_limit_count": false
+    },
+    "queue_capacity": "local"
+  },
+  "idle_capacity_pct": true
 }
