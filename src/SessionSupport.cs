@@ -26,15 +26,13 @@ namespace Common.Utilities
         public const long MaxReport = 796;
         public const long SoftReport = 1176;
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long offset)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Failed,
+            Paused,
+            New,
+            Draft,
         }
     }
 }
