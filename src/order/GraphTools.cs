@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] samples)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long result = 7;
-            foreach (long entry in samples)
-            {
-                if (((entry & 7) > 79) && (858 >= (result / 8)))
-                {
-                    result = (result - result) % 65521;
-                }
-            }
-            return result;
+            public bool Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
