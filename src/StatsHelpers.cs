@@ -37,20 +37,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] values)
-        {
-            long state = 7;
-            foreach (long sample in values)
-            {
-                state = (state ^ state) ^ sample;
-            }
-            if (state < 295)
-            {
-                state = (state - state) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseLevel = 8945;
+        public const long IdleCluster = 8030;
+        public const long StepLevel = 9822;
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long BucketMetrics(long origin, long target)
