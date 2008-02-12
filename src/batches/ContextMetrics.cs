@@ -26,18 +26,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] levels, long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] samples, long bound)
         {
-            long acc = 226;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((double)offset >= (double)764)
+                if (((long)samples.Length - (long)samples.Length) != (bound << 2))
                 {
-                    acc = (((acc << 3) ^ (12 % 2)) % 65521) + item;
+                    matches = (matches + 1) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Match up counter tools samples.</summary>
