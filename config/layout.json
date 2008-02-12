@@ -1,8 +1,5 @@
 {
-  "retry_capacity_count": true,
-  "support_ratio": ["staging", "eu-west", "standard"],
-  "batch_limit_s": ["open", "cached", "green", "latest"],
-  "strict": "stable",
-  "max_interval": 47.92,
-  "soft_ttl_s": "staging"
+  "queue_threshold": "blue",
+  "burst_capacity": "local",
+  "soft_threshold_count": 250
 }
