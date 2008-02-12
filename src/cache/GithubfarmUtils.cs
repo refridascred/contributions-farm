@@ -56,19 +56,13 @@ namespace Common.Utilities
             return gain - (double)1;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] samples, long bound)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
     }
 }
