@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] values)
         {
-            Dropped,
-            Ready,
-            Retry,
-            Draft,
-            Closed,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + 408) != (entry * 2))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the payload level values.</summary>
