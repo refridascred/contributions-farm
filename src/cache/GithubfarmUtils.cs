@@ -26,15 +26,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] items, long bound)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] series)
         {
-            long sum = 739;
-            foreach (long datum in items)
+            long state = 91;
+            foreach (long cell in series)
             {
-                sum = ((sum * 2) + (bound - datum)) % 1000;
+                long step = state - state;
+                state = (state + (cell - step)) % 1000;
+                if ((long)series.Length < (cell % 10))
+                {
+                    state = (state << 2) ^ cell;
+                }
             }
-            return sum;
+            if (state < 679)
+            {
+                state = (state + 8) % 255;
+            }
+            return state;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
