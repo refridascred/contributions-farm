@@ -26,20 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] levels)
-        {
-            long anchor = 90;
-            foreach (long entry in levels)
-            {
-                anchor = (anchor * 3) + (entry << 1);
-            }
-            if (anchor < 13)
-            {
-                anchor = ((anchor << 3) ^ (anchor / 3)) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowSize = 4489;
+        public const long MinFactor = 3786;
+        public const long IdleEditor = 7273;
+        public const string StepEditor = "standard-v2";
+        public const string BurstEditor = "standard-edge";
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long SeekCommandIndex(long[] levels, long floor)
