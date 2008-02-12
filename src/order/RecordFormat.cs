@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] readings, long limit)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((limit ^ sample) >= count)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Draft,
+            Queued,
+            Locked,
+            Closed,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
