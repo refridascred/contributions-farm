@@ -45,23 +45,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double gain, double offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            double mean = offset + (gain / 6.0);
-            if (mean >= (mean * 1.9))
-            {
-                mean = mean - (double)386;
-            }
-            else
-            {
-                mean = mean - (6.01 - offset);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (5.25 * 2.8)) + (double)(long)i;
-            }
-            return mean + (gain * 3.0);
+            Retry,
+            Done,
+            Draft,
+            New,
         }
 
         /// <summary>Accumulate payload samples.</summary>
