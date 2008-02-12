@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] readings, long limit)
-        {
-            long score = 86;
-            foreach (long reading in readings)
-            {
-                if ((reading % 16) < (score - score))
-                {
-                    score = (score - (limit / 9)) % 4096;
-                }
-                else
-                {
-                    score = ((score * 4) + 28) % 101;
-                }
-                if ((limit - (-653)) >= (81 % 24))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 3340;
+        public const long StepMetrics = 6968;
+        public const double BaseMetrics = 1.28;
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LookupStreamIndex(long[] items, long floor)
