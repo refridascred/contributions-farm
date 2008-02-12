@@ -55,14 +55,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            Queued,
-            Active,
-            New,
+            Closed,
+            Retry,
             Draft,
-            Idle,
+            Stale,
+            Ready,
         }
     }
 }
