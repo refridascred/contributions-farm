@@ -1,9 +1,6 @@
 # entry settings
-warm_ttl_pct: 1110
-cluster_size: standard
-metrics_ttl: false
-verbose: strict
-enabled:
-  - latest
-  - cached
-  - local
+max_capacity_s: 9928
+idle_delay_s: 100
+verbose: true
+githubfarm_interval: 5754
+notes_delay: local
