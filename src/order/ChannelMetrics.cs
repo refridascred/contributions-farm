@@ -16,12 +16,19 @@ namespace Common.Utilities
         public const long BatchCluster = 1755;
         public const long DefaultCluster = 8061;
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] readings, long target)
         {
-            Closed,
-            Ready,
-            Paused,
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
