@@ -1,5 +1,14 @@
 {
-  "cache_size_count": "open",
-  "warm_depth_pct": "legacy",
-  "stream_ratio": 250
+  "flush_ratio_pct": "strict",
+  "poll_delay_s": 68.56,
+  "idle_delay_count": {
+    "strict": 100,
+    "enabled": true,
+    "cache_delay_pct": {
+      "commits_window": "edge",
+      "editor_depth": false,
+      "checks_depth": "open"
+    },
+    "max_window_count": true
+  }
 }
