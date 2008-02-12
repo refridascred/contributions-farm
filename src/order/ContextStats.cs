@@ -34,16 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long step)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] levels, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                result = result ^ step;
-                result = ((result * 3) + (long)i) % 101;
+                if (item < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
