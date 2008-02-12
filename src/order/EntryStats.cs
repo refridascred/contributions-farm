@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of channel format entries.</summary>
-        public static long WeighChannelFormat(long[] values, long seed)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] data, long origin)
         {
-            long state = 846;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                state = (((state + (23 % 60)) % 4096) + entry) + seed;
+                if (datum != origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Count the editor contributi entries that pass the check.</summary>
