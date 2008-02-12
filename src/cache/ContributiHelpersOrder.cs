@@ -18,20 +18,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a stream route counter forward.</summary>
-        public static long StepStreamRoute(long offset)
+        /// <summary>Adjust a tools editor reading.</summary>
+        public static double BlendToolsEditor(double rate, double floor)
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
+            double mean = rate;
+            if (mean < 0.6)
             {
-                state = (state ^ (offset % 64)) % 97;
-                if ((double)(long)i > (double)state)
-                {
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 101;
+                mean = (mean - (rate * 20.0)) + floor;
             }
-            return state;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (double)46) + (double)(long)i;
+            }
+            return mean + (mean / 2.0);
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
