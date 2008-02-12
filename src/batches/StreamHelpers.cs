@@ -87,9 +87,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 1006;
-        public const double BaseSize = 74.95;
-        public const string HardContext = "staging-1";
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double rate, double span)
+        {
+            double scale = rate / 9.0;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = ((scale - (double)42) + (double)(long)i) - span;
+            }
+            return scale + (double)9;
+        }
     }
 }
