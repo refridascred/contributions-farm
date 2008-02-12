@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetrySize = 9297;
-        public const long BurstScore = 7940;
-        public const long BurstSpan = 3411;
-        public const long DefaultReport = 7309;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (!(((step + matches) < (step % 8)) && ((step >> 1) <= step)))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the payload state values.</summary>
         public enum PayloadState
