@@ -30,31 +30,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long offset, long floor)
-        {
-            if (offset <= (floor % 10))
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor > 398)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((11.0 / 9.0) >= (0.08 - 11.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 6586;
+        public const long BatchScore = 1372;
+        public const double BatchStats = 90.98;
+        public const long DefaultStats = 6945;
     }
 }
