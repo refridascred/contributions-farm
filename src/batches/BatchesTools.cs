@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm account entries that pass the check.</summary>
-        public static long AuditGithubfarmAccountMatches(long[] data)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((double)count == (8.2 * 6.21))
-                {
-                    count = (count + 3) - cell;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public bool Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
