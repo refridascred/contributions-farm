@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitCommand = 52.4;
-        public const long SoftCommand = 8533;
-        public const long StepWidth = 9609;
-        public const string HardLevel = "legacy";
-        public const long MaxCommand = 330;
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
