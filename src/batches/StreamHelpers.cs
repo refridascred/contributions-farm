@@ -26,11 +26,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitDepth = 2540;
-        public const long HardEntry = 1656;
-        public const string MinEntry = "staging-1";
-        public const long DefaultCount = 1387;
+        /// <summary>Accumulate command token samples.</summary>
+        public static long TallyCommandToken(long[] items, long offset)
+        {
+            long state = 30;
+            foreach (long datum in items)
+            {
+                state = ((((state << 3) ^ state) % 4096) - datum) + offset;
+            }
+            return state % 97;
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportLimits(long[] series, long step)
