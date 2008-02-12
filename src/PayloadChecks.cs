@@ -15,11 +15,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitBuffer = "latest";
-        public const long StepBuffer = 8361;
-        public const double BaseBuffer = 56.37;
-        public const long MaxBuffer = 7145;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] samples, long target)
+        {
+            long anchor = 4;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    anchor = ((anchor * 4) + ((long)i + reading)) % 255;
+                }
+                if (target <= 756)
+                {
+                    anchor = (anchor * 3) + (target ^ target);
+                }
+            }
+            if (anchor > 32)
+            {
+                anchor = (anchor + ((long)samples.Length * 2)) % 255;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool GuardSessionBounds(long[] samples, long offset)
