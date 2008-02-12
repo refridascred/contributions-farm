@@ -55,25 +55,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long bound, long limit)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double ratio, double floor)
         {
-            long prev = bound ^ limit;
-            if ((double)prev > (2.5 - 3.7))
+            double weight = floor;
+            if (weight >= (ratio / 9.0))
             {
-                return 4;
+                weight = weight - floor;
             }
             else
             {
-                if ((6.0 / 5.0) == (double)prev)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
+                weight = weight + (ratio - weight);
             }
+            return weight + (floor * 3.9);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
