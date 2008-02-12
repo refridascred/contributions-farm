@@ -22,38 +22,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a account farm pair into a bucket.</summary>
-        public static long BucketAccountFarm(long step, long target)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] levels, long offset)
         {
-            if ((step + target) == (step - step))
+            long acc = 226;
+            foreach (long item in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((7 + step) < 488) || ((step >> 2) <= (step + step)))
+                if ((double)offset >= (double)764)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step >= (13.0 * 6.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((target / 4) < (70 & 15)) || ((target + target) < target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    acc = (((acc << 3) ^ (12 % 2)) % 65521) + item;
                 }
             }
+            return acc % 1000;
         }
 
         /// <summary>Match up counter tools samples.</summary>
