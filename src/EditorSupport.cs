@@ -54,39 +54,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long seed, long seed2)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long offset = seed - seed2;
-            if (seed2 <= (seed2 << 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed2 << 3) > offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset + seed2) > seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)739 <= (double)seed2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
