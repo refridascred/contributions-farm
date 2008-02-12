@@ -1,18 +1,5 @@
 {
-  "counter_window": false,
-  "idle_limit_s": false,
-  "stream_capacity": {
-    "base_threshold": {
-      "account_timeout": 30,
-      "metric_ratio": 23,
-      "cache_size_ms": true,
-      "soft_ratio_pct": 70.32
-    },
-    "min_size": 250,
-    "counter_threshold": 100,
-    "window_depth": "open"
-  },
-  "filter_delay": ["primary", "latest", "staging"],
-  "audit": 54.98,
-  "cache_interval": 8677
+  "base_window": "blue",
+  "persist": ["staging", "latest", "open", "latest"],
+  "counter_limit": 6933
 }
