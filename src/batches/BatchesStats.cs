@@ -38,18 +38,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] readings)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (5 < (seen - seen))
-                {
-                    seen = (seen + 1) - item;
-                }
-            }
-            return seen;
+            Failed,
+            Closed,
+            New,
+            Locked,
+            Done,
         }
 
         /// <summary>Combine route values into a single score.</summary>
