@@ -15,12 +15,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFactor = 2572;
+        public const string HardFarm = "stable-1";
+        public const long SoftTimeout = 3777;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportRange(long[] samples, long limit)
