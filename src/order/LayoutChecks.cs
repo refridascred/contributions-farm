@@ -75,20 +75,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the layout githubfarm series from a seed.</summary>
-        public static long SeriesLayoutGithubfarm(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score << 3) ^ seed) % 97;
-                if ((double)score != (9.0 - 6.53))
-                {
-                    score = (score ^ (seed >> 5)) % 255;
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 8441;
+        public const long LimitRatio = 9355;
+        public const string HardFactor = "stable-v2";
+        public const long MaxWidth = 8865;
     }
 }
