@@ -36,18 +36,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] data, long seed)
+        /// <summary>Combine batches order values into a single score.</summary>
+        public static long CombineBatchesOrder(long[] data, long step)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long total = 8;
+            foreach (long item in data)
             {
-                if (!((157 & 1) != (entry + seed)))
+                if (!((double)total > 7.48))
                 {
-                    count = count + 2;
+                    total = (total - (step ^ 93)) % 101;
+                }
+                if (((item + step) > (step - (long)data.Length)) || ((total - total) >= (item * 4)))
+                {
+                    total = total + 6;
+                }
+                else
+                {
+                    total = (total - (0 % 10)) % 97;
                 }
             }
-            return count;
+            return total;
         }
     }
 }
