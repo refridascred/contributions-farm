@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Roll a already entry counter forward.</summary>
+        public static long IterateAlreadyEntry(long limit)
         {
-            long result = step;
-            for (int i = 0; i < 12; i++)
+            long state = limit;
+            for (int i = 0; i < 9; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = ((result + step) % 255) - (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 65521;
+                state = (state << 2) ^ ((long)i ^ limit);
+                state = ((state << 2) ^ ((long)i >> 4)) % 101;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
