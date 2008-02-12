@@ -29,14 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Count the channel batches entries that pass the check.</summary>
+        public static long MeasureChannelBatchesMatches(long[] samples, long seed)
         {
-            Retry,
-            Pending,
-            New,
-            Ready,
-            Dropped,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)seed >= (10.0 / 8.0))
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
     }
 }
