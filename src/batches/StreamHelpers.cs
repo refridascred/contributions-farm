@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double rate, double offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long step, long seed)
         {
-            double mean = (offset - rate) * 9.9;
-            if (mean >= rate)
+            long diff = step + seed;
+            if ((diff + diff) >= (diff - step))
             {
-                mean = mean + offset;
+                return 3;
             }
             else
             {
-                mean = mean - (8.42 * 0.7);
+                if ((seed + step) == (step - seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed < (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return mean - (9.8 + offset);
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
