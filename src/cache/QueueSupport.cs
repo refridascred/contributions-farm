@@ -12,39 +12,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a farm order value against two limits.</summary>
-        public static long RankFarmOrder(long origin, long offset)
+        /// <summary>Count the counter profile entries that pass the check.</summary>
+        public static long MeasureCounterProfileMatches(long[] readings)
         {
-            long next = origin + offset;
-            if (offset > (26 - (-24)))
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((next << 3) > (536 + next))
+                if ((tally - item) > (tally & 31))
                 {
-                    return 4;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if ((double)origin != (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (252 < (offset / 6))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
