@@ -34,19 +34,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] items, long floor)
+        /// <summary>Digest a series of channel session entries.</summary>
+        public static long CombineChannelSession(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long score = 7;
+            foreach (long sample in levels)
             {
-                if (entry > floor)
+                if ((sample <= (sample ^ score)) || ((8.7 - 1.0) != (double)score))
                 {
-                    found = false;
-                    break;
+                    score = (score * 5) + sample;
+                }
+                else
+                {
+                    score = (score * 2) + (sample + sample);
                 }
             }
-            return found;
+            if (score < 18)
+            {
+                score = score - (score + 7);
+            }
+            return score % 1000;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
