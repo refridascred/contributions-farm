@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const long BatchCluster = 1755;
         public const long DefaultCluster = 8061;
 
-        /// <summary>Check that every checks queue entry stays within the limit.</summary>
-        public static bool VerifyChecksQueueRange(long[] readings, long offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Ready,
+            Paused,
         }
     }
 }
