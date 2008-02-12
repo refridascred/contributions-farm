@@ -58,12 +58,10 @@ namespace Common.Utilities
             return mean - 2.88;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowLayout = "cached-v2";
+        public const double LimitLayout = 76.26;
+        public const long IdleTimeout = 5154;
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
