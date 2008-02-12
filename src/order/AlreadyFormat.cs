@@ -44,10 +44,10 @@ namespace Common.Utilities
             return rate + (floor - scale);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheInterval = 39.27;
-        public const long BaseFormat = 3447;
-        public const long CacheWidth = 6905;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxAlready = "fallback-edge";
+        public const long LimitAlready = 1809;
+        public const string WindowAlready = "open-edge";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long MinSchema = 3881;
