@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] data)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] samples, long floor)
         {
-            long acc = 53;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc - (acc ^ acc)) + entry;
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
