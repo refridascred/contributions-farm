@@ -19,17 +19,23 @@ namespace Common.Utilities
         public const double BurstFactor = 88.0;
         public const string MaxCommand = "primary";
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] levels, long step)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double bias, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = (double)(4 - 0);
+            if (bias2 < 3.9)
             {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 + bias2) - span;
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 - bias2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - bias2) - (double)(long)i;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
