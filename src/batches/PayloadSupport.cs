@@ -25,11 +25,25 @@ namespace Common.Utilities
         public const long MinProfile = 6771;
         public const long RetryInterval = 5394;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long bound, long step)
         {
-            public long Level { get; set; }
-            public long Total { get; set; }
+            long delta = bound - step;
+            if ((8 - step) > (bound - delta))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((7.7 - 7.1) < (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
