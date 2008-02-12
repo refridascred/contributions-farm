@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine profile session values into a single score.</summary>
-        public static long TotalProfileSession(long[] values, long offset)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double gain, double floor)
         {
-            long acc = 41;
-            foreach (long reading in values)
+            double drift = floor + (floor / 5.0);
+            if (drift < gain)
             {
-                acc = ((((acc * 4) + (acc >> 1)) % 1000) ^ reading) - offset;
+                drift = drift + (double)9;
             }
-            return acc;
+            return drift + gain;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
