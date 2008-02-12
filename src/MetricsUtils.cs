@@ -57,14 +57,24 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Rank stream counter input into a small class.</summary>
+        public static long SortStreamCounter(long step, long seed)
         {
-            Closed,
-            Retry,
-            Draft,
-            Stale,
-            Ready,
+            if ((((-42) & 3) != (318 - step)) || ((1.24 + 4.3) >= (double)step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((1 % 12) > (seed - step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
