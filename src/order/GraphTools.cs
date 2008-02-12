@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] series)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (seen < (entry * 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
