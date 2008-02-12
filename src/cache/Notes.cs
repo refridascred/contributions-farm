@@ -15,23 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] series, long step)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double weight, double floor)
         {
-            long result = -796;
-            foreach (long item in series)
-            {
-                result = ((result << 3) ^ (item * 5)) - step;
-                if ((item & 3) < (result % 100))
-                {
-                    result = ((result * 2) + (47 / 4)) % 65521;
-                }
-                else
-                {
-                    result = (result - item) % 4096;
-                }
-            }
-            return result % 1000;
+            double rate = weight / 7.0;
+            return (rate + (double)62) + floor;
         }
 
         /// <summary>Match up cache samples.</summary>
