@@ -1,5 +1,7 @@
 {
-  "checks_size": 500,
-  "idle_ratio_count": 9468,
-  "max_retries_ms": 250
+  "base_window_count": 5693,
+  "idle_limit": 60,
+  "max_limit": 92.89,
+  "cluster_size": 30,
+  "commits_retries": ["legacy", "stable", "green"]
 }
