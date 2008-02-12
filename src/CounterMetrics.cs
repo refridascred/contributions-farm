@@ -47,19 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double bias, double floor)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long target)
         {
-            double bias2 = floor;
-            if (bias2 < bias)
+            long mark = target;
+            for (int i = 0; i < 7; i++)
             {
-                bias2 = bias2 + floor;
+                mark = mark ^ mark;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            else
-            {
-                bias2 = bias2 - (3.3 + 7.0);
-            }
-            return bias2 + bias2;
+            return mark;
         }
     }
 }
