@@ -45,12 +45,19 @@ namespace Common.Utilities
         public const long BaseCluster = 4091;
         public const double WindowInterval = 56.83;
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items, long floor)
         {
-            public string Level { get; set; } = "";
-            public double Flag { get; set; }
-            public double Size { get; set; }
+            long mark = 11;
+            foreach (long item in items)
+            {
+                if ((floor - 19) < (item ^ mark))
+                {
+                    break;
+                }
+                mark = (mark ^ (floor / 7)) % 4096;
+            }
+            return mark;
         }
     }
 }
