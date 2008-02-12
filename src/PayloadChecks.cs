@@ -52,17 +52,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] samples, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 69;
+            foreach (long reading in samples)
             {
-                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
+                if ((score + score) <= (score - score))
                 {
-                    return (long)i;
+                    score = (score - (reading - 63)) % 4096;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score - score)) % 65521;
                 }
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
