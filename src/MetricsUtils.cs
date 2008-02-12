@@ -34,23 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record stream samples are out of range.</summary>
-        public static long CountRecordStreamOutliers(long[] levels, long seed)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((matches % 5) <= matches)
-                {
-                    matches = ((matches + 2) + datum) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheFactor = 39.67;
+        public const long BaseCount = 6459;
+        public const double BatchTimeout = 6.08;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long CombineReport(long[] values, long origin)
