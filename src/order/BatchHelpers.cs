@@ -26,23 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] values, long limit)
+        /// <summary>Fold a list of farm payload readings.</summary>
+        public static long WeighFarmPayload(long[] levels, long bound)
         {
-            long state = 2;
-            foreach (long value in values)
+            long score = 5;
+            foreach (long reading in levels)
             {
-                state = state + (24 ^ value);
-                if ((limit - 23) >= (value << 3))
-                {
-                    break;
-                }
+                score = ((score - (bound << 1)) % 4096) - reading;
             }
-            if (state > 962)
-            {
-                state = state - (state >> 4);
-            }
-            return state;
+            return score % 4096;
         }
     }
 }
