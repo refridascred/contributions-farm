@@ -36,16 +36,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor - (anchor - (long)i)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
     }
 }
