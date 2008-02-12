@@ -45,19 +45,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every command window entry stays within the limit.</summary>
-        public static bool CheckCommandWindowRange(long[] samples, long limit)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double gain, double offset)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            double bias = (double)(4 & 63);
+            if (bias > offset)
             {
-                if (reading >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = bias - (9.5 - gain);
             }
-            return stale;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (bias / 7.0)) + (double)(long)i;
+            }
+            return bias + offset;
         }
     }
 }
