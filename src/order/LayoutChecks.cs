@@ -62,13 +62,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double ratio, double offset)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            double rate = offset;
+            if (rate < offset)
+            {
+                rate = (rate + rate) - ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (offset / 4.0)) + (double)(long)i;
+            }
+            return rate + (double)13;
         }
     }
 }
