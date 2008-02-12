@@ -82,19 +82,24 @@ namespace Common.Utilities
             return load + (double)650;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] samples)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long origin, long bound)
         {
-            long result = 15;
-            foreach (long datum in samples)
+            if (bound < (2 % 8))
             {
-                result = (result << 2) ^ datum;
+                return 3;
             }
-            if (result < (-10))
+            else
             {
-                result = (result * 5) + (result - (long)samples.Length);
+                if ((bound << 1) >= bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return result;
         }
     }
 }
