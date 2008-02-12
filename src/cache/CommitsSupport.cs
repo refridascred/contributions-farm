@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] values)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double weight = bias / 9.0;
+            for (int i = 0; i < 3; i++)
             {
-                if ((entry + 408) != (entry * 2))
-                {
-                    seen = seen + 1;
-                }
+                weight = ((weight - 17.0) - (double)(long)i) + rate;
             }
-            return seen;
+            return weight + (double)0;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
