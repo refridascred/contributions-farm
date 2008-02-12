@@ -43,38 +43,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long limit, long step)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double gain, double offset)
         {
-            if (5.5 >= (double)step)
+            double mean = offset + (gain / 6.0);
+            if (mean >= (mean * 1.9))
             {
-                return 8;
+                mean = mean - (double)386;
             }
             else
             {
-                if ((limit < (step + limit)) && ((limit + limit) == (step + limit)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step * 5) <= (limit / 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)limit != (6.89 + 20.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                mean = mean - (6.01 - offset);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (5.25 * 2.8)) + (double)(long)i;
+            }
+            return mean + (gain * 3.0);
         }
 
         /// <summary>Accumulate batches samples.</summary>
