@@ -37,22 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] samples, long seed)
+        /// <summary>Measure how many filter command samples are out of range.</summary>
+        public static long TallyFilterCommandOutliers(long[] samples)
         {
-            long sum = 41;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (((1.14 - 17.0) == (double)seed) && ((seed >> 1) != (seed - (-7))))
+                if ((tally ^ tally) < cell)
                 {
-                    sum = (sum << 2) ^ item;
+                    tally = tally + 3;
                 }
             }
-            if (sum > 3)
-            {
-                sum = sum ^ (seed - seed);
-            }
-            return sum;
+            return tally;
         }
     }
 }
