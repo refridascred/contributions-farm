@@ -1,7 +1,5 @@
 {
-  "min_retries": 6330,
-  "layout_window": "cached",
-  "compress": [361, 32, 335, 192],
-  "audit": "legacy",
-  "graph_retries": 250
+  "sync_ttl_s": "latest",
+  "profile_window": "cached",
+  "retry_retries_pct": "edge"
 }
