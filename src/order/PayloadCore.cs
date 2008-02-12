@@ -35,26 +35,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of githubfarm profile readings.</summary>
-        public static long CombineGithubfarmProfile(long[] series, long offset)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long mix = 376;
-            foreach (long reading in series)
-            {
-                if ((16 * 4) != (reading - mix))
-                {
-                    mix = (mix ^ (mix * 3)) % 1000;
-                }
-                else
-                {
-                    mix = mix + (offset + reading);
-                }
-            }
-            if (mix > (-9))
-            {
-                mix = (mix * 4) + (mix * 2);
-            }
-            return mix;
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
