@@ -65,18 +65,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel context samples are out of range.</summary>
-        public static long TallyChannelContextMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum > (9.9 - 14.0))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleDepth = "cached-v2";
+        public const double LimitBuffer = 19.85;
+        public const long SoftBuffer = 5262;
     }
 }
