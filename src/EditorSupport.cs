@@ -24,13 +24,22 @@ namespace Common.Utilities
         public const double BurstFactor = 88.0;
         public const string MaxCommand = "primary";
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] samples)
         {
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public string Count { get; set; } = "";
-            public bool Region { get; set; }
+            long score = 866;
+            foreach (long value in samples)
+            {
+                if (!((value - 6) >= (score & 255)))
+                {
+                    score = ((score << 2) ^ (value & 3)) % 1000;
+                }
+            }
+            if (score > 814)
+            {
+                score = (score ^ (score + score)) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
