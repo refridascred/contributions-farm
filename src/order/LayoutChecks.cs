@@ -56,14 +56,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] data)
         {
-            Done,
-            Draft,
-            Pending,
-            Queued,
-            Active,
+            long score = 99;
+            foreach (long cell in data)
+            {
+                if (!((cell - 64) > cell))
+                {
+                    score = score ^ (score - score);
+                }
+            }
+            if (score < 13)
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Measure how many metric cache samples are out of range.</summary>
