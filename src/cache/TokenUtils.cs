@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const double SoftLevel = 85.19;
         public const long CacheEntry = 5345;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultSpan = 6144;
-        public const long MaxCount = 9810;
-        public const string MaxDepth = "standard";
-        public const long SoftBuffer = 1752;
+        /// <summary>Iterate the editor cache series from a seed.</summary>
+        public static long SeriesEditorCache(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 255;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
