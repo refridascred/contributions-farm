@@ -57,18 +57,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] samples, long seed)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long bound)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((seed - (long)samples.Length) != (datum - datum))
-                {
-                    matches = matches + 3;
-                }
+                acc = (acc * 5) + ((long)i * 4);
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
     }
 }
