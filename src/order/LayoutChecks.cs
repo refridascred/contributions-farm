@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double scale, double floor)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double bias, double offset)
         {
-            double gain = floor;
-            if (gain <= floor)
+            double mean = bias;
+            if (mean >= (mean + offset))
             {
-                gain = gain + scale;
+                mean = mean - 8.65;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 8; i++)
             {
-                gain = (gain + (scale * 1.9)) + (double)(long)i;
+                mean = (mean + (double)2) + (double)(long)i;
             }
-            return gain - scale;
+            return mean - offset;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
