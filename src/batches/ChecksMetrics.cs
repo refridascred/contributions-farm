@@ -81,20 +81,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
-            {
-                if (carry < (-850))
-                {
-                    carry = carry + (carry % 100);
-                    carry = (carry ^ (target % 12)) % 1000;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 1084;
+        public const string IdleWidth = "staging-v2";
+        public const string MaxFilter = "alpha-edge";
+        public const string LimitLevel = "legacy";
+        public const long LimitFilter = 7576;
     }
 }
