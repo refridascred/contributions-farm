@@ -19,13 +19,9 @@ namespace Common.Utilities
         public const long BaseCache = 791;
         public const long WindowCache = 1787;
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepDepth = "alpha-1";
+        public const long CacheMetric = 7033;
+        public const string WindowMetric = "latest";
     }
 }
