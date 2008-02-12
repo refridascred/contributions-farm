@@ -21,18 +21,20 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] data, long seed)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long seed)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long result = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((((44 ^ (-5)) >= count) || (count > (0 >> 1))) || (((count + 8) >= (seed + reading)) && ((7.3 + 3.0) > (double)count)))
+                if (!((result + seed) != (result - (long)i)))
                 {
-                    count = count + 1;
+                    result = result + seed;
+                    result = (result ^ (seed / 3)) % 255;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
