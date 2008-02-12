@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] series, long step)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long step)
         {
-            long sum = 878;
-            foreach (long item in series)
+            long result = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((step / 6) <= (item ^ item))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    sum = ((sum << 3) ^ (item % 10)) % 1000;
-                    sum = (sum ^ (step >> 1)) % 255;
+                    result = ((result + step) % 255) - (long)i2;
                 }
-                sum = (sum << 3) ^ (882 >> 5);
-                sum = ((sum << 2) ^ (item + item)) % 65521;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Define window limits and defaults.</summary>
