@@ -18,24 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long target, long limit)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long bound)
         {
-            if ((double)target == (7.07 * 8.21))
+            long result = bound;
+            for (int i = 0; i < 17; i++)
             {
-                return 1;
+                result = ((result * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (!((limit ^ 74) != (target * 4)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return result;
         }
 
         /// <summary>Locate a order reading by value.</summary>
