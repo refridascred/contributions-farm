@@ -22,21 +22,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up already filter samples.</summary>
-        public static long MatchAlreadyFilterCount(long[] data)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = bias * 3.79;
+            if (gain < bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = (gain + (double)21) - rate;
             }
-            return seen;
+            return gain + (gain + gain);
         }
 
         /// <summary>Scale a route editor figure with a bias.</summary>
