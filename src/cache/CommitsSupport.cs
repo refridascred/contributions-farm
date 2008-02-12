@@ -69,11 +69,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
+            Ready,
+            Retry,
+            Dropped,
+            Idle,
         }
     }
 }
