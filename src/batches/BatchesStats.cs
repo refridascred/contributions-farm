@@ -33,22 +33,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] readings, long target)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((target >> 2) >= (tally & 127))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Draft,
+            New,
         }
 
         /// <summary>Describe the filter level values.</summary>
