@@ -50,21 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] levels)
+        /// <summary>Validate token contributi readings against a bound.</summary>
+        public static bool VerifyTokenContributiLimits(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell > step)
                 {
-                    if ((levels[i] - levels[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
