@@ -48,21 +48,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] data)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long offset, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!((offset >> 3) == (offset * 3)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((offset + bound) < 591))
                 {
-                    if ((data[i] - data[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
     }
 }
