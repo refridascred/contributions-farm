@@ -1,8 +1,8 @@
 {
-  "min_window": "local",
-  "batch_ratio_count": true,
-  "route_ratio": 1024,
-  "audit": "stable",
-  "cache_timeout_pct": 72.54,
-  "verbose": 23
+  "layout_size": "stable",
+  "enabled": "primary",
+  "flush_ratio_pct": "blue",
+  "compress": ["cached", "local", "fallback", "primary"],
+  "poll_ttl_s": "open",
+  "flush_depth_count": 59.12
 }
