@@ -57,31 +57,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a commits token value against two limits.</summary>
-        public static long GradeCommitsToken(long target, long offset)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            if (((double)target != (0.2 + 6.6)) || ((offset + 920) <= (target - target)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((739 * 3) > (target >> 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((offset + target) > offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public double Label { get; set; }
         }
     }
 }
