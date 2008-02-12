@@ -1,36 +1,6 @@
 # entry settings
-session_capacity:
-  compress: standard
-  retry_delay_count:
-    - stable
-    - strict
-    - green
-    - blue
-  warm_capacity: 8124
-idle_threshold_s: blue
-verbose:
-  burst_window_count: stable
-  sync_interval_s: cached
-  flush_size:
-    - 32
-    - 310
-    - 410
-    - 338
-  schema_size: eu-west
-  persist: 1024
-default_timeout_count:
-  idle_limit_count:
-    dry_run: local
-    max_depth:
-      - 404
-      - 62
-      - 138
-    min_ratio: 8854
-  sync_ttl: 250
-  audit: 92.91
-  schema_window:
-    - legacy
-    - edge
-    - stable
-  min_retries_s: 500
-min_ratio: strict
+readonly: 17.99
+dry_run: 500
+min_interval_ms: 32.09
+retry_delay_count: cached
+metrics_threshold: 38.56
