@@ -55,16 +55,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long bound)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] readings)
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc * 5) + ((long)i * 4);
-                acc = ((acc * 3) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
