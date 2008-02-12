@@ -30,19 +30,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long step)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long origin)
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)state >= (double)step)
+                if (!!(349 > (anchor / 2)))
                 {
-                    continue;
+                    anchor = (anchor - anchor) % 1000;
                 }
-                state = ((state * 3) + (long)i) % 4093;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = ((anchor - origin) % 97) + (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return state;
+            return anchor;
         }
     }
 }
