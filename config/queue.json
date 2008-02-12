@@ -1,8 +1,6 @@
 {
-  "warm_delay": 9.43,
-  "idle_delay": "cached",
-  "sync_ttl_ms": "edge",
-  "payload_threshold": 86.3,
-  "enabled": "legacy",
-  "compress": true
+  "hard_size": "strict",
+  "warm_timeout_pct": "staging",
+  "token_ttl": 4583,
+  "retry_threshold": 100
 }
