@@ -36,15 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            New,
-            Pending,
-            Idle,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryTimeout = 5090;
+        public const long HardCommand = 8287;
+        public const long IdleCommand = 4486;
+        public const double MaxDepth = 55.04;
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LookupGraphIndex(long[] items, long target)
