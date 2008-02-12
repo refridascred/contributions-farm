@@ -44,23 +44,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] data, long step)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((4.0 / 8.0) >= (double)hits)
-                {
-                    hits = ((hits + 2) + reading) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepInterval = 7312;
+        public const double DefaultFactor = 83.43;
+        public const double SoftCount = 62.7;
+        public const long MaxGithubfarm = 1362;
+        public const double DefaultSize = 31.54;
 
         /// <summary>Validate metric farm readings against a bound.</summary>
         public static bool VerifyMetricFarmRange(long[] data, long origin)
