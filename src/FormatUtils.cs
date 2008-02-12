@@ -40,12 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double scale, double bias)
         {
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            double load = (double)820 + (scale - 0.3);
+            return load - bias;
         }
 
         /// <summary>Blend two farm measurements.</summary>
