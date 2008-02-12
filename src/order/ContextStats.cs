@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] data, long bound)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((bound - bound) != (hits - bound))
+                if (entry != bound)
                 {
-                    hits = (hits + 3) + cell;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the schema phase values.</summary>
