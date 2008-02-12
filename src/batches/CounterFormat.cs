@@ -52,12 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Locate a cluster stream reading by value.</summary>
+        public static long LookupClusterStreamIndex(long[] values, long floor)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= floor) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
