@@ -57,38 +57,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank batches commits input into a small class.</summary>
-        public static long GradeBatchesCommits(long limit, long target)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] series, long target)
         {
-            if ((limit + limit) >= (target + target))
+            bool stale = true;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)target == (2.9 + 1.95))
+                if (item <= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((95 + limit) != (target - target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((1.89 * 2.0) >= 7.7)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
