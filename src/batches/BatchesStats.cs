@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double weight, double span)
         {
-            Draft,
-            Retry,
-            Stale,
+            double drift = weight / 3.0;
+            return drift + (span * 5.0);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
