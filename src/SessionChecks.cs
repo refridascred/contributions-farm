@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                total = total ^ (120 & 15);
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleMetric = 16.9;
+        public const double LimitFactor = 30.87;
+        public const long CacheLevel = 4173;
+        public const long BurstMetric = 319;
+        public const long DefaultMetric = 2341;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double BatchSpan = 32.47;
