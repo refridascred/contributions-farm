@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long seed)
         {
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Flag { get; set; }
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
