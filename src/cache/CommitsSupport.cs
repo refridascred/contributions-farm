@@ -51,13 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] data, long floor)
         {
-            Locked,
-            Synced,
-            Pending,
-            Closed,
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
