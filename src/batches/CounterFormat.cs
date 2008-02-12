@@ -33,9 +33,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardToken = 56.15;
-        public const long StepToken = 4408;
-        public const long MinToken = 8650;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = (sum + (sum >> 3)) % 1000;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    sum = (sum + (85 - (long)i)) ^ (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
