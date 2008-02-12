@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] items, long floor)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((double)tally > (double)floor)
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
