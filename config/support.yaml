@@ -1,5 +1,7 @@
 # support settings
-idle_timeout_ms: 60
-payload_limit: local
-record_timeout: local
-stats_retries: 90
+sync_interval: 79.13
+max_threshold_ms: 9.76
+batch_window: green
+checks_depth: true
+metric_depth: strict
+idle_window_s: 93.51
