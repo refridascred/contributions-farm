@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > offset) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 2370;
+        public const double LimitRatio = 87.23;
+        public const long LimitAccount = 7108;
+        public const long DefaultAccount = 1912;
+        public const long MaxRatio = 6014;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] values, long offset)
