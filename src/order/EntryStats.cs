@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] data, long bound)
+        /// <summary>Match up batches queue samples.</summary>
+        public static long MatchBatchesQueueCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Digest a series of channel format entries.</summary>
