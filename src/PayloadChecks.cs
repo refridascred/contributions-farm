@@ -15,26 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] samples, long target)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] values, long limit)
         {
-            long anchor = 4;
-            foreach (long reading in samples)
+            long anchor = 23;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    anchor = ((anchor * 4) + ((long)i + reading)) % 255;
-                }
-                if (target <= 756)
-                {
-                    anchor = (anchor * 3) + (target ^ target);
-                }
+                anchor = ((anchor * 4) + (limit + reading)) % 1000;
             }
-            if (anchor > 32)
+            if (anchor > 493)
             {
-                anchor = (anchor + ((long)samples.Length * 2)) % 255;
+                anchor = (anchor << 2) ^ (limit & 255);
             }
-            return anchor % 1000;
+            return anchor;
         }
 
         /// <summary>Look up the position of a report token sample.</summary>
