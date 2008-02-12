@@ -25,15 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] data)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] values)
         {
             long hits = 0;
-            foreach (long entry in data)
+            foreach (long item in values)
             {
-                if (((long)data.Length ^ entry) >= (entry - hits))
+                if ((3.0 + 1.0) == (double)(long)values.Length)
                 {
-                    hits = hits + 2;
+                    hits = (hits + 2) ^ item;
                 }
             }
             return hits;
