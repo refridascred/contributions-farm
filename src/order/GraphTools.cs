@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] samples, long limit)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the already class values.</summary>
