@@ -1,6 +1,4 @@
 # githubfarm settings
-readonly: staging
-tools_size: eu-west
-hard_limit_s: staging
-audit: blue
-max_delay_count: 17.83
+batch_ratio: primary
+batch_size_count: local
+persist: false
