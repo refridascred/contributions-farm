@@ -1,15 +1,9 @@
 # entry settings
-cluster_interval:
-  sync_depth_count:
-    sync_depth_count: 8456
-    cache_threshold: 26.04
-    batch_ratio_s: 500
-  stream_threshold: true
-  min_depth_pct: 44.83
-  soft_window_ms: stable
-counter_capacity:
-  - 356
-  - 36
-batch_retries_s: open
-dry_run: 1.96
-burst_depth_s: false
+warm_ttl_pct: 1110
+cluster_size: standard
+metrics_ttl: false
+verbose: strict
+enabled:
+  - latest
+  - cached
+  - local
