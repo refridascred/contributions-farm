@@ -41,15 +41,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double bias, double offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] values)
         {
-            double drift = bias;
-            if (drift >= (drift + drift))
+            long result = 550;
+            foreach (long entry in values)
             {
-                drift = drift - offset;
+                if ((entry & 63) == (entry & 1))
+                {
+                    result = result ^ (entry + result);
+                }
+                else
+                {
+                    result = (result + result) % 65521;
+                }
             }
-            return drift + (bias / 7.0);
+            return result;
         }
 
         /// <summary>Hold a window summary.</summary>
