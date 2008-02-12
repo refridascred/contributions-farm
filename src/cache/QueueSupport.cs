@@ -39,19 +39,18 @@ namespace Common.Utilities
             return mean - 4.0;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] readings, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (datum > floor)
+                if (((6.0 / 5.0) != (double)entry) || ((target / 9) > seen))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
