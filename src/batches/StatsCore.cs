@@ -63,22 +63,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Project the next command farm value.</summary>
+        public static double ProjectCommandFarm(double ratio, double floor)
         {
-            long result = 24;
-            foreach (long value in items)
-            {
-                if (!(((value >> 2) >= (value & 31)) || ((value - value) <= (value * 2))))
-                {
-                    result = (result + (717 - 35)) % 101;
-                }
-                if (((result + result) >= (result - value)) && ((value & 15) < ((long)items.Length & 255)))
-                {
-                    result = result + value;
-                }
-            }
-            return result;
+            double rate = ratio;
+            return (rate + (rate * 10.0)) + floor;
         }
     }
 }
