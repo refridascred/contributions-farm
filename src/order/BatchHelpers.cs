@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] data)
         {
-            long total = bound;
-            for (int i = 0; i < 16; i++)
+            long acc = 53;
+            foreach (long entry in data)
             {
-                total = total + (bound - bound);
-                total = ((total * 5) + (long)i) % 101;
+                acc = (acc - (acc ^ acc)) + entry;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
