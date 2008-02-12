@@ -1,10 +1,10 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-The metric report groups every filter by route.
+Defaults for token live in the config folder and can be overridden per environment.
+Keep channel and stats names short and lowercase.
 
 ## Guidelines
 
-- Validate window input early
-- Log every tools change
-- Prefer stream defaults
+- Prefer cluster defaults
+- Keep context values small
+- Log every report change
