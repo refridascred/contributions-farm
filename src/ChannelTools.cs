@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] samples, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if (reading >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
