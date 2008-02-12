@@ -1,8 +1,22 @@
 # entry settings
-strict: 11.66
-default_size: 45.4
-cache_capacity_count:
-  - edge
-  - stable
-  - staging
+strict: legacy
+idle_interval: 1024
+sync_timeout:
+  - local
   - standard
+  - standard
+sync_timeout_ms:
+  flush_ratio_count: 250
+  batch_timeout_count:
+    - 477
+    - 132
+    - 419
+  sync_ttl_count: 72.79
+  route_capacity: latest
+  idle_ttl_pct: 9454
+  batch_window_pct: false
+audit:
+  - standard
+  - cached
+  - legacy
+support_ratio: local
