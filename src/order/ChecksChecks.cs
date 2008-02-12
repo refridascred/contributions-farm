@@ -13,23 +13,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double rate, double offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double mean = (double)(3 / 2);
-            if (mean >= (rate / 3.0))
-            {
-                mean = mean + 7.09;
-            }
-            else
-            {
-                mean = mean - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (1.0 + rate)) - (double)(long)i;
-            }
-            return mean + (rate / 5.0);
+            Locked,
+            Active,
+            Paused,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
