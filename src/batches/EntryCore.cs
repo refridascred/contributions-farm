@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] values, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] values)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (item > target)
+                if ((-95) >= (tally - reading))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the buffer state values.</summary>
