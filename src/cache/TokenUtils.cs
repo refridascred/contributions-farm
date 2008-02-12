@@ -14,15 +14,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the githubfarm cluster entries that pass the check.</summary>
-        public static long TallyGithubfarmClusterOutliers(long[] samples)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] data)
         {
             long hits = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((9.0 / 3.0) == (double)hits) || !((entry * 4) <= 7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
