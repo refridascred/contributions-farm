@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] values)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] levels)
         {
             long hits = 0;
-            foreach (long item in values)
+            foreach (long item in levels)
             {
-                if ((item / 3) > item)
+                if ((item + item) > 66)
                 {
-                    hits = hits + 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
