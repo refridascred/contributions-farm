@@ -1,16 +1,7 @@
 # githubfarm settings
-sync_ratio_count: 6865
-flush_retries_ms: true
-sync_limit_s:
-  default_ratio: open
-  verbose:
-    soft_limit: 19.08
-    strict: 42.67
-    token_delay: strict
-    warm_capacity_pct: latest
-    warm_retries_s: stable
-    persist: 48.85
-  poll_depth_pct: legacy
-soft_interval: 51
-idle_limit: cached
-audit: fallback
+order_ratio: true
+enabled: 79.78
+audit: 5
+dry_run:
+  - latest
+  - stable
