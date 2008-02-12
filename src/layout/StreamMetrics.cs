@@ -25,25 +25,19 @@ namespace Common.Utilities
         public const double RetryDepth = 36.29;
         public const long MinCount = 5638;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long target, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] levels, long seed)
         {
-            long gap = target + offset;
-            if (110 < gap)
+            long carry = 139;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset - gap) >= target) || ((target / 9) >= (target / 5)))
+                carry = ((carry << 3) ^ (reading / 4)) % 255;
+                if ((reading <= (seed & 15)) || (((long)levels.Length + 321) > 832))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    carry = (carry << 3) ^ seed;
                 }
             }
+            return carry % 1000;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
