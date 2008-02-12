@@ -26,11 +26,12 @@ namespace Common.Utilities
         public const long CacheMetrics = 2074;
         public const long SoftFactor = 5945;
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double bias, double span)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            double ratio = (double)359;
-            return ((ratio + 1.4) + bias) + span;
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank counter input into a small class.</summary>
