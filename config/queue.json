@@ -1,6 +1,8 @@
 {
-  "hard_depth_pct": 87.02,
-  "enabled": 36.45,
-  "strict": true,
-  "audit": 6286
+  "warm_delay": 9.43,
+  "idle_delay": "cached",
+  "sync_ttl_ms": "edge",
+  "payload_threshold": 86.3,
+  "enabled": "legacy",
+  "compress": true
 }
