@@ -31,27 +31,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] values, long origin)
-        {
-            long acc = 6;
-            foreach (long sample in values)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = (((acc * 3) + (acc + origin)) % 4096) - (long)i;
-                }
-                if (((origin + sample) > (acc >> 3)) || ((double)origin == (0.6 + 6.77)))
-                {
-                    acc = (acc * 4) + (origin & 255);
-                }
-            }
-            if (acc < 203)
-            {
-                acc = ((acc << 2) ^ (acc ^ acc)) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 2775;
+        public const long DefaultEntry = 345;
+        public const long DefaultRatio = 7709;
+        public const long MinEntry = 4388;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool GuardGraphBounds(long[] readings, long offset)
