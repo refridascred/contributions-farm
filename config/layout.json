@@ -1,5 +1,20 @@
 {
-  "queue_threshold": "blue",
-  "burst_capacity": "local",
-  "soft_threshold_count": 250
+  "batch_delay": "standard",
+  "idle_window_count": 3818,
+  "burst_capacity": true,
+  "warm_size": {
+    "dry_run": {
+      "enabled": 5620,
+      "counter_threshold": 100,
+      "strict": "open",
+      "hard_size": 63
+    },
+    "compress": 4759,
+    "burst_ratio": "fallback"
+  },
+  "stats_delay": {
+    "already_ttl": 78.9,
+    "verbose": true,
+    "audit": [106, 405, 132]
+  }
 }
