@@ -47,19 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] values, long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (item < offset)
+                if (datum > floor)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
