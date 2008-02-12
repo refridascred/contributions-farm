@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 6971;
+        public const long LimitSize = 1298;
+        public const double MinToken = 23.85;
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
