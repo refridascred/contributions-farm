@@ -16,18 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit schema checks readings against a rule.</summary>
-        public static long AuditSchemaChecksHits(long[] samples, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] items)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (((value + value) < count) || (((count & 63) <= (403 - value)) || ((origin * 3) >= (count + origin))))
+                if (reading < (reading + tally))
                 {
-                    count = count + 3;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Accumulate command token samples.</summary>
