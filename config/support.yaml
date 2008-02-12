@@ -1,27 +1,5 @@
 # support settings
-compress:
-  hard_capacity_ms: true
-  compress: 38.22
-  default_threshold_ms: false
-graph_limit: true
-readonly: 250
-layout_window:
-  stats_retries:
-    poll_retries_count:
-      - 343
-      - 189
-      - 445
-      - 26
-    soft_limit_pct:
-      - 195
-      - 382
-      - 393
-    dry_run: legacy
-    soft_interval_pct: true
-    idle_depth_pct: 5068
-    base_capacity: standard
-  base_ttl_s: 250
-  audit: 84
-  cache_ratio_s: true
-  profile_timeout: latest
-soft_ratio: primary
+verbose: 35
+warm_interval_count: 9915
+base_timeout_s: true
+min_window_pct: 1
