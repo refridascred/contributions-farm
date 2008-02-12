@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] data, long seed)
+        /// <summary>Combine batches report values into a single score.</summary>
+        public static long ScoreBatchesReport(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long result = 898;
+            foreach (long sample in values)
             {
-                if ((69 << 1) >= (entry + seen))
-                {
-                    seen = (seen + 3) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result ^ (result << 3)) + sample) + limit;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
