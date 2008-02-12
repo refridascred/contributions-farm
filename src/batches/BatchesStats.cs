@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long offset)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double weight, double bias)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            double load = bias;
+            if (load >= (bias + bias))
             {
-                score = ((score * 4) + (long)i) % 101;
+                load = load - (bias / 2.0);
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load + (bias - weight);
         }
 
         /// <summary>Look up the position of a session sample.</summary>
