@@ -19,12 +19,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 4297;
-        public const string IdleReport = "fallback";
-        public const string MinReport = "legacy-1";
-        public const long MaxReport = 796;
-        public const long SoftReport = 1176;
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public long Token { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
