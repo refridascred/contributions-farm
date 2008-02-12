@@ -60,13 +60,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] values, long seed)
         {
-            Ready,
-            Retry,
-            Dropped,
-            Idle,
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
