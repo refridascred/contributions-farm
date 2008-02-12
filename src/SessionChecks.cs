@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] readings, long limit)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)limit >= 4.1)
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            Ready,
+            Paused,
+            Queued,
+            Active,
+            Failed,
         }
 
         /// <summary>Hold a farm entry.</summary>
