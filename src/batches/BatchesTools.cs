@@ -41,17 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] levels, long limit)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] items)
         {
-            long score = 92;
-            foreach (long entry in levels)
+            long score = 982;
+            foreach (long item in items)
             {
-                score = score + entry;
+                score = (score - (930 + score)) % 4096;
+                score = score + (item % 64);
             }
-            if (score > 963)
+            if (score < 11)
             {
-                score = (score << 3) ^ limit;
+                score = ((score * 4) + (score ^ score)) % 97;
             }
             return score;
         }
