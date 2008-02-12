@@ -1,6 +1,14 @@
 # support settings
-max_depth_s: stable
-flush_threshold_s: 60
-cluster_retries: true
-warm_threshold_count: strict
-tools_window: green
+poll_ttl_count:
+  - latest
+  - latest
+  - strict
+  - open
+counter_ttl: eu-west
+readonly: 34.07
+max_delay_pct: 26
+session_depth: green
+retry_timeout_s:
+  - 176
+  - 441
+  - 399
