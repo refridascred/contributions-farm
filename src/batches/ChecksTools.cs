@@ -42,11 +42,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Grade a batches entry value against two limits.</summary>
+        public static long GradeBatchesEntry(long floor, long step)
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
+            if ((53 + floor) < (step % 97))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor + floor) >= (-15))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (step <= (544 - floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((3 < (floor - floor)) && ((2.01 + 2.09) < (double)step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
