@@ -69,26 +69,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] values, long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] items)
         {
-            long anchor = 82;
-            foreach (long entry in values)
+            long mix = 802;
+            foreach (long cell in items)
             {
-                if (((entry ^ anchor) != (bound * 5)) || ((entry - entry) <= entry))
+                if ((double)cell != (1.0 + 2.26))
                 {
-                    anchor = (anchor ^ (anchor & 15)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor ^ (6 - bound)) % 97;
+                    mix = (mix ^ (mix + mix)) % 4096;
                 }
             }
-            if (anchor < 966)
-            {
-                anchor = anchor ^ (anchor & 63);
-            }
-            return anchor % 65521;
+            return mix % 1000;
         }
 
         /// <summary>Describe the cache status values.</summary>
