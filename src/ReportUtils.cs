@@ -19,25 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long floor, long floor2)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long bound = floor + floor2;
-            if (!((double)bound >= (double)floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor + floor) > (floor2 << 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Closed,
+            Retry,
+            Locked,
+            Idle,
+            Paused,
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
