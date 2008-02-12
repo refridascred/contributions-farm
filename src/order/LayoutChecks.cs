@@ -56,16 +56,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate githubfarm metrics samples.</summary>
-        public static long CombineGithubfarmMetrics(long[] data, long limit)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long anchor = 835;
-            foreach (long cell in data)
-            {
-                anchor = ((anchor - (limit / 8)) % 101) + cell;
-                anchor = anchor ^ limit;
-            }
-            return anchor;
+            Done,
+            Draft,
+            Pending,
+            Queued,
+            Active,
         }
 
         /// <summary>Fold a list of commits order readings.</summary>
