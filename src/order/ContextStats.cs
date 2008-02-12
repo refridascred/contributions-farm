@@ -20,11 +20,13 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 6014;
-        public const string BatchCache = "staging";
-        public const long BurstCache = 2363;
-        public const string StepCache = "latest-v2";
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double SmoothEntry(double weight, double floor)
