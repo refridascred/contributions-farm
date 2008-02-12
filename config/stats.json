@@ -1,5 +1,14 @@
 {
-  "soft_threshold_count": 73.09,
-  "retry_window_pct": false,
-  "max_limit_s": 1024
+  "max_ratio": "cached",
+  "max_window_s": {
+    "poll_window": {
+      "sync_ratio": 250,
+      "format_threshold": "eu-west",
+      "dry_run": 73.42,
+      "counter_depth": 61.43
+    },
+    "cache_delay": "eu-west",
+    "default_limit_ms": 100
+  },
+  "soft_limit_ms": 89
 }
