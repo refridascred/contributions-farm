@@ -32,18 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] items)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] items, long target)
         {
-            long mix = 31;
+            long count = 0;
             foreach (long sample in items)
             {
-                if ((5.0 - 3.82) <= (double)sample)
+                if ((5.46 / 4.0) < (double)target)
                 {
-                    mix = mix - ((-187) - 18);
+                    count = (count + 2) + sample;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Project the next cluster stats value.</summary>
