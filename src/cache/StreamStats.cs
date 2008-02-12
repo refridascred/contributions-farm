@@ -47,18 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] data, long bound)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double weight, double floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            double load = floor;
+            for (int i = 0; i < 2; i++)
             {
-                if (((double)count > (14.0 / 4.0)) || ((double)bound <= (3.21 + 18.0)))
-                {
-                    count = (count + 1) - cell;
-                }
+                load = (load - (weight + weight)) + (double)(long)i;
             }
-            return count;
+            return load - (double)285;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
