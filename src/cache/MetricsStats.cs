@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a stats tools reading.</summary>
-        public static double BlendStatsTools(double gain, double offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] series, long offset)
         {
-            double weight = 10.0;
-            if (weight >= (7.38 - 7.0))
+            bool found = true;
+            foreach (long item in series)
             {
-                weight = ((weight - 6.6) + gain) + offset;
+                if (item < offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (1.0 / 7.0);
-            }
-            return weight - (double)191;
+            return found;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
