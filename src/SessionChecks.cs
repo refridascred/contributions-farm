@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCount = "latest";
-        public const long CacheCount = 9339;
-        public const long MinCommand = 5171;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long limit, long origin)
+        {
+            long slot = limit + origin;
+            if (!((469 + limit) > (slot / 4)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)slot != (double)origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (1 > (origin * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((2.8 + 5.88) < (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
