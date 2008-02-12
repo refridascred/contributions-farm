@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count entry githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapEntryGithubfarmCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 4296;
+        public const long BaseNotes = 4139;
+        public const long BurstRatio = 4609;
+        public const string IdleWidth = "latest-1";
 
         /// <summary>Blend two already measurements.</summary>
         public static double ProjectAlready(double rate, double bias)
