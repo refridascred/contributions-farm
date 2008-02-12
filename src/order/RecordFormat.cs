@@ -37,24 +37,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] samples, long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
+            long result = 98;
+            foreach (long datum in samples)
             {
-                if (((offset - (long)i) == (mix - offset)) || ((long)i < mix))
-                {
-                    mix = (mix - mix) % 65521;
-                    mix = mix ^ (offset >> 2);
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = ((mix + (mix % 100)) % 4096) + (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
+                result = ((result * 4) + (result ^ 700)) ^ datum;
+                result = result ^ bound;
             }
-            return mix;
+            return result % 65521;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
