@@ -16,14 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Audit schema checks readings against a rule.</summary>
+        public static long AuditSchemaChecksHits(long[] samples, long origin)
         {
-            Active,
-            Synced,
-            Dropped,
-            New,
-            Idle,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (((value + value) < count) || (((count & 63) <= (403 - value)) || ((origin * 3) >= (count + origin))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate command token samples.</summary>
