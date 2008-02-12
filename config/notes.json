@@ -1,8 +1,18 @@
 {
-  "channel_ttl": ["eu-west", "stable"],
-  "token_window": "staging",
-  "idle_timeout_ms": "edge",
-  "poll_threshold_pct": true,
-  "soft_size": 86.95,
-  "retry_delay": "cached"
+  "min_timeout_ms": 16.72,
+  "audit": 6526,
+  "idle_size_ms": {
+    "cluster_limit": ["edge", "cached"],
+    "cache_retries_count": {
+      "warm_size_count": "eu-west",
+      "soft_retries_ms": 7258,
+      "stats_interval": 60,
+      "base_threshold_s": "stable",
+      "metrics_window": 100
+    },
+    "support_timeout": 1956,
+    "hard_retries": 46.81
+  },
+  "notes_interval": "primary",
+  "poll_size": "strict"
 }
