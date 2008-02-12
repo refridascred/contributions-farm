@@ -28,12 +28,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 9290;
-        public const long StepBuffer = 5648;
-        public const double CacheWidth = 37.43;
-        public const string BaseWidth = "primary-1";
-        public const double BaseBuffer = 97.4;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowTimeout = 6083;
+        public const string HardFactor = "local-edge";
+        public const long MinSchema = 541;
+        public const long CacheWidth = 2204;
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
