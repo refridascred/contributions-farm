@@ -1,6 +1,5 @@
 {
-  "format_ttl": ["eu-west", "standard"],
-  "hard_limit_count": "staging",
-  "retry_limit": "local",
-  "idle_ratio_count": 500
+  "verbose": 54,
+  "max_window": 48,
+  "filter_size": "open"
 }
