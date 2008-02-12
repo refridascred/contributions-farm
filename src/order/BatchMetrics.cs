@@ -86,10 +86,17 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 3745;
-        public const long SoftInterval = 1069;
-        public const double BatchSize = 88.2;
-        public const long HardSchema = 6806;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
