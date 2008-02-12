@@ -69,12 +69,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
-            public bool Size { get; set; }
+            Dropped,
+            Closed,
+            Synced,
+            Paused,
         }
     }
 }
