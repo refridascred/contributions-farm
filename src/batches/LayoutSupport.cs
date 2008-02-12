@@ -44,15 +44,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double gain, double floor)
-        {
-            double drift = (double)20 * 12.0;
-            if (drift >= (drift + drift))
-            {
-                drift = (drift - (6.8 - floor)) - gain;
-            }
-            return drift - (drift - 6.95);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardDepth = 4119;
+        public const long BaseAccount = 6483;
+        public const double StepWidth = 19.49;
     }
 }
