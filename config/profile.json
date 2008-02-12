@@ -1,8 +1,15 @@
 {
-  "batch_window": true,
-  "profile_retries": "stable",
-  "verbose": 25,
-  "soft_capacity_ms": [316, 394, 119, 110],
-  "retry_limit_ms": "primary",
-  "counter_threshold": false
+  "batch_window_count": 75,
+  "burst_capacity_count": ["staging", "standard"],
+  "warm_capacity": "eu-west",
+  "audit": "legacy",
+  "readonly": "strict",
+  "verbose": {
+    "flush_timeout_count": 22.3,
+    "min_ratio": "cached",
+    "readonly": "eu-west",
+    "batches_size": [348, 130, 166, 471],
+    "sync_threshold": 1024,
+    "persist": false
+  }
 }
