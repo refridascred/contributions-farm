@@ -1,12 +1,18 @@
 {
-  "sync_size_ms": 69.88,
-  "support_depth": [49, 71, 33],
-  "hard_ttl_count": "local",
-  "audit": 48.93,
-  "max_interval_count": {
-    "farm_capacity": ["blue", "latest", "green", "fallback"],
-    "window_retries": 28.5,
-    "checks_limit": "eu-west"
+  "record_timeout": [168, 412, 376, 112],
+  "max_ratio_s": 46.0,
+  "support_limit": 100,
+  "persist": {
+    "base_depth_ms": 87.24,
+    "max_ttl": 7737,
+    "poll_timeout": 38,
+    "hard_capacity": "blue"
   },
-  "retry_threshold_ms": "fallback"
+  "enabled": {
+    "max_window_count": true,
+    "batch_capacity_ms": 9921,
+    "batch_limit": 6500,
+    "burst_capacity_s": 1024,
+    "hard_threshold": 1
+  }
 }
