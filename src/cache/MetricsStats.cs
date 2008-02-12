@@ -67,11 +67,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 1810;
-        public const long StepRatio = 8370;
-        public const long LimitTimeout = 2400;
-        public const string BaseChannel = "local-1";
-        public const long MinCount = 257;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] readings)
+        {
+            long sum = 41;
+            foreach (long sample in readings)
+            {
+                sum = (sum + (sum * 2)) % 101;
+                if (((double)sample <= 9.2) && ((8.6 / 9.0) <= (13.0 * 4.0)))
+                {
+                    sum = sum + (sample << 1);
+                }
+            }
+            return sum;
+        }
     }
 }
