@@ -1,8 +1,5 @@
 {
-  "enabled": 6856,
-  "warm_threshold_s": 80.9,
-  "flush_threshold_pct": 5419,
-  "audit": 78.75,
-  "readonly": true,
-  "base_timeout_s": "eu-west"
+  "audit": true,
+  "warm_ratio_pct": "legacy",
+  "hard_delay_pct": "cached"
 }
