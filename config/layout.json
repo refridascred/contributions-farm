@@ -1,6 +1,18 @@
 {
-  "enabled": 100,
-  "default_threshold": 27.78,
-  "default_ratio_count": true,
-  "min_timeout": 77
+  "default_timeout_s": 1046,
+  "command_depth": ["blue", "stable", "green"],
+  "buffer_threshold": {
+    "max_ratio_pct": 26,
+    "graph_timeout": {
+      "retry_threshold_pct": ["cached", "staging", "green", "eu-west"],
+      "burst_limit_s": 76.68,
+      "poll_ratio_s": 9.46,
+      "cache_capacity": 30,
+      "dry_run": ["latest", "legacy"],
+      "min_interval_s": false
+    },
+    "retry_depth": "open",
+    "stream_ratio": 20.26,
+    "min_retries_ms": true
+  }
 }
