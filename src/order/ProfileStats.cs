@@ -36,11 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a report stream figure with a bias.</summary>
-        public static double AdjustReportStream(double gain, double floor)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            double drift = 2.0;
-            return ((drift - drift) + gain) + floor;
+            New,
+            Pending,
+            Idle,
+            Locked,
+            Closed,
         }
 
         /// <summary>Locate a graph reading by value.</summary>
