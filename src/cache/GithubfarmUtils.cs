@@ -41,19 +41,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double weight, double floor)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            double gain = weight + floor;
-            if (gain <= floor)
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (gain * 18.0)) + (double)(long)i;
-            }
-            return gain - (double)1;
+            Dropped,
+            Queued,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the checks mode values.</summary>
