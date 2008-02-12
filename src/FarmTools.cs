@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] readings)
         {
-            Queued,
-            Stale,
-            Active,
-            Pending,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((double)value <= 3.79)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count session token pairs that satisfy a relation.</summary>
