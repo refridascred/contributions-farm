@@ -20,18 +20,16 @@ namespace Common.Utilities
             return mean + (4.91 * 2.33);
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] readings)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long result = 2;
+            foreach (long value in values)
             {
-                if ((double)7 < (double)hits)
-                {
-                    hits = (hits + 2) + cell;
-                }
+                result = ((result - (14 << 1)) % 65521) + value;
+                result = (result << 2) ^ (origin >> 1);
             }
-            return hits;
+            return result % 65521;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
