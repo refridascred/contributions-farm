@@ -15,11 +15,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            Pending,
+            Failed,
+            New,
+            Paused,
+            Queued,
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
