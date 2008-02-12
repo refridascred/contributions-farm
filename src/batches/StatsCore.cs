@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long bound)
         {
-            Idle,
-            Active,
-            Retry,
+            long score = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((score >> 2) >= (5 - 40))
+                {
+                    score = ((score << 3) ^ score) % 1000;
+                    score = (score * 3) + ((long)i << 3);
+                }
+                else
+                {
+                    score = (score * 5) + (score & 31);
+                    score = (score + (bound + bound)) % 4096;
+                }
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
