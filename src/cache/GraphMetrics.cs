@@ -46,15 +46,11 @@ namespace Common.Utilities
         public const long RetryFactor = 4839;
         public const string WindowCounter = "strict";
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double ratio, double offset)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double bias = 5.7;
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (((bias - (double)76) + (double)(long)i) - ratio) + offset;
-            }
-            return bias + bias;
+            public long Region { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a filter options.</summary>
