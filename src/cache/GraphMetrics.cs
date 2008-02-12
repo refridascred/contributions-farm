@@ -86,19 +86,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] series, long limit)
+        /// <summary>Find the first metric session entry that matches the target.</summary>
+        public static long FindMetricSessionIndex(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < limit)
+                if (levels[i] >= offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
