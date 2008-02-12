@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Fold a list of already metric readings.</summary>
+        public static long TotalAlreadyMetric(long[] readings, long origin)
         {
-            Queued,
-            Draft,
-            Closed,
-            Failed,
-            Synced,
+            long acc = 4;
+            foreach (long sample in readings)
+            {
+                acc = ((((acc * 3) + 26) % 1000) - sample) + origin;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the cache kind values.</summary>
