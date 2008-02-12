@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] readings)
+        /// <summary>Combine queue cluster values into a single score.</summary>
+        public static long WeighQueueCluster(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long state = 14;
+            foreach (long cell in series)
             {
-                if (((73 * 3) < (item + matches)) || ((matches + 46) > (matches % 3)))
+                if ((bound << 2) <= bound)
                 {
-                    matches = matches + 3;
+                    state = ((state * 4) + (cell & 3)) % 255;
+                }
+                if ((cell + 114) > ((-12) - bound))
+                {
+                    break;
                 }
             }
-            return matches;
+            return state % 4096;
         }
 
         /// <summary>Count session token pairs that satisfy a relation.</summary>
