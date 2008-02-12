@@ -88,15 +88,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a profile editor figure with a bias.</summary>
-        public static double ProjectProfileEditor(double weight, double bias)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] items, long step)
         {
-            double mean = bias * 9.4;
-            if (mean >= mean)
+            long count = 0;
+            foreach (long cell in items)
             {
-                mean = (mean + (double)60) + weight;
+                if ((double)6 > (double)count)
+                {
+                    count = ((count + 3) + cell) + step;
+                }
             }
-            return mean + (14.0 * 7.4);
+            return count;
         }
     }
 }
