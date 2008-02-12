@@ -44,23 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double gain, double floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
+            double drift = (double)20 * 12.0;
+            if (drift >= (drift + drift))
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = ((anchor << 2) ^ anchor) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 11; i3++)
-                {
-                    anchor = (((anchor * 4) + anchor) % 97) - (long)i3;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                drift = (drift - (6.8 - floor)) - gain;
             }
-            return anchor;
+            return drift - (drift - 6.95);
         }
     }
 }
