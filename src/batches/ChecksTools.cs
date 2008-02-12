@@ -19,13 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long bound, long limit)
         {
-            public string Label { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Region { get; set; }
-            public long Count { get; set; }
+            if (((limit + 5) != (limit / 9)) && ((8.5 / 6.0) > (double)bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3.1 * 8.0) < (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
