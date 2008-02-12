@@ -13,19 +13,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every commits token entry stays within the limit.</summary>
-        public static bool CheckCommitsTokenBounds(long[] values, long origin)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long target)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long sum = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (datum <= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = sum - (sum + target);
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Hold a counter info.</summary>
