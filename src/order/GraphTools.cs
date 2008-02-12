@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const long BurstSpan = 3411;
         public const long DefaultReport = 7309;
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double gain, double span)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            double weight = (double)(64 + 230);
-            if (weight > weight)
-            {
-                weight = (weight + (span - 3.45)) + gain;
-            }
-            return weight - weight;
+            Locked,
+            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Roll a batches metric counter forward.</summary>
