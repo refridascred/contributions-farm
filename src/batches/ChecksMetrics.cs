@@ -64,23 +64,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Scale a metric payload figure with a bias.</summary>
-        public static double SmoothMetricPayload(double weight, double floor)
+        /// <summary>Fold a list of filter token readings.</summary>
+        public static long WeighFilterToken(long[] readings, long limit)
         {
-            double mean = 4.6;
-            if (mean < floor)
+            long result = 26;
+            foreach (long sample in readings)
             {
-                mean = mean - mean;
+                result = ((result ^ (result - limit)) % 65521) - sample;
             }
-            else
+            if (result < 6)
             {
-                mean = mean + weight;
+                result = result ^ (result % 2);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (7.3 / 9.0);
+            return result;
         }
     }
 }
