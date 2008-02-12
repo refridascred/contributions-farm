@@ -16,17 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] series, long floor)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Pending,
+            Draft,
+            Done,
         }
 
         /// <summary>Hold a channel info.</summary>
