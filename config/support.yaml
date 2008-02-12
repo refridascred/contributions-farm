@@ -1,6 +1,7 @@
 # support settings
+soft_timeout_s: strict
+support_delay: latest
+cache_depth: 90.34
+base_size_s: false
+commits_interval: false
 verbose: primary
-base_ratio_count: green
-already_window: 97.19
-hard_interval: 69
-buffer_retries: 8263
