@@ -66,13 +66,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Synced,
-            Ready,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWindow = "local-1";
+        public const string HardWindow = "standard-edge";
+        public const string CacheWindow = "alpha-v2";
+        public const double IdleWindow = 31.68;
     }
 }
