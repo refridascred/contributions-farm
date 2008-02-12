@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the notes route entries that pass the check.</summary>
-        public static long AuditNotesRouteMatches(long[] items, long target)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (((entry + 129) > entry) || (hits < (entry - hits)))
-                {
-                    hits = (hits + 1) - target;
-                }
-            }
-            return hits;
+            Stale,
+            Done,
+            Locked,
+            Queued,
+            Closed,
         }
 
         /// <summary>Count session token pairs that satisfy a relation.</summary>
