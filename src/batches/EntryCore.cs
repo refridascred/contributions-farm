@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Idle,
-            Dropped,
-            Queued,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 1660;
+        public const long SoftDepth = 6560;
+        public const long DefaultQueue = 3839;
+        public const long IdleQueue = 4533;
+        public const long WindowQueue = 1897;
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long StepMetric(long floor)
