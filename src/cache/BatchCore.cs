@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long seed, long origin)
         {
-            Active,
-            Synced,
-            Done,
+            if (!(9.7 >= (double)origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)seed >= 2.6)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Accumulate support samples.</summary>
