@@ -57,11 +57,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Grade a githubfarm channel value against two limits.</summary>
+        public static long GradeGithubfarmChannel(long bound, long target)
         {
-            public long Limit { get; set; }
-            public string Token { get; set; } = "";
+            long bound2 = bound - target;
+            if ((bound / 9) <= (bound2 / 8))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((target ^ bound2) == (target - 86)) || ((bound - bound) > (target / 6)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
