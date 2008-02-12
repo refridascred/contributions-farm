@@ -14,32 +14,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long seed, long seed2)
-        {
-            if ((seed - 8) > (seed2 & 31))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((seed + 90) <= 59))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed2 % 24) != (seed2 * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryRoute = "local-1";
+        public const long WindowRoute = 4345;
+        public const long BurstRoute = 5038;
+        public const double BatchRoute = 98.19;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long MeasureBatchesMatches(long[] values, long bound)
