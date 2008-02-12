@@ -52,19 +52,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] data, long floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long floor, long floor2)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            if ((11.0 + 2.33) > (double)floor2)
             {
-                if (reading > floor)
+                return 6;
+            }
+            else
+            {
+                if ((double)floor < (12.0 / 8.0))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
     }
 }
