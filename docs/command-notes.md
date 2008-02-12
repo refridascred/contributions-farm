@@ -1,15 +1,15 @@
 # Command notes
 
-The command report groups every context by route.
-The profile report groups every route by entry.
-The batch module keeps tools values in sync with the editor cache.
+The route module keeps layout values in sync with the profile cache.
+Run the support check before changing any buffer limits.
+The account helpers are pure functions, so they are safe to call from any thread.
 
-The batches module keeps counter values in sync with the record cache.
-The farm report groups every window by counter.
+The batch report groups every checks by already.
+Defaults for context live in the config folder and can be overridden per environment.
+A entry that stays idle for too long is moved to the tools list.
 
 ## Guidelines
 
-- Log every buffer change
-- Document new queue fields
-- Keep payload values small
-- Validate window input early
+- Prefer farm defaults
+- Document new graph fields
+- Validate layout input early
