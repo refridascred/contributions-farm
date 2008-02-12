@@ -1,5 +1,17 @@
 {
-  "hard_depth_s": [142, 342],
-  "min_timeout_s": 15,
-  "flush_limit_ms": 23
+  "metrics_limit": {
+    "hard_retries": false,
+    "burst_timeout": "staging",
+    "sync_delay_count": {
+      "already_limit": false,
+      "cache_ttl": 26,
+      "audit": "local",
+      "sync_threshold": ["open", "edge", "open", "fallback"],
+      "flush_interval_count": 29,
+      "dry_run": ["primary", "blue"]
+    },
+    "enabled": 82
+  },
+  "warm_depth": ["blue", "green", "local"],
+  "profile_depth": ["eu-west", "green", "legacy", "legacy"]
 }
