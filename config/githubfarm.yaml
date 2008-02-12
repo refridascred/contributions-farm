@@ -1,16 +1,22 @@
 # githubfarm settings
-layout_ttl:
-  - open
-  - stable
+compress: 2264
+idle_size_ms:
+  cluster_threshold: false
+  cache_size: staging
+  metrics_ttl: 9
+  burst_depth: true
+  cache_ttl_s: 1024
+  editor_limit: primary
+max_threshold:
   - edge
-  - stable
-dry_run: true
-retry_capacity: stable
-sync_interval_pct: eu-west
-support_ttl:
-  flush_window:
-    - fallback
-    - standard
-    - edge
-  filter_capacity: 87
-  farm_depth: primary
+  - primary
+  - strict
+command_threshold: 98.33
+githubfarm_ratio:
+  enabled: false
+  commits_ratio: 73
+  burst_threshold_s: fallback
+  base_ratio_pct: false
+  graph_threshold: 77
+  persist: staging
+soft_depth_ms: staging
