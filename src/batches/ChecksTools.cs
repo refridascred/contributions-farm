@@ -48,15 +48,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a buffer contributi counter forward.</summary>
-        public static long StepBufferContributi(long limit)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
