@@ -38,19 +38,17 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] series, long limit)
+        /// <summary>Locate a token metric reading by value.</summary>
+        public static long FindTokenMetricIndex(long[] readings, long offset)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= limit)
+                if (readings[i] > offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
