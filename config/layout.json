@@ -1,8 +1,14 @@
 {
-  "sync_size_s": "stable",
-  "account_timeout": "stable",
-  "sync_window": 5042,
-  "verbose": 30,
-  "poll_window_count": true,
-  "notes_threshold": 32.29
+  "enabled": false,
+  "max_threshold": 9891,
+  "sync_delay_s": {
+    "min_retries": 29.62,
+    "poll_threshold_s": 500,
+    "persist": "eu-west",
+    "dry_run": "strict",
+    "hard_delay_pct": "primary"
+  },
+  "sync_retries_s": "standard",
+  "tools_timeout": 79.96,
+  "poll_limit": "strict"
 }
