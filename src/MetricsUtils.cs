@@ -66,17 +66,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] data, long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long floor, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long next = floor + origin;
+            if (((next - next) > (963 * 2)) && ((double)origin > (5.4 - 7.14)))
             {
-                if (data[i] > offset)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin <= 8.65)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!(((-1) - floor) == (origin << 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
