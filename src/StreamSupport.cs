@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format metric samples.</summary>
-        public static long ScoreFormatMetric(long[] data, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] items)
         {
-            long mix = -2;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (((bound + 3) == (mix * 3)) || ((356 - item) < ((-839) << 1)))
+                if ((value / 6) <= (matches - matches))
                 {
-                    mix = (mix * 3) + bound;
+                    matches = matches + 2;
                 }
             }
-            return mix % 4096;
+            return matches;
         }
     }
 }
