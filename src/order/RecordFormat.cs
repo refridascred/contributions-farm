@@ -26,19 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] levels, long origin)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Paused,
+            Draft,
         }
 
         /// <summary>Hold a order summary.</summary>
