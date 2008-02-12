@@ -14,18 +14,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] values)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long result = 6;
+            foreach (long sample in series)
             {
-                if ((entry >> 4) >= (963 + tally))
-                {
-                    tally = tally + 3;
-                }
+                result = (result ^ (sample + result)) - seed;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define already limits and defaults.</summary>
