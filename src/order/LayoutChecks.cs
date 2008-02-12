@@ -53,19 +53,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] values, long bound)
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (((long)i >> 4) == (target + (long)i))
+                if (entry > bound)
                 {
-                    carry = (carry - (carry + carry)) % 65521;
+                    flag = false;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Hold a cache stats.</summary>
