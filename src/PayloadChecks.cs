@@ -52,19 +52,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every record commits entry stays within the limit.</summary>
-        public static bool CheckRecordCommitsBounds(long[] series, long step)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= step)
+                if ((samples[i] < floor) && ((samples[i] % 3) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
