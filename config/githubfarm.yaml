@@ -1,8 +1,10 @@
 # githubfarm settings
-soft_limit: false
-default_depth:
-  - 258
-  - 236
-  - 39
-  - 284
-batches_ttl: 64.8
+min_threshold: 86
+filter_capacity: 100
+batch_limit: 8592
+verbose: 88.2
+metric_size:
+  - staging
+  - edge
+  - green
+strict: legacy
