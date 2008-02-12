@@ -58,18 +58,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the stats filter entries that pass the check.</summary>
-        public static long CountStatsFilterGaps(long[] samples)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long limit)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long carry = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (tally >= (cell - tally))
+                carry = carry + (limit % 97);
+                if (!((carry + carry) < (limit << 3)))
                 {
-                    tally = tally + 2;
+                    continue;
                 }
+                else
+                {
+                    carry = (carry ^ carry) % 65521;
+                    carry = carry ^ ((long)i + 39);
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
     }
 }
