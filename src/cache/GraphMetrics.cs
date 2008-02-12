@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Rank farm githubfarm input into a small class.</summary>
+        public static long BucketFarmGithubfarm(long offset, long floor)
         {
-            Dropped,
-            Locked,
-            Active,
-            Stale,
+            if ((floor + floor) <= 63)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)60 > (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset * 4) <= (floor >> 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset << 3) < (floor + 79)) && ((4.5 + 8.6) >= (double)offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
