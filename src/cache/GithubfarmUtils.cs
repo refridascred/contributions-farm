@@ -27,22 +27,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] readings, long seed)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long total = 74;
-            foreach (long item in readings)
-            {
-                if (((double)item > 9.3) || (((long)readings.Length ^ item) > (seed - 0)))
-                {
-                    total = (total ^ (total + (long)readings.Length)) % 4096;
-                }
-                if ((total / 7) <= (total - total))
-                {
-                    break;
-                }
-            }
-            return total;
+            Queued,
+            Locked,
+            Idle,
+            Stale,
         }
 
         /// <summary>Describe the editor class values.</summary>
