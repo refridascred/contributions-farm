@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long origin, long target)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] data, long origin)
         {
-            if (!(origin > (target << 3)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target & 15) != (664 >> 3)) || (target <= (origin + origin)))
+                if (data[i] == origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin + origin) == (709 - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a editor header.</summary>
