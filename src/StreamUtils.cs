@@ -46,26 +46,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state * 5) + (long)i;
-                if ((seed & 63) >= seed)
-                {
-                    state = state + (seed + state);
-                    state = (state << 2) ^ (seed + state);
-                }
-                if ((double)seed < (8.6 * 3.21))
-                {
-                    state = (state * 4) + (long)i;
-                    state = ((state * 2) + 633) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Done,
+            Ready,
+            Idle,
+            Active,
         }
 
         /// <summary>Blend two account measurements.</summary>
