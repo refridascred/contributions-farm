@@ -53,15 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double bias, double span)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] data)
         {
-            double mean = span - bias;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                mean = (mean + (mean * 0.07)) + (double)(long)i;
+                if ((value + matches) >= matches)
+                {
+                    matches = matches + 1;
+                }
             }
-            return mean + mean;
+            return matches;
         }
     }
 }
