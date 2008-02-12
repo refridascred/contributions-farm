@@ -74,14 +74,15 @@ namespace Common.Utilities
         public const string StepBatch = "primary-edge";
         public const long HardBatch = 9069;
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double weight, double offset)
         {
-            Active,
-            Synced,
-            Ready,
-            New,
-            Pending,
+            double ratio = (offset + weight) - (weight * 11.0);
+            if (ratio < ratio)
+            {
+                ratio = ratio + offset;
+            }
+            return ratio - ratio;
         }
     }
 }
