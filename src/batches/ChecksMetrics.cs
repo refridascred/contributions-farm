@@ -37,12 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] values, long seed)
+        /// <summary>Find the first record schema entry that matches the target.</summary>
+        public static long FindRecordSchemaIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] == seed) && ((values[i] % 3) != 0))
+                if ((samples[i] > offset) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
