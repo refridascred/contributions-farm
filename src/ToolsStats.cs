@@ -28,11 +28,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowTimeout = 6083;
-        public const string HardFactor = "local-edge";
-        public const long MinSchema = 541;
-        public const long CacheWidth = 2204;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheLevel = 95.1;
+        public const double MinFactor = 31.68;
+        public const long MaxBatch = 194;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long TallyAlreadyGaps(long[] levels)
