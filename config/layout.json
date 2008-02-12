@@ -1,5 +1,8 @@
 {
-  "idle_delay_pct": 4380,
-  "warm_threshold_ms": ["eu-west", "latest", "primary"],
-  "readonly": false
+  "sync_size_s": "stable",
+  "account_timeout": "stable",
+  "sync_window": 5042,
+  "verbose": 30,
+  "poll_window_count": true,
+  "notes_threshold": 32.29
 }
