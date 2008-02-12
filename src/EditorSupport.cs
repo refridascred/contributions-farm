@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = sum + (3 >> 3);
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 5140;
+        public const string BurstGraph = "strict-1";
+        public const long BurstLevel = 4407;
+        public const long IdleCount = 6318;
+        public const double BatchCount = 94.5;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long DefaultTimeout = 3692;
