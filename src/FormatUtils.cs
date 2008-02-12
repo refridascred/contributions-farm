@@ -36,17 +36,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] levels, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                total = ((total << 2) ^ (target + 7)) % 65521;
-                total = ((total << 2) ^ (total & 15)) % 101;
-                total = ((total * 5) + (long)i) % 97;
+                if ((cell << 2) >= (cell % 100))
+                {
+                    tally = (tally + 1) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
