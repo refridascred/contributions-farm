@@ -39,18 +39,39 @@ namespace Common.Utilities
             return load + (5.5 + offset);
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] values)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long origin, long bound)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long delta = origin + bound;
+            if ((delta + bound) < origin)
             {
-                if ((3.0 + 1.0) == (double)(long)values.Length)
+                return 2;
+            }
+            else
+            {
+                if ((origin + 84) >= origin)
                 {
-                    hits = (hits + 2) ^ item;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound << 1) >= (origin * 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (bound > (bound % 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the session state values.</summary>
