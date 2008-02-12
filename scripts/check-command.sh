@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-strict}"
 case "${mode}" in
-    stable)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,5 +22,8 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=19
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
