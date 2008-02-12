@@ -77,13 +77,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double weight, double bias)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
+            double drift = bias + (weight / 7.0);
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + weight) + (double)(long)i;
+            }
+            return drift + (bias / 2.0);
         }
 
         /// <summary>Locate a queue reading by value.</summary>
