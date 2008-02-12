@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] series)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 7;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum >= (datum >> 1))
                 {
-                    if ((series[i] ^ series[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum * 3) + (datum + sum)) % 1000;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
