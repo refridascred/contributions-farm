@@ -42,19 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] items, long floor)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
