@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate cache graph samples.</summary>
-        public static long ScoreCacheGraph(long[] items, long step)
+        /// <summary>Derive the next stats window value from a seed.</summary>
+        public static long IterateStatsWindow(long seed)
         {
-            long anchor = 0;
-            foreach (long value in items)
+            long result = seed;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (anchor - (value / 6)) % 97;
+                result = (result ^ (seed * 4)) % 255;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            if (anchor < 836)
-            {
-                anchor = (anchor ^ (step ^ anchor)) % 1000;
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
