@@ -16,16 +16,21 @@ namespace Common.Utilities
             return scale + (double)70;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long seed)
+        /// <summary>Match up already filter samples.</summary>
+        public static long MatchAlreadyFilterCount(long[] data)
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = mix + (mix % 7);
-                mix = ((mix * 5) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
