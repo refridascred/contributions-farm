@@ -29,20 +29,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                carry = ((carry * 3) + (seed - (long)i)) % 97;
-                if (carry >= (seed + carry))
+                if ((value + tally) < (value << 1))
                 {
-                    carry = (carry ^ carry) % 97;
+                    tally = tally + 3;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
