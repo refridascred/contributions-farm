@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] items, long floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long limit, long bound)
         {
-            long state = 0;
-            foreach (long entry in items)
+            if (55 >= limit)
             {
-                state = (state ^ entry) % 97;
-                state = state - (entry << 3);
+                return 2;
             }
-            if (state > (-53))
+            else
             {
-                state = ((state * 3) + (floor * 5)) % 1000;
+                if ((limit + bound) < limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit != (9.5 + 14.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound <= (limit + limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return state % 97;
         }
 
         /// <summary>Match up window samples.</summary>
