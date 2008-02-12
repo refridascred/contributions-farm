@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] levels, long bound)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long step, long bound)
         {
-            long mix = 545;
-            foreach (long value in levels)
+            if ((bound >> 1) >= (bound << 1))
             {
-                mix = ((mix << 3) ^ mix) + bound;
-                mix = mix - (value << 2);
-                mix = mix + (mix << 2);
+                return 6;
             }
-            return mix % 1000;
+            else
+            {
+                if ((double)bound < (14.0 - 4.43))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)step != (0.94 - 5.73))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound == (2.17 + 7.18))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank window input into a small class.</summary>
