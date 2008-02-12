@@ -43,22 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] samples)
+        /// <summary>Audit farm schema readings against a rule.</summary>
+        public static long AuditFarmSchemaHits(long[] levels)
         {
-            long score = 69;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((score + score) <= (score - score))
+                if ((count - datum) >= 55)
                 {
-                    score = (score - (reading - 63)) % 4096;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score - score)) % 65521;
+                    count = count + 2;
                 }
             }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Digest a series of window entries.</summary>
