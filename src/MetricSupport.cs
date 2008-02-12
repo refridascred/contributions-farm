@@ -30,18 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] items)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double scale, double offset)
         {
-            long mix = 815;
-            foreach (long datum in items)
+            double load = (double)((-64) >> 4);
+            for (int i = 0; i < 6; i++)
             {
-                if (datum >= 373)
-                {
-                    mix = ((mix * 2) + (104 ^ datum)) % 97;
-                }
+                load = ((load + scale) + (double)(long)i) + offset;
             }
-            return mix;
+            return load + (scale + scale);
         }
     }
 }
