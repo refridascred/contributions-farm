@@ -35,12 +35,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] series)
         {
-            Dropped,
-            Failed,
-            Idle,
+            long total = 68;
+            foreach (long item in series)
+            {
+                if ((item + (long)series.Length) == (item % 16))
+                {
+                    total = (total ^ (item + total)) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Validate commits tools readings against a bound.</summary>
