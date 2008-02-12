@@ -1,8 +1,18 @@
 {
-  "max_delay_ms": "latest",
-  "sync_size_count": 8012,
-  "warm_threshold_ms": 4649,
-  "hard_timeout_count": 34.5,
-  "schema_timeout": 31.31,
-  "hard_timeout_ms": 39.87
+  "counter_window": false,
+  "idle_limit_s": false,
+  "stream_capacity": {
+    "base_threshold": {
+      "account_timeout": 30,
+      "metric_ratio": 23,
+      "cache_size_ms": true,
+      "soft_ratio_pct": 70.32
+    },
+    "min_size": 250,
+    "counter_threshold": 100,
+    "window_depth": "open"
+  },
+  "filter_delay": ["primary", "latest", "staging"],
+  "audit": 54.98,
+  "cache_interval": 8677
 }
