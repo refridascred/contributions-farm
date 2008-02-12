@@ -43,26 +43,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] data)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long mix = 955;
-            foreach (long reading in data)
-            {
-                if (40 <= reading)
-                {
-                    mix = (mix * 3) + (563 & 7);
-                }
-                else
-                {
-                    mix = (mix * 3) + (mix * 2);
-                }
-            }
-            if (mix > 0)
-            {
-                mix = (mix << 3) ^ (mix & 15);
-            }
-            return mix % 97;
+            Pending,
+            Closed,
+            Active,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
