@@ -37,9 +37,12 @@ namespace Common.Utilities
             return ratio2 + (double)8;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepWidth = 45.08;
-        public const long DefaultLevel = 7584;
-        public const long SoftWidth = 2866;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
