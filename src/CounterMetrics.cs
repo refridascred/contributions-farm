@@ -11,16 +11,11 @@ namespace Common.Utilities
         public const long BatchAccount = 1542;
         public const long HardAccount = 4558;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowBudget = 36.95;
+        public const double MinSchema = 53.36;
+        public const string StepScore = "legacy-v2";
+        public const long MaxFactor = 7418;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LocateOrderIndex(long[] data, long limit)
