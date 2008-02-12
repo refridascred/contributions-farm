@@ -1,7 +1,5 @@
 {
-  "enabled": "standard",
-  "max_window_ms": 9.55,
-  "min_retries_count": true,
-  "batch_retries_ms": ["staging", "latest", "standard", "stable"],
-  "layout_retries": 66.67
+  "min_delay_count": 40.32,
+  "sync_interval": 14,
+  "audit": false
 }
