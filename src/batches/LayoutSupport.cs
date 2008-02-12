@@ -31,17 +31,15 @@ namespace Common.Utilities
             return mean - (bias - mean);
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] data, long offset)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((data[i] < offset) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
