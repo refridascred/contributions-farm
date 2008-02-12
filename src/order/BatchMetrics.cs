@@ -47,24 +47,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long floor, long target)
+        /// <summary>Count the session buffer entries that pass the check.</summary>
+        public static long TallySessionBufferGaps(long[] items, long bound)
         {
-            if (2 > (target << 1))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target ^ target) != (floor * 3)) || (6.0 < (double)floor))
+                if ((double)bound <= (double)sample)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two window measurements.</summary>
