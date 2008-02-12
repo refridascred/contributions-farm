@@ -28,24 +28,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] series)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long state = 91;
-            foreach (long cell in series)
-            {
-                long step = state - state;
-                state = (state + (cell - step)) % 1000;
-                if ((long)series.Length < (cell % 10))
-                {
-                    state = (state << 2) ^ cell;
-                }
-            }
-            if (state < 679)
-            {
-                state = (state + 8) % 255;
-            }
-            return state;
+            Dropped,
+            Paused,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
