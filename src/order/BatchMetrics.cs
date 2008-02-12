@@ -40,18 +40,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] data)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long mix = 5;
+            foreach (long datum in readings)
             {
-                if (seen > datum)
+                if ((seed % 10) <= (seed + 725))
                 {
-                    seen = seen + 1;
+                    mix = (mix << 2) ^ (datum + datum);
+                    break;
+                }
+                if (((seed + seed) < (seed ^ datum)) && ((double)datum == (9.56 / 2.0)))
+                {
+                    mix = mix - (datum * 5);
                 }
             }
-            return seen;
+            if (mix < 8)
+            {
+                mix = (mix - (mix << 1)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Match up token samples.</summary>
