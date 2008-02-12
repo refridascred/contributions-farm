@@ -62,22 +62,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] samples, long target)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((value ^ target) > (target + target))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Pending,
+            Failed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Roll a record graph counter forward.</summary>
