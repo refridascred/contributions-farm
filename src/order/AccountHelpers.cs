@@ -46,11 +46,13 @@ namespace Common.Utilities
         public const long MaxTimeout = 5626;
         public const long CacheTimeout = 7527;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 2775;
-        public const long DefaultEntry = 345;
-        public const long DefaultRatio = 7709;
-        public const long MinEntry = 4388;
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Fold a list of farm window readings.</summary>
         public static long TallyFarmWindow(long[] samples, long target)
