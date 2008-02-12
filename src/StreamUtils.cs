@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] data)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long mark = 5;
+            foreach (long value in items)
             {
-                if (((((long)data.Length & 127) != (tally + tally)) && ((tally & 127) < (tally >> 3))) && (tally < (cell / 5)))
-                {
-                    tally = tally + 1;
-                }
+                mark = ((mark * 2) + (mark ^ origin)) - value;
             }
-            return tally;
+            return mark % 1000;
         }
 
         /// <summary>Roll a already entry counter forward.</summary>
