@@ -28,13 +28,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] levels)
         {
-            Pending,
-            Dropped,
-            Ready,
-            Synced,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!(((seen >> 1) > (entry % 7)) && ((entry >> 2) > (long)levels.Length)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
