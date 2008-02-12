@@ -1,6 +1,12 @@
 {
-  "base_retries": 1024,
-  "poll_depth_s": ["staging", "blue"],
-  "account_capacity": 97.33,
-  "min_threshold_pct": false
+  "cache_retries": {
+    "order_delay": 51,
+    "cache_timeout_count": true,
+    "compress": "open",
+    "readonly": 1024,
+    "default_window_count": false,
+    "cache_capacity": 500
+  },
+  "soft_timeout": "green",
+  "cluster_limit": ["cached", "local"]
 }
