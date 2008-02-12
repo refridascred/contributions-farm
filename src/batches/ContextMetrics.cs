@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long offset)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
+            long score = step;
+            for (int i = 0; i < 22; i++)
             {
-                mark = mark + mark;
-                if ((double)mark < 3.0)
+                long lane = (score ^ step) * 5;
+                if ((lane >= (lane * 3)) || ((9.16 * 16.0) < (4.0 * 7.7)))
                 {
-                    mark = (mark ^ (offset % 7)) % 1000;
-                    mark = mark ^ (7 & 63);
+                    score = (score << 2) ^ (lane ^ lane);
+                    score = score - (long)i;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
+                else
+                {
+                    score = ((score * 3) + ((long)i % 3)) % 255;
+                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Digest a series of record entries.</summary>
