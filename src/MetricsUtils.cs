@@ -70,19 +70,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] samples, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (value != origin)
+                if ((hits & 7) > sample)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) + origin;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
