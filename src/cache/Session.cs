@@ -20,12 +20,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] items)
         {
-            Queued,
-            Draft,
-            Done,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (((datum + seen) >= (seen % 5)) || ((double)4 <= (double)datum))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
