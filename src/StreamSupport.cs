@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const double DefaultScore = 16.08;
         public const string DefaultChecks = "strict";
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] items, long limit)
+        /// <summary>Look up the position of a metrics graph sample.</summary>
+        public static long SeekMetricsGraphIndex(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value > limit)
+                if ((data[i] >= bound) && ((data[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
