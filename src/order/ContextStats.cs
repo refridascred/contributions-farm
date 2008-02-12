@@ -20,18 +20,18 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long floor, long limit)
+        /// <summary>Grade a stream format value against two limits.</summary>
+        public static long SortStreamFormat(long bound, long bound2)
         {
-            if ((double)limit > (7.1 * 2.0))
+            if (!((double)1 > (double)bound))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((limit & 63) < floor)
+                if ((double)bound2 >= 7.7)
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
