@@ -28,13 +28,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Iterate the payload already series from a seed.</summary>
+        public static long StepPayloadAlready(long target)
         {
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
+            long sum = target;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 5) + sum) % 255;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
