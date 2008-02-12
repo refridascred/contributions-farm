@@ -31,21 +31,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((long)i < (seed << 3))
+                total = (total << 2) ^ (total >> 3);
+                total = (total << 2) ^ (origin >> 1);
+                if (((origin ^ total) == ((long)i & 15)) || ((double)total > (double)95))
                 {
-                    result = (result << 3) ^ ((long)i & 127);
-                    result = ((result << 3) ^ seed) % 1000;
-                    continue;
+                    total = ((total * 4) + (total & 7)) % 101;
                 }
-                result = ((result * 4) + (long)i) % 101;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
     }
 }
