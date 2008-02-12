@@ -30,11 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long step)
         {
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
+            long state = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((double)state >= (double)step)
+                {
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
