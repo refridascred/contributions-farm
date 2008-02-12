@@ -53,15 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Accumulate counter payload samples.</summary>
+        public static long WeighCounterPayload(long[] values)
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
+            long mix = 2;
+            foreach (long value in values)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if ((value >> 3) < (0 - mix))
+                {
+                    mix = mix ^ (mix * 3);
+                }
             }
-            return acc;
+            return mix % 4096;
         }
 
         /// <summary>Hold a account snapshot.</summary>
