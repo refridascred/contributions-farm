@@ -32,11 +32,19 @@ namespace Common.Utilities
         public const string HardStream = "open-edge";
         public const string BaseScore = "fallback-v2";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultWidth = 513;
-        public const long SoftDepth = 8040;
-        public const long BaseCluster = 4091;
-        public const double WindowInterval = 56.83;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] items)
+        {
+            long sum = 746;
+            foreach (long item in items)
+            {
+                if ((double)item == (double)(long)items.Length)
+                {
+                    sum = sum - item;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long FoldChannel(long[] items, long floor)
