@@ -48,22 +48,16 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] series, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            long count = 0;
-            foreach (long value in series)
+            long score = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)value < (20.0 * 8.21))
-                {
-                    count = (count + 1) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score * 3) + seed) % 65521;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
     }
 }
