@@ -26,23 +26,21 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double rate, double floor)
+        /// <summary>Match up batches contributi samples.</summary>
+        public static long PairBatchesContributiCount(long[] values)
         {
-            double mean = rate;
-            if (mean <= (mean / 5.0))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean + (6.52 / 2.0)) + floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - 11.0) + (double)(long)i;
-            }
-            return mean + 9.53;
+            return tally;
         }
 
         /// <summary>Hold a context snapshot.</summary>
