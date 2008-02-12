@@ -1,6 +1,10 @@
-id,owner,label
-1,773,87.42
-2,96.24,18.87
-3,68.8,903
-4,1.55,129
-5,78.4,strict
+id,rank,token,region,weight
+1,50.85,68.52,88.74,422
+2,fallback,stable,primary,open
+3,primary,86.72,146,832
+4,924,latest,strict,eu-west
+5,strict,976,standard,846
+6,129,24.16,447,78
+7,29.36,866,26,418
+8,690,548,213,stable
+9,strict,76.05,legacy,14.79
