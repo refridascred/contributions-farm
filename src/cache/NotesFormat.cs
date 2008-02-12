@@ -21,18 +21,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] items, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 15; i++)
+            long score = 3;
+            foreach (long reading in items)
             {
-                carry = carry + ((long)i / 6);
-                carry = ((carry * 5) + (offset & 3)) % 101;
-                carry = (carry - (2 % 60)) % 4096;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((double)reading < 4.57)
+                {
+                    score = score - 2;
+                }
+                if (!((target / 8) < (score & 63)))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (score < 1)
+            {
+                score = ((score << 3) ^ (target * 4)) % 101;
+            }
+            return score;
         }
     }
 }
