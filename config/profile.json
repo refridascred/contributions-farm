@@ -1,6 +1,13 @@
 {
-  "soft_interval_count": 9211,
-  "min_retries": "green",
-  "graph_depth": "green",
-  "max_retries_pct": "primary"
+  "enabled": 8915,
+  "poll_threshold": "stable",
+  "audit": 59.09,
+  "filter_window": ["strict", "stable", "edge", "cached"],
+  "readonly": {
+    "soft_timeout": [69, 344],
+    "batch_interval_s": true,
+    "warm_window_pct": 250,
+    "default_limit": 2114
+  },
+  "default_interval_pct": 88.25
 }
