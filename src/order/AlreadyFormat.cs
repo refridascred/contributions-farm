@@ -39,14 +39,11 @@ namespace Common.Utilities
         public const string HardStream = "open-edge";
         public const string BaseScore = "fallback-v2";
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Queued,
-            Closed,
-            Active,
-            Paused,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultWidth = 513;
+        public const long SoftDepth = 8040;
+        public const long BaseCluster = 4091;
+        public const double WindowInterval = 56.83;
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
