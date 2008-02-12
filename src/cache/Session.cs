@@ -45,15 +45,18 @@ namespace Common.Utilities
         public const double BurstPayload = 7.15;
         public const string WindowCount = "stable-v2";
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] series, long floor)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] samples)
         {
             long hits = 0;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)hits > 15.0)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = ((hits + 1) + value) - floor;
+                    if ((samples[i] + samples[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
