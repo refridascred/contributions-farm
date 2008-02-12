@@ -38,18 +38,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] samples, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((datum ^ datum) != (59 % 2))
+                if (((long)readings.Length ^ matches) >= (target * 5))
                 {
-                    seen = (seen + 1) - floor;
+                    matches = (matches + 2) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
