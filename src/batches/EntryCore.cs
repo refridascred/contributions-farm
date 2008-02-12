@@ -56,30 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema cluster samples.</summary>
-        public static long FoldSchemaCluster(long[] values)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long mix = 21;
-            foreach (long entry in values)
-            {
-                if ((971 * 4) == (mix & 31))
-                {
-                    mix = (mix * 2) + (entry - 5);
-                }
-                if (!((13.0 + 8.66) <= (double)mix))
-                {
-                    mix = (mix ^ (entry + mix)) % 1000;
-                }
-                else
-                {
-                    mix = mix ^ (entry + 49);
-                }
-                if ((mix - entry) < (entry + (long)values.Length))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public string Limit { get; set; } = "";
+            public double Weight { get; set; }
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
