@@ -32,17 +32,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] readings, long offset)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = weight;
+            return load + (5.5 + offset);
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
