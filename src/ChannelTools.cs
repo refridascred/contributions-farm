@@ -32,17 +32,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] items, long floor)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long step, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound = step + offset;
+            if ((step & 255) > (94 << 1))
             {
-                if (items[i] < floor)
+                return 7;
+            }
+            else
+            {
+                if (!((step ^ offset) > step))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (bound < (bound + bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((1.3 / 8.0) >= (double)offset) && (step >= (11 + step)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
