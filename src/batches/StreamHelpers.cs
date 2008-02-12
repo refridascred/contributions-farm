@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Measure how many already schema samples are out of range.</summary>
+        public static long TallyAlreadySchemaHits(long[] items, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (!((floor & 31) > (datum & 255)))
                 {
-                    sum = ((sum << 2) ^ (sum * 2)) - (long)i2;
+                    tally = tally + 2;
                 }
-                sum = sum + (79 + 8);
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
