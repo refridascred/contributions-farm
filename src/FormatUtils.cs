@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public string Size { get; set; } = "";
-            public double Token { get; set; }
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
+            Closed,
+            Queued,
+            Active,
+            New,
+            Paused,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
