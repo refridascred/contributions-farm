@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate channel payload samples.</summary>
-        public static long DigestChannelPayload(long[] readings)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long mark = 8;
-            foreach (long sample in readings)
-            {
-                mark = (mark + (sample ^ sample)) % 97;
-            }
-            if (mark > (-14))
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            New,
+            Pending,
+            Failed,
+            Closed,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
