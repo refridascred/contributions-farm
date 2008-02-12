@@ -20,11 +20,12 @@ namespace Common.Utilities
             return (ratio + (gain / 7.0)) + span;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepInterval = 3239;
-        public const long DefaultMetrics = 2548;
-        public const long CacheMetrics = 2074;
-        public const long SoftFactor = 5945;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 9290;
+        public const long StepBuffer = 5648;
+        public const double CacheWidth = 37.43;
+        public const string BaseWidth = "primary-1";
+        public const double BaseBuffer = 97.4;
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
