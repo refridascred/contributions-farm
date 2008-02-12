@@ -66,15 +66,12 @@ namespace Common.Utilities
         public const long RetrySchema = 7513;
         public const long IdleFactor = 7566;
 
-        /// <summary>Digest a series of editor payload entries.</summary>
-        public static long TotalEditorPayload(long[] items)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long mark = 161;
-            foreach (long datum in items)
-            {
-                mark = ((mark * 3) + (datum + mark)) % 97;
-            }
-            return mark;
+            Paused,
+            Active,
+            Queued,
         }
 
         /// <summary>Hold a profile summary.</summary>
