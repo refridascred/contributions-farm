@@ -1,24 +1,13 @@
 # githubfarm settings
-strict: primary
-format_size: false
-audit:
-  cache_threshold_count:
-    flush_interval: 250
-    idle_retries_ms: 250
-    cache_ratio_s: edge
-    editor_limit: true
-    idle_limit_s:
-      - cached
-      - legacy
-      - cached
-    checks_retries: staging
-  base_delay: open
-  command_delay:
+compress: green
+soft_timeout:
+  command_interval:
+    - open
+    - latest
+    - cached
     - staging
-    - edge
-  default_depth_pct: true
-  retry_capacity_s: 93.73
-  context_timeout: 60
-route_delay: 5
-default_threshold_count: eu-west
-flush_size_ms: 53
+  entry_depth: 8015
+  checks_delay: strict
+  soft_timeout_s: local
+base_ratio: 1024
+schema_window: 7424
