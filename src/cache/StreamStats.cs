@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public bool Label { get; set; }
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
-            public double Weight { get; set; }
+            Done,
+            Failed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
