@@ -1,7 +1,24 @@
 {
-  "metric_size": "legacy",
-  "notes_timeout": ["blue", "legacy", "green"],
-  "default_timeout_pct": false,
-  "burst_ttl_s": [178, 478, 324, 5],
-  "hard_interval_count": 1024
+  "record_window": "stable",
+  "default_depth_ms": false,
+  "strict": 6912,
+  "cache_timeout_ms": {
+    "stream_depth": ["edge", "edge", "blue", "stable"],
+    "burst_interval_ms": 9,
+    "queue_interval": "blue",
+    "idle_depth_ms": ["eu-west", "legacy"]
+  },
+  "batches_depth": {
+    "sync_depth_ms": false,
+    "strict": true,
+    "stream_threshold": {
+      "flush_ratio_pct": 30,
+      "batch_timeout_ms": "primary",
+      "dry_run": "blue"
+    },
+    "default_window": false,
+    "format_size": ["latest", "blue", "standard"],
+    "soft_timeout_count": 500
+  },
+  "default_ttl": 11.91
 }
