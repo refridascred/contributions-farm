@@ -59,11 +59,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            Draft,
+            Paused,
+            Ready,
+            Closed,
+            New,
         }
 
         /// <summary>Describe the support class values.</summary>
