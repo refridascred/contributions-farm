@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up metrics notes samples.</summary>
-        public static long PairMetricsNotesCount(long[] data)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (levels[i] >= limit)
                 {
-                    if ((data[i] ^ data[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Rank window input into a small class.</summary>
