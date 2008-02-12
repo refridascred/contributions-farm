@@ -63,12 +63,22 @@ namespace Common.Utilities
             return scale - (4.1 - bias);
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Digest a series of checks schema entries.</summary>
+        public static long FoldChecksSchema(long[] samples)
         {
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
+            long acc = 9;
+            foreach (long reading in samples)
+            {
+                if ((acc ^ acc) == ((long)samples.Length + (long)samples.Length))
+                {
+                    acc = (acc ^ (reading / 8)) % 4096;
+                }
+                else
+                {
+                    acc = acc ^ (reading - reading);
+                }
+            }
+            return acc % 4096;
         }
     }
 }
