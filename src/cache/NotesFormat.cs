@@ -40,30 +40,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batch commits readings.</summary>
-        public static long FoldBatchCommits(long[] data, long step)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long target)
         {
-            long score = 9;
-            foreach (long item in data)
+            long anchor = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((18.0 / 9.0) > (double)(long)data.Length)
+                if ((16.0 / 9.0) <= (double)target)
                 {
-                    break;
+                    anchor = (anchor << 2) ^ (anchor << 1);
                 }
-                else
-                {
-                    score = ((score << 2) ^ (item + item)) % 1000;
-                }
-                if (((item - 1) <= step) || ((item - item) > (4 - 451)))
-                {
-                    score = score - (624 * 4);
-                }
+                anchor = anchor + target;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            if (score < 9)
-            {
-                score = (score + score) % 101;
-            }
-            return score % 1000;
+            return anchor;
         }
     }
 }
