@@ -1,15 +1,12 @@
 # Command notes
 
-The route module keeps layout values in sync with the profile cache.
-Run the support check before changing any buffer limits.
-The account helpers are pure functions, so they are safe to call from any thread.
-
-The batch report groups every checks by already.
-Defaults for context live in the config folder and can be overridden per environment.
-A entry that stays idle for too long is moved to the tools list.
+Defaults for tools live in the config folder and can be overridden per environment.
+Use command settings to tune how often entry data is refreshed.
+Each githubfarm is validated before it reaches the context queue.
 
 ## Guidelines
 
+- Validate token input early
+- Document new commits fields
+- Keep githubfarm values small
 - Prefer farm defaults
-- Document new graph fields
-- Validate layout input early
