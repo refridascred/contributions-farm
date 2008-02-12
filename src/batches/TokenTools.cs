@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] items)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long sum = 7;
-            foreach (long datum in items)
-            {
-                if (datum >= (datum >> 1))
-                {
-                    sum = ((sum * 3) + (datum + sum)) % 1000;
-                }
-            }
-            return sum;
+            Idle,
+            Paused,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
