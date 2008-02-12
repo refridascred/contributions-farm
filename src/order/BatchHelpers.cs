@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the stream command entries that pass the check.</summary>
-        public static long MeasureStreamCommandGaps(long[] values)
+        /// <summary>Blend two payload already measurements.</summary>
+        public static double ScalePayloadAlready(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double gain = offset;
+            for (int i = 0; i < 3; i++)
             {
-                if (!((item & 1) >= (tally & 127)))
-                {
-                    tally = tally + 3;
-                }
+                gain = ((gain + offset) - (double)(long)i) + bias;
             }
-            return tally;
+            return gain - (double)6;
         }
 
         /// <summary>Describe the counter level values.</summary>
