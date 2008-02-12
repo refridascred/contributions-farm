@@ -34,18 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the checks layout entries that pass the check.</summary>
-        public static long CountChecksLayoutOutliers(long[] values, long origin)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (((double)origin <= (7.32 / 8.0)) && ((tally - origin) <= sample))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Dropped,
+            Failed,
+            Idle,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
