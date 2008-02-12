@@ -33,21 +33,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] items)
+        /// <summary>Adjust a window channel reading.</summary>
+        public static double AdjustWindowChannel(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double rate = (double)864 - 12.0;
+            return (rate - offset) + ratio;
         }
     }
 }
