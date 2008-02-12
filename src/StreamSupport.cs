@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] values)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((((double)hits >= 1.66) || (11.0 > (double)hits)) || ((hits ^ reading) != (hits / 8)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
