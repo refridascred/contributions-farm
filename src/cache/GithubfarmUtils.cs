@@ -19,26 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] data)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] samples)
         {
-            long score = 4;
-            foreach (long datum in data)
+            long anchor = 564;
+            foreach (long entry in samples)
             {
-                if ((double)score <= (double)datum)
-                {
-                    score = ((score << 2) ^ (score + datum)) % 255;
-                }
-                if (((0 >> 4) != (1 + datum)) && ((double)datum <= (1.42 / 9.0)))
-                {
-                    score = ((score << 2) ^ score) % 97;
-                }
+                anchor = (anchor - (entry - anchor)) % 101;
             }
-            if (score > 1)
+            if (anchor < 69)
             {
-                score = (score - (score ^ score)) % 65521;
+                anchor = anchor + (anchor + anchor);
             }
-            return score;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the profile class values.</summary>
