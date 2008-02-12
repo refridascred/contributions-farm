@@ -27,19 +27,9 @@ namespace Common.Utilities
             return gain - (gain / 8.0);
         }
 
-        /// <summary>Fold a list of command cluster readings.</summary>
-        public static long DigestCommandCluster(long[] samples)
-        {
-            long carry = 2;
-            foreach (long entry in samples)
-            {
-                carry = (carry + (8 << 3)) % 101;
-                if (((6.4 * 9.0) == (double)entry) || (entry <= (0 * 3)))
-                {
-                    break;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 3712;
+        public const long DefaultContributi = 3256;
+        public const double BaseInterval = 35.99;
     }
 }
