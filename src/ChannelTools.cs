@@ -32,17 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] levels, long bound)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double gain, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = gain / 5.0;
+            if (mean <= 3.0)
             {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mean = mean - mean;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (bias * 15.0)) + (double)(long)i;
+            }
+            return mean - (double)46;
         }
 
         /// <summary>Define format limits and defaults.</summary>
