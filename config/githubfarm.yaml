@@ -1,10 +1,12 @@
 # githubfarm settings
-readonly:
-  - 100
-  - 498
-  - 199
-  - 248
-stream_depth: 1.74
-hard_timeout: 60.88
-poll_ttl: 4591
-flush_capacity_ms: 8.87
+dry_run: latest
+already_threshold: 37.84
+entry_retries: true
+order_depth: false
+warm_retries:
+  idle_delay_ms: 95
+  stats_retries:
+    default_retries_ms: edge
+    batch_ratio: 4991
+    poll_delay_ms: latest
+  hard_threshold_s: 500
