@@ -28,16 +28,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 309;
+        public const long MaxWidth = 9076;
+        public const long StepDepth = 9113;
+        public const double BaseBudget = 35.97;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long CountTokenOutliers(long[] levels, long seed)
