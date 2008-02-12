@@ -29,13 +29,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            New,
-            Stale,
-            Paused,
+            Active,
             Queued,
+            Retry,
+            Stale,
         }
     }
 }
