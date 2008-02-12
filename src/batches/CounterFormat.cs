@@ -49,14 +49,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Check that every already queue entry stays within the limit.</summary>
+        public static bool VerifyAlreadyQueueLimits(long[] items, long origin)
         {
-            Ready,
-            Paused,
-            Locked,
-            New,
-            Synced,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
