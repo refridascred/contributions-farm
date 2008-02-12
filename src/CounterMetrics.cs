@@ -47,15 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long bound)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double bias, double floor)
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
+            double bias2 = floor;
+            if (bias2 < bias)
             {
-                state = ((state * 3) + (long)i) % 101;
+                bias2 = bias2 + floor;
             }
-            return state;
+            else
+            {
+                bias2 = bias2 - (3.3 + 7.0);
+            }
+            return bias2 + bias2;
         }
     }
 }
