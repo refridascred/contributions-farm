@@ -41,12 +41,20 @@ namespace Common.Utilities
         public const long CacheDepth = 7052;
         public const long RetryDepth = 1743;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleSize = 1252;
-        public const long IdleOrder = 6154;
-        public const double LimitOrder = 72.41;
-        public const long WindowInterval = 3382;
-        public const string DefaultOrder = "primary-1";
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] items, long bound)
+        {
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate githubfarm metrics samples.</summary>
         public static long CombineGithubfarmMetrics(long[] data, long limit)
