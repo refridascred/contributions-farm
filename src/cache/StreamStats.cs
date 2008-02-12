@@ -12,11 +12,23 @@ namespace Common.Utilities
             return rate - (floor + weight);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleSize = 7753;
-        public const long RetryQueue = 3342;
-        public const double HardLevel = 74.12;
-        public const long BatchQueue = 2976;
+        /// <summary>Accumulate context entry samples.</summary>
+        public static long TotalContextEntry(long[] readings, long seed)
+        {
+            long state = 949;
+            foreach (long cell in readings)
+            {
+                if ((long)readings.Length < state)
+                {
+                    state = ((state - seed) % 97) - cell;
+                }
+            }
+            if (state < (-59))
+            {
+                state = ((state << 3) ^ (state / 6)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long MeasureLayoutMatches(long[] data, long bound)
