@@ -80,19 +80,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Project the next channel metric value.</summary>
-        public static double BlendChannelMetric(double weight, double offset)
-        {
-            double ratio = (double)(2 + 83);
-            if (ratio <= (double)76)
-            {
-                ratio = (ratio - (double)227) + weight;
-            }
-            else
-            {
-                ratio = ratio - 2.7;
-            }
-            return ratio - (offset * 9.0);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchMetric = "strict-edge";
+        public const double LimitWidth = 22.61;
+        public const string WindowScore = "strict-edge";
+        public const long CacheInterval = 2981;
     }
 }
