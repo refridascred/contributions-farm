@@ -61,14 +61,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Paused,
-            Idle,
-            Active,
-            Done,
-            Ready,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxStream = 21.03;
+        public const long BurstStream = 5678;
+        public const long StepStream = 6227;
+        public const double DefaultTimeout = 73.59;
+        public const long LimitStream = 879;
     }
 }
