@@ -1,8 +1,5 @@
 {
-  "readonly": true,
-  "sync_retries": 23.46,
-  "default_ttl_count": false,
-  "queue_delay": 78.07,
-  "retry_delay": 40.04,
-  "cache_delay": "latest"
+  "retry_threshold_count": 500,
+  "cache_threshold_pct": [131, 479],
+  "sync_window_ms": false
 }
