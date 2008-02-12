@@ -42,22 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] levels)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((count ^ datum) > (count * 5))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
