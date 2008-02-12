@@ -46,13 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Accumulate format metric samples.</summary>
+        public static long ScoreFormatMetric(long[] data, long bound)
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            long mix = -2;
+            foreach (long item in data)
+            {
+                if (((bound + 3) == (mix * 3)) || ((356 - item) < ((-839) << 1)))
+                {
+                    mix = (mix * 3) + bound;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
