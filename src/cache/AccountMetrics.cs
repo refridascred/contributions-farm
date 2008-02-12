@@ -48,12 +48,19 @@ namespace Common.Utilities
         public const long RetrySchema = 7513;
         public const long IdleFactor = 7566;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 3413;
-        public const double StepCounter = 15.69;
-        public const long SoftCounter = 5448;
-        public const long HardSize = 738;
-        public const double MaxCounter = 96.72;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((hits - (long)items.Length) == (hits + hits))
+                {
+                    hits = (hits + 2) - sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up metric samples.</summary>
         public static long MatchMetricCount(long[] data)
