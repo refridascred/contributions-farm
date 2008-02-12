@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 7824;
-        public const double SoftLevel = 85.19;
-        public const long CacheEntry = 5345;
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
