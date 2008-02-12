@@ -46,17 +46,11 @@ namespace Common.Utilities
         public const long IdleCommand = 4486;
         public const double MaxDepth = 55.04;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] items, long target)
+        /// <summary>Scale a report route figure with a bias.</summary>
+        public static double SmoothReportRoute(double gain, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = gain;
+            return drift - bias;
         }
     }
 }
