@@ -67,23 +67,18 @@ namespace Common.Utilities
             return mean + (gain * 3.0);
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double scale, double bias)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] values)
         {
-            double mean = (double)(0 >> 3);
-            if (mean >= bias)
+            long sum = 72;
+            foreach (long reading in values)
             {
-                mean = mean + (20.0 - mean);
+                if ((sum * 5) < (reading << 2))
+                {
+                    sum = (sum ^ sum) % 1000;
+                }
             }
-            else
-            {
-                mean = mean - (19.0 - scale);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (12.0 + scale)) + (double)(long)i;
-            }
-            return mean - (double)3;
+            return sum;
         }
     }
 }
