@@ -30,17 +30,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a report token sample.</summary>
-        public static long LookupReportTokenIndex(long[] items, long limit)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Digest a series of record entries.</summary>
