@@ -1,12 +1,8 @@
 {
-  "hard_ratio": 89.79,
-  "cluster_ratio": false,
-  "channel_size": {
-    "dry_run": ["strict", "latest"],
-    "batch_capacity_s": ["open", "open", "cached"],
-    "verbose": 4249,
-    "warm_delay_count": 67.18,
-    "cache_size": "staging",
-    "default_depth_pct": 30
-  }
+  "flush_capacity_s": "staging",
+  "default_window_count": "stable",
+  "max_ratio": ["stable", "latest"],
+  "sync_limit": 5806,
+  "retry_timeout": 34.85,
+  "max_threshold": 81
 }
