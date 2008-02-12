@@ -20,13 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Closed,
-            Ready,
-            Queued,
-            Stale,
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a buffer info.</summary>
