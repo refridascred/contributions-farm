@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 7309;
-        public const long HardBuffer = 5150;
-        public const long BurstRatio = 2381;
+        /// <summary>Validate format editor readings against a bound.</summary>
+        public static bool VerifyFormatEditorRange(long[] items, long step)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long DeriveStream(long step)
