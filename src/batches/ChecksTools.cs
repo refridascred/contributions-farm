@@ -22,15 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate route graph samples.</summary>
-        public static long DigestRouteGraph(long[] values)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long total = 1;
-            foreach (long datum in values)
-            {
-                total = total - (total + datum);
-            }
-            return total % 65521;
+            Ready,
+            Failed,
+            Paused,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
