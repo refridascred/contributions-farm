@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double gain, double floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] data)
         {
-            double rate = floor;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                rate = (rate - (double)154) + (double)(long)i;
+                if (((value ^ tally) == (value >> 4)) || (0 <= (value << 2)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return rate - (gain * 9.0);
+            return tally;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
