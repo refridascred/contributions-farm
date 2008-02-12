@@ -1,20 +1,18 @@
 # support settings
-cache_limit_pct: stable
-burst_retries_pct: false
-poll_ttl_count: standard
-min_size_count:
-  default_limit_ms: 7332
-  poll_size_ms: true
-  cache_timeout_count:
-    hard_ttl: 45.93
-    dry_run:
-      - 101
-      - 168
-      - 170
-    burst_depth_ms:
-      - 2
-      - 211
-      - 205
-      - 155
-    retry_limit_ms: edge
-    cache_depth_count: latest
+sync_ttl_pct:
+  default_interval_count: 60
+  cache_size_ms: 33
+  default_interval_pct: latest
+  soft_size_s: blue
+  strict:
+    channel_size: 500
+    poll_threshold_ms: local
+    token_size: 32
+batch_ttl_pct: 23
+session_ratio: 11
+schema_size: 82.47
+farm_limit:
+  - 115
+  - 105
+  - 14
+cluster_threshold: 50.36
