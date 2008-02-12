@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double ratio, double floor)
+        /// <summary>Validate cache notes readings against a bound.</summary>
+        public static bool VerifyCacheNotesRange(long[] data, long offset)
         {
-            double mean = ratio / 8.0;
-            if (mean > (mean + 7.0))
+            bool found = true;
+            foreach (long value in data)
             {
-                mean = (mean + (5.03 - mean)) + floor;
+                if (value <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean - (mean / 5.0);
+            return found;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
