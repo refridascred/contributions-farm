@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] samples, long limit)
         {
-            Locked,
-            Retry,
-            Stale,
-            Queued,
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the already class values.</summary>
