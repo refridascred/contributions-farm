@@ -16,17 +16,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Find the first metric tools entry that matches the target.</summary>
-        public static long FindMetricToolsIndex(long[] items, long floor)
+        /// <summary>Accumulate route graph samples.</summary>
+        public static long DigestRouteGraph(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 1;
+            foreach (long datum in values)
             {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
+                total = total - (total + datum);
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Describe the checks mode values.</summary>
