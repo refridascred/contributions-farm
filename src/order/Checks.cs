@@ -49,22 +49,31 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] samples)
+        /// <summary>Rank filter counter input into a small class.</summary>
+        public static long SortFilterCounter(long target, long floor)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            if ((9.8 - 3.36) < (double)floor)
             {
-                if ((8.0 * 0.3) == (double)item)
+                return 3;
+            }
+            else
+            {
+                if ((2.77 / 9.0) == (double)target)
                 {
-                    tally = tally + 2;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((3.0 * 5.1) <= (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the format phase values.</summary>
