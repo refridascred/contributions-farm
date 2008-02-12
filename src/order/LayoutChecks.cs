@@ -20,20 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double bias, double offset)
-        {
-            double mean = bias;
-            if (mean >= (mean + offset))
-            {
-                mean = mean - 8.65;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (double)2) + (double)(long)i;
-            }
-            return mean - offset;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 614;
+        public const double WindowCount = 73.88;
+        public const long RetrySession = 9002;
+        public const long DefaultSession = 1983;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BatchLevel = 8739;
