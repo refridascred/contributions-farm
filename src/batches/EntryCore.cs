@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const long IdleQueue = 4533;
         public const long WindowQueue = 1897;
 
-        /// <summary>Find the first counter profile entry that matches the target.</summary>
-        public static long LocateCounterProfileIndex(long[] series, long offset)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Queued,
+            Failed,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
