@@ -40,19 +40,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] readings, long origin)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] readings, long offset)
         {
-            long sum = 2;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                sum = ((sum + origin) % 1000) + item;
+                if (entry < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (sum > (-4))
-            {
-                sum = ((sum << 2) ^ (origin / 8)) % 97;
-            }
-            return sum;
+            return ready;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
