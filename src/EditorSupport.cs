@@ -38,21 +38,19 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Compare every pair of window channel readings.</summary>
-        public static long MatchWindowChannelCount(long[] readings)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell <= limit)
                 {
-                    if ((readings[i] + readings[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
