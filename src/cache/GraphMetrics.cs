@@ -39,22 +39,12 @@ namespace Common.Utilities
             return load + (5.5 + offset);
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepCounter = 36.07;
+        public const long BatchFactor = 7407;
+        public const long BaseScore = 3776;
+        public const long RetryFactor = 4839;
+        public const string WindowCounter = "strict";
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
