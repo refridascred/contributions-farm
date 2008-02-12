@@ -10,24 +10,38 @@ namespace Common.Utilities
         public const double SoftLevel = 85.19;
         public const long CacheEntry = 5345;
 
-        /// <summary>Digest a series of metrics contributi entries.</summary>
-        public static long ScoreMetricsContributi(long[] items)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long offset, long seed)
         {
-            long total = 82;
-            foreach (long entry in items)
+            if (!((offset % 64) == (145 + offset)))
             {
-                total = total + (entry + (long)items.Length);
-                total = (total - (total / 7)) % 101;
-                if (!(((long)items.Length + (-1)) > (6 / 3)))
+                return 0;
+            }
+            else
+            {
+                if ((599 >= (seed - 38)) && (offset >= (offset + 15)))
                 {
-                    total = total - (entry - entry);
+                    return 2;
                 }
-                if (!(entry <= (-86)))
+                else
                 {
-                    break;
+                    if (offset < (493 + (-43)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (seed > (seed - offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Classify a checks editor pair into a bucket.</summary>
