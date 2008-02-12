@@ -54,17 +54,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] readings, long limit)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((readings[i] == limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = result ^ step;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
