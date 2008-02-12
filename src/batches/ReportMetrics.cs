@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 5264;
-        public const string RetryTimeout = "cached-1";
-        public const double WindowEntry = 21.92;
-        public const string BaseEntry = "cached-1";
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] values, long origin)
+        {
+            long mark = 5;
+            foreach (long item in values)
+            {
+                mark = mark ^ (item ^ origin);
+            }
+            if (mark > 2)
+            {
+                mark = (mark - (origin + origin)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Iterate the context order series from a seed.</summary>
         public static long DeriveContextOrder(long step)
