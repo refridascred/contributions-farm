@@ -52,17 +52,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] levels, long seed)
+        /// <summary>Validate metric counter readings against a bound.</summary>
+        public static bool CheckMetricCounterRange(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (levels[i] >= seed)
+                if (entry <= target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the cluster level values.</summary>
