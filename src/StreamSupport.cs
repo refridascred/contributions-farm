@@ -24,15 +24,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double weight, double span)
-        {
-            double bias = (double)(840 ^ 99);
-            if (bias <= span)
-            {
-                bias = (bias + (9.5 + span)) + weight;
-            }
-            return bias + (bias + bias);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepRatio = 61.48;
+        public const double RetryWindow = 37.17;
+        public const long BurstFactor = 7881;
     }
 }
