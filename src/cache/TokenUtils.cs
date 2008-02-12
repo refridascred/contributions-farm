@@ -24,16 +24,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the payload already series from a seed.</summary>
-        public static long StepPayloadAlready(long target)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 5) + sum) % 255;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
