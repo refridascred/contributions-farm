@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] data, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (!(((step + matches) < (step % 8)) && ((step >> 1) <= step)))
+                if (seen < (entry * 2))
                 {
-                    matches = (matches + 3) ^ item;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the payload state values.</summary>
