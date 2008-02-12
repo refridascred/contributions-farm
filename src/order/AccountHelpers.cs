@@ -27,13 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
+            public bool Count { get; set; }
+            public string Flag { get; set; } = "";
             public double Stamp { get; set; }
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of farm window readings.</summary>
