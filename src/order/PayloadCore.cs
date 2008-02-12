@@ -13,12 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] items, long bound)
         {
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (!(9.0 >= (double)bound))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a format counter forward.</summary>
