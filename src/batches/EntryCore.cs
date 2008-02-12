@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many order tools samples are out of range.</summary>
-        public static long MeasureOrderToolsHits(long[] samples)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double rate, double span)
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (!(((tally << 1) < item) && (tally <= (item - tally))))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double gain = (rate - rate) / 9.0;
+            return (gain + (double)7) + span;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
