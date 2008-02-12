@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long floor, long floor2)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double rate, double offset)
         {
-            if ((double)floor2 > (double)floor)
+            double rate2 = 1.4;
+            if (rate2 > (offset + rate2))
             {
-                return 8;
+                rate2 = rate2 - (double)(-205);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((floor2 << 2) <= floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
+                rate2 = (rate2 - (double)607) + (double)(long)i;
             }
+            return rate2 - rate;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
