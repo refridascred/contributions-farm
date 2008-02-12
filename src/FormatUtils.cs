@@ -71,19 +71,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] series, long target)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item <= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] + levels[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
