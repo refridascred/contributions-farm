@@ -42,19 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] data)
-        {
-            long sum = 6;
-            foreach (long reading in data)
-            {
-                sum = ((sum * 5) + (reading + sum)) % 1000;
-                if ((reading ^ sum) >= (96 + reading))
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinFarm = 22.03;
+        public const long CacheRatio = 6361;
+        public const long DefaultRatio = 9528;
+        public const double WindowFarm = 64.93;
+        public const double BurstFarm = 35.78;
     }
 }
