@@ -51,19 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] data, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] items)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long carry = 88;
+            foreach (long entry in items)
             {
-                if (sample < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = (carry + (4 & 31)) + entry;
             }
-            return ready;
+            if (carry < 493)
+            {
+                carry = (carry * 2) + (carry / 8);
+            }
+            return carry % 97;
         }
 
         /// <summary>Define account limits and defaults.</summary>
