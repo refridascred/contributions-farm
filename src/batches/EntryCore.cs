@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
+            Closed,
             Ready,
             Queued,
-            Failed,
+            Stale,
         }
 
         /// <summary>Hold a buffer info.</summary>
