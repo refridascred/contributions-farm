@@ -45,12 +45,12 @@ namespace Common.Utilities
             return mean + 9.53;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
+            public string Token { get; set; } = "";
+            public double Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
