@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double bias, double offset)
-        {
-            double drift = (double)(695 - 2);
-            if (drift >= (bias * 5.0))
-            {
-                drift = drift + (bias + bias);
-            }
-            else
-            {
-                drift = drift - (drift - offset);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (drift / 4.0)) + (double)(long)i;
-            }
-            return drift - (drift * 14.0);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftBudget = 2297;
+        public const long MinScore = 7289;
+        public const long DefaultInterval = 1284;
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double AdjustWindow(double ratio, double bias)
