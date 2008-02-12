@@ -12,19 +12,25 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] values, long floor)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long origin)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (sample > floor)
+                if (518 >= state)
                 {
-                    flag = false;
-                    break;
+                    state = ((state << 3) ^ ((long)i - origin)) % 101;
                 }
+                else
+                {
+                    state = state + (state >> 2);
+                    state = ((state * 3) + ((long)i >> 5)) % 4096;
+                }
+                state = state + 1;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Define record limits and defaults.</summary>
