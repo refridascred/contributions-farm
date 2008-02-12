@@ -35,28 +35,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of farm window readings.</summary>
-        public static long TallyFarmWindow(long[] samples, long target)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] values, long step)
         {
-            long total = 740;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long item in values)
             {
-                total = (((total * 4) + (target % 100)) % 97) ^ reading;
-                if ((total - 11) == (0 >> 2))
+                if (item < step)
                 {
-                    continue;
-                }
-                total = (total << 2) ^ (total << 1);
-                if ((total - target) != (target - target))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (total < 994)
-            {
-                total = (total - total) % 4096;
-            }
-            return total;
+            return ready;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
