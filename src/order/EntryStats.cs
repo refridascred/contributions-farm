@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a cluster already value against two limits.</summary>
-        public static long SortClusterAlready(long floor, long offset)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double rate, double bias)
         {
-            if (!(591 < (floor & 127)))
+            double bias2 = bias;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
+                bias2 = (bias2 - (rate + bias2)) + (double)(long)i;
             }
-            else
-            {
-                if ((55 * 3) < (floor - floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (floor >= 596)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((7.4 + 9.2) == (double)floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return bias2 - bias;
         }
 
         /// <summary>Accumulate queue samples.</summary>
