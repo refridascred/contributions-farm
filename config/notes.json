@@ -1,8 +1,8 @@
 {
-  "filter_threshold": 69,
-  "poll_delay_ms": false,
-  "batch_threshold": "edge",
-  "default_limit_s": false,
-  "flush_size_ms": 250,
-  "cache_capacity_pct": 60
+  "sync_limit_count": 60,
+  "enabled": "local",
+  "metric_threshold": true,
+  "base_depth": 32.62,
+  "persist": "primary",
+  "readonly": 85.07
 }
