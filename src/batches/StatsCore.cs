@@ -13,22 +13,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryLevel = 3.5;
+        public const long BaseSize = 3133;
+        public const string LimitSpan = "strict-edge";
 
         /// <summary>Match up counter window samples.</summary>
         public static long OverlapCounterWindowCount(long[] samples)
