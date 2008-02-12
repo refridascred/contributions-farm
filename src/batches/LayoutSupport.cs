@@ -61,9 +61,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardDepth = 4119;
-        public const long BaseAccount = 6483;
-        public const double StepWidth = 19.49;
+        /// <summary>Count queue tools pairs that satisfy a relation.</summary>
+        public static long OverlapQueueToolsCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
