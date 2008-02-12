@@ -48,23 +48,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double weight, double offset)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            double load = weight;
-            if (load > 9.3)
-            {
-                load = (load - (double)650) - offset;
-            }
-            else
-            {
-                load = load + (load * 3.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - load) - (double)(long)i;
-            }
-            return load - (double)0;
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the window kind values.</summary>
