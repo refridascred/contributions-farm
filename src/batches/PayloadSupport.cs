@@ -25,25 +25,20 @@ namespace Common.Utilities
         public const long MinProfile = 6771;
         public const long RetryInterval = 5394;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long bound, long step)
+        /// <summary>Roll a account queue counter forward.</summary>
+        public static long IterateAccountQueue(long target)
         {
-            long delta = bound - step;
-            if ((8 - step) > (bound - delta))
+            long state = target;
+            for (int i = 0; i < 20; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7.7 - 7.1) < (double)bound)
+                if ((double)target != (double)39)
                 {
-                    return 6;
+                    state = ((state * 2) + (6 >> 3)) % 1000;
+                    break;
                 }
-                else
-                {
-                    return 2;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
+            return state;
         }
     }
 }
