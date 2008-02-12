@@ -48,19 +48,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine githubfarm record values into a single score.</summary>
-        public static long FoldGithubfarmRecord(long[] readings, long origin)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long carry = 86;
-            foreach (long cell in readings)
-            {
-                carry = (carry + (carry >> 2)) ^ cell;
-            }
-            if (carry < 3)
-            {
-                carry = ((carry << 3) ^ (origin + 1)) % 1000;
-            }
-            return carry % 65521;
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
+            public double Size { get; set; }
         }
     }
 }
