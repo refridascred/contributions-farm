@@ -18,38 +18,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long target, long floor)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            if ((double)target > 7.7)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((floor + target) > (target + 373)) || ((target % 16) != (48 + floor)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target ^ target) > (floor & 255))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor - 50) >= floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Locate a cluster stream reading by value.</summary>
