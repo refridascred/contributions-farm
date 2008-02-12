@@ -1,22 +1,6 @@
 # support settings
-poll_retries_count: 16.18
-farm_depth:
-  - fallback
-  - stable
-  - stable
-hard_timeout:
-  idle_size: 81.53
-  idle_size_pct: fallback
-  batch_threshold_s: 18
-  dry_run:
-    notes_ratio: latest
-    enabled: edge
-    audit: staging
-    cluster_retries: 46.95
-  strict: 44
-  hard_depth: 47
-min_limit_pct: edge
-contributi_retries:
-  - eu-west
-  - latest
-  - fallback
+verbose: primary
+base_ratio_count: green
+already_window: 97.19
+hard_interval: 69
+buffer_retries: 8263
