@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] samples, long floor)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Active,
+            Draft,
+            Failed,
+            Queued,
         }
 
         /// <summary>Rank route input into a small class.</summary>
