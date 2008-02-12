@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a graph payload reading.</summary>
-        public static double ScaleGraphPayload(double rate, double offset)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            double scale = (offset / 3.0) * 2.4;
-            if (scale > 0.7)
-            {
-                scale = (scale - scale) - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - scale) - (double)(long)i;
-            }
-            return scale - (scale + 8.9);
+            public bool Label { get; set; }
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Rank cache input into a small class.</summary>
