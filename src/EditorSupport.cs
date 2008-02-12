@@ -38,12 +38,22 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepInterval = 7312;
-        public const double DefaultFactor = 83.43;
-        public const double SoftCount = 62.7;
-        public const long MaxGithubfarm = 1362;
-        public const double DefaultSize = 31.54;
+        /// <summary>Compare every pair of window channel readings.</summary>
+        public static long MatchWindowChannelCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long SeriesReport(long limit)
