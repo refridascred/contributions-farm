@@ -88,18 +88,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] items, long step)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((double)6 > (double)count)
-                {
-                    count = ((count + 3) + cell) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 3745;
+        public const long SoftInterval = 1069;
+        public const double BatchSize = 88.2;
+        public const long HardSchema = 6806;
     }
 }
