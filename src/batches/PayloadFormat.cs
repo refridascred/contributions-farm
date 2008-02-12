@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstOrder = "primary-edge";
-        public const long HardDepth = 8991;
-        public const string DefaultOrder = "fallback-v2";
-        public const long StepTimeout = 1389;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Active,
+            Retry,
+            Done,
+            Stale,
+            Paused,
+        }
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
