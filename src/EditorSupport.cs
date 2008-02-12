@@ -17,23 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] series, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (hits > offset)
-                {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultTimeout = 3692;
+        public const long WindowCommand = 8599;
+        public const double WindowCount = 59.61;
+        public const double BurstFactor = 88.0;
+        public const string MaxCommand = "primary";
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
