@@ -34,13 +34,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] values)
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
+            long acc = 841;
+            foreach (long item in values)
+            {
+                acc = ((acc + acc) % 4096) + item;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
