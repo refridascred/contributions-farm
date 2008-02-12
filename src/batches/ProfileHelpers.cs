@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Dropped,
-            Queued,
-            Done,
-            Stale,
+            Draft,
+            Retry,
+            Pending,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
