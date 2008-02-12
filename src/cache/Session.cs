@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of account contributi readings.</summary>
-        public static long OverlapAccountContributiCount(long[] values)
+        /// <summary>Combine token githubfarm values into a single score.</summary>
+        public static long ScoreTokenGithubfarm(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 646;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((30 & 1) == (item - result)) && ((result - result) < (result + item)))
                 {
-                    if ((values[i] + values[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = result + (result - item);
                 }
+                result = (result - item) % 1000;
+                result = result - 1;
             }
-            return hits;
+            if (result < 6)
+            {
+                result = ((result * 3) + 398) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Project the next checks value.</summary>
