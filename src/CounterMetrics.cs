@@ -20,19 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] samples, long step)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long bound)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry != step)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = (mix + (bound ^ mix)) % 97;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Locate a command reading by value.</summary>
