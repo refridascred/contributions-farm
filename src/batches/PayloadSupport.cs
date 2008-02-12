@@ -42,13 +42,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Done,
-            Dropped,
-            Locked,
-            Active,
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
