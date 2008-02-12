@@ -45,17 +45,22 @@ namespace Common.Utilities
         public const long BatchBudget = 3174;
         public const long MaxChannel = 7771;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] values, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] readings, long seed)
         {
-            long state = 22;
-            foreach (long value in values)
+            long result = 812;
+            foreach (long reading in readings)
             {
-                state = ((state * 3) + (value >> 2)) % 4096;
-                state = (state << 3) ^ (value << 2);
-                state = (state ^ (state + step)) % 1000;
+                if ((result + (long)readings.Length) == (reading - result))
+                {
+                    result = (result + (14 - 99)) - seed;
+                }
             }
-            return state % 4096;
+            if (result < 3)
+            {
+                result = (result ^ result) % 97;
+            }
+            return result % 1000;
         }
     }
 }
