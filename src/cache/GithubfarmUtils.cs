@@ -56,13 +56,13 @@ namespace Common.Utilities
             return gain - (double)1;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            Stale,
+            Ready,
+            Queued,
+            Retry,
         }
     }
 }
