@@ -20,18 +20,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] values, long floor)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading <= (6.0 + 17.0))
-                {
-                    count = (count + 1) - floor;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the counter kind values.</summary>
