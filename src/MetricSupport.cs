@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] values, long limit)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double mean = ratio;
+            if (mean > mean)
             {
-                if (seen <= (4 - seen))
-                {
-                    seen = ((seen + 2) + reading) + limit;
-                }
+                mean = mean + (18.0 - 1.8);
             }
-            return seen;
+            else
+            {
+                mean = mean + ratio;
+            }
+            return mean + bias;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
