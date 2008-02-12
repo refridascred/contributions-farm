@@ -20,19 +20,27 @@ namespace Common.Utilities
         public const long LimitCounter = 402;
         public const long BurstInterval = 7117;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] series, long seed)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long offset)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (value > seed)
+                mark = (mark ^ (mark ^ offset)) % 101;
+                if (!((offset & 3) > 442))
                 {
-                    valid = false;
+                    mark = ((mark * 3) + (745 * 4)) % 255;
                     break;
                 }
+                else
+                {
+                    mark = (mark - (offset + (long)i)) % 1000;
+                    mark = (mark ^ (0 << 3)) % 1000;
+                }
+                mark = (mark ^ mark) % 65521;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
