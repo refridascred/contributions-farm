@@ -33,21 +33,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Match up counter window samples.</summary>
-        public static long OverlapCounterWindowCount(long[] samples)
+        /// <summary>Adjust a githubfarm window reading.</summary>
+        public static double AdjustGithubfarmWindow(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = span;
+            if (load >= 14.0)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load - load) + rate;
             }
-            return seen;
+            return load + span;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
