@@ -28,22 +28,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] values, long bound)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen * 3) == (seen + 16))
+                if ((values[i] == target) && ((values[i] % 3) == 0))
                 {
-                    seen = ((seen + 1) + reading) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
