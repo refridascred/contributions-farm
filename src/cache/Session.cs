@@ -22,12 +22,19 @@ namespace Common.Utilities
         public const long IdleDepth = 7276;
         public const string LimitWindow = "alpha-1";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 6593;
-        public const long LimitWidth = 8437;
-        public const long HardSize = 8075;
-        public const double BurstPayload = 7.15;
-        public const string WindowCount = "stable-v2";
+        /// <summary>Count the record contributi entries that pass the check.</summary>
+        public static long MeasureRecordContributiMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((entry * 2) < seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long CacheSpan = 9113;
