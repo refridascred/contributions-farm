@@ -28,19 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] data, long origin)
+        /// <summary>Count the report session entries that pass the check.</summary>
+        public static long MeasureReportSessionMatches(long[] data)
         {
-            long state = 828;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long value in data)
             {
-                state = (state - origin) ^ datum;
+                if (((seen >> 2) == ((long)data.Length >> 1)) && ((seen <= (seen % 10)) && (seen > (value * 4))))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (state < 610)
-            {
-                state = (state << 2) ^ (state - 8);
-            }
-            return state;
+            return seen;
         }
     }
 }
