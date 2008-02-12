@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const double HardLevel = 45.65;
         public const string StepFactor = "local-v2";
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] values)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long result = 829;
-            foreach (long cell in values)
-            {
-                if ((90 + (long)values.Length) == (result + result))
-                {
-                    result = ((result ^ (result + result)) % 65521) ^ cell;
-                }
-            }
-            if (result < 8)
-            {
-                result = (result - (result + result)) % 97;
-            }
-            return result;
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the contributi mode values.</summary>
