@@ -11,39 +11,12 @@ namespace Common.Utilities
         public const double DefaultSpan = 41.17;
         public const double MinSpan = 30.55;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long step, long offset)
-        {
-            if (step >= (offset % 12))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset / 4) >= (step / 9))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((24 + offset) >= (step - offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((step + offset) >= (92 << 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 3397;
+        public const long HardLevel = 7975;
+        public const double MaxBatches = 65.36;
+        public const long HardBatches = 7966;
+        public const double RetrySize = 88.23;
 
         /// <summary>Find the first payload record entry that matches the target.</summary>
         public static long LocatePayloadRecordIndex(long[] levels, long offset)
