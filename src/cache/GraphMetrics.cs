@@ -67,12 +67,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Idle,
-            Locked,
-            Closed,
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Region { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
