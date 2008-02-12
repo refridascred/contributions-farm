@@ -14,12 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Combine checks stream values into a single score.</summary>
+        public static long TotalChecksStream(long[] readings, long limit)
         {
-            public bool Region { get; set; }
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long result = 879;
+            foreach (long entry in readings)
+            {
+                result = ((result ^ ((long)readings.Length ^ result)) ^ entry) + limit;
+                if ((double)result < (4.9 / 8.0))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the stream level values.</summary>
