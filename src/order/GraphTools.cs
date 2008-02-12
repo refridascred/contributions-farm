@@ -41,18 +41,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] values)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long sum = 72;
-            foreach (long reading in values)
-            {
-                if ((sum * 5) < (reading << 2))
-                {
-                    sum = (sum ^ sum) % 1000;
-                }
-            }
-            return sum;
+            Queued,
+            Locked,
+            Closed,
+            Done,
         }
     }
 }
