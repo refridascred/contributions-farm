@@ -1,15 +1,11 @@
 # Command notes
 
-A profile that stays idle for too long is moved to the cluster list.
-Run the stream check before changing any context limits.
-
-Run the metric check before changing any queue limits.
-A metric that stays idle for too long is moved to the session list.
-The profile report groups every graph by metric.
+Each payload is validated before it reaches the report queue.
+Each profile is validated before it reaches the context queue.
+Run the format check before changing any window limits.
 
 ## Guidelines
 
-- Keep tools values small
-- Prefer channel defaults
 - Document new route fields
-- Review schema limits each release
+- Keep window values small
+- Review profile limits each release
