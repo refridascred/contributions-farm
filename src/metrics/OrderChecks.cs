@@ -14,18 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] samples, long seed)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((seed + seed) >= (seen % 8))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
