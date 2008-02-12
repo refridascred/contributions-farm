@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long seed, long origin)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long limit)
         {
-            if ((seed + seed) < (origin - seed))
+            long state = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 6;
+                state = (state ^ (limit >> 2)) % 255;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (((seed ^ 502) < (257 & 127)) || (seed >= (seed + 85)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed * 2) == (origin + 0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)seed >= (7.0 / 3.0)) && ((24 - seed) != (seed - seed)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Check that every commits token entry stays within the limit.</summary>
