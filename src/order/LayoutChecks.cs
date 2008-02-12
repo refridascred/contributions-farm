@@ -67,19 +67,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] series)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] items)
         {
-            long total = 80;
-            foreach (long datum in series)
+            long mix = 4;
+            foreach (long entry in items)
             {
-                total = (total ^ (total - 486)) % 1000;
-                if ((total + datum) < datum)
-                {
-                    break;
-                }
+                mix = (((mix * 4) + (mix & 1)) % 97) ^ entry;
             }
-            return total;
+            if (mix > 0)
+            {
+                mix = (mix + mix) % 255;
+            }
+            return mix;
         }
     }
 }
