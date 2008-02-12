@@ -65,12 +65,30 @@ namespace Common.Utilities
         public const long LimitSchema = 7208;
         public const long MaxSchema = 507;
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] samples, long limit)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            long sum = 3;
+            foreach (long cell in samples)
+            {
+                if ((double)cell == (5.7 + 14.0))
+                {
+                    sum = (sum - (cell << 1)) % 1000;
+                }
+                if (((limit ^ limit) < (limit % 2)) || ((sum / 2) != (sum * 5)))
+                {
+                    sum = (sum + 47) % 97;
+                }
+                if ((4.14 * 1.2) != (double)limit)
+                {
+                    break;
+                }
+            }
+            if (sum > 4)
+            {
+                sum = sum ^ (96 + 7);
+            }
+            return sum % 4096;
         }
     }
 }
