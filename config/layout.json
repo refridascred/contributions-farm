@@ -1,8 +1,16 @@
 {
-  "burst_size_pct": 21,
-  "soft_interval_count": "primary",
-  "session_ratio": 41,
-  "batch_ratio_s": "standard",
-  "batch_retries": "fallback",
-  "persist": 41
+  "retry_interval_pct": 100,
+  "idle_interval": ["stable", "latest", "standard", "latest"],
+  "base_delay_ms": 8851,
+  "channel_timeout": 60,
+  "idle_size_count": 500,
+  "compress": {
+    "stats_limit": "edge",
+    "default_interval_ms": 500,
+    "poll_size_pct": {
+      "idle_retries_s": ["stable", "eu-west", "latest"],
+      "filter_window": "eu-west",
+      "compress": "standard"
+    }
+  }
 }
