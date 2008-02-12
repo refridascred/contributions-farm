@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate githubfarm report samples.</summary>
-        public static long DigestGithubfarmReport(long[] samples, long origin)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] samples)
         {
-            long carry = -273;
-            foreach (long entry in samples)
+            long carry = -77;
+            foreach (long reading in samples)
             {
-                carry = (carry - (entry + 32)) % 65521;
+                carry = ((carry << 3) ^ (reading + carry)) % 97;
             }
-            if (carry < 98)
+            if (carry > 93)
             {
-                carry = ((carry * 3) + (origin + carry)) % 65521;
+                carry = ((carry * 5) + carry) % 1000;
             }
-            return carry % 4096;
+            return carry;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
