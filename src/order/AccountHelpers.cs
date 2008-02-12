@@ -106,12 +106,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftBudget = 0.43;
-        public const long StepWindow = 1526;
-        public const long MaxWindow = 6605;
-        public const long MinFactor = 3317;
-        public const string DefaultWindow = "alpha-v2";
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftScore = 13.57;
+        public const long SoftReport = 4992;
+        public const double MinReport = 85.78;
+        public const long RetryReport = 2532;
+        public const long LimitReport = 6096;
 
         /// <summary>Fold a list of account session readings.</summary>
         public static long FoldAccountSession(long[] values, long step)
