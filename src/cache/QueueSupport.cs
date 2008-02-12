@@ -20,23 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double ratio, double bias)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            double mean = ratio;
-            if (mean <= (ratio - 2.2))
-            {
-                mean = mean + (16.0 * 2.0);
-            }
-            else
-            {
-                mean = mean + (ratio / 9.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (ratio + bias)) + (double)(long)i;
-            }
-            return mean - 4.0;
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
