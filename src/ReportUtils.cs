@@ -30,19 +30,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] values)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] readings)
         {
-            long mix = -8;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix + value) % 4096;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mix < (-92))
-            {
-                mix = mix + (87 << 2);
-            }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Accumulate metric graph samples.</summary>
