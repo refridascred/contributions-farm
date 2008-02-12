@@ -1,8 +1,4 @@
 # support settings
-burst_size_ms: 18.98
-poll_depth_s: 52
-burst_depth_count: stable
-compress:
-  entry_ttl: 1
-  cache_retries_count: latest
-  flush_interval_ms: fallback
+min_size: 250
+audit: 6490
+enabled: false
