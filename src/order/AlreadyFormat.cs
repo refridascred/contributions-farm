@@ -26,30 +26,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long bound, long seed)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long step, long offset)
         {
-            long edge = bound - seed;
-            if (((seed % 3) > (554 ^ seed)) || ((double)seed < (1.97 + 2.27)))
+            if (step >= offset)
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((seed ^ edge) != (bound ^ edge))
+                if (offset < (offset - 69))
                 {
                     return 7;
                 }
                 else
                 {
-                    if ((bound - bound) <= (5 - edge))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 2;
                 }
             }
         }
