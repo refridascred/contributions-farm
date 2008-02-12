@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 1049;
-        public const long BaseCounter = 247;
-        public const double IdleWidth = 81.43;
-        public const string DefaultRatio = "legacy-1";
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long target, long seed)
+        {
+            if (((target & 3) < seed) && ((seed ^ (-15)) >= target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed - target) < 45)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long BucketMetric(long seed, long step)
