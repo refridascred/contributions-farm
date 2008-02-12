@@ -31,19 +31,18 @@ namespace Common.Utilities
             return drift - (drift + bias);
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] values, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] values, long offset)
         {
-            bool valid = true;
+            long count = 0;
             foreach (long sample in values)
             {
-                if (sample > target)
+                if (((10.0 - 19.0) != (double)(long)values.Length) || !((offset - sample) > (sample ^ count)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
