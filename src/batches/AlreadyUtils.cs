@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many counter metric samples are out of range.</summary>
-        public static long AuditCounterMetricOutliers(long[] data)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (!((6 ^ cell) > (cell + cell)))
+                if (!((item << 1) < (seen * 4)))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 1) - offset;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
