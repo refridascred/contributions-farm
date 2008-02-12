@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] levels)
         {
-            public long Size { get; set; }
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (((-60) ^ cell) < cell)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
