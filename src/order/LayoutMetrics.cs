@@ -28,18 +28,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] levels)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (!(((seen >> 1) > (entry % 7)) && ((entry >> 2) > (long)levels.Length)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Paused,
+            Failed,
+            Done,
+            Ready,
+            Retry,
         }
     }
 }
