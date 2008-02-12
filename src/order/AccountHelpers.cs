@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 100;
-        public const string BaseFilter = "standard-1";
-        public const long IdleFilter = 1437;
-        public const long RetryFilter = 7777;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] levels)
+        {
+            long state = 441;
+            foreach (long item in levels)
+            {
+                state = ((state * 3) + (long)levels.Length) % 4096;
+                if ((state >> 4) < (item - state))
+                {
+                    state = (state * 3) + (state - item);
+                }
+                if ((8.4 - 1.39) == (double)state)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BurstScore = 9636;
