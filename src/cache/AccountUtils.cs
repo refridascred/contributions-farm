@@ -21,22 +21,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] values)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] series, long origin)
         {
-            long mix = 6;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if (((mix << 3) != (sample - 219)) || ((sample + sample) < (sample >> 3)))
+                if ((102 + 28) > tally)
                 {
-                    mix = (mix + mix) % 101;
+                    tally = ((tally + 1) + datum) + origin;
                 }
             }
-            if (mix > 889)
-            {
-                mix = ((mix * 2) + mix) % 1000;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a graph header.</summary>
