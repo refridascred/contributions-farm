@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleFactor = 6274;
-        public const long StepDepth = 7554;
-        public const string IdleWidth = "open-edge";
+        /// <summary>Count the notes filter entries that pass the check.</summary>
+        public static long TallyNotesFilterMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (((tally + tally) != (value ^ 287)) && ((57 ^ (-71)) != (tally ^ 9)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
