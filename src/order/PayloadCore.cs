@@ -21,11 +21,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
