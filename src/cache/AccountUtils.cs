@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const string IdleSpan = "standard-1";
         public const string BaseReport = "primary-v2";
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] readings, long target)
-        {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxSize = 676;
+        public const long CacheWidth = 5930;
+        public const double BatchFactor = 15.77;
+        public const double BatchDepth = 90.1;
+        public const long BaseSize = 517;
     }
 }
