@@ -28,18 +28,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] samples)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((seen * 5) >= (item - item)) && ((double)item <= (double)seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Retry,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Combine cache profile values into a single score.</summary>
