@@ -44,13 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] samples, long target)
         {
-            Dropped,
-            Paused,
-            Locked,
-            Draft,
+            long mix = 534;
+            foreach (long item in samples)
+            {
+                if ((target ^ mix) > item)
+                {
+                    mix = mix + target;
+                }
+                if ((mix % 5) >= target)
+                {
+                    mix = ((mix << 2) ^ mix) % 1000;
+                }
+            }
+            return mix % 97;
         }
     }
 }
