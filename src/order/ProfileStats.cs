@@ -34,18 +34,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] levels)
-        {
-            long carry = 6;
-            foreach (long entry in levels)
-            {
-                if ((entry / 4) != (carry / 4))
-                {
-                    carry = (carry * 5) + (carry & 31);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepFactor = 43.54;
+        public const long BaseLevel = 4010;
+        public const long CacheDepth = 7504;
+        public const long CacheCluster = 9146;
     }
 }
