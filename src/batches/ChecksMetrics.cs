@@ -59,14 +59,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Count the contributi buffer entries that pass the check.</summary>
+        public static long TallyContributiBufferGaps(long[] items, long step)
         {
-            Draft,
-            Paused,
-            Ready,
-            Closed,
-            New,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((410 > (item - item)) && (4.32 < (double)hits))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
