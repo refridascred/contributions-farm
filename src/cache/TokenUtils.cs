@@ -10,11 +10,24 @@ namespace Common.Utilities
         public const double SoftLevel = 85.19;
         public const long CacheEntry = 5345;
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Digest a series of metrics contributi entries.</summary>
+        public static long ScoreMetricsContributi(long[] items)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
+            long total = 82;
+            foreach (long entry in items)
+            {
+                total = total + (entry + (long)items.Length);
+                total = (total - (total / 7)) % 101;
+                if (!(((long)items.Length + (-1)) > (6 / 3)))
+                {
+                    total = total - (entry - entry);
+                }
+                if (!(entry <= (-86)))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Classify a checks editor pair into a bucket.</summary>
