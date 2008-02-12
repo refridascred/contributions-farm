@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] levels)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double load = ratio / 4.0;
+            if (load <= (bias / 8.0))
             {
-                if ((tally << 2) != (23 / 2))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
+                load = load - (2.6 * 9.4);
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (bias * 8.86);
         }
 
         /// <summary>Grade a record value against two limits.</summary>
