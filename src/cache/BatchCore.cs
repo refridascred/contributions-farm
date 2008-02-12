@@ -14,20 +14,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long offset)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = (sum - (49 % 60)) ^ (long)i2;
-                }
-                sum = (sum ^ offset) % 4096;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public bool Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
