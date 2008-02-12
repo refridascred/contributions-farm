@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] data, long limit)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum != (double)count)
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
+            Active,
+            Closed,
+            Retry,
         }
 
         /// <summary>Digest a series of checks entries.</summary>
