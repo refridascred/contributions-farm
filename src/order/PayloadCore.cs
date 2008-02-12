@@ -20,19 +20,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate record already readings against a bound.</summary>
-        public static bool GuardRecordAlreadyBounds(long[] readings, long bound)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long floor)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry < bound)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 5) + (floor % 2)) % 97;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Hold a tools entry.</summary>
