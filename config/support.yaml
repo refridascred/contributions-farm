@@ -1,59 +1,8 @@
 # support settings
-channel_ttl: 79.37
-graph_window:
-  filter_ratio: false
-  format_limit:
-    enabled:
-      - edge
-      - blue
-      - edge
-    profile_threshold:
-      - standard
-      - local
-    commits_threshold: legacy
-    session_ratio: 68
-    hard_delay_count:
-      - 33
-      - 443
-      - 332
-      - 383
-  profile_timeout:
-    - 425
-    - 430
-  audit: 87.41
-githubfarm_capacity: 6536
-cache_delay_ms: 39.71
-max_capacity_s:
-  tools_ratio: 500
-  dry_run:
-    account_depth:
-      - 466
-      - 269
-      - 55
-      - 420
-    idle_delay_ms: 5176
-    dry_run: 28
-    batches_delay: 68
-    default_threshold: local
-    soft_window_ms: 1407
-  burst_timeout: strict
-  default_interval:
-    notes_threshold: 2037
-    hard_interval_count:
-      - 321
-      - 197
-      - 488
-    soft_size_ms:
-      - blue
-      - blue
-      - latest
-      - fallback
-    readonly: false
-    already_timeout:
-      - staging
-      - local
-      - legacy
-      - fallback
-    counter_limit: true
-  persist: 7126
-  enabled: primary
+burst_size_ms: 18.98
+poll_depth_s: 52
+burst_depth_count: stable
+compress:
+  entry_ttl: 1
+  cache_retries_count: latest
+  flush_interval_ms: fallback
