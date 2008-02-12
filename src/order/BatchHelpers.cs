@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double IdleChannel = 67.75;
         public const long BatchFactor = 4539;
 
-        /// <summary>Measure how many queue notes samples are out of range.</summary>
-        public static long MeasureQueueNotesHits(long[] series)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((entry - entry) != (long)series.Length)
+                if ((seen - origin) < (-5))
                 {
-                    matches = matches + 3;
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of farm payload readings.</summary>
