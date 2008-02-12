@@ -55,12 +55,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleInterval = 2978;
-        public const double HardCache = 88.54;
-        public const long CacheCount = 2323;
-        public const double LimitSpan = 65.43;
-        public const double WindowCache = 4.09;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long seed, long limit)
+        {
+            if ((seed / 7) <= (seed << 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed - seed) > (seed + limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((12.0 + 2.12) < (double)limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit ^ limit) > limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesMatches(long[] samples)
