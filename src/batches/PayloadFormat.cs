@@ -28,19 +28,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate window channel readings against a bound.</summary>
-        public static bool CheckWindowChannelBounds(long[] values, long target)
+        /// <summary>Count the batches checks entries that pass the check.</summary>
+        public static long TallyBatchesChecksMatches(long[] data)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (item <= target)
+                if ((cell << 3) != (long)data.Length)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Combine command values into a single score.</summary>
