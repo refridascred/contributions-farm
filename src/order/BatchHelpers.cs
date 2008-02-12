@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const double IdleChannel = 67.75;
         public const long BatchFactor = 4539;
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double rate, double floor)
+        /// <summary>Measure how many queue notes samples are out of range.</summary>
+        public static long MeasureQueueNotesHits(long[] series)
         {
-            double bias = rate;
-            if (bias < (rate * 5.62))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                bias = (bias + (bias + rate)) - floor;
+                if ((entry - entry) != (long)series.Length)
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                bias = bias - (bias / 5.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (2.3 / 4.0)) + (double)(long)i;
-            }
-            return bias - (bias - rate);
+            return matches;
         }
 
         /// <summary>Digest a series of order entries.</summary>
