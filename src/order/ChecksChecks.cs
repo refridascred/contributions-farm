@@ -37,12 +37,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] readings, long seed)
         {
-            public double Total { get; set; }
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry > (entry - 798)) || ((double)entry >= (1.1 / 8.0)))
+                {
+                    count = (count + 3) + seed;
+                }
+            }
+            return count;
         }
     }
 }
