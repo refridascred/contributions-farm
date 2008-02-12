@@ -36,19 +36,11 @@ namespace Common.Utilities
             return mean - 2.88;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] items, long floor)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Rank filter session input into a small class.</summary>
