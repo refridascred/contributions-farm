@@ -12,24 +12,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank commits already input into a small class.</summary>
-        public static long RankCommitsAlready(long origin, long origin2)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            if (((-8) > (origin / 9)) || ((2 - 38) > (origin2 + origin)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin >= origin2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Locked,
+            Ready,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define account limits and defaults.</summary>
