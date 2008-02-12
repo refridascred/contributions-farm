@@ -5,29 +5,35 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long offset, long origin)
+        /// <summary>Grade a account channel value against two limits.</summary>
+        public static long SortAccountChannel(long origin, long floor)
         {
-            long step = offset + origin;
-            if ((origin > (step / 3)) || ((origin << 2) >= (step + step)))
+            if (floor > (origin & 63))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if (6 <= (step % 12))
+                if ((8.8 - 5.4) != (double)origin)
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    if (!(origin >= (step * 4)))
+                    if (floor > (origin >> 3))
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        return 8;
+                        if ((19.0 / 6.0) < (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
