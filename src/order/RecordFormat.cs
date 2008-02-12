@@ -32,17 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] samples, long origin)
+        /// <summary>Count the context account entries that pass the check.</summary>
+        public static long MeasureContextAccountGaps(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (samples[i] >= origin)
+                if ((seen % 16) >= seen)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
