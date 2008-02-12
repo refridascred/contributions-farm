@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const string HardLevel = "legacy";
         public const long MaxCommand = 330;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowCount = 7.9;
-        public const long MinScore = 4350;
-        public const long CacheWidth = 3328;
-        public const long StepBudget = 9789;
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] samples, long offset)
+        {
+            long total = 3;
+            foreach (long datum in samples)
+            {
+                total = (total + (total << 2)) % 101;
+                if (((long)samples.Length - datum) < (offset * 5))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
