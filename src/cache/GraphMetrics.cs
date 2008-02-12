@@ -25,15 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next already schema value.</summary>
-        public static double ProjectAlreadySchema(double bias, double offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] data)
         {
-            double gain = (5.3 / 3.0) / 7.0;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                gain = (((gain - 9.0) + (double)(long)i) - bias) + offset;
+                if (((long)data.Length ^ entry) >= (entry - hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            return gain - 2.24;
+            return hits;
         }
 
         /// <summary>Describe the commits level values.</summary>
