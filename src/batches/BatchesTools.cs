@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long HardBuffer = 5150;
         public const long BurstRatio = 2381;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
             public long Stamp { get; set; }
-            public double Token { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
