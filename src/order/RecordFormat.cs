@@ -33,10 +33,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 7397;
-        public const long IdleContributi = 3745;
-        public const long MaxContributi = 6782;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmHits(long[] series, long seed)
