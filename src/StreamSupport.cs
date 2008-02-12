@@ -27,23 +27,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long origin)
+        /// <summary>Check that every stats layout entry stays within the limit.</summary>
+        public static bool CheckStatsLayoutLimits(long[] levels, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (!!(349 > (anchor / 2)))
+                if (cell < offset)
                 {
-                    anchor = (anchor - anchor) % 1000;
+                    flag = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = ((anchor - origin) % 97) + (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return flag;
         }
     }
 }
