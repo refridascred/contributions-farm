@@ -40,31 +40,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long bound, long bound2)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long seed)
         {
-            if ((0.2 / 5.0) == (double)bound)
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1.7 * 15.0) <= (double)bound)
+                state = (state * 5) + (long)i;
+                if ((seed & 63) >= seed)
                 {
-                    return 6;
+                    state = state + (seed + state);
+                    state = (state << 2) ^ (seed + state);
                 }
-                else
+                if ((double)seed < (8.6 * 3.21))
                 {
-                    if (((double)bound2 != (4.2 / 5.0)) || ((double)bound2 == (4.03 - 3.5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = (state * 4) + (long)i;
+                    state = ((state * 2) + 633) % 1000;
                 }
+                state = ((state * 3) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
