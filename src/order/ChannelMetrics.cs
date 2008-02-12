@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long step, long bound)
+        /// <summary>Match up metrics notes samples.</summary>
+        public static long PairMetricsNotesCount(long[] data)
         {
-            if ((bound >> 1) >= (bound << 1))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound < (14.0 - 4.43))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step != (0.94 - 5.73))
+                    if ((data[i] ^ data[j]) < 9)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)bound == (2.17 + 7.18))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank window input into a small class.</summary>
