@@ -1,5 +1,7 @@
 {
-  "min_delay_count": 40.32,
-  "sync_interval": 14,
-  "audit": false
+  "hard_depth_count": true,
+  "readonly": 1024,
+  "min_interval_s": false,
+  "hard_capacity": 19,
+  "context_window": 60
 }
