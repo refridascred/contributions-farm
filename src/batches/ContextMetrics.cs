@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Queued,
-            Closed,
-            Locked,
-            Dropped,
-            Idle,
+            public bool Size { get; set; }
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Grade a record value against two limits.</summary>
