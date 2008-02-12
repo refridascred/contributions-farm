@@ -1,19 +1,6 @@
 # support settings
-max_timeout_count: local
-dry_run:
-  hard_retries_s: 100
-  poll_retries_count: true
-  cache_capacity_count:
-    - green
-    - open
-    - eu-west
-    - legacy
-  dry_run: 75
-  default_capacity_s: primary
-  cache_size_s: 5629
-max_depth_count: eu-west
-flush_threshold_count:
-  farm_delay: open
-  batch_interval_count: 1024
-  hard_limit_s: eu-west
-  hard_size: stable
+max_depth_s: stable
+flush_threshold_s: 60
+cluster_retries: true
+warm_threshold_count: strict
+tools_window: green
