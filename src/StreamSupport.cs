@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] levels, long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = -2;
+            foreach (long sample in data)
             {
-                if (levels[i] <= limit)
+                if ((anchor & 127) >= anchor)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 4) + sample) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor * 4);
                 }
             }
-            return -1;
+            if (anchor < 69)
+            {
+                anchor = (anchor + (anchor << 3)) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a commits entry.</summary>
