@@ -1,6 +1,5 @@
 {
-  "readonly": [328, 298, 70],
-  "dry_run": "strict",
-  "checks_ttl": 1024,
-  "record_ratio": "cached"
+  "queue_limit": 87,
+  "compress": false,
+  "sync_ratio": 11
 }
