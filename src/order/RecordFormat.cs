@@ -51,24 +51,17 @@ namespace Common.Utilities
         public const long IdleContributi = 3745;
         public const long MaxContributi = 6782;
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long floor, long floor2)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] samples, long origin)
         {
-            if ((11.0 + 2.33) > (double)floor2)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor < (12.0 / 8.0))
+                if (samples[i] > origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
