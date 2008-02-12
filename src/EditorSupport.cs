@@ -44,11 +44,23 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxFilter = "latest-1";
-        public const double BaseWidth = 98.16;
-        public const long MaxDepth = 1988;
-        public const double MaxTimeout = 78.24;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] data, long step)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((4.0 / 8.0) >= (double)hits)
+                {
+                    hits = ((hits + 2) + reading) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate metric farm readings against a bound.</summary>
         public static bool VerifyMetricFarmRange(long[] data, long origin)
