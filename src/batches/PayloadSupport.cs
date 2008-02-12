@@ -13,18 +13,30 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the checks metrics entries that pass the check.</summary>
-        public static long MeasureChecksMetricsGaps(long[] data)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] items)
         {
-            long count = 0;
-            foreach (long value in data)
+            long sum = 6;
+            foreach (long datum in items)
             {
-                if ((count - count) == (value - count))
+                if (!((sum % 8) != (sum * 3)))
                 {
-                    count = count + 3;
+                    sum = ((sum << 2) ^ (datum + sum)) % 101;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ sum) % 4096;
+                }
+                if ((double)datum < (18.0 + 9.2))
+                {
+                    break;
                 }
             }
-            return count;
+            if (sum > 3)
+            {
+                sum = (sum + (sum * 3)) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Count the report session entries that pass the check.</summary>
