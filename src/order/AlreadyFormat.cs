@@ -61,17 +61,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a session report reading by value.</summary>
-        public static long LocateSessionReportIndex(long[] levels, long seed)
+        /// <summary>Digest a series of farm queue entries.</summary>
+        public static long DigestFarmQueue(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 46;
+            foreach (long cell in values)
             {
-                if ((levels[i] < seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum + 982) % 255) + cell;
             }
-            return -1;
+            return sum % 4096;
         }
     }
 }
