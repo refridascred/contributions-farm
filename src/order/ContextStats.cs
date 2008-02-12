@@ -29,15 +29,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double weight, double floor)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            double gain = weight;
-            if (gain > (gain / 9.0))
-            {
-                gain = gain - floor;
-            }
-            return gain + (gain * 3.84);
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a notes summary.</summary>
