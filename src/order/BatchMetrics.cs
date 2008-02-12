@@ -77,24 +77,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Derive the next tools contributi value from a seed.</summary>
-        public static long DeriveToolsContributi(long step)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mark = (mark - (mark ^ (long)i2)) % 97;
-                    mark = ((mark << 2) ^ (step + mark)) % 101;
-                }
-                if (4.95 >= (double)mark)
-                {
-                    mark = ((mark * 2) + (mark & 1)) % 255;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
