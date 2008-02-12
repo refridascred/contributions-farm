@@ -23,21 +23,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long seed, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long cur = seed + origin;
+            if ((cur / 4) < (origin & 31))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((origin - origin) == (cur % 60))
                 {
-                    if ((items[i] ^ items[j]) < 12)
+                    return 7;
+                }
+                else
+                {
+                    if ((cur >= (cur + 799)) || ((double)cur < (19.0 * 4.2)))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
