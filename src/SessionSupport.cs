@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] samples)
         {
-            public bool Label { get; set; }
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
+            long score = 7;
+            foreach (long reading in samples)
+            {
+                if ((7.0 / 5.0) <= (double)score)
+                {
+                    score = (score - (reading << 2)) % 97;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
