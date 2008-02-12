@@ -1,8 +1,5 @@
 {
-  "entry_ttl": "standard",
-  "report_depth": ["staging", "stable", "open"],
-  "enabled": false,
-  "audit": 4886,
-  "flush_delay_s": true,
-  "base_size_pct": "eu-west"
+  "soft_threshold_count": 73.09,
+  "retry_window_pct": false,
+  "max_limit_s": 1024
 }
