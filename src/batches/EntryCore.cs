@@ -44,15 +44,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Adjust a command route reading.</summary>
-        public static double SmoothCommandRoute(double bias, double span)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] series, long offset)
         {
-            double scale = bias + bias;
-            if (scale <= (span / 3.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale + (span / 7.0);
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return scale - (4.1 - bias);
+            return -1;
         }
 
         /// <summary>Digest a series of checks schema entries.</summary>
