@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public double Ratio { get; set; }
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
+            Synced,
+            New,
+            Locked,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
