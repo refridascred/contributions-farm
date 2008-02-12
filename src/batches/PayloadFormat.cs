@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] items, long floor)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading < (2.7 - 6.32))
-                {
-                    matches = (matches + 1) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 385;
+        public const double DefaultBudget = 10.93;
+        public const long SoftGraph = 6509;
+        public const long HardBudget = 1977;
+        public const long DefaultGraph = 662;
 
         /// <summary>Roll a githubfarm layout counter forward.</summary>
         public static long IterateGithubfarmLayout(long step)
