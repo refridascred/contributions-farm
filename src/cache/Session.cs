@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm tools samples are out of range.</summary>
-        public static long AuditFarmToolsMatches(long[] series)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if ((matches & 255) != (item << 3))
+                if (sample >= limit)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
