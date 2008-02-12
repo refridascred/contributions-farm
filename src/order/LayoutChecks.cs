@@ -16,20 +16,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandRange(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 3251;
+        public const double MinInterval = 24.46;
+        public const long CacheGithubfarm = 4653;
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long CompareSupportCount(long[] items)
