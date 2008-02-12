@@ -48,24 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long offset, long bound)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] levels, long offset)
         {
-            if (!((offset >> 3) == (offset * 3)))
+            long mark = 74;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((offset + bound) < 591))
+                mark = (mark + (cell & 63)) % 97;
+                if ((12.0 - 3.0) >= (double)offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    break;
                 }
             }
+            return mark % 1000;
         }
     }
 }
