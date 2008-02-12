@@ -29,12 +29,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Retry,
-            Pending,
+            Done,
             Synced,
+            Pending,
+            Locked,
+            Active,
         }
     }
 }
