@@ -37,13 +37,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] values)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long step)
         {
-            long mark = -5;
-            foreach (long reading in values)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                mark = ((mark + (mark ^ 6)) % 1000) + reading;
+                mark = (mark + (long)i) % 97;
+                mark = (mark - 82) % 97;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
             return mark;
         }
