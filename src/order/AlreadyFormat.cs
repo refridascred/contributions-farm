@@ -76,15 +76,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double scale, double bias)
+        /// <summary>Locate a session report reading by value.</summary>
+        public static long LocateSessionReportIndex(long[] levels, long seed)
         {
-            double drift = (scale / 6.0) - scale;
-            if (drift < (scale / 9.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - (drift + bias);
+                if ((levels[i] < seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + scale;
+            return -1;
         }
     }
 }
