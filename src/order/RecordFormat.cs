@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank cache queue input into a small class.</summary>
-        public static long SortCacheQueue(long target, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] readings, long limit)
         {
-            if (((973 + origin) > (origin ^ origin)) || ((0.7 * 20.0) <= (double)target))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((66 + origin) == ((-26) + 53))
+                if ((limit ^ sample) >= count)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (target > (target >> 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
