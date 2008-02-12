@@ -1,13 +1,7 @@
 {
-  "already_limit": "strict",
-  "max_timeout_s": ["green", "stable"],
-  "counter_delay": [346, 204, 252],
-  "hard_limit_ms": "eu-west",
-  "batch_interval_s": {
-    "sync_threshold_count": 79,
-    "dry_run": [238, 30],
-    "profile_limit": "strict",
-    "burst_timeout_count": 64,
-    "retry_retries_ms": "open"
-  }
+  "verbose": "eu-west",
+  "strict": 64,
+  "warm_threshold": ["fallback", "eu-west"],
+  "notes_depth": [397, 496, 487],
+  "readonly": true
 }
