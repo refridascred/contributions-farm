@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 8809;
-        public const long DefaultWidth = 768;
-        public const long SoftGraph = 8219;
-        public const long IdleBudget = 2285;
-        public const long RetryDepth = 1457;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long offset, long bound)
+        {
+            if ((bound - offset) >= (0 + offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if (8.16 > (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Find the first metric tools entry that matches the target.</summary>
         public static long FindMetricToolsIndex(long[] items, long floor)
