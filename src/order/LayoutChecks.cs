@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long offset)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long target)
         {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                mark = ((mark * 4) + mark) % 97;
+                if ((9.08 / 8.0) >= (double)mark)
+                {
+                    mark = (mark - (mark << 3)) % 4096;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
