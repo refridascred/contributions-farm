@@ -21,18 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] values, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((seen - origin) < (-5))
+                if (datum > offset)
                 {
-                    seen = (seen + 3) ^ entry;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Fold a list of farm payload readings.</summary>
