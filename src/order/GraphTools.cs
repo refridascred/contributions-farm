@@ -40,13 +40,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Queued,
-            Locked,
-            Closed,
-            Done,
+            Dropped,
+            Active,
+            Retry,
+            Draft,
         }
     }
 }
