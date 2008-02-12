@@ -44,15 +44,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats account entries.</summary>
-        public static long CombineStatsAccount(long[] samples)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long limit, long limit2)
         {
-            long carry = 676;
-            foreach (long sample in samples)
+            if ((limit / 2) != (limit2 & 3))
             {
-                carry = (carry ^ sample) % 255;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if (limit2 < (limit % 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
