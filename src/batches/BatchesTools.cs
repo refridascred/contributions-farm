@@ -18,18 +18,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit editor command readings against a rule.</summary>
-        public static long AuditEditorCommandGaps(long[] readings)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((2.3 - 0.95) == (double)tally)
-                {
-                    tally = (tally + 3) - cell;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Compare every pair of context notes readings.</summary>
