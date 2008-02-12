@@ -1,6 +1,8 @@
 {
-  "verbose": "blue",
-  "entry_delay": [363, 12, 121],
-  "burst_limit_ms": "staging",
-  "farm_threshold": false
+  "channel_ttl": ["eu-west", "stable"],
+  "token_window": "staging",
+  "idle_timeout_ms": "edge",
+  "poll_threshold_pct": true,
+  "soft_size": 86.95,
+  "retry_delay": "cached"
 }
