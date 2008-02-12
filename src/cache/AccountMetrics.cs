@@ -44,18 +44,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the tools cluster entries that pass the check.</summary>
-        public static long TallyToolsClusterGaps(long[] data)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long seed, long limit)
         {
-            long count = 0;
-            foreach (long item in data)
+            long step = seed - limit;
+            if (((double)seed != (3.45 - 6.6)) && ((limit ^ seed) < (limit ^ limit)))
             {
-                if ((double)item >= (8.0 * 15.0))
+                return 3;
+            }
+            else
+            {
+                if (((-5) % 10) >= (step + step))
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
