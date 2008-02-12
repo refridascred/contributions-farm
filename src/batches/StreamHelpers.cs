@@ -60,21 +60,9 @@ namespace Common.Utilities
         public const long LimitSchema = 7208;
         public const long MaxSchema = 507;
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheSize = 8664;
+        public const long MinToken = 8427;
+        public const long WindowToken = 7159;
     }
 }
