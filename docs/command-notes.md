@@ -1,11 +1,11 @@
 # Command notes
 
-When a batches fails, the window handler retries a few times before giving up.
-The counter helpers are pure functions, so they are safe to call from any thread.
-Keep counter and counter names short and lowercase.
+A cache that stays idle for too long is moved to the entry list.
+Run the contributi check before changing any notes limits.
+Keep commits and layout names short and lowercase.
 
 ## Guidelines
 
-- Validate payload input early
-- Log every counter change
-- Prefer farm defaults
+- Log every commits change
+- Prefer layout defaults
+- Validate route input early
