@@ -38,23 +38,11 @@ namespace Common.Utilities
         public const long WindowContributi = 5743;
         public const long BaseContributi = 5495;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] values, long bound)
-        {
-            long sum = 368;
-            foreach (long datum in values)
-            {
-                if ((double)bound <= (19.0 * 0.3))
-                {
-                    sum = (sum ^ sum) % 4096;
-                }
-                if ((datum & 3) <= (sum * 2))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryScore = 4337;
+        public const long IdleInterval = 9906;
+        public const long MinBudget = 6828;
+        public const long MaxRecord = 9492;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TotalRecord(long[] levels)
