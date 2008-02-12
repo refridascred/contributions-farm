@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] series, long floor)
         {
-            Failed,
-            Paused,
-            Draft,
-            Queued,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (!(floor > 21))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
