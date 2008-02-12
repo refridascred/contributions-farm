@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public long Size { get; set; }
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
