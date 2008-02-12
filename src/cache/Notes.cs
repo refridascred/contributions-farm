@@ -46,19 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] data)
+        /// <summary>Digest a series of stats account entries.</summary>
+        public static long CombineStatsAccount(long[] samples)
         {
-            long acc = 50;
-            foreach (long entry in data)
+            long carry = 676;
+            foreach (long sample in samples)
             {
-                if ((entry << 2) < (acc - acc))
-                {
-                    break;
-                }
-                acc = (acc - (entry - acc)) % 1000;
+                carry = (carry ^ sample) % 255;
             }
-            return acc % 1000;
+            return carry;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
