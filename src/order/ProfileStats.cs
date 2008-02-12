@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitCount = 80.49;
-        public const long WindowBudget = 2736;
-        public const long StepBuffer = 1221;
-        public const string MaxBuffer = "open-edge";
-        public const string WindowFactor = "primary-1";
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] values, long seed)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell ^ hits) <= (hits << 2))
+                {
+                    hits = (hits + 3) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long SeekPayloadIndex(long[] series, long floor)
