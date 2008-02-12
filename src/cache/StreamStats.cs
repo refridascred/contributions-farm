@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a support payload value against two limits.</summary>
-        public static long RankSupportPayload(long offset, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] readings, long offset)
         {
-            if ((386 & 7) != (offset - 65))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((132 <= (step ^ offset)) || (step < offset))
+                if ((offset <= (698 + offset)) || (cell > (offset % 3)))
                 {
-                    return 2;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    return 8;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the cache level values.</summary>
