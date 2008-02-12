@@ -96,9 +96,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryDepth = 8531;
-        public const long BatchNotes = 8383;
-        public const long DefaultBudget = 2090;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Ready,
+            New,
+            Locked,
+            Draft,
+        }
     }
 }
