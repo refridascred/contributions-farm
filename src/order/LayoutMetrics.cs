@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a farm tools reading by value.</summary>
-        public static long SeekFarmToolsIndex(long[] samples, long offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = -4;
+            foreach (long cell in levels)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 2) == 0))
+                if ((seed % 2) == ((long)levels.Length - cell))
                 {
-                    return (long)i;
+                    total = ((total * 5) + cell) % 97;
+                }
+                if ((4.22 - 10.0) <= (double)seed)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total < 77)
+            {
+                total = (total << 3) ^ ((long)levels.Length + seed);
+            }
+            return total % 65521;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
