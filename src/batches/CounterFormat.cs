@@ -52,9 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepFactor = 8063;
-        public const long MaxReport = 5671;
-        public const long MinReport = 7420;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
