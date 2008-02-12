@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine batches report values into a single score.</summary>
-        public static long ScoreBatchesReport(long[] values, long limit)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long limit, long origin)
         {
-            long result = 898;
-            foreach (long sample in values)
+            long bound = limit ^ origin;
+            if (bound < (476 + 3))
             {
-                result = ((result ^ (result << 3)) + sample) + limit;
+                return 4;
             }
-            return result;
+            else
+            {
+                if (((double)limit == (6.15 / 9.0)) && ((bound + origin) > (origin + bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
