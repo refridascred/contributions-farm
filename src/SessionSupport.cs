@@ -29,17 +29,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] items, long bound)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
     }
 }
