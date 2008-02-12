@@ -1,6 +1,6 @@
-id,token,owner,region
-1,84.95,58.13,62.32
-2,primary,43.64,47.21
-3,standard,52.52,78.66
-4,latest,latest,edge
-5,28.86,2.01,green
+id,token,weight,state
+1,299,84.48,67.5
+2,298,46.18,strict
+3,primary,cached,green
+4,211,eu-west,15.46
+5,17.12,70.04,256
