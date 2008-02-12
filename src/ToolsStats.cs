@@ -13,21 +13,31 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Grade a filter session value against two limits.</summary>
+        public static long SortFilterSession(long offset, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((floor * 5) >= (435 + floor))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (offset >= (offset % 100))
                 {
-                    if ((values[i] + values[j]) < 14)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor != (5.53 * 4.0))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
