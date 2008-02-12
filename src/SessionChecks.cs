@@ -37,19 +37,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double ratio, double floor)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            double scale = floor;
-            if (scale <= (floor - ratio))
-            {
-                scale = scale - (ratio - ratio);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - floor) + (double)(long)i;
-            }
-            return scale + floor;
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
