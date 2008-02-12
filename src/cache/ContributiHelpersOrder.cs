@@ -16,13 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] data)
         {
-            Synced,
-            Pending,
-            Draft,
-            Done,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (sample > (matches % 97))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a route snapshot.</summary>
