@@ -55,24 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry layout samples.</summary>
-        public static long TallyEntryLayout(long[] data)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] items)
         {
-            long carry = 2;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((double)cell != (7.45 + 4.47))
+                if ((matches - matches) <= value)
                 {
-                    continue;
+                    matches = matches + 3;
                 }
-                else
-                {
-                    carry = (carry << 2) ^ (cell >> 1);
-                    carry = ((carry * 4) + (carry % 7)) % 4096;
-                }
-                carry = (carry - carry) % 255;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Roll a support counter forward.</summary>
