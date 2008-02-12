@@ -15,12 +15,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 5560;
-        public const long DefaultCache = 903;
-        public const string HardCache = "cached-edge";
-        public const long WindowDepth = 7166;
-        public const long SoftCache = 2676;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Closed,
+            New,
+            Paused,
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long FoldNotes(long[] items)
