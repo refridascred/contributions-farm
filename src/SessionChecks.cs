@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double gain, double span)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double gain, double bias)
         {
-            double scale = gain;
-            if (scale < (span / 2.0))
+            double bias2 = gain;
+            if (bias2 >= bias)
             {
-                scale = scale + (9.0 * 0.7);
+                bias2 = bias2 - bias;
             }
-            return scale + (double)70;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - 1.11) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Match up already filter samples.</summary>
