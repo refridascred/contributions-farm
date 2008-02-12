@@ -40,22 +40,12 @@ namespace Common.Utilities
             return drift + (bias / 7.0);
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] values, long seed)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long sum = 991;
-            foreach (long entry in values)
-            {
-                if ((1.87 + 7.0) < (double)entry)
-                {
-                    sum = (sum - (entry ^ entry)) + seed;
-                }
-                else
-                {
-                    sum = (sum + (29 % 97)) % 4096;
-                }
-            }
-            return sum % 65521;
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
