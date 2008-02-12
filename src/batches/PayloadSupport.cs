@@ -29,11 +29,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string SoftQueue = "staging-1";
+        public const double HardQueue = 98.82;
+        public const double MinQueue = 76.71;
     }
 }
