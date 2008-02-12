@@ -1,8 +1,4 @@
 # githubfarm settings
-checks_ttl: 270
-batch_ttl_s: true
-idle_timeout_pct:
-  - 309
-  - 17
-  - 229
-  - 215
+order_ttl: strict
+warm_window_ms: strict
+default_window_s: stable
