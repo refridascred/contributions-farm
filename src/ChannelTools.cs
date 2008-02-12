@@ -28,22 +28,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] samples, long bound)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((bound - bound) < (reading + bound))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Retry,
+            New,
+            Done,
+            Stale,
         }
     }
 }
