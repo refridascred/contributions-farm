@@ -1,5 +1,12 @@
 {
-  "base_timeout": [434, 159, 371, 431],
-  "burst_threshold_pct": 654,
-  "support_size": "standard"
+  "retry_size_s": "legacy",
+  "burst_delay_ms": 21,
+  "poll_window": 63,
+  "githubfarm_capacity": {
+    "profile_limit": 86.97,
+    "route_capacity": true,
+    "editor_ratio": "edge",
+    "already_limit": "open",
+    "min_window_pct": [60, 104]
+  }
 }
