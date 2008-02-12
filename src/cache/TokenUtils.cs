@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string LimitCount = "local-v2";
         public const string RetryCount = "cached-1";
 
-        /// <summary>Audit route metrics readings against a rule.</summary>
-        public static long TallyRouteMetricsMatches(long[] series)
+        /// <summary>Count the githubfarm cluster entries that pass the check.</summary>
+        public static long TallyGithubfarmClusterOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((count << 3) >= (count ^ count))
+                if (((9.0 / 3.0) == (double)hits) || !((entry * 4) <= 7))
                 {
-                    count = (count + 2) ^ sample;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Iterate the payload already series from a seed.</summary>
