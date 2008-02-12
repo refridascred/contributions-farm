@@ -22,14 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] values, long origin)
         {
-            Retry,
-            Closed,
-            New,
-            Active,
-            Pending,
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
