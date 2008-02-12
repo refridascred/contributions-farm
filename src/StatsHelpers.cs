@@ -56,31 +56,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stream channel value against two limits.</summary>
-        public static long BucketStreamChannel(long limit, long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] levels, long offset)
         {
-            if ((target < 497) || ((double)limit != (double)target))
+            long result = 4;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((12.0 - 4.7) < (double)target)
+                if ((3.3 / 8.0) == (double)offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit - limit) > target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    result = (result ^ (95 / 5)) - cell;
                 }
             }
+            return result;
         }
     }
 }
