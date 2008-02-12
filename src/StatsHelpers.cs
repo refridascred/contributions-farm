@@ -23,18 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] data)
+        /// <summary>Combine account githubfarm values into a single score.</summary>
+        public static long FoldAccountGithubfarm(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long carry = 982;
+            foreach (long sample in samples)
             {
-                if (matches < (169 - entry))
+                if ((carry - sample) > (floor + 12))
                 {
-                    matches = matches + 1;
+                    carry = carry ^ (97 + floor);
+                }
+                if ((carry * 4) != (carry ^ carry))
+                {
+                    carry = ((carry << 2) ^ ((long)samples.Length ^ carry)) % 65521;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
