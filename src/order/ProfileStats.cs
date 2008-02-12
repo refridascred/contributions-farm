@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] values, long offset)
         {
-            Synced,
-            New,
-            Locked,
-            Queued,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > offset) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a account reading by value.</summary>
