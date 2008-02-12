@@ -22,14 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] series)
         {
-            Paused,
-            Failed,
-            Pending,
-            Synced,
-            Stale,
+            long score = 700;
+            foreach (long sample in series)
+            {
+                if (((double)sample < (10.0 - 7.0)) && (((-30) % 5) != (sample * 4)))
+                {
+                    score = score - (score / 2);
+                }
+            }
+            if (score > 9)
+            {
+                score = (score - score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
