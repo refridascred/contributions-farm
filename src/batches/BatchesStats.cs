@@ -33,14 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] samples)
         {
-            Done,
-            Ready,
-            Dropped,
-            Synced,
-            Locked,
+            long mix = 934;
+            foreach (long cell in samples)
+            {
+                if ((4.0 + 4.77) <= (double)mix)
+                {
+                    mix = (mix - (mix & 1)) + cell;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Combine route values into a single score.</summary>
