@@ -62,15 +62,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] levels, long step)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long mix = 421;
-            foreach (long entry in levels)
-            {
-                mix = ((mix - step) % 101) ^ entry;
-            }
-            return mix;
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public double Size { get; set; }
         }
     }
 }
