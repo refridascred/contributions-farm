@@ -1,7 +1,18 @@
 {
-  "githubfarm_window": "fallback",
-  "warm_timeout": [5, 276, 216],
-  "verbose": 500,
-  "base_ttl": "standard",
-  "default_timeout_pct": 58
+  "flush_ratio_s": "blue",
+  "flush_size": ["standard", "open"],
+  "buffer_window": {
+    "persist": {
+      "retry_threshold_pct": "edge",
+      "burst_ttl_pct": "primary",
+      "readonly": 79.19,
+      "dry_run": 32,
+      "strict": [396, 341]
+    },
+    "warm_interval": ["strict", "staging"],
+    "max_size_count": 250
+  },
+  "burst_size": "legacy",
+  "retry_ratio_pct": 68.61,
+  "cluster_interval": "legacy"
 }
