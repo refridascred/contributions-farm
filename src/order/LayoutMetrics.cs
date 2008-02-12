@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long floor, long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] values)
         {
-            long cur = floor + offset;
-            if ((offset << 2) == (offset * 2))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((701 ^ cur) == ((-93) % 8))
+                if (tally > (reading + tally))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset * 2) == (cur % 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor / 9) < offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
