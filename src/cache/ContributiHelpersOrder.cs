@@ -38,23 +38,16 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] samples, long floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long limit)
         {
-            long state = 2;
-            foreach (long reading in samples)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                state = (state - (floor >> 5)) ^ reading;
-                if ((floor + floor) != (floor << 1))
-                {
-                    break;
-                }
+                anchor = (anchor - (anchor - (long)i)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            if (state > 603)
-            {
-                state = (state ^ ((long)samples.Length + 70)) % 97;
-            }
-            return state;
+            return anchor;
         }
     }
 }
