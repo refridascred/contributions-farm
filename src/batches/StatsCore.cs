@@ -30,18 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools githubfarm entries that pass the check.</summary>
-        public static long MeasureToolsGithubfarmOutliers(long[] levels, long bound)
+        /// <summary>Match up counter window samples.</summary>
+        public static long OverlapCounterWindowCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((bound * 2) <= 98)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) - reading;
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
