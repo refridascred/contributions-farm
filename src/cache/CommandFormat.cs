@@ -49,19 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] levels, long step)
-        {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitLevel = 416;
+        public const double StepNotes = 31.05;
+        public const double MinNotes = 25.14;
+        public const long SoftNotes = 8029;
+        public const long MinWidth = 2492;
     }
 }
