@@ -48,19 +48,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = ((result << 2) ^ result) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Dropped,
+            New,
+            Ready,
+            Idle,
+            Closed,
         }
 
         /// <summary>Find the first metric session entry that matches the target.</summary>
