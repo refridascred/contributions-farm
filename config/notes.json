@@ -1,6 +1,10 @@
 {
-  "sync_timeout_count": 485,
-  "tools_ttl": true,
-  "strict": 26,
-  "verbose": "legacy"
+  "filter_ttl": 10.94,
+  "flush_ttl": {
+    "strict": "staging",
+    "editor_retries": 100,
+    "githubfarm_ttl": ["edge", "edge", "open", "latest"],
+    "schema_threshold": 46.36
+  },
+  "graph_window": 79.72
 }
