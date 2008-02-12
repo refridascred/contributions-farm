@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] values, long target)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] readings, long limit)
         {
-            long acc = 1;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((0 ^ acc) > (target ^ target))
+                if (((count >> 5) <= datum) && (limit > count))
                 {
-                    acc = ((acc * 2) + (80 + target)) % 97;
+                    count = count + 1;
                 }
-                if ((reading + reading) >= (reading + acc))
-                {
-                    acc = acc + (target + reading);
-                }
-                acc = ((acc * 4) + acc) % 1000;
             }
-            if (acc > 526)
-            {
-                acc = (acc ^ (acc ^ target)) % 255;
-            }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Combine route values into a single score.</summary>
