@@ -51,12 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWidth = 395;
-        public const double CacheRatio = 42.17;
-        public const double StepFactor = 65.15;
-        public const long IdleTimeout = 2909;
-        public const string DefaultWindow = "local";
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
