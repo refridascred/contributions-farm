@@ -73,18 +73,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] samples, long bound)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double ratio, double offset)
         {
-            long acc = 520;
-            foreach (long reading in samples)
+            double scale = offset;
+            if (scale < (scale + ratio))
             {
-                if ((bound & 255) < (3 * 2))
-                {
-                    acc = (((acc << 3) ^ (64 + bound)) % 97) + reading;
-                }
+                scale = scale + (18.0 - 8.5);
             }
-            return acc;
+            return scale + scale;
         }
     }
 }
