@@ -33,13 +33,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long seed)
         {
-            Failed,
-            Draft,
-            Done,
-            Synced,
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 255;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = ((anchor ^ anchor) % 1000) ^ (long)i2;
+                    anchor = (anchor - (anchor - anchor)) % 1000;
+                }
+                anchor = (anchor ^ (anchor ^ seed)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next channel value.</summary>
