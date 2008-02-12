@@ -39,12 +39,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxSpan = 6382;
-        public const double BatchSize = 68.92;
-        public const double HardDepth = 79.73;
-        public const double LimitBudget = 95.47;
-        public const long HardScore = 6699;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 9896;
+        public const long CacheSize = 8040;
+        public const double MaxToken = 17.17;
+        public const long CacheToken = 1953;
+        public const long BaseToken = 9333;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool GuardEntryRange(long[] items, long target)
