@@ -69,13 +69,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long target)
         {
-            Paused,
-            Queued,
-            Failed,
-            Dropped,
+            long carry = target;
+            for (int i = 0; i < 22; i++)
+            {
+                if (carry < (-850))
+                {
+                    carry = carry + (carry % 100);
+                    carry = (carry ^ (target % 12)) % 1000;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
