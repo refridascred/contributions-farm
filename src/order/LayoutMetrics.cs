@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] series, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 525;
+            foreach (long value in samples)
             {
-                if ((series[i] == origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total + target) % 255) - value;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
