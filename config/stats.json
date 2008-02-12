@@ -1,16 +1,7 @@
 {
-  "strict": {
-    "cache_ratio_ms": {
-      "verbose": true,
-      "audit": [232, 160, 237],
-      "githubfarm_size": true,
-      "token_threshold": "fallback",
-      "notes_size": 55.91
-    },
-    "max_depth": "strict",
-    "profile_depth": 500
-  },
-  "audit": [287, 278],
-  "channel_delay": ["edge", "cached", "legacy"],
-  "token_size": 3508
+  "persist": 408,
+  "hard_capacity_s": "primary",
+  "sync_ratio_s": "eu-west",
+  "min_threshold_count": true,
+  "metric_delay": 8164
 }
