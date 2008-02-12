@@ -2,11 +2,13 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    token TEXT,
-    ratio REAL,
-    level INTEGER
+    state TEXT NOT NULL DEFAULT 'new',
+    level INTEGER,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_ratio ON layout_items (ratio);
+CREATE INDEX IF NOT EXISTS idx_layout_items_label ON layout_items (label);
 
-INSERT INTO layout_items (label, token, ratio, level) VALUES ('edge', 'latest', 84.78, 96);
+INSERT INTO layout_items (label, state, level, token) VALUES ('legacy', 'open', 56, 'latest');
+INSERT INTO layout_items (label, state, level, token) VALUES ('standard', 'staging', 17, 'cached');
+INSERT INTO layout_items (label, state, level, token) VALUES ('strict', 'primary', 34, 'standard');
