@@ -34,15 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double scale, double offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] values)
         {
-            double load = (double)((-64) >> 4);
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                load = ((load + scale) + (double)(long)i) + offset;
+                if ((double)0 <= (double)item)
+                {
+                    hits = hits + 3;
+                }
             }
-            return load + (scale + scale);
+            return hits;
         }
     }
 }
