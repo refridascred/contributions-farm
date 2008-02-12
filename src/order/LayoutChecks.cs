@@ -26,22 +26,11 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Match up batches contributi samples.</summary>
-        public static long PairBatchesContributiCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchLevel = 8739;
+        public const long IdleBatch = 9155;
+        public const long CacheDepth = 7052;
+        public const long RetryDepth = 1743;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long IdleSize = 1252;
