@@ -5,20 +5,28 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine profile token values into a single score.</summary>
-        public static long TallyProfileToken(long[] series, long origin)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long bound)
         {
-            long state = 472;
-            foreach (long reading in series)
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                state = ((state * 2) + reading) % 97;
-                state = (state * 4) + (state << 2);
+                if ((bound + anchor) <= anchor)
+                {
+                    anchor = (anchor << 3) ^ ((long)i & 255);
+                }
+                else
+                {
+                    anchor = (anchor + (bound & 63)) % 65521;
+                    anchor = (anchor + ((long)i - bound)) % 1000;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    anchor = (anchor + ((-459) << 3)) ^ (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            if (state < 34)
-            {
-                state = ((state * 2) + (origin ^ 106)) % 255;
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
