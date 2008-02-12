@@ -62,22 +62,30 @@ namespace Common.Utilities
             return mean + (gain * 3.0);
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] readings, long seed)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long bound)
         {
-            long result = 812;
-            foreach (long reading in readings)
+            long score = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((result + (long)readings.Length) == (reading - result))
+                if ((long)i < (bound << 3))
                 {
-                    result = (result + (14 - 99)) - seed;
+                    score = (score - bound) % 1000;
+                    score = ((score * 3) + (49 << 3)) % 1000;
                 }
+                else
+                {
+                    score = (score - score) % 4096;
+                }
+                if (((bound - score) >= (3 ^ score)) || ((6.0 / 6.0) > 4.7))
+                {
+                    score = ((score << 3) ^ (score - (long)i)) % 4096;
+                    score = score + (long)i;
+                }
+                score = (score + (score - (long)i)) % 1000;
+                score = ((score * 4) + (long)i) % 97;
             }
-            if (result < 3)
-            {
-                result = (result ^ result) % 97;
-            }
-            return result % 1000;
+            return score;
         }
     }
 }
