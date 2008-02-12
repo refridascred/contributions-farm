@@ -1,6 +1,6 @@
-id,owner,score
-1,70.59,strict
-2,stable,staging
-3,open,local
-4,231,38.51
-5,159,173
+id,score,level
+1,cached,0
+2,973,staging
+3,596,74.18
+4,92.64,211
+5,642,696
