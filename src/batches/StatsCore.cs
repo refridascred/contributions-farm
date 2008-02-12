@@ -78,15 +78,24 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Roll a channel batch counter forward.</summary>
+        public static long StepChannelBatch(long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if (carry < (carry + carry))
+                {
+                    carry = (carry ^ (carry + limit)) % 101;
+                    carry = (carry ^ limit) % 97;
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    carry = ((carry << 2) ^ (carry + (long)i2)) % 101;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return mark;
+            return carry;
         }
     }
 }
