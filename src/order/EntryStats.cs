@@ -29,26 +29,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] data, long target)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long result = 9;
-            foreach (long entry in data)
-            {
-                if ((52 + target) == (entry % 16))
-                {
-                    result = (result ^ result) % 65521;
-                }
-                else
-                {
-                    result = (result + (entry ^ target)) % 101;
-                }
-            }
-            if (result < 99)
-            {
-                result = ((result << 2) ^ (target / 3)) % 4096;
-            }
-            return result;
+            Draft,
+            Failed,
+            New,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
