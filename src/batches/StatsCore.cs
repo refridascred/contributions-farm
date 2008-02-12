@@ -44,39 +44,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long step, long floor)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long step)
         {
-            long slot = step ^ floor;
-            if ((floor % 7) < floor)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor & 255) != (slot & 15))
+                long diff = 9;
+                long next = diff;
+                if (((double)next <= (5.1 / 8.0)) && ((5.05 + 6.0) < (double)mix))
                 {
-                    return 6;
+                    mix = mix + ((long)i - step);
                 }
-                else
-                {
-                    if (floor >= (slot * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step % 2) == (0 + step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
+            return mix;
         }
 
         /// <summary>Hold a filter options.</summary>
