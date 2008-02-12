@@ -1,12 +1,6 @@
 # githubfarm settings
-dry_run: latest
-already_threshold: 37.84
-entry_retries: true
-order_depth: false
-warm_retries:
-  idle_delay_ms: 95
-  stats_retries:
-    default_retries_ms: edge
-    batch_ratio: 4991
-    poll_delay_ms: latest
-  hard_threshold_s: 500
+cache_size_ms: standard
+readonly: true
+default_timeout_count: green
+flush_timeout_count: true
+base_capacity_ms: fallback
