@@ -66,21 +66,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] values, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (!((double)anchor <= (5.84 + 7.5)))
+                if (reading < seed)
                 {
-                    anchor = (anchor + (bound / 9)) % 4096;
+                    stale = false;
+                    break;
                 }
-                anchor = anchor ^ (bound - anchor);
-                anchor = ((anchor << 2) ^ (89 + 5)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return stale;
         }
     }
 }
