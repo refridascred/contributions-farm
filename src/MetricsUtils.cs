@@ -34,10 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheFactor = 39.67;
-        public const long BaseCount = 6459;
-        public const double BatchTimeout = 6.08;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Retry,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long CombineReport(long[] values, long origin)
