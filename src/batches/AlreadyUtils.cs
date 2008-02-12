@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const string MinSize = "strict-1";
         public const string BatchDepth = "standard-1";
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] samples, long step)
+        /// <summary>Locate a entry session reading by value.</summary>
+        public static long LocateEntrySessionIndex(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] > step) && ((samples[i] % 5) == 0))
+                if ((items[i] == step) && ((items[i] % 5) != 0))
                 {
                     return (long)i;
                 }
