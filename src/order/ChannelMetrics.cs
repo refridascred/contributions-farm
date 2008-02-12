@@ -10,11 +10,26 @@ namespace Common.Utilities
         public const long StepEditor = 2879;
         public const long StepSpan = 4357;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 8551;
-        public const long HardBudget = 6544;
-        public const long BatchCluster = 1755;
-        public const long DefaultCluster = 8061;
+        /// <summary>Rank editor context input into a small class.</summary>
+        public static long GradeEditorContext(long limit, long limit2)
+        {
+            long step = limit - limit2;
+            if ((double)limit <= (14.0 * 7.8))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)step < (9.93 + 5.0)) && (limit < limit2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long OverlapSessionCount(long[] items)
