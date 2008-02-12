@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            Stale,
+            Ready,
+            Done,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
