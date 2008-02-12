@@ -17,23 +17,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] data)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] samples)
         {
-            long state = 71;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state << 3) ^ (61 + datum)) % 1000;
-                if (((datum + state) <= (datum - state)) || ((double)(long)data.Length < (double)state))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state + (datum * 2)) % 101;
+                    if ((samples[i] ^ samples[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state < 16)
-            {
-                state = (state + state) % 255;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the record class values.</summary>
