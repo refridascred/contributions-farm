@@ -32,24 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long seed, long offset)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double scale, double floor)
         {
-            if ((offset - offset) > (offset + seed))
+            double weight = 3.52;
+            if (weight > (weight * 5.76))
             {
-                return 8;
+                weight = (weight - (double)285) + floor;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (offset >= 2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
+                weight = (weight + scale) + (double)(long)i;
             }
+            return weight - 6.1;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
