@@ -1,8 +1,6 @@
 {
-  "base_capacity": true,
-  "batch_delay": 23,
-  "retry_limit": 60.9,
-  "report_delay": 4331,
-  "min_limit_pct": 8774,
-  "persist": 22
+  "cache_threshold": ["eu-west", "eu-west", "local"],
+  "strict": "eu-west",
+  "dry_run": 52,
+  "warm_ratio": "edge"
 }
