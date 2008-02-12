@@ -57,11 +57,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Grade a commits token value against two limits.</summary>
+        public static long GradeCommitsToken(long target, long offset)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            if (((double)target != (0.2 + 6.6)) || ((offset + 920) <= (target - target)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((739 * 3) > (target >> 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((offset + target) > offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
