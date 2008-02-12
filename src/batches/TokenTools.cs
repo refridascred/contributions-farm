@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a account channel value against two limits.</summary>
-        public static long SortAccountChannel(long origin, long floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            if (floor > (origin & 63))
+            long score = -9;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8.8 - 5.4) != (double)origin)
+                if ((double)entry == (13.0 * 7.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (floor > (origin >> 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((19.0 / 6.0) < (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    score = score ^ (587 * 5);
                 }
             }
+            return score % 65521;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
