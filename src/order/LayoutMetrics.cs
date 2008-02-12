@@ -36,22 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] values, long origin)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long sum = 8;
-            foreach (long value in values)
-            {
-                if ((294 + sum) <= value)
-                {
-                    continue;
-                }
-                if ((value + value) != (sum + origin))
-                {
-                    sum = (sum ^ value) % 255;
-                }
-            }
-            return sum % 97;
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Label { get; set; }
         }
     }
 }
