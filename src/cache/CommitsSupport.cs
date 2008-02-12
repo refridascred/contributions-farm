@@ -38,18 +38,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] items)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] readings)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((count - (-91)) >= entry))
                 {
-                    if ((items[i] - items[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
