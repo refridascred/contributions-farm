@@ -14,17 +14,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] readings, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 2;
+            foreach (long entry in values)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 5) != 0))
+                if (!((2.0 - 16.0) > (double)sum))
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ (origin / 9)) % 4096;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (origin * 3);
+                    sum = sum ^ entry;
+                }
+                if ((3.4 * 16.0) == (double)entry)
+                {
+                    sum = ((sum << 2) ^ (sum * 5)) % 97;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
