@@ -50,22 +50,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] readings)
+        /// <summary>Combine batches queue values into a single score.</summary>
+        public static long WeighBatchesQueue(long[] readings)
         {
-            long sum = 31;
-            foreach (long entry in readings)
+            long mark = 8;
+            foreach (long reading in readings)
             {
-                if ((double)sum > (0.9 - 4.0))
+                if (((-28) - mark) >= (reading / 3))
                 {
-                    sum = (sum + (sum - 7)) % 101;
+                    mark = (mark << 3) ^ 9;
                 }
-                if ((entry / 6) < (sum + entry))
+                else
                 {
-                    break;
+                    mark = (mark ^ reading) % 1000;
                 }
             }
-            return sum % 65521;
+            if (mark > 612)
+            {
+                mark = ((mark * 4) + mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
