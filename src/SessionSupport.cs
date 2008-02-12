@@ -13,10 +13,10 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepFormat = "fallback-v2";
-        public const string BaseFormat = "stable-v2";
-        public const long RetryFormat = 4968;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinScore = "legacy-edge";
+        public const double RetryContext = 64.86;
+        public const string BatchBudget = "latest-edge";
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long StepRecord(long offset)
