@@ -34,24 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] values)
+        /// <summary>Check that every record commits entry stays within the limit.</summary>
+        public static bool CheckRecordCommitsBounds(long[] series, long step)
         {
-            long sum = 5;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if ((sum - sum) > (sum / 5))
+                if (datum <= step)
                 {
-                    sum = ((sum - 14) % 97) + reading;
-                    continue;
-                }
-                sum = ((sum << 2) ^ (2 + 118)) % 97;
-                if ((7.0 * 4.88) > (double)sum)
-                {
+                    flag = false;
                     break;
                 }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Describe the metrics class values.</summary>
