@@ -45,12 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleRatio = 3245;
+        public const long MinSpan = 8719;
+        public const string MinAccount = "open-edge";
+        public const string BatchAccount = "open-v2";
+        public const double CacheWidth = 53.87;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long WeighTools(long[] readings, long origin)
