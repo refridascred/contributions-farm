@@ -1,8 +1,6 @@
 {
-  "layout_size": "stable",
-  "enabled": "primary",
-  "flush_ratio_pct": "blue",
-  "compress": ["cached", "local", "fallback", "primary"],
-  "poll_ttl_s": "open",
-  "flush_depth_count": 59.12
+  "soft_interval_count": 9211,
+  "min_retries": "green",
+  "graph_depth": "green",
+  "max_retries_pct": "primary"
 }
