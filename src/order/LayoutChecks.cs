@@ -68,11 +68,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleBudget = 7393;
-        public const long WindowTimeout = 1068;
-        public const long RetryGithubfarm = 7525;
-        public const long WindowSpan = 6795;
-        public const long MinGithubfarm = 3274;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
