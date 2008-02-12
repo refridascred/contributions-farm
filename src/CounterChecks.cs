@@ -75,16 +75,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long seed)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                result = (result - (long)i) % 255;
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Pending,
+            Paused,
+            New,
+            Closed,
         }
     }
 }
