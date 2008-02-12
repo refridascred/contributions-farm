@@ -1,6 +1,8 @@
 {
-  "strict": false,
-  "max_capacity_pct": 69,
-  "retry_size": ["open", "eu-west", "edge", "staging"],
-  "soft_size_s": ["fallback", "primary"]
+  "base_capacity": true,
+  "batch_delay": 23,
+  "retry_limit": 60.9,
+  "report_delay": 4331,
+  "min_limit_pct": 8774,
+  "persist": 22
 }
