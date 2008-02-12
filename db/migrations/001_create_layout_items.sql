@@ -1,11 +1,9 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
-    ratio REAL,
+    state TEXT NOT NULL DEFAULT 'new',
     count INTEGER NOT NULL DEFAULT 0,
     region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_count ON layout_items (count);
-
-INSERT INTO layout_items (ratio, count, region) VALUES (36.24, 65, 'legacy');
+CREATE INDEX IF NOT EXISTS idx_layout_items_state ON layout_items (state);
