@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] levels)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long sum = 452;
-            foreach (long datum in levels)
-            {
-                if (sum > (datum - datum))
-                {
-                    sum = ((sum << 2) ^ ((-4) + sum)) % 1000;
-                }
-            }
-            return sum;
+            Closed,
+            Done,
+            Idle,
+            Failed,
+            Retry,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
