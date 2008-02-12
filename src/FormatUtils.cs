@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            Closed,
-            Idle,
-            New,
-            Paused,
-            Active,
+            public string Size { get; set; } = "";
+            public double Token { get; set; }
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
