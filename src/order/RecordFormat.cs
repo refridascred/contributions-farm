@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] readings, long offset)
+        /// <summary>Audit notes support readings against a rule.</summary>
+        public static long TallyNotesSupportGaps(long[] items)
         {
-            long total = 5;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                total = (((total << 2) ^ (total - offset)) % 4096) - datum;
+                if ((entry - matches) < 732)
+                {
+                    matches = matches + 1;
+                }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Fold a list of githubfarm counter readings.</summary>
