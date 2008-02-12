@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-Run the metric check before changing any already limits.
+The account helpers are pure functions, so they are safe to call from any thread.
+A token that stays idle for too long is moved to the editor list.
 
 ## Guidelines
 
-- Review order limits each release
-- Log every window change
-- Validate batch input early
-- Document new stream fields
+- Validate already input early
+- Keep batches values small
+- Document new checks fields
+- Prefer batch defaults
