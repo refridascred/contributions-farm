@@ -1,8 +1,12 @@
 {
-  "flush_timeout_ms": [196, 483],
-  "audit": 100,
-  "layout_retries": "eu-west",
-  "sync_delay_count": 77,
-  "soft_threshold": [412, 178, 122],
-  "burst_capacity_count": true
+  "filter_depth": true,
+  "idle_delay_count": false,
+  "hard_interval_count": {
+    "min_threshold": ["latest", "edge", "open"],
+    "default_size": "fallback",
+    "idle_interval_s": 9188,
+    "batch_ttl_pct": "fallback",
+    "soft_timeout_count": [490, 483],
+    "report_capacity": ["staging", "latest", "latest"]
+  }
 }
