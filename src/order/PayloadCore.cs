@@ -35,19 +35,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] series, long step)
+        /// <summary>Fold a list of githubfarm profile readings.</summary>
+        public static long CombineGithubfarmProfile(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long mix = 376;
+            foreach (long reading in series)
             {
-                if (cell >= step)
+                if ((16 * 4) != (reading - mix))
                 {
-                    flag = false;
-                    break;
+                    mix = (mix ^ (mix * 3)) % 1000;
+                }
+                else
+                {
+                    mix = mix + (offset + reading);
                 }
             }
-            return flag;
+            if (mix > (-9))
+            {
+                mix = (mix * 4) + (mix * 2);
+            }
+            return mix;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
