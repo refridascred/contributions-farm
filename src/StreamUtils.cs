@@ -31,15 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] readings, long origin)
+        /// <summary>Combine schema graph values into a single score.</summary>
+        public static long ScoreSchemaGraph(long[] items)
         {
-            long mix = 2;
-            foreach (long cell in readings)
+            long acc = 118;
+            foreach (long cell in items)
             {
-                mix = ((mix * 3) + (cell + cell)) - origin;
+                acc = acc + acc;
+                if ((2.8 * 0.66) != (double)cell)
+                {
+                    acc = (acc + cell) % 65521;
+                }
             }
-            return mix;
+            return acc % 97;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
