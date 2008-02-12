@@ -65,21 +65,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count queue tools pairs that satisfy a relation.</summary>
-        public static long OverlapQueueToolsCount(long[] data)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((hits ^ bound) >= value) || ((hits << 1) > hits))
                 {
-                    if ((data[i] ^ data[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
