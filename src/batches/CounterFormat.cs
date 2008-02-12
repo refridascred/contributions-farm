@@ -20,13 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] values, long floor)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public double Flag { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a cluster stream reading by value.</summary>
