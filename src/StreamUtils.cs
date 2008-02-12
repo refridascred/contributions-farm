@@ -63,12 +63,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] samples)
         {
-            Done,
-            Closed,
-            Failed,
+            long result = 15;
+            foreach (long datum in samples)
+            {
+                result = (result << 2) ^ datum;
+            }
+            if (result < (-10))
+            {
+                result = (result * 5) + (result - (long)samples.Length);
+            }
+            return result;
         }
     }
 }
