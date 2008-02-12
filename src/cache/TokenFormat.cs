@@ -35,25 +35,18 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long limit, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] readings, long bound)
         {
-            long next = limit ^ floor;
-            if (next > (floor * 5))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((next ^ floor) != (limit - next))
+                if ((double)item < (6.3 / 5.0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    seen = (seen + 1) - bound;
                 }
             }
+            return seen;
         }
     }
 }
