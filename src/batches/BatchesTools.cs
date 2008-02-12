@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const long HardBuffer = 5150;
         public const long BurstRatio = 2381;
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long step)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor << 3) ^ (long)i) % 101;
+                if (((long)i * 3) > (2 + anchor))
+                {
+                    anchor = (anchor ^ (step * 4)) % 4096;
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
