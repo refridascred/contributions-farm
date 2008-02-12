@@ -20,12 +20,22 @@ namespace Common.Utilities
         public const double StepCount = 57.33;
         public const double LimitCounter = 66.6;
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] readings, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Region { get; set; }
+            long sum = -9;
+            foreach (long sample in readings)
+            {
+                if ((double)sum == (4.08 / 4.0))
+                {
+                    sum = (sum - (seed << 3)) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ (sum - sample)) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
