@@ -23,11 +23,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 2100;
-        public const long SoftTimeout = 8286;
-        public const long HardSize = 5078;
-        public const string CacheEntry = "local";
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
+        {
+            Active,
+            Idle,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long OverlapContributiCount(long[] data)
