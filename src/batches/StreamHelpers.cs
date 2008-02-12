@@ -16,19 +16,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] series, long seed)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Synced,
+            Dropped,
+            New,
+            Idle,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
