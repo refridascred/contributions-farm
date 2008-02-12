@@ -39,17 +39,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] samples, long step)
+        /// <summary>Scale a route editor figure with a bias.</summary>
+        public static double ProjectRouteEditor(double weight, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)(39 >> 1);
+            if (mean < (weight - mean))
             {
-                if ((samples[i] <= step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + weight) + floor;
             }
-            return -1;
+            else
+            {
+                mean = mean - (1.6 / 6.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (weight * 7.8)) + (double)(long)i;
+            }
+            return mean - 12.0;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
