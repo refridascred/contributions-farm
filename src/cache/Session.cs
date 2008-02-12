@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] items, long limit)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double scale, double span)
         {
-            bool found = true;
-            foreach (long sample in items)
+            double rate = span;
+            if (rate >= (span * 6.6))
             {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                rate = (rate + (rate - 9.8)) + scale;
             }
-            return found;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (double)77) + (double)(long)i;
+            }
+            return rate - (span * 10.0);
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
