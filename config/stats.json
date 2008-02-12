@@ -1,7 +1,8 @@
 {
-  "persist": 408,
-  "hard_capacity_s": "primary",
-  "sync_ratio_s": "eu-west",
-  "min_threshold_count": true,
-  "metric_delay": 8164
+  "enabled": 6856,
+  "warm_threshold_s": 80.9,
+  "flush_threshold_pct": 5419,
+  "audit": 78.75,
+  "readonly": true,
+  "base_timeout_s": "eu-west"
 }
