@@ -1,8 +1,23 @@
 # entry settings
-flush_retries_ms:
-  - primary
-  - blue
-  - primary
-burst_delay: true
-cache_limit: false
-soft_depth_ms: 60
+account_retries:
+  flush_delay_count: 68.24
+  audit: 27.16
+  window_window: 1024
+  cache_timeout:
+    batch_timeout:
+      - 426
+      - 421
+      - 6
+    max_window_count: true
+    queue_interval: false
+    burst_limit: cached
+    commits_interval:
+      - 45
+      - 11
+    batch_ratio_count: 90
+  stats_size:
+    - eu-west
+    - edge
+  cache_threshold_s: blue
+min_capacity: stable
+soft_timeout_pct: 1024
