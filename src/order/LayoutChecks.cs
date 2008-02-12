@@ -45,13 +45,11 @@ namespace Common.Utilities
             return mean + 9.53;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double rate, double offset)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
+            double rate2 = rate;
+            return (rate2 - rate2) + offset;
         }
 
         /// <summary>Roll a format counter forward.</summary>
