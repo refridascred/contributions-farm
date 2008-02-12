@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Classify a record checks pair into a bucket.</summary>
+        public static long ClassifyRecordChecks(long offset, long offset2)
         {
-            Paused,
-            Draft,
-            Queued,
-            Locked,
-            Closed,
+            long slot = offset + offset2;
+            if (offset <= (slot & 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((slot % 12) > (offset2 << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((slot >> 1) <= (offset * 2)) || (offset <= (slot + offset)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
