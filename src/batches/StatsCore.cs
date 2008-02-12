@@ -13,11 +13,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] values)
         {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the tools githubfarm entries that pass the check.</summary>
