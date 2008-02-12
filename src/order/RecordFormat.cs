@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double rate, double offset)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double mean = rate + (rate - 17.0);
-            return (mean + (mean * 8.3)) + offset;
+            Locked,
+            Ready,
+            Pending,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Grade a session value against two limits.</summary>
