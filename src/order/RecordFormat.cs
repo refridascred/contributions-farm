@@ -40,15 +40,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] values)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long offset)
         {
-            long acc = 841;
-            foreach (long item in values)
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
             {
-                acc = ((acc + acc) % 4096) + item;
+                if (((long)i - (long)i) >= (long)i)
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (offset ^ (long)i)) % 97;
+                    anchor = ((anchor << 2) ^ (offset ^ (long)i)) % 4096;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return acc % 4096;
+            return anchor;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
