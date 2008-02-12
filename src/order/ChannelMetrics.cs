@@ -20,13 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] values, long floor)
         {
-            Done,
-            Dropped,
-            Retry,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
