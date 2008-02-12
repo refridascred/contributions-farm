@@ -44,19 +44,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of channel entry entries.</summary>
-        public static long TotalChannelEntry(long[] series)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] samples, long floor)
         {
-            long carry = 340;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((7.46 * 5.56) >= (8.0 - 1.0)) && ((double)carry != (9.0 / 7.0)))
+                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                carry = (carry - (carry * 4)) - sample;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
