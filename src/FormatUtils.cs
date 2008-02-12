@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long origin, long step)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long prev = origin + step;
-            if ((94 >> 2) >= prev)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(prev >= origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((prev + (-62)) > (step % 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (3 > ((-15) + prev))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Idle,
+            New,
+            Paused,
+            Active,
         }
 
         /// <summary>Adjust a farm reading.</summary>
