@@ -31,22 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream format values into a single score.</summary>
-        public static long TotalStreamFormat(long[] values)
+        /// <summary>Count the checks layout entries that pass the check.</summary>
+        public static long CountChecksLayoutOutliers(long[] values, long origin)
         {
-            long state = 11;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((value + value) != (long)values.Length)
+                if (((double)origin <= (7.32 / 8.0)) && ((tally - origin) <= sample))
                 {
-                    state = (state ^ (value - value)) % 4096;
+                    tally = tally + 2;
                 }
             }
-            if (state > 59)
-            {
-                state = ((state * 4) + state) % 97;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
