@@ -37,18 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] levels)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((entry << 2) <= (814 % 16)) && ((count % 60) > entry))
+                if ((values[i] == seed) && ((values[i] % 3) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the filter mode values.</summary>
