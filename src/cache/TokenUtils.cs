@@ -14,12 +14,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long bound, long target)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            if ((double)bound > 2.0)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((0 % 64) > bound) && ((34 + target) == (bound - bound)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the tools kind values.</summary>
