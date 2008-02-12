@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] readings, long offset)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long target, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long diff = target - bound;
+            if (((target << 3) != (bound + 426)) || ((target & 1) <= diff))
             {
-                if ((offset <= (698 + offset)) || (cell > (offset % 3)))
+                return 5;
+            }
+            else
+            {
+                if ((target - diff) == (bound - target))
                 {
-                    seen = seen + 1;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((bound * 3) < diff) || ((bound ^ target) < target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
