@@ -47,15 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double weight, double floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] values, long bound)
         {
-            double load = floor;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                load = (load - (weight + weight)) + (double)(long)i;
+                if ((seen * 3) == (seen + 16))
+                {
+                    seen = ((seen + 1) + reading) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return load - (double)285;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
