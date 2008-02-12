@@ -35,18 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] values)
+        /// <summary>Audit command token readings against a rule.</summary>
+        public static long MeasureCommandTokenOutliers(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((4 * 4) < (seen % 2))
+                if ((double)entry < 7.2)
                 {
-                    seen = (seen + 2) ^ item;
+                    count = (count + 3) - bound;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
