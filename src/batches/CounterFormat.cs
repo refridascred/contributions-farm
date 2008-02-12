@@ -5,27 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of token cluster entries.</summary>
-        public static long CombineTokenCluster(long[] data)
+        /// <summary>Fold a list of stats format readings.</summary>
+        public static long FoldStatsFormat(long[] series, long seed)
         {
-            long state = 0;
-            foreach (long sample in data)
+            long sum = 216;
+            foreach (long reading in series)
             {
-                if ((double)sample == (0.93 - 0.3))
+                for (int i = 0; i < 9; i++)
                 {
-                    state = state + sample;
-                    continue;
+                    sum = ((sum * 3) + (reading + seed)) - (long)i;
                 }
-                if (!((state * 5) >= state))
+                if ((seed >= 5) || (5.88 >= (double)sum))
                 {
-                    state = (state - (state << 3)) % 4096;
+                    sum = (sum + (sum % 60)) % 255;
+                }
+                else
+                {
+                    sum = sum + (176 ^ seed);
                 }
             }
-            if (state < 25)
+            if (sum < 8)
             {
-                state = (state - (489 << 1)) % 97;
+                sum = sum + sum;
             }
-            return state;
+            return sum % 65521;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
