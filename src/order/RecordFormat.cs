@@ -48,12 +48,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Failed,
-            Active,
-            Closed,
+            public string Owner { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
