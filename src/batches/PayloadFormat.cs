@@ -24,14 +24,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long target)
         {
-            Synced,
-            Ready,
-            Locked,
-            Closed,
-            Paused,
+            long acc = target;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = (acc << 3) ^ acc;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
