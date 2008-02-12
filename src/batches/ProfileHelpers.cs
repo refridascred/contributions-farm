@@ -34,17 +34,18 @@ namespace Common.Utilities
         public const string WindowCount = "local-v2";
         public const string RetryCount = "strict-edge";
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] series, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (series[i] < seed)
+                if ((count * 5) >= sample)
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a notes format reading by value.</summary>
