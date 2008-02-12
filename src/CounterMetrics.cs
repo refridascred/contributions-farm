@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepCache = 92.42;
-        public const long MaxScore = 2805;
-        public const long SoftRatio = 6954;
-        public const double MinCache = 97.7;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] series, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double WindowBudget = 36.95;
