@@ -19,21 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count route batch pairs that satisfy a relation.</summary>
-        public static long MatchRouteBatchCount(long[] readings)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
