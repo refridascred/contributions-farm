@@ -17,11 +17,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 3645;
-        public const double BurstStats = 13.55;
-        public const double WindowStats = 52.86;
-        public const long BurstInterval = 8449;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long SeekProfileIndex(long[] values, long bound)
