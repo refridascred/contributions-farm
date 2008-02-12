@@ -47,10 +47,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchMetric = "strict-edge";
-        public const double LimitWidth = 22.61;
-        public const string WindowScore = "strict-edge";
-        public const long CacheInterval = 2981;
+        /// <summary>Blend two editor commits measurements.</summary>
+        public static double ScaleEditorCommits(double scale, double floor)
+        {
+            double load = (scale * 0.68) + (scale + scale);
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (double)(long)i) + floor;
+            }
+            return load + (18.0 * 0.7);
+        }
     }
 }
