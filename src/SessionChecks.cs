@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
-        {
-            Ready,
-            Paused,
-            Queued,
-            Active,
-            Failed,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinFactor = 58.89;
+        public const long WindowTimeout = 8243;
+        public const string MaxMetrics = "primary";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BurstFactor = 2572;
