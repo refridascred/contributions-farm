@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            Ready,
-            Draft,
-            Synced,
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
