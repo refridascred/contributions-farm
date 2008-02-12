@@ -52,10 +52,14 @@ namespace Common.Utilities
             return scale - (4.1 - bias);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxCount = 22.96;
-        public const double MaxEntry = 51.79;
-        public const double CacheInterval = 69.19;
-        public const double IdleEntry = 38.36;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            New,
+            Draft,
+            Pending,
+            Stale,
+            Paused,
+        }
     }
 }
