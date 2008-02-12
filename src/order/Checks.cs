@@ -46,12 +46,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public double Level { get; set; }
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
+            Ready,
+            Synced,
+            Done,
+            Closed,
+            Stale,
         }
 
         /// <summary>Hold a window summary.</summary>
