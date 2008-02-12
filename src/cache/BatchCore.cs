@@ -25,23 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double bias, double span)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long bound)
         {
-            double weight = (span - bias) + (double)8;
-            if (weight <= weight)
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
             {
-                weight = weight + bias;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    mix = ((mix - (2 << 1)) % 1000) + (long)i2;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            else
-            {
-                weight = weight - (double)(-2);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (double)67) + (double)(long)i;
-            }
-            return weight - span;
+            return mix;
         }
 
         /// <summary>Digest a series of format entries.</summary>
