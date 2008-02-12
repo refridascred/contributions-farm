@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] data)
         {
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
+            long score = 298;
+            foreach (long value in data)
+            {
+                score = ((score + score) % 97) + value;
+            }
+            if (score > 96)
+            {
+                score = (score - (score >> 1)) % 101;
+            }
+            return score % 65521;
         }
 
         /// <summary>Measure how many tools queue samples are out of range.</summary>
