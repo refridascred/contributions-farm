@@ -56,11 +56,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            Locked,
+            Synced,
+            Pending,
+            Closed,
         }
 
         /// <summary>Describe the schema level values.</summary>
