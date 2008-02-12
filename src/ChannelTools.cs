@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            Draft,
-            Done,
+            Ready,
+            Dropped,
+            Idle,
             Retry,
         }
 
