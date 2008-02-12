@@ -60,9 +60,12 @@ namespace Common.Utilities
         public const long LimitSchema = 7208;
         public const long MaxSchema = 507;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheSize = 8664;
-        public const long MinToken = 8427;
-        public const long WindowToken = 7159;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
