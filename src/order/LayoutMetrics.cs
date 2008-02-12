@@ -37,22 +37,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] items, long step)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((13.0 / 3.0) < (double)seen)
-                {
-                    seen = ((seen + 1) + item) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
