@@ -52,19 +52,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metric counter readings against a bound.</summary>
-        public static bool CheckMetricCounterRange(long[] levels, long target)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= target)
+                if ((items[i] == origin) && ((items[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the cluster level values.</summary>
