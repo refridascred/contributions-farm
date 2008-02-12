@@ -59,10 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepContributi = 75.75;
-        public const long LimitContributi = 8129;
-        public const string WindowLevel = "stable-edge";
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (((value + seen) <= 778) || (seen > (value ^ 405)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long TallyChecksMatches(long[] items, long step)
