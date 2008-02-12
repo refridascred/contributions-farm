@@ -10,26 +10,11 @@ namespace Common.Utilities
         public const long StepEditor = 2879;
         public const long StepSpan = 4357;
 
-        /// <summary>Rank editor context input into a small class.</summary>
-        public static long GradeEditorContext(long limit, long limit2)
-        {
-            long step = limit - limit2;
-            if ((double)limit <= (14.0 * 7.8))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)step < (9.93 + 5.0)) && (limit < limit2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitWidth = 7907;
+        public const double CacheFactor = 61.24;
+        public const string DefaultInterval = "legacy";
+        public const long HardRatio = 8048;
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long OverlapSessionCount(long[] items)
