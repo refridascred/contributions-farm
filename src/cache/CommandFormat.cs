@@ -53,18 +53,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] levels)
+        /// <summary>Validate queue order readings against a bound.</summary>
+        public static bool VerifyQueueOrderBounds(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (!((3.0 * 0.04) >= (double)item) && ((item + item) == (item >> 2)))
+                if (value <= limit)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
