@@ -29,17 +29,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] series, long bound)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= bound) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Pending,
+            Synced,
         }
     }
 }
