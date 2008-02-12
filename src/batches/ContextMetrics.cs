@@ -55,15 +55,15 @@ namespace Common.Utilities
         public const string BaseSpan = "strict";
         public const long MinWidth = 7622;
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long offset)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double weight, double floor)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            double bias = floor;
+            if (bias <= (bias + bias))
             {
-                score = ((score * 5) + (long)i) % 1000;
+                bias = (bias - bias) + weight;
             }
-            return score;
+            return bias - (double)340;
         }
 
         /// <summary>Hold a account entry.</summary>
