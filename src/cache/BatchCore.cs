@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit notes contributi readings against a rule.</summary>
