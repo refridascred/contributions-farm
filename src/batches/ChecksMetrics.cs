@@ -58,21 +58,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next metric layout value from a seed.</summary>
-        public static long SeriesMetricLayout(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((-90) / 9) < score)
-                {
-                    score = score + ((long)i % 3);
-                }
-                score = (score - (score & 15)) % 101;
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 7089;
+        public const double StepCommand = 92.47;
+        public const long HardSize = 9188;
+        public const long DefaultCommand = 2997;
+        public const long BurstCommand = 6637;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchFilter = 1084;
