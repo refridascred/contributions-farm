@@ -32,12 +32,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long seed, long offset)
         {
-            Done,
-            Closed,
-            Stale,
+            if ((offset - offset) > (offset + seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset >= 2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
