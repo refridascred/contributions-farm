@@ -28,18 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit graph farm readings against a rule.</summary>
-        public static long CountGraphFarmMatches(long[] data, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((value << 2) != (origin * 4))
+                if ((14.0 - 2.01) == (double)seen)
                 {
-                    hits = hits + 3;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
