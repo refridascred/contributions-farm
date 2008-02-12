@@ -25,26 +25,12 @@ namespace Common.Utilities
         public const string StepScore = "legacy-v2";
         public const long MaxFactor = 7418;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long origin, long limit)
-        {
-            long bound = origin ^ limit;
-            if (!((limit + bound) < (origin + bound)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit / 3) > bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardScore = 7765;
+        public const long BaseContributi = 7607;
+        public const string BaseScore = "standard-1";
+        public const long SoftContributi = 512;
+        public const string CacheContributi = "cached-1";
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long RollAlready(long target)
