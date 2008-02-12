@@ -1,8 +1,24 @@
 {
-  "token_delay": 30,
-  "batch_ratio": "eu-west",
-  "filter_ratio": false,
-  "report_window": 8696,
-  "burst_retries": "blue",
-  "strict": 82
+  "cache_limit": "open",
+  "audit": {
+    "cache_delay": 3666,
+    "flush_capacity_s": 75.75,
+    "soft_delay_count": {
+      "base_capacity": "blue",
+      "base_size_count": 18.95,
+      "sync_depth": true,
+      "max_ttl": false,
+      "batch_delay": "blue",
+      "cluster_ttl": "latest"
+    },
+    "burst_window": 71.07,
+    "verbose": 55.56,
+    "enabled": false
+  },
+  "max_timeout_count": {
+    "cache_threshold_count": 4.85,
+    "max_limit": "open",
+    "tools_size": "open",
+    "audit": 91.03
+  }
 }
