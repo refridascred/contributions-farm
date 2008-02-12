@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 6971;
-        public const long LimitSize = 1298;
-        public const double MinToken = 23.85;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardSize = 7507;
+        public const double StepRatio = 97.13;
+        public const long HardInterval = 8410;
+        public const double MaxBudget = 49.27;
+        public const long StepAlready = 2185;
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
