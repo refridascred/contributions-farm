@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const double MaxBudget = 49.27;
         public const long StepAlready = 2185;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] values)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] data, long limit)
         {
-            long mix = 670;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                mix = (mix + (4 << 2)) ^ value;
+                if (sample > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
