@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((item / 3) > item)
                 {
-                    if ((samples[i] - samples[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
