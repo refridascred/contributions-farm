@@ -34,24 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next report payload value.</summary>
-        public static double ScaleReportPayload(double ratio, double offset)
-        {
-            double rate = (double)(14 + 80);
-            if (rate < offset)
-            {
-                rate = (rate - (double)874) - ratio;
-            }
-            else
-            {
-                rate = rate + (rate - rate);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (offset / 9.0)) + (double)(long)i;
-            }
-            return rate - (rate + rate);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxInterval = 9264;
+        public const long WindowTimeout = 4497;
+        public const long WindowContributi = 5743;
+        public const long BaseContributi = 5495;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long MatchFilterCount(long[] series)
