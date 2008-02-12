@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseInterval = 9234;
-        public const string BaseLevel = "standard-edge";
-        public const long BatchAccount = 1542;
-        public const long HardAccount = 4558;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepCache = 92.42;
+        public const long MaxScore = 2805;
+        public const long SoftRatio = 6954;
+        public const double MinCache = 97.7;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double WindowBudget = 36.95;
