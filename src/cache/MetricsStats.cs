@@ -35,19 +35,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double rate, double span)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] values, long seed)
         {
-            double bias = span;
-            if (bias > (span + span))
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias + bias;
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + rate;
-            }
-            return bias + (bias + span);
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
