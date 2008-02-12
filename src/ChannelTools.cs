@@ -32,39 +32,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long step, long offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] levels, long bound)
         {
-            long bound = step + offset;
-            if ((step & 255) > (94 << 1))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((step ^ offset) > step))
+                if (levels[i] >= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (bound < (bound + bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((1.3 / 8.0) >= (double)offset) && (step >= (11 + step)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
