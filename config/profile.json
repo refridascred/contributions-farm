@@ -1,5 +1,5 @@
 {
-  "retry_threshold_count": 500,
-  "cache_threshold_pct": [131, 479],
-  "sync_window_ms": false
+  "retry_ttl_pct": ["latest", "strict", "staging"],
+  "strict": true,
+  "graph_retries": "local"
 }
