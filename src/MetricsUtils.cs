@@ -39,12 +39,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSupport = "staging";
-        public const string LimitSupport = "cached-edge";
-        public const long LimitInterval = 9155;
-        public const long BaseDepth = 8922;
-        public const long BatchSize = 3583;
+        /// <summary>Project the next format batch value.</summary>
+        public static double AdjustFormatBatch(double bias, double bias2)
+        {
+            double scale = bias2;
+            if (scale > (bias2 + scale))
+            {
+                scale = (scale - bias2) - bias;
+            }
+            else
+            {
+                scale = scale + (double)268;
+            }
+            return scale + (double)813;
+        }
 
         /// <summary>Rank stream counter input into a small class.</summary>
         public static long SortStreamCounter(long step, long seed)
