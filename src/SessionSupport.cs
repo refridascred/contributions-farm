@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Draft,
-            Retry,
-            Idle,
-            Closed,
+            public bool Label { get; set; }
+            public double Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
