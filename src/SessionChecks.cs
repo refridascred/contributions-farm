@@ -37,12 +37,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] data, long bound)
         {
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
