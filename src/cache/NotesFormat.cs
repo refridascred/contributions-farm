@@ -29,26 +29,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] items, long target)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] series, long bound)
         {
-            long score = 3;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)reading < 4.57)
+                if ((series[i] <= bound) && ((series[i] % 5) == 0))
                 {
-                    score = score - 2;
-                }
-                if (!((target / 8) < (score & 63)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score < 1)
-            {
-                score = ((score << 3) ^ (target * 4)) % 101;
-            }
-            return score;
+            return -1;
         }
     }
 }
