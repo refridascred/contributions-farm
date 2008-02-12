@@ -39,15 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Count token profile pairs that satisfy a relation.</summary>
+        public static long CompareTokenProfileCount(long[] items)
         {
             long seen = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] + items[j]) < 20)
+                    if ((items[i] + items[j]) > 7)
                     {
                         seen = seen + 1;
                     }
