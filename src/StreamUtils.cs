@@ -29,21 +29,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 2;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix * 3) + (cell + cell)) - origin;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
