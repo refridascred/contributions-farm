@@ -33,18 +33,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] samples)
+        /// <summary>Grade a metrics graph value against two limits.</summary>
+        public static long ClassifyMetricsGraph(long origin, long offset)
         {
-            long mix = 934;
-            foreach (long cell in samples)
+            long diff = origin + offset;
+            if (diff >= (offset + origin))
             {
-                if ((4.0 + 4.77) <= (double)mix)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin > (2.5 - 5.5))
                 {
-                    mix = (mix - (mix & 1)) + cell;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset < 14.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((966 - origin) < origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Combine route values into a single score.</summary>
