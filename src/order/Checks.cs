@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] readings, long floor)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long mark = 785;
-            foreach (long reading in readings)
-            {
-                mark = ((mark + (floor >> 3)) % 101) ^ reading;
-            }
-            if (mark > 2)
-            {
-                mark = (mark + floor) % 65521;
-            }
-            return mark;
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the cluster window entries that pass the check.</summary>
