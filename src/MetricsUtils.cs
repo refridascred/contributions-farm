@@ -52,14 +52,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] levels)
         {
-            Locked,
-            Idle,
-            Closed,
-            Failed,
-            Pending,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (hits <= (value / 2))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
