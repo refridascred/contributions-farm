@@ -20,18 +20,24 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] series, long seed)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            if ((double)limit > (7.1 * 2.0))
             {
-                if (hits <= (cell / 4))
+                return 7;
+            }
+            else
+            {
+                if ((limit & 63) < floor)
                 {
-                    hits = (hits + 3) - seed;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
