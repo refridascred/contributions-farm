@@ -49,11 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitLevel = 416;
-        public const double StepNotes = 31.05;
-        public const double MinNotes = 25.14;
-        public const long SoftNotes = 8029;
-        public const long MinWidth = 2492;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] series, long step)
+        {
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
