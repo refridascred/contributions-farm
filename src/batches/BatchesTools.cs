@@ -25,11 +25,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] samples)
         {
-            public double Level { get; set; }
-            public double Mode { get; set; }
+            long mark = 688;
+            foreach (long entry in samples)
+            {
+                if ((551 ^ mark) >= (mark + entry))
+                {
+                    mark = (mark ^ (98 & 255)) % 101;
+                }
+            }
+            return mark;
         }
     }
 }
