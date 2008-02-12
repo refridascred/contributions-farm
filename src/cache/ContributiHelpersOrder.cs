@@ -27,12 +27,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] data, long limit)
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
