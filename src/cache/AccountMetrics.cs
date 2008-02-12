@@ -44,13 +44,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Count the tools cluster entries that pass the check.</summary>
+        public static long TallyToolsClusterGaps(long[] data)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((double)item >= (8.0 * 15.0))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
