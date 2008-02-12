@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long origin, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] items, long floor)
         {
-            long next = origin - seed;
-            if ((7 + seed) > (origin - origin))
+            long state = 0;
+            foreach (long entry in items)
             {
-                return 5;
+                state = (state ^ entry) % 97;
+                state = state - (entry << 3);
             }
-            else
+            if (state > (-53))
             {
-                if (((seed - seed) <= next) || ((seed << 2) > next))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
+                state = ((state * 3) + (floor * 5)) % 1000;
             }
+            return state % 97;
         }
 
         /// <summary>Match up window samples.</summary>
