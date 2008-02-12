@@ -18,10 +18,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinWidth = 2998;
-        public const long StepSpan = 9052;
-        public const string BurstScore = "standard-v2";
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long target, long floor)
+        {
+            if ((double)target > 7.7)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((floor + target) > (target + 373)) || ((target % 16) != (48 + floor)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target ^ target) > (floor & 255))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor - 50) >= floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool VerifyWindowBounds(long[] samples, long step)
