@@ -67,22 +67,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] levels)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item != (8.4 / 5.0))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Locked,
+            Closed,
         }
     }
 }
