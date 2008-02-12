@@ -1,11 +1,7 @@
 {
-  "retry_limit_s": {
-    "persist": 45,
-    "hard_ttl_count": true,
-    "enabled": 60
-  },
-  "cache_capacity": [151, 468, 83, 211],
-  "idle_retries_pct": false,
-  "min_window_ms": "open",
-  "cluster_retries": 28.88
+  "graph_capacity": "cached",
+  "sync_ttl_pct": "standard",
+  "soft_ratio_count": 13.99,
+  "sync_ttl": 128,
+  "stats_depth": 17
 }
