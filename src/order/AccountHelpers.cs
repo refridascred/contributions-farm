@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Draft,
-            Closed,
-            Active,
-            Retry,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 100;
+        public const string BaseFilter = "standard-1";
+        public const long IdleFilter = 1437;
+        public const long RetryFilter = 7777;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BurstScore = 9636;
