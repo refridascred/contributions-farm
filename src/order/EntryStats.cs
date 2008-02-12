@@ -61,25 +61,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank format filter input into a small class.</summary>
-        public static long ClassifyFormatFilter(long seed, long origin)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long step = seed ^ origin;
-            if (((double)origin <= (20.0 * 3.5)) || ((origin - origin) < step))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((-11) + (-93)) > step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
