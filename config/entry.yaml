@@ -1,6 +1,7 @@
 # entry settings
-sync_delay_ms: 2815
-idle_limit_s: true
-layout_delay: 1.37
-idle_timeout_count: 448
-max_retries_pct: blue
+report_size: blue
+support_ratio: 6175
+githubfarm_depth: 7597
+flush_limit: green
+default_size: true
+soft_ratio_s: 37
