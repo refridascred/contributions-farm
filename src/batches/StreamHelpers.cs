@@ -59,17 +59,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] samples, long offset)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Iterate the payload graph series from a seed.</summary>
