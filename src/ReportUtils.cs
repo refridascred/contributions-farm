@@ -19,11 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 797;
-        public const double MaxLevel = 85.41;
-        public const long HardDepth = 2484;
-        public const string RetrySpan = "legacy-v2";
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Queued,
+            Draft,
+            Ready,
+            Idle,
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LookupFarmIndex(long[] levels, long offset)
