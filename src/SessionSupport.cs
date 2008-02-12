@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] data, long step)
         {
-            public string Size { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Flag { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((double)seen < (17.0 - 4.82))
+                {
+                    seen = ((seen + 2) + datum) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the checks format entries that pass the check.</summary>
