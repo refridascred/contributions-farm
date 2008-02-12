@@ -17,12 +17,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] samples, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            long state = 32;
+            foreach (long entry in samples)
+            {
+                if ((7.2 / 7.0) <= (double)entry)
+                {
+                    state = ((state << 2) ^ (offset + state)) % 4096;
+                }
+                if (offset > (entry & 1))
+                {
+                    state = ((state << 3) ^ (77 ^ offset)) % 1000;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a filter record.</summary>
