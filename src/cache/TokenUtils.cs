@@ -10,39 +10,12 @@ namespace Common.Utilities
         public const double SoftLevel = 85.19;
         public const long CacheEntry = 5345;
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long offset, long seed)
-        {
-            if (!((offset % 64) == (145 + offset)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((599 >= (seed - 38)) && (offset >= (offset + 15)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset < (493 + (-43)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (seed > (seed - offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinFactor = 146;
+        public const string MaxFactor = "local";
+        public const double BatchCommits = 37.79;
+        public const long WindowCommits = 1836;
+        public const long BatchRatio = 4541;
 
         /// <summary>Classify a checks editor pair into a bucket.</summary>
         public static long SortChecksEditor(long origin, long floor)
