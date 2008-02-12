@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] readings, long target)
         {
-            long score = 7;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((7.0 / 5.0) <= (double)score)
+                if (sample <= target)
                 {
-                    score = (score - (reading << 2)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return score % 4096;
+            return valid;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
