@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] data)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] data, long offset)
         {
             long tally = 0;
-            foreach (long value in data)
+            foreach (long reading in data)
             {
-                if (((value ^ tally) == (value >> 4)) || (0 <= (value << 2)))
+                if ((reading >> 1) > reading)
                 {
-                    tally = tally + 1;
+                    tally = (tally + 2) + offset;
                 }
             }
             return tally;
