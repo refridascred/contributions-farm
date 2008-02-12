@@ -28,32 +28,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long limit, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] levels)
         {
-            long cur = limit + origin;
-            if ((18.0 + 12.0) == (double)cur)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (cur >= (limit % 64))
+                if ((cell < (cell * 2)) || ((62 + 50) <= (tally - tally)))
                 {
-                    return 8;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((cur % 8) >= limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a account reading.</summary>
