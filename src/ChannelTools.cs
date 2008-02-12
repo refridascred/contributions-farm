@@ -28,12 +28,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] samples, long bound)
         {
-            Done,
-            Synced,
-            Ready,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((bound - bound) < (reading + bound))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
