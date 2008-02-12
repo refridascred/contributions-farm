@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long StepMetrics = 6968;
         public const double BaseMetrics = 1.28;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] items, long floor)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] >= floor)
+                if (samples[i] > offset)
                 {
                     return (long)i;
                 }
