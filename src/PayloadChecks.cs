@@ -37,18 +37,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count the schema entry entries that pass the check.</summary>
-        public static long TallySchemaEntryMatches(long[] readings)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] data)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7.11 / 2.0) <= (double)hits)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) - value;
+                    if ((data[i] + data[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Digest a series of record entries.</summary>
