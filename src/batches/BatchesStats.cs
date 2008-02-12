@@ -38,39 +38,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a metrics graph value against two limits.</summary>
-        public static long ClassifyMetricsGraph(long origin, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] readings)
         {
-            long diff = origin + offset;
-            if (diff >= (offset + origin))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin > (2.5 - 5.5))
+                if (5 < (seen - seen))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset < 14.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((966 - origin) < origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = (seen + 1) - item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine route values into a single score.</summary>
