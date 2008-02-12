@@ -1,5 +1,6 @@
 {
-  "batch_delay": 85,
-  "warm_limit": 1024,
-  "soft_retries_count": "blue"
+  "poll_threshold": "stable",
+  "soft_limit_pct": 12,
+  "base_depth": [179, 52, 232, 281],
+  "tools_interval": 20.89
 }
