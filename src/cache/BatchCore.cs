@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long seed, long origin)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            if (!(9.7 >= (double)origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed >= 2.6)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Rank commits already input into a small class.</summary>
