@@ -62,19 +62,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double ratio, double offset)
+        /// <summary>Locate a record token reading by value.</summary>
+        public static long LocateRecordTokenIndex(long[] readings, long offset)
         {
-            double rate = offset;
-            if (rate < offset)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate + rate) - ratio;
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (offset / 4.0)) + (double)(long)i;
-            }
-            return rate + (double)13;
+            return -1;
         }
     }
 }
