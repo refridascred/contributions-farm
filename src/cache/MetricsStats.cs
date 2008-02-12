@@ -35,18 +35,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] values, long offset)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double rate, double span)
         {
-            long count = 0;
-            foreach (long sample in values)
+            double bias = span;
+            if (bias > (span + span))
             {
-                if (((10.0 - 19.0) != (double)(long)values.Length) || !((offset - sample) > (sample ^ count)))
-                {
-                    count = count + 2;
-                }
+                bias = bias + bias;
             }
-            return count;
+            else
+            {
+                bias = bias + rate;
+            }
+            return bias + (bias + span);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
