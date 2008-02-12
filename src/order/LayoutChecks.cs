@@ -35,11 +35,16 @@ namespace Common.Utilities
             return mean + 9.53;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double rate, double offset)
+        /// <summary>Roll a graph filter counter forward.</summary>
+        public static long RollGraphFilter(long target)
         {
-            double rate2 = rate;
-            return (rate2 - rate2) + offset;
+            long score = target;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 3) + (score / 2)) % 97;
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Roll a format counter forward.</summary>
