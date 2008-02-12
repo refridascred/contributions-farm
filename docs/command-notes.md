@@ -1,14 +1,10 @@
 # Command notes
 
-Keep graph and context names short and lowercase.
-The batches module keeps batches values in sync with the order cache.
-
-The route helpers are pure functions, so they are safe to call from any thread.
-Each layout is validated before it reaches the metrics queue.
-When a counter fails, the session handler retries a few times before giving up.
+Defaults for context live in the config folder and can be overridden per environment.
+Each schema is validated before it reaches the format queue.
 
 ## Guidelines
 
-- Document new metrics fields
-- Review order limits each release
-- Prefer order defaults
+- Review context limits each release
+- Prefer metrics defaults
+- Log every buffer change
