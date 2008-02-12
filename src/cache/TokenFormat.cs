@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Ready,
-            New,
-            Idle,
             Queued,
+            Dropped,
             Draft,
+            Retry,
+            Ready,
         }
 
         /// <summary>Look up the position of a tools command sample.</summary>
