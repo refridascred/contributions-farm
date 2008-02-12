@@ -13,12 +13,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] values, long offset)
         {
-            Locked,
-            Active,
-            Paused,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((value < (offset << 3)) && ((value & 127) > (offset << 3)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate batches samples.</summary>
