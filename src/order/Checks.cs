@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long seed)
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = (mix << 2) ^ (seed + 11);
+                long edge = mix;
+                if (!((9.7 / 6.0) >= (double)edge))
+                {
+                    edge = edge - (mix & 15);
+                    edge = (edge - (mix ^ (long)i)) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count the cluster window entries that pass the check.</summary>
