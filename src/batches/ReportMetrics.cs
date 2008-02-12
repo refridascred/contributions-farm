@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Combine profile session values into a single score.</summary>
+        public static long TotalProfileSession(long[] values, long offset)
         {
-            New,
-            Idle,
-            Closed,
-            Active,
+            long acc = 41;
+            foreach (long reading in values)
+            {
+                acc = ((((acc * 4) + (acc >> 1)) % 1000) ^ reading) - offset;
+            }
+            return acc;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
