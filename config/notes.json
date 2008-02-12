@@ -1,7 +1,8 @@
 {
-  "hard_depth_count": true,
-  "readonly": 1024,
-  "min_interval_s": false,
-  "hard_capacity": 19,
-  "context_window": 60
+  "filter_threshold": 69,
+  "poll_delay_ms": false,
+  "batch_threshold": "edge",
+  "default_limit_s": false,
+  "flush_size_ms": 250,
+  "cache_capacity_pct": 60
 }
