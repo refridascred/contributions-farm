@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many editor entry samples are out of range.</summary>
-        public static long CountEditorEntryOutliers(long[] data)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seen + 47) != (entry << 2))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Synced,
+            Queued,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
