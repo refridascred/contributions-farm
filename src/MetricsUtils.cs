@@ -40,16 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] levels, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] samples)
         {
-            long total = 16;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                total = ((total * 5) + (total + total)) - limit;
-                total = (total + (entry & 7)) % 97;
+                if (((cell & 255) < matches) || ((matches > (cell << 3)) || (cell <= (matches - cell))))
+                {
+                    matches = matches + 2;
+                }
             }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
