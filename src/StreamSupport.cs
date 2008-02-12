@@ -24,9 +24,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepRatio = 61.48;
-        public const double RetryWindow = 37.17;
-        public const long BurstFactor = 7881;
+        /// <summary>Roll a token session counter forward.</summary>
+        public static long StepTokenSession(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry << 2) ^ (origin + origin)) % 1000;
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
