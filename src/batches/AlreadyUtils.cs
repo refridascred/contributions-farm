@@ -49,19 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double rate, double bias)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            double gain = bias;
-            if (gain > (gain + bias))
-            {
-                gain = (gain - 19.0) + rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - (double)(-2);
+            public string Token { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Fold a list of stream layout readings.</summary>
