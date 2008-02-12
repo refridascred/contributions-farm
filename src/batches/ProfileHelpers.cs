@@ -28,12 +28,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 7867;
-        public const string IdleLevel = "stable-v2";
-        public const double SoftSpan = 11.57;
-        public const string WindowCount = "local-v2";
-        public const string RetryCount = "strict-edge";
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long AuditPayloadOutliers(long[] levels)
