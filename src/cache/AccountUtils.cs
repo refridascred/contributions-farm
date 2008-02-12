@@ -21,13 +21,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long limit)
         {
-            public bool Count { get; set; }
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            long result = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
