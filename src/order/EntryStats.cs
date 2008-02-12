@@ -62,18 +62,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats commits samples.</summary>
-        public static long ScoreStatsCommits(long[] data)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long state = 325;
-            foreach (long cell in data)
-            {
-                if ((double)cell != (3.09 / 2.0))
-                {
-                    state = (state ^ (7 + state)) % 1000;
-                }
-            }
-            return state;
+            Idle,
+            Closed,
+            Failed,
         }
     }
 }
