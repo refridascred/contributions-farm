@@ -38,31 +38,21 @@ namespace Common.Utilities
             return scale2 + bias;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long bound, long seed)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] values)
         {
-            if (((bound * 3) == (seed % 60)) && ((481 & 63) <= bound))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((2.4 * 12.0) >= (double)seed) || ((1.4 - 19.0) >= (double)bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (4.6 < (double)seed)
+                    if ((values[i] ^ values[j]) == 8)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
