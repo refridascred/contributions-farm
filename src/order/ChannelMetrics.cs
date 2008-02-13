@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] readings)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (((double)hits == (5.3 + 9.0)) || ((item & 7) < (0 % 3)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
