@@ -57,22 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] data)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] levels, long origin)
         {
-            long score = 99;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (!((cell - 64) > cell))
+                if (cell < origin)
                 {
-                    score = score ^ (score - score);
+                    found = false;
+                    break;
                 }
             }
-            if (score < 13)
-            {
-                score = score + score;
-            }
-            return score;
+            return found;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
