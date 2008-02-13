@@ -70,19 +70,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] values, long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (cell < target)
+                if (!((double)datum < (13.0 + 4.3)))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) + step;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Hold a profile summary.</summary>
