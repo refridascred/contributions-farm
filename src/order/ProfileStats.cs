@@ -56,22 +56,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format layout samples.</summary>
-        public static long CombineFormatLayout(long[] readings)
-        {
-            long mark = 93;
-            foreach (long entry in readings)
-            {
-                if ((entry << 2) <= mark)
-                {
-                    mark = mark + mark;
-                }
-            }
-            if (mark > 4)
-            {
-                mark = (mark ^ (mark & 31)) % 4096;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 8187;
+        public const double BatchSpan = 40.89;
+        public const double IdleAlready = 20.49;
     }
 }
