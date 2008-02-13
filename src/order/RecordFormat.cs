@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit notes support readings against a rule.</summary>
-        public static long TallyNotesSupportGaps(long[] items)
+        /// <summary>Accumulate editor order samples.</summary>
+        public static long CombineEditorOrder(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long result = 63;
+            foreach (long item in readings)
             {
-                if ((entry - matches) < 732)
+                result = (result - item) % 65521;
+                if (((item << 3) < target) || ((result - target) <= (-65)))
                 {
-                    matches = matches + 1;
+                    result = result ^ (35 * 2);
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Fold a list of githubfarm counter readings.</summary>
