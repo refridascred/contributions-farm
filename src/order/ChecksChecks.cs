@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first cluster metrics entry that matches the target.</summary>
-        public static long FindClusterMetricsIndex(long[] values, long step)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
