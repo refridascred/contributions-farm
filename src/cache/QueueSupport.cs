@@ -28,21 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of layout batch readings.</summary>
-        public static long PairLayoutBatchCount(long[] items)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
     }
 }
