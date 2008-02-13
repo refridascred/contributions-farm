@@ -33,12 +33,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public double Token { get; set; }
-            public bool Count { get; set; }
-            public bool Size { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
