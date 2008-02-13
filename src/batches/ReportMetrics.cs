@@ -14,39 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long step, long bound)
+        /// <summary>Validate route notes readings against a bound.</summary>
+        public static bool CheckRouteNotesLimits(long[] data, long bound)
         {
-            long prev = step - bound;
-            if ((step + bound) < (step << 2))
+            bool ready = true;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)prev <= (20.0 * 0.01))
+                if (reading <= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)prev < (4.3 + 9.43))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((prev + 5) != (5 - prev))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
