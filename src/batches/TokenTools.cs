@@ -21,21 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] levels)
-        {
-            long sum = 774;
-            foreach (long datum in levels)
-            {
-                sum = ((sum << 2) ^ sum) % 101;
-                sum = ((sum * 4) + datum) % 101;
-            }
-            if (sum > (-58))
-            {
-                sum = (sum * 5) + (sum - sum);
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryRatio = 6604;
+        public const double WindowGithubfarm = 34.73;
+        public const long DefaultDepth = 9333;
+        public const string MinGithubfarm = "local-v2";
+        public const long MaxGithubfarm = 6732;
 
         /// <summary>Match up command samples.</summary>
         public static long OverlapCommandCount(long[] items)
