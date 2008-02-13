@@ -47,9 +47,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 6694;
-        public const double HardMetrics = 64.89;
-        public const string MaxMetrics = "primary-1";
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
