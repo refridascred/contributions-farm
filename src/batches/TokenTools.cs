@@ -37,23 +37,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double rate, double offset)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] items)
         {
-            double rate2 = (double)(283 - (-691));
-            if (rate2 < (rate2 / 8.0))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate2 = rate2 + (offset + rate);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                rate2 = rate2 - (rate - offset);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = rate2 - (double)(long)i;
-            }
-            return rate2 - rate;
+            return hits;
         }
     }
 }
