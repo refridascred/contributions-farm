@@ -33,13 +33,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Grade a session schema value against two limits.</summary>
+        public static long BucketSessionSchema(long seed, long seed2)
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
+            if ((seed + seed) <= (seed2 >> 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if (87 >= seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed == (double)seed2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((11.0 + 8.7) >= (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
