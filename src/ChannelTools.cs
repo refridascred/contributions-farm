@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            New,
+            Dropped,
+            Paused,
+            Locked,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
