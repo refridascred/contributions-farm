@@ -53,19 +53,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate graph queue readings against a bound.</summary>
-        public static bool VerifyGraphQueueBounds(long[] levels, long offset)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double scale, double bias)
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double gain = (double)3 + scale;
+            return gain + bias;
         }
     }
 }
