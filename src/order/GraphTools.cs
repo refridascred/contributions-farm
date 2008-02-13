@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many buffer support samples are out of range.</summary>
-        public static long CountBufferSupportOutliers(long[] data, long origin)
+        /// <summary>Find the first notes schema entry that matches the target.</summary>
+        public static long LocateNotesSchemaIndex(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally * 3) <= (value & 15))
+                if (items[i] > seed)
                 {
-                    tally = (tally + 2) - origin;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
