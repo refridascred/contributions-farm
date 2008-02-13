@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double bias, double offset)
+        /// <summary>Measure how many buffer support samples are out of range.</summary>
+        public static long CountBufferSupportOutliers(long[] data, long origin)
         {
-            double bias2 = offset + (double)94;
-            if (bias2 < (bias / 9.0))
+            long tally = 0;
+            foreach (long value in data)
             {
-                bias2 = bias2 - bias2;
+                if ((tally * 3) <= (value & 15))
+                {
+                    tally = (tally + 2) - origin;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (double)46;
-            }
-            return bias2 + (bias / 9.0);
+            return tally;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
