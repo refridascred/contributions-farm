@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] series)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)seed < 4.3)
                 {
-                    if ((series[i] - series[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score ^ (seed + score);
                 }
+                else
+                {
+                    score = ((score * 4) + (715 + (long)i)) % 101;
+                }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
