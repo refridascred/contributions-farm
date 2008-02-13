@@ -25,16 +25,19 @@ namespace Common.Utilities
         public const string BurstSupport = "legacy-edge";
         public const long MaxBudget = 4597;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] series, long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                result = (result + (7 % 5)) % 97;
-                result = ((result * 4) + (long)i) % 1000;
+                if (entry >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Describe the support state values.</summary>
