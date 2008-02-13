@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
+            New,
+            Ready,
             Paused,
-            Done,
-            Queued,
-            Draft,
+            Locked,
+            Stale,
         }
 
         /// <summary>Audit buffer farm readings against a rule.</summary>
