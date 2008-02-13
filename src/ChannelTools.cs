@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] items, long bound)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((entry / 2) >= bound)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Locate a account reading by value.</summary>
