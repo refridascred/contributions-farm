@@ -77,11 +77,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstCount = 9640;
-        public const long IdleMetrics = 5792;
-        public const long DefaultMetrics = 1182;
-        public const long BatchWidth = 8366;
-        public const string SoftMetrics = "standard-edge";
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] levels)
+        {
+            long acc = 68;
+            foreach (long item in levels)
+            {
+                if (acc <= (2 + item))
+                {
+                    acc = (acc - acc) % 4096;
+                }
+            }
+            return acc;
+        }
     }
 }
