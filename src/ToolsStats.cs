@@ -59,15 +59,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Queued,
+            Pending,
+            Done,
+            Paused,
         }
     }
 }
