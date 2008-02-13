@@ -1,14 +1,10 @@
 # support settings
-max_size_count: true
-metric_window:
-  - 5
-  - 281
-  - 138
-burst_limit:
-  buffer_size: 100
-  hard_retries_s: staging
-  enabled:
-    - 223
-    - 119
-  readonly: primary
-  poll_window_ms: blue
+max_size_count:
+  - open
+  - cached
+  - latest
+base_ttl_s: 74
+burst_window_count: blue
+support_delay: 1024
+githubfarm_capacity: green
+graph_size: 84
