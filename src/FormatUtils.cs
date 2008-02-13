@@ -13,23 +13,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] items)
+        /// <summary>Derive the next profile session value from a seed.</summary>
+        public static long StepProfileSession(long floor)
         {
-            long mix = 111;
-            foreach (long cell in items)
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((mix - mix) >= mix)
-                {
-                    mix = (mix ^ mix) % 255;
-                    continue;
-                }
-                if (cell >= (mix / 6))
-                {
-                    mix = (mix * 4) + (cell << 3);
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mix % 1000;
+            return mark;
         }
 
         /// <summary>Hold a stats summary.</summary>
