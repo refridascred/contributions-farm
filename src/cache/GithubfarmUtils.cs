@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache support readings against a rule.</summary>
-        public static long AuditCacheSupportGaps(long[] items)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (!((sample >> 2) != (361 / 3)))
+                if ((double)matches == (6.2 - 8.4))
                 {
-                    count = count + 3;
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
