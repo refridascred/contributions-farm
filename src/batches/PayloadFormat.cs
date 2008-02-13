@@ -38,19 +38,31 @@ namespace Common.Utilities
             return scale2 + bias;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] readings)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long bound, long seed)
         {
-            long total = 118;
-            foreach (long sample in readings)
+            if (((bound * 3) == (seed % 60)) && ((481 & 63) <= bound))
             {
-                total = (total + total) + sample;
+                return 6;
             }
-            if (total < 903)
+            else
             {
-                total = ((total << 3) ^ total) % 65521;
+                if (((2.4 * 12.0) >= (double)seed) || ((1.4 - 19.0) >= (double)bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (4.6 < (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
