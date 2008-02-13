@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate format batch samples.</summary>
-        public static long DigestFormatBatch(long[] readings, long bound)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] readings, long limit)
         {
-            long state = 570;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 2) + reading) % 65521;
-                if ((bound + state) == (state ^ state))
+                if (readings[i] >= limit)
                 {
-                    state = state - state;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Roll a window counter forward.</summary>
