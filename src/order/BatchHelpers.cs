@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long seed, long bound)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
+            if ((bound + bound) >= seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if (9.0 >= (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (bound < (seed << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (9.0 > (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate githubfarm filter samples.</summary>
