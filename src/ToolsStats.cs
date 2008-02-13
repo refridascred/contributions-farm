@@ -49,21 +49,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] series)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 4;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state + state) % 101) ^ entry;
             }
-            return seen;
+            return state % 65521;
         }
     }
 }
