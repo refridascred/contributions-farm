@@ -68,11 +68,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxRecord = "standard-1";
-        public const double SoftSpan = 98.36;
-        public const long RetryRecord = 5482;
-        public const double DefaultRecord = 2.12;
-        public const long BurstScore = 5403;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
