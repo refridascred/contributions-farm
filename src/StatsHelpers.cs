@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long floor, long step)
-        {
-            long slot = floor - step;
-            if (((double)slot <= (double)1) && ((floor - slot) == (4 + slot)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor - step) >= 852)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 2453;
+        public const long SoftGraph = 9011;
+        public const long MinDepth = 8568;
 
         /// <summary>Digest a series of already entries.</summary>
         public static long TotalAlready(long[] values)
