@@ -40,18 +40,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many already checks samples are out of range.</summary>
-        public static long AuditAlreadyChecksGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (value < (value >> 1))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxStream = 20.96;
+        public const double HardTimeout = 71.63;
+        public const double StepStream = 71.79;
+        public const long DefaultFactor = 1149;
     }
 }
