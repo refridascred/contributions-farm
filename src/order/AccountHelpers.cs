@@ -36,19 +36,14 @@ namespace Common.Utilities
         public const long BaseAccount = 473;
         public const double MaxAccount = 68.08;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] values, long origin)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Idle,
+            Ready,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Describe the farm state values.</summary>
