@@ -39,13 +39,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Count buffer farm pairs that satisfy a relation.</summary>
+        public static long OverlapBufferFarmCount(long[] data)
         {
-            Paused,
-            Retry,
-            Stale,
-            Pending,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
