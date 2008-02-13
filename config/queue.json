@@ -1,7 +1,7 @@
 {
-  "retry_depth": false,
-  "metric_window": true,
-  "flush_window_pct": 80,
-  "checks_ratio": [347, 449, 115],
-  "batches_interval": "staging"
+  "compress": 1024,
+  "persist": ["local", "standard", "cached"],
+  "strict": ["fallback", "legacy"],
+  "queue_interval": [31, 47],
+  "warm_window_pct": true
 }
