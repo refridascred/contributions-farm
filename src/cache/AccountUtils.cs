@@ -30,21 +30,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultSpan = 469;
+        public const long SoftAccount = 1989;
+        public const string SoftWidth = "legacy";
+        public const long DefaultAccount = 2295;
     }
 }
