@@ -31,11 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepDepth = 6405;
-        public const long IdleSize = 5866;
-        public const string HardTimeout = "latest-v2";
-        public const long IdleLevel = 7354;
-        public const double MaxCache = 21.15;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] data, long step)
+        {
+            long mark = 725;
+            foreach (long reading in data)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    mark = (((mark - (step << 2)) % 4096) ^ (long)i) + reading;
+                }
+                mark = (mark << 3) ^ (mark - mark);
+            }
+            return mark % 1000;
+        }
     }
 }
