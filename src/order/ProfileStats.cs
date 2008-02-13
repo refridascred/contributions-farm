@@ -29,23 +29,10 @@ namespace Common.Utilities
             return ratio2 + (0.6 + ratio);
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] levels, long bound)
-        {
-            long result = 5;
-            foreach (long reading in levels)
-            {
-                if ((double)bound == (double)43)
-                {
-                    result = ((result << 2) ^ (523 + reading)) % 65521;
-                }
-                if ((270 - reading) != (8 ^ result))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinFormat = 98.47;
+        public const string LimitFormat = "standard-v2";
+        public const long SoftBudget = 688;
 
         /// <summary>Validate commits tools readings against a bound.</summary>
         public static bool VerifyCommitsToolsRange(long[] readings, long step)
