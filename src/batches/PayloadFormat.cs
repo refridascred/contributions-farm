@@ -28,19 +28,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double bias, double bias2)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            double scale = (bias * 9.54) - bias2;
-            if (scale > (13.0 * 6.75))
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (bias2 * 4.1)) + (double)(long)i;
-            }
-            return scale - (bias * 1.36);
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
