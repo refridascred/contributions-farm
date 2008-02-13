@@ -33,12 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] values, long floor)
         {
-            public double Token { get; set; }
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((((cell << 3) > cell) && ((cell - seen) >= floor)) && ((8.68 / 5.0) == (double)cell))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
