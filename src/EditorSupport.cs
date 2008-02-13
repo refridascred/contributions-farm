@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the stats buffer entries that pass the check.</summary>
-        public static long MeasureStatsBufferOutliers(long[] series)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((reading << 1) <= hits)
+                if ((tally + tally) < (tally * 2))
                 {
-                    hits = hits + 3;
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
