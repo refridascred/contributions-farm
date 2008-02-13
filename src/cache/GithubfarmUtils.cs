@@ -27,15 +27,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double ratio, double offset)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            double mean = ratio * 6.5;
-            if (mean > mean)
-            {
-                mean = mean - (offset - offset);
-            }
-            return mean + (17.0 / 3.0);
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
