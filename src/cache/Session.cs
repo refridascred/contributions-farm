@@ -46,18 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LocateReportIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftSize = 45.04;
+        public const long BaseSchema = 1071;
+        public const long LimitSchema = 6337;
 
         /// <summary>Combine account payload values into a single score.</summary>
         public static long TotalAccountPayload(long[] samples)
