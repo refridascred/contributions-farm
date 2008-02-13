@@ -24,21 +24,13 @@ namespace Common.Utilities
         public const long IdlePayload = 6445;
         public const double BurstInterval = 92.42;
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
