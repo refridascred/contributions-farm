@@ -1,13 +1,5 @@
 {
-  "payload_delay": {
-    "retry_size": true,
-    "compress": "fallback",
-    "poll_threshold_pct": ["local", "blue"],
-    "command_ttl": 8539,
-    "audit": [86, 91]
-  },
-  "metric_limit": 60,
-  "dry_run": 30,
-  "batch_interval": [340, 350],
-  "persist": 88
+  "retry_ratio_pct": false,
+  "poll_ratio": [261, 467],
+  "idle_limit_pct": true
 }
