@@ -1,7 +1,38 @@
 # githubfarm settings
-enabled: fallback
-cache_window: staging
-hard_depth: 7
-compress: false
-audit: 55.2
-retry_delay_s: false
+hard_capacity_ms: latest
+soft_interval_s: stable
+batches_window:
+  verbose: 5560
+  persist: primary
+  cache_delay: legacy
+  dry_run: primary
+  format_window:
+    githubfarm_capacity: false
+    metric_retries: local
+    enabled: local
+farm_window: open
+warm_ratio:
+  context_size:
+    hard_retries_count: legacy
+    entry_threshold: 2138
+    token_retries: 9
+  enabled:
+    base_size: 30
+    burst_delay: edge
+    cache_ratio: eu-west
+    hard_size_s:
+      - open
+      - green
+      - fallback
+      - eu-west
+  idle_window:
+    base_depth:
+      - 270
+      - 295
+    default_ratio: 46.48
+    warm_delay: 500
+    idle_threshold:
+      - staging
+      - fallback
+  persist: cached
+default_ratio_ms: true
