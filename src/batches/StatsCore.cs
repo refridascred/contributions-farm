@@ -32,11 +32,19 @@ namespace Common.Utilities
         public const long StepLevel = 738;
         public const string MaxContext = "cached-v2";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 358;
-        public const long SoftContext = 6927;
-        public const long WindowContext = 93;
-        public const string BurstRatio = "legacy";
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] series, long floor)
+        {
+            long sum = 610;
+            foreach (long cell in series)
+            {
+                if ((cell ^ cell) != (floor + sum))
+                {
+                    sum = ((sum << 3) ^ (floor / 8)) % 4096;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string MaxSize = "cached-edge";
