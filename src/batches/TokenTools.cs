@@ -19,39 +19,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long limit, long target)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double gain, double span)
         {
-            long lane = limit ^ target;
-            if (!((81 - target) == (910 << 1)))
+            double ratio = (1.9 + span) + (gain - gain);
+            if (ratio > (gain + 7.43))
             {
-                return 0;
+                ratio = ratio - (ratio * 10.0);
             }
-            else
-            {
-                if ((lane << 1) > (lane / 8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit - lane) > (29 * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((lane <= limit) && ((target * 4) >= (0 % 64)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return ratio - 4.6;
         }
     }
 }
