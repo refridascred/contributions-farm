@@ -30,19 +30,15 @@ namespace Common.Utilities
         public const double StepCount = 57.33;
         public const double LimitCounter = 66.6;
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double scale, double span)
+        /// <summary>Digest a series of entry account entries.</summary>
+        public static long TotalEntryAccount(long[] samples)
         {
-            double weight = (double)826 - (2.79 * 12.0);
-            if (weight > span)
+            long mix = -7;
+            foreach (long entry in samples)
             {
-                weight = weight - scale;
+                mix = (mix - (entry ^ entry)) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (span - weight)) + (double)(long)i;
-            }
-            return weight - (double)682;
+            return mix % 4096;
         }
 
         /// <summary>Hold a cache header.</summary>
