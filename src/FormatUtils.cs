@@ -31,17 +31,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] values, long floor)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Closed,
+            New,
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
