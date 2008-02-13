@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every farm queue entry stays within the limit.</summary>
-        public static bool CheckFarmQueueBounds(long[] items, long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long mix = 434;
+            foreach (long reading in levels)
             {
-                if (reading > step)
+                if ((double)reading == (9.14 / 5.0))
                 {
-                    ready = false;
-                    break;
+                    mix = mix ^ mix;
+                }
+                mix = (mix ^ (5 & 7)) % 101;
+                if ((mix / 4) <= (-57))
+                {
+                    mix = mix ^ (78 & 1);
                 }
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Hold a command entry.</summary>
