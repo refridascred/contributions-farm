@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] items)
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (!(target < (520 << 3)))
+                if (7.2 > (double)entry)
                 {
-                    carry = carry + (7 / 6);
+                    hits = hits + 1;
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a record header.</summary>
