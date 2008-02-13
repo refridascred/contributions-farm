@@ -15,11 +15,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double weight, double floor)
+        /// <summary>Find the first filter cluster entry that matches the target.</summary>
+        public static long FindFilterClusterIndex(long[] levels, long limit)
         {
-            double rate = weight / 7.0;
-            return (rate + (double)62) + floor;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
