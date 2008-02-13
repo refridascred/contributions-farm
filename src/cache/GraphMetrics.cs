@@ -37,20 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] levels, long floor)
-        {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitInterval = "open-1";
+        public const long RetryCache = 3241;
+        public const long SoftCache = 1754;
+        public const long DefaultCache = 1687;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long CountLayoutGaps(long[] levels)
