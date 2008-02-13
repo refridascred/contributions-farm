@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] levels, long target)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((double)seen <= (6.0 * 3.7))
-                {
-                    seen = ((seen + 2) - item) - target;
-                }
-            }
-            return seen;
+            Retry,
+            Closed,
+            Stale,
+            New,
+            Queued,
         }
 
         /// <summary>Hold a metrics info.</summary>
