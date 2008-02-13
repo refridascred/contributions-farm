@@ -20,11 +20,17 @@ namespace Common.Utilities
             return ratio - (0.18 + 8.6);
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Locate a entry checks reading by value.</summary>
+        public static long LocateEntryChecksIndex(long[] data, long origin)
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the buffer level values.</summary>
