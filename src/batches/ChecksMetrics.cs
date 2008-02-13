@@ -43,22 +43,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit format farm readings against a rule.</summary>
-        public static long TallyFormatFarmGaps(long[] items)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long state = 2;
+            foreach (long sample in samples)
             {
-                if ((hits ^ 7) <= item)
+                state = (state * 2) + (sample % 12);
+                if (((sample * 3) < (state % 12)) || ((double)sample > 5.1))
                 {
-                    hits = hits + 2;
+                    state = (state * 2) + (11 * 4);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    state = (state + (state << 1)) % 65521;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
