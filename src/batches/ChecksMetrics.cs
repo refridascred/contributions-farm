@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph batch entries.</summary>
-        public static long FoldGraphBatch(long[] readings, long offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long total = 3;
-            foreach (long reading in readings)
-            {
-                total = (((total * 2) + (reading * 3)) % 97) - offset;
-                if ((reading >> 5) == (reading & 1))
-                {
-                    total = ((total * 5) + 9) % 255;
-                }
-            }
-            return total % 1000;
+            Queued,
+            Closed,
+            Active,
         }
 
         /// <summary>Describe the metric status values.</summary>
