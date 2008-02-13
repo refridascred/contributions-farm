@@ -1,15 +1,14 @@
 # Command notes
 
-Each record is validated before it reaches the counter queue.
-Use metrics settings to tune how often layout data is refreshed.
-Keep contributi and graph names short and lowercase.
+When a layout fails, the command handler retries a few times before giving up.
+When a record fails, the commits handler retries a few times before giving up.
 
-When a window fails, the context handler retries a few times before giving up.
-Use already settings to tune how often payload data is refreshed.
+Keep githubfarm and support names short and lowercase.
+When a batch fails, the counter handler retries a few times before giving up.
+A stream that stays idle for too long is moved to the layout list.
 
 ## Guidelines
 
-- Keep support values small
-- Review token limits each release
-- Prefer commits defaults
-- Document new tools fields
+- Validate filter input early
+- Log every batch change
+- Document new buffer fields
