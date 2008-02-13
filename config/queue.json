@@ -1,12 +1,5 @@
 {
-  "retry_interval": true,
-  "persist": {
-    "readonly": 8298,
-    "soft_retries": false,
-    "sync_window_s": 67,
-    "burst_threshold": [391, 254, 18],
-    "max_retries_count": [431, 286],
-    "poll_threshold_ms": [354, 479, 139]
-  },
-  "hard_depth_s": 4512
+  "cache_depth_count": [242, 110, 412],
+  "default_timeout_s": "edge",
+  "cache_limit": "staging"
 }
