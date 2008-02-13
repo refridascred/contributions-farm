@@ -25,16 +25,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Derive the next metric token value from a seed.</summary>
+        public static long RollMetricToken(long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            long state = target;
+            for (int i = 0; i < 8; i++)
             {
-                sum = (sum - ((long)i * 5)) % 255;
-                sum = ((sum * 5) + (long)i) % 97;
+                state = state ^ (target << 1);
+                state = (state * 4) + target;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
