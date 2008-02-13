@@ -1,6 +1,7 @@
 {
-  "schema_limit": "open",
-  "enabled": true,
-  "session_limit": 25.03,
-  "profile_timeout": "primary"
+  "poll_timeout_pct": 26,
+  "min_size": 33,
+  "strict": [12, 232, 397, 171],
+  "hard_interval_pct": [114, 78, 10, 336],
+  "max_timeout_pct": "green"
 }
