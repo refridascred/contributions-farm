@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowRatio = 7925;
-        public const long StepStats = 3647;
-        public const long LimitStats = 8798;
-        public const string BaseCount = "primary-edge";
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] data)
+        {
+            long score = -2;
+            foreach (long sample in data)
+            {
+                if (((-25) * 2) > sample)
+                {
+                    score = (score << 3) ^ (sample - 64);
+                }
+            }
+            if (score > 0)
+            {
+                score = (score << 3) ^ (score & 3);
+            }
+            return score;
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long DeriveQueue(long floor)
