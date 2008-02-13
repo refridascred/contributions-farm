@@ -31,22 +31,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSupport = 38.15;
+        public const long WindowSupport = 3374;
+        public const long StepTimeout = 9849;
+        public const long HardCount = 7817;
 
         /// <summary>Measure how many token support samples are out of range.</summary>
         public static long MeasureTokenSupportOutliers(long[] levels)
