@@ -1,9 +1,5 @@
 {
-  "base_limit_pct": true,
-  "flush_retries_count": {
-    "poll_ratio_pct": true,
-    "githubfarm_limit": [414, 211],
-    "hard_capacity_s": 70.72
-  },
-  "burst_delay": 34.3
+  "session_depth": 1586,
+  "soft_window": "cached",
+  "persist": "primary"
 }
