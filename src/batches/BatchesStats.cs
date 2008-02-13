@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long origin, long floor)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public long Label { get; set; }
+            long offset = origin - floor;
+            if (!((offset + origin) > offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin ^ origin) >= (offset ^ offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((6.76 * 0.29) >= (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset & 127) != (offset & 7))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
