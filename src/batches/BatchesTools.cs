@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 6931;
-        public const long StepBatch = 6791;
-        public const string DefaultFactor = "open-v2";
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] readings, long offset)
+        {
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long WeighRoute(long[] samples)
