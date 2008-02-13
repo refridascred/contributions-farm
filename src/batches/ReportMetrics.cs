@@ -49,11 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] samples)
         {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (!((datum << 2) > (datum & 127)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
