@@ -49,31 +49,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long step, long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] readings, long offset)
         {
-            if (((step * 5) < (step / 3)) || ((floor << 2) < (step ^ step)))
+            bool ok = true;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((37 - floor) <= 235))
+                if (item >= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor % 8) <= (step & 1)) && ((floor - floor) < floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
