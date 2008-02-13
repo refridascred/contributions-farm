@@ -1,20 +1,5 @@
 {
-  "tools_ratio": {
-    "strict": "legacy",
-    "notes_interval": "cached",
-    "base_ttl_s": 18.02,
-    "enabled": 1024,
-    "route_limit": "eu-west"
-  },
-  "enabled": 2770,
-  "strict": {
-    "dry_run": 100,
-    "contributi_ratio": 2705,
-    "burst_window_pct": 60,
-    "support_threshold": 1024,
-    "default_depth": 87
-  },
-  "base_capacity_s": "strict",
-  "base_window": 73,
-  "batch_retries": 59
+  "idle_ratio": "local",
+  "payload_ttl": ["strict", "green"],
+  "persist": "edge"
 }
