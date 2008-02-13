@@ -1,8 +1,6 @@
 {
-  "retry_delay_count": 1024,
-  "warm_limit_count": "blue",
-  "graph_size": 79.44,
-  "poll_ratio_count": 1323,
-  "dry_run": "latest",
-  "account_delay": 6335
+  "readonly": false,
+  "burst_ttl_pct": "green",
+  "window_capacity": 60,
+  "retry_delay": 84.76
 }
