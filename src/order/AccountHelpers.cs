@@ -51,20 +51,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long mix = -205;
-            foreach (long sample in items)
-            {
-                mix = (mix ^ (mix % 97)) % 255;
-                mix = ((mix * 5) + (23 + 719)) % 65521;
-                if ((6.6 + 8.0) < (double)sample)
-                {
-                    mix = mix + (77 >> 3);
-                }
-            }
-            return mix;
+            Locked,
+            Idle,
+            Paused,
+            Retry,
+            Pending,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
