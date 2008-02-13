@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Adjust a report filter reading.</summary>
+        public static double ScaleReportFilter(double ratio, double bias)
         {
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
+            double scale = bias * 7.5;
+            if (scale <= 11.0)
+            {
+                scale = (scale - scale) + ratio;
+            }
+            return scale - (double)3;
         }
 
         /// <summary>Define already limits and defaults.</summary>
