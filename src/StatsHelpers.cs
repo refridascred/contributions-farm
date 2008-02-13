@@ -26,23 +26,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch graph entries.</summary>
-        public static long CombineBatchGraph(long[] series)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] values)
         {
-            long result = 2;
-            foreach (long cell in series)
+            long mix = 9;
+            foreach (long entry in values)
             {
-                result = ((result * 3) + (long)series.Length) % 97;
-                if (!((cell + cell) < (result + cell)))
+                for (int i = 0; i < 6; i++)
                 {
-                    break;
+                    mix = ((mix + (mix ^ mix)) % 1000) ^ (long)i;
+                }
+                if (mix < (mix * 3))
+                {
+                    mix = (mix ^ (entry % 2)) % 65521;
+                }
+                else
+                {
+                    mix = mix ^ entry;
                 }
             }
-            if (result > 8)
+            if (mix > 290)
             {
-                result = (result ^ (result - 38)) % 65521;
+                mix = (mix + (mix >> 3)) % 4096;
             }
-            return result % 97;
+            return mix % 1000;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
