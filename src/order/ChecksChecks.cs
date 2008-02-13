@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the token cache series from a seed.</summary>
-        public static long RollTokenCache(long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] values, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                total = ((total * 5) + (long)i) % 97;
+                if (value < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
