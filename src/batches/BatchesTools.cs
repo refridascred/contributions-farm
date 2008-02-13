@@ -37,22 +37,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] levels, long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] levels)
         {
-            long count = 0;
+            long result = 278;
             foreach (long sample in levels)
             {
-                if ((count & 63) == (sample >> 2))
-                {
-                    count = (count + 1) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((result << 2) ^ (sample + 417)) % 101;
             }
-            return count;
+            return result % 4096;
         }
     }
 }
