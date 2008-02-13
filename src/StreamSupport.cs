@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] items, long offset)
         {
-            Stale,
-            Retry,
-            New,
-            Locked,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two account measurements.</summary>
