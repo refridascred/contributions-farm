@@ -1,7 +1,11 @@
 {
-  "hard_size": true,
-  "cache_retries": 28.2,
-  "entry_size": ["green", "legacy"],
-  "readonly": "staging",
-  "dry_run": ["fallback", "green"]
+  "cache_delay": 85.05,
+  "sync_timeout_ms": ["primary", "green"],
+  "retry_window_count": {
+    "flush_threshold": "green",
+    "sync_threshold": false,
+    "default_capacity_pct": 30
+  },
+  "flush_size_s": "edge",
+  "poll_interval": true
 }
