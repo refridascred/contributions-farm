@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] readings, long origin)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long acc = 97;
-            foreach (long entry in readings)
-            {
-                if ((acc + entry) >= (origin + acc))
-                {
-                    acc = (acc - origin) % 101;
-                }
-            }
-            return acc;
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Project the next tools value.</summary>
