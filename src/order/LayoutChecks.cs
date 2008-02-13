@@ -54,12 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 2107;
-        public const double WindowSize = 24.9;
-        public const long CacheEntry = 6547;
-        public const long MinEntry = 1805;
-        public const long LimitEntry = 6144;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (hits <= (4 & 7))
+                {
+                    hits = (hits + 3) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long CountGithubfarmHits(long[] readings, long limit)
