@@ -25,20 +25,17 @@ namespace Common.Utilities
         public const long MinProfile = 6771;
         public const long RetryInterval = 5394;
 
-        /// <summary>Roll a account queue counter forward.</summary>
-        public static long IterateAccountQueue(long target)
+        /// <summary>Find the first counter metrics entry that matches the target.</summary>
+        public static long LocateCounterMetricsIndex(long[] series, long limit)
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)target != (double)39)
+                if (series[i] > limit)
                 {
-                    state = ((state * 2) + (6 >> 3)) % 1000;
-                    break;
+                    return (long)i;
                 }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
     }
 }
