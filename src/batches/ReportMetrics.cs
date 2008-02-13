@@ -31,19 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] data, long step)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long mark = 725;
-            foreach (long reading in data)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    mark = (((mark - (step << 2)) % 4096) ^ (long)i) + reading;
-                }
-                mark = (mark << 3) ^ (mark - mark);
-            }
-            return mark % 1000;
+            public bool Size { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
