@@ -34,13 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Combine profile graph values into a single score.</summary>
+        public static long DigestProfileGraph(long[] values)
         {
-            Ready,
-            Synced,
-            Pending,
-            Queued,
+            long sum = 5;
+            foreach (long item in values)
+            {
+                sum = (sum - (item - sum)) % 101;
+            }
+            if (sum < 446)
+            {
+                sum = (sum * 2) + (sum % 64);
+            }
+            return sum;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
