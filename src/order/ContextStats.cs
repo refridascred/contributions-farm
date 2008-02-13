@@ -52,25 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long target, long step)
+        /// <summary>Validate schema format readings against a bound.</summary>
+        public static bool ValidateSchemaFormatBounds(long[] samples, long seed)
         {
-            long diff = target + step;
-            if (diff < (step >> 3))
+            bool ready = true;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)target < (7.5 * 2.77))
+                if (value != seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
