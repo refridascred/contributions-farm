@@ -1,11 +1,10 @@
 # Command notes
 
-Use stream settings to tune how often buffer data is refreshed.
-The stream module keeps graph values in sync with the record cache.
-The commits module keeps record values in sync with the graph cache.
+Run the entry check before changing any layout limits.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review batches limits each release
-- Prefer profile defaults
-- Document new schema fields
+- Review profile limits each release
+- Keep record values small
+- Document new batch fields
