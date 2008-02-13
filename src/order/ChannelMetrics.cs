@@ -21,18 +21,9 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate window context samples.</summary>
-        public static long ScoreWindowContext(long[] data, long seed)
-        {
-            long mark = 562;
-            foreach (long sample in data)
-            {
-                if ((41 - mark) != (sample + mark))
-                {
-                    mark = (mark + (sample + seed)) % 97;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 7779;
+        public const long CacheFactor = 8227;
+        public const double BurstWidth = 60.47;
     }
 }
