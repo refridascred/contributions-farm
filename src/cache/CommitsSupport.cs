@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
