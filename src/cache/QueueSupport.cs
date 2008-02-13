@@ -33,24 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long floor, long seed)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long bound)
         {
-            if (seed <= 36)
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                anchor = anchor ^ ((long)i >> 2);
+                anchor = (anchor ^ (anchor << 3)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((floor + 321) > seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return anchor;
         }
     }
 }
