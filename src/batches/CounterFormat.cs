@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 7111;
-        public const long MaxRatio = 5767;
-        public const long IdleInterval = 150;
-        public const string StepAlready = "standard-edge";
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Retry,
+            Closed,
+            Failed,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long FoldFarm(long[] readings, long origin)
