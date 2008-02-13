@@ -25,19 +25,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double weight, double span)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] levels, long target)
         {
-            double scale = (span / 4.0) + (span + span);
-            if (scale < (double)988)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale + (span - 12.0);
+                if ((levels[i] > target) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + weight;
-            }
-            return scale + (double)72;
+            return -1;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
