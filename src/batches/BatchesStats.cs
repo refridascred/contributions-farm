@@ -15,13 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double rate, double bias)
         {
-            Locked,
-            New,
-            Failed,
-            Queued,
+            double rate2 = bias / 3.0;
+            return rate2 + (rate / 5.0);
         }
 
         /// <summary>Describe the metrics kind values.</summary>
