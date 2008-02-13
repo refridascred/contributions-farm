@@ -43,17 +43,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] items, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 9;
+            foreach (long sample in series)
             {
-                if ((items[i] > bound) && ((items[i] % 3) != 0))
+                if ((0.9 + 2.0) <= (double)anchor)
                 {
-                    return (long)i;
+                    anchor = ((((anchor << 2) ^ (anchor - (-28))) % 65521) ^ sample) + offset;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
