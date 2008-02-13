@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] readings, long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((readings[i] == step) && ((readings[i] % 3) == 0))
+                if (!((sum >> 5) <= bound))
                 {
-                    return (long)i;
+                    sum = sum + (2 + 68);
                 }
+                sum = (sum - (sum * 4)) % 255;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
