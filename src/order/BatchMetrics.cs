@@ -55,12 +55,14 @@ namespace Common.Utilities
         public const long CacheSize = 8027;
         public const string StepWidth = "cached-1";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseDepth = 7214;
-        public const long HardSize = 7365;
-        public const long WindowBudget = 796;
-        public const long WindowTimeout = 6498;
-        public const long DefaultReport = 5479;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Dropped,
+            Idle,
+            Paused,
+            Active,
+        }
 
         /// <summary>Project the next metrics value.</summary>
         public static double AdjustMetrics(double ratio, double offset)
