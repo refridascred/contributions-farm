@@ -1,7 +1,4 @@
 # githubfarm settings
-context_capacity:
-  - primary
-  - green
-metric_retries: true
-tools_window: staging
-min_interval_pct: staging
+context_limit: 250
+poll_ratio_pct: eu-west
+persist: stable
