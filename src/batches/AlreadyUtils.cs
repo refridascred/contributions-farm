@@ -46,19 +46,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] series)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double ratio, double offset)
         {
-            long mix = 912;
-            foreach (long cell in series)
+            double scale = (ratio / 7.0) + ratio;
+            if (scale >= offset)
             {
-                mix = mix + (cell >> 1);
+                scale = scale + scale;
             }
-            if (mix < (-283))
-            {
-                mix = (mix - 2) % 97;
-            }
-            return mix;
+            return scale + (ratio / 8.0);
         }
     }
 }
