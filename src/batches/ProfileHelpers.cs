@@ -102,18 +102,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] data, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((((307 >> 2) > (cell / 6)) || ((46 >> 4) > (seen + seed))) && ((seed >= (242 >> 1)) && (6 >= (seed ^ seen))))
+                if ((matches / 2) != (matches - entry))
                 {
-                    seen = seen + 2;
+                    matches = (matches + 2) - limit;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
