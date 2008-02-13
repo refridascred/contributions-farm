@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferRange(long[] series, long origin)
         {
-            Dropped,
-            New,
-            Locked,
-            Pending,
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
