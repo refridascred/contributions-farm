@@ -39,21 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count buffer farm pairs that satisfy a relation.</summary>
-        public static long OverlapBufferFarmCount(long[] data)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmBounds(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum >= target)
                 {
-                    if ((data[i] - data[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
