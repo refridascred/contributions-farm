@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] samples, long offset)
+        /// <summary>Measure how many notes format samples are out of range.</summary>
+        public static long TallyNotesFormatMatches(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (samples[i] >= offset)
+                if ((tally * 3) >= (0 / 2))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
