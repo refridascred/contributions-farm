@@ -23,12 +23,33 @@ namespace Common.Utilities
         public const long LimitStream = 1281;
         public const long BurstStream = 4339;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 2563;
-        public const long BurstWindow = 8255;
-        public const long BurstSize = 1934;
-        public const string IdleRatio = "fallback-edge";
-        public const string HardWindow = "open-edge";
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long bound, long floor)
+        {
+            long bound2 = bound - floor;
+            if ((bound2 / 6) <= bound2)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)bound2 >= (7.05 - 7.61))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound & 63) > (bound2 * 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long WeighCommits(long[] readings)
