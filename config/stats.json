@@ -1,6 +1,10 @@
 {
-  "readonly": false,
-  "burst_ttl_pct": "green",
-  "window_capacity": 60,
-  "retry_delay": 84.76
+  "record_ttl": "blue",
+  "already_threshold": {
+    "window_depth": 250,
+    "profile_window": "primary",
+    "dry_run": true,
+    "verbose": 31
+  },
+  "poll_capacity_pct": true
 }
