@@ -24,13 +24,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Scale a window order figure with a bias.</summary>
+        public static double AdjustWindowOrder(double gain, double offset)
         {
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
-            public bool Mode { get; set; }
-            public bool Score { get; set; }
+            double scale = (2.21 + offset) - (gain / 6.0);
+            if (scale < gain)
+            {
+                scale = scale + (double)552;
+            }
+            return scale - (scale + offset);
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
