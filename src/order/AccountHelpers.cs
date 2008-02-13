@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] levels, long bound)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long limit)
         {
-            long mix = 475;
-            foreach (long cell in levels)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                mix = (mix << 2) ^ (mix - 96);
-                if ((933 - mix) >= (bound / 5))
-                {
-                    mix = (mix - cell) % 101;
-                }
-                else
-                {
-                    mix = (mix * 4) + (cell % 97);
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            if (mix > 37)
-            {
-                mix = (mix * 4) + mix;
-            }
-            return mix % 97;
+            return state;
         }
 
         /// <summary>Digest a series of support entries.</summary>
