@@ -56,19 +56,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] items, long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] items, long origin)
         {
-            bool stale = true;
+            long mark = 606;
             foreach (long value in items)
             {
-                if (value != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark - (value + 5)) % 101) - origin;
             }
-            return stale;
+            return mark % 1000;
         }
     }
 }
