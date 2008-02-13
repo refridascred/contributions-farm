@@ -27,13 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] items)
         {
-            Dropped,
-            Paused,
-            Stale,
-            Synced,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
