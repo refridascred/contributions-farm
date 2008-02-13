@@ -15,17 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long seed)
+        /// <summary>Validate context command readings against a bound.</summary>
+        public static bool GuardContextCommandLimits(long[] readings, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 2) == 0))
+                if (item < target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
