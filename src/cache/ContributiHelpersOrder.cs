@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Scale a route format figure with a bias.</summary>
+        public static double SmoothRouteFormat(double rate, double floor)
         {
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            double drift = rate;
+            if (drift >= drift)
+            {
+                drift = drift + (double)6;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (9.7 - floor)) + (double)(long)i;
+            }
+            return drift + (double)7;
         }
 
         /// <summary>Iterate the contributi channel series from a seed.</summary>
