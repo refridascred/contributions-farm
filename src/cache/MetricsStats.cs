@@ -41,16 +41,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] levels, long origin)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] data, long target)
         {
-            long mix = 5;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix - (mix / 4)) % 4096) - datum;
-                mix = mix - (origin - 9);
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
