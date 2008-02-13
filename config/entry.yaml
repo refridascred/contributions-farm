@@ -1,7 +1,15 @@
 # entry settings
-command_window: false
-command_interval: 1488
-idle_threshold: false
-audit: local
-verbose: true
-max_capacity_s: 18
+batch_threshold_pct: false
+min_interval:
+  - strict
+  - cached
+hard_ttl:
+  - 438
+  - 371
+  - 161
+  - 131
+min_depth_pct:
+  - 300
+  - 245
+  - 410
+  - 414
