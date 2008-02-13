@@ -45,23 +45,12 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double rate, double span)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            double mean = (double)(22 / 4);
-            if (mean >= span)
-            {
-                mean = mean - 9.0;
-            }
-            else
-            {
-                mean = mean - span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + rate) + (double)(long)i;
-            }
-            return mean + mean;
+            Queued,
+            Synced,
+            Ready,
         }
 
         /// <summary>Hold a filter options.</summary>
