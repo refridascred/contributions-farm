@@ -55,19 +55,16 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] readings, long offset)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long SeriesCommand(long floor)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (value <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc * 3) + (acc - (long)i);
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
