@@ -48,18 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] values, long target)
+        /// <summary>Accumulate format layout samples.</summary>
+        public static long CombineFormatLayout(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long mark = 93;
+            foreach (long entry in readings)
             {
-                if (!(((double)count != (20.0 - 0.2)) && ((datum - count) >= count)))
+                if ((entry << 2) <= mark)
                 {
-                    count = (count + 1) - target;
+                    mark = mark + mark;
                 }
             }
-            return count;
+            if (mark > 4)
+            {
+                mark = (mark ^ (mark & 31)) % 4096;
+            }
+            return mark % 65521;
         }
     }
 }
