@@ -32,11 +32,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinPayload = "standard-edge";
-        public const double DefaultSize = 53.41;
-        public const long MaxPayload = 4855;
-        public const long HardPayload = 1099;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesBounds(long[] series, long step)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long LimitMetrics = 6694;
