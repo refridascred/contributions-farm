@@ -31,12 +31,9 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Retry,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchScore = 9886;
+        public const string BaseBudget = "fallback-1";
+        public const double BatchChannel = 1.43;
     }
 }
