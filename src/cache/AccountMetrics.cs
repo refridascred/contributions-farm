@@ -12,14 +12,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Ready,
-            New,
-            Queued,
-            Closed,
-            Paused,
+            Retry,
+            Failed,
+            Dropped,
+            Synced,
+            Stale,
         }
 
         /// <summary>Adjust a batches reading.</summary>
