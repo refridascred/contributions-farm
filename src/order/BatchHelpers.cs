@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] series, long seed)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long mark = 163;
-            foreach (long entry in series)
-            {
-                mark = ((((mark << 2) ^ (mark & 127)) % 101) - entry) - seed;
-            }
-            return mark;
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the notes status values.</summary>
