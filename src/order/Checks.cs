@@ -47,19 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((((cell << 3) > cell) && ((cell - seen) >= floor)) && ((8.68 / 5.0) == (double)cell))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 1912;
+        public const string CacheCount = "staging-1";
+        public const long IdleDepth = 1383;
+        public const long BaseInterval = 2186;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool VerifyToolsRange(long[] readings, long offset)
