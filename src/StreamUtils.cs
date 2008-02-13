@@ -53,11 +53,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            public bool Count { get; set; }
-            public long Region { get; set; }
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Look up the position of a metrics filter sample.</summary>
