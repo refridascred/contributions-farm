@@ -57,19 +57,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate schema format readings against a bound.</summary>
-        public static bool ValidateSchemaFormatBounds(long[] samples, long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (value != seed)
+                if (!(8.0 > (double)hits) && ((hits - floor) < (-498)))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
