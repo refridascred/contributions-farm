@@ -74,19 +74,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] data, long target)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Retry,
+            Idle,
+            Synced,
+            Paused,
         }
     }
 }
