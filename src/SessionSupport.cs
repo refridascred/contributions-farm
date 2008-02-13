@@ -24,20 +24,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] values)
         {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                acc = (acc + offset) % 4096;
-                if (acc < (1 + acc))
+                if (7.32 < (double)datum)
                 {
-                    continue;
+                    tally = tally + 2;
                 }
-                acc = ((acc * 4) + (long)i) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
