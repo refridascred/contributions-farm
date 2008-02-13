@@ -26,39 +26,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long limit, long floor)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long prev = limit - floor;
-            if (((68 * 5) == (limit ^ floor)) || ((floor % 8) < 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if (20.0 >= (double)prev)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit >= 0.6)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((floor / 2) >= (limit & 1)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a filter stats.</summary>
