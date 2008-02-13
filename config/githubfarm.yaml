@@ -1,10 +1,10 @@
 # githubfarm settings
-context_limit: 100
-poll_capacity_count: 250
-metric_window:
-  - latest
-  - legacy
-  - edge
-  - strict
-compress: 4207
-checks_depth: false
+burst_limit: 60
+dry_run: 5711
+enabled: open
+poll_retries_ms: stable
+idle_ttl_count:
+  hard_window_pct: open
+  dry_run: 51.0
+  soft_size: 4781
+  base_interval_ms: 88
