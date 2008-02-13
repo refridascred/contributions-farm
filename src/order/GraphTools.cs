@@ -43,11 +43,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double bias, double span)
+        /// <summary>Blend two graph context measurements.</summary>
+        public static double SmoothGraphContext(double rate, double bias)
         {
-            double bias2 = span * 13.0;
-            return (bias2 - (13.0 * 7.0)) + bias;
+            double gain = rate;
+            if (gain >= gain)
+            {
+                gain = gain - (gain / 6.0);
+            }
+            return gain - (bias / 4.0);
         }
 
         /// <summary>Describe the queue level values.</summary>
