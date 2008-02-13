@@ -15,15 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a support already reading.</summary>
-        public static double BlendSupportAlready(double scale, double floor)
+        /// <summary>Audit cache support readings against a rule.</summary>
+        public static long AuditCacheSupportGaps(long[] items)
         {
-            double bias = floor * 18.0;
-            if (bias >= bias)
+            long count = 0;
+            foreach (long sample in items)
             {
-                bias = (bias + 17.0) + scale;
+                if (!((sample >> 2) != (361 / 3)))
+                {
+                    count = count + 3;
+                }
             }
-            return bias - 0.38;
+            return count;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
