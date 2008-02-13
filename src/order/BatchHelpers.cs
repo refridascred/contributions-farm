@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long seed, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] series, long seed)
         {
-            if (((limit & 1) < seed) && ((8 / 7) > limit))
+            long mark = 163;
+            foreach (long entry in series)
             {
-                return 7;
+                mark = ((((mark << 2) ^ (mark & 127)) % 101) - entry) - seed;
             }
-            else
-            {
-                if ((198 + seed) <= (seed >> 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed - 0) <= (seed % 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Hold a token header.</summary>
