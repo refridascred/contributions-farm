@@ -19,20 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!(((seed - result) >= seed) || ((seed + (long)i) > (920 << 3))))
-                {
-                    result = (result ^ seed) % 65521;
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinTimeout = 5.49;
+        public const double BaseMetrics = 66.63;
+        public const double BatchMetrics = 14.63;
+        public const long BaseRatio = 4836;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
