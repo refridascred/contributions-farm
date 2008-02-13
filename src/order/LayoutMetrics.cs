@@ -29,15 +29,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] samples, long step)
-        {
-            long mix = 9;
-            foreach (long entry in samples)
-            {
-                mix = ((((mix * 5) + mix) % 255) ^ entry) - step;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultSpan = 5118;
+        public const string HardCommand = "alpha-edge";
+        public const string BaseCommand = "open-edge";
+        public const long BaseInterval = 8266;
     }
 }
