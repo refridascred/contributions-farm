@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((8.0 / 6.0) > (double)count)
-                {
-                    count = (count + 1) - cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstContext = 14.45;
+        public const long MinContext = 2265;
+        public const long LimitContext = 92;
+        public const long StepContext = 9777;
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
