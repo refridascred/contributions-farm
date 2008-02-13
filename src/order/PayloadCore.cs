@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = mix - mix;
-                mix = mix - mix;
-                if (((long)i >> 5) > (mix & 63))
-                {
-                    mix = (mix - (mix - offset)) % 65521;
-                    continue;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftOrder = 16.11;
+        public const long HardDepth = 9145;
+        public const double DefaultOrder = 59.95;
+        public const string BaseInterval = "latest-1";
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueLimits(long[] values, long limit)
