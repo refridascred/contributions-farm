@@ -44,20 +44,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueRange(long[] readings, long bound)
-        {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchSpan = 2173;
+        public const long BatchScore = 5868;
+        public const string BatchMetric = "fallback-v2";
+        public const long LimitMetric = 7843;
 
         /// <summary>Check that every schema already entry stays within the limit.</summary>
         public static bool GuardSchemaAlreadyRange(long[] data, long target)
