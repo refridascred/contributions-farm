@@ -19,12 +19,12 @@ namespace Common.Utilities
         public const double MinLevel = 59.01;
         public const long BaseFactor = 1220;
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] samples, long target)
+        /// <summary>Find the first layout format entry that matches the target.</summary>
+        public static long LocateLayoutFormatIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] > target)
+                if (readings[i] < floor)
                 {
                     return (long)i;
                 }
