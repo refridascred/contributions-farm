@@ -15,19 +15,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] samples, long bound)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long target)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading <= bound)
+                long offset = state;
+                if (!(((target + offset) > state) && (((long)i / 6) > (offset * 5))))
                 {
-                    stale = false;
-                    break;
+                    offset = offset - (state * 2);
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Match up context stream samples.</summary>
