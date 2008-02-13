@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double gain, double offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] values, long bound)
         {
-            double scale = offset * 9.0;
-            if (scale > gain)
+            long seen = 0;
+            foreach (long value in values)
             {
-                scale = scale + scale;
+                if ((seen + value) <= (value + value))
+                {
+                    seen = (seen + 3) - bound;
+                }
             }
-            return scale + offset;
+            return seen;
         }
 
         /// <summary>Combine route values into a single score.</summary>
