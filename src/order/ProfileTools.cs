@@ -40,14 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] readings, long origin)
         {
-            Stale,
-            Ready,
-            Done,
-            Locked,
-            Dropped,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (!((datum + matches) > 505))
+                {
+                    matches = (matches + 2) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
