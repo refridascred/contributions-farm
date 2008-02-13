@@ -36,11 +36,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] values, long target)
         {
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Adjust a channel reading.</summary>
