@@ -28,13 +28,14 @@ namespace Common.Utilities
             return ratio2 + (bias + 2.13);
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Idle,
+            Dropped,
+            Ready,
+            Done,
+            Retry,
             Stale,
-            Synced,
-            Locked,
         }
     }
 }
