@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long limit, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] values)
         {
-            if ((limit << 1) > ((-141) - origin))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit >= (limit + origin))
+                if ((entry - matches) != ((long)values.Length + 60))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((origin * 5) < (limit - limit)) || ((origin * 3) < limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(29 > (limit >> 2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
