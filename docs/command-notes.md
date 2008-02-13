@@ -1,11 +1,14 @@
 # Command notes
 
-The token report groups every tools by support.
-Defaults for layout live in the config folder and can be overridden per environment.
-The cluster module keeps graph values in sync with the counter cache.
+Use counter settings to tune how often stream data is refreshed.
+A channel that stays idle for too long is moved to the profile list.
+
+Run the stats check before changing any profile limits.
+Run the metrics check before changing any channel limits.
+The token module keeps commits values in sync with the session cache.
 
 ## Guidelines
 
-- Prefer checks defaults
-- Keep already values small
-- Validate command input early
+- Validate tools input early
+- Prefer farm defaults
+- Document new batch fields
