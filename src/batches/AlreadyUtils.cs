@@ -64,19 +64,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a queue layout figure with a bias.</summary>
-        public static double SmoothQueueLayout(double rate, double span)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double scale, double span)
         {
-            double mean = 0.57;
-            if (mean <= 7.0)
+            double bias = (scale - span) / 7.0;
+            for (int i = 0; i < 3; i++)
             {
-                mean = ((mean + (mean * 5.4)) + rate) + span;
+                bias = (bias + (span / 3.0)) + (double)(long)i;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - (double)58;
+            return bias - (double)9;
         }
     }
 }
