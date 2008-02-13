@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long MaxDepth = 3460;
         public const long BaseDepth = 168;
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public string Mode { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstLevel = 20.48;
+        public const long DefaultFactor = 8299;
+        public const double MaxSpan = 53.52;
+        public const long LimitBatches = 9749;
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
