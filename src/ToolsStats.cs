@@ -28,38 +28,17 @@ namespace Common.Utilities
         public const long LimitWindow = 590;
         public const long StepWindow = 1907;
 
-        /// <summary>Classify a record command pair into a bucket.</summary>
-        public static long RankRecordCommand(long seed, long offset)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] samples, long bound)
         {
-            if ((seed - seed) >= (seed % 97))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed < (seed << 2))
+                if ((samples[i] > bound) && ((samples[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.94 - 12.0) != (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((seed ^ 57) <= 0) && (offset <= (seed + offset)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
