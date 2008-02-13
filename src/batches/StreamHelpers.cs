@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (score << 3) ^ ((long)i & 31);
+                score = (score - ((long)i << 1)) % 1000;
+                score = (score - (score + 400)) % 1000;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Blend two entry githubfarm measurements.</summary>
