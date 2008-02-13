@@ -57,11 +57,13 @@ namespace Common.Utilities
         public const long WindowTimeout = 6498;
         public const long DefaultReport = 5479;
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
