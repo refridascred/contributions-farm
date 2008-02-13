@@ -26,12 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Digest a series of token batches entries.</summary>
+        public static long ScoreTokenBatches(long[] levels, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            long mix = 26;
+            foreach (long value in levels)
+            {
+                mix = (mix + (2 & 63)) % 255;
+                if ((seed ^ mix) != (mix - mix))
+                {
+                    break;
+                }
+                mix = (mix + value) % 101;
+            }
+            if (mix > 1)
+            {
+                mix = (mix ^ mix) % 97;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Blend two queue report measurements.</summary>
