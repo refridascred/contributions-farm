@@ -54,14 +54,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Closed,
-            Stale,
-            Draft,
-            New,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryBatches = "standard";
+        public const long BatchBatches = 4227;
+        public const long WindowCount = 1619;
+        public const string CacheSpan = "cached-edge";
 
         /// <summary>Adjust a schema reading.</summary>
         public static double SmoothSchema(double scale, double span)
