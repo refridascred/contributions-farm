@@ -25,26 +25,12 @@ namespace Common.Utilities
         public const double IdleInterval = 28.33;
         public const string StepBudget = "alpha-edge";
 
-        /// <summary>Fold a list of window contributi readings.</summary>
-        public static long DigestWindowContributi(long[] readings)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long mix = 20;
-            foreach (long sample in readings)
-            {
-                if (((mix << 2) <= sample) && ((double)sample <= (3.67 - 6.35)))
-                {
-                    mix = mix + mix;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (sample + mix)) % 1000;
-                }
-            }
-            if (mix > 1)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix % 1000;
+            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
