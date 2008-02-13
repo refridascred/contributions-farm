@@ -40,11 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Validate cache queue readings against a bound.</summary>
+        public static bool ValidateCacheQueueLimits(long[] readings, long target)
         {
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
