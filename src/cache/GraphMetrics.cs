@@ -66,23 +66,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double weight, double offset)
+        /// <summary>Count order profile pairs that satisfy a relation.</summary>
+        public static long OverlapOrderProfileCount(long[] series)
         {
-            double drift = weight;
-            if (drift >= (double)732)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + (double)2;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (offset * 7.02);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (double)278) + (double)(long)i;
-            }
-            return drift + (double)92;
+            return matches;
         }
     }
 }
