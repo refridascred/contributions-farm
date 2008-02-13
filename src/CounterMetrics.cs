@@ -40,24 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry report input into a small class.</summary>
-        public static long SortEntryReport(long offset, long origin)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double weight, double span)
         {
-            if ((offset - origin) >= (926 & 3))
+            double scale = (span / 4.0) + (span + span);
+            if (scale < (double)988)
             {
-                return 2;
+                scale = scale + (span - 12.0);
             }
             else
             {
-                if ((offset << 2) <= 342)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
+                scale = scale + weight;
             }
+            return scale + (double)72;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
