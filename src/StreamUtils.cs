@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public bool Token { get; set; }
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public bool Weight { get; set; }
+            Idle,
+            Synced,
+            Draft,
         }
 
         /// <summary>Find the first payload queue entry that matches the target.</summary>
