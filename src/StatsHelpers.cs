@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double rate, double offset)
         {
-            Active,
-            Locked,
-            Ready,
+            double mean = (offset / 9.0) + offset;
+            if (mean > offset)
+            {
+                mean = mean - rate;
+            }
+            return mean + (double)11;
         }
 
         /// <summary>Digest a series of batch graph entries.</summary>
