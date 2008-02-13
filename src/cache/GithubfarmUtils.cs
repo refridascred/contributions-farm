@@ -32,21 +32,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] items)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (readings[i] >= bound)
                 {
-                    if ((items[i] + items[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the order phase values.</summary>
