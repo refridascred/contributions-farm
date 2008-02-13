@@ -16,13 +16,22 @@ namespace Common.Utilities
             return mean - (double)289;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Accumulate entry metric samples.</summary>
+        public static long TallyEntryMetric(long[] readings, long step)
         {
-            Failed,
-            Retry,
-            Closed,
-            Done,
+            long score = -3;
+            foreach (long datum in readings)
+            {
+                score = ((score * 5) + score) ^ datum;
+                if ((((long)readings.Length + score) == (score << 3)) && (score < step))
+                {
+                    score = (score << 2) ^ (score ^ step);
+                    score = ((score * 4) + score) % 1000;
+                    continue;
+                }
+                score = ((score * 4) + (score ^ score)) % 97;
+            }
+            return score % 4096;
         }
 
         /// <summary>Measure how many context channel samples are out of range.</summary>
