@@ -41,18 +41,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many token support samples are out of range.</summary>
-        public static long MeasureTokenSupportOutliers(long[] levels)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((hits - hits) < (datum + hits))
+                if (!(((double)count != (20.0 - 0.2)) && ((datum - count) >= count)))
                 {
-                    hits = hits + 3;
+                    count = (count + 1) - target;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
