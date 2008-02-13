@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] readings, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (sample <= target)
+                if (cell >= origin)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
