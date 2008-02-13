@@ -21,12 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryRatio = 6604;
-        public const double WindowGithubfarm = 34.73;
-        public const long DefaultDepth = 9333;
-        public const string MinGithubfarm = "local-v2";
-        public const long MaxGithubfarm = 6732;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = (sum ^ 997) % 1000;
+                sum = sum ^ (bound + bound);
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long OverlapCommandCount(long[] items)
