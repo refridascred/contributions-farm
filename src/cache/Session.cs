@@ -52,10 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftSize = 45.04;
-        public const long BaseSchema = 1071;
-        public const long LimitSchema = 6337;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] values, long offset)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (sample >= 45)
+                {
+                    tally = (tally + 2) - offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine account payload values into a single score.</summary>
         public static long TotalAccountPayload(long[] samples)
