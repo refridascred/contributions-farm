@@ -29,17 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] samples, long limit)
+        /// <summary>Check that every payload batch entry stays within the limit.</summary>
+        public static bool ValidatePayloadBatchBounds(long[] series, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if (samples[i] >= limit)
+                if (datum > target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
