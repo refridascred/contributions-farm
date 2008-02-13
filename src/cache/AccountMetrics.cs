@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch order entry stays within the limit.</summary>
-        public static bool CheckBatchOrderRange(long[] levels, long limit)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double gain, double bias)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            double rate = (gain - bias) / 4.0;
+            if (rate < (gain + rate))
             {
-                if (item > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate + (rate - rate);
             }
-            return ok;
+            return rate - (gain / 8.0);
         }
 
         /// <summary>Combine checks values into a single score.</summary>
