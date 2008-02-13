@@ -22,19 +22,39 @@ namespace Common.Utilities
         public const double StepCount = 57.33;
         public const double LimitCounter = 66.6;
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double rate, double offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long offset, long seed)
         {
-            double mean = offset;
-            if (mean > mean)
+            long delta = offset ^ seed;
+            if ((delta * 5) >= (delta - offset))
             {
-                mean = (mean - mean) - rate;
+                return 5;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                mean = (mean - (offset / 4.0)) + (double)(long)i;
+                if ((454 >= (delta ^ delta)) && ((seed - 6) >= (seed + offset)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((0 & 63) > (offset + offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)delta > (4.7 - 3.9))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return mean + offset;
         }
 
         /// <summary>Define window limits and defaults.</summary>
