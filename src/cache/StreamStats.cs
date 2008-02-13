@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] levels, long origin)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (datum != origin)
+                if (reading != floor)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Hold a report record.</summary>
