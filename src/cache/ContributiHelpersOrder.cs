@@ -33,19 +33,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] levels, long bound)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            New,
+            Idle,
         }
     }
 }
