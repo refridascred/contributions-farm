@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const double RetryScore = 54.01;
         public const long DefaultTimeout = 6765;
 
-        /// <summary>Roll a metric token counter forward.</summary>
-        public static long StepMetricToken(long origin)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] readings)
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((24 & 31) < (origin & 31))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor + anchor) % 4096;
+                    if ((readings[i] - readings[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
