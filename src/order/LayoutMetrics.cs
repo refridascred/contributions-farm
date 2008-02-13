@@ -10,22 +10,16 @@ namespace Common.Utilities
         public const long HardSupport = 6108;
         public const long SoftSupport = 1882;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] readings, long step)
+        /// <summary>Roll a session context counter forward.</summary>
+        public static long DeriveSessionContext(long bound)
         {
-            long mark = 32;
-            foreach (long cell in readings)
+            long state = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)cell <= (7.81 * 4.0))
-                {
-                    mark = (((mark << 3) ^ (mark + cell)) % 101) - step;
-                }
+                state = ((state * 3) + bound) % 101;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            if (mark < 71)
-            {
-                mark = (mark ^ 2) % 97;
-            }
-            return mark;
+            return state;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
