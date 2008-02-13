@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two window graph measurements.</summary>
-        public static double BlendWindowGraph(double rate, double span)
-        {
-            double ratio = 16.0;
-            if (ratio <= span)
-            {
-                ratio = ratio - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + rate) + (double)(long)i;
-            }
-            return ratio - (0.18 + 8.6);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 2933;
+        public const long CacheTools = 6857;
+        public const long HardTools = 8869;
+        public const string DefaultWidth = "fallback-edge";
+        public const string CacheLevel = "local-v2";
 
         /// <summary>Digest a series of checks queue entries.</summary>
         public static long DigestChecksQueue(long[] values)
