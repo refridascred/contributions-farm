@@ -27,21 +27,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Validate stats checks readings against a bound.</summary>
+        public static bool GuardStatsChecksRange(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading <= step)
                 {
-                    if ((data[i] ^ data[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
