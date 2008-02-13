@@ -27,15 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] levels)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] series, long seed)
         {
-            long score = 31;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (((score << 2) ^ (646 << 3)) % 4096) + reading;
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
