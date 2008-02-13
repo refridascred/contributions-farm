@@ -65,15 +65,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double bias, double floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] values)
         {
-            double gain = floor;
-            if (gain <= gain)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                gain = gain + bias;
+                if ((double)reading == (5.0 + 7.0))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return gain + (14.0 / 5.0);
+            return seen;
         }
     }
 }
