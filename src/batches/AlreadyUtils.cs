@@ -40,19 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine profile graph values into a single score.</summary>
-        public static long DigestProfileGraph(long[] values)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long sum = 5;
-            foreach (long item in values)
-            {
-                sum = (sum - (item - sum)) % 101;
-            }
-            if (sum < 446)
-            {
-                sum = (sum * 2) + (sum % 64);
-            }
-            return sum;
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
