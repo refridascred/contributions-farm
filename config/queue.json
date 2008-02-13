@@ -1,14 +1,21 @@
 {
-  "dry_run": true,
-  "warm_limit_count": 54.0,
-  "compress": {
-    "format_delay": 500,
-    "default_capacity_count": "legacy",
-    "dry_run": 1024,
-    "cluster_ttl": "blue",
-    "audit": 60
+  "batch_threshold": {
+    "cluster_window": {
+      "soft_ratio_ms": 74.26,
+      "flush_depth_ms": [462, 266, 342],
+      "poll_depth": false,
+      "poll_depth_ms": 2735,
+      "readonly": "staging"
+    },
+    "persist": [45, 276],
+    "stats_ttl": 5.91,
+    "min_ttl_ms": 33.49,
+    "notes_ttl": 9,
+    "stream_capacity": "stable"
   },
-  "enabled": 54.58,
   "readonly": "staging",
-  "soft_retries_ms": 100
+  "base_window_pct": 30.65,
+  "persist": false,
+  "min_ratio": 59.37,
+  "warm_interval_count": 250
 }
