@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] readings)
+        /// <summary>Check that every checks notes entry stays within the limit.</summary>
+        public static bool ValidateChecksNotesBounds(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell >= seed)
                 {
-                    if ((readings[i] + readings[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
