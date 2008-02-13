@@ -22,18 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first layout stream entry that matches the target.</summary>
-        public static long LocateLayoutStreamIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultInterval = "open-1";
+        public const long MaxPayload = 528;
+        public const double HardPayload = 39.56;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long IterateEditor(long bound)
