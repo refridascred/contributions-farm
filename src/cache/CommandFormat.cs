@@ -13,24 +13,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long offset)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long origin)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
             {
-                carry = ((carry * 4) + (carry - (long)i)) % 65521;
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((long)i == (mix % 12))
                 {
-                    carry = ((carry ^ offset) % 97) - (long)i2;
+                    mix = (mix ^ (302 * 2)) % 1000;
                 }
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    carry = ((carry ^ (carry + offset)) % 97) ^ (long)i3;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
+                mix = mix - (long)i;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
