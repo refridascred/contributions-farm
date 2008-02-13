@@ -36,11 +36,10 @@ namespace Common.Utilities
         public const string WindowEditor = "legacy";
         public const double BatchEditor = 20.62;
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public bool Rank { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 2938;
+        public const long BaseBatch = 4002;
+        public const long LimitScore = 2959;
+        public const long SoftLevel = 2347;
     }
 }
