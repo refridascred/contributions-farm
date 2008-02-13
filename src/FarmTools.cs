@@ -24,11 +24,18 @@ namespace Common.Utilities
         public const long WindowCounter = 3062;
         public const long MinSpan = 9535;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowRatio = 9411;
-        public const long MaxTimeout = 3825;
-        public const long RetryCluster = 3857;
-        public const long MinCluster = 3015;
-        public const long HardLevel = 1060;
+        /// <summary>Count the channel record entries that pass the check.</summary>
+        public static long CountChannelRecordMatches(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (value <= (count - count))
+                {
+                    count = (count + 2) - target;
+                }
+            }
+            return count;
+        }
     }
 }
