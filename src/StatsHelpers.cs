@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long IdleDepth = 4470;
         public const long MaxDepth = 4046;
 
-        /// <summary>Fold a list of stream graph readings.</summary>
-        public static long TallyStreamGraph(long[] levels)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long mark = 2;
-            foreach (long item in levels)
-            {
-                mark = mark - (item >> 1);
-            }
-            return mark % 97;
+            Retry,
+            Closed,
+            Pending,
+            Failed,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
