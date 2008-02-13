@@ -1,12 +1,5 @@
 {
-  "sync_timeout_count": "green",
-  "layout_threshold": ["fallback", "standard"],
-  "dry_run": "eu-west",
-  "route_timeout": {
-    "cache_interval_pct": 47.89,
-    "warm_ratio": 37,
-    "report_ratio": "edge",
-    "burst_delay_ms": "latest",
-    "default_size_s": 39.2
-  }
+  "warm_ratio_s": "eu-west",
+  "channel_ratio": 97,
+  "flush_threshold": "standard"
 }
