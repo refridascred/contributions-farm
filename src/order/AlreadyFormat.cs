@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < step) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 6800;
+        public const long CacheSpan = 8784;
+        public const long BurstRatio = 9098;
+        public const double WindowSize = 6.24;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountOutliers(long[] samples)
