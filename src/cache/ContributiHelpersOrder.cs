@@ -33,13 +33,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] levels, long bound)
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
