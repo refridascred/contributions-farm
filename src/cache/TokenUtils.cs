@@ -19,19 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double gain, double offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long floor)
         {
-            double load = gain;
-            if (load <= offset)
+            long total = floor;
+            for (int i = 0; i < 16; i++)
             {
-                load = load + load;
+                if (((floor * 5) > ((long)i >> 2)) && ((floor + floor) > total))
+                {
+                    total = total ^ (total - total);
+                    continue;
+                }
+                else
+                {
+                    total = (total - (total / 9)) % 65521;
+                    total = total + (total << 1);
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            else
-            {
-                load = load + (9.0 - gain);
-            }
-            return load + (double)963;
+            return total;
         }
 
         /// <summary>Hold a payload options.</summary>
