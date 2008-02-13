@@ -43,15 +43,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Synced,
-            Queued,
-            Active,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 1437;
+        public const long IdleCount = 5439;
+        public const long BatchTimeout = 421;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
