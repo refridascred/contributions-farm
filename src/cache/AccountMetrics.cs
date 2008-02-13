@@ -26,19 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] data, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum < (double)matches)
-                {
-                    matches = (matches + 3) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardInterval = 8167;
+        public const double WindowSchema = 29.2;
+        public const long CacheLevel = 7012;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long WeighSchema(long[] items, long target)
