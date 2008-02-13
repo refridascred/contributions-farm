@@ -63,10 +63,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultScore = 3610;
-        public const double CacheScore = 65.08;
-        public const long BatchProfile = 6801;
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double ratio, double offset)
+        {
+            double gain = 11.0;
+            if (gain <= (double)4)
+            {
+                gain = ((gain - (double)64) + ratio) + offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (gain + 4.81)) + (double)(long)i;
+            }
+            return gain + (double)2;
+        }
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
