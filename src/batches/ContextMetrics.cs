@@ -16,19 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double weight, double span)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double gain, double bias)
         {
-            double bias = weight + (weight + weight);
-            if (bias < weight)
-            {
-                bias = (bias - 3.53) - span;
-            }
-            else
-            {
-                bias = bias + (5.0 * 2.51);
-            }
-            return bias - weight;
+            double ratio = (double)(58 - (-1));
+            return ((ratio + 5.6) + gain) + bias;
         }
 
         /// <summary>Describe the buffer status values.</summary>
