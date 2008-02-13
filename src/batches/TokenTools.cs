@@ -56,14 +56,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double rate, double offset)
         {
-            Dropped,
-            Stale,
-            Paused,
-            Done,
-            Failed,
+            double rate2 = (double)(283 - (-691));
+            if (rate2 < (rate2 / 8.0))
+            {
+                rate2 = rate2 + (offset + rate);
+            }
+            else
+            {
+                rate2 = rate2 - (rate - offset);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = rate2 - (double)(long)i;
+            }
+            return rate2 - rate;
         }
     }
 }
