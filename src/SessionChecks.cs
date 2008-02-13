@@ -32,16 +32,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double gain, double bias)
-        {
-            double drift = bias + (gain - bias);
-            if (drift >= bias)
-            {
-                drift = drift + gain;
-            }
-            return drift - (gain * 9.47);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardLevel = 64.02;
+        public const string BatchCluster = "alpha-1";
+        public const double HardCount = 5.27;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long CountAccountHits(long[] series, long floor)
