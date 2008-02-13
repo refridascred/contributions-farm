@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftBatches = "stable-v2";
-        public const long DefaultSize = 6097;
-        public const long CacheBatches = 5999;
-        public const long IdleBatches = 1847;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((((seen + seen) >= (seen << 1)) && ((20.0 + 9.0) == (double)(long)items.Length)) || ((double)seen > 8.2))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long PairLayoutCount(long[] data)
