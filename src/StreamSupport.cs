@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] values, long offset)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double rate, double offset)
         {
-            long score = 15;
-            foreach (long entry in values)
+            double rate2 = (offset / 4.0) + 9.6;
+            if (rate2 >= (double)9)
             {
-                if (12.0 <= (double)entry)
-                {
-                    score = score + (score + offset);
-                }
+                rate2 = rate2 + (offset + 3.47);
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 - offset) - (double)(long)i;
+            }
+            return rate2 - rate;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
