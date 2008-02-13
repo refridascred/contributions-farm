@@ -15,17 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] items, long seed)
+        /// <summary>Audit stream stats readings against a rule.</summary>
+        public static long MeasureStreamStatsHits(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((items[i] > seed) && ((items[i] % 3) == 0))
+                if ((tally >> 5) > 20)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a route header.</summary>
