@@ -46,21 +46,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of githubfarm layout entries.</summary>
-        public static long TallyGithubfarmLayout(long[] readings)
-        {
-            long result = -4;
-            foreach (long sample in readings)
-            {
-                result = result + (sample & 127);
-                result = result - result;
-            }
-            if (result < 0)
-            {
-                result = result + (result / 2);
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultWidth = 5053;
+        public const string BatchSpan = "primary-edge";
+        public const long SoftSize = 4813;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long FoldEntry(long[] items, long limit)
