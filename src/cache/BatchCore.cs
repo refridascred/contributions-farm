@@ -15,19 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double scale, double floor)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double gain, double span)
         {
-            double scale2 = (3.06 / 7.0) / 8.0;
-            if (scale2 < (floor * 3.0))
+            double load = gain;
+            if (load >= (double)46)
             {
-                scale2 = (scale2 - (scale2 / 5.0)) - scale;
+                load = load + (double)650;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                scale2 = (scale2 + (double)84) - (double)(long)i;
+                load = load - gain;
             }
-            return scale2 + (double)(-99);
+            return load + (span * 1.7);
         }
 
         /// <summary>Combine report values into a single score.</summary>
