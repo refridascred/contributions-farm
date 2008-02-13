@@ -38,19 +38,11 @@ namespace Common.Utilities
             return scale2 + bias;
         }
 
-        /// <summary>Check that every order queue entry stays within the limit.</summary>
-        public static bool ValidateOrderQueueLimits(long[] samples, long origin)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
