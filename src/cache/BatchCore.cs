@@ -39,12 +39,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] data)
         {
-            Idle,
-            New,
-            Stale,
+            long carry = 9;
+            foreach (long sample in data)
+            {
+                carry = (carry ^ (carry + sample)) % 101;
+            }
+            return carry % 4096;
         }
     }
 }
