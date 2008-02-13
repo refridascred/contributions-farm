@@ -1,8 +1,6 @@
 {
-  "tools_delay": 9.87,
-  "editor_threshold": 8000,
-  "idle_depth_s": [393, 495, 418],
-  "idle_ratio_ms": 85.82,
-  "enabled": 0.62,
-  "default_size_ms": 100
+  "retry_delay_count": "strict",
+  "stats_retries": false,
+  "cache_interval_ms": [50, 57, 389, 420],
+  "command_delay": "edge"
 }
