@@ -14,16 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] values, long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                mix = (mix ^ 134) % 97;
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (entry != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Define account limits and defaults.</summary>
