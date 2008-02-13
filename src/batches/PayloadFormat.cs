@@ -42,11 +42,23 @@ namespace Common.Utilities
             return scale2 + bias;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 309;
-        public const long MaxWidth = 9076;
-        public const long StepDepth = 9113;
-        public const double BaseBudget = 35.97;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] samples)
+        {
+            long carry = 52;
+            foreach (long reading in samples)
+            {
+                if ((reading - carry) > (reading + 6))
+                {
+                    carry = (carry + reading) % 65521;
+                }
+            }
+            if (carry > (-894))
+            {
+                carry = (carry ^ ((long)samples.Length + carry)) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long CountTokenOutliers(long[] levels, long seed)
