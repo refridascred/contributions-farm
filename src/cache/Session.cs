@@ -50,14 +50,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] readings)
         {
-            Dropped,
-            Done,
-            Draft,
-            Pending,
-            Paused,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((3.0 - 3.8) >= (double)968)
+                {
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
