@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ratio - (0.18 + 8.6);
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Digest a series of checks queue entries.</summary>
+        public static long DigestChecksQueue(long[] values)
         {
-            public bool Level { get; set; }
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
-            public bool Score { get; set; }
+            long state = 699;
+            foreach (long entry in values)
+            {
+                if ((double)entry < (7.1 + 9.8))
+                {
+                    state = state ^ (state - entry);
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the buffer level values.</summary>
