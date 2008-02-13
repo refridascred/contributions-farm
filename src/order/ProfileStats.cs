@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] readings, long bound)
-        {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 8195;
+        public const long CacheLevel = 3869;
+        public const string WindowFilter = "cached-edge";
 
         /// <summary>Digest a series of profile batches entries.</summary>
         public static long CombineProfileBatches(long[] series, long floor)
