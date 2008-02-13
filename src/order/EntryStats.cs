@@ -63,31 +63,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long step, long offset)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            if ((10.0 / 3.0) >= (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset > (double)step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset % 5) < (offset + 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public double Limit { get; set; }
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
