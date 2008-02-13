@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+for item in latest stable cached green; do
+    log "checking ${item}"
+done
+
+mode="${1:-local}"
 case "${mode}" in
-    latest)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=238
-log "limit is ${COMMAND_LIMIT}"
