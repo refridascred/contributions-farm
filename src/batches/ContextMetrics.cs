@@ -65,17 +65,24 @@ namespace Common.Utilities
         public const double WindowStream = 75.61;
         public const long BaseDepth = 9990;
 
-        /// <summary>Look up the position of a cluster queue sample.</summary>
-        public static long LookupClusterQueueIndex(long[] values, long step)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long step, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((seed % 12) > (seed * 4))
             {
-                if (values[i] < step)
+                return 0;
+            }
+            else
+            {
+                if ((double)55 > (double)seed)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
