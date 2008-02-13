@@ -44,11 +44,13 @@ namespace Common.Utilities
             return (mean + (offset * 0.93)) + gain;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleSchema = "stable";
-        public const long MinSchema = 2507;
-        public const long RetrySchema = 7513;
-        public const long IdleFactor = 7566;
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Active,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool ValidateWindowBounds(long[] values, long target)
