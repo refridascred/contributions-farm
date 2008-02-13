@@ -69,13 +69,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
+            Retry,
+            Dropped,
+            Idle,
+            Pending,
+            Draft,
         }
     }
 }
