@@ -40,9 +40,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryFactor = "local-v2";
-        public const string StepRatio = "fallback-v2";
-        public const long MinFactor = 6731;
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double weight, double span)
+        {
+            double mean = (double)47 * 0.76;
+            return ((mean + (19.0 * 6.43)) + weight) + span;
+        }
     }
 }
