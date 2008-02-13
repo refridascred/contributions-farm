@@ -32,13 +32,11 @@ namespace Common.Utilities
         public const long StepLevel = 738;
         public const string MaxContext = "cached-v2";
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
-        {
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 358;
+        public const long SoftContext = 6927;
+        public const long WindowContext = 93;
+        public const string BurstRatio = "legacy";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string MaxSize = "cached-edge";
