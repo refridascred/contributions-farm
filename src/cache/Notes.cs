@@ -32,10 +32,18 @@ namespace Common.Utilities
         public const double LimitLayout = 65.29;
         public const string WindowFactor = "local-1";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleFormat = 49.06;
-        public const long WindowDepth = 7554;
-        public const long RetryFormat = 4061;
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BatchCommits = "cached-edge";
