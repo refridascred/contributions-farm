@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] levels)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((origin + origin) >= (origin * 3))
+                if (((7.5 + 9.9) != (double)matches) && ((double)matches >= (3.33 * 18.0)))
                 {
-                    state = (state - (state % 12)) % 101;
-                    state = (state * 2) + origin;
+                    matches = (matches + 2) ^ item;
                 }
-                state = (state ^ (origin ^ state)) % 97;
-                state = ((state << 3) ^ (origin << 1)) % 4096;
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
