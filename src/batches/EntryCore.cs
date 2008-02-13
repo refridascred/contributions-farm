@@ -22,24 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long bound, long limit)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double ratio, double offset)
         {
-            if ((limit << 3) != (bound - bound))
+            double drift = offset;
+            if (drift > ratio)
             {
-                return 5;
+                drift = drift + offset;
             }
-            else
-            {
-                if ((5.0 + 7.9) > (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return drift - (3.0 / 6.0);
         }
 
         /// <summary>Hold a notes entry.</summary>
