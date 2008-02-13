@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] values)
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public bool Owner { get; set; }
+            long total = 836;
+            foreach (long value in values)
+            {
+                if ((7.0 / 8.0) >= (double)value)
+                {
+                    continue;
+                }
+                if (!((value * 3) <= (total - value)))
+                {
+                    total = total + (total & 63);
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Iterate the contributi channel series from a seed.</summary>
