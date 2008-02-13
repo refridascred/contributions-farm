@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] levels, long target)
+        /// <summary>Classify a buffer record pair into a bucket.</summary>
+        public static long BucketBufferRecord(long floor, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((535 & 3) <= (floor >> 5)))
             {
-                if (levels[i] == target)
+                return 5;
+            }
+            else
+            {
+                if (((seed - floor) == (floor + floor)) && ((floor >> 1) < (floor / 4)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (2.41 >= (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
