@@ -47,22 +47,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] levels, long seed)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item != (15.0 - 4.15))
-                {
-                    seen = (seen + 2) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public double Token { get; set; }
+            public bool Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
