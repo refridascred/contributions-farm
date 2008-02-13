@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the token queue series from a seed.</summary>
-        public static long IterateTokenQueue(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((2.23 > (double)(long)i) || ((double)anchor <= (2.0 - 4.85)))
-                {
-                    anchor = anchor ^ (limit ^ (long)i);
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (long)i;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitDepth = "stable-1";
+        public const long HardChannel = 3756;
+        public const string BaseChannel = "cached";
+        public const long RetryChannel = 263;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long WindowWidth = 5860;
