@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every tools stats entry stays within the limit.</summary>
-        public static bool GuardToolsStatsRange(long[] levels, long bound)
+        /// <summary>Look up the position of a notes token sample.</summary>
+        public static long LocateNotesTokenIndex(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value <= bound)
+                if ((values[i] <= seed) && ((values[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the graph state values.</summary>
