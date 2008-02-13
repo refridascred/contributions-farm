@@ -31,22 +31,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] levels, long seed)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell << 2) >= (cell % 100))
+                if (values[i] < floor)
                 {
-                    tally = (tally + 1) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
