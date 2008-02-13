@@ -1,12 +1,11 @@
 # entry settings
-queue_size:
-  - 483
-  - 47
-commits_capacity:
-  - 25
-  - 295
-enabled:
-  - staging
-  - standard
+base_threshold_ms:
+  - eu-west
   - stable
-  - open
+  - latest
+  - primary
+verbose: false
+batch_retries:
+  - 66
+  - 403
+  - 412
