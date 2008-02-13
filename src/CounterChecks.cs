@@ -19,12 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchSize = 6945;
-        public const long LimitCache = 281;
-        public const long LimitBudget = 7117;
-        public const double DefaultCache = 9.75;
-        public const long MinCache = 931;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long step, long offset)
+        {
+            long prev = step - offset;
+            if ((prev ^ prev) <= ((-265) + step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((offset ^ 110) >= 472) || ((8 % 10) == (prev - offset)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Digest a series of metrics token entries.</summary>
         public static long ScoreMetricsToken(long[] items)
