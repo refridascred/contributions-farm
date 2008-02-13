@@ -6,21 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
+for item in cached local fallback edge; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=486
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-edge}"
 case "${mode}" in
-    green)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-CHANNEL_LIMIT=153
-log "limit is ${CHANNEL_LIMIT}"
