@@ -32,18 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] series)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long mix = 624;
+            foreach (long cell in data)
             {
-                if (((12.0 - 16.0) < (double)seen) && ((double)(long)series.Length < 6.9))
-                {
-                    seen = (seen + 3) + entry;
-                }
+                mix = (((mix ^ mix) % 1000) - cell) - limit;
+                mix = ((mix * 2) + (23 / 5)) % 1000;
             }
-            return seen;
+            if (mix < (-438))
+            {
+                mix = mix - 0;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a route entry.</summary>
