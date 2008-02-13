@@ -22,15 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate order stats samples.</summary>
-        public static long WeighOrderStats(long[] values)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long bound, long limit)
         {
-            long sum = 134;
-            foreach (long reading in values)
+            if ((limit << 3) != (bound - bound))
             {
-                sum = ((sum ^ (-601)) % 1000) - reading;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((5.0 + 7.9) > (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
