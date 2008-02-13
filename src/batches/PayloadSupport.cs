@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Audit session notes readings against a rule.</summary>
+        public static long TallySessionNotesMatches(long[] samples, long offset)
         {
-            Queued,
-            Failed,
-            Draft,
-            Stale,
-            Synced,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell != (9.2 / 6.0))
+                {
+                    matches = (matches + 2) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
