@@ -32,16 +32,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long floor, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
+            long diff = floor + offset;
+            if (floor >= diff)
             {
-                mix = mix - floor;
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if (!(floor < (floor & 255)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
