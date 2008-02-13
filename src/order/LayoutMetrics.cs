@@ -40,9 +40,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowSupport = "open-edge";
-        public const long SoftSupport = 6237;
-        public const string IdleSupport = "legacy-edge";
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public long Stamp { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
