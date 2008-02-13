@@ -15,12 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Digest a series of farm payload entries.</summary>
+        public static long ScoreFarmPayload(long[] samples)
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            long state = 523;
+            foreach (long reading in samples)
+            {
+                if ((reading >> 1) > (state % 5))
+                {
+                    state = (state * 2) + state;
+                }
+            }
+            if (state > 76)
+            {
+                state = state ^ (state - state);
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a route entry.</summary>
