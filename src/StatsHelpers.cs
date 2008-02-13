@@ -43,15 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double ratio, double span)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] levels, long limit)
         {
-            double drift = (double)(84 - 453);
-            if (drift < drift)
+            long sum = 6;
+            foreach (long sample in levels)
             {
-                drift = (drift - (drift + drift)) + span;
+                sum = (((sum * 2) + (limit % 60)) % 97) ^ sample;
             }
-            return drift + ratio;
+            if (sum < 97)
+            {
+                sum = (sum ^ (sum / 9)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
