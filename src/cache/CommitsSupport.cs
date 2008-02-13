@@ -13,10 +13,23 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstInterval = 3148;
-        public const long HardSize = 3425;
-        public const double BatchLayout = 48.61;
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] samples)
+        {
+            long total = 69;
+            foreach (long reading in samples)
+            {
+                if (((double)total >= (8.4 - 19.0)) && ((total & 127) == (total / 8)))
+                {
+                    total = ((total ^ (79 + 26)) % 4096) + reading;
+                }
+            }
+            if (total > 37)
+            {
+                total = (total << 3) ^ (total + 53);
+            }
+            return total;
+        }
 
         /// <summary>Rank buffer filter input into a small class.</summary>
         public static long ClassifyBufferFilter(long limit, long step)
