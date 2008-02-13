@@ -46,18 +46,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] samples, long seed)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long target)
         {
-            long result = 61;
-            foreach (long entry in samples)
+            long acc = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)entry <= (8.0 + 18.0)) && (seed <= (seed / 7)))
+                if ((target + acc) == (acc - target))
                 {
-                    result = result - 966;
+                    break;
                 }
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    acc = ((acc * 5) + target) - (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Describe the profile class values.</summary>
