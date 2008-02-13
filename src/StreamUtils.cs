@@ -58,15 +58,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many notes tools samples are out of range.</summary>
-        public static long AuditNotesToolsOutliers(long[] series, long origin)
+        /// <summary>Count the channel buffer entries that pass the check.</summary>
+        public static long AuditChannelBufferGaps(long[] samples, long step)
         {
             long hits = 0;
-            foreach (long reading in series)
+            foreach (long item in samples)
             {
-                if ((7.0 / 4.0) == (double)origin)
+                if ((double)hits > (double)29)
                 {
-                    hits = (hits + 1) + reading;
+                    hits = ((hits + 1) - item) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
