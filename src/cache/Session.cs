@@ -44,19 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double ratio, double bias)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            double weight = bias;
-            if (weight > (double)6)
-            {
-                weight = weight - 18.0;
-            }
-            else
-            {
-                weight = weight + 20.0;
-            }
-            return weight - ratio;
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine account payload values into a single score.</summary>
