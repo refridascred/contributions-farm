@@ -42,15 +42,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftSession = 5.06;
+        public const long IdleDepth = 7918;
+        public const string BurstSession = "legacy";
+        public const string CacheLevel = "latest-v2";
     }
 }
