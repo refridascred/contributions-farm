@@ -31,17 +31,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long seed)
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = (anchor - anchor) % 97;
-                anchor = ((anchor * 4) + anchor) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return mix;
         }
     }
 }
