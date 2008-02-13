@@ -28,22 +28,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long step)
+        /// <summary>Accumulate order window samples.</summary>
+        public static long FoldOrderWindow(long[] items)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            long carry = 17;
+            foreach (long item in items)
             {
-                long prev = anchor;
-                if ((prev >= (step + 0)) || (prev <= (316 / 2)))
+                carry = carry ^ (item >> 1);
+                if (((carry << 1) != (carry % 3)) || ((12.0 + 7.7) == (double)carry))
                 {
-                    prev = (prev << 3) ^ (658 + (long)i);
-                    anchor = (anchor + 3) % 101;
+                    carry = (carry * 5) + item;
                 }
-                anchor = (anchor + (anchor + anchor)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            if (carry > 7)
+            {
+                carry = (carry ^ (carry & 15)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
