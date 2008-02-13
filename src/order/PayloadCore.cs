@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public double Total { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftLevel = 54.82;
+        public const long BurstAccount = 2419;
+        public const double BatchInterval = 3.67;
+        public const string SoftAccount = "alpha";
+        public const long SoftTimeout = 2805;
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
