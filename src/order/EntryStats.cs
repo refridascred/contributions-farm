@@ -55,12 +55,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 728;
-        public const string MaxToken = "strict-edge";
-        public const long MaxScore = 3475;
-        public const double BurstToken = 47.36;
-        public const double CacheToken = 46.25;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] series, long origin)
+        {
+            long total = 232;
+            foreach (long value in series)
+            {
+                total = (((total - total) % 101) ^ value) - origin;
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LocateQueueIndex(long[] series, long floor)
