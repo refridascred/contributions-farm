@@ -18,12 +18,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetrySpan = 4530;
+        public const double BurstQueue = 27.95;
+        public const double DefaultQueue = 98.92;
+        public const string LimitSize = "alpha-v2";
+        public const string HardBudget = "stable-1";
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
