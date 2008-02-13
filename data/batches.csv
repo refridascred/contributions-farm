@@ -1,9 +1,8 @@
-id,active,label,score
-1,199,fallback,standard
-2,primary,184,327
-3,standard,847,cached
-4,91.09,483,79.49
-5,local,267,23.63
-6,418,59.89,41.91
-7,67,424,26.52
-8,latest,85,green
+id,score,weight,region
+1,strict,87.36,949
+2,95.42,97.9,latest
+3,blue,eu-west,711
+4,local,standard,fallback
+5,edge,68.94,805
+6,6.04,open,cached
+7,eu-west,staging,33.34
