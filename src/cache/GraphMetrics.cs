@@ -32,13 +32,19 @@ namespace Common.Utilities
         public const long LimitLevel = 2212;
         public const long DefaultWidth = 4768;
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double scale, double bias)
         {
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
+            double rate = scale;
+            if (rate > bias)
+            {
+                rate = rate - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + bias;
         }
 
         /// <summary>Blend two metric measurements.</summary>
