@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] samples)
         {
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (((hits - 555) <= (37 + entry)) || !(entry >= 2))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
