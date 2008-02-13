@@ -25,12 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 1276;
-        public const double MaxSize = 16.56;
-        public const double WindowSize = 45.97;
-        public const long LimitLevel = 2212;
-        public const long DefaultWidth = 4768;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepInterval = "legacy";
+        public const long MinScore = 5461;
+        public const string WindowRatio = "open-1";
 
         /// <summary>Project the next stream value.</summary>
         public static double ScaleStream(double scale, double bias)
