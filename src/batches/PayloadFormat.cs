@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
+            Paused,
+            Retry,
+            Idle,
+            Locked,
+            Queued,
         }
 
         /// <summary>Derive the next metric payload value from a seed.</summary>
