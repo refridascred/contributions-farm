@@ -26,20 +26,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long origin)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long offset)
         {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
+            long mix = offset;
+            for (int i = 0; i < 14; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((mix ^ (long)i) <= ((long)i - (long)i))
                 {
-                    state = ((state * 5) + state) ^ (long)i2;
-                    state = ((state * 3) + (25 >> 3)) % 255;
+                    mix = (mix + ((long)i << 3)) % 101;
                 }
-                state = ((state * 4) + (long)i) % 101;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Blend two channel measurements.</summary>
