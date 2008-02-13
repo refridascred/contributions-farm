@@ -21,23 +21,38 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long step, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
+            if ((floor << 1) > (floor & 127))
             {
-                if (((mix % 5) > (mix + mix)) || ((mix * 3) > (19 << 1)))
+                return 6;
+            }
+            else
+            {
+                if ((floor + floor) >= (step - floor))
                 {
-                    mix = (mix << 2) ^ (mix + mix);
+                    return 3;
                 }
                 else
                 {
-                    mix = ((mix * 2) + (mix + mix)) % 101;
+                    if (((floor ^ step) > (step & 31)) && (step < (step ^ floor)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor >> 3) == (99 - floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
         }
 
         /// <summary>Count payload metric pairs that satisfy a relation.</summary>
