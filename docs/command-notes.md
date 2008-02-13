@@ -1,14 +1,14 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-A command that stays idle for too long is moved to the counter list.
-Run the account check before changing any profile limits.
+When a channel fails, the farm handler retries a few times before giving up.
+Each githubfarm is validated before it reaches the record queue.
 
-Use support settings to tune how often context data is refreshed.
-Each githubfarm is validated before it reaches the order queue.
+Keep window and graph names short and lowercase.
+The cluster report groups every filter by profile.
 
 ## Guidelines
 
-- Log every commits change
-- Validate order input early
-- Review queue limits each release
+- Review graph limits each release
+- Log every editor change
+- Prefer stream defaults
+- Keep already values small
