@@ -37,18 +37,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] samples)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] levels, long limit)
         {
-            long mark = 688;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((551 ^ mark) >= (mark + entry))
+                if ((count & 63) == (sample >> 2))
                 {
-                    mark = (mark ^ (98 & 255)) % 101;
+                    count = (count + 1) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
