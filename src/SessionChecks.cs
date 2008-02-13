@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long origin, long limit)
-        {
-            long diff = origin ^ limit;
-            if (!((limit ^ diff) <= (origin >> 5)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((diff + diff) <= (limit + origin)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseDepth = "open-1";
+        public const double LimitFactor = 79.39;
+        public const double DefaultSession = 6.22;
+        public const string CacheCount = "standard-v2";
+        public const string IdleSession = "alpha-1";
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long RankCluster(long step, long limit)
