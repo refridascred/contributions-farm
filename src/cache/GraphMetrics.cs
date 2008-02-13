@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long seed, long origin)
         {
-            Idle,
-            Closed,
-            Active,
-            Stale,
-            Pending,
+            if ((origin + seed) >= (origin - seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((origin * 2) <= (seed + origin)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Adjust a batches reading.</summary>
