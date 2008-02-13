@@ -86,21 +86,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] series)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Digest a series of report entries.</summary>
