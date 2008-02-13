@@ -64,22 +64,38 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many filter profile samples are out of range.</summary>
-        public static long MeasureFilterProfileHits(long[] items, long bound)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long target, long limit)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            if (((target >> 5) > limit) || ((double)limit >= 9.7))
             {
-                if ((61 - tally) < tally)
+                return 6;
+            }
+            else
+            {
+                if (((target & 127) == (target >> 1)) && (6.93 < (double)target))
                 {
-                    tally = ((tally + 1) - reading) + bound;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (limit <= (limit - limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target <= (limit << 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
