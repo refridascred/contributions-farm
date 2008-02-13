@@ -52,11 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a editor tools figure with a bias.</summary>
-        public static double SmoothEditorTools(double ratio, double span)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] readings, long target)
         {
-            double ratio2 = ratio;
-            return (ratio2 + ratio2) + span;
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (!(tally <= (reading / 3)))
+                {
+                    tally = (tally + 1) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
