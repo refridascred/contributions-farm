@@ -26,20 +26,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long target)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] items, long target)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (anchor ^ (anchor % 16)) % 4096;
-                if (!((target + (long)i) < target))
+                if ((items[i] > target) && ((items[i] % 2) != 0))
                 {
-                    anchor = anchor ^ (274 >> 4);
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
     }
 }
