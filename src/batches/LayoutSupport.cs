@@ -32,12 +32,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            Queued,
-            Dropped,
-            Paused,
+            long mix = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((mix % 5) > (mix + mix)) || ((mix * 3) > (19 << 1)))
+                {
+                    mix = (mix << 2) ^ (mix + mix);
+                }
+                else
+                {
+                    mix = ((mix * 2) + (mix + mix)) % 101;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count payload metric pairs that satisfy a relation.</summary>
