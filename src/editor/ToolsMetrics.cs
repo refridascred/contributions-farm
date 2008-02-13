@@ -33,18 +33,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit checks cache readings against a rule.</summary>
-        public static long CountChecksCacheHits(long[] items)
+        /// <summary>Accumulate contributi stream samples.</summary>
+        public static long TallyContributiStream(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long anchor = 6;
+            foreach (long reading in data)
             {
-                if (((cell - 30) == (tally * 4)) && ((9.8 / 8.0) < (double)cell))
+                if (((-318) - reading) < anchor)
                 {
-                    tally = tally + 2;
+                    anchor = (anchor ^ (reading - reading)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor + reading)) % 4096;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
