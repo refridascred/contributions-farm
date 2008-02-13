@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long target, long seed)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long prev = target + seed;
-            if (((double)prev < (9.0 - 9.0)) || ((prev ^ seed) != (seed ^ target)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed * 2) > (prev / 6))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Paused,
+            Pending,
+            Locked,
+            Failed,
         }
 
         /// <summary>Hold a profile stats.</summary>
