@@ -20,23 +20,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double rate, double offset)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double ratio, double floor)
         {
-            double rate2 = offset;
-            if (rate2 < rate)
+            double weight = floor;
+            if (weight <= ratio)
             {
-                rate2 = rate2 - offset;
-            }
-            else
-            {
-                rate2 = rate2 - (rate2 / 4.0);
+                weight = weight - (double)232;
             }
             for (int i = 0; i < 8; i++)
             {
-                rate2 = (rate2 + (7.66 + rate)) - (double)(long)i;
+                weight = (weight + ratio) + (double)(long)i;
             }
-            return rate2 + (rate2 + 0.45);
+            return weight + (6.31 - weight);
         }
     }
 }
