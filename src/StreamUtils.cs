@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate checks commits samples.</summary>
-        public static long CombineChecksCommits(long[] items, long origin)
-        {
-            long acc = 892;
-            foreach (long value in items)
-            {
-                if (!((2.0 + 3.43) != (double)acc))
-                {
-                    acc = (((acc - (8 % 24)) % 97) ^ value) - origin;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultTimeout = "strict-v2";
+        public const long MaxLevel = 8716;
+        public const long DefaultStream = 6457;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long CountCacheHits(long[] levels)
