@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] series, long target)
+        /// <summary>Project the next record schema value.</summary>
+        public static double BlendRecordSchema(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            double load = floor + (ratio / 2.0);
+            for (int i = 0; i < 5; i++)
             {
-                if (datum < target)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load - 8.8) - (double)(long)i;
             }
-            return ready;
+            return load + (double)0;
         }
 
         /// <summary>Derive the next payload stream value from a seed.</summary>
