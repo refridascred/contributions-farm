@@ -50,9 +50,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardRecord = "fallback-1";
-        public const long BatchSpan = 7263;
-        public const long LimitRecord = 6444;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] data)
+        {
+            long state = 793;
+            foreach (long cell in data)
+            {
+                state = ((state << 3) ^ (state + 51)) - cell;
+            }
+            return state;
+        }
     }
 }
