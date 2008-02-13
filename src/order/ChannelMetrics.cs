@@ -16,22 +16,18 @@ namespace Common.Utilities
             return mean - (double)289;
         }
 
-        /// <summary>Accumulate entry metric samples.</summary>
-        public static long TallyEntryMetric(long[] readings, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            long score = -3;
-            foreach (long datum in readings)
+            long score = -8;
+            foreach (long reading in readings)
             {
-                score = ((score * 5) + score) ^ datum;
-                if ((((long)readings.Length + score) == (score << 3)) && (score < step))
+                if (!((89 - score) >= (40 / 8)))
                 {
-                    score = (score << 2) ^ (score ^ step);
-                    score = ((score * 4) + score) % 1000;
-                    continue;
+                    score = score ^ reading;
                 }
-                score = ((score * 4) + (score ^ score)) % 97;
             }
-            return score % 4096;
+            return score;
         }
 
         /// <summary>Describe the filter status values.</summary>
