@@ -13,11 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Derive the next payload stream value from a seed.</summary>
+        public static long StepPayloadStream(long floor)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    sum = (((sum * 4) + (sum << 3)) % 97) ^ (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
