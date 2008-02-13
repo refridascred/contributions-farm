@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long offset, long limit)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            if ((double)offset == (double)limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((0.25 - 1.2) == (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + 564) == (limit / 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the counter status values.</summary>
