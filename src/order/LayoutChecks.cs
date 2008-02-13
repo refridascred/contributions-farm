@@ -50,10 +50,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 7005;
-        public const long MinCache = 8375;
-        public const long MaxWidth = 7262;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((value / 4) > (value + value)) && (((double)value >= (3.76 / 9.0)) || (count > 951)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
