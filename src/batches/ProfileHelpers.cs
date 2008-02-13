@@ -14,15 +14,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long step)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long seed, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
+            if ((11.0 * 5.21) > (double)bound)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if ((5.17 + 17.0) > (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound > (6.3 * 10.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a editor tools figure with a bias.</summary>
