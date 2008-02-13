@@ -32,10 +32,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheEditor = "fallback-edge";
-        public const string BurstEditor = "open-edge";
-        public const double BatchEditor = 22.45;
-        public const string RetryEditor = "strict-v2";
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] readings)
+        {
+            long acc = 125;
+            foreach (long reading in readings)
+            {
+                if ((reading ^ reading) < reading)
+                {
+                    acc = ((acc * 5) + (acc - acc)) % 255;
+                }
+                if (!((reading % 97) <= (3 >> 5)))
+                {
+                    acc = acc ^ (reading >> 5);
+                }
+                if ((acc >> 3) != (reading % 100))
+                {
+                    acc = (acc * 5) + acc;
+                }
+            }
+            return acc;
+        }
     }
 }
