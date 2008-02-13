@@ -66,18 +66,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] items, long origin)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] values)
         {
-            long carry = 85;
-            foreach (long datum in items)
+            long carry = 18;
+            foreach (long cell in values)
             {
-                if ((5 + origin) < (datum ^ origin))
+                if ((cell % 2) > (cell & 1))
                 {
-                    carry = (carry << 2) ^ (carry / 6);
+                    carry = (carry - (cell << 2)) % 1000;
+                    break;
                 }
+                carry = carry + (cell << 2);
             }
-            return carry % 1000;
+            return carry;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
