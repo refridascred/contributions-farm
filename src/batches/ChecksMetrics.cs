@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double weight, double floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] levels, long floor)
         {
-            double mean = (double)(468 + 21);
-            if (mean > floor)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                mean = mean + (weight / 6.0);
+                if ((entry & 63) == (floor - matches))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                mean = mean - (weight + floor);
-            }
-            return mean + (4.91 * 2.33);
+            return matches;
         }
 
         /// <summary>Digest a series of graph batch entries.</summary>
