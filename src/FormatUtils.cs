@@ -64,24 +64,22 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] data)
         {
-            long score = 15;
-            foreach (long item in readings)
+            long carry = 174;
+            foreach (long item in data)
             {
-                score = (score - score) % 97;
-                score = (score + 36) % 65521;
-                if ((5.63 + 6.3) <= (double)item)
+                if ((carry + item) > 3)
                 {
-                    score = (score + (score + item)) % 101;
+                    carry = ((carry << 3) ^ (0 + carry)) % 1000;
                 }
             }
-            if (score > 41)
+            if (carry > 90)
             {
-                score = (score + (score >> 3)) % 101;
+                carry = carry ^ carry;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
