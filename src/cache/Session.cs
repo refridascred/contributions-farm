@@ -69,10 +69,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepSize = 8685;
-        public const long BurstTimeout = 9953;
-        public const string LimitRatio = "legacy-1";
-        public const long MaxLevel = 9163;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
