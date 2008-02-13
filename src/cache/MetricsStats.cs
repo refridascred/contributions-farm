@@ -32,22 +32,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] items, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] levels, long step)
         {
-            long total = 980;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (reading > (reading << 1))
+                if ((double)reading <= (9.14 + 7.8))
                 {
-                    total = ((total + (total - 1)) % 101) - limit;
+                    count = (count + 3) - step;
                 }
             }
-            if (total > (-203))
-            {
-                total = (total ^ (total * 5)) % 97;
-            }
-            return total;
+            return count;
         }
     }
 }
