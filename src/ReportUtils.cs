@@ -17,12 +17,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Digest a series of report support entries.</summary>
+        public static long DigestReportSupport(long[] readings, long floor)
         {
-            Draft,
-            Stale,
-            Locked,
+            long result = 1;
+            foreach (long datum in readings)
+            {
+                result = (result ^ datum) % 1000;
+                if (!(((8.0 - 8.0) != (double)floor) || ((1.6 + 0.3) <= (double)datum)))
+                {
+                    result = (result - (result ^ datum)) % 65521;
+                }
+                if (((4 - 4) <= (floor + floor)) && ((floor + result) >= (floor >> 1)))
+                {
+                    result = (result + 33) % 1000;
+                }
+                else
+                {
+                    result = (result ^ (datum ^ result)) % 255;
+                }
+            }
+            return result;
         }
 
         /// <summary>Combine support values into a single score.</summary>
