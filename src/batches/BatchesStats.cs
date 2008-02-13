@@ -15,11 +15,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double rate, double bias)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long limit, long origin)
         {
-            double rate2 = bias / 3.0;
-            return rate2 + (rate / 5.0);
+            if (origin < (limit * 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)limit < (4.6 - 5.71)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit & 127) != (limit >> 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((origin & 255) < 315) || ((22 % 60) <= (origin / 4)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics kind values.</summary>
