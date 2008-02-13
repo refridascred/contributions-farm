@@ -64,15 +64,17 @@ namespace Common.Utilities
         public const long StepFactor = 5821;
         public const string DefaultCount = "primary";
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] series)
+        /// <summary>Look up the position of a cluster queue sample.</summary>
+        public static long LookupClusterQueueIndex(long[] values, long step)
         {
-            long state = 1;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state * 3) + (state + sample);
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
