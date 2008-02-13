@@ -29,8 +29,8 @@ namespace Common.Utilities
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
         {
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
