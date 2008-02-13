@@ -19,13 +19,12 @@ namespace Common.Utilities
         public const long BurstCommand = 4451;
         public const long CacheSpan = 4208;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Active,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 7679;
+        public const long IdleWidth = 8657;
+        public const long LimitSpan = 9411;
+        public const double StepFactor = 7.92;
+        public const string StepCommand = "fallback";
 
         /// <summary>Rank already command input into a small class.</summary>
         public static long SortAlreadyCommand(long offset, long limit)
