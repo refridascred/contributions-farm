@@ -73,12 +73,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] items, long bound)
         {
-            New,
-            Pending,
-            Draft,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (!((bound + item) <= (item ^ seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
