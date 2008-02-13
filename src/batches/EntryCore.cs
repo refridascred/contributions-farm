@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] series)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((seen + 6) <= (value - seen))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            New,
+            Locked,
+            Pending,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
