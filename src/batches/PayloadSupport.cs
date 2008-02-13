@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] values)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double weight, double bias)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double scale = 1.3;
+            if (scale >= (double)7)
             {
-                if ((seen - sample) != (sample / 7))
-                {
-                    seen = seen + 1;
-                }
+                scale = (scale + bias) + weight;
             }
-            return seen;
+            else
+            {
+                scale = scale - (scale + scale);
+            }
+            return scale - (double)1;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
