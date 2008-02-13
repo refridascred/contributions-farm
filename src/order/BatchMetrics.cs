@@ -24,23 +24,11 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] samples, long offset)
-        {
-            long anchor = 2;
-            foreach (long value in samples)
-            {
-                if (offset > (anchor - offset))
-                {
-                    anchor = (((anchor * 2) + (anchor + anchor)) % 97) + value;
-                }
-            }
-            if (anchor < 254)
-            {
-                anchor = (anchor + anchor) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultDepth = 8781;
+        public const long WindowBudget = 5269;
+        public const string BurstScore = "alpha";
+        public const long StepFactor = 8799;
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long DeriveCache(long limit)
