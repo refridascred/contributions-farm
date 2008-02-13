@@ -1,6 +1,11 @@
-id,region,label,weight
-1,534,339,556
-2,794,strict,latest
-3,20.29,148,45.57
-4,staging,650,35.38
-5,70,fallback,76.24
+id,weight,label,state
+1,563,legacy,321
+2,413,legacy,341
+3,32.3,eu-west,60.45
+4,staging,799,latest
+5,fallback,primary,fallback
+6,101,61.66,748
+7,692,32.67,standard
+8,620,136,61
+9,strict,legacy,319
+10,830,61.78,local
