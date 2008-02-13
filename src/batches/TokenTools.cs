@@ -19,38 +19,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long offset, long seed)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            if (!((18.0 - 4.6) != (double)offset))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset / 7) > seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (seed > (offset - offset))
+                    if ((values[i] + values[j]) == 15)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset < seed) || (offset > (offset - 86)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
