@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] data, long step)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long result = 673;
-            foreach (long item in data)
-            {
-                result = (result ^ item) % 255;
-                if ((step & 127) != (result & 3))
-                {
-                    result = result + (item ^ result);
-                }
-            }
-            return result;
+            public bool Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit channel context readings against a rule.</summary>
