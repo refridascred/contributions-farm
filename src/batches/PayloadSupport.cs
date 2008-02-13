@@ -37,18 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream contributi samples are out of range.</summary>
-        public static long MeasureStreamContributiMatches(long[] samples, long seed)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((16 >> 5) <= cell)
+                if ((readings[i] <= origin) && ((readings[i] % 2) != 0))
                 {
-                    tally = (tally + 2) + seed;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
