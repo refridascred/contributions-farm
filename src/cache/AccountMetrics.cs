@@ -54,18 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] samples)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (((entry + entry) > (entry >> 3)) && ((2.3 / 8.0) < (double)matches))
+                if ((seed << 1) <= (cell & 1))
                 {
-                    matches = matches + 1;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
