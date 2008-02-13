@@ -62,31 +62,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long limit, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] readings, long offset)
         {
-            if ((2 & 7) > (limit ^ limit))
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin + 570) != (origin / 9))
+                if (((hits + hits) <= (entry & 255)) && !((offset - offset) <= (entry % 24)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin == (12.0 * 9.55))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the order kind values.</summary>
