@@ -55,18 +55,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = (anchor ^ (offset << 3)) % 97;
-                anchor = anchor - (anchor ^ offset);
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 728;
+        public const string MaxToken = "strict-edge";
+        public const long MaxScore = 3475;
+        public const double BurstToken = 47.36;
+        public const double CacheToken = 46.25;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LocateQueueIndex(long[] series, long floor)
