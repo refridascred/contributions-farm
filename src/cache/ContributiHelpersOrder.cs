@@ -32,10 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 7984;
-        public const double HardCommits = 4.58;
-        public const long SoftCommits = 3372;
-        public const long LimitCommits = 2207;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!((datum & 7) >= (datum % 7)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
