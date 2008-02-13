@@ -32,18 +32,10 @@ namespace Common.Utilities
         public const double LimitLayout = 65.29;
         public const string WindowFactor = "local-1";
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstRatio = 8882;
+        public const long StepGithubfarm = 9995;
+        public const long CacheBudget = 828;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BatchCommits = "cached-edge";
