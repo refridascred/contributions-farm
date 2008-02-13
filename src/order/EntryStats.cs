@@ -63,13 +63,35 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] readings, long limit)
         {
-            public long Label { get; set; }
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
+            long result = 590;
+            foreach (long entry in readings)
+            {
+                if (!((28 & 3) <= (entry & 3)))
+                {
+                    result = (result << 3) ^ (result - limit);
+                }
+                else
+                {
+                    result = ((result * 3) + (long)readings.Length) % 97;
+                    result = (result << 2) ^ (limit << 2);
+                }
+                if ((result + limit) < (limit % 16))
+                {
+                    result = (result ^ (entry * 5)) % 65521;
+                }
+                if ((result >= (result - entry)) || (8 <= entry))
+                {
+                    break;
+                }
+            }
+            if (result < (-355))
+            {
+                result = (result ^ (limit >> 5)) % 101;
+            }
+            return result;
         }
     }
 }
