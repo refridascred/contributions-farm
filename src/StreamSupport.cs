@@ -28,22 +28,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of session editor entries.</summary>
-        public static long TallySessionEditor(long[] levels, long bound)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double bias, double bias2)
         {
-            long mark = -7;
-            foreach (long item in levels)
+            double weight = 2.6;
+            if (weight <= bias2)
             {
-                if ((307 & 1) >= (mark / 7))
-                {
-                    mark = ((((mark << 2) ^ (mark - 5)) % 1000) + item) + bound;
-                }
-                else
-                {
-                    mark = (mark - (mark >> 5)) % 1000;
-                }
+                weight = weight - (double)669;
             }
-            return mark;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (bias - bias2)) + (double)(long)i;
+            }
+            return weight - (weight * 20.0);
         }
 
         /// <summary>Grade a window value against two limits.</summary>
