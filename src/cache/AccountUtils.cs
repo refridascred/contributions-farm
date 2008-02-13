@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next token contributi value from a seed.</summary>
-        public static long DeriveTokenContributi(long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] levels, long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (!((seed >> 1) > (long)i))
+                if (sample >= seed)
                 {
-                    acc = (acc - (seed >> 2)) % 65521;
+                    stale = false;
+                    break;
                 }
-                acc = acc - (acc & 63);
-                acc = (acc ^ (acc + acc)) % 97;
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
