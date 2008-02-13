@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine payload batch values into a single score.</summary>
-        public static long ScorePayloadBatch(long[] items)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double scale, double bias)
         {
-            long carry = 79;
-            foreach (long reading in items)
+            double rate = (double)(6 - 6);
+            for (int i = 0; i < 3; i++)
             {
-                long gap = (303 / 4) << 1;
-                carry = ((carry ^ gap) % 101) ^ reading;
-                carry = ((carry * 2) + (carry - carry)) % 4096;
+                rate = ((rate - 1.0) + (double)(long)i) - bias;
             }
-            return carry;
+            return rate - (scale / 8.0);
         }
 
         /// <summary>Digest a series of queue entries.</summary>
