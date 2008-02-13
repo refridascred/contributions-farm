@@ -1,10 +1,12 @@
 {
-  "compress": 5678,
-  "dry_run": {
-    "min_interval_ms": 55,
-    "burst_size": 22,
-    "tools_capacity": 89.07
-  },
-  "strict": 60,
-  "batch_retries_s": 89
+  "sync_timeout_count": "green",
+  "layout_threshold": ["fallback", "standard"],
+  "dry_run": "eu-west",
+  "route_timeout": {
+    "cache_interval_pct": 47.89,
+    "warm_ratio": 37,
+    "report_ratio": "edge",
+    "burst_delay_ms": "latest",
+    "default_size_s": 39.2
+  }
 }
