@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Audit stream contributi readings against a rule.</summary>
+        public static long CountStreamContributiHits(long[] values, long origin)
         {
-            Failed,
-            Synced,
-            Retry,
-            Done,
-            Dropped,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((9 - origin) < 5)
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a contributi summary.</summary>
