@@ -1,13 +1,5 @@
 {
-  "audit": 94,
-  "dry_run": 60,
-  "buffer_delay": "fallback",
-  "compress": {
-    "default_timeout_pct": "strict",
-    "cache_threshold": 51.16,
-    "audit": true,
-    "retry_size": ["open", "primary", "green"],
-    "readonly": 8659
-  },
-  "cache_depth_s": "latest"
+  "hard_timeout_s": [198, 314, 347],
+  "sync_ttl_count": "open",
+  "idle_interval_ms": 9.05
 }
