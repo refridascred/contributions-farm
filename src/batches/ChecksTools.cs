@@ -29,38 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long bound, long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] series)
         {
-            if (((bound + 3) == (origin ^ bound)) && ((double)origin == (double)bound))
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)49 > (double)origin)
+                if ((double)entry == (7.12 + 9.59))
                 {
-                    return 0;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if ((bound + 9) < (origin ^ bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (7.0 / 2.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
