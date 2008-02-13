@@ -61,19 +61,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] levels)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long step)
         {
-            long mark = -623;
-            foreach (long value in levels)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                mark = (mark << 2) ^ (value + mark);
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            if (mark > 9)
-            {
-                mark = mark + (22 - mark);
-            }
-            return mark;
+            return anchor;
         }
     }
 }
