@@ -40,14 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Draft,
-            Failed,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 2007;
+        public const string LimitBudget = "latest-edge";
+        public const string BurstSupport = "legacy-edge";
+        public const long MaxBudget = 4597;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long SeriesReport(long floor)
