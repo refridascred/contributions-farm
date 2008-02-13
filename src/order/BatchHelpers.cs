@@ -41,18 +41,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] items)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!(reading < (count - reading)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Dropped,
+            Done,
+            Queued,
+            Ready,
+            Pending,
         }
     }
 }
