@@ -45,17 +45,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (values[i] == target)
+                if ((9.13 - 2.34) > (double)floor)
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate schema format readings against a bound.</summary>
