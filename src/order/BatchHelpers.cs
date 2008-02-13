@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] data)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] data, long step)
         {
-            long mark = 9;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = mark ^ reading;
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the already phase values.</summary>
