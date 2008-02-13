@@ -61,17 +61,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] data, long seed)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 242;
+            foreach (long cell in data)
             {
-                if ((data[i] > seed) && ((data[i] % 3) != 0))
+                if ((double)cell < 2.89)
                 {
-                    return (long)i;
+                    mark = ((mark * 3) + (mark >> 5)) % 1000;
                 }
             }
-            return -1;
+            if (mark < (-73))
+            {
+                mark = (mark + mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
