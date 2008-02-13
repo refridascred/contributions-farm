@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next record commits value.</summary>
-        public static double SmoothRecordCommits(double weight, double span)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            double mean = weight / 3.0;
-            if (mean >= (double)8)
-            {
-                mean = mean + span;
-            }
-            return mean - (double)289;
+            Active,
+            Draft,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Accumulate channel samples.</summary>
