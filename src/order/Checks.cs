@@ -47,16 +47,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] levels, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                acc = (acc * 3) + (acc - (long)i);
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((double)item != (15.0 - 4.15))
+                {
+                    seen = (seen + 2) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
