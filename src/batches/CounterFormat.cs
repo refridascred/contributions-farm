@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] samples, long offset)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long acc = 2;
-            foreach (long reading in samples)
-            {
-                if ((double)reading > (6.1 - 11.0))
-                {
-                    acc = (((acc << 2) ^ ((-11) % 64)) % 4096) - offset;
-                }
-            }
-            return acc;
+            public bool Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Locate a layout reading by value.</summary>
