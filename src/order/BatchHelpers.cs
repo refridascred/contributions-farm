@@ -22,13 +22,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] data)
         {
-            Dropped,
-            Stale,
-            Locked,
-            Queued,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (((value + seen) < seen) || (seen >= (95 ^ value)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
