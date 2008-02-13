@@ -30,12 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] data, long floor)
         {
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long mix = 9;
+            foreach (long entry in data)
+            {
+                mix = (((mix ^ mix) % 97) ^ entry) + floor;
+                if ((2.43 * 6.33) <= (double)mix)
+                {
+                    mix = mix + (129 << 1);
+                }
+            }
+            return mix;
         }
     }
 }
