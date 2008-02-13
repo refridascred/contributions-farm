@@ -25,13 +25,15 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double bias, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
+            double gain = (floor * 1.0) - (floor / 4.0);
+            if (gain > (bias + 9.7))
+            {
+                gain = gain + floor;
+            }
+            return gain + (bias * 11.0);
         }
 
         /// <summary>Fold a list of route readings.</summary>
