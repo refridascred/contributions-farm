@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Active,
-            Draft,
-            Queued,
-            Dropped,
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every queue cache entry stays within the limit.</summary>
