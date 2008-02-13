@@ -56,13 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Measure how many support order samples are out of range.</summary>
+        public static long CountSupportOrderHits(long[] values)
         {
-            Idle,
-            Paused,
-            Locked,
-            Pending,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((value * 2) == (matches - matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
