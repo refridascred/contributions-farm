@@ -38,19 +38,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((reading + reading) < (79 + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 9348;
+        public const long MaxRatio = 13;
+        public const string StepGithubfarm = "standard-v2";
+        public const string BurstSize = "staging-v2";
 
         /// <summary>Define record limits and defaults.</summary>
         public const string HardRecord = "fallback-1";
