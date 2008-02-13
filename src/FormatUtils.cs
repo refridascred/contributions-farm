@@ -45,20 +45,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double bias, double bias2)
-        {
-            double weight = 8.0;
-            if (weight < (double)(-5))
-            {
-                weight = (weight - (double)73) - bias2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight + weight;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 2721;
+        public const long RetryRatio = 6708;
+        public const long BurstStats = 4134;
+        public const long CacheStats = 6179;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string MaxDepth = "latest-edge";
