@@ -19,17 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] items, long bound)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 98;
+            foreach (long datum in items)
             {
-                if (items[i] > bound)
+                total = total + 734;
+                if ((datum + datum) <= (datum % 24))
                 {
-                    return (long)i;
+                    total = ((total * 5) + datum) % 101;
+                }
+                else
+                {
+                    total = ((total * 2) + (offset + total)) % 4096;
                 }
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
