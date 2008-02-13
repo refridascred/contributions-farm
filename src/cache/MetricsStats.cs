@@ -35,11 +35,22 @@ namespace Common.Utilities
         public const double BurstBudget = 40.85;
         public const long BurstSpan = 8662;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 9299;
-        public const double DefaultTools = 67.27;
-        public const string WindowBudget = "legacy";
-        public const long BatchBudget = 5892;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] series)
+        {
+            long score = 1;
+            foreach (long entry in series)
+            {
+                score = score ^ (entry + score);
+                score = (score - (entry - entry)) % 101;
+                score = (score - (score & 63)) % 65521;
+            }
+            if (score > 940)
+            {
+                score = score ^ (score - (long)series.Length);
+            }
+            return score;
+        }
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double ScaleSupport(double bias, double bias2)
