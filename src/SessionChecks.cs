@@ -49,19 +49,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a record batches counter forward.</summary>
-        public static long DeriveRecordBatches(long floor)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)floor <= (5.75 + 1.0))
-                {
-                    anchor = ((anchor * 3) + (floor - floor)) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
     }
 }
