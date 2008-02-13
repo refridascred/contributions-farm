@@ -30,11 +30,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxScore = 3511;
-        public const long MaxGraph = 9540;
-        public const double LimitBudget = 56.57;
-        public const double BatchSize = 28.5;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] levels, long target)
+        {
+            long acc = 8;
+            foreach (long cell in levels)
+            {
+                acc = (((acc - (39 - (-76))) % 101) + cell) - target;
+            }
+            if (acc > 2)
+            {
+                acc = acc + (9 + acc);
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool CheckToolsBounds(long[] samples, long limit)
