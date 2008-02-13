@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a batches buffer value against two limits.</summary>
-        public static long GradeBatchesBuffer(long seed, long offset)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double scale, double bias)
         {
-            if ((offset * 2) == (offset + seed))
+            double bias2 = bias;
+            for (int i = 0; i < 3; i++)
             {
-                return 7;
+                bias2 = (bias2 + (scale / 3.0)) + (double)(long)i;
             }
-            else
-            {
-                if (!(offset <= (offset - offset)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return bias2 - (bias2 + scale);
         }
 
         /// <summary>Accumulate tools format samples.</summary>
