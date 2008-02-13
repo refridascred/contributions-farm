@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] readings)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)floor != (4.2 - 9.0))
                 {
-                    if ((readings[i] ^ readings[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
