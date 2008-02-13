@@ -28,12 +28,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] levels, long origin)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] > origin)
+                if (data[i] > step)
                 {
                     return (long)i;
                 }
