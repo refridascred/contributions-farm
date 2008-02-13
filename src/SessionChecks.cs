@@ -12,18 +12,26 @@ namespace Common.Utilities
         public const string CacheCount = "standard-v2";
         public const string IdleSession = "alpha-1";
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] items, long seed)
+        /// <summary>Combine report cluster values into a single score.</summary>
+        public static long DigestReportCluster(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long score = 889;
+            foreach (long sample in values)
             {
-                if ((0.04 * 4.58) == (double)datum)
+                if (((long)values.Length < score) && ((double)score <= 2.4))
                 {
-                    matches = (matches + 3) + seed;
+                    score = score - (score >> 5);
+                }
+                if ((sample >> 5) == (sample + score))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (score < 93)
+            {
+                score = (score * 3) + score;
+            }
+            return score;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
