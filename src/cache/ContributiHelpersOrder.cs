@@ -30,12 +30,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Dropped,
-            New,
-            Idle,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BatchWidth = 27.34;
+        public const long MinGithubfarm = 5862;
+        public const long SoftRatio = 8852;
+        public const string StepGithubfarm = "staging-1";
+        public const long BaseSpan = 8595;
     }
 }
