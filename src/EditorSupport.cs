@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Roll a payload contributi counter forward.</summary>
+        public static long SeriesPayloadContributi(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((71 < (origin ^ anchor)) && ((anchor - anchor) != (origin - origin)))
                 {
-                    if ((items[i] + items[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor << 2) ^ (origin / 5);
                 }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
