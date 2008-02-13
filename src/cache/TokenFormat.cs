@@ -27,18 +27,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] readings, long bound)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] items)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)item < (6.3 / 5.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 1) - bound;
+                    if ((items[i] + items[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
