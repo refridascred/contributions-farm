@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first notes schema entry that matches the target.</summary>
-        public static long LocateNotesSchemaIndex(long[] items, long seed)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate2 = 18.0 / 7.0;
+            if (rate2 < rate2)
             {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
+                rate2 = (rate2 + (rate2 * 18.0)) - bias;
             }
-            return -1;
+            return rate2 + (rate / 9.0);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
