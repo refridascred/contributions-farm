@@ -66,21 +66,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the payload graph series from a seed.</summary>
-        public static long DerivePayloadGraph(long bound)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                long prev = (48 * 4) << 1;
-                if (((prev % 64) == (prev << 3)) || (((long)i - prev) <= ((long)i + (-255))))
-                {
-                    long cur = (bound << 1) - (prev - prev);
-                    prev = (prev - (prev - cur)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            Active,
+            Queued,
+            Locked,
+            Stale,
+            Retry,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
