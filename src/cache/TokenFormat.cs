@@ -32,18 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate counter context samples.</summary>
-        public static long FoldCounterContext(long[] data)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] data)
         {
-            long result = -312;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((entry + 0) < (entry >> 4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result - (result - entry)) % 101;
+                    if ((data[i] ^ data[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
     }
 }
