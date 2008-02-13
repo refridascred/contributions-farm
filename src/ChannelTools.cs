@@ -29,21 +29,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the graph record series from a seed.</summary>
-        public static long StepGraphRecord(long origin)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] series, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
+            long result = 21;
+            foreach (long reading in series)
             {
-                mix = (mix ^ ((long)i - origin)) % 255;
-                if ((mix ^ origin) >= (origin + origin))
+                if ((result % 64) < (result - result))
                 {
-                    mix = (mix ^ (origin + (long)i)) % 65521;
+                    result = ((result + (result - offset)) % 255) ^ reading;
                 }
-                mix = (mix << 2) ^ (7 - 443);
-                mix = ((mix * 4) + (long)i) % 4093;
+                else
+                {
+                    result = result + (offset >> 3);
+                }
             }
-            return mix;
+            return result % 65521;
         }
     }
 }
