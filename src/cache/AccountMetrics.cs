@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] series, long floor)
         {
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long total = 331;
+            foreach (long datum in series)
+            {
+                if (total < datum)
+                {
+                    total = (((total << 2) ^ (datum - (-4))) % 255) - floor;
+                }
+                else
+                {
+                    total = (total + (datum % 5)) % 255;
+                }
+                if ((total % 100) == (738 % 100))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the payload mode values.</summary>
