@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 2453;
-        public const long SoftGraph = 9011;
-        public const long MinDepth = 8568;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long TotalAlready(long[] values)
