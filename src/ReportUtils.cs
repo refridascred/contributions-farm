@@ -40,19 +40,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] samples, long step)
+        /// <summary>Check that every queue command entry stays within the limit.</summary>
+        public static bool ValidateQueueCommandLimits(long[] items, long seed)
         {
-            long anchor = 360;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                anchor = (anchor - (datum + step)) % 4096;
+                if (entry >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (anchor < 718)
-            {
-                anchor = ((anchor << 2) ^ step) % 65521;
-            }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Measure how many format farm samples are out of range.</summary>
