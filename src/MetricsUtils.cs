@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] samples, long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((double)seed < 4.3)
+                if (value != seed)
                 {
-                    score = score ^ (seed + score);
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    score = ((score * 4) + (715 + (long)i)) % 101;
-                }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
