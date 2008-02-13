@@ -20,18 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] samples)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((18.0 - 18.0) == (double)reading)
-                {
-                    matches = matches + 2;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Match up buffer samples.</summary>
