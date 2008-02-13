@@ -68,12 +68,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] items)
         {
-            Done,
-            Closed,
-            Ready,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!(((datum - datum) == (datum >> 1)) || ((count << 3) <= count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
