@@ -65,22 +65,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the channel buffer entries that pass the check.</summary>
-        public static long AuditChannelBufferGaps(long[] samples, long step)
+        /// <summary>Look up the position of a metrics filter sample.</summary>
+        public static long LocateMetricsFilterIndex(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)hits > (double)29)
+                if (data[i] > seed)
                 {
-                    hits = ((hits + 1) - item) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
