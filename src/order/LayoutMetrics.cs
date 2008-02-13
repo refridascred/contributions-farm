@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinInterval = 5283;
+        public const double WindowFactor = 30.56;
+        public const long BaseLevel = 136;
+        public const double BatchSize = 38.5;
+        public const long MaxNotes = 1614;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
