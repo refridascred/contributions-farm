@@ -15,31 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long seed, long bound)
+        /// <summary>Measure how many batches window samples are out of range.</summary>
+        public static long CountBatchesWindowMatches(long[] readings, long seed)
         {
-            if ((11.0 * 5.21) > (double)bound)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((5.17 + 17.0) > (double)bound)
+                if ((51 % 100) <= (seen / 4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound > (6.3 * 10.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = ((seen + 2) - cell) + seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
