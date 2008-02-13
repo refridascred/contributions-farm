@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const double BurstFactor = 60.27;
         public const long IdleWidth = 9116;
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
