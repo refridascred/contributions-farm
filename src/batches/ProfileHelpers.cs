@@ -77,13 +77,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Active,
-            Synced,
-            Closed,
-            Dropped,
+            public double Flag { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
