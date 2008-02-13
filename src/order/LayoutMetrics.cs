@@ -29,10 +29,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitTimeout = 3870;
-        public const long IdleBatch = 3480;
-        public const long BaseSpan = 1924;
-        public const long RetryBatch = 5337;
+        /// <summary>Look up the position of a queue stream sample.</summary>
+        public static long LocateQueueStreamIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
