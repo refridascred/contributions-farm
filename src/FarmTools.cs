@@ -15,18 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit buffer farm readings against a rule.</summary>
-        public static long MeasureBufferFarmMatches(long[] levels)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((sample >= (sample % 97)) && (((long)levels.Length < (sample * 2)) || ((15.0 + 2.8) < (double)tally)))
+                if (datum < floor)
                 {
-                    tally = tally + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Describe the tools kind values.</summary>
