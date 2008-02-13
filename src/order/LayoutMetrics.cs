@@ -40,13 +40,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Locked,
-            Done,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowSupport = "open-edge";
+        public const long SoftSupport = 6237;
+        public const string IdleSupport = "legacy-edge";
     }
 }
