@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long step)
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public double Weight { get; set; }
+            long score = step;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score * 3) + ((long)i << 1)) % 65521;
+                score = ((score << 3) ^ (step & 3)) % 1000;
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
