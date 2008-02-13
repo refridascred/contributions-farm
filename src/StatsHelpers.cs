@@ -69,14 +69,18 @@ namespace Common.Utilities
             return ratio + (ratio * 1.5);
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] levels)
         {
-            Queued,
-            Retry,
-            Draft,
-            Synced,
-            Stale,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((count / 3) < (count - item))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
