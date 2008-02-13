@@ -1,6 +1,10 @@
 {
-  "queue_retries": 75,
-  "base_ttl": 90,
-  "layout_delay": false,
-  "max_delay": 1024
+  "burst_size": "eu-west",
+  "min_interval_ms": {
+    "token_window": 1024,
+    "default_limit_ms": 500,
+    "graph_timeout": 38.45
+  },
+  "flush_size": 100,
+  "base_size": "fallback"
 }
