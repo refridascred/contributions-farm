@@ -45,38 +45,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank filter cache input into a small class.</summary>
-        public static long BucketFilterCache(long target, long origin)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            if ((target ^ origin) > (95 - 70))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((7.5 - 9.0) > (double)target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)target < (3.1 + 1.0)) || (origin < (target + target)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin / 5) <= origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
