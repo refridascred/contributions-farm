@@ -23,12 +23,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] data)
         {
-            Pending,
-            Ready,
-            New,
+            long mix = 76;
+            foreach (long item in data)
+            {
+                if (!(((-206) << 2) > (item ^ mix)))
+                {
+                    mix = (mix - ((-14) ^ mix)) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
