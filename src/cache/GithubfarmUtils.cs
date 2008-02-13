@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
+            Queued,
             Dropped,
-            Retry,
-            New,
-            Synced,
+            Active,
+            Pending,
         }
 
         /// <summary>Measure how many order stats samples are out of range.</summary>
