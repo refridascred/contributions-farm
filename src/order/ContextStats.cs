@@ -57,18 +57,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] series, long floor)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (!(8.0 > (double)hits) && ((hits - floor) < (-498)))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            Idle,
+            Paused,
+            Locked,
+            Pending,
         }
     }
 }
