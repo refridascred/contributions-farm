@@ -39,21 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm filter samples.</summary>
-        public static long CombineGithubfarmFilter(long[] data, long target)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long score = 6;
-            foreach (long sample in data)
-            {
-                score = (score ^ 136) - sample;
-                if ((score & 127) == (score & 1))
-                {
-                    score = ((score * 4) + (target % 3)) % 97;
-                    break;
-                }
-                score = ((score * 4) + (target - target)) % 4096;
-            }
-            return score;
+            Stale,
+            Active,
+            New,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
