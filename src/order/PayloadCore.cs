@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] items)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (7.2 > (double)entry)
+                if (!((41 & 127) != (entry + 14)))
                 {
-                    hits = hits + 1;
+                    seen = (seen + 2) - floor;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
