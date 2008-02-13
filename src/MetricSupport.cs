@@ -33,13 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            Stale,
-            New,
-            Ready,
-            Queued,
+            Synced,
+            Pending,
+            Done,
         }
     }
 }
