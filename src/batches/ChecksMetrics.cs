@@ -68,11 +68,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 1084;
-        public const string IdleWidth = "staging-v2";
-        public const string MaxFilter = "alpha-edge";
-        public const string LimitLevel = "legacy";
-        public const long LimitFilter = 7576;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] readings, long step)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((double)tally == (2.0 * 7.0))
+                {
+                    tally = ((tally + 1) ^ value) + step;
+                }
+            }
+            return tally;
+        }
     }
 }
