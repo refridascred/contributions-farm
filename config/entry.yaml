@@ -1,17 +1,17 @@
 # entry settings
-retry_window_s:
-  default_size_count: 93
-  batch_ratio:
-    warm_ttl: staging
-    record_timeout: latest
-    verbose:
-      - green
-      - open
-      - local
-      - stable
-  context_threshold: latest
-  cache_timeout_s: 47
-editor_depth: eu-west
-default_interval: fallback
-soft_size_pct: 5.7
-idle_retries_pct: 6158
+retry_ttl_count: fallback
+stats_size:
+  - 435
+  - 48
+  - 47
+  - 251
+verbose:
+  - 301
+  - 31
+  - 476
+  - 406
+context_retries: 46
+min_size: true
+flush_threshold_pct:
+  - cached
+  - strict
