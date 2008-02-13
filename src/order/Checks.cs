@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long seed)
+        /// <summary>Measure how many editor window samples are out of range.</summary>
+        public static long TallyEditorWindowMatches(long[] items, long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                mix = (mix << 2) ^ (seed + 11);
-                long edge = mix;
-                if (!((9.7 / 6.0) >= (double)edge))
+                if (datum > (count - count))
                 {
-                    edge = edge - (mix & 15);
-                    edge = (edge - (mix ^ (long)i)) % 65521;
+                    count = (count + 2) + offset;
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Count the cluster window entries that pass the check.</summary>
