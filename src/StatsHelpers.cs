@@ -65,18 +65,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] levels, long offset)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long result = 4;
-            foreach (long cell in levels)
-            {
-                if ((3.3 / 8.0) == (double)offset)
-                {
-                    result = (result ^ (95 / 5)) - cell;
-                }
-            }
-            return result;
+            Pending,
+            Failed,
+            Retry,
+            Closed,
+            Done,
         }
     }
 }
