@@ -46,10 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 8766;
-        public const double IdleRatio = 65.6;
-        public const long MinDepth = 8277;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)(long)items.Length >= (double)floor)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
