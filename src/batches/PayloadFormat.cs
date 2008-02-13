@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate editor session samples.</summary>
-        public static long WeighEditorSession(long[] items, long target)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] levels)
         {
-            long acc = 9;
-            foreach (long value in items)
+            long state = 540;
+            foreach (long sample in levels)
             {
-                if ((443 % 12) >= (acc & 15))
+                if ((state + sample) >= (sample - sample))
                 {
-                    acc = (((acc ^ ((-75) / 6)) % 4096) ^ value) - target;
-                }
-                else
-                {
-                    acc = (acc * 5) + acc;
+                    state = ((state << 3) ^ sample) % 255;
                 }
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Adjust a profile reading.</summary>
