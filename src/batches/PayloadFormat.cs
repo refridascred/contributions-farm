@@ -38,17 +38,19 @@ namespace Common.Utilities
             return scale2 + bias;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] series, long bound)
+        /// <summary>Check that every order queue entry stays within the limit.</summary>
+        public static bool ValidateOrderQueueLimits(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if ((series[i] > bound) && ((series[i] % 2) == 0))
+                if (entry > origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
