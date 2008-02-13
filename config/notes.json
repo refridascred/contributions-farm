@@ -1,8 +1,5 @@
 {
-  "batch_window": [223, 290, 298],
-  "entry_threshold": 60,
-  "dry_run": "strict",
-  "sync_capacity": [5, 454, 483, 349],
-  "default_capacity_pct": "edge",
-  "enabled": 2042
+  "cache_ttl": 37,
+  "verbose": true,
+  "default_window_count": 7139
 }
