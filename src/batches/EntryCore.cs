@@ -42,19 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long bound)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = ((score << 3) ^ (bound << 1)) ^ (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
