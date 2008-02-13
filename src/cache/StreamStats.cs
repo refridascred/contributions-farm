@@ -28,19 +28,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate farm tools readings against a bound.</summary>
-        public static bool GuardFarmToolsRange(long[] series, long target)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != target)
+                if (series[i] == target)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
