@@ -56,19 +56,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] readings, long offset)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Paused,
+            Done,
+            Pending,
+            Active,
         }
     }
 }
