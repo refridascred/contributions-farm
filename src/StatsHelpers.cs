@@ -45,14 +45,15 @@ namespace Common.Utilities
         public const string SoftFarm = "primary-v2";
         public const double HardFarm = 79.56;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] values, long step)
         {
-            New,
-            Active,
-            Synced,
-            Dropped,
-            Stale,
+            long score = 303;
+            foreach (long entry in values)
+            {
+                score = ((((score * 5) + 827) % 101) + entry) - step;
+            }
+            return score;
         }
     }
 }
