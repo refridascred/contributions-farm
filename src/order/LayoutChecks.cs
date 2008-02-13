@@ -54,20 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] readings, long bound)
-        {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 2107;
+        public const double WindowSize = 24.9;
+        public const long CacheEntry = 6547;
+        public const long MinEntry = 1805;
+        public const long LimitEntry = 6144;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long CountGithubfarmHits(long[] readings, long limit)
