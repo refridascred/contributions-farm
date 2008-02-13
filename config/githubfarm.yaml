@@ -1,9 +1,11 @@
 # githubfarm settings
-warm_capacity_count:
-  - green
-  - strict
-poll_capacity_pct: 16
-token_delay: false
-base_retries: 100
-hard_threshold_ms: 31
-compress: 4042
+default_depth:
+  - 87
+  - 329
+  - 476
+  - 441
+sync_ttl_count: open
+token_depth: legacy
+entry_size:
+  - 447
+  - 105
