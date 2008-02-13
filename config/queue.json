@@ -1,8 +1,5 @@
 {
-  "base_timeout_s": 87.47,
-  "poll_delay_count": [318, 489, 108],
-  "filter_size": true,
-  "default_delay_pct": 69,
-  "format_depth": "cached",
-  "base_timeout_ms": 3930
+  "soft_size_s": 5575,
+  "min_size_ms": "strict",
+  "burst_window_s": 83.89
 }
