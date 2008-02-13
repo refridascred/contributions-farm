@@ -38,23 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] data, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (cell > (cell ^ tally))
-                {
-                    tally = (tally + 3) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySupport = 14.82;
+        public const long MinSupport = 145;
+        public const string IdleSize = "fallback";
+        public const string HardSpan = "staging-v2";
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long ClassifyChannel(long target, long limit)
