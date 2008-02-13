@@ -33,18 +33,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] samples)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long bound, long offset)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long slot = bound ^ offset;
+            if (slot < offset)
             {
-                if (((3.0 / 2.0) >= (double)tally) && (((tally << 2) >= (tally + tally)) && ((tally ^ tally) > (tally >> 2))))
+                return 1;
+            }
+            else
+            {
+                if (((5.2 * 3.1) <= (double)offset) && ((slot + slot) <= 1))
                 {
-                    tally = (tally + 3) ^ value;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound / 5) > bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
