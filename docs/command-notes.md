@@ -1,11 +1,10 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Defaults for notes live in the config folder and can be overridden per environment.
-Use queue settings to tune how often command data is refreshed.
+The payload report groups every support by queue.
+Keep stats and payload names short and lowercase.
 
 ## Guidelines
 
-- Keep format values small
-- Log every queue change
-- Document new already fields
+- Keep layout values small
+- Prefer account defaults
+- Log every stats change
