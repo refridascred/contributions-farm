@@ -27,16 +27,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = (carry - (70 * 3)) % 65521;
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Pending,
+            Closed,
+            Retry,
+            Paused,
         }
     }
 }
