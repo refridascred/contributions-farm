@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] values, long origin)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
