@@ -37,18 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] readings)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)readings.Length + 2) == (seen + seen))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) + cell;
+                    if ((readings[i] ^ readings[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
