@@ -26,13 +26,13 @@ namespace Common.Utilities
             return ((gain - (1.12 * 5.1)) + weight) + floor;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            Pending,
-            Closed,
-            Retry,
             Paused,
+            Retry,
+            Stale,
+            Pending,
         }
     }
 }
