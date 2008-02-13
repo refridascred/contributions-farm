@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleCount = 1453;
-        public const double BurstAccount = 11.95;
-        public const long BurstFactor = 3455;
-        public const long BatchAccount = 7069;
-        public const long WindowSize = 3472;
+        /// <summary>Validate support counter readings against a bound.</summary>
+        public static bool VerifySupportCounterLimits(long[] items, long bound)
+        {
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long DigestContributi(long[] items)
