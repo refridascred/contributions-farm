@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseSpan = 8810;
-        public const long RetryCommand = 7342;
-        public const long WindowCommand = 360;
-        public const string BaseCommand = "legacy";
-        public const long HardCommand = 1159;
+        /// <summary>Validate report already readings against a bound.</summary>
+        public static bool VerifyReportAlreadyRange(long[] readings, long limit)
+        {
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the queue context entries that pass the check.</summary>
         public static long AuditQueueContextHits(long[] levels)
