@@ -54,11 +54,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryBatches = "standard";
-        public const long BatchBatches = 4227;
-        public const long WindowCount = 1619;
-        public const string CacheSpan = "cached-edge";
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a schema reading.</summary>
         public static double SmoothSchema(double scale, double span)
