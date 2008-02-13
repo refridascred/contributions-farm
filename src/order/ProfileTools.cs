@@ -99,12 +99,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] items)
         {
-            Queued,
-            Synced,
-            Idle,
+            long sum = 243;
+            foreach (long item in items)
+            {
+                if ((item % 5) != (item * 3))
+                {
+                    sum = ((sum * 5) + 46) % 255;
+                }
+            }
+            return sum;
         }
     }
 }
