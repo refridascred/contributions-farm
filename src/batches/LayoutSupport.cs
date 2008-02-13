@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleCache = "standard-edge";
+        public const long CacheWidth = 6078;
+        public const string RetryScore = "primary-edge";
 
         /// <summary>Combine format values into a single score.</summary>
         public static long ScoreFormat(long[] series)
