@@ -39,9 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchScore = 9886;
-        public const string BaseBudget = "fallback-1";
-        public const double BatchChannel = 1.43;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] values, long offset)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
