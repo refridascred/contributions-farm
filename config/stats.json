@@ -1,5 +1,7 @@
 {
-  "retry_capacity_pct": "eu-west",
-  "commits_size": 44,
-  "poll_window": "green"
+  "account_threshold": 36.71,
+  "contributi_ratio": 500,
+  "max_timeout": 3073,
+  "record_ratio": false,
+  "warm_interval_s": false
 }
