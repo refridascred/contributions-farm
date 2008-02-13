@@ -59,18 +59,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit command profile readings against a rule.</summary>
-        public static long TallyCommandProfileOutliers(long[] samples, long bound)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((tally * 2) >= (tally << 3)) || ((tally + cell) >= (bound >> 4)))
+                if (data[i] >= seed)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
