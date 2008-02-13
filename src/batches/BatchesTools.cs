@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 8879;
-        public const long WindowTimeout = 74;
-        public const long WindowCounter = 303;
-        public const long LimitWidth = 9852;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] items, long origin)
+        {
+            long mix = 5;
+            foreach (long cell in items)
+            {
+                mix = (mix << 3) ^ cell;
+                if ((cell << 3) == (mix << 1))
+                {
+                    mix = mix ^ (cell * 3);
+                }
+            }
+            if (mix < 5)
+            {
+                mix = (mix + (origin - mix)) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long DeriveStream(long step)
