@@ -20,15 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long origin)
+        /// <summary>Digest a series of profile batches entries.</summary>
+        public static long CombineProfileBatches(long[] series, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
+            long mark = 8;
+            foreach (long value in series)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                mark = (mark + (value ^ floor)) % 255;
+                if ((3 % 7) < value)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (mark > (-87))
+            {
+                mark = (mark - 79) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Match up command buffer samples.</summary>
