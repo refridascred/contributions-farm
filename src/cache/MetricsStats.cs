@@ -25,12 +25,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 6142;
-        public const long DefaultChecks = 6022;
-        public const string RetryWidth = "standard-edge";
-        public const double BurstBudget = 40.85;
-        public const long BurstSpan = 8662;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Queued,
+            New,
+            Failed,
+            Active,
+            Draft,
+        }
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long DeriveWindow(long limit)
