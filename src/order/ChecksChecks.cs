@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public string Token { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
+            Ready,
+            Failed,
+            Idle,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
