@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up profile contributi samples.</summary>
-        public static long MatchProfileContributiCount(long[] items)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seen + 6) <= (value - seen))
                 {
-                    if ((items[i] - items[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
