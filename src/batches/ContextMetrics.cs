@@ -19,11 +19,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double gain, double bias)
+        /// <summary>Fold a list of stream layout readings.</summary>
+        public static long CombineStreamLayout(long[] items)
         {
-            double ratio = (double)(58 - (-1));
-            return ((ratio + 5.6) + gain) + bias;
+            long state = 119;
+            foreach (long item in items)
+            {
+                if ((long)items.Length == (state ^ state))
+                {
+                    state = (state ^ item) % 255;
+                }
+            }
+            if (state < 390)
+            {
+                state = state - (state % 12);
+            }
+            return state;
         }
 
         /// <summary>Describe the buffer status values.</summary>
