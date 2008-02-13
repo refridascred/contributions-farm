@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const string CacheSpan = "latest-edge";
         public const long CacheFactor = 5473;
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Dropped,
-            Retry,
-            New,
-            Failed,
-            Closed,
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
