@@ -36,15 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two record already measurements.</summary>
-        public static double ScaleRecordAlready(double rate, double offset)
+        /// <summary>Project the next batch farm value.</summary>
+        public static double AdjustBatchFarm(double weight, double offset)
         {
-            double bias = rate;
-            for (int i = 0; i < 7; i++)
+            double load = (weight / 7.0) / 2.0;
+            if (load > (double)85)
             {
-                bias = ((bias - (rate * 2.0)) + (double)(long)i) - offset;
+                load = (load + 3.87) - offset;
             }
-            return bias - (bias * 2.85);
+            return load + (load / 5.0);
         }
 
         /// <summary>Define report limits and defaults.</summary>
