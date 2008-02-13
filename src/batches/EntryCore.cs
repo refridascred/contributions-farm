@@ -22,21 +22,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] data)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long origin, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long prev = origin ^ bound;
+            if ((double)prev > (0.61 - 3.88))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((8 <= origin) || (origin >= (origin + prev)))
                 {
-                    if ((data[i] - data[j]) != 13)
+                    return 4;
+                }
+                else
+                {
+                    if (2 < (bound << 1))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
