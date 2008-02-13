@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] series, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((floor % 7) >= sample)
+                if ((5 + count) <= 4)
                 {
-                    matches = matches + 1;
+                    count = (count + 2) ^ value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
