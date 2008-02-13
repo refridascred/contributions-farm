@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] series, long origin)
+        /// <summary>Audit format filter readings against a rule.</summary>
+        public static long TallyFormatFilterMatches(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (datum > origin)
+                if ((value + 437) > (count - count))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
