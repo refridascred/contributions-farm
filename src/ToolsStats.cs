@@ -48,12 +48,12 @@ namespace Common.Utilities
         public const long IdleCount = 5439;
         public const long BatchTimeout = 421;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Paused,
-            Active,
-            New,
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
