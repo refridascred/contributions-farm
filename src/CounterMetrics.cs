@@ -30,17 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] levels, long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileBounds(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((levels[i] > target) && ((levels[i] % 3) == 0))
+                if (entry <= bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
