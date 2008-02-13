@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepLevel = 6351;
-        public const long CacheDepth = 7149;
-        public const long BaseWindow = 8410;
-        public const long MaxFactor = 9695;
+        /// <summary>Rank format order input into a small class.</summary>
+        public static long ClassifyFormatOrder(long limit, long origin)
+        {
+            long span = limit + origin;
+            if ((double)limit > 8.96)
+            {
+                return 6;
+            }
+            else
+            {
+                if (9.38 > (double)span)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
