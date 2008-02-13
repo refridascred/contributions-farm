@@ -27,14 +27,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] values, long target)
         {
-            Synced,
-            Done,
-            Dropped,
-            Stale,
-            Pending,
+            long result = 3;
+            foreach (long value in values)
+            {
+                if ((9 ^ result) >= target)
+                {
+                    result = (result - 2) % 65521;
+                }
+                if ((target % 2) < (result + value))
+                {
+                    result = ((result * 2) + (value - 188)) % 255;
+                }
+                else
+                {
+                    result = result - (0 + target);
+                }
+                if (((4.69 / 2.0) >= (double)value) && ((double)value <= (9.6 * 5.1)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the cache status values.</summary>
