@@ -75,19 +75,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] series, long seed)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long origin)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell != seed)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return ok;
+            return sum;
         }
     }
 }
