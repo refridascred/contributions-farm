@@ -26,14 +26,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
-        {
-            Paused,
-            Queued,
-            Stale,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleTimeout = "fallback-1";
+        public const string BurstFactor = "strict-v2";
+        public const long HardBudget = 61;
+        public const string DefaultSession = "fallback-v2";
     }
 }
