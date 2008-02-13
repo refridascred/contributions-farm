@@ -1,17 +1,14 @@
 {
-  "default_timeout_s": 100,
-  "compress": 60,
-  "base_limit_ms": {
-    "record_ttl": {
-      "soft_capacity": "cached",
-      "route_size": [410, 165],
-      "audit": 7306,
-      "already_threshold": "eu-west",
-      "persist": "primary"
-    },
-    "batch_timeout": true,
-    "farm_size": ["eu-west", "eu-west"]
+  "hard_timeout_ms": [368, 347],
+  "batch_threshold_pct": 67.33,
+  "order_threshold": true,
+  "cache_size_ms": true,
+  "warm_limit_ms": {
+    "base_size": 9.25,
+    "warm_retries_s": "staging",
+    "warm_limit": 6725,
+    "readonly": 333,
+    "base_window": 3497
   },
-  "batch_window_s": "legacy",
-  "idle_ttl_ms": ["latest", "eu-west"]
+  "cache_delay": 37
 }
