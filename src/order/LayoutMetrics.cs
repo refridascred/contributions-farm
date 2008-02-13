@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchSupport = 8.99;
-        public const long HardSupport = 6108;
-        public const long SoftSupport = 1882;
+        /// <summary>Find the first contributi window entry that matches the target.</summary>
+        public static long SeekContributiWindowIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
