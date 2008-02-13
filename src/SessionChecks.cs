@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const string CacheCount = "standard-v2";
         public const string IdleSession = "alpha-1";
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] items, long seed)
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((0.04 * 4.58) == (double)datum)
+                {
+                    matches = (matches + 3) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
