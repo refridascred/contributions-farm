@@ -29,18 +29,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] data, long step)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (tally > (tally + tally))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = ((tally + 3) + sample) + step;
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
