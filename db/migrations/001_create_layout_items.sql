@@ -2,10 +2,8 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    ratio REAL,
     level INTEGER,
-    created_at TIMESTAMP,
-    rank INTEGER
+    created_at TIMESTAMP
 );
 
 CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
