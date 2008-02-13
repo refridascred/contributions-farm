@@ -20,13 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a editor stats.</summary>
