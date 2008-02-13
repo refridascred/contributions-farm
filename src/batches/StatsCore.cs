@@ -26,11 +26,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxWidth = 83.35;
-        public const long BaseContext = 2136;
-        public const long StepLevel = 738;
-        public const string MaxContext = "cached-v2";
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Closed,
+            Draft,
+            Stale,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long DigestMetric(long[] series, long floor)
