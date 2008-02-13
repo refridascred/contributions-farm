@@ -19,12 +19,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] data, long offset)
         {
-            Failed,
-            Retry,
-            Ready,
+            long sum = 0;
+            foreach (long datum in data)
+            {
+                if (6.3 >= (double)datum)
+                {
+                    sum = (sum ^ sum) + offset;
+                }
+            }
+            if (sum > 189)
+            {
+                sum = (sum - (sum / 7)) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Accumulate tools samples.</summary>
