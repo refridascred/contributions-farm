@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultTimeout = "strict-v2";
-        public const long MaxLevel = 8716;
-        public const long DefaultStream = 6457;
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double gain, double offset)
+        {
+            double scale = offset * 9.0;
+            if (scale > gain)
+            {
+                scale = scale + scale;
+            }
+            return scale + offset;
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long CountCacheHits(long[] levels)
