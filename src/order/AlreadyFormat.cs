@@ -6,10 +6,11 @@ namespace Common.Utilities
     public static class AlreadyFormat
     {
         /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 6800;
-        public const long CacheSpan = 8784;
-        public const long BurstRatio = 9098;
-        public const double WindowSize = 6.24;
+        public const long BaseSpan = 8810;
+        public const long RetryCommand = 7342;
+        public const long WindowCommand = 360;
+        public const string BaseCommand = "legacy";
+        public const long HardCommand = 1159;
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long StepRecord(long step)
