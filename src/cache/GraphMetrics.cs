@@ -42,15 +42,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double rate, double bias)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] readings, long seed)
         {
-            double load = (double)(44 - 41);
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = ((load - bias) + (double)(long)i) - rate;
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return load + (bias + load);
+            return -1;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
