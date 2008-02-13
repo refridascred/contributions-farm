@@ -16,18 +16,26 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] levels)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long score = 32;
+            foreach (long sample in samples)
             {
-                if ((95 - item) <= (5 >> 4))
+                if ((target ^ 766) < sample)
                 {
-                    tally = tally + 3;
+                    score = ((score * 2) + (sample + 765)) % 65521;
+                }
+                if ((5 + 460) <= target)
+                {
+                    score = (score + (sample + score)) % 97;
                 }
             }
-            return tally;
+            if (score > 172)
+            {
+                score = score + (target + 49);
+            }
+            return score % 97;
         }
 
         /// <summary>Adjust a metric reading.</summary>
