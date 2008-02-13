@@ -1,9 +1,8 @@
-id,owner,score,level
-1,635,51.56,latest
-2,573,staging,open
-3,fallback,staging,green
-4,cached,primary,694
-5,21.22,473,626
-6,181,129,latest
-7,local,standard,primary
-8,primary,58.17,primary
+id,label,count
+1,47.6,156
+2,239,424
+3,58.52,20.02
+4,eu-west,latest
+5,55.62,342
+6,94.49,276
+7,1,13.62
