@@ -39,22 +39,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] values)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] series, long offset)
         {
-            long state = -721;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((8.4 / 9.0) <= (double)state)
+                if (series[i] < offset)
                 {
-                    state = (state * 5) + (state + datum);
-                }
-                if ((double)state <= (6.13 * 2.7))
-                {
-                    state = (state << 3) ^ (state - state);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Combine already values into a single score.</summary>
