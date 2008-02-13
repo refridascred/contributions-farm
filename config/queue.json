@@ -1,8 +1,8 @@
 {
-  "retry_capacity_s": ["eu-west", "staging", "eu-west", "primary"],
-  "compress": 482,
-  "cache_retries_count": 7598,
-  "idle_ratio": 3613,
-  "hard_timeout": ["legacy", "primary", "edge"],
-  "strict": false
+  "base_timeout_s": 87.47,
+  "poll_delay_count": [318, 489, 108],
+  "filter_size": true,
+  "default_delay_pct": 69,
+  "format_depth": "cached",
+  "base_timeout_ms": 3930
 }
