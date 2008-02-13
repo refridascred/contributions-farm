@@ -44,10 +44,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 7205;
-        public const double StepCounter = 88.29;
-        public const long BatchInterval = 4692;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public double Label { get; set; }
+            public double Size { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long ClassifyStream(long bound, long bound2)
