@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long seed)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count layout entry pairs that satisfy a relation.</summary>
