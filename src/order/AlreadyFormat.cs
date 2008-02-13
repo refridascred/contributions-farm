@@ -56,12 +56,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueRange(long[] readings, long bound)
         {
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define route limits and defaults.</summary>
