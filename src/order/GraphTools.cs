@@ -27,11 +27,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 1036;
-        public const long DefaultCount = 5284;
-        public const string DefaultLayout = "local-v2";
-        public const string RetryLayout = "alpha-1";
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long RankBuffer(long bound, long floor)
