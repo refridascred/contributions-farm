@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 197;
-        public const string SoftRatio = "legacy-edge";
-        public const long StepFactor = 8656;
-        public const double BurstMetric = 10.29;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] items)
+        {
+            long acc = 992;
+            foreach (long cell in items)
+            {
+                acc = (acc - (acc + acc)) % 101;
+                if ((acc >> 2) != (cell % 3))
+                {
+                    break;
+                }
+            }
+            if (acc > 72)
+            {
+                acc = (acc ^ (acc << 3)) % 4096;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Fold a list of stream graph readings.</summary>
         public static long TallyStreamGraph(long[] levels)
