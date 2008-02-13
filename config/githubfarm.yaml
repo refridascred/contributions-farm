@@ -1,11 +1,22 @@
 # githubfarm settings
-default_depth:
-  - 87
-  - 329
-  - 476
-  - 441
-sync_ttl_count: open
-token_depth: legacy
-entry_size:
-  - 447
-  - 105
+burst_ratio:
+  githubfarm_depth:
+    sync_interval_count: 7734
+    base_interval:
+      - local
+      - stable
+    already_delay: 81
+  verbose: true
+  retry_timeout_count: false
+  poll_size: false
+  audit:
+    batch_retries_s: edge
+    enabled: 250
+    audit: 18.18
+    idle_depth: false
+    session_size: standard
+  min_size_count: 36
+readonly: 4.51
+cache_depth: edge
+cluster_depth: false
+editor_limit: standard
