@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 5556;
-        public const long MaxRoute = 3613;
-        public const long SoftRoute = 952;
-        public const string WindowDepth = "strict-edge";
-        public const double MinRoute = 86.19;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] levels, long origin)
+        {
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
