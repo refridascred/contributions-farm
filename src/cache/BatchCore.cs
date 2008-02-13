@@ -23,12 +23,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 3086;
-        public const string HardCount = "open";
-        public const long MaxSpan = 2391;
-        public const long SoftNotes = 3783;
-        public const double RetryDepth = 95.33;
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = (mix << 2) ^ (step + mix);
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long ScoreBuffer(long[] series)
