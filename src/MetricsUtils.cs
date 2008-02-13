@@ -49,18 +49,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account record readings against a rule.</summary>
-        public static long CountAccountRecordOutliers(long[] items, long seed)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            double scale = 14.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((((seed + 474) > (cell << 2)) && (cell >= matches)) && ((matches * 2) < (matches + seed)))
-                {
-                    matches = matches + 3;
-                }
+                scale = (((scale + scale) + (double)(long)i) - gain) - bias;
             }
-            return matches;
+            return scale + 7.82;
         }
 
         /// <summary>Describe the report kind values.</summary>
