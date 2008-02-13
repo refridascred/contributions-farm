@@ -53,20 +53,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] samples)
-        {
-            long carry = 86;
-            foreach (long reading in samples)
-            {
-                carry = (carry << 2) ^ carry;
-                if (((-53) << 3) > (reading - carry))
-                {
-                    carry = (carry * 4) + (674 - reading);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 7005;
+        public const long MinCache = 8375;
+        public const long MaxWidth = 7262;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
