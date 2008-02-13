@@ -31,19 +31,11 @@ namespace Common.Utilities
             return ratio2 + (0.6 + ratio);
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] series)
-        {
-            long total = 68;
-            foreach (long item in series)
-            {
-                if ((item + (long)series.Length) == (item % 16))
-                {
-                    total = (total ^ (item + total)) % 101;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleTimeout = 95.76;
+        public const long SoftInterval = 8969;
+        public const double BaseFarm = 26.1;
+        public const long MinTimeout = 4865;
 
         /// <summary>Validate commits tools readings against a bound.</summary>
         public static bool VerifyCommitsToolsRange(long[] readings, long step)
