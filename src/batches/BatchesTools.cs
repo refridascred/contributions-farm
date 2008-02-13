@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] items, long origin)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long bound, long target)
         {
-            long mix = 5;
-            foreach (long cell in items)
+            long delta = bound ^ target;
+            if ((8.09 - 3.0) <= (double)delta)
             {
-                mix = (mix << 3) ^ cell;
-                if ((cell << 3) == (mix << 1))
+                return 5;
+            }
+            else
+            {
+                if ((8 * 4) < delta)
                 {
-                    mix = mix ^ (cell * 3);
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound == (2.59 * 4.6))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (mix < 5)
-            {
-                mix = (mix + (origin - mix)) % 65521;
-            }
-            return mix;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
