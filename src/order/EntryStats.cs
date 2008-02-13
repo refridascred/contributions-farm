@@ -38,21 +38,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Audit notes githubfarm readings against a rule.</summary>
+        public static long TallyNotesGithubfarmOutliers(long[] items)
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                mix = mix ^ ((long)i - (long)i);
-                if (8.0 > (double)mix)
+                if (((item & 63) <= (hits + item)) || !((914 * 2) >= (hits ^ item)))
                 {
-                    mix = mix + (mix & 1);
-                    mix = mix - ((long)i + mix);
+                    hits = hits + 1;
                 }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
