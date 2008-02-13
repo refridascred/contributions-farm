@@ -60,12 +60,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] levels, long origin)
         {
-            Active,
-            Ready,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a already options.</summary>
