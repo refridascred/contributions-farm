@@ -29,18 +29,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] data, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (((0.35 + 8.7) == (double)origin) || ((hits + value) > (117 + value)))
+                if ((tally << 2) < (reading >> 2))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 1) - offset;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Blend two graph context measurements.</summary>
