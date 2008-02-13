@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next token metrics value from a seed.</summary>
-        public static long DeriveTokenMetrics(long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] data, long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((double)count > (double)5)
+                {
+                    count = ((count + 1) ^ datum) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the order level values.</summary>
