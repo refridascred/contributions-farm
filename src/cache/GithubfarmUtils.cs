@@ -47,13 +47,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public bool Count { get; set; }
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
+            Stale,
+            Active,
+            Retry,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a route summary.</summary>
