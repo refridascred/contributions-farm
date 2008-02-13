@@ -41,11 +41,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultFilter = "cached-edge";
-        public const long BatchSpan = 4921;
-        public const string RetryFilter = "stable-v2";
-        public const long BatchTimeout = 3624;
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public double Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
