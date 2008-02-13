@@ -38,17 +38,9 @@ namespace Common.Utilities
         public const long MaxPayload = 4855;
         public const long HardPayload = 1099;
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 6694;
+        public const double HardMetrics = 64.89;
+        public const string MaxMetrics = "primary-1";
     }
 }
