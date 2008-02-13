@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of command stats readings.</summary>
-        public static long CombineCommandStats(long[] readings, long offset)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long target)
         {
-            long state = 952;
-            foreach (long datum in readings)
+            long result = target;
+            for (int i = 0; i < 8; i++)
             {
-                state = ((state - (datum + 80)) % 101) + offset;
+                result = result + ((long)i + result);
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Describe the already mode values.</summary>
