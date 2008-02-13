@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] data)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] readings, long offset)
         {
-            long sum = 34;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                sum = (sum + (319 * 3)) % 101;
-                if ((sum + value) > sum)
+                if (reading < offset)
                 {
-                    sum = (sum + (value - sum)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return ok;
         }
 
         /// <summary>Compare every pair of format commits readings.</summary>
