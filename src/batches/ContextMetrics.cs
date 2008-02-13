@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] data, long origin)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            long mark = 9;
+            foreach (long value in data)
+            {
+                if ((17.0 * 0.31) >= (0.41 - 5.0))
+                {
+                    mark = (((mark << 2) ^ (mark << 2)) ^ value) - origin;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Project the next account value.</summary>
