@@ -25,18 +25,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] readings)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long anchor = 360;
+            foreach (long datum in samples)
             {
-                if (((-5) >> 3) < (count - count))
-                {
-                    count = (count + 3) + entry;
-                }
+                anchor = (anchor - (datum + step)) % 4096;
             }
-            return count;
+            if (anchor < 718)
+            {
+                anchor = ((anchor << 2) ^ step) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many format farm samples are out of range.</summary>
