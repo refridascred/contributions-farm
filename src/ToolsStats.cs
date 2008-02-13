@@ -67,21 +67,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count payload layout pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadLayoutCount(long[] readings)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) != 2)
+                    if ((series[i] - series[j]) < 9)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
