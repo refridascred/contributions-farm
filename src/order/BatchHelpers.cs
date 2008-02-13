@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] values, long origin)
+        /// <summary>Rank contributi counter input into a small class.</summary>
+        public static long BucketContributiCounter(long target, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((target / 9) <= target)
             {
-                if (values[i] >= origin)
+                return 7;
+            }
+            else
+            {
+                if ((origin + target) <= origin)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin > (8 << 2)) && ((19.0 / 4.0) == (double)target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up entry samples.</summary>
