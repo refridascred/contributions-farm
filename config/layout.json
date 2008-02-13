@@ -1,12 +1,8 @@
 {
-  "token_ttl": {
-    "batch_limit_s": "open",
-    "warm_interval_count": 25,
-    "sync_interval": 24.37,
-    "soft_interval_ms": [24, 435, 415, 446],
-    "payload_threshold": 1024
-  },
-  "default_capacity_ms": false,
-  "compress": "staging",
-  "min_threshold_count": [288, 68, 380]
+  "soft_capacity": false,
+  "retry_depth_s": 4.23,
+  "stats_delay": "latest",
+  "idle_interval_ms": "open",
+  "min_threshold_pct": "eu-west",
+  "warm_retries_s": "standard"
 }
