@@ -16,15 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] samples)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] items)
         {
-            long sum = 88;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long value in items)
             {
-                sum = ((sum + (sum ^ sum)) % 4096) ^ entry;
+                if (value <= (value / 3))
+                {
+                    hits = hits + 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Locate a account reading by value.</summary>
