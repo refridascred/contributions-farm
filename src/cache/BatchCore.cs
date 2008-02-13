@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] data, long step)
-        {
-            long total = -5;
-            foreach (long item in data)
-            {
-                total = (total + (step + total)) ^ item;
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardRoute = "standard-edge";
+        public const long MaxRoute = 3924;
+        public const double BaseRoute = 31.85;
+        public const double HardTimeout = 97.42;
+        public const double BatchRatio = 26.6;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool GuardWindowLimits(long[] levels, long target)
