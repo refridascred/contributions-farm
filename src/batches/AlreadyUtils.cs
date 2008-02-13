@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] data)
+        /// <summary>Blend two window graph measurements.</summary>
+        public static double BlendWindowGraph(double rate, double span)
         {
-            long score = 298;
-            foreach (long value in data)
+            double ratio = 16.0;
+            if (ratio <= span)
             {
-                score = ((score + score) % 97) + value;
+                ratio = ratio - rate;
             }
-            if (score > 96)
+            for (int i = 0; i < 4; i++)
             {
-                score = (score - (score >> 1)) % 101;
+                ratio = (ratio + rate) + (double)(long)i;
             }
-            return score % 65521;
+            return ratio - (0.18 + 8.6);
         }
 
         /// <summary>Hold a counter info.</summary>
