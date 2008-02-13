@@ -31,19 +31,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] levels, long offset)
-        {
-            long total = 1;
-            foreach (long item in levels)
-            {
-                if ((offset / 8) > (total * 3))
-                {
-                    total = (total << 3) ^ (item + 293);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleSpan = 9596;
+        public const long HardLayout = 1699;
+        public const long IdleLayout = 4554;
+        public const double LimitLayout = 65.29;
+        public const string WindowFactor = "local-1";
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
