@@ -22,18 +22,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] series)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long target)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long sum = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (((sample >> 5) <= matches) || (matches < (sample + sample)))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    matches = matches + 3;
+                    sum = ((sum + ((long)i & 3)) % 101) + (long)i2;
+                    sum = (sum - (sum - (-35))) % 97;
                 }
+                if ((long)i > (target << 1))
+                {
+                    sum = (sum - (sum & 7)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ target) % 255;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
