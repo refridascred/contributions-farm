@@ -44,9 +44,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 8214;
-        public const long RetryDepth = 3342;
-        public const long CacheInterval = 8243;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public bool Region { get; set; }
+            public long Score { get; set; }
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
+        }
     }
 }
