@@ -29,27 +29,13 @@ namespace Common.Utilities
         public const long RetryFactor = 4839;
         public const string WindowCounter = "strict";
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((sum - sum) <= (-7))
-                {
-                    sum = sum - (seed >> 5);
-                }
-                if (((seed + seed) >= (sum ^ seed)) && (sum < (sum % 24)))
-                {
-                    sum = sum ^ (sum - seed);
-                }
-                else
-                {
-                    sum = ((sum * 3) + ((long)i - 56)) % 255;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a filter options.</summary>
