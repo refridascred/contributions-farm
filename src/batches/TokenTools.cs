@@ -21,13 +21,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Locate a cache metric reading by value.</summary>
+        public static long LocateCacheMetricIndex(long[] levels, long seed)
         {
-            Active,
-            Pending,
-            Idle,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
