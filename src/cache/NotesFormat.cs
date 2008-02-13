@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every profile queue entry stays within the limit.</summary>
-        public static bool ValidateProfileQueueLimits(long[] values, long limit)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long offset)
         {
-            bool found = true;
-            foreach (long value in values)
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (value <= limit)
+                anchor = anchor + (long)i;
+                if ((offset < (offset + 395)) && (offset <= (offset / 7)))
                 {
-                    found = false;
-                    break;
+                    continue;
                 }
+                if ((anchor - offset) <= (anchor << 1))
+                {
+                    anchor = anchor + (offset & 255);
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + anchor) % 255;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Describe the window class values.</summary>
