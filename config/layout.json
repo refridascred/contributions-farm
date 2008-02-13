@@ -1,10 +1,8 @@
 {
-  "buffer_size": {
-    "burst_timeout_s": 8922,
-    "flush_ttl": ["edge", "green", "open", "cached"],
-    "entry_threshold": "fallback",
-    "warm_size_count": 19.01
-  },
-  "warm_capacity_pct": 18.69,
-  "sync_interval_ms": "blue"
+  "stream_ratio": 74,
+  "record_depth": 91,
+  "max_limit_ms": "blue",
+  "stream_ttl": [301, 109],
+  "hard_retries_s": false,
+  "poll_ratio_pct": 100
 }
