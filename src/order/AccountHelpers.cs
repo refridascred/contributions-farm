@@ -28,19 +28,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Validate notes context readings against a bound.</summary>
-        public static bool VerifyNotesContextBounds(long[] data, long target)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long sum = 88;
+            foreach (long entry in samples)
             {
-                if (sample <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum + (sum ^ sum)) % 4096) ^ entry;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
