@@ -1,8 +1,12 @@
 {
-  "sync_size_ms": ["primary", "fallback", "green", "edge"],
-  "flush_depth_s": "blue",
-  "flush_ttl": "green",
-  "sync_capacity_ms": 69.88,
-  "min_ttl_ms": false,
-  "burst_depth_count": "legacy"
+  "max_capacity_s": {
+    "commits_limit": "strict",
+    "base_limit_s": 26.17,
+    "warm_window_pct": 7.72,
+    "enabled": "fallback",
+    "dry_run": 32.33,
+    "report_window": "stable"
+  },
+  "max_size_ms": 56.11,
+  "strict": 80.77
 }
