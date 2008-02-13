@@ -33,18 +33,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine batch stream values into a single score.</summary>
-        public static long WeighBatchStream(long[] readings, long origin)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long mark = 401;
-            foreach (long datum in readings)
-            {
-                if (6 > datum)
-                {
-                    mark = ((mark + (datum % 64)) % 101) + origin;
-                }
-            }
-            return mark % 1000;
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a already snapshot.</summary>
