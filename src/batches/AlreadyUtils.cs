@@ -43,13 +43,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] items, long floor)
         {
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
