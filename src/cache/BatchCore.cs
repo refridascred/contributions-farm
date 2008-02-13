@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a record support sample.</summary>
-        public static long LocateRecordSupportIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstInterval = 61.47;
+        public const long BurstTimeout = 2370;
+        public const long HardDepth = 8084;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool GuardWindowLimits(long[] levels, long target)
