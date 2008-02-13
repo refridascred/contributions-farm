@@ -51,13 +51,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public string Limit { get; set; } = "";
-            public double Weight { get; set; }
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
+            Synced,
+            Ready,
+            Closed,
+            Draft,
+            Failed,
         }
 
         /// <summary>Hold a command stats.</summary>
