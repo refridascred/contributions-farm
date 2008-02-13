@@ -24,20 +24,14 @@ namespace Common.Utilities
         public const long MaxPayload = 528;
         public const double HardPayload = 39.56;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long bound)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                state = (state ^ (state ^ bound)) % 97;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    state = (((state << 3) ^ (state % 12)) % 65521) - (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Stale,
+            Paused,
+            Closed,
+            Dropped,
+            Queued,
         }
     }
 }
