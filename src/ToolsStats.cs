@@ -55,12 +55,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
+            Synced,
+            Stale,
+            Draft,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
