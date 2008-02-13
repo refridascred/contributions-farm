@@ -35,11 +35,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double gain, double offset)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long seed, long origin)
         {
-            double mean = (double)((-892) - (-856));
-            return (mean + (offset * 0.93)) + gain;
+            if (!((origin + (-375)) == (origin - origin)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7.7 * 17.0) <= (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + origin) >= seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support class values.</summary>
