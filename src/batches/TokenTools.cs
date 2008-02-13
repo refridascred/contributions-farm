@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const string IdleGraph = "strict";
         public const long CacheBudget = 3639;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterBounds(long[] levels, long seed)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Pending,
+            Idle,
+            Synced,
         }
 
         /// <summary>Rank stream input into a small class.</summary>
