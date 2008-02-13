@@ -77,11 +77,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double bias, double span)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] values)
         {
-            double rate = (bias / 5.0) * 8.7;
-            return (rate - (5.48 + rate)) + span;
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
