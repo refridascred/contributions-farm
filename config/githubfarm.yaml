@@ -1,13 +1,10 @@
 # githubfarm settings
-soft_depth_count: 58.67
-flush_limit:
-  report_retries:
-    hard_limit_ms: blue
-    retry_limit_s: cached
-    warm_window_ms: staging
-    cache_timeout_ms: blue
-  min_window_count: fallback
-  poll_ttl_s: cached
-  sync_delay_pct: 8848
-soft_depth: 1024
-default_timeout_s: false
+retry_interval: standard
+soft_ratio: 18.23
+base_retries_ms: 100
+dry_run: 100
+warm_limit: true
+enabled:
+  - primary
+  - cached
+  - strict
