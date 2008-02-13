@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const long HardSupport = 6108;
         public const long SoftSupport = 1882;
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] items, long seed)
         {
-            public double Owner { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
