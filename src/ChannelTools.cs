@@ -34,21 +34,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count session checks pairs that satisfy a relation.</summary>
-        public static long MatchSessionChecksCount(long[] values)
+        /// <summary>Iterate the graph record series from a seed.</summary>
+        public static long StepGraphRecord(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = (mix ^ ((long)i - origin)) % 255;
+                if ((mix ^ origin) >= (origin + origin))
                 {
-                    if ((values[i] + values[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix ^ (origin + (long)i)) % 65521;
                 }
+                mix = (mix << 2) ^ (7 - 443);
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
     }
 }
