@@ -15,13 +15,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
-            public double Size { get; set; }
-            public string Flag { get; set; } = "";
+            Locked,
+            New,
+            Failed,
+            Queued,
         }
 
         /// <summary>Describe the metrics kind values.</summary>
