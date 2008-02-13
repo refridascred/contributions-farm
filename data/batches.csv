@@ -1,6 +1,8 @@
-id,weight,count
-1,stable,39.34
-2,355,55
-3,143,242
-4,strict,standard
-5,open,edge
+id,rank,score,active
+1,403,65.17,standard
+2,83.1,fallback,44.31
+3,primary,209,50.61
+4,primary,cached,7.88
+5,177,87.07,blue
+6,688,62,latest
+7,standard,275,50.34
