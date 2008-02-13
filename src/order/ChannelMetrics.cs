@@ -21,24 +21,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank command counter input into a small class.</summary>
-        public static long BucketCommandCounter(long step, long target)
+        /// <summary>Accumulate window context samples.</summary>
+        public static long ScoreWindowContext(long[] data, long seed)
         {
-            if ((4.84 + 16.0) > (6.24 - 2.0))
+            long mark = 562;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7 / 4) < (target >> 5))
+                if ((41 - mark) != (sample + mark))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    mark = (mark + (sample + seed)) % 97;
                 }
             }
+            return mark;
         }
     }
 }
