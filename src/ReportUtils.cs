@@ -17,13 +17,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Failed,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitBuffer = "legacy-v2";
+        public const long BaseBuffer = 9215;
+        public const long WindowCount = 7208;
+        public const long StepSpan = 2407;
 
         /// <summary>Derive the next metric token value from a seed.</summary>
         public static long RollMetricToken(long target)
