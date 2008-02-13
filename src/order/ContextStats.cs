@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate buffer metrics readings against a bound.</summary>
-        public static bool CheckBufferMetricsLimits(long[] readings, long limit)
+        /// <summary>Combine buffer profile values into a single score.</summary>
+        public static long TallyBufferProfile(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long result = 3;
+            foreach (long sample in series)
             {
-                if (entry >= limit)
+                result = (result + result) + sample;
+                if ((double)result <= (9.4 * 7.2))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            if (result > 792)
+            {
+                result = result - (result << 1);
+            }
+            return result % 65521;
         }
 
         /// <summary>Audit context record readings against a rule.</summary>
