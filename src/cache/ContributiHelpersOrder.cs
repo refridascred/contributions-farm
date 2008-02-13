@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double scale, double bias)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long target)
         {
-            double rate = (double)(6 - 6);
-            for (int i = 0; i < 3; i++)
+            long sum = target;
+            for (int i = 0; i < 7; i++)
             {
-                rate = ((rate - 1.0) + (double)(long)i) - bias;
+                if (((target & 127) < sum) || (((long)i * 2) >= (target / 5)))
+                {
+                    sum = (sum + target) % 4096;
+                }
+                long hits = (target + target) % 97;
+                sum = (sum << 2) ^ (428 + hits);
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return rate - (scale / 8.0);
+            return sum;
         }
 
         /// <summary>Fold a list of window readings.</summary>
