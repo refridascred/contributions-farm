@@ -31,10 +31,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxSize = "cached-edge";
-        public const long IdleGithubfarm = 8799;
-        public const long BurstScore = 621;
+        /// <summary>Rank filter cache input into a small class.</summary>
+        public static long BucketFilterCache(long target, long origin)
+        {
+            if ((target ^ origin) > (95 - 70))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((7.5 - 9.0) > (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)target < (3.1 + 1.0)) || (origin < (target + target)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin / 5) <= origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BurstCounter = 7205;
