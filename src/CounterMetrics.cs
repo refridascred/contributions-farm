@@ -13,10 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultWindow = "fallback-edge";
-        public const double IdleWindow = 72.06;
-        public const long BurstRatio = 4577;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Dropped,
+            Done,
+            Idle,
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long DigestOrder(long[] levels, long offset)
