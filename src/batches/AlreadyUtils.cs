@@ -40,13 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Check that every stats githubfarm entry stays within the limit.</summary>
+        public static bool VerifyStatsGithubfarmLimits(long[] values, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
