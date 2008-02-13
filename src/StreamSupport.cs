@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long target)
         {
-            public double Owner { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
+            long state = target;
+            for (int i = 0; i < 14; i++)
+            {
+                state = (state << 2) ^ (state >> 4);
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Blend two account measurements.</summary>
