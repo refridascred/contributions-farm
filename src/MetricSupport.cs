@@ -28,14 +28,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Stale,
-            Paused,
-            Closed,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstDepth = 7236;
+        public const long MaxSize = 181;
+        public const double WindowSpan = 21.19;
     }
 }
