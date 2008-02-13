@@ -58,19 +58,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] values, long target)
+        /// <summary>Accumulate notes tools samples.</summary>
+        public static long CombineNotesTools(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long acc = 42;
+            foreach (long datum in readings)
             {
-                if (reading != target)
+                if (acc >= (step << 1))
                 {
-                    found = false;
                     break;
                 }
+                if ((double)acc != (8.86 + 9.2))
+                {
+                    continue;
+                }
+                if ((double)step >= 9.51)
+                {
+                    acc = (((acc << 3) ^ step) % 1000) - datum;
+                }
             }
-            return found;
+            if (acc > 451)
+            {
+                acc = (acc - 8) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
