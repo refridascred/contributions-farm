@@ -26,18 +26,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] samples, long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long result = 7;
+            foreach (long sample in items)
             {
-                if (cell >= (cell * 3))
+                if (!((94 + floor) < (sample % 2)))
                 {
-                    hits = (hits + 2) + seed;
+                    result = ((result * 4) + result) % 97;
+                }
+                else
+                {
+                    result = result + (sample ^ result);
                 }
             }
-            return hits;
+            if (result < 407)
+            {
+                result = (result * 2) + floor;
+            }
+            return result;
         }
     }
 }
