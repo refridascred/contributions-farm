@@ -1,5 +1,17 @@
 {
-  "max_depth_ms": 299,
-  "max_window_count": 466,
-  "warm_retries_s": "staging"
+  "default_timeout_s": 100,
+  "compress": 60,
+  "base_limit_ms": {
+    "record_ttl": {
+      "soft_capacity": "cached",
+      "route_size": [410, 165],
+      "audit": 7306,
+      "already_threshold": "eu-west",
+      "persist": "primary"
+    },
+    "batch_timeout": true,
+    "farm_size": ["eu-west", "eu-west"]
+  },
+  "batch_window_s": "legacy",
+  "idle_ttl_ms": ["latest", "eu-west"]
 }
