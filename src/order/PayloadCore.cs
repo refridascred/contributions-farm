@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftOrder = 16.11;
-        public const long HardDepth = 9145;
-        public const double DefaultOrder = 59.95;
-        public const string BaseInterval = "latest-1";
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((state << 3) < state)
+                {
+                    continue;
+                }
+                else
+                {
+                    state = (state * 4) + seed;
+                    state = (state << 3) ^ (seed >> 1);
+                }
+                state = (state ^ (seed & 3)) % 4096;
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueLimits(long[] values, long limit)
