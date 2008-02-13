@@ -1,15 +1,13 @@
 # Command notes
 
-Keep cache and order names short and lowercase.
-The checks module keeps batches values in sync with the layout cache.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+A support that stays idle for too long is moved to the notes list.
+The stats report groups every entry by graph.
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-Use contributi settings to tune how often record data is refreshed.
+The schema report groups every entry by cache.
+Keep commits and route names short and lowercase.
 
 ## Guidelines
 
-- Validate counter input early
-- Review entry limits each release
-- Prefer context defaults
-- Log every contributi change
+- Review editor limits each release
+- Log every metric change
+- Document new farm fields
