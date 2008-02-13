@@ -72,17 +72,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] data, long target)
+        /// <summary>Derive the next stats command value from a seed.</summary>
+        public static long RollStatsCommand(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((data[i] <= target) && ((data[i] % 2) == 0))
+                if (((score - score) <= ((long)i & 1)) && ((double)score != (6.75 * 2.8)))
                 {
-                    return (long)i;
+                    score = (score - (score << 3)) % 1000;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a layout header.</summary>
