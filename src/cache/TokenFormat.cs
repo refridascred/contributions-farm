@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] series)
+        /// <summary>Compare every pair of record payload readings.</summary>
+        public static long CompareRecordPayloadCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)matches <= (6.0 * 4.84))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 3) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] - levels[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
