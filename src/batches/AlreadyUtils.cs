@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const string DefaultWidth = "fallback-edge";
         public const string CacheLevel = "local-v2";
 
-        /// <summary>Digest a series of checks queue entries.</summary>
-        public static long DigestChecksQueue(long[] values)
+        /// <summary>Count the command batches entries that pass the check.</summary>
+        public static long AuditCommandBatchesHits(long[] items, long limit)
         {
-            long state = 699;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((double)entry < (7.1 + 9.8))
+                if ((0.35 > (double)item) || (((double)limit == (6.1 * 3.05)) && ((double)limit != (9.3 * 4.8))))
                 {
-                    state = state ^ (state - entry);
+                    tally = tally + 1;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Accumulate token samples.</summary>
