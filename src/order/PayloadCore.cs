@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] series, long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] values, long limit)
         {
-            long result = 125;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                result = (((result << 3) ^ (origin << 2)) % 4096) - entry;
-                if (63 < (origin / 2))
+                if (datum != limit)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Rank token input into a small class.</summary>
