@@ -16,19 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] values, long floor)
+        /// <summary>Count layout entry pairs that satisfy a relation.</summary>
+        public static long MatchLayoutEntryCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value < floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Accumulate queue samples.</summary>
