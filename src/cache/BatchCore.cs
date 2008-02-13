@@ -48,13 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadMatches(long[] samples, long limit)
         {
-            Retry,
-            Done,
-            Pending,
-            Dropped,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!!((limit + 2) >= (item - tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
