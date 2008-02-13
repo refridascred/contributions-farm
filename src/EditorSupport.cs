@@ -54,21 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] items)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 57;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (carry ^ (entry % 60)) % 255;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
