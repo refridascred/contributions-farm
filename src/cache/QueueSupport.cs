@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] values)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] items)
         {
-            long mix = 73;
-            foreach (long value in values)
+            long carry = 66;
+            foreach (long entry in items)
             {
-                mix = (mix << 3) ^ (value + value);
-                mix = (mix + value) % 101;
+                if ((125 - entry) >= (386 << 2))
+                {
+                    carry = (carry << 3) ^ (82 - carry);
+                }
+                if ((entry / 2) >= (carry * 3))
+                {
+                    carry = carry ^ (carry * 3);
+                }
             }
-            return mix;
+            if (carry < 803)
+            {
+                carry = ((carry * 5) + carry) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
