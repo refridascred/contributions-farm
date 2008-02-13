@@ -38,14 +38,17 @@ namespace Common.Utilities
         public const long MaxPayload = 4855;
         public const long HardPayload = 1099;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] values, long seed)
         {
-            Ready,
-            Paused,
-            Draft,
-            Active,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
