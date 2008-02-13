@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Count the batch schema entries that pass the check.</summary>
+        public static long MeasureBatchSchemaGaps(long[] data)
         {
-            Stale,
-            Queued,
-            Retry,
-            Pending,
-            Done,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (datum <= (datum >> 2))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of profile batches entries.</summary>
