@@ -19,10 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultSize = 1797;
-        public const long IdlePayload = 6445;
-        public const double BurstInterval = 92.42;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] data, long target)
+        {
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
