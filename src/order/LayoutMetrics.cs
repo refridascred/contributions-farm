@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Check that every tools stats entry stays within the limit.</summary>
+        public static bool GuardToolsStatsRange(long[] levels, long bound)
         {
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
