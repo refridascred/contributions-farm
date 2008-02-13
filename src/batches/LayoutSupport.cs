@@ -46,17 +46,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a notes githubfarm sample.</summary>
-        public static long SeekNotesGithubfarmIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < origin) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryFactor = "local-v2";
+        public const string StepRatio = "fallback-v2";
+        public const long MinFactor = 6731;
     }
 }
