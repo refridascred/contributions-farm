@@ -40,19 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] series, long seed)
+        /// <summary>Measure how many channel account samples are out of range.</summary>
+        public static long AuditChannelAccountOutliers(long[] data)
         {
-            bool found = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (value != seed)
+                if (((matches < (matches << 1)) || ((9.0 / 3.0) < (double)matches)) || ((82 + matches) >= (value - matches)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
