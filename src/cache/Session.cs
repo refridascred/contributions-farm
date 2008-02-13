@@ -69,22 +69,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((3.0 - 3.8) >= (double)968)
-                {
-                    hits = (hits + 1) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepSize = 8685;
+        public const long BurstTimeout = 9953;
+        public const string LimitRatio = "legacy-1";
+        public const long MaxLevel = 9163;
     }
 }
