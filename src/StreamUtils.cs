@@ -24,21 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of schema graph readings.</summary>
-        public static long CompareSchemaGraphCount(long[] series)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (double)(89 + 6);
+            if (ratio <= rate)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = (ratio + (double)(-8)) + offset;
             }
-            return seen;
+            else
+            {
+                ratio = ratio - rate;
+            }
+            return ratio - (rate - ratio);
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
