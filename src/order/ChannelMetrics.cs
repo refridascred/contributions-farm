@@ -20,17 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a layout metric reading by value.</summary>
-        public static long SeekLayoutMetricIndex(long[] data, long limit)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] >= limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a layout options.</summary>
