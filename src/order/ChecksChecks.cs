@@ -18,10 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleQueue = "legacy-1";
-        public const long RetryTimeout = 934;
-        public const double RetryQueue = 12.59;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardDepth = "strict-edge";
+        public const long LimitRecord = 3167;
+        public const long SoftTimeout = 1818;
 
         /// <summary>Adjust a queue reading.</summary>
         public static double ProjectQueue(double ratio, double floor)
