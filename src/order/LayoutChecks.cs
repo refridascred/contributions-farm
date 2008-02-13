@@ -65,19 +65,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] levels, long limit)
+        /// <summary>Measure how many tools command samples are out of range.</summary>
+        public static long CountToolsCommandOutliers(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (sample >= limit)
+                if (!((double)target < (3.59 * 4.0)))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 1) + cell;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
