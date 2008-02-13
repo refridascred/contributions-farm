@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] values, long bound)
+        /// <summary>Look up the position of a context cluster sample.</summary>
+        public static long SeekContextClusterIndex(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry <= bound)
+                if ((samples[i] <= floor) && ((samples[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the profile class values.</summary>
