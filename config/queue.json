@@ -1,6 +1,12 @@
 {
-  "soft_depth_ms": 17.21,
-  "compress": ["cached", "blue", "strict", "latest"],
-  "cache_timeout_s": "blue",
-  "sync_depth_pct": "legacy"
+  "base_depth": "primary",
+  "sync_timeout_pct": 1024,
+  "buffer_size": 250,
+  "retry_delay_pct": 27.72,
+  "metric_threshold": [225, 425],
+  "flush_delay_ms": {
+    "strict": 35.59,
+    "farm_threshold": true,
+    "batch_retries_ms": false
+  }
 }
