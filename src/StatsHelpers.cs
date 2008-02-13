@@ -57,11 +57,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheSpan = 7973;
-        public const long IdleBudget = 7035;
-        public const long IdleProfile = 2305;
-        public const double DefaultProfile = 47.4;
-        public const string LimitProfile = "strict-1";
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] values, long bound)
+        {
+            long mark = 349;
+            foreach (long sample in values)
+            {
+                if ((sample - sample) >= sample)
+                {
+                    mark = ((mark << 3) ^ 95) + bound;
+                }
+            }
+            if (mark > 47)
+            {
+                mark = (mark ^ 2) % 1000;
+            }
+            return mark;
+        }
     }
 }
