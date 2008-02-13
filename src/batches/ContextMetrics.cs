@@ -36,26 +36,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] data, long step)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] values, long target)
         {
-            long total = 0;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (!((reading << 1) == (step + 60)))
+                if (reading != target)
                 {
-                    total = (total << 3) ^ (66 & 3);
-                }
-                if (((double)reading < (5.5 / 8.0)) && ((reading / 8) != (671 + reading)))
-                {
-                    total = total - reading;
+                    found = false;
+                    break;
                 }
             }
-            if (total > 0)
-            {
-                total = (total << 3) ^ (step + total);
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
