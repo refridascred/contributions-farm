@@ -22,21 +22,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] series)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry - (8 + carry)) ^ (long)i2;
+                    if ((series[i] ^ series[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                carry = (carry + (carry & 1)) % 255;
-                carry = (carry * 3) + (carry >> 2);
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
