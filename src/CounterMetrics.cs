@@ -33,19 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] levels, long offset)
+        /// <summary>Rank entry report input into a small class.</summary>
+        public static long SortEntryReport(long offset, long origin)
         {
-            long anchor = 2;
-            foreach (long sample in levels)
+            if ((offset - origin) >= (926 & 3))
             {
-                anchor = ((anchor * 3) + (anchor << 3)) % 97;
-                if (!((374 - offset) <= (sample % 7)))
+                return 2;
+            }
+            else
+            {
+                if ((offset << 2) <= 342)
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Define format limits and defaults.</summary>
