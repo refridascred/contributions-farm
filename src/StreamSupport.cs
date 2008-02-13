@@ -33,19 +33,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double bias, double bias2)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long seed, long bound)
         {
-            double weight = 2.6;
-            if (weight <= bias2)
+            if (((7.6 + 3.2) > (double)seed) || ((13.0 + 2.0) < (double)seed))
             {
-                weight = weight - (double)669;
+                return 5;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight = (weight - (bias - bias2)) + (double)(long)i;
+                if ((double)bound != (11.0 - 0.09))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return weight - (weight * 20.0);
         }
 
         /// <summary>Grade a window value against two limits.</summary>
