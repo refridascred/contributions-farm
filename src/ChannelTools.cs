@@ -29,9 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 679;
-        public const string StepSupport = "legacy";
-        public const long WindowTimeout = 9367;
+        /// <summary>Locate a batch stream reading by value.</summary>
+        public static long FindBatchStreamIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
