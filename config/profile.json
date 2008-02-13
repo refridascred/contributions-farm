@@ -1,23 +1,5 @@
 {
-  "route_size": 500,
-  "burst_timeout": 92.63,
-  "flush_capacity": {
-    "burst_delay": 60,
-    "idle_timeout_ms": "staging",
-    "farm_interval": {
-      "sync_depth": ["eu-west", "strict"],
-      "batch_timeout": "eu-west",
-      "max_ttl_s": false,
-      "sync_interval": 3.29
-    },
-    "warm_depth_count": 250,
-    "farm_size": {
-      "checks_limit": 95.63,
-      "idle_window_pct": ["local", "stable", "cached", "standard"],
-      "farm_size": "open",
-      "queue_delay": 3146,
-      "idle_delay_pct": 7
-    }
-  },
-  "tools_delay": ["blue", "cached"]
+  "already_delay": "local",
+  "token_capacity": 29.9,
+  "sync_ratio_pct": 15
 }
