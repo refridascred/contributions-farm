@@ -42,18 +42,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepTimeout = 718;
+        public const long CacheSupport = 8616;
+        public const long MaxLevel = 7017;
+        public const long HardSupport = 3633;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long CountLayoutGaps(long[] levels)
