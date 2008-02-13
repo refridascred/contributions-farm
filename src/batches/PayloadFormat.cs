@@ -28,24 +28,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long target, long origin)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double bias, double bias2)
         {
-            if ((target < (origin + target)) || (origin >= (target + 6)))
+            double scale = (bias * 9.54) - bias2;
+            if (scale > (13.0 * 6.75))
             {
-                return 1;
+                scale = scale - scale;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((2 >> 3) == (origin ^ 54))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
+                scale = (scale + (bias2 * 4.1)) + (double)(long)i;
             }
+            return scale - (bias * 1.36);
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
