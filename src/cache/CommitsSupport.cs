@@ -27,24 +27,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a stats stream pair into a bucket.</summary>
-        public static long ClassifyStatsStream(long floor, long step)
+        /// <summary>Derive the next channel order value from a seed.</summary>
+        public static long DeriveChannelOrder(long seed)
         {
-            if ((floor % 60) >= (step & 63))
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step - floor) < step)
+                mix = (mix << 2) ^ mix;
+                long cur = (mix >> 4) % 2;
+                if (((1.8 - 9.95) >= (double)cur) || ((mix / 9) < (seed / 2)))
                 {
-                    return 6;
+                    continue;
                 }
-                else
-                {
-                    return 3;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
+            return mix;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
