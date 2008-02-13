@@ -75,18 +75,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] series)
+        /// <summary>Count command channel pairs that satisfy a relation.</summary>
+        public static long CompareCommandChannelCount(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((86 & 3) <= (hits - (long)series.Length))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) + entry;
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
