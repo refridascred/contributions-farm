@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] levels, long target)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long mix = 1;
-            foreach (long value in levels)
-            {
-                if (!((289 - target) <= (target >> 3)))
-                {
-                    mix = ((mix + (8 ^ target)) % 101) ^ value;
-                }
-            }
-            return mix;
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
