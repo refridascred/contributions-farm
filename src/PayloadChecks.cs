@@ -33,12 +33,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowDepth = 38.22;
-        public const string LimitFarm = "strict-edge";
-        public const string LimitInterval = "local-1";
-        public const long IdleFactor = 1594;
-        public const string WindowRatio = "local-v2";
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long floor, long limit)
+        {
+            if ((0.42 / 9.0) < (7.9 * 5.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((5.3 + 2.23) > (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((4 % 97) >= floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor - floor) == (floor ^ floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long RetryCache = 6448;
