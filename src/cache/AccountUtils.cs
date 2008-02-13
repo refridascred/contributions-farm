@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Combine cluster profile values into a single score.</summary>
+        public static long DigestClusterProfile(long[] readings, long target)
         {
-            Idle,
-            Active,
-            Synced,
-            New,
-            Locked,
+            long carry = 667;
+            foreach (long sample in readings)
+            {
+                if (carry < (carry - carry))
+                {
+                    carry = ((carry * 2) + (206 + sample)) % 1000;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (carry - target);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a contributi options.</summary>
