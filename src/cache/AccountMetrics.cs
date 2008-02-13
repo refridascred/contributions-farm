@@ -11,10 +11,25 @@ namespace Common.Utilities
         public const string WindowScore = "fallback-v2";
         public const string MinRatio = "cached-1";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardInterval = 8167;
-        public const double WindowSchema = 29.2;
-        public const long CacheLevel = 7012;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long seed, long target)
+        {
+            if (((target & 127) > (target % 3)) && (258 <= (seed << 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)seed == (20.0 / 3.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long WeighSchema(long[] items, long target)
