@@ -37,19 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate route counter readings against a bound.</summary>
-        public static bool GuardRouteCounterRange(long[] data, long offset)
+        /// <summary>Compare every pair of queue githubfarm readings.</summary>
+        public static long MatchQueueGithubfarmCount(long[] values)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum != offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
