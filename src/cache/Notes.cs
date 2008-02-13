@@ -39,12 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 8733;
-        public const long StepSize = 5204;
-        public const long CacheWidth = 7099;
-        public const string LimitInterval = "legacy";
-        public const long RetrySize = 6431;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public string Token { get; set; } = "";
+            public double Score { get; set; }
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BatchCommits = "cached-edge";
