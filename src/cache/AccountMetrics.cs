@@ -20,13 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            public bool Offset { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
