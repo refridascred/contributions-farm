@@ -14,18 +14,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] levels)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long seed, long floor)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long bound = seed ^ floor;
+            if (seed < (seed + floor))
             {
-                if (!(((6 & 15) < (matches - matches)) && ((double)reading < (18.0 - 9.0))))
+                return 7;
+            }
+            else
+            {
+                if ((2 % 10) >= bound)
                 {
-                    matches = matches + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((5.3 / 7.0) < (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
