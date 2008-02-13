@@ -59,13 +59,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] data, long offset)
         {
-            Queued,
-            Pending,
-            Done,
-            Paused,
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
