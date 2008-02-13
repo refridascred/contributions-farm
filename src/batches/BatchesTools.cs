@@ -62,19 +62,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double rate, double offset)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            double bias = rate;
-            if (bias > (rate * 13.0))
-            {
-                bias = (bias - (bias + rate)) - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (rate * 2.0);
+            public bool Region { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
