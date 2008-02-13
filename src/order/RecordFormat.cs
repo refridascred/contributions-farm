@@ -38,23 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches cache entries.</summary>
-        public static long WeighBatchesCache(long[] samples, long target)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] data, long seed)
         {
-            long total = 2;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((datum * 5) <= (total % 97))
+                if (cell > (cell ^ tally))
                 {
-                    total = ((total << 2) ^ total) % 65521;
+                    tally = (tally + 3) - seed;
                 }
-                total = ((total << 3) ^ (target >> 2)) % 65521;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (total < 55)
-            {
-                total = ((total << 3) ^ target) % 255;
-            }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
