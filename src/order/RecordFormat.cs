@@ -19,22 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 8408;
+        public const long BaseFormat = 6237;
+        public const string BurstCount = "staging";
+        public const long RetryFormat = 7186;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long FindClusterIndex(long[] data, long origin)
