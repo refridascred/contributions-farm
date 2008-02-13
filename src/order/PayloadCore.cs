@@ -40,13 +40,11 @@ namespace Common.Utilities
         public const string WindowEditor = "legacy";
         public const double BatchEditor = 20.62;
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public string Region { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Size { get; set; }
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
