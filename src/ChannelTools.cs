@@ -14,17 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] samples, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (samples[i] > step)
+                if ((entry / 2) >= bound)
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Locate a account reading by value.</summary>
