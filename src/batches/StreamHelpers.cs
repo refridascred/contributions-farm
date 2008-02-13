@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] data, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] data, long step)
         {
-            long acc = 210;
+            long matches = 0;
             foreach (long entry in data)
             {
-                if ((double)entry <= (double)15)
+                if ((74 + matches) > (step % 97))
                 {
-                    acc = (acc - 906) + floor;
+                    matches = (matches + 2) + entry;
                 }
             }
-            if (acc < 0)
-            {
-                acc = ((acc * 5) + acc) % 1000;
-            }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
