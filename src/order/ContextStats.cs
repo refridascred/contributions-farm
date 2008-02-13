@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftSize = 5454;
-        public const long BurstDepth = 784;
-        public const long BatchSpan = 8429;
+        /// <summary>Grade a batches buffer value against two limits.</summary>
+        public static long GradeBatchesBuffer(long seed, long offset)
+        {
+            if ((offset * 2) == (offset + seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(offset <= (offset - offset)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Accumulate tools format samples.</summary>
         public static long FoldToolsFormat(long[] series, long origin)
