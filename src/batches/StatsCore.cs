@@ -45,13 +45,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public double Label { get; set; }
-            public double Size { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Ratio { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
