@@ -26,18 +26,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] readings, long step)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long step, long limit)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            if ((limit + limit) != (limit + 4))
             {
-                if ((value - 223) < step)
+                return 3;
+            }
+            else
+            {
+                if (!((16.0 * 7.4) <= (double)step))
                 {
-                    tally = tally + 1;
+                    return 0;
+                }
+                else
+                {
+                    if (((46 * 3) <= (limit - limit)) && ((step / 5) < (limit + step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
