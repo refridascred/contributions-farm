@@ -19,26 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((floor * 5) > ((long)i >> 2)) && ((floor + floor) > total))
-                {
-                    total = total ^ (total - total);
-                    continue;
-                }
-                else
-                {
-                    total = (total - (total / 9)) % 65521;
-                    total = total + (total << 1);
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowCommand = 72.24;
+        public const long DefaultCommand = 4857;
+        public const long IdleScore = 4362;
+        public const long BatchCommand = 7676;
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
