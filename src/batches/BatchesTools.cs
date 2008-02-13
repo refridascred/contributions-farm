@@ -37,15 +37,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] levels)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long step, long bound)
         {
-            long result = 278;
-            foreach (long sample in levels)
+            long offset = step + bound;
+            if ((double)offset <= (6.09 + 1.08))
             {
-                result = ((result << 2) ^ (sample + 417)) % 101;
+                return 3;
             }
-            return result % 4096;
+            else
+            {
+                if (((1 % 8) < (31 + offset)) && ((step << 1) >= offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
