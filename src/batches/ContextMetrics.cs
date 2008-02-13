@@ -23,12 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public string Label { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxCluster = "staging-1";
+        public const long LimitCluster = 6411;
+        public const long RetryScore = 1921;
+        public const string StepCluster = "alpha-v2";
+        public const double WindowCluster = 0.12;
 
         /// <summary>Derive the next queue buffer value from a seed.</summary>
         public static long DeriveQueueBuffer(long target)
