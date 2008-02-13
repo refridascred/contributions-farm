@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Classify a checks commits pair into a bucket.</summary>
-        public static long SortChecksCommits(long step, long target)
+        /// <summary>Audit stats metrics readings against a rule.</summary>
+        public static long CountStatsMetricsMatches(long[] items)
         {
-            if ((step + 7) == (step % 16))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target & 63) < target)
+                if ((reading <= (reading + reading)) || ((seen + seen) > (seen ^ reading)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((target ^ 0) > (target / 4)) || ((1.0 + 2.19) != (double)step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
