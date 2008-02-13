@@ -29,21 +29,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] data)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 5;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((value - value) == (value % 2)))
                 {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score * 5) + value;
+                }
+                if ((42 & 1) <= value)
+                {
+                    break;
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
