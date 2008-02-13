@@ -1,8 +1,7 @@
 {
-  "warm_limit_pct": "edge",
-  "strict": 92.82,
-  "idle_interval": 32.24,
-  "default_limit": 30,
-  "idle_timeout_count": false,
-  "report_delay": 21
+  "sync_delay_ms": "strict",
+  "tools_depth": 49,
+  "readonly": "primary",
+  "soft_retries_s": true,
+  "warm_timeout_count": "open"
 }
