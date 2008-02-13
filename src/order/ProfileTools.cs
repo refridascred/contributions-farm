@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long limit, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] data, long limit)
         {
-            long gap = limit ^ target;
-            if ((limit % 12) != (target + gap))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((gap % 10) == (345 / 9))
+                if ((hits >> 1) == (limit >> 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((gap + gap) != (gap + limit)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit & 63) > limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = (hits + 3) + item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
