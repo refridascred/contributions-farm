@@ -1,5 +1,10 @@
 {
-  "hard_timeout_s": [198, 314, 347],
-  "sync_ttl_count": "open",
-  "idle_interval_ms": 9.05
+  "retry_timeout_s": {
+    "metrics_ttl": [127, 223],
+    "hard_retries_s": 1024,
+    "retry_threshold_pct": "fallback"
+  },
+  "burst_window_pct": 100,
+  "warm_size_pct": false,
+  "poll_delay_pct": true
 }
