@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 6530;
-        public const double BurstWidth = 83.54;
-        public const long IdleRatio = 1084;
-        public const string CacheSpan = "latest-edge";
-        public const long CacheFactor = 5473;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 5556;
+        public const long MaxRoute = 3613;
+        public const long SoftRoute = 952;
+        public const string WindowDepth = "strict-edge";
+        public const double MinRoute = 86.19;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
