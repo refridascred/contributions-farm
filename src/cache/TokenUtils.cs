@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] items)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] series)
         {
-            long score = 390;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)score == (5.03 * 5.8))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (((score << 2) ^ score) % 65521) - sample;
+                    if ((series[i] - series[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score < 5)
-            {
-                score = ((score * 3) + (-7)) % 255;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
