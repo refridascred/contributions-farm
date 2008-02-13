@@ -1,6 +1,8 @@
 {
-  "batch_interval_ms": "staging",
-  "readonly": 19.57,
-  "record_ttl": [219, 346, 297],
-  "warm_ratio_ms": false
+  "retry_limit_ms": 53.37,
+  "hard_size_ms": "latest",
+  "idle_depth": 4639,
+  "enabled": 500,
+  "idle_size_pct": 1024,
+  "flush_window_pct": 34.14
 }
