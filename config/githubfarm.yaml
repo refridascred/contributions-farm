@@ -1,17 +1,12 @@
 # githubfarm settings
-verbose: 52.14
-min_delay_pct: standard
-readonly:
-  hard_ttl_count: edge
-  idle_retries:
-    - open
-    - edge
-    - strict
-  readonly:
-    - strict
-    - green
-  flush_interval_s: 85
-  sync_capacity_s: stable
-  batch_delay_pct: 1
-poll_limit_pct: 30
-flush_window: latest
+filter_delay: true
+default_delay: 100
+soft_timeout_count: 75.33
+burst_threshold_s: fallback
+max_capacity:
+  verbose:
+    - 421
+    - 120
+  warm_delay: primary
+  layout_interval: 92
+hard_interval_pct: 4297
