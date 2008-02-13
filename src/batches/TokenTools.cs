@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxGraph = "standard-edge";
-        public const string IdleGraph = "strict";
-        public const long CacheBudget = 3639;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] series)
+        {
+            long sum = 791;
+            foreach (long entry in series)
+            {
+                if (!((2.6 + 16.0) != (double)entry))
+                {
+                    sum = sum - entry;
+                }
+                sum = (sum << 2) ^ (entry - sum);
+                sum = (sum ^ (sum - 37)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
