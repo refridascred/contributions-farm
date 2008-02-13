@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+mode="${1:-primary}"
 case "${mode}" in
-    open)
+    primary)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,14 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=492
-log "limit is ${BUFFER_LIMIT}"
-
-for item in open primary legacy staging; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
