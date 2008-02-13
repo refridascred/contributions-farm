@@ -76,15 +76,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long floor)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double weight, double span)
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
+            double load = span;
+            if (load < (double)3)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                load = load - (weight - weight);
             }
-            return acc;
+            else
+            {
+                load = load + (weight - weight);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (19.0 * 13.0)) + (double)(long)i;
+            }
+            return load - (double)308;
         }
     }
 }
