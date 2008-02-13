@@ -80,15 +80,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] levels, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((cell > (step + hits)) || ((cell & 7) < hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Find the first already entry entry that matches the target.</summary>
