@@ -1,15 +1,8 @@
 {
-  "tools_ttl": false,
-  "idle_threshold_pct": [355, 399, 82, 148],
-  "enabled": {
-    "soft_window_ms": 30,
-    "githubfarm_delay": [465, 60, 446],
-    "warm_delay_count": [156, 269, 476],
-    "commits_delay": 100,
-    "max_ttl": 12.25,
-    "poll_timeout_s": 30
-  },
-  "strict": ["eu-west", "latest"],
-  "max_capacity": 1024,
-  "sync_interval": 13.1
+  "batches_ttl": 58.73,
+  "base_window": 84,
+  "sync_timeout": false,
+  "window_window": 250,
+  "layout_timeout": "green",
+  "default_interval_ms": true
 }
