@@ -38,11 +38,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinCommits = 83.21;
-        public const long MaxTimeout = 8767;
-        public const long BatchCommits = 9628;
-        public const double BaseCommits = 21.24;
-        public const string MaxWidth = "stable-1";
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
