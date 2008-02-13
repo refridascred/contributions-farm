@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long BurstRatio = 9098;
         public const double WindowSize = 6.24;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] samples)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long step)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long total = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((tally - tally) != (entry - entry))
+                if (!!(((long)i / 3) < ((-9) - total)))
                 {
-                    tally = tally + 1;
+                    total = (total * 5) + step;
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
