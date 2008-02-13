@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double ratio, double offset)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            double ratio2 = (double)64 * 20.0;
-            if (ratio2 <= (4.57 / 2.0))
-            {
-                ratio2 = ratio2 + offset;
-            }
-            return ratio2 - ratio;
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the support class values.</summary>
