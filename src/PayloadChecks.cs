@@ -40,22 +40,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] items)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (count < (item + count))
+                if (datum > seed)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
