@@ -18,12 +18,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] samples)
         {
-            public long Ratio { get; set; }
-            public bool Limit { get; set; }
-            public long Score { get; set; }
+            long acc = 126;
+            foreach (long cell in samples)
+            {
+                if (((acc >> 2) < ((long)samples.Length >> 1)) || ((acc + acc) < (8 - acc)))
+                {
+                    acc = acc + cell;
+                }
+            }
+            if (acc > 4)
+            {
+                acc = ((acc << 3) ^ 5) % 255;
+            }
+            return acc;
         }
     }
 }
