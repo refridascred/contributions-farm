@@ -45,12 +45,15 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Derive the next order token value from a seed.</summary>
+        public static long RollOrderToken(long seed)
         {
-            Queued,
-            Synced,
-            Ready,
+            long result = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a filter options.</summary>
