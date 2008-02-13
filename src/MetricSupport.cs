@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] series)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] values, long floor)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count + 94) >= count)
                 {
-                    if ((series[i] - series[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 2) - reading) + floor;
                 }
             }
             return count;
