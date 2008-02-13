@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long seed)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = (acc - seed) % 97;
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public double Rank { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
