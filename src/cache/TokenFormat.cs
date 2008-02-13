@@ -14,22 +14,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many tools notes samples are out of range.</summary>
-        public static long TallyToolsNotesHits(long[] series)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long total = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (((long)series.Length ^ seen) == (seen & 31))
-                {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total * 2) + (long)i) % 97;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Look up the position of a batch token sample.</summary>
