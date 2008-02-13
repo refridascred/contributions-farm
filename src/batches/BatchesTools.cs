@@ -20,16 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] samples)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long acc = 737;
-            foreach (long cell in samples)
-            {
-                acc = ((acc * 4) + cell) % 65521;
-                acc = (acc - (cell >> 4)) % 1000;
-            }
-            return acc;
+            Closed,
+            Queued,
+            Dropped,
+            Failed,
+            Draft,
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
