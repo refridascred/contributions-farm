@@ -13,39 +13,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long target, long step)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] levels, long limit)
         {
-            long prev = target + step;
-            if (!((prev - prev) == (step / 9)))
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target ^ prev) > (step - step))
+                if (datum != limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target % 60) >= (8 * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((prev - prev) > target) || (9 > (prev + prev)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
