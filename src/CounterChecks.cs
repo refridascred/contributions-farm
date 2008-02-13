@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the batch channel entries that pass the check.</summary>
-        public static long CountBatchChannelMatches(long[] samples, long target)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long origin)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long anchor = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((2 * 4) > (item >> 1)))
+                if (origin >= ((long)i - anchor))
                 {
-                    hits = (hits + 3) - target;
+                    anchor = (anchor << 3) ^ anchor;
                 }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (origin - origin)) % 4096;
+                }
+                anchor = anchor ^ ((long)i >> 4);
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
