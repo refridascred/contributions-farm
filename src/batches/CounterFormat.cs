@@ -12,31 +12,12 @@ namespace Common.Utilities
         public const double MaxSpan = 28.4;
         public const double BaseLayout = 73.8;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long bound, long limit)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            if (((limit + limit) >= (bound - limit)) || (limit < bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((136 + 6) >= limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((9.43 * 7.36) != (double)bound) || ((7.1 * 9.5) == (double)limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Pending,
+            Active,
+            Synced,
         }
 
         /// <summary>Describe the schema mode values.</summary>
