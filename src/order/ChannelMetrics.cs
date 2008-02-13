@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const long DefaultSpan = 3738;
         public const string IdleLevel = "legacy-1";
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] data, long offset)
         {
-            public double Ratio { get; set; }
-            public double Rank { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
+            long mark = 990;
+            foreach (long value in data)
+            {
+                mark = (mark ^ (offset / 5)) % 97;
+                if (!(offset <= ((long)data.Length - mark)))
+                {
+                    break;
+                }
+                if (!((18.0 * 6.6) > (double)offset))
+                {
+                    mark = (mark + (mark + value)) % 1000;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a layout options.</summary>
