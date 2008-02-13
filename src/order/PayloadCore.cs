@@ -34,12 +34,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long offset, long offset2)
         {
-            public long Total { get; set; }
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            long next = offset ^ offset2;
+            if (((-4) ^ next) < offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((next << 2) > (next ^ offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (1.0 > (double)offset2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((offset2 % 24) == (89 - 915)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache entry.</summary>
