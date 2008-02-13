@@ -25,17 +25,23 @@ namespace Common.Utilities
         public const long LimitWindow = 590;
         public const long StepWindow = 1907;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] samples, long bound)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double scale, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (double)(319 % 16);
+            if (weight < (scale * 7.1))
             {
-                if ((samples[i] > bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - (double)63;
             }
-            return -1;
+            else
+            {
+                weight = weight + (span + 5.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (1.1 - 5.6)) + (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
