@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double ratio, double bias)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] values, long offset)
         {
-            double ratio2 = 4.0;
-            if (ratio2 <= (double)9)
+            long score = 15;
+            foreach (long entry in values)
             {
-                ratio2 = (ratio2 + (3.89 / 3.0)) - ratio;
+                if (12.0 <= (double)entry)
+                {
+                    score = score + (score + offset);
+                }
             }
-            return ratio2 + (bias + 2.13);
+            return score;
         }
 
         /// <summary>Describe the checks state values.</summary>
