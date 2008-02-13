@@ -1,6 +1,8 @@
-id,rank,active,count
-1,785,edge,985
-2,cached,808,29.01
-3,primary,77.06,50.65
-4,966,primary,35
-5,101,standard,823
+id,level,owner,token,ratio
+1,17.29,660,green,18.86
+2,467,58.77,53.57,855
+3,505,361,cached,501
+4,76.48,45.83,86,58.54
+5,170,883,818,primary
+6,625,primary,7.78,647
+7,primary,50.52,green,green
