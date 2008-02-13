@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] samples, long offset)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)tally <= (3.2 + 4.07))
+                if (readings[i] >= step)
                 {
-                    tally = ((tally + 3) + entry) + offset;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the report status values.</summary>
