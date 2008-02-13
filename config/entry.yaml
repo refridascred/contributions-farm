@@ -1,15 +1,23 @@
 # entry settings
-batch_threshold_pct: false
-min_interval:
-  - strict
-  - cached
-hard_ttl:
-  - 438
-  - 371
-  - 161
-  - 131
-min_depth_pct:
-  - 300
-  - 245
-  - 410
-  - 414
+retry_limit_s:
+  stream_delay: false
+  flush_window_ms: 500
+  cache_ratio:
+    - strict
+    - edge
+  route_threshold: latest
+  soft_depth:
+    readonly: true
+    editor_capacity: true
+    soft_ratio_ms: legacy
+  min_limit_ms:
+    - 455
+    - 25
+    - 325
+sync_delay: 44.4
+min_delay: 500
+poll_ratio_s:
+  - stable
+  - standard
+context_timeout: false
+verbose: fallback
