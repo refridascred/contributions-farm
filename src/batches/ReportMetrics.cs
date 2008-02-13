@@ -14,19 +14,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Validate route notes readings against a bound.</summary>
-        public static bool CheckRouteNotesLimits(long[] data, long bound)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading <= bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] + samples[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
