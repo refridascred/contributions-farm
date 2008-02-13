@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of record payload readings.</summary>
-        public static long CompareRecordPayloadCount(long[] levels)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = target;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = total + total;
+                total = (total ^ (452 * 4)) % 101;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
