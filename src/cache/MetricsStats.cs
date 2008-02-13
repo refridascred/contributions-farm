@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long BatchFormat = 2852;
         public const long LimitFormat = 6267;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchSize = 980;
-        public const long StepEditor = 1135;
-        public const long WindowEditor = 7155;
-        public const double RetryFactor = 79.08;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public double Rank { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
