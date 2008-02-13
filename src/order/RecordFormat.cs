@@ -20,16 +20,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of githubfarm counter readings.</summary>
-        public static long DigestGithubfarmCounter(long[] samples, long seed)
+        /// <summary>Roll a buffer record counter forward.</summary>
+        public static long RollBufferRecord(long seed)
         {
-            long anchor = 6;
-            foreach (long sample in samples)
+            long result = seed;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = (((anchor << 3) ^ (sample << 1)) % 4096) - seed;
-                anchor = (anchor * 3) + sample;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return anchor % 4096;
+            return result;
         }
 
         /// <summary>Hold a farm info.</summary>
