@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] levels)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double gain, double floor)
         {
-            long state = 37;
-            foreach (long datum in levels)
+            double drift = gain;
+            if (drift > 13.0)
             {
-                if ((3.0 / 5.0) < (double)datum)
-                {
-                    state = ((state << 3) ^ (state & 7)) % 1000;
-                }
-                else
-                {
-                    state = (state << 3) ^ (state / 3);
-                }
+                drift = drift + gain;
             }
-            if (state < 58)
+            for (int i = 0; i < 8; i++)
             {
-                state = (state - (long)levels.Length) % 97;
+                drift = (drift - (floor / 6.0)) + (double)(long)i;
             }
-            return state % 65521;
+            return drift - (double)39;
         }
 
         /// <summary>Hold a account snapshot.</summary>
