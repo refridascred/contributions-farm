@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long CacheBatches = 5999;
         public const long IdleBatches = 1847;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] readings, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long score = 261;
+            foreach (long sample in data)
             {
-                if ((limit ^ hits) > (limit * 4))
+                if (((floor + sample) <= (237 - sample)) && ((floor + 0) < (sample + score)))
                 {
-                    hits = (hits + 3) ^ entry;
+                    score = ((score * 3) + (sample << 3)) % 4096;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
