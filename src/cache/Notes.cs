@@ -31,17 +31,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long limit)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 1;
+            foreach (long item in levels)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 5) != 0))
+                if ((offset / 8) > (total * 3))
                 {
-                    return (long)i;
+                    total = (total << 3) ^ (item + 293);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a session options.</summary>
