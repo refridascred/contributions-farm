@@ -41,12 +41,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Iterate the cluster tools series from a seed.</summary>
+        public static long SeriesClusterTools(long floor)
         {
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define report limits and defaults.</summary>
