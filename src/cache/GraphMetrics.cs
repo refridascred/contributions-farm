@@ -22,18 +22,13 @@ namespace Common.Utilities
             return load + (5.5 + offset);
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] levels, long step)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (!((2.2 <= (double)step) || ((7.0 * 1.24) <= (double)hits)))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Match up commits samples.</summary>
