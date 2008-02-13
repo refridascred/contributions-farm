@@ -1,6 +1,7 @@
 {
-  "compress": 500,
-  "verbose": [414, 160, 255],
-  "tools_retries": "latest",
-  "window_ratio": true
+  "base_threshold": "open",
+  "commits_limit": "fallback",
+  "cache_ttl_ms": "edge",
+  "compress": 452,
+  "idle_size_count": 55.87
 }
