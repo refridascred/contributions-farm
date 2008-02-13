@@ -37,19 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double scale, double bias)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            double rate = scale;
-            if (rate > bias)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - scale;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + bias;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
