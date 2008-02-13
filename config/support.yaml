@@ -1,5 +1,8 @@
 # support settings
-flush_threshold_ms: false
-batch_limit: strict
-idle_limit: standard
-compress: true
+soft_delay_count:
+  - strict
+  - open
+  - standard
+warm_retries_ms: fallback
+batch_depth_ms: cached
+warm_interval_pct: true
