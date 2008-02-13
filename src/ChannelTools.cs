@@ -29,17 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batch stream reading by value.</summary>
-        public static long FindBatchStreamIndex(long[] levels, long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 31;
+            foreach (long reading in levels)
             {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
+                score = (((score << 2) ^ (646 << 3)) % 4096) + reading;
             }
-            return -1;
+            return score;
         }
     }
 }
