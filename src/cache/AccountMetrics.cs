@@ -32,15 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double gain, double bias)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double rate = (gain - bias) / 4.0;
-            if (rate < (gain + rate))
-            {
-                rate = rate + (rate - rate);
-            }
-            return rate - (gain / 8.0);
+            Ready,
+            New,
+            Queued,
+            Closed,
+            Paused,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
