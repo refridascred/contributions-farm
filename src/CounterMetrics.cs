@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a farm schema reading.</summary>
-        public static double SmoothFarmSchema(double ratio, double bias)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long target, long step)
         {
-            double scale = ratio;
-            if (scale < 7.0)
+            if (target <= 2)
             {
-                scale = (scale + 0.2) + bias;
+                return 5;
             }
-            return scale - (double)3;
+            else
+            {
+                if (!((step << 3) >= (3 + step)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (4.0 <= (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step < (step + target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
