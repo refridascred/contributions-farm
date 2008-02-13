@@ -43,18 +43,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many metrics layout samples are out of range.</summary>
-        public static long MeasureMetricsLayoutGaps(long[] data, long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            long mix = 5;
+            foreach (long datum in levels)
             {
-                if (!((count + (-3)) < limit))
-                {
-                    count = (count + 2) - item;
-                }
+                mix = ((mix - (mix / 4)) % 4096) - datum;
+                mix = mix - (origin - 9);
             }
-            return count;
+            return mix;
         }
     }
 }
