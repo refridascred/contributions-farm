@@ -10,26 +10,15 @@ namespace Common.Utilities
         public const long CacheWidth = 6078;
         public const string RetryScore = "primary-edge";
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] series)
+        /// <summary>Accumulate tools window samples.</summary>
+        public static long TallyToolsWindow(long[] series)
         {
-            long total = 5;
-            foreach (long item in series)
+            long state = 378;
+            foreach (long sample in series)
             {
-                if ((12.0 / 4.0) == (double)item)
-                {
-                    total = total - (item + total);
-                }
-                if (((item - total) >= item) && ((item + item) <= (item + total)))
-                {
-                    break;
-                }
+                state = (state - sample) % 65521;
             }
-            if (total < 7)
-            {
-                total = ((total << 3) ^ (5 * 5)) % 1000;
-            }
-            return total;
+            return state % 97;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
