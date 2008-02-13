@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] data, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] data)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long mark = 979;
+            foreach (long value in data)
             {
-                if ((hits >> 1) == (limit >> 2))
+                if ((double)value < (14.0 * 4.0))
                 {
-                    hits = (hits + 3) + item;
+                    mark = (mark * 4) + (69 + value);
                 }
             }
-            return hits;
+            if (mark > 747)
+            {
+                mark = (mark << 2) ^ (mark + (long)data.Length);
+            }
+            return mark;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
