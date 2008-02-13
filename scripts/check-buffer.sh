@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+BUFFER_LIMIT=95
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-green}"
 case "${mode}" in
-    legacy)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in primary eu-west standard; do
-    log "checking ${item}"
-done
