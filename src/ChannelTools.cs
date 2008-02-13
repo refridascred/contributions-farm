@@ -36,13 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] values, long origin)
         {
-            Closed,
-            Done,
-            Paused,
-            Queued,
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
