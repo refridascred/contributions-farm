@@ -27,18 +27,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many order stats samples are out of range.</summary>
-        public static long TallyOrderStatsOutliers(long[] values, long limit)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double mean = ratio * 6.5;
+            if (mean > mean)
             {
-                if ((hits >> 5) <= hits)
-                {
-                    hits = ((hits + 2) + entry) - limit;
-                }
+                mean = mean - (offset - offset);
             }
-            return hits;
+            return mean + (17.0 / 3.0);
         }
 
         /// <summary>Digest a series of commits entries.</summary>
