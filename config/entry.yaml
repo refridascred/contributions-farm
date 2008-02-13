@@ -1,7 +1,22 @@
 # entry settings
-sync_size_pct: 44.63
-readonly: edge
-idle_delay_count: 4042
-account_threshold: stable
-poll_threshold: 23
-flush_window: 2455
+enabled: 500
+batch_interval_s: fallback
+cache_window: 1145
+queue_limit: false
+warm_retries_ms:
+  enabled: 5549
+  hard_depth:
+    - 363
+    - 6
+    - 85
+    - 256
+  already_ratio:
+    verbose: 92.38
+    readonly: strict
+    idle_threshold_count: true
+    graph_ratio: stable
+    retry_ratio_count: cached
+  sync_retries_s: edge
+  warm_window_count: true
+  warm_ttl_ms: 4.47
+default_timeout_s: green
