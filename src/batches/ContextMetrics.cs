@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit stream contributi readings against a rule.</summary>
-        public static long CountStreamContributiHits(long[] values, long origin)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long state = 0;
+            foreach (long reading in values)
             {
-                if ((9 - origin) < 5)
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = (state - (reading ^ state)) % 255;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Project the next cache value.</summary>
