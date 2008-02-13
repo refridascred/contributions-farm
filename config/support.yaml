@@ -1,21 +1,11 @@
 # support settings
-batch_depth_s:
-  - 70
-  - 469
-default_depth_pct:
-  enabled:
-    retry_limit: 70.57
-    idle_delay_count: 3896
-    tools_ttl: false
-    min_size_count: 7
-  soft_capacity: blue
-  min_delay_s:
-    - standard
-    - eu-west
-base_interval:
-  context_threshold: 48.72
-  poll_capacity: 24
-  max_retries_ms: 15
-  batch_ttl: 39.17
-  tools_size: true
-  base_window: 687
+batch_depth_pct: fallback
+poll_interval_s: 233
+checks_interval: fallback
+max_size_ms: 51.46
+verbose:
+  verbose: true
+  cache_depth: 86.33
+  cache_threshold_count: eu-west
+  default_depth_s: standard
+  audit: 69.47
