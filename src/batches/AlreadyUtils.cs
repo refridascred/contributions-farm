@@ -26,13 +26,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] data, long bound)
         {
-            Stale,
-            Locked,
-            Synced,
-            Done,
+            long state = 34;
+            foreach (long entry in data)
+            {
+                if (entry >= (bound % 12))
+                {
+                    state = (state << 2) ^ state;
+                }
+                else
+                {
+                    state = (state << 2) ^ (bound >> 4);
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
