@@ -26,15 +26,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double rate, double bias)
-        {
-            double load = (double)(396 % 97);
-            for (int i = 0; i < 9; i++)
-            {
-                load = ((load + (bias / 3.0)) + (double)(long)i) + rate;
-            }
-            return load - 5.0;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFarm = 31.3;
+        public const double BatchDepth = 90.38;
+        public const string LimitBudget = "legacy";
     }
 }
