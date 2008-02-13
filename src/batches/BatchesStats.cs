@@ -52,13 +52,18 @@ namespace Common.Utilities
         public const string WindowRoute = "local-1";
         public const long HardRoute = 1648;
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] series, long limit)
         {
-            Idle,
-            Done,
-            Dropped,
-            Queued,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (!((hits << 1) >= limit))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
         }
     }
 }
