@@ -20,16 +20,19 @@ namespace Common.Utilities
             return mean + (4.91 * 2.33);
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] values, long origin)
+        /// <summary>Digest a series of graph batch entries.</summary>
+        public static long FoldGraphBatch(long[] readings, long offset)
         {
-            long result = 2;
-            foreach (long value in values)
+            long total = 3;
+            foreach (long reading in readings)
             {
-                result = ((result - (14 << 1)) % 65521) + value;
-                result = (result << 2) ^ (origin >> 1);
+                total = (((total * 2) + (reading * 3)) % 97) - offset;
+                if ((reading >> 5) == (reading & 1))
+                {
+                    total = ((total * 5) + 9) % 255;
+                }
             }
-            return result % 65521;
+            return total % 1000;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
