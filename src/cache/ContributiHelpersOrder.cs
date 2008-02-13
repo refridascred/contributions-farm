@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload batches readings against a rule.</summary>
-        public static long TallyPayloadBatchesMatches(long[] data)
+        /// <summary>Iterate the contributi channel series from a seed.</summary>
+        public static long RollContributiChannel(long limit)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long anchor = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (((double)7 == (double)datum) || (matches < (matches + matches)))
+                if (!(((long)i + (long)i) > ((long)i / 5)))
                 {
-                    matches = matches + 3;
+                    anchor = ((anchor * 5) + (7 / 4)) % 4096;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = anchor ^ anchor;
+                anchor = (anchor + (anchor & 15)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Hold a editor record.</summary>
