@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] values, long limit)
+        /// <summary>Combine filter counter values into a single score.</summary>
+        public static long TotalFilterCounter(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 522;
+            foreach (long cell in levels)
             {
-                if ((values[i] < limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state << 3) ^ (cell % 8)) + target;
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Iterate the contributi channel series from a seed.</summary>
