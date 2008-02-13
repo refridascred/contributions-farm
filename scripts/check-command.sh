@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard eu-west fallback open; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-open}"
+mode="${1:-stable}"
 case "${mode}" in
-    standard)
+    stable)
         log "fast path"
         ;;
     *)
