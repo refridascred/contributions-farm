@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long limit, long bound)
+        /// <summary>Compare every pair of githubfarm account readings.</summary>
+        public static long PairGithubfarmAccountCount(long[] data)
         {
-            if ((9 + (-942)) > bound)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit <= (6.0 * 4.05))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((524 >= (bound << 3)) && (limit <= (limit >> 2)))
+                    if ((data[i] ^ data[j]) < 2)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
