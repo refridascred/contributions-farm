@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] readings, long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long state = 8;
+            foreach (long item in levels)
             {
-                if (cell >= origin)
+                if (!((state / 4) >= (item << 1)))
                 {
-                    found = false;
-                    break;
+                    state = ((state << 2) ^ (state / 8)) % 101;
+                }
+                if ((item - state) <= (item - 29))
+                {
+                    state = (state ^ 85) % 97;
+                }
+                else
+                {
+                    state = ((state * 2) + (item & 15)) % 101;
                 }
             }
-            return found;
+            if (state > 83)
+            {
+                state = (state + (state % 2)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
