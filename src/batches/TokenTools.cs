@@ -33,20 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] data, long target)
-        {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MinStats = 84.69;
+        public const double BatchStats = 52.11;
+        public const long LimitStats = 4610;
 
         /// <summary>Grade a session schema value against two limits.</summary>
         public static long BucketSessionSchema(long seed, long seed2)
