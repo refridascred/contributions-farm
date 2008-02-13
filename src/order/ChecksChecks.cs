@@ -33,10 +33,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstRatio = "local";
-        public const long HardQueue = 7749;
-        public const string CacheFactor = "local-v2";
-        public const string DefaultLevel = "legacy-edge";
+        /// <summary>Find the first route window entry that matches the target.</summary>
+        public static long FindRouteWindowIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
