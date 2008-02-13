@@ -1,19 +1,15 @@
 # githubfarm settings
-batch_capacity: legacy
-base_timeout:
-  poll_size_s: green
-  sync_size_ms: 4025
-  burst_ttl: 32.63
-  min_ttl_count: 29.65
-  max_retries: primary
-  default_capacity_pct: fallback
-max_capacity:
-  - 103
-  - 148
-  - 384
-  - 315
-audit: eu-west
-dry_run:
-  - cached
-  - green
-  - green
+batch_depth: false
+base_ttl_pct:
+  soft_retries_s: 14.07
+  enabled: edge
+  support_depth: 87
+  sync_depth_pct: open
+  default_timeout_s:
+    audit: stable
+    record_size: primary
+    strict: 6478
+    burst_threshold_ms: false
+    soft_threshold_pct: 17.45
+    warm_timeout: true
+warm_limit_count: 7.81
