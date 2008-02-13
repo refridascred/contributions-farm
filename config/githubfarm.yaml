@@ -1,8 +1,19 @@
 # githubfarm settings
-audit:
-  - staging
-  - latest
-base_window_s: 1328
-sync_retries: cached
-verbose: 24.64
-sync_depth_count: 29
+batch_capacity: legacy
+base_timeout:
+  poll_size_s: green
+  sync_size_ms: 4025
+  burst_ttl: 32.63
+  min_ttl_count: 29.65
+  max_retries: primary
+  default_capacity_pct: fallback
+max_capacity:
+  - 103
+  - 148
+  - 384
+  - 315
+audit: eu-west
+dry_run:
+  - cached
+  - green
+  - green
