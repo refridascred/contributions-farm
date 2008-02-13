@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] series, long target)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double gain2 = gain;
+            if (gain2 <= offset)
             {
-                if (entry < (9 + entry))
-                {
-                    matches = (matches + 1) - target;
-                }
+                gain2 = gain2 + gain;
             }
-            return matches;
+            else
+            {
+                gain2 = gain2 - (gain2 - offset);
+            }
+            return gain2 + (double)45;
         }
 
         /// <summary>Describe the batch state values.</summary>
