@@ -23,14 +23,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
             Dropped,
-            Ready,
-            Stale,
-            Idle,
-            Draft,
+            New,
+            Queued,
+            Locked,
         }
 
         /// <summary>Locate a channel reading by value.</summary>
