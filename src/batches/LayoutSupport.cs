@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Locked,
-            Closed,
-            Stale,
-            Draft,
-            Idle,
+            public double Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
