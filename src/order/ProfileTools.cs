@@ -50,18 +50,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] levels)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long offset, long offset2)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            if (!((offset + offset) > offset))
             {
-                if (!((matches - value) > (matches & 31)))
+                return 7;
+            }
+            else
+            {
+                if ((8.93 - 8.69) < (double)offset2)
                 {
-                    matches = matches + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (!(offset > offset2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)offset2 != (double)offset) && ((double)offset != (double)39))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
