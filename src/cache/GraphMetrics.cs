@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long seed, long origin)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            if ((origin + seed) >= (origin - seed))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((origin * 2) <= (seed + origin)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
