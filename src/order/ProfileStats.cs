@@ -29,10 +29,14 @@ namespace Common.Utilities
             return ratio2 + (0.6 + ratio);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MinFormat = 98.47;
-        public const string LimitFormat = "standard-v2";
-        public const long SoftBudget = 688;
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
+        {
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Size { get; set; }
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamMatches(long[] readings)
