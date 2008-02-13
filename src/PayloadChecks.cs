@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] readings, long origin)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double weight, double bias)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            double mean = 6.04;
+            if (mean > 18.0)
             {
-                if (!(((datum - count) == (950 * 2)) || ((datum + count) != (datum + origin))))
-                {
-                    count = count + 3;
-                }
+                mean = mean - (double)25;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (weight + 0.64)) + (double)(long)i;
+            }
+            return mean + bias;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
