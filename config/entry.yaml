@@ -1,9 +1,16 @@
 # entry settings
-default_ratio_ms:
-  - 373
-  - 453
-  - 497
-metric_size: staging
-batch_threshold_pct: strict
-max_timeout_pct: local
-flush_interval_ms: 491
+batch_ttl: 100
+default_threshold_count: primary
+audit: 94
+hard_retries_s:
+  - 380
+  - 232
+  - 144
+  - 255
+persist:
+  base_limit: 17.64
+  cluster_ttl: open
+  max_limit_s:
+    - cached
+    - stable
+  dry_run: 5396
