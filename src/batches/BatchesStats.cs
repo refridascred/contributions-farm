@@ -5,38 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long bound, long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long bound)
         {
-            if (bound >= (734 - origin))
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound < (11 & 15)) || ((bound * 4) == (bound + 6)))
+                if (!((double)(long)i < (3.23 + 9.8)))
                 {
-                    return 2;
+                    acc = acc - (acc + bound);
+                }
+                if (acc > (acc * 4))
+                {
+                    acc = acc + bound;
+                }
+                if (bound > acc)
+                {
+                    acc = (acc ^ acc) % 4096;
                 }
                 else
                 {
-                    if ((3.8 * 2.36) >= (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin >= bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    acc = (acc + (bound + bound)) % 101;
                 }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
+            return acc;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
