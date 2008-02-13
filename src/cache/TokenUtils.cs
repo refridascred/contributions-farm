@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseInterval = 4905;
+        public const string IdleFarm = "latest-edge";
+        public const double BaseFarm = 26.35;
+        public const string StepScore = "stable-edge";
+        public const string HardDepth = "fallback-edge";
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long CompareFilterCount(long[] readings)
