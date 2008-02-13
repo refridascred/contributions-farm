@@ -28,21 +28,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] items)
+        /// <summary>Audit filter record readings against a rule.</summary>
+        public static long TallyFilterRecordOutliers(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading + floor) <= (reading % 24))
                 {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
