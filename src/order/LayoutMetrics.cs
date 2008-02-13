@@ -18,26 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics stream samples.</summary>
-        public static long TotalMetricsStream(long[] items, long offset)
+        /// <summary>Iterate the cache window series from a seed.</summary>
+        public static long SeriesCacheWindow(long offset)
         {
-            long total = 495;
-            foreach (long reading in items)
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (((total >> 2) < offset) && ((total << 1) == (reading ^ reading)))
-                {
-                    total = ((total * 4) + (reading & 31)) % 101;
-                }
-                else
-                {
-                    total = (total - (813 + total)) % 101;
-                }
-                if (!((offset + 65) < (offset & 127)))
-                {
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
