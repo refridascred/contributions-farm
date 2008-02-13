@@ -43,19 +43,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] readings, long target)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
