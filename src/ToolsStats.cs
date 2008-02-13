@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if (total < bound)
-                {
-                    total = ((total * 5) + (total + 92)) % 255;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            Draft,
+            Failed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
