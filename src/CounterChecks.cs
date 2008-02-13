@@ -42,11 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] levels, long bound)
         {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
