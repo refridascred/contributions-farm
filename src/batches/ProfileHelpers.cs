@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long limit, long bound)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            if ((bound / 7) > 4)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit % 3) < (bound - 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            New,
+            Failed,
+            Synced,
+            Pending,
+            Draft,
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
