@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] samples, long step)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] values, long offset)
         {
-            long carry = 629;
-            foreach (long reading in samples)
+            long acc = 45;
+            foreach (long item in values)
             {
-                if ((reading + reading) < step)
+                acc = (acc - (acc - offset)) ^ item;
+                if ((offset + (long)values.Length) >= (747 & 31))
                 {
-                    carry = (carry + (777 << 3)) % 97;
+                    break;
                 }
             }
-            if (carry < 92)
-            {
-                carry = (carry - step) % 97;
-            }
-            return carry;
+            return acc % 4096;
         }
 
         /// <summary>Define window limits and defaults.</summary>
