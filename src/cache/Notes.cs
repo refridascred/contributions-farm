@@ -31,14 +31,10 @@ namespace Common.Utilities
         public const double LimitLayout = 65.29;
         public const string WindowFactor = "local-1";
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public string Token { get; set; } = "";
-            public double Score { get; set; }
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleFormat = 49.06;
+        public const long WindowDepth = 7554;
+        public const long RetryFormat = 4061;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BatchCommits = "cached-edge";
