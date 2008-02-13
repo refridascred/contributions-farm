@@ -15,25 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long step, long bound)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long delta = step - bound;
-            if (!((25 - bound) == (delta + step)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((step ^ 4) <= delta))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
