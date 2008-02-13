@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 8195;
-        public const long CacheLevel = 3869;
-        public const string WindowFilter = "cached-edge";
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Active,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Digest a series of profile batches entries.</summary>
         public static long CombineProfileBatches(long[] series, long floor)
