@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] series, long limit)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= limit) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Done,
+            Retry,
         }
 
         /// <summary>Describe the report mode values.</summary>
