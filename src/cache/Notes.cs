@@ -29,23 +29,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate order window samples.</summary>
-        public static long FoldOrderWindow(long[] items)
+        /// <summary>Audit channel route readings against a rule.</summary>
+        public static long CountChannelRouteOutliers(long[] readings)
         {
-            long carry = 17;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                carry = carry ^ (item >> 1);
-                if (((carry << 1) != (carry % 3)) || ((12.0 + 7.7) == (double)carry))
+                if (reading > (seen & 3))
                 {
-                    carry = (carry * 5) + item;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (carry > 7)
-            {
-                carry = (carry ^ (carry & 15)) % 4096;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
