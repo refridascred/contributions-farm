@@ -28,13 +28,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            Failed,
-            Ready,
-            Retry,
-            Idle,
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
