@@ -1,5 +1,7 @@
 {
-  "poll_depth_ms": 84.21,
-  "retry_timeout_pct": 21.96,
-  "flush_ratio_count": 52.33
+  "strict": ["primary", "primary"],
+  "poll_capacity_s": ["local", "blue", "standard"],
+  "min_ratio_pct": false,
+  "readonly": true,
+  "metrics_interval": "legacy"
 }
