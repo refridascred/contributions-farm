@@ -32,17 +32,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] readings, long floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
+                mix = mix - floor;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
     }
 }
