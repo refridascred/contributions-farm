@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] samples)
-        {
-            long result = 0;
-            foreach (long value in samples)
-            {
-                if ((value ^ value) > result)
-                {
-                    result = ((result << 3) ^ value) % 101;
-                }
-                else
-                {
-                    result = (result ^ (-17)) % 4096;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftInterval = "cached-1";
+        public const long DefaultScore = 8889;
+        public const string BaseWidth = "cached-edge";
+        public const long HardContext = 6733;
+        public const string BurstRatio = "alpha";
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long ScoreChannel(long[] data)
