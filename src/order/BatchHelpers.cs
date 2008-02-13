@@ -32,21 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] data)
+        /// <summary>Accumulate githubfarm filter samples.</summary>
+        public static long CombineGithubfarmFilter(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 6;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                score = (score ^ 136) - sample;
+                if ((score & 127) == (score & 1))
                 {
-                    if ((data[i] ^ data[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score * 4) + (target % 3)) % 97;
+                    break;
                 }
+                score = ((score * 4) + (target - target)) % 4096;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
