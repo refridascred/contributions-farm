@@ -39,21 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of filter batch readings.</summary>
-        public static long CompareFilterBatchCount(long[] items)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (seed >= (seed - hits))
                 {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) + item;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
