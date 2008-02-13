@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] values, long seed)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (!(((matches % 60) != (seed + reading)) || ((reading - reading) == (7 * 4))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 8689;
+        public const long LimitWidth = 6277;
+        public const double BaseWindow = 74.12;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double MinTimeout = 5.49;
