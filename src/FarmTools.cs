@@ -45,14 +45,11 @@ namespace Common.Utilities
         public const long BurstBudget = 8055;
         public const double BurstInterval = 72.39;
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Idle,
-            New,
-            Ready,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 579;
+        public const long RetryChecks = 3990;
+        public const long WindowChecks = 9919;
+        public const long MinDepth = 9668;
+        public const long IdleRatio = 9916;
     }
 }
