@@ -1,6 +1,8 @@
 {
-  "retry_capacity": "staging",
-  "audit": 93,
-  "persist": true,
-  "token_threshold": 7.69
+  "hard_depth_pct": false,
+  "verbose": 11,
+  "batch_delay": "fallback",
+  "contributi_limit": 75.65,
+  "commits_delay": 13,
+  "persist": 6395
 }
