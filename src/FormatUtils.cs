@@ -31,11 +31,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Blend two checks batch measurements.</summary>
-        public static double ProjectChecksBatch(double rate, double span)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            double weight = (double)151 / 6.0;
-            return ((weight - (weight - weight)) + rate) + span;
+            public string Region { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
