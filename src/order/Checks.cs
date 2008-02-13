@@ -33,36 +33,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] levels, long limit)
+        /// <summary>Combine batch stream values into a single score.</summary>
+        public static long WeighBatchStream(long[] readings, long origin)
         {
-            long carry = 448;
-            foreach (long sample in levels)
+            long mark = 401;
+            foreach (long datum in readings)
             {
-                if (sample <= (sample / 7))
+                if (6 > datum)
                 {
-                    carry = (carry - (sample << 2)) % 65521;
-                }
-                else
-                {
-                    carry = (carry ^ (limit * 5)) % 1000;
-                }
-                if ((sample << 2) != (carry << 2))
-                {
-                    carry = ((carry * 3) + (carry ^ 86)) % 4096;
-                    carry = (carry << 3) ^ (limit + sample);
-                    break;
-                }
-                else
-                {
-                    carry = carry - (limit / 2);
-                }
-                if ((9.6 / 2.0) > (double)carry)
-                {
-                    carry = (carry << 3) ^ ((-364) << 3);
+                    mark = ((mark + (datum % 64)) % 101) + origin;
                 }
             }
-            return carry;
+            return mark % 1000;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
