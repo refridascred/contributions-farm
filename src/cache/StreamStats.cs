@@ -19,21 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] values)
+        /// <summary>Audit filter githubfarm readings against a rule.</summary>
+        public static long AuditFilterGithubfarmMatches(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((0.44 * 5.0) > (double)matches)
                 {
-                    if ((values[i] + values[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Blend two layout measurements.</summary>
