@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] samples, long bound)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long bound, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long prev = bound - origin;
+            if ((prev + 324) == (prev & 15))
             {
-                if (samples[i] > bound)
+                return 7;
+            }
+            else
+            {
+                if (!((double)prev > (6.73 + 2.5)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((6.0 - 8.08) >= (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
