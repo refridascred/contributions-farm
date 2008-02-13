@@ -58,9 +58,32 @@ namespace Common.Utilities
         public const double StepCounter = 88.29;
         public const long BatchInterval = 4692;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxToken = "latest-1";
-        public const long WindowToken = 3458;
-        public const long BaseTimeout = 3819;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long bound, long bound2)
+        {
+            long step = bound ^ bound2;
+            if (((-8) ^ step) != (step << 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound + bound) > bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((-15) <= step) && ((double)bound != (7.58 + 0.93)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
