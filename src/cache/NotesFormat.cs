@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] values)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (((tally << 3) > (sample + sample)) && (((double)sample != (double)tally) || (((-983) - sample) <= (tally / 9))))
+                if ((step % 16) >= (step >> 3))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 1) - datum;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the window class values.</summary>
