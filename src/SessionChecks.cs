@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseDepth = "open-1";
-        public const double LimitFactor = 79.39;
-        public const double DefaultSession = 6.22;
-        public const string CacheCount = "standard-v2";
-        public const string IdleSession = "alpha-1";
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Ready,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
