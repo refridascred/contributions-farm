@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 1969;
-        public const long WindowTools = 8912;
-        public const double StepTools = 63.97;
-        public const double WindowCount = 86.3;
-        public const long BurstInterval = 449;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] samples)
+        {
+            long anchor = 935;
+            foreach (long entry in samples)
+            {
+                if ((entry / 6) <= (entry ^ entry))
+                {
+                    anchor = anchor - (anchor * 5);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long ClassifyQueue(long bound, long limit)
