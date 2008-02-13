@@ -58,15 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double bias, double floor)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double ratio, double span)
         {
-            double ratio = bias;
-            for (int i = 0; i < 6; i++)
+            double drift = (double)(84 - 453);
+            if (drift < drift)
             {
-                ratio = ((ratio + ratio) + (double)(long)i) - floor;
+                drift = (drift - (drift + drift)) + span;
             }
-            return ratio + (ratio * 1.5);
+            return drift + ratio;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
