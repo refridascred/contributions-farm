@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks account readings against a rule.</summary>
-        public static long CountChecksAccountMatches(long[] levels)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long acc = 19;
+            foreach (long value in readings)
             {
-                if ((8.45 + 11.0) >= (3.85 - 20.0))
+                if ((double)acc >= (1.0 * 20.0))
                 {
-                    seen = (seen + 1) - cell;
+                    acc = ((acc * 5) + (target - value)) % 97;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Blend two layout measurements.</summary>
