@@ -43,21 +43,18 @@ namespace Common.Utilities
             return rate - (weight * 0.39);
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] series)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)matches < (14.0 / 7.0))
                 {
-                    if ((series[i] + series[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the record phase values.</summary>
