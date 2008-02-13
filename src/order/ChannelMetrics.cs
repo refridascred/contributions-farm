@@ -16,11 +16,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepDepth = "open-v2";
-        public const double BatchChannel = 81.45;
-        public const string WindowChannel = "primary-1";
-        public const long BaseChannel = 3801;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public double Ratio { get; set; }
+            public double Rank { get; set; }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Rank command counter input into a small class.</summary>
         public static long BucketCommandCounter(long step, long target)
