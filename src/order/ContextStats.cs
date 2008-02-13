@@ -19,32 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long seed, long seed2)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] samples, long seed)
         {
-            long delta = seed + seed2;
-            if ((double)delta == (double)seed)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)seed > (double)seed2))
+                if (!((long)samples.Length == (seed * 3)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed2 >= (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = (matches + 2) + sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate profile samples.</summary>
