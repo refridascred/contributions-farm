@@ -44,20 +44,18 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] series, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (((long)i - (long)i) == ((long)i + seed))
+                if (seed <= ((-92) - seen))
                 {
-                    anchor = ((anchor * 4) + seed) % 97;
-                    continue;
+                    seen = (seen + 2) ^ sample;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the route mode values.</summary>
