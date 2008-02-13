@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
