@@ -15,11 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] samples, long limit)
         {
-            public bool Offset { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (tally <= (value / 9))
+                {
+                    tally = (tally + 1) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
