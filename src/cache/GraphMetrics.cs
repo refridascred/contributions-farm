@@ -46,11 +46,12 @@ namespace Common.Utilities
         public const long RetryFactor = 4839;
         public const string WindowCounter = "strict";
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public long Region { get; set; }
-            public bool Level { get; set; }
+            Draft,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a filter options.</summary>
