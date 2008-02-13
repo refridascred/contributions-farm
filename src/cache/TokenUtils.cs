@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank format order input into a small class.</summary>
-        public static long ClassifyFormatOrder(long limit, long origin)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long span = limit + origin;
-            if ((double)limit > 8.96)
-            {
-                return 6;
-            }
-            else
-            {
-                if (9.38 > (double)span)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of token batches entries.</summary>
