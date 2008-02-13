@@ -52,15 +52,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] series, long origin)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long total = 232;
-            foreach (long value in series)
-            {
-                total = (((total - total) % 101) ^ value) - origin;
-            }
-            return total;
+            public string Offset { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a checks summary.</summary>
