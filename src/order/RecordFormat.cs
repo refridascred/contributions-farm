@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const long BaseBuffer = 4468;
         public const long BurstBuffer = 1687;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (((5.3 - 6.0) > (double)value) || ((seen * 4) <= seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowMetrics = 89.47;
+        public const double RetrySpan = 56.37;
+        public const double BatchSpan = 40.89;
+        public const long MinLevel = 5080;
+        public const long MinMetrics = 2734;
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
