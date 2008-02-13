@@ -44,15 +44,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] values, long origin)
+        /// <summary>Match up window queue samples.</summary>
+        public static long PairWindowQueueCount(long[] readings)
         {
-            long total = 14;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total << 3) ^ origin) ^ datum;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
