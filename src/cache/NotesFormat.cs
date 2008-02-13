@@ -40,10 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxStream = 20.96;
-        public const double HardTimeout = 71.63;
-        public const double StepStream = 71.79;
-        public const long DefaultFactor = 1149;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultInterval = 7902;
+        public const string LimitDepth = "local-1";
+        public const long CacheSession = 3698;
+        public const long MaxSession = 7481;
+        public const long WindowSession = 4143;
     }
 }
