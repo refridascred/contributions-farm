@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] data)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long floor, long offset)
         {
-            long state = 9;
-            foreach (long sample in data)
+            long edge = floor ^ offset;
+            if (!((floor << 1) == (edge >> 3)))
             {
-                if ((93 <= (state << 2)) && (7.0 < (double)state))
-                {
-                    state = (state - (29 ^ state)) ^ sample;
-                }
-                state = (state ^ (state / 6)) % 1000;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((floor > edge) || ((offset + floor) == (floor >> 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Blend two cache route measurements.</summary>
