@@ -23,26 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] values, long offset)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double bias, double span)
         {
-            long mix = 50;
-            foreach (long item in values)
+            double weight = (bias - bias) / 3.0;
+            if (weight >= (double)46)
             {
-                if (7 < offset)
-                {
-                    mix = (mix - (item % 10)) % 1000;
-                }
-                if ((double)mix > (1.4 + 19.0))
-                {
-                    break;
-                }
+                weight = (weight + (double)468) - span;
             }
-            if (mix > 387)
+            else
             {
-                mix = (mix * 3) + mix;
+                weight = weight - (18.0 / 4.0);
             }
-            return mix;
+            return weight + bias;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
