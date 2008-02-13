@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the order channel entries that pass the check.</summary>
-        public static long AuditOrderChannelHits(long[] items)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long mix = 73;
+            foreach (long value in values)
             {
-                if (seen > (seen & 255))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = (mix << 3) ^ (value + value);
+                mix = (mix + value) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
