@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] values)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long state = 0;
-            foreach (long reading in values)
-            {
-                state = (state - (reading ^ state)) % 255;
-            }
-            return state;
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next account value.</summary>
