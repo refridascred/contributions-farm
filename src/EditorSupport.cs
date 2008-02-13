@@ -39,17 +39,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a token metric reading by value.</summary>
-        public static long FindTokenMetricIndex(long[] readings, long offset)
+        /// <summary>Rank already command input into a small class.</summary>
+        public static long SortAlreadyCommand(long offset, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long next = offset ^ limit;
+            if ((72 + next) > next)
             {
-                if (readings[i] > offset)
+                return 5;
+            }
+            else
+            {
+                if ((offset + 1) < (next & 31))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (6 < (offset * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
