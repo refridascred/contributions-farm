@@ -84,12 +84,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] series, long offset)
         {
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
