@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double scale, double floor)
+        /// <summary>Validate notes context readings against a bound.</summary>
+        public static bool VerifyNotesContextBounds(long[] data, long target)
         {
-            double weight = (double)((-76) ^ 7);
-            for (int i = 0; i < 3; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                weight = (((weight - weight) + (double)(long)i) + scale) - floor;
+                if (sample <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight + (2.0 / 5.0);
+            return ok;
         }
 
         /// <summary>Define account limits and defaults.</summary>
