@@ -43,19 +43,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a notes channel reading.</summary>
-        public static double SmoothNotesChannel(double gain, double bias)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            double scale = gain;
-            if (scale <= bias)
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + gain) - (double)(long)i;
-            }
-            return scale + scale;
+            public double Count { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
