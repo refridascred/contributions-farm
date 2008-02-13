@@ -34,12 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public string Stamp { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a cache entry.</summary>
