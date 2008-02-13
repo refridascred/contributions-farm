@@ -1,6 +1,10 @@
 {
-  "cache_capacity_pct": 2617,
-  "readonly": 16,
-  "poll_interval_count": 250,
-  "warm_capacity_ms": 4078
+  "sync_size_pct": 72.53,
+  "strict": false,
+  "default_window": {
+    "order_interval": false,
+    "soft_capacity_ms": 14.33,
+    "readonly": false,
+    "cache_size": 99
+  }
 }
