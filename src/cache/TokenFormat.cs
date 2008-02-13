@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] samples, long target)
+        /// <summary>Count filter checks pairs that satisfy a relation.</summary>
+        public static long MatchFilterChecksCount(long[] items)
         {
-            long state = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long matches = target & 31;
-                if ((double)matches == (11.0 * 2.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    continue;
-                }
-                else
-                {
-                    matches = matches - (55 + target);
-                }
-                if ((value + 615) >= (18 << 1))
-                {
-                    state = state + (30 & 7);
+                    if ((items[i] ^ items[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state < 89)
-            {
-                state = state - ((-436) ^ target);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the report mode values.</summary>
