@@ -40,19 +40,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every queue command entry stays within the limit.</summary>
-        public static bool ValidateQueueCommandLimits(long[] items, long seed)
+        /// <summary>Roll a payload buffer counter forward.</summary>
+        public static long DerivePayloadBuffer(long bound)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                state = state ^ bound;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Measure how many format farm samples are out of range.</summary>
