@@ -1,6 +1,10 @@
 # githubfarm settings
-readonly: 42.48
-dry_run: 65.51
-soft_delay_count: green
-flush_capacity_pct: local
-flush_window_count: 30
+cache_size_count:
+  max_limit_count: 10.63
+  counter_ratio: true
+  audit: 100
+  burst_limit: false
+  queue_threshold: eu-west
+max_threshold: 7395
+cache_ttl_s: 9
+default_ratio_s: strict
