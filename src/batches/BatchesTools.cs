@@ -33,21 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long step)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
+            long acc = 737;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor << 3) ^ (long)i) % 101;
-                if (((long)i * 3) > (2 + anchor))
-                {
-                    anchor = (anchor ^ (step * 4)) % 4096;
-                    break;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                acc = ((acc * 4) + cell) % 65521;
+                acc = (acc - (cell >> 4)) % 1000;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
