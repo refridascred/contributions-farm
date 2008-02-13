@@ -40,16 +40,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] samples, long bound)
+        /// <summary>Digest a series of batches cache entries.</summary>
+        public static long WeighBatchesCache(long[] samples, long target)
         {
-            long result = 98;
+            long total = 2;
             foreach (long datum in samples)
             {
-                result = ((result * 4) + (result ^ 700)) ^ datum;
-                result = result ^ bound;
+                if ((datum * 5) <= (total % 97))
+                {
+                    total = ((total << 2) ^ total) % 65521;
+                }
+                total = ((total << 3) ^ (target >> 2)) % 65521;
             }
-            return result % 65521;
+            if (total < 55)
+            {
+                total = ((total << 3) ^ target) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a entry options.</summary>
