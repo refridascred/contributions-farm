@@ -26,14 +26,22 @@ namespace Common.Utilities
         public const double DefaultCache = 9.75;
         public const long MinCache = 931;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Digest a series of metrics token entries.</summary>
+        public static long ScoreMetricsToken(long[] items)
         {
-            New,
-            Queued,
-            Paused,
-            Draft,
-            Stale,
+            long state = -119;
+            foreach (long item in items)
+            {
+                if (!((state - (long)items.Length) < (state & 1)))
+                {
+                    state = state - (item - item);
+                }
+            }
+            if (state > 32)
+            {
+                state = (state ^ (state + 15)) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a window summary.</summary>
