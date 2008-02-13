@@ -1,32 +1,20 @@
 # support settings
-poll_interval: 0.49
-githubfarm_depth:
-  - legacy
-  - green
-compress: 64.79
-sync_retries_pct:
-  metric_depth:
-    max_interval: 1024
-    batches_depth: standard
-    soft_ratio: eu-west
-    warm_interval:
-      - 196
-      - 356
-      - 416
-      - 358
-    batch_threshold_count: staging
-  strict:
-    contributi_ratio: false
-    poll_window: 3474
-    min_window_ms:
-      - 150
-      - 360
-  max_retries_s: 23
-  retry_window_count: stable
-  default_threshold_pct:
-    - cached
-    - cached
+persist: 73.99
 strict:
-  warm_interval_ms: legacy
-  strict: eu-west
-  persist: 53
+  enabled:
+    min_depth_count: 68.57
+    notes_window: 50
+    base_retries_count: strict
+    burst_threshold_s: standard
+  window_threshold:
+    - legacy
+    - green
+    - legacy
+    - standard
+  stats_timeout: primary
+  poll_ttl_count:
+    - fallback
+    - edge
+stats_threshold: true
+notes_limit: 30.72
+tools_limit: false
