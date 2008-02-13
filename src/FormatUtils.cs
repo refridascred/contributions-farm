@@ -50,12 +50,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Roll a channel support counter forward.</summary>
+        public static long DeriveChannelSupport(long origin)
         {
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Ratio { get; set; }
+            long state = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
