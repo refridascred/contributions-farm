@@ -36,14 +36,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long floor)
         {
-            New,
-            Active,
-            Closed,
-            Idle,
-            Ready,
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
