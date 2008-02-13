@@ -22,15 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double ratio, double offset)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] data)
         {
-            double drift = offset;
-            if (drift > ratio)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift - (3.0 / 6.0);
+            return matches;
         }
 
         /// <summary>Hold a notes entry.</summary>
