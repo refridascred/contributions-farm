@@ -26,9 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxFarm = 31.3;
-        public const double BatchDepth = 90.38;
-        public const string LimitBudget = "legacy";
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (((long)readings.Length + 2) == (seen + seen))
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
+        }
     }
 }
