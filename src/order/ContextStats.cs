@@ -56,15 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many support order samples are out of range.</summary>
-        public static long CountSupportOrderHits(long[] values)
+        /// <summary>Compare every pair of buffer cluster readings.</summary>
+        public static long MatchBufferClusterCount(long[] readings)
         {
             long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value * 2) == (matches - matches))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((readings[i] + readings[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
