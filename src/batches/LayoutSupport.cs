@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value != step)
                 {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
