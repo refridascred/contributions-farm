@@ -1,6 +1,7 @@
 # support settings
-stats_threshold: green
-min_capacity_count: stable
-cluster_capacity: 2550
-flush_threshold_pct: edge
-flush_timeout_ms: legacy
+sync_depth_s: true
+strict: 8939
+default_depth_count:
+  - 119
+  - 145
+  - 110
