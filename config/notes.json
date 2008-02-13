@@ -1,13 +1,12 @@
 {
-  "cache_timeout_pct": {
-    "default_window": false,
-    "soft_retries_s": false,
-    "burst_depth_s": true,
-    "idle_retries": 68.07
+  "route_ratio": true,
+  "min_ratio": {
+    "warm_window_ms": ["open", "latest"],
+    "readonly": 59.79,
+    "burst_depth_count": [53, 92, 171],
+    "retry_ratio": 3688,
+    "enabled": ["fallback", "green", "stable"]
   },
-  "filter_size": ["latest", "blue", "cached", "legacy"],
-  "burst_interval_pct": 60,
-  "editor_timeout": false,
-  "report_limit": true,
-  "burst_threshold": 91.58
+  "notes_threshold": "local",
+  "verbose": 9
 }
