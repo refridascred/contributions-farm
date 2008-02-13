@@ -37,11 +37,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Roll a record batches counter forward.</summary>
+        public static long DeriveRecordBatches(long floor)
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((double)floor <= (5.75 + 1.0))
+                {
+                    anchor = ((anchor * 3) + (floor - floor)) % 65521;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
