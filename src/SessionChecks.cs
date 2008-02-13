@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((hits / 7) >= (67 << 3))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 5088;
+        public const long BatchTools = 4661;
+        public const long BurstTools = 5836;
+        public const string IdleTools = "alpha-v2";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double HardLevel = 64.02;
