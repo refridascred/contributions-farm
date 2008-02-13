@@ -80,13 +80,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Closed,
-            Draft,
             Active,
-            Pending,
+            Draft,
+            Dropped,
         }
     }
 }
