@@ -26,24 +26,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Rank command checks input into a small class.</summary>
-        public static long BucketCommandChecks(long target, long step)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] data, long target)
         {
-            if ((0.7 - 4.21) > (double)step)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)step >= (2.5 - 5.8)) || ((step << 2) >= target))
+                if (data[i] == target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine token values into a single score.</summary>
