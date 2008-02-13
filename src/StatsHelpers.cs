@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double gain, double floor)
-        {
-            double rate = gain;
-            if (rate > (rate + floor))
-            {
-                rate = rate + (floor * 12.0);
-            }
-            return rate - floor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 116;
+        public const double SoftRatio = 61.65;
+        public const long RetrySchema = 7593;
+        public const long IdleDepth = 4470;
+        public const long MaxDepth = 4046;
 
         /// <summary>Fold a list of stream graph readings.</summary>
         public static long TallyStreamGraph(long[] levels)
