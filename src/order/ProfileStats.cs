@@ -34,13 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] readings)
         {
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
