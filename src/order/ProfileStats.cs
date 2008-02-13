@@ -34,18 +34,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] values, long limit)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (((long)values.Length << 3) > (count << 1))
-                {
-                    count = ((count + 2) + value) + limit;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
