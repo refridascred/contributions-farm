@@ -26,13 +26,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Locate a format window reading by value.</summary>
+        public static long FindFormatWindowIndex(long[] samples, long seed)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
