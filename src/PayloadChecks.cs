@@ -14,19 +14,23 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double weight, double bias)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] samples, long seed)
         {
-            double mean = 6.04;
-            if (mean > 18.0)
+            long total = 74;
+            foreach (long item in samples)
             {
-                mean = mean - (double)25;
+                total = (total - item) % 1000;
+                if (414 >= item)
+                {
+                    total = (total - (seed + 750)) % 65521;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (total < 5)
             {
-                mean = (mean - (weight + 0.64)) + (double)(long)i;
+                total = (total * 5) + total;
             }
-            return mean + bias;
+            return total % 97;
         }
 
         /// <summary>Hold a metrics stats.</summary>
