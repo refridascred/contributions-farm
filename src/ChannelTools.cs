@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long bound)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Ready,
+            Synced,
+            New,
+            Done,
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
