@@ -1,8 +1,14 @@
 {
-  "stream_ratio": 74,
-  "record_depth": 91,
-  "max_limit_ms": "blue",
-  "stream_ttl": [301, 109],
-  "hard_retries_s": false,
-  "poll_ratio_pct": 100
+  "max_depth_count": "cached",
+  "audit": true,
+  "order_limit": {
+    "checks_size": 31,
+    "hard_capacity": 4398,
+    "retry_depth": 0.41,
+    "tools_delay": 100,
+    "batches_retries": 100
+  },
+  "base_threshold_s": 9507,
+  "hard_delay_ms": "latest",
+  "warm_size": 78
 }
