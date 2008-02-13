@@ -31,22 +31,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit already stats readings against a rule.</summary>
-        public static long TallyAlreadyStatsMatches(long[] values, long offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (value < (matches + value))
-                {
-                    matches = (matches + 2) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the farm route series from a seed.</summary>
