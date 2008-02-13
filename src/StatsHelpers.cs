@@ -45,10 +45,13 @@ namespace Common.Utilities
         public const string SoftFarm = "primary-v2";
         public const double HardFarm = 79.56;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowStream = 29.95;
-        public const long RetryBudget = 3711;
-        public const double BurstTimeout = 78.98;
-        public const long BurstSize = 1245;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Dropped,
+            Failed,
+            Retry,
+            Closed,
+        }
     }
 }
