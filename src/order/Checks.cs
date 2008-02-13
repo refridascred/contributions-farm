@@ -20,19 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] samples, long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (entry < limit)
+                if (sample <= limit)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Combine route values into a single score.</summary>
