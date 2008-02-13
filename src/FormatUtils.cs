@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long floor, long floor2)
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            if (6.7 < (double)floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if (floor <= (floor & 127))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((floor2 + floor2) < (floor2 << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)floor2 == (15.0 - 1.2)) && (floor2 <= (floor2 >> 1)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next profile session value from a seed.</summary>
