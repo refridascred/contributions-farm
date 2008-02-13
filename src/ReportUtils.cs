@@ -59,15 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double gain, double span)
+        /// <summary>Check that every metrics graph entry stays within the limit.</summary>
+        public static bool CheckMetricsGraphBounds(long[] data, long limit)
         {
-            double drift = gain;
-            for (int i = 0; i < 2; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                drift = ((drift - drift) + (double)(long)i) + span;
+                if (item > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift + (double)68;
+            return ready;
         }
     }
 }
