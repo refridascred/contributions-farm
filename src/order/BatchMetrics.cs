@@ -68,11 +68,15 @@ namespace Common.Utilities
         public const long WindowTimeout = 6498;
         public const long DefaultReport = 5479;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 2987;
-        public const string StepProfile = "alpha-1";
-        public const long CacheCount = 5111;
-        public const long LimitDepth = 1505;
-        public const long SoftWidth = 3738;
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double scale, double floor)
+        {
+            double mean = (scale * 0.51) * 3.0;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (8.01 + floor);
+        }
     }
 }
