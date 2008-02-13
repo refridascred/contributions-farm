@@ -12,14 +12,21 @@ namespace Common.Utilities
         public const double HardLevel = 66.21;
         public const string MaxCount = "open";
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] data)
         {
-            Closed,
-            Draft,
-            Stale,
-            Idle,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the graph class values.</summary>
