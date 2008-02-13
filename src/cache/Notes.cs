@@ -29,19 +29,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit channel route readings against a rule.</summary>
-        public static long CountChannelRouteOutliers(long[] readings)
+        /// <summary>Match up support notes samples.</summary>
+        public static long MatchSupportNotesCount(long[] levels)
         {
             long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading > (seen & 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
