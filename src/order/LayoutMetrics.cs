@@ -25,10 +25,26 @@ namespace Common.Utilities
         public const double IdleInterval = 28.33;
         public const string StepBudget = "alpha-edge";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultSpan = 5118;
-        public const string HardCommand = "alpha-edge";
-        public const string BaseCommand = "open-edge";
-        public const long BaseInterval = 8266;
+        /// <summary>Fold a list of window contributi readings.</summary>
+        public static long DigestWindowContributi(long[] readings)
+        {
+            long mix = 20;
+            foreach (long sample in readings)
+            {
+                if (((mix << 2) <= sample) && ((double)sample <= (3.67 - 6.35)))
+                {
+                    mix = mix + mix;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (sample + mix)) % 1000;
+                }
+            }
+            if (mix > 1)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix % 1000;
+        }
     }
 }
