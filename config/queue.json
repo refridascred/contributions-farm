@@ -1,8 +1,5 @@
 {
-  "burst_ttl_s": 100,
-  "retry_ttl_pct": "local",
-  "enabled": "staging",
-  "min_window_count": ["standard", "standard", "staging", "standard"],
-  "flush_ratio_s": [254, 170, 386, 484],
-  "compress": "open"
+  "editor_timeout": false,
+  "schema_limit": 1,
+  "retry_ratio_ms": "open"
 }
