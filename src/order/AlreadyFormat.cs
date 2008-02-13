@@ -26,24 +26,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long bound, long limit)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] values, long origin)
         {
-            if (limit < (bound + (-1)))
+            long total = 2;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound >> 5) < (71 * 5))
+                if (!((origin - value) != (total + value)))
                 {
-                    return 3;
+                    total = (total - (value >> 1)) % 4096;
                 }
                 else
                 {
-                    return 6;
+                    total = total ^ (origin * 4);
                 }
             }
+            return total;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
