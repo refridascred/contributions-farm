@@ -1,13 +1,24 @@
 # entry settings
-retry_interval_ms: 83
-flush_window: 250
-base_delay_pct:
-  support_threshold:
-    - 250
-    - 484
-    - 472
-    - 420
-  cache_window_ms: false
-  enabled: 30
-  burst_depth: 41
-  base_ttl_ms: 11
+entry_interval: local
+payload_limit:
+  queue_threshold: 69
+  farm_depth: cached
+  dry_run:
+    max_timeout_s: false
+    retry_ttl_s: true
+    batch_window: true
+    enabled: primary
+    soft_size:
+      - 37
+      - 430
+      - 130
+      - 448
+    flush_window_count: 100
+  sync_depth_pct: 56
+  max_capacity: false
+  stats_depth:
+    - 82
+    - 357
+    - 90
+entry_ttl: 250
+idle_ratio: false
