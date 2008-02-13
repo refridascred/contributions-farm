@@ -50,13 +50,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
+            New,
+            Pending,
+            Stale,
+            Closed,
+            Locked,
         }
     }
 }
