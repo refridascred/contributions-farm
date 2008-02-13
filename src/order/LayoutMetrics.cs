@@ -20,26 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a token metric value against two limits.</summary>
-        public static long SortTokenMetric(long floor, long origin)
-        {
-            long gap = floor + origin;
-            if ((origin - 22) != (gap + 946))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((origin + 241) <= (origin >> 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftFactor = "alpha";
+        public const double IdleInterval = 28.33;
+        public const string StepBudget = "alpha-edge";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long DefaultSpan = 5118;
