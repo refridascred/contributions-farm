@@ -27,12 +27,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first route window entry that matches the target.</summary>
-        public static long FindRouteWindowIndex(long[] values, long offset)
+        /// <summary>Locate a order contributi reading by value.</summary>
+        public static long LocateOrderContributiIndex(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] == offset)
+                if (data[i] >= limit)
                 {
                     return (long)i;
                 }
