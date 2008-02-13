@@ -31,12 +31,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Rank tools graph input into a small class.</summary>
+        public static long ClassifyToolsGraph(long limit, long step)
         {
-            public bool Total { get; set; }
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
+            long diff = limit + step;
+            if (((double)limit < (double)1) || ((double)diff < (double)limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((861 & 255) != (step + diff))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)diff != (6.1 / 8.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit + step) >= (step * 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
