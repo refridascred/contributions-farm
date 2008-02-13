@@ -55,19 +55,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] series, long offset)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count batches cache pairs that satisfy a relation.</summary>
