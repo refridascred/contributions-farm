@@ -25,19 +25,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 14; i++)
+            long carry = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((mix ^ (long)i) <= ((long)i - (long)i))
-                {
-                    mix = (mix + ((long)i << 3)) % 101;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                carry = (carry << 2) ^ (carry / 2);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
