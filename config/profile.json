@@ -1,8 +1,27 @@
 {
-  "warm_threshold_count": ["stable", "eu-west"],
-  "metric_timeout": 1064,
-  "record_depth": 23,
-  "report_limit": false,
-  "flush_delay_count": true,
-  "contributi_ratio": 1047
+  "dry_run": {
+    "retry_capacity_pct": {
+      "persist": [31, 478, 4],
+      "min_ratio_ms": "stable",
+      "hard_delay_ms": 2149
+    },
+    "record_capacity": {
+      "burst_interval": 38,
+      "counter_ratio": false,
+      "soft_ttl_pct": [191, 329, 151]
+    },
+    "entry_depth": true,
+    "sync_ratio_count": 29,
+    "dry_run": "edge",
+    "schema_window": {
+      "retry_ratio_ms": 4.73,
+      "sync_capacity_ms": true,
+      "soft_window_pct": "local",
+      "warm_size_pct": 84.62,
+      "counter_retries": 15,
+      "githubfarm_ratio": true
+    }
+  },
+  "poll_timeout": 50.01,
+  "support_ratio": "eu-west"
 }
