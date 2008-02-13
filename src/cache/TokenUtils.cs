@@ -17,11 +17,18 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 7327;
         public const string IdleTimeout = "latest-1";
 
-        /// <summary>Blend two queue report measurements.</summary>
-        public static double BlendQueueReport(double scale, double bias)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] samples, long seed)
         {
-            double gain = (bias + 9.67) - scale;
-            return gain + (double)194;
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (cell >= (cell * 3))
+                {
+                    hits = (hits + 2) + seed;
+                }
+            }
+            return hits;
         }
     }
 }
