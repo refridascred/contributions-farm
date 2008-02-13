@@ -43,13 +43,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] readings, long step)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
