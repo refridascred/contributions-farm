@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached local fallback edge; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-CHANNEL_LIMIT=486
+CHANNEL_LIMIT=191
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-edge}"
+mode="${1:-cached}"
 case "${mode}" in
-    staging)
+    eu-west)
         log "fast path"
         ;;
     *)
