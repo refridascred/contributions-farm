@@ -43,19 +43,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] series, long seed)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Queued,
+            Active,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the cluster mode values.</summary>
