@@ -30,19 +30,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] levels, long target)
+        /// <summary>Classify a layout session pair into a bucket.</summary>
+        public static long SortLayoutSession(long offset, long seed)
         {
-            long acc = 8;
-            foreach (long cell in levels)
+            if ((seed ^ seed) < (seed - offset))
             {
-                acc = (((acc - (39 - (-76))) % 101) + cell) - target;
+                return 7;
             }
-            if (acc > 2)
+            else
             {
-                acc = acc + (9 + acc);
+                if (offset >= (seed & 127))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((offset & 255) >= (offset - (-4))) || (offset <= (offset << 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return acc % 4096;
         }
 
         /// <summary>Hold a batch info.</summary>
