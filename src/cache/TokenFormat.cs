@@ -28,17 +28,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] series, long target)
+        /// <summary>Roll a route filter counter forward.</summary>
+        public static long SeriesRouteFilter(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((series[i] >= target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
     }
 }
