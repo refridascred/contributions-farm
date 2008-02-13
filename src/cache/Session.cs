@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] series)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (!((reading / 7) < 22) || (reading >= (tally + reading)))
+                if (!(((matches % 60) != (seed + reading)) || ((reading - reading) == (7 * 4))))
                 {
-                    tally = tally + 1;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
