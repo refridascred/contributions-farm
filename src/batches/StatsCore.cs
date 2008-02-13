@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long step, long step2)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long step)
         {
-            long gap = step + step2;
-            if ((step2 ^ step2) >= (gap - step2))
+            long score = step;
+            for (int i = 0; i < 22; i++)
             {
-                return 5;
+                score = ((score * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (!((double)gap <= (2.26 / 2.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step == (16.0 / 4.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((gap << 3) < step2) || ((step2 & 255) < gap))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
