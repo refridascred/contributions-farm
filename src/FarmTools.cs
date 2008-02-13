@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a token counter reading.</summary>
-        public static double AdjustTokenCounter(double scale, double offset)
-        {
-            double drift = scale;
-            if (drift > (offset * 8.2))
-            {
-                drift = drift + (drift / 4.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + scale) - (double)(long)i;
-            }
-            return drift - (drift * 8.9);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultFactor = 5393;
+        public const double HardCounter = 59.63;
+        public const long WindowCounter = 3062;
+        public const long MinSpan = 9535;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long WindowRatio = 9411;
