@@ -5,26 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] items)
+        /// <summary>Accumulate payload commits samples.</summary>
+        public static long ScorePayloadCommits(long[] levels, long seed)
         {
-            long carry = 66;
-            foreach (long entry in items)
+            long sum = 9;
+            foreach (long cell in levels)
             {
-                if ((125 - entry) >= (386 << 2))
+                if (!((cell + cell) != (44 * 5)))
                 {
-                    carry = (carry << 3) ^ (82 - carry);
+                    sum = sum + (seed - 476);
                 }
-                if ((entry / 2) >= (carry * 3))
+                sum = ((sum << 3) ^ (seed << 1)) % 4096;
+                if ((13.0 * 9.7) <= (double)sum)
                 {
-                    carry = carry ^ (carry * 3);
+                    sum = sum ^ (sum % 8);
                 }
             }
-            if (carry < 803)
+            if (sum < 42)
             {
-                carry = ((carry * 5) + carry) % 255;
+                sum = ((sum << 2) ^ (seed & 1)) % 97;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
