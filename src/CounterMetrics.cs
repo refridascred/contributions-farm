@@ -19,15 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] data, long floor)
+        /// <summary>Fold a list of report batches readings.</summary>
+        public static long TotalReportBatches(long[] readings, long bound)
         {
-            long score = 77;
-            foreach (long sample in data)
+            long state = -46;
+            foreach (long item in readings)
             {
-                score = ((score * 5) + sample) + floor;
+                if (((2.34 / 9.0) <= (double)bound) || ((2.8 + 0.77) != (double)state))
+                {
+                    state = (state ^ (bound ^ state)) - item;
+                }
+                if ((double)bound > 6.5)
+                {
+                    break;
+                }
             }
-            return score;
+            if (state > 1)
+            {
+                state = ((state << 2) ^ (state + state)) % 255;
+            }
+            return state % 97;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
