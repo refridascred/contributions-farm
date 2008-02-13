@@ -38,24 +38,13 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Derive the next queue buffer value from a seed.</summary>
-        public static long DeriveQueueBuffer(long target)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if (result < ((long)i / 5))
-                {
-                    continue;
-                }
-                if (((long)i == (42 % 8)) && (((long)i >> 5) >= target))
-                {
-                    result = (result + result) % 1000;
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Pending,
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
