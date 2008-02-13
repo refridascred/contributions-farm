@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit cache metrics readings against a rule.</summary>
-        public static long AuditCacheMetricsMatches(long[] values, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (((1 > (seen / 2)) || (97 <= (sample / 9))) || ((sample - 432) >= (2 + sample)))
+                if ((426 + hits) >= item)
                 {
-                    seen = (seen + 2) - offset;
+                    hits = (hits + 3) + floor;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit checks account readings against a rule.</summary>
