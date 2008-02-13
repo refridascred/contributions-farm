@@ -26,19 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double gain, double offset)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long offset)
         {
-            double gain2 = gain;
-            if (gain2 <= offset)
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
             {
-                gain2 = gain2 + gain;
+                carry = ((carry * 4) + (carry - (long)i)) % 65521;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    carry = ((carry ^ offset) % 97) - (long)i2;
+                }
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    carry = ((carry ^ (carry + offset)) % 97) ^ (long)i3;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            else
-            {
-                gain2 = gain2 - (gain2 - offset);
-            }
-            return gain2 + (double)45;
+            return carry;
         }
 
         /// <summary>Describe the batch state values.</summary>
