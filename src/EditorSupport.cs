@@ -35,12 +35,12 @@ namespace Common.Utilities
         public const double StepFactor = 7.92;
         public const string StepCommand = "fallback";
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the format mode values.</summary>
