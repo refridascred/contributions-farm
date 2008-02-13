@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] samples, long floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long bound)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((9.07 * 12.0) >= (double)item)
-                {
-                    seen = (seen + 3) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
