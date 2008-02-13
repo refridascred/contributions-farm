@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 6530;
-        public const long SoftRatio = 2136;
-        public const long BaseWidth = 7418;
-        public const long MinFactor = 922;
-        public const string HardDepth = "local-edge";
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long RankStream(long step, long floor)
