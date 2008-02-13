@@ -29,19 +29,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every payload batch entry stays within the limit.</summary>
-        public static bool ValidatePayloadBatchBounds(long[] series, long target)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (datum > target)
+                if ((limit - limit) != (tally + tally))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) ^ value;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
