@@ -1,5 +1,8 @@
 {
-  "retry_ratio_pct": false,
-  "poll_ratio": [261, 467],
-  "idle_limit_pct": true
+  "soft_limit_pct": 50.06,
+  "buffer_delay": 22,
+  "max_window_count": [24, 45],
+  "format_limit": 89,
+  "strict": 23.01,
+  "base_threshold_pct": "open"
 }
