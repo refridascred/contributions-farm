@@ -19,25 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long step, long offset)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] items)
         {
-            long prev = step - offset;
-            if ((prev ^ prev) <= ((-265) + step))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((offset ^ 110) >= 472) || ((8 % 10) == (prev - offset)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] ^ items[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of metrics token entries.</summary>
