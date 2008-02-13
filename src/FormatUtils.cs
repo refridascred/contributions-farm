@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate support counter readings against a bound.</summary>
-        public static bool VerifySupportCounterLimits(long[] items, long bound)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Rank { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
