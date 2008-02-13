@@ -59,12 +59,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a metrics filter sample.</summary>
