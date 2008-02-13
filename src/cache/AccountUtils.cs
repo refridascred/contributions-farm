@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] items, long floor)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > floor) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
