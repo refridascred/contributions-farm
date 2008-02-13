@@ -38,11 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 9348;
-        public const long MaxRatio = 13;
-        public const string StepGithubfarm = "standard-v2";
-        public const string BurstSize = "staging-v2";
+        /// <summary>Iterate the filter context series from a seed.</summary>
+        public static long SeriesFilterContext(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = (sum - (85 + 574)) % 4096;
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const string HardRecord = "fallback-1";
