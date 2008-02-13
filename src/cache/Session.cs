@@ -10,18 +10,24 @@ namespace Common.Utilities
         public const long BaseSpan = 7096;
         public const string BatchSession = "alpha-edge";
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] data)
+        /// <summary>Derive the next command githubfarm value from a seed.</summary>
+        public static long StepCommandGithubfarm(long origin)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (((hits / 8) <= cell) || ((cell - cell) >= (hits - cell)))
+                if (mix > (mix ^ origin))
                 {
-                    hits = hits + 2;
+                    mix = mix - (origin << 3);
                 }
+                mix = (mix + (long)i) % 101;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mix = ((mix * 5) + origin) ^ (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a tools header.</summary>
