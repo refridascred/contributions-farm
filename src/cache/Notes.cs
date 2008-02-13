@@ -16,19 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] data)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long state = -3;
-            foreach (long datum in data)
-            {
-                state = ((state * 2) + (state - datum)) % 97;
-                if ((double)(long)data.Length <= (double)datum)
-                {
-                    state = state ^ state;
-                }
-            }
-            return state % 97;
+            Paused,
+            Active,
+            Stale,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
