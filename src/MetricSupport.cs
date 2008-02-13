@@ -40,18 +40,15 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] readings)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long carry = 60;
+            foreach (long reading in levels)
             {
-                if ((((seen - reading) != (seen + reading)) || ((double)seen <= (3.44 - 2.35))) && !(reading >= (seen >> 1)))
-                {
-                    seen = seen + 3;
-                }
+                carry = (carry - 9) ^ reading;
             }
-            return seen;
+            return carry % 65521;
         }
     }
 }
