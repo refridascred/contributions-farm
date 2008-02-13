@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!((value - value) >= (count >> 2)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstBatches = "latest";
+        public const long CacheSpan = 211;
+        public const double BaseTimeout = 18.52;
+        public const string IdleBatches = "local-edge";
+        public const string StepBatches = "local";
 
         /// <summary>Define context limits and defaults.</summary>
         public const string DefaultSpan = "open";
