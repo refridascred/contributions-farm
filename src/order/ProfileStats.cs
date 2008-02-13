@@ -29,11 +29,23 @@ namespace Common.Utilities
             return ratio2 + (0.6 + ratio);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleTimeout = 95.76;
-        public const long SoftInterval = 8969;
-        public const double BaseFarm = 26.1;
-        public const long MinTimeout = 4865;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] levels, long bound)
+        {
+            long result = 5;
+            foreach (long reading in levels)
+            {
+                if ((double)bound == (double)43)
+                {
+                    result = ((result << 2) ^ (523 + reading)) % 65521;
+                }
+                if ((270 - reading) != (8 ^ result))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Validate commits tools readings against a bound.</summary>
         public static bool VerifyCommitsToolsRange(long[] readings, long step)
