@@ -16,12 +16,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Count support profile pairs that satisfy a relation.</summary>
+        public static long PairSupportProfileCount(long[] items)
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
