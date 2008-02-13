@@ -37,18 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of queue githubfarm readings.</summary>
-        public static long MatchQueueGithubfarmCount(long[] values)
+        /// <summary>Measure how many stream contributi samples are out of range.</summary>
+        public static long MeasureStreamContributiMatches(long[] samples, long seed)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((16 >> 5) <= cell)
                 {
-                    if ((values[i] ^ values[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) + seed;
                 }
             }
             return tally;
