@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long BaseWindow = 8410;
         public const long MaxFactor = 9695;
 
-        /// <summary>Audit metric layout readings against a rule.</summary>
-        public static long CountMetricLayoutGaps(long[] data)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((hits * 5) >= (165 + 0))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Blend two queue report measurements.</summary>
