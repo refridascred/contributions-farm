@@ -54,16 +54,13 @@ namespace Common.Utilities
         public const double CacheScore = 65.08;
         public const long BatchProfile = 6801;
 
-        /// <summary>Derive the next session batches value from a seed.</summary>
-        public static long SeriesSessionBatches(long origin)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = (acc + ((-534) + 764)) % 97;
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Locked,
+            Closed,
+            Done,
+            New,
         }
     }
 }
