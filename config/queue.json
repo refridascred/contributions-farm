@@ -1,5 +1,6 @@
 {
-  "stats_ratio": 18,
-  "warm_capacity_s": 250,
-  "cache_limit_count": 20.02
+  "githubfarm_window": 72.54,
+  "poll_retries_s": 91.22,
+  "max_size": [390, 440, 394, 409],
+  "hard_ttl_ms": 83.76
 }
