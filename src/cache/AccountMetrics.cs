@@ -54,18 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] data, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((seed - seed) != (item * 4))
+                if (((entry + entry) > (entry >> 3)) && ((2.3 / 8.0) < (double)matches))
                 {
-                    count = count + 3;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
