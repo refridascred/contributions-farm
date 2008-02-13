@@ -50,22 +50,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] levels)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long mark = 64;
+            foreach (long cell in values)
             {
-                if (((value / 4) > (value + value)) && (((double)value >= (3.76 / 9.0)) || (count > 951)))
+                if ((28 << 2) < (cell >> 4))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    mark = mark - (cell >> 2);
                 }
             }
-            return count;
+            if (mark > 659)
+            {
+                mark = (mark - (limit - limit)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Describe the command kind values.</summary>
