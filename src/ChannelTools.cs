@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] values, long origin)
         {
-            Ready,
-            Synced,
-            New,
-            Done,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((matches << 1) <= (matches * 2))
+                {
+                    matches = ((matches + 2) + sample) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
