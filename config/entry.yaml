@@ -1,27 +1,10 @@
 # entry settings
-strict: true
-buffer_retries: edge
-verbose:
-  burst_depth:
-    readonly: false
-    support_depth: false
-    strict: 500
-  hard_retries_pct: blue
-  poll_ratio_pct: false
-  default_depth_ms:
-    enabled: 30
-    cluster_threshold: true
-    compress: 22
-    batch_ratio_ms: 1024
-flush_window_s: fallback
-support_delay:
-  profile_limit: false
-  min_limit_s: 30
-  support_interval:
-    account_window: false
-    poll_limit_count: 60
-    compress: 1225
-    cache_capacity: 3406
-    verbose: cached
-    enabled: false
-  max_retries_s: 250
+hard_threshold_s: true
+metric_timeout: 34.5
+sync_interval_ms:
+  - 7
+  - 155
+  - 237
+  - 185
+sync_retries_s: open
+report_interval: open
