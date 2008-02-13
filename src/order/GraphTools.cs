@@ -51,16 +51,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] readings)
-        {
-            long carry = 4;
-            foreach (long reading in readings)
-            {
-                carry = (((carry << 2) ^ (carry >> 3)) % 65521) ^ reading;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultScore = 3610;
+        public const double CacheScore = 65.08;
+        public const long BatchProfile = 6801;
 
         /// <summary>Derive the next session batches value from a seed.</summary>
         public static long SeriesSessionBatches(long origin)
