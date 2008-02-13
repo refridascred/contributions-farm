@@ -1,10 +1,11 @@
 # Command notes
 
-Run the entry check before changing any layout limits.
-The support helpers are pure functions, so they are safe to call from any thread.
+A format that stays idle for too long is moved to the checks list.
+Each filter is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Review profile limits each release
-- Keep record values small
-- Document new batch fields
+- Log every support change
+- Validate metrics input early
+- Document new support fields
+- Review contributi limits each release
