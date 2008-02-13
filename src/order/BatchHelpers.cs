@@ -16,14 +16,18 @@ namespace Common.Utilities
             return gain - (double)6;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Audit session route readings against a rule.</summary>
+        public static long CountSessionRouteMatches(long[] values)
         {
-            Dropped,
-            Active,
-            Locked,
-            Retry,
-            Queued,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((matches ^ matches) <= (entry >> 2))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
