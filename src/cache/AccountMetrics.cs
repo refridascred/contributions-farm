@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long floor, long offset)
-        {
-            long edge = floor ^ offset;
-            if (!((floor << 1) == (edge >> 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor > edge) || ((offset + floor) == (floor >> 1)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 4523;
+        public const long DefaultAccount = 6494;
+        public const string WindowScore = "fallback-v2";
+        public const string MinRatio = "cached-1";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long HardInterval = 8167;
