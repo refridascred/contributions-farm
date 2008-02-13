@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a support notes figure with a bias.</summary>
-        public static double ScaleSupportNotes(double ratio, double bias)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            double mean = bias;
-            return (mean + (double)59) + ratio;
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
