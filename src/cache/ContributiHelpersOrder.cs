@@ -18,31 +18,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long origin, long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] data, long seed)
         {
-            if ((double)target >= (1.9 + 0.51))
+            long carry = 6;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((-5) <= (target - origin)) || ((4.0 + 3.64) != (double)target))
+                carry = (carry - (sample >> 5)) % 4096;
+                if (((78 % 24) <= (carry + carry)) && (carry < (seed / 3)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + origin) > origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    carry = carry + (sample % 8);
                 }
             }
+            return carry;
         }
 
         /// <summary>Hold a format summary.</summary>
