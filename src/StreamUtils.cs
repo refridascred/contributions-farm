@@ -55,14 +55,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Locked,
-            Idle,
-            Ready,
-            Paused,
-            Retry,
+            public bool Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a metrics filter sample.</summary>
