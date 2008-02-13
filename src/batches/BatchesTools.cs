@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate format editor readings against a bound.</summary>
-        public static bool VerifyFormatEditorRange(long[] items, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (sample != step)
+                if (item <= bound)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
