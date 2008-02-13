@@ -48,18 +48,18 @@ namespace Common.Utilities
         public const long IdleWidth = 5930;
         public const double BaseSpan = 18.12;
 
-        /// <summary>Measure how many already payload samples are out of range.</summary>
-        public static long AuditAlreadyPayloadGaps(long[] series)
+        /// <summary>Measure how many notes tools samples are out of range.</summary>
+        public static long AuditNotesToolsOutliers(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((item * 4) >= ((long)series.Length + item))
+                if ((7.0 / 4.0) == (double)origin)
                 {
-                    count = count + 3;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
