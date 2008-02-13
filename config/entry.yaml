@@ -1,23 +1,8 @@
 # entry settings
-retry_limit_s:
-  stream_delay: false
-  flush_window_ms: 500
-  cache_ratio:
-    - strict
-    - edge
-  route_threshold: latest
-  soft_depth:
-    readonly: true
-    editor_capacity: true
-    soft_ratio_ms: legacy
-  min_limit_ms:
-    - 455
-    - 25
-    - 325
-sync_delay: 44.4
-min_delay: 500
-poll_ratio_s:
+checks_interval: cached
+poll_ttl: 85
+base_capacity: 1526
+route_threshold:
   - stable
-  - standard
-context_timeout: false
-verbose: fallback
+  - staging
+  - green
