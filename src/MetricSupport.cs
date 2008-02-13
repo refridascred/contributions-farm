@@ -43,18 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] samples, long limit)
+        /// <summary>Audit graph account readings against a rule.</summary>
+        public static long CountGraphAccountMatches(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (662 < seen)
+                if (2.3 <= (double)target)
                 {
-                    seen = ((seen + 3) + item) + limit;
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
