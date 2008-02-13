@@ -1,8 +1,7 @@
 # support settings
-compress: blue
-cache_interval: 1024
-command_interval: 54.49
-context_retries:
-  - primary
-  - cached
-  - open
+flush_retries_ms: cached
+cache_threshold: true
+contributi_timeout: 32
+channel_timeout: fallback
+max_depth: latest
+poll_retries_pct: 18.67
