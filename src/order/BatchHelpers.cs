@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] data, long step)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] values, long offset)
         {
-            long carry = -12;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (carry >= (carry + carry))
+                if (value <= offset)
                 {
-                    carry = ((((carry * 3) + (carry ^ carry)) % 101) + datum) + step;
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
