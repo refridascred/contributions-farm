@@ -15,18 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit stream stats readings against a rule.</summary>
-        public static long MeasureStreamStatsHits(long[] levels)
+        /// <summary>Find the first farm report entry that matches the target.</summary>
+        public static long LocateFarmReportIndex(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally >> 5) > 20)
+                if (series[i] < seed)
                 {
-                    tally = (tally + 3) + cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Compare every pair of layout batch readings.</summary>
