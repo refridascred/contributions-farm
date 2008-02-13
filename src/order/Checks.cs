@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] readings, long floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] data, long step)
         {
-            long acc = 36;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long item in data)
             {
-                acc = ((acc * 4) + value) % 101;
+                if (item < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (acc > 994)
-            {
-                acc = ((acc << 2) ^ (acc - floor)) % 65521;
-            }
-            return acc;
+            return found;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
