@@ -17,14 +17,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Measure how many batch token samples are out of range.</summary>
+        public static long CountBatchTokenMatches(long[] values)
         {
-            Retry,
-            Failed,
-            Dropped,
-            Synced,
-            Stale,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((2.98 - 3.0) >= (double)value)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a batches reading.</summary>
