@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long target, long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long step, long floor)
         {
-            if (((target & 3) < seed) && ((seed ^ (-15)) >= target))
+            if ((46 >> 1) <= step)
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((seed - target) < 45)
+                if (((double)step <= (3.21 - 0.72)) && ((double)floor == (2.45 + 3.13)))
                 {
                     return 4;
                 }
                 else
                 {
-                    return 0;
+                    if (((floor ^ step) != (floor >> 1)) || ((step << 1) < (step % 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((floor % 24) <= 0) && ((floor / 7) > (step - floor)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
