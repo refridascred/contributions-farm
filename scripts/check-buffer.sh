@@ -6,15 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
+for item in fallback latest primary; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-latest}"
+mode="${1:-staging}"
 case "${mode}" in
-    local)
+    edge)
         log "fast path"
         ;;
     *)
@@ -22,6 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in open stable strict; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=127
+log "limit is ${BUFFER_LIMIT}"
