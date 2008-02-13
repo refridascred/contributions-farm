@@ -48,21 +48,12 @@ namespace Common.Utilities
         public const double StepFactor = 7.92;
         public const string StepCommand = "fallback";
 
-        /// <summary>Count already metrics pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyMetricsCount(long[] readings)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the format mode values.</summary>
