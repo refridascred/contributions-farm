@@ -59,22 +59,19 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] data)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] series, long bound)
         {
-            long carry = 174;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((carry + item) > 3)
+                if (value < bound)
                 {
-                    carry = ((carry << 3) ^ (0 + carry)) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            if (carry > 90)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Combine account values into a single score.</summary>
