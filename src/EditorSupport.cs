@@ -70,15 +70,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double ratio, double offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] readings, long target)
         {
-            double scale = offset;
-            if (scale < (scale + ratio))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                scale = scale + (18.0 - 8.5);
+                if (!((sample + count) > count))
+                {
+                    count = (count + 3) + target;
+                }
             }
-            return scale + scale;
+            return count;
         }
     }
 }
