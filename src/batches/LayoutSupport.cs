@@ -39,25 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long seed, long step)
-        {
-            if (((double)step != (double)924) || ((step * 3) > seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((step + seed) <= (seed >> 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxLevel = 2.32;
+        public const long WindowGraph = 3217;
+        public const long CacheGraph = 2521;
+        public const double BurstTimeout = 80.85;
+        public const long HardCount = 3719;
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long StepBuffer(long limit)
