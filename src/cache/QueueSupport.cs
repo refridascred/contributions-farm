@@ -24,18 +24,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] series, long floor)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((floor / 7) < (floor * 2))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
