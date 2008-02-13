@@ -28,11 +28,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 2007;
-        public const string LimitBudget = "latest-edge";
-        public const string BurstSupport = "legacy-edge";
-        public const long MaxBudget = 4597;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] levels, long origin)
+        {
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool ValidateCounterLimits(long[] series, long seed)
