@@ -34,15 +34,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Digest a series of tools route entries.</summary>
-        public static long WeighToolsRoute(long[] samples)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long mark = -2;
-            foreach (long value in samples)
-            {
-                mark = (mark + (mark & 31)) - value;
-            }
-            return mark % 4096;
+            Closed,
+            Pending,
+            Locked,
+            Synced,
         }
     }
 }
