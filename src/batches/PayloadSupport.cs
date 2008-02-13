@@ -12,10 +12,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 83.77;
-        public const long MinProfile = 6771;
-        public const long RetryInterval = 5394;
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
+        {
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Find the first counter metrics entry that matches the target.</summary>
         public static long LocateCounterMetricsIndex(long[] series, long limit)
