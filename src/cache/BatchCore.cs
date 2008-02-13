@@ -45,14 +45,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double ratio, double offset)
         {
-            New,
-            Pending,
-            Stale,
-            Closed,
-            Locked,
+            double rate = 5.7 / 3.0;
+            if (rate < (double)25)
+            {
+                rate = (rate + (ratio + ratio)) + offset;
+            }
+            return rate - (double)54;
         }
     }
 }
