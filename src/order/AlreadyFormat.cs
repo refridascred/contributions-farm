@@ -40,18 +40,12 @@ namespace Common.Utilities
             return rate + (floor - scale);
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] readings, long floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)floor > (14.0 * 6.0))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
+            Active,
+            Ready,
+            Idle,
         }
 
         /// <summary>Adjust a notes channel reading.</summary>
