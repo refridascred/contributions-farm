@@ -38,15 +38,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long floor)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Retry,
+            Closed,
+            Idle,
         }
 
         /// <summary>Accumulate schema samples.</summary>
