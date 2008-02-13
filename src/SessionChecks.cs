@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const string CacheCount = "standard-v2";
         public const string IdleSession = "alpha-1";
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] items)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (!(((-417) << 1) > seen))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
