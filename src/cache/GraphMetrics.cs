@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double weight, double offset)
-        {
-            double load = weight;
-            return load + (5.5 + offset);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 1276;
+        public const double MaxSize = 16.56;
+        public const double WindowSize = 45.97;
+        public const long LimitLevel = 2212;
+        public const long DefaultWidth = 4768;
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
