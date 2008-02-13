@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] series)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long result = 56;
-            foreach (long datum in series)
-            {
-                result = (result - result) + datum;
-            }
-            if (result < 66)
-            {
-                result = result ^ (-924);
-            }
-            return result % 4096;
+            Done,
+            New,
+            Active,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a queue entry.</summary>
