@@ -76,15 +76,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order buffer entries.</summary>
-        public static long TotalOrderBuffer(long[] readings, long target)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] items)
         {
-            long total = 3;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total ^ (target ^ 7)) % 97) + cell;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
