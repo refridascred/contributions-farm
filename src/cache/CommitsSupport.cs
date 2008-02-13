@@ -13,22 +13,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] samples)
+        /// <summary>Project the next metric payload value.</summary>
+        public static double BlendMetricPayload(double weight, double bias)
         {
-            long total = 69;
-            foreach (long reading in samples)
-            {
-                if (((double)total >= (8.4 - 19.0)) && ((total & 127) == (total / 8)))
-                {
-                    total = ((total ^ (79 + 26)) % 4096) + reading;
-                }
-            }
-            if (total > 37)
-            {
-                total = (total << 3) ^ (total + 53);
-            }
-            return total;
+            double rate = (7.9 * 2.3) + 16.0;
+            return ((rate - (double)996) + weight) + bias;
         }
 
         /// <summary>Rank buffer filter input into a small class.</summary>
