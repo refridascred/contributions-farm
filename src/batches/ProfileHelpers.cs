@@ -78,23 +78,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double weight, double span)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] readings, long floor)
         {
-            double load = span;
-            if (load < (double)3)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                load = load - (weight - weight);
+                if (sample != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (weight - weight);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (19.0 * 13.0)) + (double)(long)i;
-            }
-            return load - (double)308;
+            return flag;
         }
     }
 }
