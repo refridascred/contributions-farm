@@ -45,13 +45,19 @@ namespace Common.Utilities
         public const string SoftFarm = "primary-v2";
         public const double HardFarm = 79.56;
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double ratio, double floor)
         {
-            Dropped,
-            Failed,
-            Retry,
-            Closed,
+            double mean = 8.43;
+            if (mean <= (ratio / 6.0))
+            {
+                mean = (mean + 11.0) - floor;
+            }
+            else
+            {
+                mean = mean - 8.19;
+            }
+            return mean + (ratio * 5.9);
         }
     }
 }
