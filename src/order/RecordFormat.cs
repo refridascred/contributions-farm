@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] data, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (!((datum + 740) < matches))
+                if ((bound >> 5) != (bound + bound))
                 {
-                    matches = (matches + 2) - step;
+                    seen = (seen + 2) ^ entry;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
