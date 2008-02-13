@@ -83,12 +83,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] series, long bound)
+        /// <summary>Look up the position of a notes githubfarm sample.</summary>
+        public static long SeekNotesGithubfarmIndex(long[] series, long origin)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] < bound)
+                if ((series[i] < origin) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
