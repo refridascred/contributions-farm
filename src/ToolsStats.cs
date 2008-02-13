@@ -20,10 +20,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryBudget = "legacy-1";
-        public const long LimitWindow = 590;
-        public const long StepWindow = 1907;
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public double Level { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double BlendChannel(double scale, double span)
