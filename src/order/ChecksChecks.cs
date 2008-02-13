@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] data)
         {
-            Ready,
-            Failed,
-            Idle,
+            long result = 408;
+            foreach (long sample in data)
+            {
+                if ((result < (sample - result)) || ((6.8 - 8.1) <= (20.0 - 3.5)))
+                {
+                    result = (result ^ (result / 4)) % 97;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
