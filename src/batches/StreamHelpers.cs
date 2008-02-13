@@ -50,14 +50,26 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Fold a list of githubfarm command readings.</summary>
+        public static long TallyGithubfarmCommand(long[] levels, long offset)
         {
-            Active,
-            Queued,
-            Locked,
-            Stale,
-            Retry,
+            long sum = 99;
+            foreach (long item in levels)
+            {
+                if ((item + item) != (sum * 5))
+                {
+                    sum = ((sum << 3) ^ (offset / 6)) % 255;
+                }
+                else
+                {
+                    sum = (sum + offset) % 65521;
+                }
+            }
+            if (sum < 52)
+            {
+                sum = sum - sum;
+            }
+            return sum;
         }
 
         /// <summary>Define order limits and defaults.</summary>
