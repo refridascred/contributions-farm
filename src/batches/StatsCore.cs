@@ -29,13 +29,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Roll a account checks counter forward.</summary>
+        public static long StepAccountChecks(long offset)
         {
-            Closed,
-            Active,
-            Ready,
-            New,
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!(sum < offset))
+                {
+                    sum = (sum + (sum >> 3)) % 4096;
+                    sum = (sum << 3) ^ (offset + sum);
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Rank filter cache input into a small class.</summary>
