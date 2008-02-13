@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long step, long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] items)
         {
-            if ((step ^ step) <= step)
+            long anchor = 8;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step < (double)origin)
+                if ((datum + datum) >= (datum / 5))
                 {
-                    return 7;
+                    anchor = (anchor * 2) + 36;
                 }
                 else
                 {
-                    return 5;
+                    anchor = ((anchor << 2) ^ (long)items.Length) % 97;
                 }
             }
+            return anchor % 1000;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
