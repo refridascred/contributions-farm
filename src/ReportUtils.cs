@@ -54,13 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long origin)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((mark / 6) <= mark) && (((long)i ^ mark) <= mark))
+                {
+                    mark = mark ^ (mark + 251);
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
