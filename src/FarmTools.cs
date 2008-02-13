@@ -28,12 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Stale,
-            Draft,
-            Done,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowRatio = 9411;
+        public const long MaxTimeout = 3825;
+        public const long RetryCluster = 3857;
+        public const long MinCluster = 3015;
+        public const long HardLevel = 1060;
     }
 }
