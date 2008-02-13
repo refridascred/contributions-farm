@@ -64,13 +64,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Measure how many filter profile samples are out of range.</summary>
+        public static long MeasureFilterProfileHits(long[] items, long bound)
         {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((61 - tally) < tally)
+                {
+                    tally = ((tally + 1) - reading) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
