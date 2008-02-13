@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double WindowChecks = 59.97;
         public const long BurstTimeout = 7523;
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double scale, double span)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
+            double mean = scale * 14.0;
+            if (mean <= 9.43)
+            {
+                mean = mean + (double)271;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (span * 5.0)) + (double)(long)i;
+            }
+            return mean - span;
         }
 
         /// <summary>Locate a format window reading by value.</summary>
