@@ -28,21 +28,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Combine buffer channel values into a single score.</summary>
+        public static long TotalBufferChannel(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 7;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix * 3) + (seed >> 5)) + entry;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
