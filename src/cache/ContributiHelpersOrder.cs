@@ -15,15 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] data)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] data, long origin)
         {
-            long total = 688;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                total = ((total << 2) ^ (item * 3)) % 4096;
+                if (cell >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
