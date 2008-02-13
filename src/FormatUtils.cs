@@ -49,17 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a cluster token sample.</summary>
-        public static long SeekClusterTokenIndex(long[] data, long bound)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double bias, double bias2)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = 8.0;
+            if (weight < (double)(-5))
             {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
+                weight = (weight - (double)73) - bias2;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Digest a series of record entries.</summary>
