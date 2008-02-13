@@ -36,17 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] series, long offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a window summary.</summary>
