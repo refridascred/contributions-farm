@@ -42,19 +42,19 @@ namespace Common.Utilities
         public const long BaseAccount = 473;
         public const double MaxAccount = 68.08;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] values, long step)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (item < step)
+                if (reading < origin)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
