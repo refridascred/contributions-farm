@@ -28,22 +28,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] series)
+        /// <summary>Audit already stats readings against a rule.</summary>
+        public static long TallyAlreadyStatsMatches(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((double)entry == (7.12 + 9.59))
+                if (value < (matches + value))
                 {
-                    tally = tally + 2;
+                    matches = (matches + 2) - offset;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Iterate the farm route series from a seed.</summary>
