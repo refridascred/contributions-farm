@@ -20,30 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] values)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] values, long bound)
         {
-            long mix = 9;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int i = 0; i < 6; i++)
+                if ((bound % 24) <= (value % 64))
                 {
-                    mix = ((mix + (mix ^ mix)) % 1000) ^ (long)i;
-                }
-                if (mix < (mix * 3))
-                {
-                    mix = (mix ^ (entry % 2)) % 65521;
-                }
-                else
-                {
-                    mix = mix ^ entry;
+                    tally = tally + 3;
                 }
             }
-            if (mix > 290)
-            {
-                mix = (mix + (mix >> 3)) % 4096;
-            }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
