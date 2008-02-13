@@ -33,38 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long floor, long limit)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            if ((0.42 / 9.0) < (7.9 * 5.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((5.3 + 2.23) > (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((4 % 97) >= floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor - floor) == (floor ^ floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Idle,
+            Queued,
+            Pending,
+            Synced,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
