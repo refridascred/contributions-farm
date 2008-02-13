@@ -1,7 +1,14 @@
 # entry settings
-base_window_count: 909
-dry_run: true
-tools_depth: staging
-warm_ttl_count: false
-burst_window_ms: 60.48
-buffer_interval: 6831
+default_ratio: strict
+min_limit_count:
+  - green
+  - green
+  - primary
+  - blue
+burst_ttl_ms: edge
+sync_delay_ms: latest
+burst_interval_ms:
+  idle_ttl_ms: false
+  metrics_retries: 38
+  soft_ttl: 56.76
+channel_ratio: 41
