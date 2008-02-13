@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            New,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 6000;
+        public const long DefaultCommits = 9180;
+        public const long LimitCommits = 932;
+        public const string IdleInterval = "alpha-edge";
+        public const long IdleCount = 2739;
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long SeriesAccount(long offset)
