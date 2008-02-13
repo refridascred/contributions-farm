@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const string BaseCommand = "legacy";
         public const long HardCommand = 1159;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long floor)
+        /// <summary>Count the queue context entries that pass the check.</summary>
+        public static long AuditQueueContextHits(long[] levels)
         {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                carry = (carry + (carry & 1)) % 255;
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((matches > (reading << 1)) && ((4.0 * 12.0) != (double)matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Digest a series of window entries.</summary>
