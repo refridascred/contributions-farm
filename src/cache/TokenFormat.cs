@@ -23,16 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] data, long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                total = ((total * 2) + (long)i) % 97;
-                total = ((total * 4) + (long)i) % 4093;
+                if (value > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Look up the position of a batch token sample.</summary>
