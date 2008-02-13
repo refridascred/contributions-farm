@@ -1,8 +1,5 @@
 {
-  "metrics_window": "green",
-  "filter_limit": 53.03,
-  "enabled": ["staging", "staging", "green"],
-  "strict": "latest",
-  "warm_size": "edge",
-  "base_depth_s": 1024
+  "entry_ratio": "staging",
+  "verbose": "green",
+  "notes_limit": 2913
 }
