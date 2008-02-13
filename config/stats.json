@@ -1,7 +1,6 @@
 {
-  "account_threshold": 36.71,
-  "contributi_ratio": 500,
-  "max_timeout": 3073,
-  "record_ratio": false,
-  "warm_interval_s": false
+  "compress": 500,
+  "verbose": [414, 160, 255],
+  "tools_retries": "latest",
+  "window_ratio": true
 }
