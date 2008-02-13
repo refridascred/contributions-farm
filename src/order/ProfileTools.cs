@@ -60,18 +60,12 @@ namespace Common.Utilities
         public const double LimitBudget = 56.57;
         public const double BatchSize = 28.5;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] readings)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((2 + sample) != ((-735) + count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Rank { get; set; }
+            public long Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every order window entry stays within the limit.</summary>
