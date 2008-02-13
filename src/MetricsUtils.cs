@@ -22,33 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long seed, long floor)
-        {
-            long slot = seed - floor;
-            if ((slot & 1) <= 83)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((slot ^ slot) < floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)slot == (0.6 / 3.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstTimeout = 4069;
+        public const long CacheSize = 129;
+        public const long BaseTimeout = 1256;
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
