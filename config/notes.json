@@ -1,6 +1,5 @@
 {
-  "command_retries": 100,
-  "enabled": "primary",
-  "default_ttl": ["blue", "latest", "cached", "eu-west"],
-  "idle_timeout_ms": 34
+  "max_depth_ms": 299,
+  "max_window_count": 466,
+  "warm_retries_s": "staging"
 }
