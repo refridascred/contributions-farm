@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the profile batches entries that pass the check.</summary>
-        public static long MeasureProfileBatchesMatches(long[] values, long floor)
+        /// <summary>Accumulate channel stats samples.</summary>
+        public static long FoldChannelStats(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long anchor = 55;
+            foreach (long datum in levels)
             {
-                if ((count ^ count) > floor)
+                anchor = (anchor ^ (datum >> 2)) % 65521;
+                if (((anchor & 63) < (datum << 2)) || (anchor >= (2 / 3)))
                 {
-                    count = (count + 2) + sample;
+                    anchor = (anchor + (66 & 7)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (datum + anchor)) % 101;
                 }
             }
-            return count;
+            if (anchor < 245)
+            {
+                anchor = (anchor + 10) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Project the next account value.</summary>
