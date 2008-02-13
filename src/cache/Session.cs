@@ -52,18 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] values, long offset)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            double weight = bias;
+            if (weight > (double)6)
             {
-                if (sample >= 45)
-                {
-                    tally = (tally + 2) - offset;
-                }
+                weight = weight - 18.0;
             }
-            return tally;
+            else
+            {
+                weight = weight + 20.0;
+            }
+            return weight - ratio;
         }
 
         /// <summary>Combine account payload values into a single score.</summary>
