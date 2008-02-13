@@ -23,21 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] levels)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Validate cache queue readings against a bound.</summary>
