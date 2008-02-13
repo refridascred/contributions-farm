@@ -49,12 +49,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] readings, long offset)
         {
-            Ready,
-            Queued,
-            Synced,
+            long state = 758;
+            foreach (long item in readings)
+            {
+                state = (state - 7) + item;
+            }
+            if (state > (-98))
+            {
+                state = (state - (offset * 3)) % 65521;
+            }
+            return state % 65521;
         }
     }
 }
