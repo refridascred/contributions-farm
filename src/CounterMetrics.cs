@@ -21,17 +21,23 @@ namespace Common.Utilities
         public const double IdleWindow = 72.06;
         public const long BurstRatio = 4577;
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] items, long origin)
+        /// <summary>Scale a report graph figure with a bias.</summary>
+        public static double BlendReportGraph(double gain, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = 0.2;
+            if (load > (load + bias))
             {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
+                load = load + (13.0 + load);
             }
-            return -1;
+            else
+            {
+                load = load + gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (load * 2.3)) + (double)(long)i;
+            }
+            return load - (gain / 8.0);
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
