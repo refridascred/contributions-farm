@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] data, long step)
         {
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
+            long total = -5;
+            foreach (long item in data)
+            {
+                total = (total + (step + total)) ^ item;
+            }
+            return total;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
