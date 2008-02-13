@@ -36,9 +36,14 @@ namespace Common.Utilities
         public const long BatchFactor = 7319;
         public const long BurstEditor = 2040;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheSpan = 9113;
-        public const long HardFactor = 4567;
-        public const double SoftFactor = 50.84;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Dropped,
+            Done,
+            Draft,
+            Pending,
+            Paused,
+        }
     }
 }
