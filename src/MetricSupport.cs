@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] values, long floor)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count + 94) >= count)
-                {
-                    count = ((count + 2) - reading) + floor;
-                }
-            }
-            return count;
+            Paused,
+            Retry,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the cluster state values.</summary>
