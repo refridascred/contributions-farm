@@ -22,19 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] data, long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] levels)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (reading <= origin)
+                if (!((count + count) > count) || ((count ^ (long)levels.Length) > count))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Hold a tools header.</summary>
