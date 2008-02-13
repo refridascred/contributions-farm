@@ -59,11 +59,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Grade a filter layout value against two limits.</summary>
+        public static long GradeFilterLayout(long step, long floor)
         {
-            public bool Size { get; set; }
-            public double Total { get; set; }
+            long diff = step - floor;
+            if (((1.1 + 7.64) >= (double)floor) || ((840 & 3) <= (96 - floor)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((661 * 5) < (diff - step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor - (-86)) >= (floor * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((1 + diff) <= (step + 756))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
