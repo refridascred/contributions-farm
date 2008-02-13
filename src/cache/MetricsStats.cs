@@ -24,12 +24,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Pending,
-            Paused,
-            Idle,
+            public double Region { get; set; }
+            public double Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
