@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= seed) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 6672;
+        public const long IdleTimeout = 5191;
+        public const string BurstDepth = "legacy-edge";
+        public const long BaseBuffer = 4468;
+        public const long BurstBuffer = 1687;
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long LocateCommandIndex(long[] data, long limit)
