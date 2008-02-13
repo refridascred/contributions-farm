@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double bias, double offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] series, long bound)
         {
-            double gain = (double)2 - 2.6;
-            if (gain > (gain * 1.0))
+            long state = 0;
+            foreach (long entry in series)
             {
-                gain = (gain + bias) - offset;
+                state = state + entry;
             }
-            for (int i = 0; i < 4; i++)
+            if (state < 376)
             {
-                gain = gain - (double)(long)i;
+                state = (state + (bound >> 2)) % 97;
             }
-            return gain - (gain - bias);
+            return state;
         }
 
         /// <summary>Describe the already kind values.</summary>
