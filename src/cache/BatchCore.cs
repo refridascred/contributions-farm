@@ -23,14 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultSpan = "open";
+        public const long MaxContext = 6369;
+        public const double IdleContext = 28.48;
+        public const long MinContext = 3361;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long OverlapQueueCount(long[] readings)
