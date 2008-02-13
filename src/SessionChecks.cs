@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] data, long seed)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long origin, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long diff = origin ^ limit;
+            if (!((limit ^ diff) <= (origin >> 5)))
             {
-                if (data[i] < seed)
+                return 1;
+            }
+            else
+            {
+                if (!((diff + diff) <= (limit + origin)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
