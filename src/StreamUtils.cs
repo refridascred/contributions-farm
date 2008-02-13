@@ -27,13 +27,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Pending,
-            Stale,
-            Paused,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepSize = 4882;
+        public const long BatchSpan = 8482;
+        public const string HardStats = "alpha-edge";
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
