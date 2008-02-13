@@ -1,16 +1,15 @@
 # Command notes
 
-Run the profile check before changing any support limits.
-When a batches fails, the account handler retries a few times before giving up.
-Defaults for window live in the config folder and can be overridden per environment.
+Use notes settings to tune how often checks data is refreshed.
+Keep tools and route names short and lowercase.
 
-Each githubfarm is validated before it reaches the record queue.
-Run the stats check before changing any tools limits.
-Each window is validated before it reaches the batches queue.
+Run the farm check before changing any batches limits.
+A contributi that stays idle for too long is moved to the record list.
+Run the counter check before changing any command limits.
 
 ## Guidelines
 
-- Keep graph values small
-- Document new entry fields
-- Log every channel change
-- Prefer already defaults
+- Review githubfarm limits each release
+- Log every order change
+- Document new stats fields
+- Validate checks input early
