@@ -43,15 +43,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] values)
+        /// <summary>Roll a profile layout counter forward.</summary>
+        public static long SeriesProfileLayout(long bound)
         {
-            long mark = 9;
-            foreach (long item in values)
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
             {
-                mark = (mark ^ (mark ^ item)) % 97;
+                carry = ((carry * 3) + (carry - bound)) % 101;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Audit support window readings against a rule.</summary>
