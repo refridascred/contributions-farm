@@ -69,13 +69,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            Retry,
-            Locked,
-            Synced,
-            Idle,
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
