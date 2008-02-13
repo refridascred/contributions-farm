@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit metrics checks readings against a rule.</summary>
-        public static long TallyMetricsChecksHits(long[] data)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            long mix = 475;
+            foreach (long cell in levels)
             {
-                if (!(((count - count) == (count % 3)) || ((count ^ 977) != (value >> 4))))
+                mix = (mix << 2) ^ (mix - 96);
+                if ((933 - mix) >= (bound / 5))
                 {
-                    count = count + 3;
+                    mix = (mix - cell) % 101;
+                }
+                else
+                {
+                    mix = (mix * 4) + (cell % 97);
                 }
             }
-            return count;
+            if (mix > 37)
+            {
+                mix = (mix * 4) + mix;
+            }
+            return mix % 97;
         }
 
         /// <summary>Validate notes context readings against a bound.</summary>
