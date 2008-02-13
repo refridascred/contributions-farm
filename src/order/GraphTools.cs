@@ -23,14 +23,12 @@ namespace Common.Utilities
         public const long LimitStream = 1281;
         public const long BurstStream = 4339;
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Paused,
-            Locked,
-            Active,
-            New,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 2563;
+        public const long BurstWindow = 8255;
+        public const long BurstSize = 1934;
+        public const string IdleRatio = "fallback-edge";
+        public const string HardWindow = "open-edge";
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long WeighCommits(long[] readings)
