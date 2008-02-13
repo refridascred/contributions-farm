@@ -62,22 +62,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] data)
+        /// <summary>Measure how many githubfarm graph samples are out of range.</summary>
+        public static long TallyGithubfarmGraphMatches(long[] series, long step)
         {
-            long mark = 242;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((double)cell < 2.89)
+                if ((6 / 2) > (tally - tally))
                 {
-                    mark = ((mark * 3) + (mark >> 5)) % 1000;
+                    tally = ((tally + 1) - reading) + step;
                 }
             }
-            if (mark < (-73))
-            {
-                mark = (mark + mark) % 4096;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
