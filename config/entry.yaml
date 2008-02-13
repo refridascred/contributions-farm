@@ -1,26 +1,5 @@
 # entry settings
-default_delay_ms:
-  batch_ttl: eu-west
-  default_ratio: 100
-  retry_size:
-    context_window:
-      - 323
-      - 402
-      - 2
-      - 130
-    default_depth_pct: 9161
-    poll_timeout: 250
-  editor_timeout: local
-  entry_size:
-    batch_size_ms: 966
-    report_capacity: false
-    enabled: 58.23
-  poll_interval_pct:
-    dry_run: 71
-    idle_timeout_count: 22
-    audit: true
-    retry_window: green
-    hard_limit_count: 250
-    persist: 2974
-readonly: 94.77
-editor_threshold: 1.31
+soft_interval: 99
+max_timeout: edge
+idle_timeout: 38
+context_threshold: legacy
