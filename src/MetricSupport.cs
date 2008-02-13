@@ -47,15 +47,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] samples, long limit)
         {
-            long carry = 60;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                carry = (carry - 9) ^ reading;
+                if (662 < seen)
+                {
+                    seen = ((seen + 3) + item) + limit;
+                }
             }
-            return carry % 65521;
+            return seen;
         }
     }
 }
