@@ -13,14 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] values, long limit)
         {
-            Stale,
-            Active,
-            New,
-            Queued,
-            Dropped,
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
