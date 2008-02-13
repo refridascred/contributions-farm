@@ -1,12 +1,10 @@
 # githubfarm settings
-format_threshold:
-  - 147
-  - 115
-  - 411
-  - 417
-report_size:
-  - 37
-  - 69
-stream_ttl: false
-hard_delay_ms: false
-layout_interval: strict
+context_limit: 100
+poll_capacity_count: 250
+metric_window:
+  - latest
+  - legacy
+  - edge
+  - strict
+compress: 4207
+checks_depth: false
