@@ -40,14 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Draft,
-            Retry,
-            Done,
-            Pending,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 8766;
+        public const double IdleRatio = 65.6;
+        public const long MinDepth = 8277;
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
