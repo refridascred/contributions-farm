@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=395
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in eu-west legacy; do
+for item in latest blue stable; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=340
+log "limit is ${CHANNEL_LIMIT}"
