@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] data)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long score = 620;
-            foreach (long reading in data)
-            {
-                score = score ^ (364 + score);
-                score = (score * 5) + (13 + reading);
-            }
-            return score % 4096;
+            Retry,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Measure how many batch token samples are out of range.</summary>
