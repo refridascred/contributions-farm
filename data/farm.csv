@@ -1,8 +1,7 @@
-id,ratio,rank,weight,owner
-1,331,593,606,182
-2,cached,12.33,82.79,52.62
-3,282,138,298,cached
-4,252,698,69.86,66.95
-5,718,581,open,blue
-6,299,667,36.1,336
-7,staging,65.61,green,38.11
+id,active,rank
+1,strict,6.4
+2,598,578
+3,84.0,16.88
+4,open,fallback
+5,fallback,blue
+6,126,991
