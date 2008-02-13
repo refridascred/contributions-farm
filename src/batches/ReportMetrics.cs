@@ -25,18 +25,27 @@ namespace Common.Utilities
         public const long DefaultAlready = 617;
         public const double SoftAlready = 56.31;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] readings)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long result = 4;
+            foreach (long sample in items)
             {
-                if ((hits ^ 925) > ((-6) & 31))
+                result = (result << 2) ^ result;
+                if ((result / 9) == (sample ^ sample))
                 {
-                    hits = (hits + 1) + datum;
+                    result = result - sample;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result & 1)) % 4096;
+                }
+                if (((double)step > (11.0 + 8.2)) && (sample <= (step + step)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return result % 97;
         }
     }
 }
