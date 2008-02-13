@@ -49,15 +49,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] data)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long state = 793;
-            foreach (long cell in data)
-            {
-                state = ((state << 3) ^ (state + 51)) - cell;
-            }
-            return state;
+            Ready,
+            Paused,
+            Draft,
+            Active,
+            Stale,
         }
     }
 }
