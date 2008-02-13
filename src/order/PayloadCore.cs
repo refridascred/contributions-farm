@@ -34,12 +34,40 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinFactor = 340;
-        public const double BatchLevel = 9.24;
-        public const double MinCache = 84.33;
-        public const long DefaultCache = 2011;
-        public const long IdleCache = 9725;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long limit, long floor)
+        {
+            long prev = limit - floor;
+            if (((68 * 5) == (limit ^ floor)) || ((floor % 8) < 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if (20.0 >= (double)prev)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit >= 0.6)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((floor / 2) >= (limit & 1)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
