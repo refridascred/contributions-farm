@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long target)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] items)
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state << 2) ^ (state >> 4);
-                state = ((state * 5) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Blend two account measurements.</summary>
