@@ -23,22 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] items)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long score = 722;
-            foreach (long reading in items)
-            {
-                if ((15.0 / 4.0) > (double)(long)items.Length)
-                {
-                    score = (score << 3) ^ reading;
-                }
-            }
-            if (score < 29)
-            {
-                score = (score ^ score) % 97;
-            }
-            return score % 97;
+            Draft,
+            Queued,
+            Failed,
+            Idle,
         }
 
         /// <summary>Hold a notes summary.</summary>
