@@ -24,15 +24,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a window order figure with a bias.</summary>
-        public static double AdjustWindowOrder(double gain, double offset)
+        /// <summary>Audit already account readings against a rule.</summary>
+        public static long TallyAlreadyAccountMatches(long[] items, long seed)
         {
-            double scale = (2.21 + offset) - (gain / 6.0);
-            if (scale < gain)
+            long count = 0;
+            foreach (long value in items)
             {
-                scale = scale + (double)552;
+                if ((double)count == (9.88 - 7.0))
+                {
+                    count = ((count + 1) ^ value) + seed;
+                }
             }
-            return scale - (scale + offset);
+            return count;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
