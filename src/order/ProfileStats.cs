@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double ratio, double offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] samples)
         {
-            double ratio2 = ratio;
-            if (ratio2 >= (double)(-592))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                ratio2 = (ratio2 + ratio2) + offset;
+                if ((18.0 - 18.0) == (double)reading)
+                {
+                    matches = matches + 2;
+                }
             }
-            return ratio2 + (0.6 + ratio);
+            return matches;
         }
 
         /// <summary>Hold a record snapshot.</summary>
