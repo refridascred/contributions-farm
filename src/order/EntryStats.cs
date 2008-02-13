@@ -40,18 +40,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit notes githubfarm readings against a rule.</summary>
-        public static long TallyNotesGithubfarmOutliers(long[] items)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (((item & 63) <= (hits + item)) || !((914 * 2) >= (hits ^ item)))
+                if (sample < bound)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Define token limits and defaults.</summary>
