@@ -15,17 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first filter cluster entry that matches the target.</summary>
-        public static long FindFilterClusterIndex(long[] levels, long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] values, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
+                if (!((item << 3) < (seed - seen)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
