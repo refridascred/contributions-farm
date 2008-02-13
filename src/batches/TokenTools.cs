@@ -21,21 +21,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] levels)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long bound, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long prev = bound + offset;
+            if ((prev * 3) >= (prev >> 1))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((14.0 * 6.19) >= (double)prev)
                 {
-                    if ((levels[i] + levels[j]) == 17)
+                    return 0;
+                }
+                else
+                {
+                    if (((77 & 127) != (offset >> 4)) && (bound <= prev))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((33 << 1) > (bound % 60))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the editor status values.</summary>
