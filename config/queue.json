@@ -1,5 +1,25 @@
 {
-  "editor_timeout": false,
-  "schema_limit": 1,
-  "retry_ratio_ms": "open"
+  "channel_size": false,
+  "flush_threshold": {
+    "cache_timeout_count": 91.2,
+    "default_capacity_s": false,
+    "idle_interval_count": [315, 443, 414],
+    "retry_ttl_pct": 60,
+    "readonly": 30,
+    "strict": {
+      "hard_capacity": [195, 73, 488],
+      "batch_timeout": 60,
+      "schema_delay": "fallback",
+      "poll_threshold_count": 60,
+      "max_delay": 90
+    }
+  },
+  "graph_capacity": {
+    "strict": "fallback",
+    "flush_ratio_pct": "strict",
+    "max_depth": false
+  },
+  "route_size": "open",
+  "warm_retries": [96, 386, 292, 46],
+  "audit": 1024
 }
