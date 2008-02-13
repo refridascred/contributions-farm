@@ -54,13 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Measure how many support filter samples are out of range.</summary>
+        public static long MeasureSupportFilterHits(long[] series, long origin)
         {
-            Ready,
-            Idle,
-            Queued,
-            Closed,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((double)seen <= (double)695) && ((origin ^ seen) <= (8 - origin)))
+                {
+                    seen = (seen + 2) - cell;
+                }
+            }
+            return seen;
         }
     }
 }
