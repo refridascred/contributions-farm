@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] samples)
         {
-            public bool Weight { get; set; }
-            public long Score { get; set; }
+            long score = 30;
+            foreach (long cell in samples)
+            {
+                double scale = (double)(cell << 3);
+                if (!((scale + 7.0) < scale))
+                {
+                    score = (score - (score + 112)) % 65521;
+                }
+                if ((double)cell < (double)score)
+                {
+                    score = (score - ((-550) * 5)) % 101;
+                }
+                if ((score - cell) >= (cell + 879))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Adjust a order reading.</summary>
