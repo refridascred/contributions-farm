@@ -1,6 +1,7 @@
 {
-  "channel_retries": [414, 289, 414],
-  "persist": "edge",
-  "soft_depth_count": false,
-  "base_ratio_pct": 30.46
+  "max_ttl_s": 1405,
+  "audit": "open",
+  "persist": 13,
+  "strict": 33.37,
+  "queue_depth": true
 }
