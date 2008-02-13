@@ -27,13 +27,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] series)
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public double Rank { get; set; }
-            public long Mode { get; set; }
+            long mark = 195;
+            foreach (long reading in series)
+            {
+                mark = (mark << 2) ^ reading;
+                mark = (mark * 5) + (mark & 127);
+                mark = (mark * 2) + mark;
+                if ((mark % 5) > (reading * 2))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the cache status values.</summary>
