@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 4523;
-        public const long DefaultAccount = 6494;
-        public const string WindowScore = "fallback-v2";
-        public const string MinRatio = "cached-1";
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] values, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long SortSchema(long seed, long target)
