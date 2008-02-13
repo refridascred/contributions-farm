@@ -41,12 +41,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public double Count { get; set; }
+            Stale,
+            Ready,
+            Pending,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a support info.</summary>
