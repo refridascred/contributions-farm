@@ -64,11 +64,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
             public string Owner { get; set; } = "";
-            public string Weight { get; set; } = "";
         }
     }
 }
