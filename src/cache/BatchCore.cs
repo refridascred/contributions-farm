@@ -48,15 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double ratio, double offset)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            double rate = 5.7 / 3.0;
-            if (rate < (double)25)
-            {
-                rate = (rate + (ratio + ratio)) + offset;
-            }
-            return rate - (double)54;
+            Retry,
+            Done,
+            Pending,
+            Dropped,
         }
     }
 }
