@@ -16,32 +16,14 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long offset, long bound)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long edge = offset ^ bound;
-            if ((edge + edge) >= bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound < (9.51 / 6.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((4.79 / 7.0) == (double)edge) && (offset <= (offset >> 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Draft,
+            Dropped,
+            Done,
+            Active,
+            Failed,
         }
 
         /// <summary>Iterate the payload schema series from a seed.</summary>
