@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long limit, long step)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            if (((step << 3) >= 8) || (step >= ((-261) >> 4)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (step <= (limit << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit + step) < (step + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
