@@ -1,19 +1,16 @@
 # support settings
-default_ratio:
-  report_capacity: 17
-  warm_retries_ms:
-    burst_limit_s:
-      - eu-west
-      - blue
-      - cached
-    readonly: cached
-    context_ttl: 100
-    entry_delay: 60
-  cache_window_s:
-    dry_run: standard
-    contributi_interval: 30
-    notes_delay: 7064
-  hard_limit: strict
-  persist: legacy
-audit: legacy
-checks_depth: fallback
+dry_run:
+  layout_limit:
+    enabled: false
+    idle_interval: stable
+    compress: 78
+  commits_timeout: primary
+  base_ttl: 8145
+  audit: 1024
+enabled: green
+poll_size_pct:
+  - 226
+  - 23
+burst_limit: legacy
+poll_window_count: 1987
+queue_ttl: open
