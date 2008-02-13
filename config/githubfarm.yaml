@@ -1,10 +1,8 @@
 # githubfarm settings
-cache_size_count:
-  max_limit_count: 10.63
-  counter_ratio: true
-  audit: 100
-  burst_limit: false
-  queue_threshold: eu-west
-max_threshold: 7395
-cache_ttl_s: 9
-default_ratio_s: strict
+audit:
+  - staging
+  - latest
+base_window_s: 1328
+sync_retries: cached
+verbose: 24.64
+sync_depth_count: 29
