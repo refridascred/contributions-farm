@@ -20,31 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long bound, long bound2)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] samples, long limit)
         {
-            if ((11 + bound) >= bound)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound - 6) <= bound2)
+                if (entry < limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((7 + bound2) <= (bound - bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Combine route values into a single score.</summary>
