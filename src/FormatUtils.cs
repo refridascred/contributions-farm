@@ -31,12 +31,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Blend two checks batch measurements.</summary>
+        public static double ProjectChecksBatch(double rate, double span)
         {
-            Queued,
-            Closed,
-            New,
+            double weight = (double)151 / 6.0;
+            return ((weight - (weight - weight)) + rate) + span;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
