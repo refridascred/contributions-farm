@@ -27,19 +27,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double scale, double floor)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            double rate = 2.0 + (4.7 / 5.0);
-            if (rate < scale)
-            {
-                rate = rate + (scale + scale);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + 20.0) - (double)(long)i;
-            }
-            return rate + (floor - scale);
+            public double Token { get; set; }
+            public double Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the cache status values.</summary>
