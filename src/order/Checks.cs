@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many editor window samples are out of range.</summary>
-        public static long TallyEditorWindowMatches(long[] items, long offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long acc = 36;
+            foreach (long value in readings)
             {
-                if (datum > (count - count))
-                {
-                    count = (count + 2) + offset;
-                }
+                acc = ((acc * 4) + value) % 101;
             }
-            return count;
+            if (acc > 994)
+            {
+                acc = ((acc << 2) ^ (acc - floor)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Count the cluster window entries that pass the check.</summary>
