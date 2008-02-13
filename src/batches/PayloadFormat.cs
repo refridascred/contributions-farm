@@ -42,10 +42,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryScore = 9523;
-        public const string DefaultBuffer = "cached-v2";
-        public const long SoftInterval = 651;
-        public const long IdleBuffer = 6689;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (16.0 < (double)sample)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
