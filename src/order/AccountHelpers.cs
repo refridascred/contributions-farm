@@ -73,15 +73,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of account session readings.</summary>
-        public static long FoldAccountSession(long[] values, long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] data)
         {
-            long result = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                result = ((((result * 5) + (result ^ result)) % 1000) + reading) + step;
+                if (seen < (reading << 3))
+                {
+                    seen = seen + 3;
+                }
             }
-            return result % 97;
+            return seen;
         }
     }
 }
