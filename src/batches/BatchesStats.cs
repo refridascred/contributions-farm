@@ -13,10 +13,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseBudget = 24.19;
-        public const long SoftInterval = 5575;
-        public const long BatchSupport = 7341;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 2708;
+        public const double MinBudget = 64.79;
+        public const long HardDepth = 561;
+        public const long IdleSpan = 5192;
+        public const long IdleInterval = 4975;
 
         /// <summary>Digest a series of tools cluster entries.</summary>
         public static long ScoreToolsCluster(long[] levels)
