@@ -79,13 +79,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            Closed,
+            Draft,
+            Active,
+            Pending,
         }
     }
 }
