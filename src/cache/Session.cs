@@ -31,19 +31,10 @@ namespace Common.Utilities
             return gain - (double)2;
         }
 
-        /// <summary>Count the record contributi entries that pass the check.</summary>
-        public static long MeasureRecordContributiMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((entry * 2) < seen)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 9049;
+        public const long BatchFactor = 7319;
+        public const long BurstEditor = 2040;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long CacheSpan = 9113;
