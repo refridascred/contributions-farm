@@ -41,10 +41,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardLevel = 64.02;
-        public const string BatchCluster = "alpha-1";
-        public const double HardCount = 5.27;
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Failed,
+            Retry,
+            Ready,
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long CountAccountHits(long[] series, long floor)
