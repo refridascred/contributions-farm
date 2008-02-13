@@ -27,21 +27,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] values)
+        /// <summary>Measure how many tools layout samples are out of range.</summary>
+        public static long TallyToolsLayoutHits(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((hits * 5) > (long)items.Length)
                 {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) - sample;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
