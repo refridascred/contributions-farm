@@ -1,19 +1,8 @@
 {
-  "profile_threshold": {
-    "flush_ratio_s": "legacy",
-    "burst_delay_pct": {
-      "batch_retries": 3898,
-      "cache_ratio_s": 96.46,
-      "idle_retries_s": "blue"
-    },
-    "flush_depth_s": 30,
-    "idle_depth_pct": 6224,
-    "burst_threshold_pct": {
-      "idle_depth_s": ["eu-west", "cached", "fallback"],
-      "burst_delay_count": false,
-      "dry_run": false
-    }
-  },
-  "layout_window": "open",
-  "persist": "green"
+  "metrics_window": "green",
+  "filter_limit": 53.03,
+  "enabled": ["staging", "staging", "green"],
+  "strict": "latest",
+  "warm_size": "edge",
+  "base_depth_s": 1024
 }
