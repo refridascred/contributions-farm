@@ -23,19 +23,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] samples, long limit)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            double rate = (double)(7 + 633);
+            if (rate < (rate / 4.0))
             {
-                if (value > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = ((rate - 9.0) - gain) - floor;
             }
-            return valid;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (13.0 / 8.0)) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Locate a session reading by value.</summary>
