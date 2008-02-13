@@ -32,21 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] items)
+        /// <summary>Accumulate counter context samples.</summary>
+        public static long FoldCounterContext(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = -312;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((entry + 0) < (entry >> 4)))
                 {
-                    if ((items[i] + items[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result - (result - entry)) % 101;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
