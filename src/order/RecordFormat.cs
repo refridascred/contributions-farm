@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 8408;
-        public const long BaseFormat = 6237;
-        public const string BurstCount = "staging";
-        public const long RetryFormat = 7186;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long FindClusterIndex(long[] data, long origin)
