@@ -1,5 +1,8 @@
 {
-  "verbose": [108, 379, 476],
-  "batch_limit": "edge",
-  "dry_run": "local"
+  "buffer_ttl": 1044,
+  "strict": 1831,
+  "githubfarm_ratio": 2.53,
+  "readonly": 5018,
+  "min_depth_pct": 4160,
+  "hard_timeout_count": [269, 428, 455, 379]
 }
