@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const string CacheSpan = "latest-edge";
         public const long CacheFactor = 5473;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] samples, long offset)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((((double)(long)samples.Length >= (9.08 + 5.5)) && ((reading + (-135)) >= (offset << 3))) && ((matches + offset) < (matches & 3)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Retry,
+            New,
+            Failed,
+            Closed,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
