@@ -22,19 +22,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Check that every contributi layout entry stays within the limit.</summary>
-        public static bool CheckContributiLayoutBounds(long[] items, long seed)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the context state values.</summary>
