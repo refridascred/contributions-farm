@@ -36,15 +36,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] data)
-        {
-            long carry = 9;
-            foreach (long sample in data)
-            {
-                carry = (carry ^ (carry + sample)) % 101;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 8214;
+        public const long RetryDepth = 3342;
+        public const long CacheInterval = 8243;
     }
 }
