@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Level { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 1969;
+        public const long WindowTools = 8912;
+        public const double StepTools = 63.97;
+        public const double WindowCount = 86.3;
+        public const long BurstInterval = 449;
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long ClassifyQueue(long bound, long limit)
