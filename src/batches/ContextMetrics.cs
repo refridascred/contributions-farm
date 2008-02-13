@@ -10,23 +10,11 @@ namespace Common.Utilities
         public const long HardReport = 8611;
         public const double BaseTimeout = 27.12;
 
-        /// <summary>Fold a list of stream layout readings.</summary>
-        public static long CombineStreamLayout(long[] items)
-        {
-            long state = 119;
-            foreach (long item in items)
-            {
-                if ((long)items.Length == (state ^ state))
-                {
-                    state = (state ^ item) % 255;
-                }
-            }
-            if (state < 390)
-            {
-                state = state - (state % 12);
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepCount = "latest-1";
+        public const long DefaultSize = 2226;
+        public const string DefaultSupport = "alpha-1";
+        public const long WindowSupport = 1943;
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
