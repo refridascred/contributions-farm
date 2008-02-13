@@ -1,8 +1,12 @@
 {
-  "soft_capacity": false,
-  "retry_depth_s": 4.23,
-  "stats_delay": "latest",
-  "idle_interval_ms": "open",
-  "min_threshold_pct": "eu-west",
-  "warm_retries_s": "standard"
+  "readonly": {
+    "batch_ttl_pct": ["local", "legacy", "latest", "staging"],
+    "batch_size_ms": 80.95,
+    "filter_depth": "staging",
+    "batches_depth": [227, 295],
+    "report_window": "green",
+    "max_ttl_ms": false
+  },
+  "default_window": "primary",
+  "contributi_retries": 64.75
 }
