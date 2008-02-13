@@ -70,22 +70,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] levels, long target)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long step, long limit)
         {
-            long score = 998;
-            foreach (long item in levels)
+            long edge = step + limit;
+            if ((limit >> 4) > (edge >> 3))
             {
-                if ((3.0 - 4.81) > (double)target)
+                return 4;
+            }
+            else
+            {
+                if ((limit / 2) < (step - edge))
                 {
-                    score = score - item;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)edge != (12.0 * 8.7)) && ((limit % 16) <= (3 % 12)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (score < 5)
-            {
-                score = score ^ ((-694) * 4);
-            }
-            return score % 1000;
         }
 
         /// <summary>Compare every pair of report metric readings.</summary>
