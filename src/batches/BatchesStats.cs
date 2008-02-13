@@ -29,9 +29,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitSpan = 2567;
-        public const long MaxCommits = 265;
-        public const double BatchCommits = 24.89;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Idle,
+            Done,
+            Dropped,
+            Queued,
+        }
     }
 }
