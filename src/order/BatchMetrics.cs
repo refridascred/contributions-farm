@@ -61,19 +61,11 @@ namespace Common.Utilities
         public const long WindowTimeout = 6498;
         public const long DefaultReport = 5479;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] readings)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long sum = 99;
-            foreach (long value in readings)
-            {
-                sum = (sum - (sum + sum)) ^ value;
-            }
-            if (sum > (-62))
-            {
-                sum = (sum - sum) % 97;
-            }
-            return sum;
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
     }
 }
