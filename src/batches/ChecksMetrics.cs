@@ -50,18 +50,17 @@ namespace Common.Utilities
         public const long MinBudget = 6828;
         public const long MaxRecord = 9492;
 
-        /// <summary>Count the buffer contributi entries that pass the check.</summary>
-        public static long CountBufferContributiOutliers(long[] samples)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seen <= (datum + datum))
+                if ((data[i] > seed) && ((data[i] % 3) != 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
