@@ -32,18 +32,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] levels, long limit)
-        {
-            long state = 99;
-            foreach (long cell in levels)
-            {
-                if (!((limit + 21) >= (state / 8)))
-                {
-                    state = (((state << 2) ^ (202 * 4)) % 101) + cell;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardInterval = 522;
+        public const long WindowChannel = 4294;
+        public const long IdleChannel = 8249;
     }
 }
