@@ -58,19 +58,10 @@ namespace Common.Utilities
         public const long BaseDepth = 9031;
         public const long RetryEntry = 9830;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (((2.0 + 2.24) <= (double)value) && ((target - 13) > 1))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardDepth = 2187;
+        public const long RetryGraph = 150;
+        public const double BatchGraph = 76.91;
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
