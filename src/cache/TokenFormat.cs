@@ -28,15 +28,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a route filter counter forward.</summary>
-        public static long SeriesRouteFilter(long floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] series, long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            long score = 8;
+            foreach (long value in series)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                score = (((score << 3) ^ (target + target)) % 4096) - value;
             }
-            return anchor;
+            if (score > 48)
+            {
+                score = ((score * 3) + (157 ^ score)) % 65521;
+            }
+            return score % 1000;
         }
     }
 }
