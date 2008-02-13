@@ -60,18 +60,18 @@ namespace Common.Utilities
         public const double LimitBudget = 56.57;
         public const double BatchSize = 28.5;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] samples, long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((((long)samples.Length << 2) < (sample + seed)) || (sample > (sample - sample)))
+                if ((2 + sample) != ((-735) + count))
                 {
-                    hits = hits + 1;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Check that every order window entry stays within the limit.</summary>
