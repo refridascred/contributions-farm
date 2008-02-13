@@ -53,19 +53,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every order window entry stays within the limit.</summary>
-        public static bool CheckOrderWindowBounds(long[] values, long step)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            double gain = floor;
+            if (gain <= gain)
             {
-                if (entry >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = gain + bias;
             }
-            return flag;
+            return gain + (14.0 / 5.0);
         }
     }
 }
