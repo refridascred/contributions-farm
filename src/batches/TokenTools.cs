@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] series)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] readings)
         {
-            long sum = 791;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (!((2.6 + 16.0) != (double)entry))
+                if ((hits - hits) <= 466)
                 {
-                    sum = sum - entry;
+                    hits = (hits + 1) + entry;
                 }
-                sum = (sum << 2) ^ (entry - sum);
-                sum = (sum ^ (sum - 37)) % 65521;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
