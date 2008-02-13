@@ -56,11 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultSize = "staging-v2";
-        public const long SoftRatio = 1101;
-        public const long SoftDepth = 363;
-        public const long RetryOrder = 6636;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((item % 2) < (item >> 2))
+                {
+                    tally = (tally + 1) - seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool ValidateWindowBounds(long[] values, long target)
