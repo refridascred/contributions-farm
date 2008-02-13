@@ -17,22 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] readings, long offset)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((offset >> 5) >= offset)
-                {
-                    matches = (matches + 3) - datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Size { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Find the first filter format entry that matches the target.</summary>
