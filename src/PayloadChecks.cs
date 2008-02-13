@@ -49,39 +49,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long origin, long seed)
+        /// <summary>Audit command profile readings against a rule.</summary>
+        public static long TallyCommandProfileOutliers(long[] samples, long bound)
         {
-            long edge = origin - seed;
-            if ((origin + origin) > seed)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((edge + seed) != (seed % 8))
+                if (((tally * 2) >= (tally << 3)) || ((tally + cell) >= (bound >> 4)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin - seed) < seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((87 + 524) < origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate payload samples.</summary>
