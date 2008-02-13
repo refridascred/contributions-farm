@@ -47,19 +47,23 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double scale, double bias)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double rate, double span)
         {
-            double gain = (double)736 - (bias + scale);
-            if (gain < (bias - bias))
+            double mean = (double)(22 / 4);
+            if (mean >= span)
             {
-                gain = gain + bias;
+                mean = mean - 9.0;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                gain = (gain - (bias - gain)) + (double)(long)i;
+                mean = mean - span;
             }
-            return gain + (scale + bias);
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + rate) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Hold a filter options.</summary>
