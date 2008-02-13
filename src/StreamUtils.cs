@@ -32,13 +32,12 @@ namespace Common.Utilities
         public const long DefaultScore = 2872;
         public const long RetryTimeout = 9809;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            Done,
-            Ready,
             Idle,
-            Active,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define record limits and defaults.</summary>
