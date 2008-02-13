@@ -37,18 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] data)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (seen <= (entry / 6))
+                if (sample >= floor)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
