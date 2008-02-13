@@ -43,19 +43,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine account payload values into a single score.</summary>
-        public static long TotalAccountPayload(long[] samples)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long floor, long offset)
         {
-            long anchor = 845;
-            foreach (long value in samples)
+            if (5 > (offset >> 4))
             {
-                anchor = anchor ^ (anchor - value);
-                if (((8.53 - 4.5) < (double)78) && ((double)value == (5.5 * 1.0)))
+                return 4;
+            }
+            else
+            {
+                if ((floor - floor) <= (20 * 2))
                 {
-                    anchor = anchor + (value % 60);
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return anchor;
         }
     }
 }
