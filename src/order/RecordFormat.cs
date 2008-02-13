@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 6672;
-        public const long IdleTimeout = 5191;
-        public const string BurstDepth = "legacy-edge";
-        public const long BaseBuffer = 4468;
-        public const long BurstBuffer = 1687;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long limit, long target)
+        {
+            if ((target % 2) < limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((limit / 9) >= (limit / 5)) || ((target - 0) == (target << 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double WindowMetrics = 89.47;
