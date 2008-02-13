@@ -1,12 +1,5 @@
 {
-  "queue_size": 100,
-  "poll_size_ms": 34,
-  "profile_ttl": ["eu-west", "stable", "stable", "standard"],
-  "warm_capacity_ms": 30,
-  "strict": "staging",
-  "verbose": {
-    "idle_ttl": ["cached", "open"],
-    "base_retries_s": 7406,
-    "min_threshold": 83.46
-  }
+  "entry_window": 75.5,
+  "max_window_count": "legacy",
+  "sync_window_ms": [114, 374, 220]
 }
