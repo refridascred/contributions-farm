@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a order profile reading by value.</summary>
-        public static long FindOrderProfileIndex(long[] levels, long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] values, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 6;
+            foreach (long sample in values)
             {
-                if ((levels[i] == seed) && ((levels[i] % 3) == 0))
+                acc = (((acc + (31 * 5)) % 255) ^ sample) + limit;
+                if (5.87 < (double)(long)values.Length)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
