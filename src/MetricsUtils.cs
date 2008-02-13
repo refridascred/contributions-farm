@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double ratio, double span)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] series, long limit)
         {
-            double weight = span;
-            if (weight >= weight)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight + (double)3) + ratio;
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight - (double)9;
+            return -1;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
