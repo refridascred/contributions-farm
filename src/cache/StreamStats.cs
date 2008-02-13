@@ -29,21 +29,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = ((result << 2) ^ ((long)i + limit)) % 4096;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
