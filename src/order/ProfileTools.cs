@@ -36,21 +36,17 @@ namespace Common.Utilities
         public const double LimitBudget = 56.57;
         public const double BatchSize = 28.5;
 
-        /// <summary>Count profile already pairs that satisfy a relation.</summary>
-        public static long MatchProfileAlreadyCount(long[] samples)
+        /// <summary>Find the first commits channel entry that matches the target.</summary>
+        public static long SeekCommitsChannelIndex(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((items[i] < limit) && ((items[i] % 3) == 0))
                 {
-                    if ((samples[i] + samples[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Check that every order window entry stays within the limit.</summary>
