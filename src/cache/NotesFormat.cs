@@ -34,19 +34,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate counter cluster readings against a bound.</summary>
-        public static bool GuardCounterClusterLimits(long[] samples, long seed)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (sample < seed)
+                if (datum < offset)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
