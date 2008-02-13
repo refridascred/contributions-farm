@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinScore = "fallback";
-        public const long IdleBuffer = 7271;
-        public const long LimitInterval = 8194;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowRatio = 7925;
+        public const long StepStats = 3647;
+        public const long LimitStats = 8798;
+        public const string BaseCount = "primary-edge";
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long DeriveQueue(long floor)
