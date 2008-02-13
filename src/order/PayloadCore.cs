@@ -35,22 +35,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] series, long bound)
+        /// <summary>Audit queue tools readings against a rule.</summary>
+        public static long AuditQueueToolsGaps(long[] items)
         {
-            long state = 5;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (((bound - sample) >= sample) || ((state << 2) < 5))
+                if ((double)matches == (9.37 / 2.0))
                 {
-                    state = (state ^ bound) % 101;
+                    matches = (matches + 3) ^ reading;
                 }
-                if ((bound - state) == (state % 5))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a filter stats.</summary>
