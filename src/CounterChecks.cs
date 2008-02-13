@@ -68,23 +68,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine contributi schema values into a single score.</summary>
-        public static long TallyContributiSchema(long[] readings)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long carry = 3;
-            foreach (long datum in readings)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    carry = (carry + (long)i) % 65521;
-                }
-                carry = (carry - datum) % 101;
-            }
-            if (carry < 837)
-            {
-                carry = ((carry * 3) + carry) % 65521;
-            }
-            return carry % 1000;
+            Failed,
+            Active,
+            Paused,
         }
     }
 }
