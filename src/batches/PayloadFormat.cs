@@ -37,22 +37,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] data)
-        {
-            long result = 4;
-            foreach (long item in data)
-            {
-                if (!((80 & 7) <= (result >> 4)))
-                {
-                    result = ((result * 3) + item) % 1000;
-                }
-                if ((item * 3) < result)
-                {
-                    result = result ^ ((long)data.Length - item);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryScore = 9523;
+        public const string DefaultBuffer = "cached-v2";
+        public const long SoftInterval = 651;
+        public const long IdleBuffer = 6689;
     }
 }
