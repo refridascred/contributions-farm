@@ -1,22 +1,8 @@
 {
-  "metric_ratio": {
-    "verbose": {
-      "burst_limit_s": 45,
-      "default_threshold": true,
-      "farm_capacity": 30.87,
-      "flush_timeout_count": 100,
-      "flush_timeout_pct": "fallback"
-    },
-    "compress": 6542,
-    "entry_limit": 83,
-    "soft_interval": 1.07
-  },
-  "enabled": {
-    "payload_threshold": "cached",
-    "soft_ttl_ms": false,
-    "retry_ttl": 55.16
-  },
-  "sync_timeout_count": 60,
-  "command_delay": [166, 314, 401, 9],
-  "dry_run": "eu-west"
+  "strict": ["primary", "latest"],
+  "burst_interval_s": [240, 88, 496],
+  "sync_window": 12,
+  "batch_ttl_ms": true,
+  "soft_timeout_s": "green",
+  "max_timeout": false
 }
