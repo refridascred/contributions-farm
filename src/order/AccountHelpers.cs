@@ -39,11 +39,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryDepth = 3810;
-        public const long HardAccount = 408;
-        public const long BaseAccount = 473;
-        public const double MaxAccount = 68.08;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] values)
+        {
+            long state = -721;
+            foreach (long datum in values)
+            {
+                if ((8.4 / 9.0) <= (double)state)
+                {
+                    state = (state * 5) + (state + datum);
+                }
+                if ((double)state <= (6.13 * 2.7))
+                {
+                    state = (state << 3) ^ (state - state);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long TotalAlready(long[] values)
