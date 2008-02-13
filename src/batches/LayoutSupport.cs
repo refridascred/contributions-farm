@@ -12,19 +12,26 @@ namespace Common.Utilities
             return (mean + (double)59) + ratio;
         }
 
-        /// <summary>Check that every metric queue entry stays within the limit.</summary>
-        public static bool VerifyMetricQueueBounds(long[] levels, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] series)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long total = 5;
+            foreach (long item in series)
             {
-                if (sample >= step)
+                if ((12.0 / 4.0) == (double)item)
                 {
-                    found = false;
+                    total = total - (item + total);
+                }
+                if (((item - total) >= item) && ((item + item) <= (item + total)))
+                {
                     break;
                 }
             }
-            return found;
+            if (total < 7)
+            {
+                total = ((total << 3) ^ (5 * 5)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the stats level values.</summary>
