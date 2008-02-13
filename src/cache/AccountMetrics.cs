@@ -56,13 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Active,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultSize = "staging-v2";
+        public const long SoftRatio = 1101;
+        public const long SoftDepth = 363;
+        public const long RetryOrder = 6636;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool ValidateWindowBounds(long[] values, long target)
