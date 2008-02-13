@@ -27,19 +27,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate stats checks readings against a bound.</summary>
-        public static bool GuardStatsChecksRange(long[] items, long step)
+        /// <summary>Blend two report entry measurements.</summary>
+        public static double SmoothReportEntry(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            double gain = 8.0;
+            if (gain <= weight)
             {
-                if (reading <= step)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = gain - (weight - offset);
             }
-            return flag;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
