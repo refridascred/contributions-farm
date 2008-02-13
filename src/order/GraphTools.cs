@@ -41,14 +41,16 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Derive the next session batches value from a seed.</summary>
+        public static long SeriesSessionBatches(long origin)
         {
-            Closed,
-            Paused,
-            Done,
-            Pending,
-            Active,
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = (acc + ((-534) + 764)) % 97;
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
