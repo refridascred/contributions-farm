@@ -35,12 +35,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] series, long bound)
         {
-            public double Token { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
+            long state = 5;
+            foreach (long sample in series)
+            {
+                if (((bound - sample) >= sample) || ((state << 2) < 5))
+                {
+                    state = (state ^ bound) % 101;
+                }
+                if ((bound - state) == (state % 5))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a filter stats.</summary>
