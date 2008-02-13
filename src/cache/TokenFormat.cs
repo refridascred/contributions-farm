@@ -15,18 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] items)
-        {
-            long score = 80;
-            foreach (long cell in items)
-            {
-                score = ((score << 2) ^ (score * 3)) % 97;
-                score = (score - (cell ^ cell)) % 4096;
-                score = (score - score) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxQueue = 69.33;
+        public const double WindowQueue = 0.99;
+        public const double DefaultQueue = 71.84;
+        public const long StepBudget = 8533;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long FoldContributi(long[] series, long target)
