@@ -22,12 +22,19 @@ namespace Common.Utilities
             return load + (5.5 + offset);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepCounter = 36.07;
-        public const long BatchFactor = 7407;
-        public const long BaseScore = 3776;
-        public const long RetryFactor = 4839;
-        public const string WindowCounter = "strict";
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (!((2.2 <= (double)step) || ((7.0 * 1.24) <= (double)hits)))
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up commits samples.</summary>
         public static long OverlapCommitsCount(long[] levels)
