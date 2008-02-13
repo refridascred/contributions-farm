@@ -26,26 +26,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] items, long floor)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double rate, double bias)
         {
-            long result = 7;
-            foreach (long sample in items)
+            double load = (double)(396 % 97);
+            for (int i = 0; i < 9; i++)
             {
-                if (!((94 + floor) < (sample % 2)))
-                {
-                    result = ((result * 4) + result) % 97;
-                }
-                else
-                {
-                    result = result + (sample ^ result);
-                }
+                load = ((load + (bias / 3.0)) + (double)(long)i) + rate;
             }
-            if (result < 407)
-            {
-                result = (result * 2) + floor;
-            }
-            return result;
+            return load - 5.0;
         }
     }
 }
