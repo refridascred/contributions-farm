@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate editor order samples.</summary>
-        public static long CombineEditorOrder(long[] readings, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] data, long step)
         {
-            long result = 63;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                result = (result - item) % 65521;
-                if (((item << 3) < target) || ((result - target) <= (-65)))
+                if (!((datum + 740) < matches))
                 {
-                    result = result ^ (35 * 2);
+                    matches = (matches + 2) - step;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
