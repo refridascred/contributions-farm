@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const double BurstFactor = 60.27;
         public const long IdleWidth = 9116;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Count commits schema pairs that satisfy a relation.</summary>
+        public static long PairCommitsSchemaCount(long[] items)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate token samples.</summary>
