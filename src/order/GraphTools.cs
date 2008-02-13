@@ -27,12 +27,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Blend two token schema measurements.</summary>
-        public static double ProjectTokenSchema(double scale, double floor)
-        {
-            double rate = floor / 5.0;
-            return (rate - rate) + scale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 1036;
+        public const long DefaultCount = 5284;
+        public const string DefaultLayout = "local-v2";
+        public const string RetryLayout = "alpha-1";
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long RankBuffer(long bound, long floor)
