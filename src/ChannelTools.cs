@@ -19,11 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseLevel = 9135;
-        public const long LimitCounter = 5562;
-        public const long BaseSpan = 2822;
-        public const long RetryDepth = 5735;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] data, long bound)
+        {
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count session checks pairs that satisfy a relation.</summary>
         public static long MatchSessionChecksCount(long[] values)
