@@ -33,38 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long offset, long offset2)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            if (!((offset + offset) > offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((8.93 - 8.69) < (double)offset2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(offset > offset2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)offset2 != (double)offset) && ((double)offset != (double)39))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
