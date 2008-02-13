@@ -29,18 +29,12 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] data, long bound)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (((double)item == (8.53 / 2.0)) && ((item & 3) >= (matches + item)))
-                {
-                    matches = (matches + 1) - bound;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the token phase values.</summary>
