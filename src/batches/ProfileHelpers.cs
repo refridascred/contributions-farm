@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long limit, long bound)
         {
-            Ready,
-            Stale,
-            Done,
-            Dropped,
+            if ((bound / 7) > 4)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit % 3) < (bound - 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
