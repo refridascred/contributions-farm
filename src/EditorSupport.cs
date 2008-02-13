@@ -80,14 +80,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Pending,
-            Retry,
-            Idle,
+            Ready,
+            Queued,
             Synced,
-            Paused,
         }
     }
 }
