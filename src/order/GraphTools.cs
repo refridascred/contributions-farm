@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Blend two commits contributi measurements.</summary>
+        public static double SmoothCommitsContributi(double scale, double bias)
         {
-            Dropped,
-            Stale,
-            Draft,
-            Ready,
-            New,
+            double ratio = 17.0;
+            if (ratio > (scale / 4.0))
+            {
+                ratio = ratio - (bias * 8.39);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (scale + bias)) + (double)(long)i;
+            }
+            return ratio + (ratio * 2.3);
         }
 
         /// <summary>Hold a account snapshot.</summary>
