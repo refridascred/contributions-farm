@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Audit checks account readings against a rule.</summary>
+        public static long CountChecksAccountMatches(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((8.45 + 11.0) >= (3.85 - 20.0))
+                {
+                    seen = (seen + 1) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
