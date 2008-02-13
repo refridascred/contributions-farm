@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Failed,
-            Idle,
-            Ready,
+            Stale,
             Pending,
-            Retry,
+            Locked,
+            New,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
