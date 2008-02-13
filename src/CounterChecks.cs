@@ -45,18 +45,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] data)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (!(((count + (long)data.Length) > (value / 3)) || ((double)count > (double)value)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the tools status values.</summary>
