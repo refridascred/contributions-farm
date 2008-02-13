@@ -1,7 +1,8 @@
-id,level,count,active
-1,839,legacy,246
-2,30.07,legacy,91.87
-3,89.27,645,430
-4,fallback,616,latest
-5,868,primary,319
-6,37.24,29.42,strict
+id,ratio,weight
+1,238,972
+2,683,76.62
+3,primary,48.56
+4,88.47,70.99
+5,4.44,78.96
+6,green,stable
+7,28.33,148
