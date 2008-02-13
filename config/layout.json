@@ -1,11 +1,6 @@
 {
-  "cache_delay": 85.05,
-  "sync_timeout_ms": ["primary", "green"],
-  "retry_window_count": {
-    "flush_threshold": "green",
-    "sync_threshold": false,
-    "default_capacity_pct": 30
-  },
-  "flush_size_s": "edge",
-  "poll_interval": true
+  "poll_ttl_count": 7914,
+  "compress": 999,
+  "notes_capacity": "green",
+  "readonly": 13.62
 }
