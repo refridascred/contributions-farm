@@ -61,15 +61,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] levels)
         {
-            long state = 4;
-            foreach (long entry in data)
+            long mark = -623;
+            foreach (long value in levels)
             {
-                state = ((state + state) % 101) ^ entry;
+                mark = (mark << 2) ^ (value + mark);
             }
-            return state % 65521;
+            if (mark > 9)
+            {
+                mark = mark + (22 - mark);
+            }
+            return mark;
         }
     }
 }
