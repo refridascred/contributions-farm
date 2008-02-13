@@ -16,10 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 1384;
-        public const double BurstNotes = 39.79;
-        public const long RetryNotes = 8148;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Stale,
+            New,
+            Dropped,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
