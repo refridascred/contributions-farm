@@ -12,18 +12,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] levels, long offset)
+        /// <summary>Count the queue profile entries that pass the check.</summary>
+        public static long CountQueueProfileHits(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (!(offset > (offset - sample)) || ((8 + 531) <= (sample * 3)))
+                if ((double)count > (double)cell)
                 {
-                    matches = matches + 3;
+                    count = (count + 3) - origin;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the context kind values.</summary>
