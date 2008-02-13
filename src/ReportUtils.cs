@@ -17,10 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepBudget = 7.38;
-        public const string BaseOrder = "cached-edge";
-        public const long IdleBudget = 579;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Draft,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
