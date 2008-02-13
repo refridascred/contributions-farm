@@ -39,39 +39,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank tools graph input into a small class.</summary>
-        public static long ClassifyToolsGraph(long limit, long step)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double ratio, double floor)
         {
-            long diff = limit + step;
-            if (((double)limit < (double)1) || ((double)diff < (double)limit))
+            double load = ratio;
+            if (load < ratio)
             {
-                return 4;
+                load = load + floor;
             }
             else
             {
-                if ((861 & 255) != (step + diff))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)diff != (6.1 / 8.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit + step) >= (step * 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                load = load - (double)53;
             }
+            return load - floor;
         }
     }
 }
