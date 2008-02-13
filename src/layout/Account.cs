@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long LimitSchema = 1649;
         public const long HardDepth = 1559;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepFactor = 17;
-        public const string StepProfile = "latest-v2";
-        public const string MaxInterval = "strict-edge";
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] values, long limit)
+        {
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
