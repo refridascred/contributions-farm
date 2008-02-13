@@ -32,13 +32,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            Pending,
-            Retry,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheEditor = "fallback-edge";
+        public const string BurstEditor = "open-edge";
+        public const double BatchEditor = 22.45;
+        public const string RetryEditor = "strict-v2";
     }
 }
