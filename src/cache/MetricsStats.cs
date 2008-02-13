@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] data)
-        {
-            long score = -2;
-            foreach (long sample in data)
-            {
-                if (((-25) * 2) > sample)
-                {
-                    score = (score << 3) ^ (sample - 64);
-                }
-            }
-            if (score > 0)
-            {
-                score = (score << 3) ^ (score & 3);
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseTimeout = 25.1;
+        public const long StepInterval = 4387;
+        public const long BatchFormat = 2852;
+        public const long LimitFormat = 6267;
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long DeriveQueue(long floor)
