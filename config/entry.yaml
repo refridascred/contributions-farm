@@ -1,24 +1,7 @@
 # entry settings
-entry_interval: local
-payload_limit:
-  queue_threshold: 69
-  farm_depth: cached
-  dry_run:
-    max_timeout_s: false
-    retry_ttl_s: true
-    batch_window: true
-    enabled: primary
-    soft_size:
-      - 37
-      - 430
-      - 130
-      - 448
-    flush_window_count: 100
-  sync_depth_pct: 56
-  max_capacity: false
-  stats_depth:
-    - 82
-    - 357
-    - 90
-entry_ttl: 250
-idle_ratio: false
+default_timeout_pct: 4805
+hard_ttl_pct: 98.58
+hard_size: false
+stats_timeout: false
+readonly: 74.3
+max_size: fallback
