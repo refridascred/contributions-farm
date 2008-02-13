@@ -1,8 +1,14 @@
 # entry settings
-checks_interval: cached
-poll_ttl: 85
-base_capacity: 1526
-route_threshold:
-  - stable
-  - staging
-  - green
+retry_retries: 8603
+idle_delay_s: 30
+sync_window: 3417
+report_capacity:
+  counter_ratio:
+    persist: green
+    max_timeout: 7.98
+    soft_capacity: true
+    profile_ttl: 620
+    layout_interval: fallback
+  flush_threshold_count: 43.98
+  sync_size_ms: 87
+cache_capacity: staging
