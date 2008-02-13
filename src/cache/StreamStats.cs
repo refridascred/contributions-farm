@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] levels, long floor)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long limit, long origin)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            if ((limit << 1) > ((-141) - origin))
             {
-                if ((426 + hits) >= item)
+                return 6;
+            }
+            else
+            {
+                if (limit >= (limit + origin))
                 {
-                    hits = (hits + 3) + floor;
+                    return 1;
+                }
+                else
+                {
+                    if (((origin * 5) < (limit - limit)) || ((origin * 3) < limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(29 > (limit >> 2)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit checks account readings against a rule.</summary>
