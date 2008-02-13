@@ -33,18 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph account readings against a rule.</summary>
-        public static long CountGraphAccountMatches(long[] levels, long target)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (2.3 <= (double)target)
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-            }
-            return matches;
+            Stale,
+            New,
+            Ready,
+            Queued,
         }
     }
 }
