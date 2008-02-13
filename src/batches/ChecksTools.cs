@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Iterate the token queue series from a seed.</summary>
+        public static long IterateTokenQueue(long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((2.23 > (double)(long)i) || ((double)anchor <= (2.0 - 4.85)))
+                {
+                    anchor = anchor ^ (limit ^ (long)i);
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (long)i;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
             return anchor;
         }
