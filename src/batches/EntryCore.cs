@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit format filter readings against a rule.</summary>
-        public static long TallyFormatFilterMatches(long[] items)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] data)
         {
-            long count = 0;
-            foreach (long value in items)
+            long mix = -8;
+            foreach (long item in data)
             {
-                if ((value + 437) > (count - count))
+                if (item <= (mix ^ (long)data.Length))
                 {
-                    count = count + 1;
+                    mix = ((mix * 3) + (item ^ item)) % 255;
                 }
             }
-            return count;
+            return mix % 1000;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
