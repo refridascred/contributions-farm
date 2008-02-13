@@ -21,18 +21,24 @@ namespace Common.Utilities
         public const string WindowChannel = "primary-1";
         public const long BaseChannel = 3801;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] data)
+        /// <summary>Rank command counter input into a small class.</summary>
+        public static long BucketCommandCounter(long step, long target)
         {
-            long carry = 88;
-            foreach (long item in data)
+            if ((4.84 + 16.0) > (6.24 - 2.0))
             {
-                if (item <= (item / 2))
+                return 4;
+            }
+            else
+            {
+                if ((7 / 4) < (target >> 5))
                 {
-                    carry = (carry + (carry & 63)) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return carry;
         }
     }
 }
