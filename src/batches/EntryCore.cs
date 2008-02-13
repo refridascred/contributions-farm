@@ -14,32 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long origin, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] samples, long origin)
         {
-            long prev = origin ^ bound;
-            if ((double)prev > (0.61 - 3.88))
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8 <= origin) || (origin >= (origin + prev)))
+                if (origin > (origin * 5))
                 {
-                    return 4;
+                    tally = (tally + 3) + entry;
                 }
                 else
                 {
-                    if (2 < (bound << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
