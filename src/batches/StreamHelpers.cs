@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many already schema samples are out of range.</summary>
-        public static long TallyAlreadySchemaHits(long[] items, long floor)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] items)
         {
             long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((floor & 31) > (datum & 255)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((items[i] - items[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
