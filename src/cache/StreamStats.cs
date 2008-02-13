@@ -60,13 +60,18 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] levels, long origin)
         {
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (origin > (565 >> 3))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
         }
     }
 }
