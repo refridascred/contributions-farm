@@ -43,16 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a profile layout counter forward.</summary>
-        public static long SeriesProfileLayout(long bound)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long carry = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 3) + (carry - bound)) % 101;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit support window readings against a rule.</summary>
