@@ -20,25 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long bound, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] readings, long origin)
         {
-            long gap = bound + seed;
-            if ((double)gap == (8.0 + 5.8))
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed < (bound - seed))
+                if (((sample + 76) >= (seen * 2)) && !(origin >= (seen & 1)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a editor summary.</summary>
