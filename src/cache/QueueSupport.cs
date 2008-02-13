@@ -38,21 +38,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up context stream samples.</summary>
-        public static long PairContextStreamCount(long[] readings)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
