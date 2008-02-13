@@ -66,25 +66,9 @@ namespace Common.Utilities
         public const long WindowTimeout = 6498;
         public const long DefaultReport = 5479;
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long bound, long offset)
-        {
-            long delta = bound - offset;
-            if ((delta % 12) <= offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (delta > bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowFactor = 2611;
+        public const long BatchScore = 192;
+        public const double StepOrder = 52.21;
     }
 }
