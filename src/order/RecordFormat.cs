@@ -33,11 +33,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetrySupport = 14.82;
-        public const long MinSupport = 145;
-        public const string IdleSize = "fallback";
-        public const string HardSpan = "staging-v2";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((floor + 7) <= (floor / 9))
+                {
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long FoldToken(long[] series, long bound)
