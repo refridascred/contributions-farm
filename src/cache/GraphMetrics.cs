@@ -37,21 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] levels)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum < target)
                 {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
