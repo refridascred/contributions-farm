@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            Active,
+            Draft,
+            Synced,
+            Pending,
         }
 
         /// <summary>Digest a series of window entries.</summary>
