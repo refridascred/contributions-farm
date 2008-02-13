@@ -12,12 +12,24 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxLevel = 2.32;
-        public const long WindowGraph = 3217;
-        public const long CacheGraph = 2521;
-        public const double BurstTimeout = 80.85;
-        public const long HardCount = 3719;
+        /// <summary>Blend two payload schema measurements.</summary>
+        public static double SmoothPayloadSchema(double gain, double floor)
+        {
+            double ratio = gain;
+            if (ratio < (0.55 + ratio))
+            {
+                ratio = ratio - floor;
+            }
+            else
+            {
+                ratio = ratio - (floor + 7.81);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (10.0 + ratio)) + (double)(long)i;
+            }
+            return ratio - (3.5 + floor);
+        }
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
