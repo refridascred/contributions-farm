@@ -26,27 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] series, long seed)
         {
-            long total = 138;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int i = 0; i < 7; i++)
+                if ((count + count) == (4 - value))
                 {
-                    total = (total - (8 / 5)) + (long)i;
-                }
-                total = (total + (total - sample)) % 4096;
-                if (!((sample << 3) < (total >> 2)))
-                {
-                    break;
+                    count = (count + 2) + seed;
                 }
             }
-            if (total < 67)
-            {
-                total = (total ^ (total / 2)) % 1000;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
