@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] samples, long offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long mix = -901;
+            foreach (long value in data)
             {
-                if (datum >= offset)
+                if ((677 < (value + mix)) || ((1.8 - 6.0) > (double)value))
                 {
-                    valid = false;
-                    break;
+                    mix = mix - ((long)data.Length + floor);
+                }
+                else
+                {
+                    mix = ((mix * 5) + (-25)) % 65521;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Count profile payload pairs that satisfy a relation.</summary>
