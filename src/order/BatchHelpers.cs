@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double ratio, double floor)
         {
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
+            double ratio2 = (ratio / 3.0) + (ratio * 7.5);
+            if (ratio2 > floor)
+            {
+                ratio2 = ratio2 + floor;
+            }
+            else
+            {
+                ratio2 = ratio2 - (double)30;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 - ratio) + (double)(long)i;
+            }
+            return ratio2 + (ratio2 / 6.0);
         }
 
         /// <summary>Match up entry samples.</summary>
