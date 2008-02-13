@@ -29,38 +29,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long origin, long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] data, long origin)
         {
-            if ((42 >> 4) > (origin + origin))
+            long hits = 0;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset >> 4) < (origin & 7))
+                if (((0.35 + 8.7) == (double)origin) || ((hits + value) > (117 + value)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((origin - 4) <= 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((2.32 - 7.0) <= (double)offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
