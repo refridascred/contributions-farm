@@ -68,15 +68,25 @@ namespace Common.Utilities
         public const long WindowTimeout = 6498;
         public const long DefaultReport = 5479;
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double scale, double floor)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long bound, long offset)
         {
-            double mean = (scale * 0.51) * 3.0;
-            for (int i = 0; i < 3; i++)
+            long delta = bound - offset;
+            if ((delta % 12) <= offset)
             {
-                mean = mean + (double)(long)i;
+                return 6;
             }
-            return mean + (8.01 + floor);
+            else
+            {
+                if (delta > bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
