@@ -73,9 +73,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxFactor = 78.25;
-        public const double StepCount = 42.08;
-        public const string RetryCluster = "stable-v2";
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            New,
+            Pending,
+            Draft,
+        }
     }
 }
