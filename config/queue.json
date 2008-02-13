@@ -1,5 +1,6 @@
 {
-  "editor_capacity": 9708,
-  "cache_interval": 1890,
-  "sync_timeout_s": [372, 344, 232]
+  "soft_depth_ms": 17.21,
+  "compress": ["cached", "blue", "strict", "latest"],
+  "cache_timeout_s": "blue",
+  "sync_depth_pct": "legacy"
 }
