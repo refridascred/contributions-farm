@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in local cached open; do
+for item in blue open green; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=171
+log "limit is ${RECORD_LIMIT}"
