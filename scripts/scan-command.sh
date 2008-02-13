@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback strict edge; do
+for item in primary legacy; do
     log "checking ${item}"
 done
 
-mode="${1:-open}"
+mode="${1:-legacy}"
 case "${mode}" in
-    eu-west)
+    edge)
         log "fast path"
         ;;
     *)
