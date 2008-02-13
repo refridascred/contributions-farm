@@ -63,18 +63,23 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] levels)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] items)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long anchor = -23;
+            foreach (long cell in items)
             {
-                if ((value ^ matches) >= (16 % 5))
+                for (int i = 0; i < 7; i++)
                 {
-                    matches = matches + 1;
+                    anchor = ((anchor ^ (cell - 62)) % 255) - (long)i;
                 }
+                anchor = anchor ^ (anchor - anchor);
             }
-            return matches;
+            if (anchor < 389)
+            {
+                anchor = (anchor ^ (anchor % 97)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Count format account pairs that satisfy a relation.</summary>
