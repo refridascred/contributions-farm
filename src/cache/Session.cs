@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const long BaseSpan = 7096;
         public const string BatchSession = "alpha-edge";
 
-        /// <summary>Derive the next command githubfarm value from a seed.</summary>
-        public static long StepCommandGithubfarm(long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
+            long result = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (mix > (mix ^ origin))
+                if (!(((seed - result) >= seed) || ((seed + (long)i) > (920 << 3))))
                 {
-                    mix = mix - (origin << 3);
+                    result = (result ^ seed) % 65521;
                 }
-                mix = (mix + (long)i) % 101;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = ((mix * 5) + origin) ^ (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Hold a tools header.</summary>
