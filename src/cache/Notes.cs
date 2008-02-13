@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] levels)
+        /// <summary>Fold a list of command stats readings.</summary>
+        public static long CombineCommandStats(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long state = 952;
+            foreach (long datum in readings)
             {
-                if ((434 + value) <= 19)
-                {
-                    count = count + 3;
-                }
+                state = ((state - (datum + 80)) % 101) + offset;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the already state values.</summary>
