@@ -60,18 +60,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] data, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long anchor = 829;
+            foreach (long item in values)
             {
-                if ((double)seen != (double)value)
+                if (!(((anchor >> 5) == (855 - 667)) && ((item - 1) >= 3)))
                 {
-                    seen = (seen + 1) - floor;
+                    anchor = ((anchor << 2) ^ (anchor * 4)) % 97;
+                    anchor = (anchor - anchor) % 101;
+                }
+                if ((item > (anchor + 5)) || ((0.31 * 18.0) != (double)item))
+                {
+                    anchor = anchor - (floor ^ 0);
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (anchor - anchor);
                 }
             }
-            return seen;
+            if (anchor > 53)
+            {
+                anchor = ((anchor * 5) + (73 / 8)) % 255;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
