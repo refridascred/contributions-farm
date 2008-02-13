@@ -20,38 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long bound, long bound2)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            if (bound >= bound2)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound2 * 5) == (bound2 ^ bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound2 >= (bound2 & 15))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound << 2) != (bound & 15))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Active,
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
