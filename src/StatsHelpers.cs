@@ -20,18 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] values, long bound)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long bound)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long state = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((bound % 24) <= (value % 64))
-                {
-                    tally = tally + 3;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
