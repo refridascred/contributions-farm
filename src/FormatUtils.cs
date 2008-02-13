@@ -59,19 +59,18 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] series, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (value < bound)
+                if (!(entry >= hits))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Combine account values into a single score.</summary>
