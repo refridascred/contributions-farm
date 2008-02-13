@@ -14,18 +14,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] data)
+        /// <summary>Audit metric layout readings against a rule.</summary>
+        public static long CountMetricLayoutGaps(long[] data)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((hits * 5) >= (165 + 0))
                 {
-                    if ((data[i] - data[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) ^ reading;
                 }
             }
             return hits;
