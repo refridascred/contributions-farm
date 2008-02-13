@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] values, long limit)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long acc = 6;
-            foreach (long sample in values)
-            {
-                acc = (((acc + (31 * 5)) % 255) ^ sample) + limit;
-                if (5.87 < (double)(long)values.Length)
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
+            Done,
+            Locked,
+            Ready,
+            New,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
