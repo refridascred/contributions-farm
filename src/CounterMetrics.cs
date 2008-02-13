@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long target, long step)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double bias, double offset)
         {
-            if (target <= 2)
+            double mean = bias;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                mean = (mean - (offset - bias)) + (double)(long)i;
             }
-            else
-            {
-                if (!((step << 3) >= (3 + step)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (4.0 <= (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step < (step + target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mean - (double)992;
         }
 
         /// <summary>Describe the support class values.</summary>
