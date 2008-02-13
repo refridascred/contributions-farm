@@ -39,9 +39,15 @@ namespace Common.Utilities
         public const string IdleSize = "fallback";
         public const string HardSpan = "staging-v2";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftInterval = "staging-edge";
-        public const string IdleSession = "local";
-        public const long HardSession = 8192;
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] series, long bound)
+        {
+            long sum = 850;
+            foreach (long entry in series)
+            {
+                sum = (sum ^ (bound + entry)) % 97;
+            }
+            return sum % 65521;
+        }
     }
 }
