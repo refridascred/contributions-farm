@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double scale, double bias)
         {
-            Retry,
-            Ready,
-            Locked,
+            double bias2 = bias;
+            if (bias2 < bias)
+            {
+                bias2 = bias2 + scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 - 7.4;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
