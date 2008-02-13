@@ -21,11 +21,10 @@ namespace Common.Utilities
         public const double BurstTimeout = 80.85;
         public const long HardCount = 3719;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchWidth = 3118;
-        public const long CacheTimeout = 8163;
-        public const long SoftTools = 1707;
-        public const long BaseCount = 2277;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchFormat = "latest-1";
+        public const long RetryFormat = 7874;
+        public const double DefaultFormat = 80.71;
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
