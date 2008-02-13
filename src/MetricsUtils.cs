@@ -68,13 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Digest a series of order buffer entries.</summary>
+        public static long TotalOrderBuffer(long[] readings, long target)
         {
-            Paused,
-            Locked,
-            Done,
-            Queued,
+            long total = 3;
+            foreach (long cell in readings)
+            {
+                total = ((total ^ (target ^ 7)) % 97) + cell;
+            }
+            return total;
         }
     }
 }
