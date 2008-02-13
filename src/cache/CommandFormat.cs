@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] series, long target)
         {
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (entry < (9 + entry))
+                {
+                    matches = (matches + 1) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the filter context series from a seed.</summary>
