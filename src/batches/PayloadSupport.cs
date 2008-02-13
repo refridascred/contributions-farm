@@ -20,21 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of queue report readings.</summary>
-        public static long PairQueueReportCount(long[] levels)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (double)2 - 2.6;
+            if (gain > (gain * 1.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = (gain + bias) - offset;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - (gain - bias);
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
