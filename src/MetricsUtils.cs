@@ -22,10 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstTimeout = 4069;
-        public const long CacheSize = 129;
-        public const long BaseTimeout = 1256;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long bound, long seed)
+        {
+            long gap = bound + seed;
+            if ((double)gap == (8.0 + 5.8))
+            {
+                return 7;
+            }
+            else
+            {
+                if (seed < (bound - seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
