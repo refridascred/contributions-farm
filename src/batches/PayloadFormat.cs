@@ -28,15 +28,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine buffer channel values into a single score.</summary>
-        public static long TotalBufferChannel(long[] series, long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long target, long origin)
         {
-            long mix = 7;
-            foreach (long entry in series)
+            if ((target < (origin + target)) || (origin >= (target + 6)))
             {
-                mix = ((mix * 3) + (seed >> 5)) + entry;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if ((2 >> 3) == (origin ^ 54))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
