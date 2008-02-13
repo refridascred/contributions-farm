@@ -27,17 +27,16 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] data, long bound)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((data[i] == bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry - (70 * 3)) % 65521;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
     }
 }
