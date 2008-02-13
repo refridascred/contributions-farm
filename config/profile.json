@@ -1,5 +1,22 @@
 {
-  "entry_ratio": "staging",
-  "verbose": "green",
-  "notes_limit": 2913
+  "verbose": {
+    "layout_capacity": ["latest", "cached", "blue", "open"],
+    "poll_delay_s": 41,
+    "retry_capacity_count": false,
+    "idle_limit_s": "blue",
+    "channel_size": {
+      "already_depth": true,
+      "soft_threshold_ms": "latest",
+      "flush_retries": "open",
+      "warm_timeout": 4.23,
+      "order_threshold": false,
+      "enabled": [39, 344, 218, 410]
+    },
+    "stats_capacity": false
+  },
+  "burst_depth_ms": "local",
+  "warm_interval": 500,
+  "soft_ttl": true,
+  "warm_limit_pct": false,
+  "dry_run": "primary"
 }
