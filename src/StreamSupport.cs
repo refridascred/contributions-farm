@@ -28,19 +28,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double rate, double offset)
+        /// <summary>Digest a series of session editor entries.</summary>
+        public static long TallySessionEditor(long[] levels, long bound)
         {
-            double rate2 = (offset / 4.0) + 9.6;
-            if (rate2 >= (double)9)
+            long mark = -7;
+            foreach (long item in levels)
             {
-                rate2 = rate2 + (offset + 3.47);
+                if ((307 & 1) >= (mark / 7))
+                {
+                    mark = ((((mark << 2) ^ (mark - 5)) % 1000) + item) + bound;
+                }
+                else
+                {
+                    mark = (mark - (mark >> 5)) % 1000;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 - offset) - (double)(long)i;
-            }
-            return rate2 - rate;
+            return mark;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
