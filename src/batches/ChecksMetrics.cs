@@ -44,11 +44,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryScore = 4337;
-        public const long IdleInterval = 9906;
-        public const long MinBudget = 6828;
-        public const long MaxRecord = 9492;
+        /// <summary>Audit format farm readings against a rule.</summary>
+        public static long TallyFormatFarmGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits ^ 7) <= item)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long LocateAlreadyIndex(long[] data, long seed)
