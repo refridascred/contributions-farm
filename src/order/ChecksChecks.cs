@@ -29,23 +29,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double bias, double offset)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            double load = 1.0;
-            if (load >= (10.0 - load))
-            {
-                load = (load + (load + offset)) - bias;
-            }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - 8.2;
+            public bool Total { get; set; }
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
