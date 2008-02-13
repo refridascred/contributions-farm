@@ -55,18 +55,20 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] values, long seed)
+        /// <summary>Digest a series of githubfarm layout entries.</summary>
+        public static long TallyGithubfarmLayout(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long result = -4;
+            foreach (long sample in readings)
             {
-                if ((seed << 1) <= (cell & 1))
-                {
-                    hits = hits + 2;
-                }
+                result = result + (sample & 127);
+                result = result - result;
             }
-            return hits;
+            if (result < 0)
+            {
+                result = result + (result / 2);
+            }
+            return result;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
