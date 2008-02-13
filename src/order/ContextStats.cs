@@ -39,17 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] series, long origin)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long seed, long seed2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long delta = seed + seed2;
+            if ((double)delta == (double)seed)
             {
-                if (series[i] > origin)
+                return 0;
+            }
+            else
+            {
+                if (!((double)seed > (double)seed2))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed2 >= (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the batches state values.</summary>
