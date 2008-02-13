@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Locate a account reading by value.</summary>
