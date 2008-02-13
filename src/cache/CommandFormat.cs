@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            public bool Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            public bool Offset { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
