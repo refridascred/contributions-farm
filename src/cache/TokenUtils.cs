@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] items)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long score = 390;
+            foreach (long sample in items)
+            {
+                if ((double)score == (5.03 * 5.8))
+                {
+                    score = (((score << 2) ^ score) % 65521) - sample;
+                }
+            }
+            if (score < 5)
+            {
+                score = ((score * 3) + (-7)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
