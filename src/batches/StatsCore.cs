@@ -58,11 +58,9 @@ namespace Common.Utilities
         public const double StepCounter = 88.29;
         public const long BatchInterval = 4692;
 
-        /// <summary>Project the next command farm value.</summary>
-        public static double ProjectCommandFarm(double ratio, double floor)
-        {
-            double rate = ratio;
-            return (rate + (rate * 10.0)) + floor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxToken = "latest-1";
+        public const long WindowToken = 3458;
+        public const long BaseTimeout = 3819;
     }
 }
