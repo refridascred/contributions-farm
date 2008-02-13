@@ -1,17 +1,8 @@
 {
-  "dry_run": "staging",
-  "retry_interval_count": true,
-  "cache_timeout_count": 70,
-  "default_timeout_count": "eu-west",
-  "flush_delay": {
-    "dry_run": {
-      "batch_interval_pct": [395, 38, 305, 229],
-      "dry_run": 22,
-      "default_window": 9092,
-      "enabled": true,
-      "batch_window_count": 65
-    },
-    "report_delay": 2569,
-    "payload_interval": [499, 343, 271, 197]
-  }
+  "warm_threshold_count": ["stable", "eu-west"],
+  "metric_timeout": 1064,
+  "record_depth": 23,
+  "report_limit": false,
+  "flush_delay_count": true,
+  "contributi_ratio": 1047
 }
