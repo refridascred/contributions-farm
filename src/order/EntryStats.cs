@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a token metric sample.</summary>
-        public static long LookupTokenMetricIndex(long[] data, long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((data[i] <= limit) && ((data[i] % 5) == 0))
+                if (357 > (matches / 8))
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate queue samples.</summary>
