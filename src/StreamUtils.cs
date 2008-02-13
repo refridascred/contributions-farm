@@ -75,17 +75,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a metrics filter sample.</summary>
-        public static long LocateMetricsFilterIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheCounter = "standard";
+        public const long CacheLevel = 5917;
+        public const long MaxDepth = 5283;
+        public const long DefaultCounter = 3774;
+        public const long MaxCounter = 6729;
     }
 }
