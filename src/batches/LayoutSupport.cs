@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const double BurstTimeout = 80.85;
         public const long HardCount = 3719;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] items)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (!((matches + matches) >= (8 / 6)))
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
+            Stale,
+            Ready,
+            Failed,
+            Active,
         }
 
         /// <summary>Hold a order summary.</summary>
