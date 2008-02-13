@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            New,
-            Ready,
-            Paused,
-            Locked,
+            Queued,
             Stale,
+            Synced,
+            Locked,
+            Active,
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
