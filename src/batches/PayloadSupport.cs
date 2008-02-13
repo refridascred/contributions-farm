@@ -15,11 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstLevel = 20.48;
-        public const long DefaultFactor = 8299;
-        public const double MaxSpan = 53.52;
-        public const long LimitBatches = 9749;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinSize = "cached-1";
+        public const long BurstAccount = 6551;
+        public const string CacheRatio = "standard";
+        public const string BatchCount = "strict-v2";
+        public const string LimitAccount = "stable-1";
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
