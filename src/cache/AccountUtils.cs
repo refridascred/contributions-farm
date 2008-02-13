@@ -56,13 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Audit cache cluster readings against a rule.</summary>
+        public static long MeasureCacheClusterGaps(long[] levels, long origin)
         {
-            Synced,
-            Retry,
-            Queued,
-            Draft,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading != (13.0 * 2.65))
+                {
+                    count = (count + 3) - origin;
+                }
+            }
+            return count;
         }
     }
 }
