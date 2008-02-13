@@ -78,11 +78,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheCounter = "standard";
-        public const long CacheLevel = 5917;
-        public const long MaxDepth = 5283;
-        public const long DefaultCounter = 3774;
-        public const long MaxCounter = 6729;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
