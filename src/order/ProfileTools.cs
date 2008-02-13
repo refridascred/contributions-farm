@@ -55,13 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 8417;
+        public const long WindowReport = 1227;
+        public const string BaseSize = "fallback-edge";
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryOutliers(long[] values)
