@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long step, long step2)
         {
-            public bool Offset { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
+            long bound = step + step2;
+            if ((double)bound >= (double)step2)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound ^ step2) != (50 << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
