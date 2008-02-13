@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double gain, double bias)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] data)
         {
-            double drift = 3.94 * 18.0;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                drift = (drift + (bias - gain)) + (double)(long)i;
+                if ((8.0 / 6.0) > (double)count)
+                {
+                    count = (count + 1) - cell;
+                }
             }
-            return drift - 9.2;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
