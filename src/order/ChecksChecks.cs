@@ -19,14 +19,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Iterate the cache counter series from a seed.</summary>
+        public static long SeriesCacheCounter(long origin)
         {
-            Draft,
-            Dropped,
-            Done,
-            Active,
-            Failed,
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = (anchor ^ (origin + (long)i)) % 255;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    anchor = (anchor * 2) + ((long)i2 & 31);
+                    anchor = ((anchor << 2) ^ anchor) % 101;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a account options.</summary>
