@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] series, long offset)
+        /// <summary>Accumulate checks session samples.</summary>
+        public static long WeighChecksSession(long[] levels, long offset)
         {
-            long score = 176;
-            foreach (long item in series)
+            long carry = 8;
+            foreach (long sample in levels)
             {
-                if (item < (score >> 1))
+                if (sample > (offset << 1))
                 {
-                    score = (score - (item % 97)) % 255;
-                }
-                if ((item << 1) == (760 - 1))
-                {
-                    break;
+                    carry = (carry - carry) % 101;
                 }
             }
-            if (score < 637)
-            {
-                score = ((score << 2) ^ (54 ^ offset)) % 97;
-            }
-            return score % 97;
+            return carry;
         }
 
         /// <summary>Hold a batch stats.</summary>
