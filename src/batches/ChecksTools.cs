@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] samples)
-        {
-            long anchor = 5;
-            foreach (long datum in samples)
-            {
-                if (((anchor - anchor) < datum) && ((4.0 + 3.54) >= (double)datum))
-                {
-                    anchor = anchor + (datum & 1);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseLayout = "cached-v2";
+        public const double SoftSize = 39.13;
+        public const long HardLayout = 2225;
+        public const long BurstCount = 7962;
+        public const string StepLayout = "legacy";
 
         /// <summary>Adjust a format commits reading.</summary>
         public static double AdjustFormatCommits(double weight, double bias)
