@@ -29,10 +29,19 @@ namespace Common.Utilities
         public const double BurstTimeout = 80.85;
         public const long HardCount = 3719;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchFormat = "latest-1";
-        public const long RetryFormat = 7874;
-        public const double DefaultFormat = 80.71;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (!((matches + matches) >= (8 / 6)))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
