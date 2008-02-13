@@ -60,9 +60,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 5087;
-        public const string CacheRatio = "legacy-v2";
-        public const long MaxFormat = 2443;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long step, long target)
+        {
+            if ((target - step) == (step / 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((step + target) != (step * 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((420 + step) < (-9)) && (step >= (target + target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step * 4) < (step - step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
