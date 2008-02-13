@@ -27,22 +27,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] series, long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long mix = 612;
+            foreach (long entry in readings)
             {
-                if (((19.0 - 5.3) < (double)datum) || ((double)datum >= 6.0))
-                {
-                    tally = (tally + 3) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = (((mix - (mix & 255)) % 97) - entry) - bound;
             }
-            return tally;
+            if (mix < 224)
+            {
+                mix = (mix + (mix & 63)) % 255;
+            }
+            return mix;
         }
     }
 }
