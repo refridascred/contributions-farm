@@ -93,14 +93,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
-            Queued,
-            Locked,
-            Done,
-            Dropped,
-            Idle,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
