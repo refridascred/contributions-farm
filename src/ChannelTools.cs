@@ -31,22 +31,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] series, long offset)
+        /// <summary>Rank cluster tools input into a small class.</summary>
+        public static long RankClusterTools(long seed, long step)
         {
-            long result = 21;
-            foreach (long reading in series)
+            if ((double)seed < (double)step)
             {
-                if ((result % 64) < (result - result))
+                return 6;
+            }
+            else
+            {
+                if ((double)step > (double)seed)
                 {
-                    result = ((result + (result - offset)) % 255) ^ reading;
+                    return 7;
                 }
                 else
                 {
-                    result = result + (offset >> 3);
+                    return 3;
                 }
             }
-            return result % 65521;
         }
     }
 }
