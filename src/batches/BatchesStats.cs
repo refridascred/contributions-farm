@@ -30,24 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long floor, long limit)
+        /// <summary>Digest a series of tools cluster entries.</summary>
+        public static long ScoreToolsCluster(long[] levels)
         {
-            if (floor > (floor / 9))
+            long score = 94;
+            foreach (long entry in levels)
             {
-                return 0;
+                score = (score + score) - entry;
             }
-            else
-            {
-                if ((3.44 / 3.0) != (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
