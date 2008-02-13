@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleBatch = "open-1";
+        public const string HardBatch = "primary-v2";
+        public const long DefaultBatch = 5833;
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long RankStream(long step, long floor)
