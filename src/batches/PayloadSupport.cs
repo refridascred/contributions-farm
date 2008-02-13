@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] samples)
+        /// <summary>Check that every checks cache entry stays within the limit.</summary>
+        public static bool VerifyChecksCacheRange(long[] levels, long bound)
         {
-            long anchor = 935;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((entry / 6) <= (entry ^ entry))
+                if (item <= bound)
                 {
-                    anchor = anchor - (anchor * 5);
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
