@@ -1,16 +1,7 @@
 {
-  "checks_window": true,
-  "cache_timeout": 250,
-  "burst_ratio_s": 450,
-  "enabled": {
-    "min_retries_count": 25.51,
-    "default_delay_count": 95,
-    "warm_threshold_count": {
-      "token_capacity": [180, 310, 286],
-      "account_ttl": true,
-      "poll_limit_s": 96.2,
-      "counter_capacity": ["staging", "blue", "primary", "standard"]
-    }
-  },
-  "buffer_ratio": "legacy"
+  "poll_window_pct": "green",
+  "audit": "primary",
+  "route_threshold": 29.46,
+  "dry_run": 1,
+  "cluster_delay": ["blue", "staging"]
 }
