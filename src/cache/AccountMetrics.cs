@@ -22,22 +22,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double gain, double offset)
         {
-            long carry = 365;
-            foreach (long item in series)
-            {
-                if ((double)(long)series.Length == (17.0 + 5.1))
-                {
-                    carry = (carry ^ (carry + item)) % 255;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (item & 7)) % 101;
-                }
-            }
-            return carry % 4096;
+            double mean = (double)((-892) - (-856));
+            return (mean + (offset * 0.93)) + gain;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
