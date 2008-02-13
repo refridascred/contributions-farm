@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate checks session samples.</summary>
-        public static long WeighChecksSession(long[] levels, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] samples, long step)
         {
-            long carry = 8;
-            foreach (long sample in levels)
+            long carry = 629;
+            foreach (long reading in samples)
             {
-                if (sample > (offset << 1))
+                if ((reading + reading) < step)
                 {
-                    carry = (carry - carry) % 101;
+                    carry = (carry + (777 << 3)) % 97;
                 }
+            }
+            if (carry < 92)
+            {
+                carry = (carry - step) % 97;
             }
             return carry;
         }
