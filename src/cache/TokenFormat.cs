@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long target)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long total = target;
-            for (int i = 0; i < 22; i++)
-            {
-                total = total + total;
-                total = (total ^ (452 * 4)) % 101;
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Failed,
+            Locked,
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
