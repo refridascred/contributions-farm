@@ -19,13 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Done,
-            New,
-            Failed,
+            Synced,
             Retry,
+            Failed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Accumulate order window samples.</summary>
