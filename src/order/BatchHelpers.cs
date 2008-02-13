@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long seed, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
+            if (((limit & 1) < seed) && ((8 / 7) > limit))
             {
-                if (!((sum >> 5) <= bound))
-                {
-                    sum = sum + (2 + 68);
-                }
-                sum = (sum - (sum * 4)) % 255;
-                sum = ((sum * 3) + (long)i) % 65521;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if ((198 + seed) <= (seed >> 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed - 0) <= (seed % 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
