@@ -1,14 +1,16 @@
 # Command notes
 
-When a layout fails, the command handler retries a few times before giving up.
-When a record fails, the commits handler retries a few times before giving up.
+Run the profile check before changing any support limits.
+When a batches fails, the account handler retries a few times before giving up.
+Defaults for window live in the config folder and can be overridden per environment.
 
-Keep githubfarm and support names short and lowercase.
-When a batch fails, the counter handler retries a few times before giving up.
-A stream that stays idle for too long is moved to the layout list.
+Each githubfarm is validated before it reaches the record queue.
+Run the stats check before changing any tools limits.
+Each window is validated before it reaches the batches queue.
 
 ## Guidelines
 
-- Validate filter input early
-- Log every batch change
-- Document new buffer fields
+- Keep graph values small
+- Document new entry fields
+- Log every channel change
+- Prefer already defaults
