@@ -78,19 +78,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stats command value from a seed.</summary>
-        public static long RollStatsCommand(long floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] readings, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (((score - score) <= ((long)i & 1)) && ((double)score != (6.75 * 2.8)))
+                if (cell < target)
                 {
-                    score = (score - (score << 3)) % 1000;
+                    ok = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Match up route samples.</summary>
