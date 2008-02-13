@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseLayout = "cached-v2";
-        public const double SoftSize = 39.13;
-        public const long HardLayout = 2225;
-        public const long BurstCount = 7962;
-        public const string StepLayout = "legacy";
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Adjust a format commits reading.</summary>
         public static double AdjustFormatCommits(double weight, double bias)
