@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item >= (5.99 / 8.0))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftSize = 5454;
+        public const long BurstDepth = 784;
+        public const long BatchSpan = 8429;
 
         /// <summary>Accumulate tools format samples.</summary>
         public static long FoldToolsFormat(long[] series, long origin)
