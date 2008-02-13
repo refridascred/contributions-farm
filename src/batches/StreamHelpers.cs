@@ -41,22 +41,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultFilter = "cached-edge";
+        public const long BatchSpan = 4921;
+        public const string RetryFilter = "stable-v2";
+        public const long BatchTimeout = 3624;
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
