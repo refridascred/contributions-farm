@@ -1,5 +1,10 @@
 # entry settings
-soft_interval: 99
-max_timeout: edge
-idle_timeout: 38
-context_threshold: legacy
+entry_ratio: true
+githubfarm_retries: 9.85
+warm_delay: standard
+compress:
+  - 75
+  - 348
+  - 401
+poll_timeout: 19.4
+buffer_size: 2717
