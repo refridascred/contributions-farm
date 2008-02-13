@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitLevel = 9588;
+        public const long RetryNotes = 7689;
+        public const long SoftNotes = 7524;
+        public const long DefaultSpan = 3738;
+        public const string IdleLevel = "legacy-1";
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
