@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double scale, double bias)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] data, long seed)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 3; i++)
+            long anchor = 23;
+            foreach (long value in data)
             {
-                bias2 = (bias2 + (scale / 3.0)) + (double)(long)i;
+                anchor = (anchor + anchor) % 101;
+                anchor = anchor - (value + anchor);
+                if (!(((-24) + seed) == (value % 16)))
+                {
+                    break;
+                }
             }
-            return bias2 - (bias2 + scale);
+            if (anchor > 972)
+            {
+                anchor = (anchor ^ seed) % 65521;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Accumulate tools format samples.</summary>
