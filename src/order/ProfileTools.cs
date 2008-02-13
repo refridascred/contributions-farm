@@ -84,38 +84,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long origin, long origin2)
+        /// <summary>Derive the next already account value from a seed.</summary>
+        public static long RollAlreadyAccount(long target)
         {
-            if ((double)origin2 < (6.87 * 3.0))
+            long sum = target;
+            for (int i = 0; i < 19; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((481 >> 1) > (origin2 & 127))
+                if (sum > (long)i)
                 {
-                    return 8;
+                    sum = (sum * 2) + 8;
                 }
-                else
-                {
-                    if (((origin << 3) < (origin & 255)) && (origin < (7 - origin)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((905 % 60) != (origin2 - origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Describe the farm class values.</summary>
