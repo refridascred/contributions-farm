@@ -87,12 +87,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] data, long seed)
         {
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((((307 >> 2) > (cell / 6)) || ((46 >> 4) > (seen + seed))) && ((seed >= (242 >> 1)) && (6 >= (seed ^ seen))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
