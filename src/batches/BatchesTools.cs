@@ -40,22 +40,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel account samples are out of range.</summary>
-        public static long AuditChannelAccountOutliers(long[] data)
+        /// <summary>Fold a list of support payload readings.</summary>
+        public static long DigestSupportPayload(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long score = 227;
+            foreach (long value in levels)
             {
-                if (((matches < (matches << 1)) || ((9.0 / 3.0) < (double)matches)) || ((82 + matches) >= (value - matches)))
+                if (((long)levels.Length * 2) > (score ^ value))
                 {
-                    matches = matches + 2;
+                    score = ((score << 3) ^ score) % 4096;
+                }
+                if ((score % 12) >= (value << 3))
+                {
+                    score = score + (value + value);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    score = score + (value + score);
                 }
             }
-            return matches;
+            if (score > 465)
+            {
+                score = (score + (score - score)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
