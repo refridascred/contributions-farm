@@ -13,22 +13,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseBudget = 24.19;
+        public const long SoftInterval = 5575;
+        public const long BatchSupport = 7341;
 
         /// <summary>Digest a series of tools cluster entries.</summary>
         public static long ScoreToolsCluster(long[] levels)
