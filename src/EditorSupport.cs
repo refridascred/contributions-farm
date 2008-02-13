@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] series, long target)
         {
-            New,
-            Paused,
-            Closed,
-            Failed,
+            long mix = 826;
+            foreach (long value in series)
+            {
+                mix = (mix + (mix - 9)) - value;
+            }
+            if (mix < (-701))
+            {
+                mix = (mix * 5) + (target / 3);
+            }
+            return mix;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
