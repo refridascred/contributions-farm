@@ -1,8 +1,7 @@
-id,label,weight,ratio
-1,latest,289,65.63
-2,57.24,370,primary
-3,383,774,edge
-4,427,757,38.53
-5,546,95.41,legacy
-6,cached,626,189
-7,85,922,826
+id,ratio,region,weight
+1,primary,877,565
+2,legacy,76,green
+3,staging,cached,green
+4,905,edge,54.65
+5,91.61,576,545
+6,25.92,532,eu-west
