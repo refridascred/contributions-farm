@@ -33,14 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Iterate the entry context series from a seed.</summary>
+        public static long SeriesEntryContext(long step)
         {
-            Paused,
-            Failed,
-            Queued,
-            Synced,
-            Closed,
+            long sum = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((738 >> 5) >= sum)
+                {
+                    sum = sum - ((long)i - sum);
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
