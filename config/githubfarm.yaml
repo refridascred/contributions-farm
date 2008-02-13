@@ -1,10 +1,17 @@
 # githubfarm settings
-burst_limit: 60
-dry_run: 5711
-enabled: open
-poll_retries_ms: stable
-idle_ttl_count:
-  hard_window_pct: open
-  dry_run: 51.0
-  soft_size: 4781
-  base_interval_ms: 88
+verbose: 52.14
+min_delay_pct: standard
+readonly:
+  hard_ttl_count: edge
+  idle_retries:
+    - open
+    - edge
+    - strict
+  readonly:
+    - strict
+    - green
+  flush_interval_s: 85
+  sync_capacity_s: stable
+  batch_delay_pct: 1
+poll_limit_pct: 30
+flush_window: latest
