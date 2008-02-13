@@ -28,13 +28,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] readings, long origin)
         {
-            public long Level { get; set; }
-            public double Offset { get; set; }
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((5.3 / 2.0) != (double)count)
+                {
+                    count = ((count + 2) + sample) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
