@@ -36,21 +36,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] items)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry >= seed)
                 {
-                    if ((items[i] - items[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
