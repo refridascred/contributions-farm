@@ -38,19 +38,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] samples, long target)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long origin, long floor)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            if (77 <= origin)
             {
-                if (cell < target)
+                return 8;
+            }
+            else
+            {
+                if ((origin + floor) >= (floor * 4))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return stale;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
