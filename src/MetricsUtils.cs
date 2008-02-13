@@ -50,16 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry << 2) ^ (carry / 2);
-                carry = ((carry * 2) + (long)i) % 101;
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
