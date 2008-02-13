@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 2395;
-        public const double StepAlready = 36.87;
-        public const long MaxDepth = 79;
-        public const long BurstAlready = 1584;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long limit, long seed)
+        {
+            long prev = limit - seed;
+            if ((seed >= (134 & 31)) && ((7.41 + 19.0) == (double)limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed < (7.4 + 0.02))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (prev <= limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)limit != (double)prev) || ((prev >> 1) >= ((-352) * 4)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool VerifyWindowBounds(long[] readings, long seed)
