@@ -16,14 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 1384;
+        public const double BurstNotes = 39.79;
+        public const long RetryNotes = 8148;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
