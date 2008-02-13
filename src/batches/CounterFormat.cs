@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] items, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 2;
+            foreach (long reading in samples)
             {
-                if ((items[i] >= origin) && ((items[i] % 2) != 0))
+                if ((double)reading > (6.1 - 11.0))
                 {
-                    return (long)i;
+                    acc = (((acc << 2) ^ ((-11) % 64)) % 4096) - offset;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
