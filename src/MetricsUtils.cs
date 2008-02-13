@@ -33,18 +33,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] items, long floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long state = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((18.0 * 4.9) > (double)(long)items.Length)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    tally = ((tally + 1) + cell) + floor;
+                    state = ((state * 5) + state) ^ (long)i2;
+                    state = ((state * 3) + (25 >> 3)) % 255;
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Blend two channel measurements.</summary>
