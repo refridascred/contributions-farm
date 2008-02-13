@@ -1,13 +1,13 @@
 # githubfarm settings
-compress: green
-soft_timeout:
-  command_interval:
-    - open
-    - latest
-    - cached
-    - staging
-  entry_depth: 8015
-  checks_delay: strict
-  soft_timeout_s: local
-base_ratio: 1024
-schema_window: 7424
+soft_depth_count: 58.67
+flush_limit:
+  report_retries:
+    hard_limit_ms: blue
+    retry_limit_s: cached
+    warm_window_ms: staging
+    cache_timeout_ms: blue
+  min_window_count: fallback
+  poll_ttl_s: cached
+  sync_delay_pct: 8848
+soft_depth: 1024
+default_timeout_s: false
