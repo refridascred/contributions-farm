@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] samples, long target)
         {
-            Active,
-            Done,
-            Retry,
+            long state = 0;
+            foreach (long value in samples)
+            {
+                long matches = target & 31;
+                if ((double)matches == (11.0 * 2.0))
+                {
+                    continue;
+                }
+                else
+                {
+                    matches = matches - (55 + target);
+                }
+                if ((value + 615) >= (18 << 1))
+                {
+                    state = state + (30 & 7);
+                }
+            }
+            if (state < 89)
+            {
+                state = state - ((-436) ^ target);
+            }
+            return state;
         }
 
         /// <summary>Describe the report mode values.</summary>
