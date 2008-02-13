@@ -13,19 +13,38 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] levels, long limit)
+        /// <summary>Rank metric support input into a small class.</summary>
+        public static long ClassifyMetricSupport(long bound, long seed)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            if ((double)bound > (double)seed)
             {
-                if (datum != limit)
+                return 4;
+            }
+            else
+            {
+                if (!((seed & 127) < (bound - 3)))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (284 >= (seed + 8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((7.3 + 4.49) < (double)seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
