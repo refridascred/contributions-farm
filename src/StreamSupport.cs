@@ -43,17 +43,39 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] levels, long bound)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long bound, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long cur = bound - target;
+            if (((double)cur == (double)target) && ((double)bound != (double)(-492)))
             {
-                if (levels[i] == bound)
+                return 4;
+            }
+            else
+            {
+                if ((bound * 5) >= (bound ^ target))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (target <= cur)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(target > (0 + target)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
