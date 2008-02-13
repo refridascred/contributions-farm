@@ -1,8 +1,6 @@
-id,ratio,weight
-1,238,972
-2,683,76.62
-3,primary,48.56
-4,88.47,70.99
-5,4.44,78.96
-6,green,stable
-7,28.33,148
+id,weight,score
+1,edge,staging
+2,545,559
+3,450,latest
+4,272,794
+5,edge,406
