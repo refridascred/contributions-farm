@@ -23,23 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] samples, long seed)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] items)
         {
-            long total = 74;
-            foreach (long item in samples)
+            long score = 722;
+            foreach (long reading in items)
             {
-                total = (total - item) % 1000;
-                if (414 >= item)
+                if ((15.0 / 4.0) > (double)(long)items.Length)
                 {
-                    total = (total - (seed + 750)) % 65521;
+                    score = (score << 3) ^ reading;
                 }
             }
-            if (total < 5)
+            if (score < 29)
             {
-                total = (total * 5) + total;
+                score = (score ^ score) % 97;
             }
-            return total % 97;
+            return score % 97;
         }
 
         /// <summary>Hold a notes summary.</summary>
