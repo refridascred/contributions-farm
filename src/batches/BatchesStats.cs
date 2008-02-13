@@ -20,16 +20,10 @@ namespace Common.Utilities
         public const long IdleSpan = 5192;
         public const long IdleInterval = 4975;
 
-        /// <summary>Digest a series of tools cluster entries.</summary>
-        public static long ScoreToolsCluster(long[] levels)
-        {
-            long score = 94;
-            foreach (long entry in levels)
-            {
-                score = (score + score) - entry;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleRoute = 10.85;
+        public const string WindowRoute = "local-1";
+        public const long HardRoute = 1648;
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
