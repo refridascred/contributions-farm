@@ -16,18 +16,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] values)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((508 + matches) < 170)
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
+            Done,
+            Paused,
+            Dropped,
+            Ready,
+            Active,
         }
 
         /// <summary>Rank batches input into a small class.</summary>
