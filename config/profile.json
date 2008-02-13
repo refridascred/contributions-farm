@@ -1,5 +1,13 @@
 {
-  "retry_ratio_count": "primary",
-  "contributi_retries": false,
-  "warm_capacity": "latest"
+  "route_capacity": 8.12,
+  "retry_capacity_count": "blue",
+  "poll_ratio_s": 9736,
+  "burst_capacity": {
+    "contributi_ratio": "open",
+    "payload_delay": "blue",
+    "batch_ratio": ["eu-west", "fallback", "green"],
+    "burst_depth_s": "fallback"
+  },
+  "idle_depth_s": 100,
+  "batch_interval_ms": "fallback"
 }
