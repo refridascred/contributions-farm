@@ -1,14 +1,8 @@
 {
-  "githubfarm_limit": 3147,
-  "sync_timeout": "legacy",
-  "audit": {
-    "checks_retries": 41.34,
-    "buffer_capacity": "standard",
-    "dry_run": {
-      "entry_threshold": 31.78,
-      "batch_timeout_ms": false,
-      "already_delay": "green"
-    },
-    "audit": true
-  }
+  "retry_delay_count": 1024,
+  "warm_limit_count": "blue",
+  "graph_size": 79.44,
+  "poll_ratio_count": 1323,
+  "dry_run": "latest",
+  "account_delay": 6335
 }
