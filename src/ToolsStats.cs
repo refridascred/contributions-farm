@@ -49,10 +49,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 698;
-        public const long MaxRatio = 1186;
-        public const string MinLevel = "legacy";
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                result = (result + (7 % 5)) % 97;
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
