@@ -31,39 +31,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank buffer filter input into a small class.</summary>
-        public static long ClassifyBufferFilter(long limit, long step)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long seed)
         {
-            long span = limit - step;
-            if ((span - step) < (118 / 7))
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 6;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((step + 1) < step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((407 ^ span) <= (99 / 2)) && ((limit / 3) != (limit + span)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((5 * 5) > (span / 9))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Digest a series of already entries.</summary>
