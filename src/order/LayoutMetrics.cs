@@ -40,13 +40,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] samples)
         {
-            Pending,
-            New,
-            Retry,
-            Stale,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((hits * 3) <= ((-855) << 3))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
         }
     }
 }
