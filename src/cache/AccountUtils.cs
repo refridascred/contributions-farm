@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] readings)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] data)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((5 + count) <= 4)
+                if ((7.51 - 3.6) < (double)hits)
                 {
-                    count = (count + 2) ^ value;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
