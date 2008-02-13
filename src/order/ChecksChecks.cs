@@ -32,11 +32,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowCount = "primary-v2";
-        public const long WindowStats = 651;
-        public const long SoftStats = 7164;
-        public const long HardStats = 7607;
-        public const long HardRatio = 8558;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstRatio = "local";
+        public const long HardQueue = 7749;
+        public const string CacheFactor = "local-v2";
+        public const string DefaultLevel = "legacy-edge";
     }
 }
