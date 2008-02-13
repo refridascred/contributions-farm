@@ -29,12 +29,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheBudget = 5076;
-        public const long RetryLayout = 1014;
-        public const long SoftTimeout = 9151;
-        public const long IdleWidth = 3303;
-        public const string LimitLayout = "alpha-1";
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] values)
