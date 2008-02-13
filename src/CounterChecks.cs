@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the batch channel entries that pass the check.</summary>
+        public static long CountBatchChannelMatches(long[] samples, long target)
         {
-            Locked,
-            Pending,
-            Idle,
-            Closed,
-            Stale,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (!((2 * 4) > (item >> 1)))
+                {
+                    hits = (hits + 3) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
