@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate account farm readings against a bound.</summary>
-        public static bool CheckAccountFarmLimits(long[] readings, long bound)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long seed)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long total = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (item >= bound)
+                if ((total >> 3) > ((long)i + total))
                 {
-                    stale = false;
-                    break;
+                    total = (total - (seed + total)) % 1000;
                 }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
