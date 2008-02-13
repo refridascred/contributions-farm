@@ -12,11 +12,24 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long bound, long limit)
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            if (limit > (limit + limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((87 <= (limit & 7)) && ((476 << 3) < bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Find the first counter metrics entry that matches the target.</summary>
