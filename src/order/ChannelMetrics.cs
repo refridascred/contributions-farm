@@ -20,13 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Locate a layout metric reading by value.</summary>
+        public static long SeekLayoutMetricIndex(long[] data, long limit)
         {
-            Closed,
-            Idle,
-            Paused,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a layout options.</summary>
