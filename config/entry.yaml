@@ -1,20 +1,7 @@
 # entry settings
-base_delay_count:
-  - 287
-  - 148
-  - 139
-contributi_limit: 30
-compress: false
-githubfarm_ttl:
-  min_threshold: legacy
-  hard_timeout_s: 16
-  default_timeout_count: false
-  compress: 59.62
-  poll_ratio_count:
-    - 79
-    - 61
-    - 399
-    - 12
-  max_timeout_ms: legacy
-default_interval_pct: blue
-soft_size: 60
+retry_window_ms: false
+context_depth: primary
+min_timeout_count: true
+persist: 4683
+cache_threshold: false
+audit: strict
