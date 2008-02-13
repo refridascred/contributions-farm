@@ -12,15 +12,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long bound)
+        /// <summary>Fold a list of stream graph readings.</summary>
+        public static long TallyStreamGraph(long[] levels)
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
+            long mark = 2;
+            foreach (long item in levels)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                mark = mark - (item >> 1);
             }
-            return state;
+            return mark % 97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
