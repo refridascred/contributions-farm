@@ -61,9 +61,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryRoute = "staging-edge";
-        public const long HardSize = 4359;
-        public const long CacheFactor = 5615;
+        /// <summary>Check that every schema already entry stays within the limit.</summary>
+        public static bool GuardSchemaAlreadyRange(long[] data, long target)
+        {
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
