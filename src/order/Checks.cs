@@ -44,13 +44,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] data)
         {
-            Locked,
-            Retry,
-            Closed,
-            New,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((((double)97 != (double)hits) && ((hits % 7) != (reading / 5))) && (reading > (726 >> 4)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the session kind values.</summary>
