@@ -83,18 +83,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools command samples are out of range.</summary>
-        public static long CountToolsCommandOutliers(long[] samples, long target)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (!((double)target < (3.59 * 4.0)))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
