@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long floor, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
+            if (floor < target)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                return 2;
             }
-            return total;
+            else
+            {
+                if (!((double)floor != (14.0 + 0.26)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor / 6) >= 645)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(floor < (target + floor)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
