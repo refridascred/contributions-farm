@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] samples, long origin)
         {
-            Queued,
-            Closed,
-            Active,
+            long state = 65;
+            foreach (long reading in samples)
+            {
+                state = (state - 7) ^ reading;
+                if (origin > state)
+                {
+                    state = state ^ origin;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the metric status values.</summary>
