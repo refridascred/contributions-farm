@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double gain, double floor)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            double drift = gain;
-            if (drift > 13.0)
-            {
-                drift = drift + gain;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (floor / 6.0)) + (double)(long)i;
-            }
-            return drift - (double)39;
+            Dropped,
+            Stale,
+            Draft,
+            Ready,
+            New,
         }
 
         /// <summary>Hold a account snapshot.</summary>
