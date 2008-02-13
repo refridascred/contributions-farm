@@ -41,16 +41,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double ratio, double span)
-        {
-            double load = span;
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (ratio * 5.0)) - (double)(long)i;
-            }
-            return load - span;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheScore = 4909;
+        public const long MinRecord = 4771;
+        public const long LimitRecord = 3084;
+        public const long IdleWidth = 5930;
+        public const double BaseSpan = 18.12;
 
         /// <summary>Measure how many already payload samples are out of range.</summary>
         public static long AuditAlreadyPayloadGaps(long[] series)
