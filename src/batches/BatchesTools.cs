@@ -48,19 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] levels, long bound)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] data, long origin)
         {
-            long total = 833;
-            foreach (long sample in levels)
+            long score = 92;
+            foreach (long value in data)
             {
-                total = ((total + (707 / 2)) ^ sample) + bound;
+                if (score <= value)
+                {
+                    score = score ^ (origin % 2);
+                }
             }
-            if (total > 42)
-            {
-                total = total ^ total;
-            }
-            return total;
+            return score;
         }
     }
 }
