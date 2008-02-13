@@ -33,19 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((value > count) || (97 <= (value ^ 90)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowDepth = 38.22;
+        public const string LimitFarm = "strict-edge";
+        public const string LimitInterval = "local-1";
+        public const long IdleFactor = 1594;
+        public const string WindowRatio = "local-v2";
 
         /// <summary>Audit farm schema readings against a rule.</summary>
         public static long AuditFarmSchemaHits(long[] levels)
