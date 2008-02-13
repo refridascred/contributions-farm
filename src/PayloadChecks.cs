@@ -40,19 +40,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] items, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] items, long floor)
         {
-            bool found = true;
+            bool ok = true;
             foreach (long datum in items)
             {
-                if (datum > seed)
+                if (datum <= floor)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
