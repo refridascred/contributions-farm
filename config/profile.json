@@ -1,7 +1,5 @@
 {
-  "max_ttl_s": 1405,
-  "audit": "open",
-  "persist": 13,
-  "strict": 33.37,
-  "queue_depth": true
+  "retry_ratio_count": "primary",
+  "contributi_retries": false,
+  "warm_capacity": "latest"
 }
