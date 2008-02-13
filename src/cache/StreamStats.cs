@@ -46,11 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftQueue = 15.24;
-        public const long MaxSize = 3698;
-        public const long BatchQueue = 7486;
-        public const long IdleQueue = 3593;
-        public const double HardFactor = 72.45;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
