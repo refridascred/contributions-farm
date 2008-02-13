@@ -74,12 +74,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public double Count { get; set; }
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryRoute = "staging-edge";
+        public const long HardSize = 4359;
+        public const long CacheFactor = 5615;
     }
 }
