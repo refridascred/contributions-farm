@@ -1,5 +1,7 @@
 {
-  "contributi_retries": 3.29,
-  "poll_depth_s": false,
-  "context_interval": true
+  "min_depth": 100,
+  "channel_ttl": "edge",
+  "burst_delay": 9169,
+  "flush_limit_pct": 80,
+  "tools_size": [300, 364]
 }
