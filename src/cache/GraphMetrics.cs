@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of editor metrics readings.</summary>
-        public static long CombineEditorMetrics(long[] data)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long mix = 0;
-            foreach (long cell in data)
-            {
-                if ((41 << 2) != (long)data.Length)
-                {
-                    break;
-                }
-                else
-                {
-                    mix = (mix - (mix % 5)) % 65521;
-                }
-                mix = (mix + cell) % 97;
-                if (mix > (97 & 31))
-                {
-                    mix = (mix * 3) + (mix + cell);
-                }
-                if (((cell - mix) <= ((-887) + 111)) && (479 > mix))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Idle,
+            Closed,
+            Active,
+            Stale,
+            Pending,
         }
 
         /// <summary>Adjust a batches reading.</summary>
