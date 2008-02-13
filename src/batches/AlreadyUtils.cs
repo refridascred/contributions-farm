@@ -43,12 +43,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Retry,
-            Closed,
-            Idle,
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit account readings against a rule.</summary>
