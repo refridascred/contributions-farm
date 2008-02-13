@@ -26,12 +26,18 @@ namespace Common.Utilities
         public const long HardFilter = 1712;
         public const double CacheFactor = 22.91;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowFactor = 8588;
-        public const long BatchRoute = 1308;
-        public const double HardRoute = 50.93;
-        public const long RetryWidth = 9316;
-        public const long WindowRoute = 4402;
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long BucketChecks(long target, long step)
