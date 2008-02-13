@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public string Rank { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            public long Score { get; set; }
+            public double Weight { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next profile session value from a seed.</summary>
