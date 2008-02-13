@@ -59,12 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Combine account payload values into a single score.</summary>
+        public static long TotalAccountPayload(long[] samples)
         {
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            long anchor = 845;
+            foreach (long value in samples)
+            {
+                anchor = anchor ^ (anchor - value);
+                if (((8.53 - 4.5) < (double)78) && ((double)value == (5.5 * 1.0)))
+                {
+                    anchor = anchor + (value % 60);
+                }
+            }
+            return anchor;
         }
     }
 }
