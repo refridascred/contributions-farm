@@ -40,12 +40,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheScore = 4909;
-        public const long MinRecord = 4771;
-        public const long LimitRecord = 3084;
-        public const long IdleWidth = 5930;
-        public const double BaseSpan = 18.12;
+        /// <summary>Audit route metrics readings against a rule.</summary>
+        public static long TallyRouteMetricsGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (!((item > matches) && ((double)matches <= (double)4)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many notes tools samples are out of range.</summary>
         public static long AuditNotesToolsOutliers(long[] series, long origin)
