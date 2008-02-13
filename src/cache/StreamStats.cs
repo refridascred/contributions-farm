@@ -33,23 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double weight, double bias)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double bias, double offset)
         {
-            double load = bias;
-            if (load < (0.4 + bias))
-            {
-                load = load - weight;
-            }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load - (2.3 + bias);
+            double gain = (bias / 3.0) * 4.16;
+            return gain + offset;
         }
 
         /// <summary>Hold a schema info.</summary>
