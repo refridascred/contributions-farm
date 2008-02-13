@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count schema order pairs that satisfy a relation.</summary>
-        public static long CompareSchemaOrderCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 6530;
+        public const double BurstWidth = 83.54;
+        public const long IdleRatio = 1084;
+        public const string CacheSpan = "latest-edge";
+        public const long CacheFactor = 5473;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long MeasureCommandMatches(long[] samples, long offset)
