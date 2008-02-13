@@ -17,11 +17,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitBuffer = "legacy-v2";
-        public const long BaseBuffer = 9215;
-        public const long WindowCount = 7208;
-        public const long StepSpan = 2407;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] readings, long offset)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((offset >> 5) >= offset)
+                {
+                    matches = (matches + 3) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next metric token value from a seed.</summary>
         public static long RollMetricToken(long target)
