@@ -83,15 +83,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] readings)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long seed)
         {
-            long carry = 57;
-            foreach (long entry in readings)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                carry = (carry ^ (entry % 60)) % 255;
+                acc = (acc * 2) + (long)i;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Describe the support kind values.</summary>
