@@ -1,15 +1,12 @@
 {
-  "stats_ttl": "latest",
-  "sync_timeout_count": ["blue", "strict", "local", "strict"],
-  "notes_size": "open",
-  "cache_limit_count": "latest",
-  "githubfarm_delay": "staging",
-  "compress": {
-    "sync_capacity_pct": true,
-    "verbose": true,
-    "readonly": true,
-    "metrics_window": "fallback",
-    "enabled": 66.16,
-    "burst_retries_s": 59
-  }
+  "idle_retries_ms": 48.69,
+  "idle_ratio_s": "fallback",
+  "soft_depth": {
+    "format_ttl": "primary",
+    "persist": "green",
+    "batch_retries": 86.56,
+    "default_window_s": 500
+  },
+  "checks_depth": 8.49,
+  "default_delay_count": "edge"
 }
