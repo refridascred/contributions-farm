@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Count the stats buffer entries that pass the check.</summary>
+        public static long MeasureStatsBufferOutliers(long[] series)
         {
-            Dropped,
-            Ready,
-            Pending,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((reading << 1) <= hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
