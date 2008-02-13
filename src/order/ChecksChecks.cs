@@ -31,17 +31,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a order contributi reading by value.</summary>
-        public static long LocateOrderContributiIndex(long[] data, long limit)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - anchor) % 97;
+                anchor = ((anchor * 4) + anchor) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
