@@ -60,18 +60,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] levels, long seed)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum - 559) <= (seed >> 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 5196;
+        public const long DefaultStats = 4947;
+        public const double RetryStats = 19.15;
+        public const double IdleStats = 64.43;
     }
 }
