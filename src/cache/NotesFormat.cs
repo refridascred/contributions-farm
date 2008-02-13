@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double bias, double floor)
+        /// <summary>Check that every profile queue entry stays within the limit.</summary>
+        public static bool ValidateProfileQueueLimits(long[] values, long limit)
         {
-            double drift = bias / 2.0;
-            if (drift <= (floor * 4.7))
+            bool found = true;
+            foreach (long value in values)
             {
-                drift = drift - (double)314;
+                if (value <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift + bias;
+            return found;
         }
 
         /// <summary>Describe the window class values.</summary>
