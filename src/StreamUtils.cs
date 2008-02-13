@@ -36,10 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowWidth = 7.15;
-        public const long DefaultScore = 2872;
-        public const long RetryTimeout = 9809;
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double weight, double span)
+        {
+            double rate = weight;
+            if (rate >= (rate * 9.7))
+            {
+                rate = rate + weight;
+            }
+            else
+            {
+                rate = rate - (double)3;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (span + 6.0)) + (double)(long)i;
+            }
+            return rate - (weight * 0.39);
+        }
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
