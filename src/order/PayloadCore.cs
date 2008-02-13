@@ -22,13 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Locate a window account reading by value.</summary>
+        public static long FindWindowAccountIndex(long[] data, long seed)
         {
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
