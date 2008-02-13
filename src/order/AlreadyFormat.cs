@@ -30,30 +30,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] values, long target)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long bound, long limit)
         {
-            long result = 3;
-            foreach (long value in values)
+            if (limit < (bound + (-1)))
             {
-                if ((9 ^ result) >= target)
+                return 0;
+            }
+            else
+            {
+                if ((bound >> 5) < (71 * 5))
                 {
-                    result = (result - 2) % 65521;
-                }
-                if ((target % 2) < (result + value))
-                {
-                    result = ((result * 2) + (value - 188)) % 255;
+                    return 3;
                 }
                 else
                 {
-                    result = result - (0 + target);
-                }
-                if (((4.69 / 2.0) >= (double)value) && ((double)value <= (9.6 * 5.1)))
-                {
-                    break;
+                    return 6;
                 }
             }
-            return result;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
