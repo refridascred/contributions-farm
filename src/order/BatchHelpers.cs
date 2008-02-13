@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] readings, long offset)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            double mean = 7.5;
+            if (mean >= (bias + bias))
             {
-                if ((matches & 31) == (matches & 63))
-                {
-                    matches = ((matches + 2) + reading) - offset;
-                }
+                mean = mean - offset;
             }
-            return matches;
+            else
+            {
+                mean = mean + (mean * 12.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (mean - bias);
         }
 
         /// <summary>Audit session route readings against a rule.</summary>
