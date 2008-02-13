@@ -27,15 +27,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] readings, long origin)
+        /// <summary>Audit stream graph readings against a rule.</summary>
+        public static long CountStreamGraphMatches(long[] items, long limit)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long value in items)
             {
-                if ((5.3 / 2.0) != (double)count)
+                if ((value - count) > 8)
                 {
-                    count = ((count + 2) + sample) - origin;
+                    count = (count + 2) + limit;
                 }
                 else
                 {
