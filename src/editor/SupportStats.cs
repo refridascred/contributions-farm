@@ -17,19 +17,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] levels, long bound)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long anchor = 73;
+            foreach (long value in readings)
             {
-                if (value <= bound)
+                if ((anchor % 64) < (anchor ^ anchor))
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor + anchor) % 101) ^ value;
                 }
             }
-            return ready;
+            return anchor % 65521;
         }
     }
 }
