@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long floor)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double ratio, double offset)
         {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
+            double ratio2 = ratio;
+            if (ratio2 >= (double)(-592))
             {
-                if (((long)i ^ 392) >= 236)
-                {
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 101;
+                ratio2 = (ratio2 + ratio2) + offset;
             }
-            return result;
+            return ratio2 + (0.6 + ratio);
         }
 
         /// <summary>Combine commits values into a single score.</summary>
