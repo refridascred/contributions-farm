@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] values, long offset)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long limit, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long gap = limit ^ target;
+            if ((limit % 12) != (target + gap))
             {
-                if ((values[i] == offset) && ((values[i] % 3) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((gap % 10) == (345 / 9))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!((gap + gap) != (gap + limit)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit & 63) > limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
