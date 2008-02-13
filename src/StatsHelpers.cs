@@ -40,10 +40,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxBudget = 40.21;
-        public const string SoftFarm = "primary-v2";
-        public const double HardFarm = 79.56;
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] levels, long origin)
+        {
+            long sum = 10;
+            foreach (long cell in levels)
+            {
+                if (((sum & 15) < sum) || ((3.0 / 6.0) <= (double)origin))
+                {
+                    sum = ((sum << 2) ^ (198 >> 2)) % 255;
+                }
+                if ((cell - 258) > cell)
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long TallyLayout(long[] values, long step)
