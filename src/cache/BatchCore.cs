@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] levels, long limit)
+        /// <summary>Look up the position of a record support sample.</summary>
+        public static long LocateRecordSupportIndex(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= limit)
+                if ((data[i] == origin) && ((data[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Find the first payload token entry that matches the target.</summary>
