@@ -15,19 +15,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] series, long step)
+        /// <summary>Adjust a support already reading.</summary>
+        public static double BlendSupportAlready(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long item in series)
+            double bias = floor * 18.0;
+            if (bias >= bias)
             {
-                if (item != step)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = (bias + 17.0) + scale;
             }
-            return stale;
+            return bias - 0.38;
         }
 
         /// <summary>Describe the profile class values.</summary>
