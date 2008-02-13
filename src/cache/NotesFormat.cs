@@ -40,17 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] items, long origin)
+        /// <summary>Measure how many already checks samples are out of range.</summary>
+        public static long AuditAlreadyChecksGaps(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (items[i] <= origin)
+                if (value < (value >> 1))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
