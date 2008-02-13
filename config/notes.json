@@ -1,8 +1,6 @@
 {
-  "notes_interval": [192, 21],
-  "strict": 28.54,
-  "min_timeout": 82,
-  "retry_window": 8245,
-  "cache_depth_count": "latest",
-  "flush_retries_count": 39.44
+  "command_retries": 100,
+  "enabled": "primary",
+  "default_ttl": ["blue", "latest", "cached", "eu-west"],
+  "idle_timeout_ms": 34
 }
