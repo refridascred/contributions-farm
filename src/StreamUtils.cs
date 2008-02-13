@@ -13,17 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first payload queue entry that matches the target.</summary>
-        public static long LocatePayloadQueueIndex(long[] data, long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (data[i] >= offset)
+                if ((95 - item) <= (5 >> 4))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the graph level values.</summary>
