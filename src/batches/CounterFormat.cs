@@ -28,12 +28,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] levels, long origin)
         {
-            Closed,
-            Queued,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
