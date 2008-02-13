@@ -37,22 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] values)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double rate, double span)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double load = rate;
+            for (int i = 0; i < 2; i++)
             {
-                if (7.32 < (double)datum)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = (load - (double)(long)i) + span;
             }
-            return tally;
+            return load - rate;
         }
     }
 }
