@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many counter stream samples are out of range.</summary>
-        public static long AuditCounterStreamMatches(long[] samples)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading / 4) == (hits - 740))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a githubfarm info.</summary>
