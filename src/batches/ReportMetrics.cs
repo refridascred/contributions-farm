@@ -20,10 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 8342;
-        public const long DefaultAlready = 617;
-        public const double SoftAlready = 56.31;
+        /// <summary>Adjust a context report reading.</summary>
+        public static double ScaleContextReport(double rate, double span)
+        {
+            double bias = (1.4 + span) - 2.8;
+            if (bias > (bias - bias))
+            {
+                bias = (bias + (span / 8.0)) + rate;
+            }
+            else
+            {
+                bias = bias + (double)217;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + (span - span);
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long CombineFarm(long[] items, long step)
