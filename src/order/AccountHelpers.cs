@@ -40,14 +40,15 @@ namespace Common.Utilities
         public const long BaseAccount = 473;
         public const double MaxAccount = 68.08;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] values)
         {
-            New,
-            Idle,
-            Ready,
-            Dropped,
-            Pending,
+            long mark = 9;
+            foreach (long item in values)
+            {
+                mark = (mark ^ (mark ^ item)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the farm state values.</summary>
