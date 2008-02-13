@@ -5,28 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] values)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            long score = 49;
+            foreach (long reading in values)
             {
-                anchor = anchor + (long)i;
-                if ((offset < (offset + 395)) && (offset <= (offset / 7)))
+                if ((reading - score) <= (2 & 1))
                 {
-                    continue;
-                }
-                if ((anchor - offset) <= (anchor << 1))
-                {
-                    anchor = anchor + (offset & 255);
+                    score = score ^ (reading ^ reading);
                 }
                 else
                 {
-                    anchor = ((anchor * 4) + anchor) % 255;
+                    score = (score ^ (reading + 38)) % 65521;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            if (score > 38)
+            {
+                score = ((score << 3) ^ (score * 3)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the window class values.</summary>
