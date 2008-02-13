@@ -37,19 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] items, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (datum < target)
+                if ((cell / 8) <= (1 << 2))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) - floor;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
