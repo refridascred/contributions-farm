@@ -1,7 +1,21 @@
 # support settings
-window_window: local
-persist: 96
-warm_window_pct: cached
-batch_size_pct: false
-batch_depth_ms: true
-cache_window_count: primary
+batch_depth_s:
+  - 70
+  - 469
+default_depth_pct:
+  enabled:
+    retry_limit: 70.57
+    idle_delay_count: 3896
+    tools_ttl: false
+    min_size_count: 7
+  soft_capacity: blue
+  min_delay_s:
+    - standard
+    - eu-west
+base_interval:
+  context_threshold: 48.72
+  poll_capacity: 24
+  max_retries_ms: 15
+  batch_ttl: 39.17
+  tools_size: true
+  base_window: 687
