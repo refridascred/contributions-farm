@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] samples)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] levels)
         {
-            long score = 30;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                double scale = (double)(cell << 3);
-                if (!((scale + 7.0) < scale))
+                if ((entry << 3) < (entry + 63))
                 {
-                    score = (score - (score + 112)) % 65521;
+                    matches = matches + 1;
                 }
-                if ((double)cell < (double)score)
+                else
                 {
-                    score = (score - ((-550) * 5)) % 101;
-                }
-                if ((score - cell) >= (cell + 879))
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Blend two checks measurements.</summary>
