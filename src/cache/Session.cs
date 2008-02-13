@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 6530;
+        public const long SoftRatio = 2136;
+        public const long BaseWidth = 7418;
+        public const long MinFactor = 922;
+        public const string HardDepth = "local-edge";
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long RankStream(long step, long floor)
