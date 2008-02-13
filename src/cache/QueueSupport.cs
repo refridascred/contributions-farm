@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 7758;
-        public const string BatchInterval = "strict";
-        public const long MaxWidth = 3370;
+        /// <summary>Count the order channel entries that pass the check.</summary>
+        public static long AuditOrderChannelHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (seen > (seen & 255))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsMatches(long[] levels, long floor)
