@@ -42,22 +42,12 @@ namespace Common.Utilities
             return scale2 + bias;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] samples)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long carry = 52;
-            foreach (long reading in samples)
-            {
-                if ((reading - carry) > (reading + 6))
-                {
-                    carry = (carry + reading) % 65521;
-                }
-            }
-            if (carry > (-894))
-            {
-                carry = (carry ^ ((long)samples.Length + carry)) % 1000;
-            }
-            return carry;
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
