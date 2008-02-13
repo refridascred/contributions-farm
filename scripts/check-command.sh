@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in blue green eu-west standard; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-stable}"
+mode="${1:-cached}"
 case "${mode}" in
-    stable)
+    strict)
         log "fast path"
         ;;
     *)
