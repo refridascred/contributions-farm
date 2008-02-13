@@ -39,20 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] levels, long limit)
-        {
-            long sum = 6;
-            foreach (long sample in levels)
-            {
-                sum = (((sum * 2) + (limit % 60)) % 97) ^ sample;
-            }
-            if (sum < 97)
-            {
-                sum = (sum ^ (sum / 9)) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 1967;
+        public const double BurstReport = 26.93;
+        public const long BaseReport = 7877;
+        public const long LimitDepth = 3004;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportHits(long[] levels)
