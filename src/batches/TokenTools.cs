@@ -27,18 +27,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] samples)
-        {
-            long mark = 423;
-            foreach (long value in samples)
-            {
-                if ((mark + mark) >= (mark ^ 18))
-                {
-                    mark = (mark + (value & 1)) % 1000;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftChecks = 15.27;
+        public const long BaseChecks = 9643;
+        public const string RetryChecks = "stable-1";
     }
 }
