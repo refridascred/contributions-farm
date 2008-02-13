@@ -1,5 +1,7 @@
 {
-  "retry_window_count": "green",
-  "batch_ratio_count": 4434,
-  "payload_ratio": false
+  "verbose": 41.68,
+  "strict": 29.89,
+  "cluster_ratio": 100,
+  "editor_threshold": "legacy",
+  "audit": "legacy"
 }
