@@ -40,11 +40,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public long Stamp { get; set; }
-            public double Label { get; set; }
+            Pending,
+            New,
+            Retry,
+            Stale,
         }
     }
 }
