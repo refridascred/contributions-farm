@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            Synced,
-            Idle,
+            Active,
             Ready,
             Pending,
-            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Digest a series of farm payload entries.</summary>
