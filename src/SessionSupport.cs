@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetrySpan = 4393;
-        public const double MinFarm = 31.66;
-        public const double RetryScore = 54.01;
-        public const long DefaultTimeout = 6765;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Dropped,
+            Active,
+            Paused,
+            Done,
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long CompareNotesCount(long[] readings)
