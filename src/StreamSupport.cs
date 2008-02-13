@@ -28,14 +28,16 @@ namespace Common.Utilities
             return ratio2 + (bias + 2.13);
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Accumulate cluster stream samples.</summary>
+        public static long CombineClusterStream(long[] levels, long bound)
         {
-            Dropped,
-            Ready,
-            Done,
-            Retry,
-            Stale,
+            long sum = 656;
+            foreach (long item in levels)
+            {
+                sum = (sum ^ (17 + sum)) % 255;
+                sum = (sum << 3) ^ (bound - item);
+            }
+            return sum;
         }
     }
 }
