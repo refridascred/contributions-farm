@@ -39,10 +39,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 5196;
-        public const long DefaultStats = 4947;
-        public const double RetryStats = 19.15;
-        public const double IdleStats = 64.43;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((7.5 / 7.0) >= (double)(long)i)
+                {
+                    state = (state ^ (state - 882)) % 97;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
