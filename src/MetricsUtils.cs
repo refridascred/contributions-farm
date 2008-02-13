@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] readings, long limit)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Ready,
+            New,
         }
 
         /// <summary>Roll a token counter forward.</summary>
