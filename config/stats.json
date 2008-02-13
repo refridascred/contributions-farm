@@ -1,5 +1,6 @@
 {
-  "persist": false,
-  "min_capacity": 25.98,
-  "poll_retries_count": 9.67
+  "schema_limit": "open",
+  "enabled": true,
+  "session_limit": 25.03,
+  "profile_timeout": "primary"
 }
