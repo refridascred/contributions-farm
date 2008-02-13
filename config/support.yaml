@@ -1,4 +1,7 @@
 # support settings
-farm_ratio: 100
-graph_size: 6889
-flush_capacity_count: 77
+cache_delay_ms: stable
+poll_retries_pct: 71
+warm_timeout_pct: strict
+batch_limit: 86.01
+default_capacity_pct: stable
+stream_interval: 68.88
