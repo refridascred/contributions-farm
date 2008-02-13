@@ -1,16 +1,7 @@
 # entry settings
-batch_ttl: 100
-default_threshold_count: primary
-audit: 94
-hard_retries_s:
-  - 380
-  - 232
-  - 144
-  - 255
-persist:
-  base_limit: 17.64
-  cluster_ttl: open
-  max_limit_s:
-    - cached
-    - stable
-  dry_run: 5396
+sync_size_pct: 44.63
+readonly: edge
+idle_delay_count: 4042
+account_threshold: stable
+poll_threshold: 23
+flush_window: 2455
