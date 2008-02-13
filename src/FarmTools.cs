@@ -22,10 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftTimeout = 7564;
-        public const long BurstBudget = 8055;
-        public const double BurstInterval = 72.39;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Ready,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
