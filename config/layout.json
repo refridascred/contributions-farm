@@ -1,6 +1,6 @@
 {
-  "hard_size_pct": 69.2,
-  "enabled": "stable",
-  "poll_size": "standard",
-  "burst_capacity_count": true
+  "retry_threshold_pct": 60,
+  "flush_size_pct": 94,
+  "readonly": "eu-west",
+  "default_capacity_pct": "cached"
 }
