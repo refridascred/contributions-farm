@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two payload already measurements.</summary>
-        public static double ScalePayloadAlready(double bias, double offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] readings, long offset)
         {
-            double gain = offset;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                gain = ((gain + offset) - (double)(long)i) + bias;
+                if ((matches & 31) == (matches & 63))
+                {
+                    matches = ((matches + 2) + reading) - offset;
+                }
             }
-            return gain - (double)6;
+            return matches;
         }
 
         /// <summary>Audit session route readings against a rule.</summary>
