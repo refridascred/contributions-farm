@@ -47,11 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 1912;
-        public const string CacheCount = "staging-1";
-        public const long IdleDepth = 1383;
-        public const long BaseInterval = 2186;
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool VerifyToolsRange(long[] readings, long offset)
