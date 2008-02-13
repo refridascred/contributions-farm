@@ -42,10 +42,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSession = 5.06;
-        public const long IdleDepth = 7918;
-        public const string BurstSession = "legacy";
-        public const string CacheLevel = "latest-v2";
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
