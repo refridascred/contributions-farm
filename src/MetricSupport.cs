@@ -22,22 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] readings)
+        /// <summary>Find the first layout stream entry that matches the target.</summary>
+        public static long LocateLayoutStreamIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value < (long)readings.Length) && (88 >= ((-913) + value)))
+                if ((values[i] < offset) && ((values[i] % 2) != 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
