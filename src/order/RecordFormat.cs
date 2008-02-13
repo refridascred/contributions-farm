@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long BaseBuffer = 4468;
         public const long BurstBuffer = 1687;
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] data, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (data[i] == limit)
+                if (((5.3 - 6.0) > (double)value) || ((seen * 4) <= seen))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
