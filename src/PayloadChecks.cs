@@ -40,19 +40,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] items, long floor)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Stale,
+            Ready,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
