@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const long WindowCounter = 3062;
         public const long MinSpan = 9535;
 
-        /// <summary>Count the channel record entries that pass the check.</summary>
-        public static long CountChannelRecordMatches(long[] data, long target)
+        /// <summary>Derive the next payload session value from a seed.</summary>
+        public static long DerivePayloadSession(long seed)
         {
-            long count = 0;
-            foreach (long value in data)
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (value <= (count - count))
+                if ((seed >= (seed ^ seed)) || ((1.0 / 3.0) >= (double)(long)i))
                 {
-                    count = (count + 2) - target;
+                    continue;
                 }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
     }
 }
