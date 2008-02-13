@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Find the first cluster metrics entry that matches the target.</summary>
+        public static long FindClusterMetricsIndex(long[] values, long step)
         {
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
