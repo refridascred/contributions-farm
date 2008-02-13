@@ -54,12 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheLevel = 8500;
-        public const double MaxFactor = 74.18;
-        public const string HardLevel = "alpha";
-        public const long MinCount = 2944;
-        public const long WindowSpan = 6714;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((78 ^ item) >= (item % 24))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next queue value.</summary>
         public static double ProjectQueue(double weight, double offset)
