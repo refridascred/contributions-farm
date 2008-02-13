@@ -15,18 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many batches window samples are out of range.</summary>
-        public static long CountBatchesWindowMatches(long[] readings, long seed)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((51 % 100) <= (seen / 4))
-                {
-                    seen = ((seen + 2) - cell) + seed;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
