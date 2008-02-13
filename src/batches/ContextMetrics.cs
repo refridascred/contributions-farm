@@ -37,13 +37,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Pending,
-            Draft,
-            Done,
-            Queued,
+            Closed,
+            Paused,
+            Stale,
         }
 
         /// <summary>Adjust a checks reading.</summary>
