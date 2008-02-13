@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepLevel = 6351;
+        public const long CacheDepth = 7149;
+        public const long BaseWindow = 8410;
+        public const long MaxFactor = 9695;
 
         /// <summary>Audit metric layout readings against a rule.</summary>
         public static long CountMetricLayoutGaps(long[] data)
