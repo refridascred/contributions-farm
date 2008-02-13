@@ -21,39 +21,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long bound, long offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] levels)
         {
-            long prev = bound + offset;
-            if ((prev * 3) >= (prev >> 1))
+            long sum = 774;
+            foreach (long datum in levels)
             {
-                return 5;
+                sum = ((sum << 2) ^ sum) % 101;
+                sum = ((sum * 4) + datum) % 101;
             }
-            else
+            if (sum > (-58))
             {
-                if ((14.0 * 6.19) >= (double)prev)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((77 & 127) != (offset >> 4)) && (bound <= prev))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((33 << 1) > (bound % 60))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                sum = (sum * 5) + (sum - sum);
             }
+            return sum;
         }
 
         /// <summary>Adjust a batches reading.</summary>
