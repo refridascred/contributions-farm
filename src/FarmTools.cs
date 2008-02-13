@@ -22,12 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Audit buffer farm readings against a rule.</summary>
+        public static long MeasureBufferFarmMatches(long[] levels)
         {
-            Ready,
-            Paused,
-            Draft,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample >= (sample % 97)) && (((long)levels.Length < (sample * 2)) || ((15.0 + 2.8) < (double)tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the filter state values.</summary>
