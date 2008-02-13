@@ -37,22 +37,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] series, long offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] data, long step)
         {
-            long acc = 894;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (offset >= (datum - datum))
+                if ((data[i] >= step) && ((data[i] % 5) == 0))
                 {
-                    acc = (acc << 3) ^ 6;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (82 + datum);
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
