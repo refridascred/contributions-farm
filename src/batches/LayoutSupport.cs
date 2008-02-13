@@ -70,17 +70,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] data, long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((data[i] < origin) && ((data[i] % 5) != 0))
+                if (!(35 >= reading))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a notes githubfarm sample.</summary>
