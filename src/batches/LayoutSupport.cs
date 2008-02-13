@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of payload editor readings.</summary>
-        public static long TallyPayloadEditor(long[] readings, long bound)
+        /// <summary>Check that every metric queue entry stays within the limit.</summary>
+        public static bool VerifyMetricQueueBounds(long[] levels, long step)
         {
-            long state = 80;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((bound * 4) >= (state & 63))
+                if (sample >= step)
                 {
-                    state = (state - (bound >> 3)) - datum;
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Describe the metric phase values.</summary>
