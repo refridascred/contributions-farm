@@ -64,12 +64,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long offset)
         {
-            New,
-            Pending,
-            Active,
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = sum + (offset * 4);
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
