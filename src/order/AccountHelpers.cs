@@ -60,13 +60,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            Locked,
-            Idle,
-            Paused,
-            Retry,
+            Failed,
+            Dropped,
+            Closed,
+            Synced,
             Pending,
         }
 
