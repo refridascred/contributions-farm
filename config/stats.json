@@ -1,25 +1,7 @@
 {
-  "sync_ratio": "local",
-  "base_limit_s": {
-    "flush_delay_ms": 96,
-    "max_size_ms": 1579,
-    "max_threshold_ms": "green"
-  },
-  "burst_interval_count": 84.29,
-  "metric_limit": 33.71,
-  "retry_capacity_s": 2545,
-  "max_size_count": {
-    "hard_ttl_s": 12,
-    "cache_timeout": 5226,
-    "payload_size": true,
-    "base_capacity": {
-      "cache_ttl": 65.03,
-      "verbose": "cached",
-      "base_size": [217, 116],
-      "base_timeout_s": "legacy",
-      "channel_size": "legacy"
-    },
-    "retry_ratio_count": 100,
-    "notes_size": 91.34
-  }
+  "verbose": "staging",
+  "flush_ttl_ms": ["fallback", "edge", "green"],
+  "readonly": 7569,
+  "cache_threshold_count": 43.54,
+  "dry_run": 3.29
 }
