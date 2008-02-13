@@ -1,8 +1,7 @@
 {
-  "strict": ["primary", "latest"],
-  "burst_interval_s": [240, 88, 496],
-  "sync_window": 12,
-  "batch_ttl_ms": true,
-  "soft_timeout_s": "green",
-  "max_timeout": false
+  "hard_window_count": 45,
+  "compress": 60,
+  "batch_window_s": true,
+  "burst_retries": 57.78,
+  "base_timeout": false
 }
