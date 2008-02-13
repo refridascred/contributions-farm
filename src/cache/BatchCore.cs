@@ -39,26 +39,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] series)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long sum = 69;
-            foreach (long item in series)
-            {
-                if ((double)(long)series.Length >= (0.01 * 3.17))
-                {
-                    sum = (sum * 4) + (item + (long)series.Length);
-                }
-                if (item < sum)
-                {
-                    sum = ((sum << 2) ^ item) % 4096;
-                }
-                else
-                {
-                    sum = (sum * 5) + (item ^ sum);
-                }
-            }
-            return sum % 97;
+            Idle,
+            New,
+            Stale,
         }
     }
 }
