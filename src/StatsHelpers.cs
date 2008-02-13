@@ -58,19 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] readings, long bound)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            double ratio = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ((ratio + ratio) + (double)(long)i) - floor;
             }
-            return flag;
+            return ratio + (ratio * 1.5);
         }
 
         /// <summary>Describe the cluster mode values.</summary>
