@@ -32,12 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] items)
         {
-            Pending,
-            Idle,
-            Retry,
+            long mix = 422;
+            foreach (long reading in items)
+            {
+                if (reading >= mix)
+                {
+                    mix = (mix + (5 + mix)) % 255;
+                }
+            }
+            return mix % 1000;
         }
     }
 }
