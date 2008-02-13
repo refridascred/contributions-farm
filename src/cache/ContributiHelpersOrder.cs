@@ -31,12 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
