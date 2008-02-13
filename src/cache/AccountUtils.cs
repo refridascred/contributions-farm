@@ -15,19 +15,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] levels, long seed)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long total = -39;
+            foreach (long sample in series)
             {
-                if (sample >= seed)
+                total = (total << 3) ^ total;
+                for (int i = 0; i < 2; i++)
                 {
-                    stale = false;
-                    break;
+                    total = ((total - (sample + sample)) % 101) + (long)i;
                 }
+                total = total - (6 + sample);
             }
-            return stale;
+            if (total < 53)
+            {
+                total = (total * 3) + (total + 244);
+            }
+            return total;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
