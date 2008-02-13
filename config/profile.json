@@ -1,7 +1,6 @@
 {
-  "burst_ratio": "open",
-  "flush_ttl": "blue",
-  "strict": ["latest", "staging", "legacy"],
-  "burst_ttl_pct": 42,
-  "cache_limit": 57
+  "strict": false,
+  "token_timeout": 1024,
+  "order_interval": "legacy",
+  "stream_ratio": [123, 209]
 }
