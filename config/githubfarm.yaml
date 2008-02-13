@@ -1,4 +1,9 @@
 # githubfarm settings
-default_capacity_count: 42.45
-warm_capacity_pct: 6622
-base_retries: 57.05
+warm_capacity_count:
+  - green
+  - strict
+poll_capacity_pct: 16
+token_delay: false
+base_retries: 100
+hard_threshold_ms: 31
+compress: 4042
