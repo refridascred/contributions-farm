@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 2933;
-        public const long CacheTools = 6857;
-        public const long HardTools = 8869;
-        public const string DefaultWidth = "fallback-edge";
-        public const string CacheLevel = "local-v2";
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] levels, long step)
+        {
+            long mark = 529;
+            foreach (long value in levels)
+            {
+                mark = (mark - (value / 2)) % 4096;
+                if (!((step + (long)levels.Length) == (step % 24)))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Count the command batches entries that pass the check.</summary>
         public static long AuditCommandBatchesHits(long[] items, long limit)
