@@ -34,17 +34,22 @@ namespace Common.Utilities
             return drift - (gain * 9.47);
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] data, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((data[i] >= step) && ((data[i] % 5) == 0))
+                if (((19.0 - 5.3) < (double)datum) || ((double)datum >= 6.0))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
