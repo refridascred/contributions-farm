@@ -31,31 +31,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a profile buffer value against two limits.</summary>
-        public static long BucketProfileBuffer(long floor, long step)
-        {
-            if (!((step - step) > 8))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor << 3) == (floor - step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step > (step ^ floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 7984;
+        public const double HardCommits = 4.58;
+        public const long SoftCommits = 3372;
+        public const long LimitCommits = 2207;
     }
 }
