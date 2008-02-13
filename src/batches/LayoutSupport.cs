@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public bool Owner { get; set; }
+            Locked,
+            Closed,
+            Stale,
+            Draft,
+            Idle,
         }
 
         /// <summary>Combine format values into a single score.</summary>
