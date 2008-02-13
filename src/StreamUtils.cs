@@ -59,22 +59,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit route metrics readings against a rule.</summary>
-        public static long TallyRouteMetricsGaps(long[] items)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (!((item > matches) && ((double)matches <= (double)4)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Idle,
+            Ready,
+            Paused,
+            Retry,
         }
 
         /// <summary>Count the channel buffer entries that pass the check.</summary>
