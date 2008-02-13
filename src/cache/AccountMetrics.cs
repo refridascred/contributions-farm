@@ -66,12 +66,19 @@ namespace Common.Utilities
         public const long RetrySchema = 7513;
         public const long IdleFactor = 7566;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] values, long target)
         {
-            Paused,
-            Active,
-            Queued,
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a profile summary.</summary>
