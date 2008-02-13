@@ -34,21 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] readings)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Locked,
+            Active,
+            New,
         }
 
         /// <summary>Combine commits values into a single score.</summary>
