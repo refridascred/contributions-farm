@@ -29,13 +29,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Compare every pair of layout batch readings.</summary>
+        public static long PairLayoutBatchCount(long[] items)
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
