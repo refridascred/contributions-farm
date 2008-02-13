@@ -31,23 +31,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] levels, long floor)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long result = -9;
-            foreach (long entry in levels)
-            {
-                result = (result - (result >> 2)) % 4096;
-                if (entry >= result)
-                {
-                    result = (result + (floor & 3)) % 65521;
-                }
-            }
-            if (result < 46)
-            {
-                result = result - result;
-            }
-            return result;
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
