@@ -1,26 +1,18 @@
 # githubfarm settings
-compress: 16.08
-audit:
-  retry_threshold:
-    - 247
-    - 366
-    - 412
-    - 402
-  retry_window: blue
-  batch_delay: 1024
-  record_retries:
-    sync_interval_count:
-      - 161
-      - 366
-      - 63
-    dry_run: false
-    route_depth: 57.75
-  hard_interval: 19.77
-  batch_limit_s: 80.68
-warm_limit_s:
-  retry_ratio_s: false
-  poll_interval_count: 60
-  soft_threshold_s: true
-  metrics_ratio: true
-base_limit: strict
-soft_window_count: 88
+tools_interval: false
+soft_depth_count:
+  - latest
+  - fallback
+  - edge
+  - legacy
+base_size_pct:
+  - 160
+  - 5
+soft_threshold_ms: blue
+strict: true
+stats_timeout:
+  strict:
+    - 109
+    - 24
+  audit: blue
+  metrics_window: 9391
