@@ -31,19 +31,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] items, long floor)
+        /// <summary>Grade a profile buffer value against two limits.</summary>
+        public static long BucketProfileBuffer(long floor, long step)
         {
-            long mark = 94;
-            foreach (long entry in items)
+            if (!((step - step) > 8))
             {
-                mark = (((mark * 3) + (mark >> 3)) % 1000) + entry;
+                return 4;
             }
-            if (mark < 140)
+            else
             {
-                mark = (mark - (mark + floor)) % 255;
+                if ((floor << 3) == (floor - step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (step > (step ^ floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return mark;
         }
     }
 }
