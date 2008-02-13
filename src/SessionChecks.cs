@@ -47,21 +47,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] data)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 894;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (offset >= (datum - datum))
                 {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc << 3) ^ 6;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (82 + datum);
                 }
             }
-            return seen;
+            return acc;
         }
     }
 }
