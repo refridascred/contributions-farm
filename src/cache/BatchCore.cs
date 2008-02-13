@@ -55,11 +55,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 5662;
-        public const long BatchToken = 893;
-        public const double RetryFactor = 52.39;
-        public const string CacheToken = "staging-edge";
-        public const long IdleDepth = 9787;
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
