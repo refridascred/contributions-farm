@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!((double)(long)i < (3.23 + 9.8)))
-                {
-                    acc = acc - (acc + bound);
-                }
-                if (acc > (acc * 4))
-                {
-                    acc = acc + bound;
-                }
-                if (bound > acc)
-                {
-                    acc = (acc ^ acc) % 4096;
-                }
-                else
-                {
-                    acc = (acc + (bound + bound)) % 101;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
