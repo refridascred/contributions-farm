@@ -27,23 +27,11 @@ namespace Common.Utilities
         public const long SoftTools = 1707;
         public const long BaseCount = 2277;
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long step)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long result = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((step >= (502 * 3)) && ((step ^ 9) >= result))
-                {
-                    break;
-                }
-                else
-                {
-                    result = result ^ 1;
-                }
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
