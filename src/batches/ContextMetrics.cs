@@ -56,24 +56,19 @@ namespace Common.Utilities
             return ratio - floor;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long step, long seed)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] series, long origin)
         {
-            if ((seed % 12) > (seed * 4))
+            long result = -405;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)55 > (double)seed)
+                result = ((result << 2) ^ (result & 1)) + origin;
+                if (!((sample % 64) > sample))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    result = result ^ (sample & 63);
                 }
             }
+            return result;
         }
     }
 }
