@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double ratio, double floor)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] values, long origin)
         {
-            double ratio2 = (ratio / 3.0) + (ratio * 7.5);
-            if (ratio2 > floor)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio2 = ratio2 + floor;
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (double)30;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 - ratio) + (double)(long)i;
-            }
-            return ratio2 + (ratio2 / 6.0);
+            return -1;
         }
 
         /// <summary>Match up entry samples.</summary>
