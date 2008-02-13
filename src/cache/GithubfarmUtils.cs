@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyGaps(long[] samples)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((double)matches == (6.2 - 8.4))
-                {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
