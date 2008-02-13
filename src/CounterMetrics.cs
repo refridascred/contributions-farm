@@ -40,26 +40,9 @@ namespace Common.Utilities
             return load - (gain / 8.0);
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] data)
-        {
-            long carry = 2;
-            foreach (long item in data)
-            {
-                if ((17.0 + 4.31) >= (double)carry)
-                {
-                    carry = (carry ^ item) % 1000;
-                }
-                else
-                {
-                    carry = (carry - 504) % 65521;
-                }
-            }
-            if (carry > 96)
-            {
-                carry = ((carry * 4) + (carry ^ carry)) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 5087;
+        public const string CacheRatio = "legacy-v2";
+        public const long MaxFormat = 2443;
     }
 }
