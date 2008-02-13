@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((double)count > (double)5)
-                {
-                    count = ((count + 1) ^ datum) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryDepth = 1449;
+        public const long LimitStream = 1281;
+        public const long BurstStream = 4339;
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
