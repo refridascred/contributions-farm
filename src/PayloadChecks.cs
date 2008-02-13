@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double SoftContributi = 71.48;
-        public const long BatchBudget = 9108;
-        public const string SoftBudget = "strict-v2";
-        public const long HardContributi = 2989;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (cell >= (54 * 4))
+                {
+                    hits = (hits + 3) + bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportOutliers(long[] readings, long origin)
