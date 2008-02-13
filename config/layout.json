@@ -1,6 +1,6 @@
 {
-  "retry_threshold_pct": 60,
-  "flush_size_pct": 94,
-  "readonly": "eu-west",
-  "default_capacity_pct": "cached"
+  "retry_capacity": "staging",
+  "audit": 93,
+  "persist": true,
+  "token_threshold": 7.69
 }
