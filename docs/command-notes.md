@@ -1,14 +1,10 @@
 # Command notes
 
-Use counter settings to tune how often stream data is refreshed.
-A channel that stays idle for too long is moved to the profile list.
-
-Run the stats check before changing any profile limits.
-Run the metrics check before changing any channel limits.
-The token module keeps commits values in sync with the session cache.
+Keep channel and graph names short and lowercase.
+Keep cluster and queue names short and lowercase.
 
 ## Guidelines
 
-- Validate tools input early
-- Prefer farm defaults
-- Document new batch fields
+- Validate metrics input early
+- Prefer token defaults
+- Log every record change
