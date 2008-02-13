@@ -30,17 +30,13 @@ namespace Common.Utilities
         public const string BurstScore = "alpha";
         public const long StepFactor = 8799;
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long limit)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] samples)
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
+            long anchor = 889;
+            foreach (long sample in samples)
             {
-                if (((16 << 1) != ((long)i - anchor)) || ((6.4 * 6.8) == (double)limit))
-                {
-                    anchor = (anchor - (limit & 1)) % 1000;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                anchor = ((anchor - 363) % 255) ^ sample;
             }
             return anchor;
         }
