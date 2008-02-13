@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context command readings against a bound.</summary>
-        public static bool GuardContextCommandLimits(long[] readings, long target)
-        {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardBuffer = 46.14;
+        public const long StepBuffer = 9170;
+        public const long CacheBuffer = 3186;
+        public const long CacheRatio = 4861;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long WindowRatio = 9411;
