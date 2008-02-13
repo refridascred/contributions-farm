@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] readings)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits - hits) <= 466)
+                if (samples[i] > bound)
                 {
-                    hits = (hits + 1) + entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
