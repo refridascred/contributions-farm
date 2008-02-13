@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long step)
+        /// <summary>Project the next record commits value.</summary>
+        public static double SmoothRecordCommits(double weight, double span)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            double mean = weight / 3.0;
+            if (mean >= (double)8)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                mean = mean + span;
             }
-            return carry;
+            return mean - (double)289;
         }
 
         /// <summary>Describe the tools status values.</summary>
