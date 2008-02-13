@@ -99,21 +99,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of report metric readings.</summary>
-        public static long MatchReportMetricCount(long[] samples)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell != floor)
                 {
-                    if ((samples[i] - samples[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
