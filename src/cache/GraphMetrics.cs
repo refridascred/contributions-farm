@@ -47,13 +47,23 @@ namespace Common.Utilities
         public const long MinCount = 2944;
         public const long WindowSpan = 6714;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double weight, double offset)
         {
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-            public long Region { get; set; }
-            public double Weight { get; set; }
+            double drift = weight;
+            if (drift >= (double)732)
+            {
+                drift = drift + (double)2;
+            }
+            else
+            {
+                drift = drift - (offset * 7.02);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (double)278) + (double)(long)i;
+            }
+            return drift + (double)92;
         }
     }
 }
