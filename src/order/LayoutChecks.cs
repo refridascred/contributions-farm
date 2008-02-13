@@ -77,17 +77,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first already entry entry that matches the target.</summary>
-        public static long LookupAlreadyEntryIndex(long[] levels, long step)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == step) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Failed,
+            Closed,
+            Stale,
         }
     }
 }
