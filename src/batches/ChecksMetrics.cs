@@ -74,18 +74,12 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] readings, long step)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((double)tally == (2.0 * 7.0))
-                {
-                    tally = ((tally + 1) ^ value) + step;
-                }
-            }
-            return tally;
+            Pending,
+            Done,
+            Closed,
         }
     }
 }
