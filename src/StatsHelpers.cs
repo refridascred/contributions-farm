@@ -52,15 +52,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] values, long step)
-        {
-            long score = 303;
-            foreach (long entry in values)
-            {
-                score = ((((score * 5) + 827) % 101) + entry) - step;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheSpan = 7973;
+        public const long IdleBudget = 7035;
+        public const long IdleProfile = 2305;
+        public const double DefaultProfile = 47.4;
+        public const string LimitProfile = "strict-1";
     }
 }
