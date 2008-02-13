@@ -40,16 +40,12 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Derive the next order token value from a seed.</summary>
-        public static long RollOrderToken(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheLevel = 8500;
+        public const double MaxFactor = 74.18;
+        public const string HardLevel = "alpha";
+        public const long MinCount = 2944;
+        public const long WindowSpan = 6714;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
