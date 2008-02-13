@@ -36,17 +36,19 @@ namespace Common.Utilities
         public const double LimitBudget = 56.57;
         public const double BatchSize = 28.5;
 
-        /// <summary>Find the first commits channel entry that matches the target.</summary>
-        public static long SeekCommitsChannelIndex(long[] items, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((items[i] < limit) && ((items[i] % 3) == 0))
+                if (reading > limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Check that every order window entry stays within the limit.</summary>
