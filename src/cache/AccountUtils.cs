@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine cluster profile values into a single score.</summary>
-        public static long DigestClusterProfile(long[] readings, long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] readings)
         {
-            long carry = 667;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (carry < (carry - carry))
+                if ((item & 127) > (seen / 6))
                 {
-                    carry = ((carry * 2) + (206 + sample)) % 1000;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    carry = (carry << 2) ^ (carry - target);
+                    seen = seen - 1;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a contributi options.</summary>
