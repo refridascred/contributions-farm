@@ -1,6 +1,5 @@
 {
-  "context_window": "primary",
-  "cache_capacity_pct": 89,
-  "readonly": 250,
-  "poll_window_count": 30
+  "stats_ratio": 18,
+  "warm_capacity_s": 250,
+  "cache_limit_count": 20.02
 }
