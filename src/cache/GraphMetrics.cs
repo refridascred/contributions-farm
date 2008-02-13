@@ -62,21 +62,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count order profile pairs that satisfy a relation.</summary>
-        public static long OverlapOrderProfileCount(long[] series)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] - series[j]) > 16)
+                    if ((items[i] - items[j]) != 13)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
