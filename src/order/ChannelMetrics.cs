@@ -34,19 +34,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate cluster editor readings against a bound.</summary>
-        public static bool VerifyClusterEditorLimits(long[] levels, long target)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+            public double Score { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
