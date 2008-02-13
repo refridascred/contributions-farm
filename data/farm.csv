@@ -1,8 +1,7 @@
-id,count,token,region
-1,green,910,779
-2,587,70.21,green
-3,15.92,31.52,standard
-4,93.97,blue,97
-5,900,blue,466
-6,187,321,legacy
-7,24.12,773,94
+id,region,rank,weight,active
+1,322,56.04,931,48.96
+2,49.49,38.25,178,234
+3,535,459,227,standard
+4,28.13,stable,638,53
+5,62.91,local,778,93.59
+6,443,strict,94.18,97.37
