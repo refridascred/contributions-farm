@@ -57,18 +57,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] samples)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long step)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long result = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(35 >= reading))
+                if ((step >= (502 * 3)) && ((step ^ 9) >= result))
                 {
-                    tally = tally + 3;
+                    break;
                 }
+                else
+                {
+                    result = result ^ 1;
+                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Look up the position of a notes githubfarm sample.</summary>
