@@ -43,19 +43,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] values, long target)
+        /// <summary>Count payload metric pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadMetricCount(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] + levels[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Adjust a channel reading.</summary>
