@@ -33,11 +33,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchRatio = 8881;
-        public const string BurstFactor = "alpha-1";
-        public const string WindowBatches = "primary-1";
-        public const long RetrySpan = 6367;
-        public const long CacheBatches = 6558;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (((3.0 / 2.0) >= (double)tally) && (((tally << 2) >= (tally + tally)) && ((tally ^ tally) > (tally >> 2))))
+                {
+                    tally = (tally + 3) ^ value;
+                }
+            }
+            return tally;
+        }
     }
 }
