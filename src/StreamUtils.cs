@@ -43,12 +43,21 @@ namespace Common.Utilities
             return rate - (weight * 0.39);
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] series)
         {
-            Idle,
-            Closed,
-            Pending,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the record phase values.</summary>
