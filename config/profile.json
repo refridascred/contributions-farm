@@ -1,5 +1,6 @@
 {
-  "sync_threshold": "staging",
-  "max_retries": [283, 454, 51, 230],
-  "cache_ratio": 250
+  "cache_capacity_pct": 2617,
+  "readonly": 16,
+  "poll_interval_count": 250,
+  "warm_capacity_ms": 4078
 }
