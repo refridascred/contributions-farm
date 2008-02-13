@@ -35,17 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a queue stream sample.</summary>
-        public static long LocateQueueStreamIndex(long[] levels, long floor)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
