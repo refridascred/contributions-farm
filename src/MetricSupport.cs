@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public double Token { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 2395;
+        public const double StepAlready = 36.87;
+        public const long MaxDepth = 79;
+        public const long BurstAlready = 1584;
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
