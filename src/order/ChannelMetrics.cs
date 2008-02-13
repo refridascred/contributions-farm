@@ -34,18 +34,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many context channel samples are out of range.</summary>
-        public static long AuditContextChannelMatches(long[] data, long step)
+        /// <summary>Validate cluster editor readings against a bound.</summary>
+        public static bool VerifyClusterEditorLimits(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if ((6 & 1) == ((long)data.Length / 3))
+                if (item <= target)
                 {
-                    matches = ((matches + 2) + item) - step;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
