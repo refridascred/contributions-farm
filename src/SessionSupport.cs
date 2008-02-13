@@ -31,18 +31,23 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] readings)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long result = -9;
+            foreach (long entry in levels)
             {
-                if (matches <= (matches / 3))
+                result = (result - (result >> 2)) % 4096;
+                if (entry >= result)
                 {
-                    matches = (matches + 2) - datum;
+                    result = (result + (floor & 3)) % 65521;
                 }
             }
-            return matches;
+            if (result < 46)
+            {
+                result = result - result;
+            }
+            return result;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
