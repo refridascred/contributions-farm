@@ -32,18 +32,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] items)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long limit, long step)
         {
-            long mix = 422;
-            foreach (long reading in items)
+            if ((497 & 7) > step)
             {
-                if (reading >= mix)
+                return 4;
+            }
+            else
+            {
+                if (!((step * 4) > step))
                 {
-                    mix = (mix + (5 + mix)) % 255;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return mix % 1000;
         }
     }
 }
