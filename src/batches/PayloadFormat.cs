@@ -25,15 +25,17 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double bias, double floor)
+        /// <summary>Find the first cluster contributi entry that matches the target.</summary>
+        public static long SeekClusterContributiIndex(long[] series, long origin)
         {
-            double gain = (floor * 1.0) - (floor / 4.0);
-            if (gain > (bias + 9.7))
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + floor;
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return gain + (bias * 11.0);
+            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
