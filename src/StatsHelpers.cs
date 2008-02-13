@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 116;
-        public const double SoftRatio = 61.65;
-        public const long RetrySchema = 7593;
-        public const long IdleDepth = 4470;
-        public const long MaxDepth = 4046;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] samples, long offset)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)tally <= (3.2 + 4.07))
+                {
+                    tally = ((tally + 3) + entry) + offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
