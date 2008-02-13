@@ -32,19 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] values, long offset)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
