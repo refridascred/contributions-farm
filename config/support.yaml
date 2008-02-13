@@ -1,7 +1,23 @@
 # support settings
-sync_depth_s: true
-strict: 8939
-default_depth_count:
-  - 119
-  - 145
-  - 110
+burst_size_ms:
+  sync_window_s:
+    stream_retries: cached
+    max_retries_pct: 4188
+    persist: 25.63
+    base_timeout_count: 60
+    poll_ratio_ms: cached
+    sync_interval_count: eu-west
+  poll_delay: cached
+  min_delay_s: 60
+  warm_limit:
+    order_limit: 29.24
+    base_timeout_s: 4645
+    base_depth: 5729
+    soft_timeout_s: 49.51
+    audit: 4794
+    cluster_limit:
+      - green
+      - strict
+      - cached
+readonly: true
+tools_size: 70
