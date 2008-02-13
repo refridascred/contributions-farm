@@ -41,14 +41,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public long Ratio { get; set; }
-            public double Token { get; set; }
-            public bool Size { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 3256;
+        public const long MaxSize = 9519;
+        public const long BaseRatio = 183;
+        public const long HardLevel = 1437;
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
