@@ -49,13 +49,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Locked,
-            Done,
-            Ready,
-            Draft,
+            Paused,
+            Active,
+            New,
         }
 
         /// <summary>Digest a series of already entries.</summary>
