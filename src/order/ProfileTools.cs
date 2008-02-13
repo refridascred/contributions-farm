@@ -54,33 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token already pair into a bucket.</summary>
-        public static long RankTokenAlready(long origin, long target)
-        {
-            long next = origin - target;
-            if ((origin % 10) < origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((next * 3) <= ((-53) * 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin * 5) == (target + target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxScore = 3511;
+        public const long MaxGraph = 9540;
+        public const double LimitBudget = 56.57;
+        public const double BatchSize = 28.5;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountHits(long[] samples, long seed)
