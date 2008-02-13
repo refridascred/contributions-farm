@@ -41,16 +41,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Iterate the cluster tools series from a seed.</summary>
-        public static long SeriesClusterTools(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWidth = 37.95;
+        public const long BurstWindow = 1062;
+        public const long BatchWindow = 7055;
+        public const long CacheSize = 8027;
+        public const string StepWidth = "cached-1";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BaseDepth = 7214;
