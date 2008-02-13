@@ -39,18 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] items, long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long anchor = 27;
+            foreach (long reading in readings)
             {
-                if (seed >= (seed - hits))
-                {
-                    hits = (hits + 3) + item;
-                }
+                anchor = (((anchor << 2) ^ (long)readings.Length) % 1000) - origin;
+                anchor = (anchor ^ (reading << 2)) % 65521;
             }
-            return hits;
+            return anchor % 65521;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
