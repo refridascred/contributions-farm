@@ -30,21 +30,26 @@ namespace Common.Utilities
             return scale2 + (double)(-99);
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] readings)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 6;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 5; i++)
                 {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result - (result / 6)) - (long)i;
+                }
+                if ((17.0 / 3.0) < (double)result)
+                {
+                    result = (result ^ (bound + bound)) % 101;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (datum - datum)) % 101;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Describe the context state values.</summary>
