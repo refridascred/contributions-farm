@@ -1,6 +1,6 @@
-id,rank,token,active
-1,96.41,26.86,edge
-2,297,28.74,502
-3,cached,273,197
-4,91.23,874,5.79
-5,52.1,477,cached
+id,count,label,ratio
+1,16.53,98.12,staging
+2,101,215,30.22
+3,120,67.52,629
+4,218,eu-west,green
+5,515,staging,local
