@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Scale a support notes figure with a bias.</summary>
+        public static double ScaleSupportNotes(double ratio, double bias)
         {
-            public bool Label { get; set; }
-            public double Total { get; set; }
+            double mean = bias;
+            return (mean + (double)59) + ratio;
         }
 
         /// <summary>Check that every metric queue entry stays within the limit.</summary>
