@@ -1,7 +1,6 @@
-id,count,rank,region,token
-1,929,96.03,504,469
-2,422,stable,primary,green
-3,326,open,482,393
-4,872,latest,49.35,205
-5,59.92,blue,619,8
-6,standard,485,standard,legacy
+id,count
+1,standard
+2,latest
+3,667
+4,fallback
+5,41.86
