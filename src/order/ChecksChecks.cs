@@ -22,22 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cache counter series from a seed.</summary>
-        public static long SeriesCacheCounter(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = (anchor ^ (origin + (long)i)) % 255;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    anchor = (anchor * 2) + ((long)i2 & 31);
-                    anchor = ((anchor << 2) ^ anchor) % 101;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleQueue = "legacy-1";
+        public const long RetryTimeout = 934;
+        public const double RetryQueue = 12.59;
 
         /// <summary>Adjust a queue reading.</summary>
         public static double ProjectQueue(double ratio, double floor)
