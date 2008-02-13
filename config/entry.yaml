@@ -1,17 +1,12 @@
 # entry settings
-retry_ttl_count: fallback
-stats_size:
-  - 435
-  - 48
+queue_size:
+  - 483
   - 47
-  - 251
-verbose:
-  - 301
-  - 31
-  - 476
-  - 406
-context_retries: 46
-min_size: true
-flush_threshold_pct:
-  - cached
-  - strict
+commits_capacity:
+  - 25
+  - 295
+enabled:
+  - staging
+  - standard
+  - stable
+  - open
