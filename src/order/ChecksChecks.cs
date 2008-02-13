@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long seed)
         {
-            public bool Stamp { get; set; }
-            public string Score { get; set; } = "";
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
