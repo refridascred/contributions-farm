@@ -35,26 +35,9 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] readings)
-        {
-            long acc = 125;
-            foreach (long reading in readings)
-            {
-                if ((reading ^ reading) < reading)
-                {
-                    acc = ((acc * 5) + (acc - acc)) % 255;
-                }
-                if (!((reading % 97) <= (3 >> 5)))
-                {
-                    acc = acc ^ (reading >> 5);
-                }
-                if ((acc >> 3) != (reading % 100))
-                {
-                    acc = (acc * 5) + acc;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 3701;
+        public const long BatchLayout = 8061;
+        public const long DefaultCount = 96;
     }
 }
