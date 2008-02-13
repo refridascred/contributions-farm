@@ -60,17 +60,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] levels, long origin)
+        /// <summary>Audit command layout readings against a rule.</summary>
+        public static long TallyCommandLayoutOutliers(long[] series, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 3) != 0))
+                if ((matches >> 2) != (step ^ matches))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a already options.</summary>
