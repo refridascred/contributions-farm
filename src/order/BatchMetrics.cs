@@ -57,13 +57,18 @@ namespace Common.Utilities
         public const long WindowTimeout = 6498;
         public const long DefaultReport = 5479;
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum - datum) != ((long)levels.Length * 5))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
