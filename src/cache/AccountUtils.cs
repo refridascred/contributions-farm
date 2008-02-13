@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
+            Idle,
             Active,
-            Dropped,
-            Failed,
+            Synced,
+            New,
+            Locked,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
