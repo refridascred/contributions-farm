@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] data)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] samples)
         {
             long seen = 0;
-            foreach (long entry in data)
+            foreach (long item in samples)
             {
-                if ((((seen / 8) < 8) && ((entry & 15) == (seen + 2))) && (2.11 >= (double)(long)data.Length))
+                if ((seen % 100) >= 0)
                 {
-                    seen = seen + 3;
+                    seen = (seen + 3) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
