@@ -28,19 +28,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double bias, double span)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            double weight = (bias - bias) / 3.0;
-            if (weight >= (double)46)
-            {
-                weight = (weight + (double)468) - span;
-            }
-            else
-            {
-                weight = weight - (18.0 / 4.0);
-            }
-            return weight + bias;
+            Failed,
+            Ready,
+            Retry,
+            Idle,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
