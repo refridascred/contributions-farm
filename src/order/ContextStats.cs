@@ -25,24 +25,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Accumulate tools format samples.</summary>
-        public static long FoldToolsFormat(long[] series, long origin)
+        /// <summary>Audit context record readings against a rule.</summary>
+        public static long AuditContextRecordGaps(long[] data)
         {
-            long total = 1;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long reading in data)
             {
-                long next = total;
-                if (!(((next ^ total) <= item) || ((total % 5) <= (origin + origin))))
+                if (reading >= (count / 8))
                 {
-                    total = (total - (item >> 1)) % 1000;
+                    count = count + 3;
                 }
-                total = total ^ (item / 7);
             }
-            if (total > 49)
-            {
-                total = ((total << 3) ^ (85 & 31)) % 65521;
-            }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
