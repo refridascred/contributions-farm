@@ -35,11 +35,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] levels, long bound)
         {
-            public bool Region { get; set; }
-            public double Mode { get; set; }
+            long total = 833;
+            foreach (long sample in levels)
+            {
+                total = ((total + (707 / 2)) ^ sample) + bound;
+            }
+            if (total > 42)
+            {
+                total = total ^ total;
+            }
+            return total;
         }
     }
 }
