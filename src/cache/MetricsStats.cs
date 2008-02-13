@@ -44,21 +44,13 @@ namespace Common.Utilities
         public const double BurstBudget = 40.85;
         public const long BurstSpan = 8662;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] series)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long score = 1;
-            foreach (long entry in series)
-            {
-                score = score ^ (entry + score);
-                score = (score - (entry - entry)) % 101;
-                score = (score - (score & 63)) % 65521;
-            }
-            if (score > 940)
-            {
-                score = score ^ (score - (long)series.Length);
-            }
-            return score;
+            public long Region { get; set; }
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
