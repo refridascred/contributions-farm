@@ -20,22 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batch token samples are out of range.</summary>
-        public static long CountBatchTokenMatches(long[] values)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((2.98 - 3.0) >= (double)value)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
