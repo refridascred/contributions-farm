@@ -30,17 +30,19 @@ namespace Common.Utilities
         public const double StepCount = 57.33;
         public const double LimitCounter = 66.6;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] data, long offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double rate, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = offset;
+            if (mean > mean)
             {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
+                mean = (mean - mean) - rate;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (offset / 4.0)) + (double)(long)i;
+            }
+            return mean + offset;
         }
 
         /// <summary>Define window limits and defaults.</summary>
