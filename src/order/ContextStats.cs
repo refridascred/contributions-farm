@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long origin, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] series)
         {
-            if (((double)limit == (3.1 + 1.99)) && ((origin % 60) >= (origin - limit)))
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((730 & 3) >= limit)
+                if (!!((entry - count) < (count * 2)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin & 15) < (limit << 1)) || ((double)limit == (1.01 / 7.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((9.5 / 4.0) <= (double)limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
