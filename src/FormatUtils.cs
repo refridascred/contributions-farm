@@ -60,18 +60,15 @@ namespace Common.Utilities
         public const double BaseFilter = 85.08;
         public const long WindowFilter = 7285;
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] samples)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((648 - tally) >= reading)
                 {
-                    if ((samples[i] + samples[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
             return tally;
