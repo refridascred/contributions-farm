@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Digest a series of batches entry entries.</summary>
+        public static long ScoreBatchesEntry(long[] readings)
         {
-            Paused,
-            Retry,
-            Idle,
-            Locked,
-            Queued,
+            long acc = 48;
+            foreach (long item in readings)
+            {
+                acc = (((acc * 4) + (6 + acc)) % 101) - item;
+                acc = ((acc << 2) ^ (acc >> 1)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next metric payload value from a seed.</summary>
