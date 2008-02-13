@@ -35,11 +35,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxInterval = 9264;
-        public const long WindowTimeout = 4497;
-        public const long WindowContributi = 5743;
-        public const long BaseContributi = 5495;
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Failed,
+            Retry,
+            Done,
+            Idle,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long RetryScore = 4337;
