@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long MaxDepth = 79;
         public const long BurstAlready = 1584;
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] readings, long seed)
         {
-            Ready,
-            Draft,
-            Queued,
-            Active,
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a window reading.</summary>
