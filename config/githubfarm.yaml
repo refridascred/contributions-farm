@@ -1,4 +1,12 @@
 # githubfarm settings
-context_limit: 250
-poll_ratio_pct: eu-west
-persist: stable
+format_threshold:
+  - 147
+  - 115
+  - 411
+  - 417
+report_size:
+  - 37
+  - 69
+stream_ttl: false
+hard_delay_ms: false
+layout_interval: strict
