@@ -33,31 +33,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long seed, long bound)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] items, long target)
         {
-            if ((seed + seed) <= (bound ^ seed))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound << 1) <= bound)
+                if (items[i] > target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound >> 5) <= (4 >> 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a metrics summary.</summary>
