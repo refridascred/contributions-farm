@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] values, long origin)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            long total = 123;
+            foreach (long sample in values)
+            {
+                if (!((sample + sample) > (total + sample)))
+                {
+                    total = (total * 2) + origin;
+                }
+            }
+            if (total > 792)
+            {
+                total = (total + ((long)values.Length << 3)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
