@@ -18,13 +18,39 @@ namespace Common.Utilities
         public const long HardSize = 3425;
         public const double BatchLayout = 48.61;
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Rank buffer filter input into a small class.</summary>
+        public static long ClassifyBufferFilter(long limit, long step)
         {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            long span = limit - step;
+            if ((span - step) < (118 / 7))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step + 1) < step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((407 ^ span) <= (99 / 2)) && ((limit / 3) != (limit + span)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((5 * 5) > (span / 9))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next channel order value from a seed.</summary>
