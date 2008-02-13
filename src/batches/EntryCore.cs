@@ -63,12 +63,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double scale, double span)
         {
-            Active,
-            Draft,
-            Dropped,
+            double bias = (double)86 / 2.0;
+            if (bias < (scale * 8.19))
+            {
+                bias = bias + (double)9;
+            }
+            return bias - span;
         }
     }
 }
