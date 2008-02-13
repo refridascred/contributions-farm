@@ -43,10 +43,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 1437;
-        public const long IdleCount = 5439;
-        public const long BatchTimeout = 421;
+        /// <summary>Derive the next graph entry value from a seed.</summary>
+        public static long DeriveGraphEntry(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = (sum + ((long)i & 63)) % 101;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
