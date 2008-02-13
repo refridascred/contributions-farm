@@ -16,19 +16,11 @@ namespace Common.Utilities
             return load + (double)0;
         }
 
-        /// <summary>Derive the next payload stream value from a seed.</summary>
-        public static long StepPayloadStream(long floor)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long sum = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    sum = (((sum * 4) + (sum << 3)) % 97) ^ (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a contributi options.</summary>
