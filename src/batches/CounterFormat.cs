@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long floor, long seed)
-        {
-            if (((seed - seed) < (seed - floor)) || (((-95) & 15) < (2 ^ floor)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed % 97) == (floor + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((seed * 4) <= (89 - seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed - 373) >= (floor + floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 7111;
+        public const long MaxRatio = 5767;
+        public const long IdleInterval = 150;
+        public const string StepAlready = "standard-edge";
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long FoldFarm(long[] readings, long origin)
