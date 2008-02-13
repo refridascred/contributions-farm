@@ -20,20 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] data)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long carry = 3;
-            foreach (long reading in data)
-            {
-                if ((reading & 127) >= reading)
-                {
-                    carry = ((carry * 5) + (carry * 3)) % 4096;
-                    carry = (carry + reading) % 97;
-                }
-                carry = (carry ^ carry) % 101;
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
