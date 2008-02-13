@@ -29,20 +29,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the payload schema series from a seed.</summary>
-        public static long StepPayloadSchema(long seed)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double bias, double offset)
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
+            double load = 1.0;
+            if (load >= (10.0 - load))
             {
-                if ((seed - seed) != (1 % 5))
-                {
-                    result = (result * 3) + (seed ^ result);
-                    break;
-                }
-                result = ((result * 5) + (long)i) % 101;
+                load = (load + (load + offset)) - bias;
             }
-            return result;
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - 8.2;
         }
     }
 }
