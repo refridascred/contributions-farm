@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] samples, long limit)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
