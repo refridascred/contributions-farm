@@ -24,19 +24,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] data, long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] series, long floor)
         {
-            long mix = 9;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long value in series)
             {
-                mix = (((mix ^ mix) % 97) ^ entry) + floor;
-                if ((2.43 * 6.33) <= (double)mix)
+                if ((floor / 7) < (floor * 2))
                 {
-                    mix = mix + (129 << 1);
+                    count = (count + 1) + value;
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
