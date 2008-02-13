@@ -16,14 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Done,
-            Paused,
-            Dropped,
-            Ready,
-            Active,
+            public bool Score { get; set; }
+            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
