@@ -12,26 +12,14 @@ namespace Common.Utilities
         public const string CacheCount = "standard-v2";
         public const string IdleSession = "alpha-1";
 
-        /// <summary>Combine report cluster values into a single score.</summary>
-        public static long DigestReportCluster(long[] values)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long score = 889;
-            foreach (long sample in values)
-            {
-                if (((long)values.Length < score) && ((double)score <= 2.4))
-                {
-                    score = score - (score >> 5);
-                }
-                if ((sample >> 5) == (sample + score))
-                {
-                    break;
-                }
-            }
-            if (score < 93)
-            {
-                score = (score * 3) + score;
-            }
-            return score;
+            New,
+            Idle,
+            Done,
+            Pending,
+            Retry,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
