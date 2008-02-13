@@ -1,6 +1,6 @@
-id,region,label
-1,blue,71.24
-2,edge,872
-3,312,13.7
-4,583,72.94
-5,local,blue
+id,region,label,weight
+1,534,339,556
+2,794,strict,latest
+3,20.29,148,45.57
+4,staging,650,35.38
+5,70,fallback,76.24
