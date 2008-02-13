@@ -44,21 +44,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] levels)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading < (hits / 9))
                 {
-                    if ((levels[i] ^ levels[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) + target;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
