@@ -29,18 +29,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (!((datum << 2) > (datum & 127)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepDepth = 6405;
+        public const long IdleSize = 5866;
+        public const string HardTimeout = "latest-v2";
+        public const long IdleLevel = 7354;
+        public const double MaxCache = 21.15;
     }
 }
