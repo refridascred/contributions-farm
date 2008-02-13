@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] levels)
         {
-            Ready,
-            Locked,
-            Pending,
-            Synced,
-            Stale,
+            long mark = 24;
+            foreach (long item in levels)
+            {
+                if ((item / 6) != (item + item))
+                {
+                    mark = ((mark * 2) + (mark - mark)) % 97;
+                }
+                else
+                {
+                    mark = mark + item;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
