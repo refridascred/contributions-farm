@@ -12,15 +12,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double gain, double bias)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] samples, long bound)
         {
-            double weight = 5.7;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                weight = (((weight + weight) + (double)(long)i) + gain) + bias;
+                if (reading <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight - weight;
+            return stale;
         }
 
         /// <summary>Match up context stream samples.</summary>
