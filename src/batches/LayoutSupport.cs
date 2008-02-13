@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsRange(long[] items, long step)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
