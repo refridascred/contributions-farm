@@ -15,24 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] series)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long total = -39;
-            foreach (long sample in series)
-            {
-                total = (total << 3) ^ total;
-                for (int i = 0; i < 2; i++)
-                {
-                    total = ((total - (sample + sample)) % 101) + (long)i;
-                }
-                total = total - (6 + sample);
-            }
-            if (total < 53)
-            {
-                total = (total * 3) + (total + 244);
-            }
-            return total;
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
