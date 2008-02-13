@@ -44,18 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] values)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double rate, double span)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double gain = span;
+            if (gain > gain)
             {
-                if ((seen + reading) < (reading >> 5))
-                {
-                    seen = seen + 1;
-                }
+                gain = gain - rate;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - span) + (double)(long)i;
+            }
+            return gain + (double)644;
         }
     }
 }
