@@ -1,8 +1,7 @@
 {
-  "batches_ttl": 58.73,
-  "base_window": 84,
-  "sync_timeout": false,
-  "window_window": 250,
-  "layout_timeout": "green",
-  "default_interval_ms": true
+  "readonly": 79.32,
+  "hard_timeout_s": 100,
+  "audit": "primary",
+  "burst_limit_pct": 40.3,
+  "filter_retries": 29
 }
