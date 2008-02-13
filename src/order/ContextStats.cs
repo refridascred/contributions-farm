@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every githubfarm context entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmContextBounds(long[] series, long target)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Paused,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Describe the batches state values.</summary>
