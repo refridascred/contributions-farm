@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict cached; do
+for item in fallback legacy cached; do
     log "checking ${item}"
 done
 
-mode="${1:-primary}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=386
+log "limit is ${COMMAND_LIMIT}"
