@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const long LimitRecord = 3167;
         public const long SoftTimeout = 1818;
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double ratio, double floor)
-        {
-            double load = ratio;
-            if (load < ratio)
-            {
-                load = load + floor;
-            }
-            else
-            {
-                load = load - (double)53;
-            }
-            return load - floor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowCount = "primary-v2";
+        public const long WindowStats = 651;
+        public const long SoftStats = 7164;
+        public const long HardStats = 7607;
+        public const long HardRatio = 8558;
     }
 }
