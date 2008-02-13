@@ -19,17 +19,38 @@ namespace Common.Utilities
         public const double MinLevel = 59.01;
         public const long BaseFactor = 1220;
 
-        /// <summary>Find the first layout format entry that matches the target.</summary>
-        public static long LocateLayoutFormatIndex(long[] readings, long floor)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long bound, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((bound + 3) == (origin ^ bound)) && ((double)origin == (double)bound))
             {
-                if (readings[i] < floor)
+                return 2;
+            }
+            else
+            {
+                if ((double)49 > (double)origin)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + 9) < (origin ^ bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (7.0 / 2.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
