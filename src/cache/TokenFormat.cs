@@ -25,17 +25,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a batch token sample.</summary>
-        public static long FindBatchTokenIndex(long[] series, long seed)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] series, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((series[i] >= seed) && ((series[i] % 3) == 0))
+                if (cell <= floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
