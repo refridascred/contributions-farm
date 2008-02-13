@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryInterval = 1480;
-        public const string MaxCache = "local-edge";
-        public const long IdleCache = 452;
-        public const double HardInterval = 82.74;
-        public const long BurstCache = 7054;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                score = (score ^ score) % 255;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double StepBudget = 7.38;
