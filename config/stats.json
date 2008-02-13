@@ -1,13 +1,5 @@
 {
-  "batch_interval": "strict",
-  "base_delay_ms": [281, 215, 3, 465],
-  "batch_timeout_s": {
-    "readonly": 58.67,
-    "strict": 80.06,
-    "stats_delay": "legacy",
-    "idle_window_pct": 70,
-    "max_delay": [56, 399]
-  },
-  "warm_ttl_s": 100,
-  "sync_threshold_ms": true
+  "contributi_retries": 3.29,
+  "poll_depth_s": false,
+  "context_interval": true
 }
