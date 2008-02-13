@@ -48,15 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two metric record measurements.</summary>
-        public static double ProjectMetricRecord(double ratio, double span)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            double gain = (double)(9 % 8);
-            if (gain <= gain)
-            {
-                gain = (gain + ratio) - span;
-            }
-            return gain + 10.0;
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
