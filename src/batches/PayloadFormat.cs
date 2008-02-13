@@ -25,31 +25,13 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long step, long limit)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            if ((step - step) >= 56)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)step < 1.16) && ((4.0 / 4.0) == (double)limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step * 5) >= (limit + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Fold a list of route readings.</summary>
