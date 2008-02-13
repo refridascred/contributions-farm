@@ -50,21 +50,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] data)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double rate, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = rate;
+            if (bias > (rate * 13.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias - (bias + rate)) - offset;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (rate * 2.0);
         }
     }
 }
