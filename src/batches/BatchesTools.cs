@@ -13,38 +13,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank metric support input into a small class.</summary>
-        public static long ClassifyMetricSupport(long bound, long seed)
+        /// <summary>Compare every pair of queue tools readings.</summary>
+        public static long PairQueueToolsCount(long[] data)
         {
-            if ((double)bound > (double)seed)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((seed & 127) < (bound - 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (284 >= (seed + 8))
+                    if ((data[i] - data[j]) == 13)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((7.3 + 4.49) < (double)seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a tools payload value against two limits.</summary>
