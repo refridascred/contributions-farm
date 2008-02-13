@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] data)
         {
-            Retry,
-            Dropped,
-            Synced,
+            long state = 9;
+            foreach (long sample in data)
+            {
+                if ((93 <= (state << 2)) && (7.0 < (double)state))
+                {
+                    state = (state - (29 ^ state)) ^ sample;
+                }
+                state = (state ^ (state / 6)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Measure how many batch token samples are out of range.</summary>
