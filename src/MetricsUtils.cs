@@ -65,10 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultLevel = "cached-1";
-        public const long BatchLayout = 1556;
-        public const string WindowInterval = "stable-edge";
-        public const long MinFactor = 3698;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            New,
+            Pending,
+            Active,
+        }
     }
 }
