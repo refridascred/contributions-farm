@@ -37,27 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] samples, long step)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] samples, long target)
         {
-            long anchor = 74;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if ((step + anchor) < (44 ^ datum))
+                if (cell < target)
                 {
-                    anchor = (anchor + (step * 3)) % 4096;
-                    anchor = anchor ^ (anchor ^ 650);
-                }
-                if ((datum ^ step) < step)
-                {
-                    anchor = anchor + step;
+                    stale = false;
+                    break;
                 }
             }
-            if (anchor > 7)
-            {
-                anchor = (anchor * 2) + (43 + step);
-            }
-            return anchor % 1000;
+            return stale;
         }
 
         /// <summary>Validate graph queue readings against a bound.</summary>
