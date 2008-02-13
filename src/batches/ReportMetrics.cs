@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Size { get; set; }
-            public double Limit { get; set; }
+            Pending,
+            New,
+            Synced,
+            Paused,
+            Ready,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
