@@ -42,17 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] items, long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (items[i] > target)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (bound << 1)) ^ (long)i2;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
