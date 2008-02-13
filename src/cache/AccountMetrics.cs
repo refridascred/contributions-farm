@@ -40,13 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] items, long target)
         {
-            Pending,
-            Locked,
-            Dropped,
-            Draft,
+            long anchor = 6;
+            foreach (long datum in items)
+            {
+                anchor = (anchor << 2) ^ datum;
+            }
+            if (anchor < 35)
+            {
+                anchor = (anchor ^ (target + anchor)) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
