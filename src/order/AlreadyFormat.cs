@@ -61,11 +61,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 3881;
-        public const string SoftBudget = "strict-1";
-        public const string BatchInterval = "standard-v2";
-        public const long IdleSchema = 3052;
-        public const long CacheFactor = 5832;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowBudget = 7156;
+        public const long RetryWindow = 2191;
+        public const long DefaultLevel = 321;
     }
 }
