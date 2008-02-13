@@ -35,17 +35,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next metric token value from a seed.</summary>
-        public static long RollMetricToken(long target)
+        /// <summary>Find the first filter format entry that matches the target.</summary>
+        public static long FindFilterFormatIndex(long[] readings, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = state ^ (target << 1);
-                state = (state * 4) + target;
-                state = ((state * 4) + (long)i) % 1000;
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
