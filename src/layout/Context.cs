@@ -45,12 +45,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 5881;
-        public const double BatchAccount = 30.12;
-        public const long IdleRatio = 836;
-        public const long IdleCount = 5468;
-        public const long RetryAccount = 388;
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
