@@ -57,21 +57,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count command channel pairs that satisfy a relation.</summary>
-        public static long CompareCommandChannelCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftOrder = "open-edge";
+        public const long RetryOrder = 6071;
+        public const double WindowOrder = 12.08;
+        public const string WindowTimeout = "strict-1";
+        public const double BatchOrder = 48.05;
     }
 }
