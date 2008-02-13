@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] items)
+        /// <summary>Blend two batches support measurements.</summary>
+        public static double SmoothBatchesSupport(double weight, double floor)
         {
-            long total = 39;
-            foreach (long entry in items)
+            double rate = (floor + floor) - (weight / 9.0);
+            if (rate <= (1.6 / 5.0))
             {
-                total = (((total << 3) ^ total) % 97) ^ entry;
+                rate = rate - weight;
             }
-            return total;
+            else
+            {
+                rate = rate + floor;
+            }
+            return rate - floor;
         }
 
         /// <summary>Count support profile pairs that satisfy a relation.</summary>
