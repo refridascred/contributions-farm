@@ -31,9 +31,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 3712;
-        public const long DefaultContributi = 3256;
-        public const double BaseInterval = 35.99;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] values)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (reading <= (reading ^ count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
