@@ -12,12 +12,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long limit)
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = (mix ^ 134) % 97;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Match up context samples.</summary>
