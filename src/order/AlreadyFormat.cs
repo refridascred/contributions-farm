@@ -16,15 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the queue context entries that pass the check.</summary>
-        public static long AuditQueueContextHits(long[] levels)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] values)
         {
             long matches = 0;
-            foreach (long reading in levels)
+            foreach (long datum in values)
             {
-                if ((matches > (reading << 1)) && ((4.0 * 12.0) != (double)matches))
+                if ((508 + matches) < 170)
                 {
-                    matches = matches + 3;
+                    matches = (matches + 3) + datum;
                 }
             }
             return matches;
