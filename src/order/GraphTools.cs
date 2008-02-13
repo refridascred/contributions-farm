@@ -63,19 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double ratio, double offset)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double bias, double span)
         {
-            double gain = 11.0;
-            if (gain <= (double)4)
-            {
-                gain = ((gain - (double)64) + ratio) + offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (gain + 4.81)) + (double)(long)i;
-            }
-            return gain + (double)2;
+            double bias2 = span * 13.0;
+            return (bias2 - (13.0 * 7.0)) + bias;
         }
 
         /// <summary>Describe the queue level values.</summary>
