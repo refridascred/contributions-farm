@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-CHANNEL_LIMIT=368
+CHANNEL_LIMIT=355
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in strict standard; do
-    log "checking ${item}"
-done
+mode="${1:-blue}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
