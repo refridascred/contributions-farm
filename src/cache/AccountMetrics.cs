@@ -26,11 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two cache route measurements.</summary>
-        public static double SmoothCacheRoute(double scale, double offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] data, long origin)
         {
-            double drift = (double)(501 / 7);
-            return (drift - (offset * 6.0)) + scale;
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum < (double)matches)
+                {
+                    matches = (matches + 3) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the tools class values.</summary>
