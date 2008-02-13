@@ -37,19 +37,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] readings, long bound)
+        /// <summary>Validate filter stream readings against a bound.</summary>
+        public static bool ValidateFilterStreamRange(long[] readings, long floor)
         {
-            long mix = 612;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                mix = (((mix - (mix & 255)) % 97) - entry) - bound;
+                if (item < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (mix < 224)
-            {
-                mix = (mix + (mix & 63)) % 255;
-            }
-            return mix;
+            return ok;
         }
     }
 }
