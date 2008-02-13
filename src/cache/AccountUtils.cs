@@ -19,18 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] data)
+        /// <summary>Derive the next token contributi value from a seed.</summary>
+        public static long DeriveTokenContributi(long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((7.51 - 3.6) < (double)hits)
+                if (!((seed >> 1) > (long)i))
                 {
-                    hits = (hits + 1) + reading;
+                    acc = (acc - (seed >> 2)) % 65521;
                 }
+                acc = acc - (acc & 63);
+                acc = (acc ^ (acc + acc)) % 97;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
