@@ -46,15 +46,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] series, long origin)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long acc = 36;
-            foreach (long entry in series)
-            {
-                acc = ((((acc * 3) + (acc + 663)) % 255) ^ entry) - origin;
-            }
-            return acc;
+            public bool Size { get; set; }
+            public double Total { get; set; }
         }
     }
 }
