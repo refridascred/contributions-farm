@@ -40,19 +40,10 @@ namespace Common.Utilities
         public const long IdleFactor = 1594;
         public const string WindowRatio = "local-v2";
 
-        /// <summary>Audit farm schema readings against a rule.</summary>
-        public static long AuditFarmSchemaHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((count - datum) >= 55)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 6448;
+        public const long DefaultLevel = 2361;
+        public const long IdleTimeout = 2415;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long FindFarmIndex(long[] values, long floor)
