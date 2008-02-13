@@ -1,8 +1,13 @@
 {
-  "soft_limit_pct": 50.06,
-  "buffer_delay": 22,
-  "max_window_count": [24, 45],
-  "format_limit": 89,
-  "strict": 23.01,
-  "base_threshold_pct": "open"
+  "audit": 94,
+  "dry_run": 60,
+  "buffer_delay": "fallback",
+  "compress": {
+    "default_timeout_pct": "strict",
+    "cache_threshold": 51.16,
+    "audit": true,
+    "retry_size": ["open", "primary", "green"],
+    "readonly": 8659
+  },
+  "cache_depth_s": "latest"
 }
