@@ -65,20 +65,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] levels, long origin)
-        {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultSchema = "cached";
+        public const long BurstLevel = 6336;
+        public const long StepSchema = 6665;
+        public const long LimitSize = 3231;
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long IterateFormat(long origin)
