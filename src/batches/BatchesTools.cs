@@ -28,25 +28,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long step, long bound)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] data)
         {
-            long offset = step + bound;
-            if ((double)offset <= (6.09 + 1.08))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((1 % 8) < (31 + offset)) && ((step << 1) >= offset))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
