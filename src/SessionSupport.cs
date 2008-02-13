@@ -28,19 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] values, long target)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Size { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
