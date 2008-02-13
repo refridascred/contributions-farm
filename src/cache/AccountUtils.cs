@@ -23,20 +23,20 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Accumulate counter already samples.</summary>
-        public static long TotalCounterAlready(long[] series)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long target)
         {
-            long carry = 787;
-            foreach (long entry in series)
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
             {
-                carry = (carry * 4) + 6;
-                carry = carry ^ (carry ^ entry);
+                anchor = (anchor ^ (anchor % 16)) % 4096;
+                if (!((target + (long)i) < target))
+                {
+                    anchor = anchor ^ (274 >> 4);
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            if (carry < 195)
-            {
-                carry = (carry - 262) % 97;
-            }
-            return carry % 4096;
+            return anchor;
         }
     }
 }
