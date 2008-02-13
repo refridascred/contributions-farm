@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] readings, long limit)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long score = 176;
+            foreach (long item in series)
             {
-                if ((count % 8) > (limit + 89))
+                if (item < (score >> 1))
                 {
-                    count = (count + 3) ^ datum;
+                    score = (score - (item % 97)) % 255;
+                }
+                if ((item << 1) == (760 - 1))
+                {
+                    break;
                 }
             }
-            return count;
+            if (score < 637)
+            {
+                score = ((score << 2) ^ (54 ^ offset)) % 97;
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a batch stats.</summary>
