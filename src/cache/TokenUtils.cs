@@ -40,13 +40,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
+            public bool Region { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
             public long Rank { get; set; }
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
         }
     }
 }
