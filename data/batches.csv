@@ -1,9 +1,8 @@
-id,count,region,rank
-1,523,latest,green
-2,85.52,378,91.57
-3,537,660,870
-4,999,85.74,open
-5,54.1,local,latest
-6,465,584,open
-7,legacy,408,edge
-8,primary,74.95,691
+id,score,count
+1,green,legacy
+2,strict,31.27
+3,682,934
+4,strict,74.58
+5,latest,0.25
+6,legacy,43.26
+7,blue,27.04
