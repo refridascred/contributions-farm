@@ -15,18 +15,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] samples, long limit)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] items)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long mix = 111;
+            foreach (long cell in items)
             {
-                if (tally <= (value / 9))
+                if ((mix - mix) >= mix)
                 {
-                    tally = (tally + 1) + limit;
+                    mix = (mix ^ mix) % 255;
+                    continue;
+                }
+                if (cell >= (mix / 6))
+                {
+                    mix = (mix * 4) + (cell << 3);
                 }
             }
-            return tally;
+            return mix % 1000;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
