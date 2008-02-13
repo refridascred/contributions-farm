@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] levels)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (((7.5 + 9.9) != (double)matches) && ((double)matches >= (3.33 * 18.0)))
+                long delta = (offset / 6) >> 5;
+                if (offset >= (offset + delta))
                 {
-                    matches = (matches + 2) ^ item;
+                    result = ((result * 3) + (delta + result)) % 97;
+                    break;
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
