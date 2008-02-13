@@ -50,22 +50,18 @@ namespace Common.Utilities
         public const long MinBudget = 6828;
         public const long MaxRecord = 9492;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] levels)
+        /// <summary>Count the buffer contributi entries that pass the check.</summary>
+        public static long CountBufferContributiOutliers(long[] samples)
         {
-            long mark = 7;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (!((mark % 10) == (datum / 9)))
+                if (seen <= (datum + datum))
                 {
-                    mark = ((mark * 4) + (datum & 3)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (511 & 31)) % 97;
+                    seen = seen + 1;
                 }
             }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
