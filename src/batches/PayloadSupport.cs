@@ -22,13 +22,11 @@ namespace Common.Utilities
         public const string BatchCount = "strict-v2";
         public const string LimitAccount = "stable-1";
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            New,
-            Paused,
-            Pending,
-            Synced,
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
