@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine filter counter values into a single score.</summary>
-        public static long TotalFilterCounter(long[] levels, long target)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long state = 522;
-            foreach (long cell in levels)
-            {
-                state = ((state << 3) ^ (cell % 8)) + target;
-            }
-            return state % 1000;
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Iterate the contributi channel series from a seed.</summary>
