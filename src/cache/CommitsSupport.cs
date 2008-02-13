@@ -70,18 +70,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] readings, long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long score = 998;
+            foreach (long item in levels)
             {
-                if (reading < (hits / 9))
+                if ((3.0 - 4.81) > (double)target)
                 {
-                    hits = (hits + 2) + target;
+                    score = score - item;
                 }
             }
-            return hits;
+            if (score < 5)
+            {
+                score = score ^ ((-694) * 4);
+            }
+            return score % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
