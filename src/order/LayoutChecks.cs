@@ -83,13 +83,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of report entries.</summary>
