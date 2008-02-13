@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] samples)
+        /// <summary>Validate route counter readings against a bound.</summary>
+        public static bool GuardRouteCounterRange(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (!((item / 9) < (item & 63)) || ((double)item <= (4.2 * 10.0)))
+                if (datum != offset)
                 {
-                    tally = tally + 2;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
