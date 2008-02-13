@@ -56,18 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] data, long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] data, long seed)
         {
-            long tally = 0;
+            long count = 0;
             foreach (long item in data)
             {
-                if ((item % 2) < (item >> 2))
+                if ((seed - seed) != (item * 4))
                 {
-                    tally = (tally + 1) - seed;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
