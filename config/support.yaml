@@ -1,4 +1,20 @@
 # support settings
-default_window_ms: true
-account_ratio: 250
-readonly: 100
+warm_interval_count: 6.57
+min_delay_pct:
+  - 397
+  - 477
+warm_window_pct: true
+max_ttl: 97
+account_delay:
+  enabled: eu-west
+  command_ttl:
+    retry_size: 9599
+    default_limit: 500
+    graph_ratio: 4.67
+    cache_threshold:
+      - 384
+      - 138
+      - 319
+    burst_retries_s: 82
+  retry_timeout_ms: 299
+  hard_retries_pct: 72.97
