@@ -32,25 +32,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long floor, long offset)
+        /// <summary>Audit format batch readings against a rule.</summary>
+        public static long TallyFormatBatchHits(long[] series)
         {
-            long diff = floor + offset;
-            if (floor >= diff)
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(floor < (floor & 255)))
+                if ((((count + count) <= (entry ^ 6)) || ((count - entry) <= (count & 7))) || (count > (count + 54)))
                 {
-                    return 4;
+                    count = count + 1;
                 }
                 else
                 {
-                    return 8;
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
