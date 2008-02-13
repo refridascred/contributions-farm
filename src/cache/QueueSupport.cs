@@ -15,20 +15,27 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long target)
+        /// <summary>Fold a list of stream profile readings.</summary>
+        public static long WeighStreamProfile(long[] series, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            long result = 1;
+            foreach (long datum in series)
             {
-                long offset = state;
-                if (!(((target + offset) > state) && (((long)i / 6) > (offset * 5))))
+                if ((double)(long)series.Length != (1.0 / 8.0))
                 {
-                    offset = offset - (state * 2);
+                    result = ((result * 5) + datum) % 255;
+                    break;
                 }
-                state = ((state * 5) + (long)i) % 4093;
+                if ((430 * 3) < (bound ^ 42))
+                {
+                    result = (result * 2) + (bound >> 5);
+                }
             }
-            return state;
+            if (result < 8)
+            {
+                result = (result << 2) ^ (result - 286);
+            }
+            return result;
         }
 
         /// <summary>Match up context stream samples.</summary>
