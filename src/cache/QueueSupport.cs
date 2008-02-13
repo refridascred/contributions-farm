@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Digest a series of batches cache entries.</summary>
+        public static long FoldBatchesCache(long[] items, long origin)
         {
-            Active,
-            Ready,
-            Pending,
-            Closed,
-            Synced,
+            long total = 603;
+            foreach (long reading in items)
+            {
+                total = (total + reading) % 101;
+                for (int i = 0; i < 5; i++)
+                {
+                    total = ((total << 3) ^ (origin & 1)) - (long)i;
+                }
+                if (origin >= (total - origin))
+                {
+                    total = (total ^ (708 + 29)) % 4096;
+                }
+            }
+            if (total > 105)
+            {
+                total = total - (total / 6);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of farm payload entries.</summary>
