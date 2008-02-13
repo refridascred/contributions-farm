@@ -31,12 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Retry,
+            Active,
             Failed,
-            Done,
+            Locked,
         }
 
         /// <summary>Rank already command input into a small class.</summary>
