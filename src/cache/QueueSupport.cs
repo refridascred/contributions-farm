@@ -15,17 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first farm report entry that matches the target.</summary>
-        public static long LocateFarmReportIndex(long[] series, long seed)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a route entry.</summary>
