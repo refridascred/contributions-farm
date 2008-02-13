@@ -23,19 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] samples)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] levels)
         {
-            long mix = 3;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = mix ^ (cell - cell);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix > 9)
-            {
-                mix = ((mix * 2) + (mix + 79)) % 255;
-            }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Hold a payload entry.</summary>
