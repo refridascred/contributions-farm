@@ -60,32 +60,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long step, long limit)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double bias, double bias2)
         {
-            long edge = step + limit;
-            if ((limit >> 4) > (edge >> 3))
+            double gain = bias2;
+            for (int i = 0; i < 7; i++)
             {
-                return 4;
+                gain = (gain + (double)(long)i) - bias;
             }
-            else
-            {
-                if ((limit / 2) < (step - edge))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)edge != (12.0 * 8.7)) && ((limit % 16) <= (3 % 12)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return gain - (9.22 * 5.8);
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
