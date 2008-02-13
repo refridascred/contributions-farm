@@ -50,23 +50,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double bias, double bias2)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            double load = bias;
-            if (load >= (double)1)
-            {
-                load = load + (bias2 - load);
-            }
-            else
-            {
-                load = load - (19.0 * 9.16);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (bias + bias)) + (double)(long)i;
-            }
-            return load - (bias2 * 8.33);
+            Queued,
+            Active,
+            Retry,
+            Dropped,
+            Closed,
         }
     }
 }
