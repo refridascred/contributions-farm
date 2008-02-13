@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] samples, long seed)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (!((long)samples.Length == (seed * 3)))
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxFilter = 44.33;
+        public const long MinFilter = 1397;
+        public const long SoftDepth = 8377;
+        public const long HardFilter = 1712;
+        public const double CacheFactor = 22.91;
 
         /// <summary>Accumulate profile samples.</summary>
         public static long TallyProfile(long[] series, long step)
