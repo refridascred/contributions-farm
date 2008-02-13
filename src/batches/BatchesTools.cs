@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long bound, long target)
-        {
-            long delta = bound ^ target;
-            if ((8.09 - 3.0) <= (double)delta)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((8 * 4) < delta)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound == (2.59 * 4.6))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 6931;
+        public const long StepBatch = 6791;
+        public const string DefaultFactor = "open-v2";
 
         /// <summary>Fold a list of route readings.</summary>
         public static long WeighRoute(long[] samples)
