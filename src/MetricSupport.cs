@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] levels, long target)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long sum = 653;
-            foreach (long entry in levels)
-            {
-                sum = (((sum ^ (-65)) % 4096) - entry) - target;
-            }
-            return sum;
+            Queued,
+            Done,
+            Draft,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
