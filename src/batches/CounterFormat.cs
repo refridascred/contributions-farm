@@ -31,18 +31,9 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (reading <= (reading ^ count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 4759;
+        public const long WindowCommits = 8623;
+        public const double SoftDepth = 62.0;
     }
 }
