@@ -27,10 +27,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepSize = 4882;
-        public const long BatchSpan = 8482;
-        public const string HardStats = "alpha-edge";
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowWidth = 7.15;
+        public const long DefaultScore = 2872;
+        public const long RetryTimeout = 9809;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
