@@ -38,22 +38,15 @@ namespace Common.Utilities
             return mean + (17.0 / 3.0);
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] samples, long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] series, long origin)
         {
-            long acc = 2;
-            foreach (long datum in samples)
+            long acc = 36;
+            foreach (long entry in series)
             {
-                if ((31 * 2) == (seed * 4))
-                {
-                    acc = ((acc - acc) % 65521) ^ datum;
-                }
+                acc = ((((acc * 3) + (acc + 663)) % 255) ^ entry) - origin;
             }
-            if (acc > 3)
-            {
-                acc = acc - (acc % 24);
-            }
-            return acc % 97;
+            return acc;
         }
     }
 }
