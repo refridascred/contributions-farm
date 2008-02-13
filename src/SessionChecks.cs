@@ -37,19 +37,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate filter stream readings against a bound.</summary>
-        public static bool ValidateFilterStreamRange(long[] readings, long floor)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Count { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
