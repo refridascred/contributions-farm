@@ -47,10 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchOrder = 48.06;
-        public const long IdleInterval = 7617;
-        public const long SoftOrder = 6513;
-        public const string WindowOrder = "standard-edge";
+        /// <summary>Derive the next session format value from a seed.</summary>
+        public static long IterateSessionFormat(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
