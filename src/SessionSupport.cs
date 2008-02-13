@@ -37,15 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double rate, double span)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            double load = rate;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - (double)(long)i) + span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load - rate;
+            return tally;
         }
     }
 }
