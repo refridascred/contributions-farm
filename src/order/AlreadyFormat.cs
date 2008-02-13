@@ -12,19 +12,16 @@ namespace Common.Utilities
         public const string BaseCommand = "legacy";
         public const long HardCommand = 1159;
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long floor)
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (!!(((long)i / 3) < ((-9) - total)))
-                {
-                    total = (total * 5) + step;
-                }
-                total = ((total * 4) + (long)i) % 101;
+                carry = (carry + (carry & 1)) % 255;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Digest a series of window entries.</summary>
