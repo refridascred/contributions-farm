@@ -1,18 +1,7 @@
 # githubfarm settings
-tools_interval: false
-soft_depth_count:
-  - latest
-  - fallback
-  - edge
-  - legacy
-base_size_pct:
-  - 160
-  - 5
-soft_threshold_ms: blue
-strict: true
-stats_timeout:
-  strict:
-    - 109
-    - 24
-  audit: blue
-  metrics_window: 9391
+context_capacity:
+  - primary
+  - green
+metric_retries: true
+tools_window: staging
+min_interval_pct: staging
