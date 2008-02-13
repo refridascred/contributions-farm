@@ -23,13 +23,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] data)
         {
-            Dropped,
-            New,
-            Queued,
-            Locked,
+            long total = 688;
+            foreach (long item in data)
+            {
+                total = ((total << 2) ^ (item * 3)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
