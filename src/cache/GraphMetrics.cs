@@ -20,10 +20,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepInterval = "legacy";
-        public const long MinScore = 5461;
-        public const string WindowRatio = "open-1";
+        /// <summary>Compare every pair of format commits readings.</summary>
+        public static long PairFormatCommitsCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next stream value.</summary>
         public static double ScaleStream(double scale, double bias)
