@@ -38,11 +38,19 @@ namespace Common.Utilities
             return scale2 + bias;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
+            long total = 118;
+            foreach (long sample in readings)
+            {
+                total = (total + total) + sample;
+            }
+            if (total < 903)
+            {
+                total = ((total << 3) ^ total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
