@@ -21,9 +21,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 7779;
-        public const long CacheFactor = 8227;
-        public const double BurstWidth = 60.47;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+        }
     }
 }
