@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] levels, long floor)
+        /// <summary>Audit cache metrics readings against a rule.</summary>
+        public static long AuditCacheMetricsMatches(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (reading != floor)
+                if (((1 > (seen / 2)) || (97 <= (sample / 9))) || ((sample - 432) >= (2 + sample)))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) - offset;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Hold a report record.</summary>
