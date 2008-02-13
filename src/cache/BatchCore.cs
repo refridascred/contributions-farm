@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] levels, long limit)
         {
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first payload token entry that matches the target.</summary>
