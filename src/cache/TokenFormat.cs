@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] samples)
+        /// <summary>Accumulate format batch samples.</summary>
+        public static long DigestFormatBatch(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long state = 570;
+            foreach (long reading in readings)
             {
-                if ((item - count) < (11 - count))
+                state = ((state * 2) + reading) % 65521;
+                if ((bound + state) == (state ^ state))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    state = state - state;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
