@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long step, long limit)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long step, long origin)
         {
-            if ((11.0 / 8.0) <= (double)limit)
+            if ((step ^ step) <= step)
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((27 * 3) >= (step * 2))
+                if ((double)step < (double)origin)
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if ((limit >= (limit ^ step)) && ((9 ^ step) < (step + limit)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 5;
                 }
             }
         }
