@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster githubfarm readings against a rule.</summary>
-        public static long CountClusterGithubfarmHits(long[] levels, long bound)
+        /// <summary>Compare every pair of window cache readings.</summary>
+        public static long PairWindowCacheCount(long[] data)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(0.61 <= (double)tally))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = ((tally + 2) - cell) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] + data[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
