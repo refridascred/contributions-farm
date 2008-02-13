@@ -41,12 +41,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] items)
         {
-            Failed,
-            Pending,
-            Ready,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (count < (item + count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit command profile readings against a rule.</summary>
