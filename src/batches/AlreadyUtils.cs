@@ -70,15 +70,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double scale, double span)
+        /// <summary>Count batches cache pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCacheCount(long[] data)
         {
-            double bias = (scale - span) / 7.0;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = (bias + (span / 3.0)) + (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias - (double)9;
+            return tally;
         }
     }
 }
