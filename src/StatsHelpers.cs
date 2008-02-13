@@ -27,16 +27,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] items, long seed)
-        {
-            long mix = 58;
-            foreach (long entry in items)
-            {
-                mix = (((mix + mix) % 101) ^ entry) + seed;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryTimeout = 65.55;
+        public const long BatchToken = 3239;
+        public const string LimitToken = "open-v2";
+        public const double MaxInterval = 78.02;
 
         /// <summary>Measure how many entry githubfarm samples are out of range.</summary>
         public static long CountEntryGithubfarmMatches(long[] readings)
