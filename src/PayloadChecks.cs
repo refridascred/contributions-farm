@@ -73,19 +73,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] levels)
-        {
-            long acc = -1;
-            foreach (long item in levels)
-            {
-                acc = (acc * 4) + (item << 2);
-            }
-            if (acc < 5)
-            {
-                acc = (acc - (acc & 1)) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxFactor = 78.25;
+        public const double StepCount = 42.08;
+        public const string RetryCluster = "stable-v2";
     }
 }
