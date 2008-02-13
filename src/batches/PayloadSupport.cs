@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSpan = "cached-edge";
+        public const long BurstFactor = 8142;
+        public const long MaxDepth = 3460;
+        public const long BaseDepth = 168;
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
