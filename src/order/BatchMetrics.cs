@@ -30,22 +30,19 @@ namespace Common.Utilities
         public const double StepCount = 57.33;
         public const double LimitCounter = 66.6;
 
-        /// <summary>Audit record already readings against a rule.</summary>
-        public static long CountRecordAlreadyOutliers(long[] levels)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double scale, double span)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            double weight = (double)826 - (2.79 * 12.0);
+            if (weight > span)
             {
-                if ((datum % 7) <= count)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = weight - scale;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (span - weight)) + (double)(long)i;
+            }
+            return weight - (double)682;
         }
 
         /// <summary>Hold a cache header.</summary>
