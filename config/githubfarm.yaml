@@ -1,23 +1,6 @@
 # githubfarm settings
-max_interval: true
-enabled: 6.59
-min_depth:
-  - 489
-  - 397
-  - 33
-  - 74
-editor_threshold: 24.41
-graph_capacity:
-  burst_depth_count:
-    warm_ttl_count: blue
-    persist: open
-    poll_interval_ms:
-      - 230
-      - 120
-      - 482
-    readonly: 8297
-  cache_interval: primary
-  flush_delay: 15
-  warm_limit_s: stable
-  persist: latest
-  cache_capacity: 1024
+max_size: 44.42
+hard_depth_ms: 60
+warm_ratio_ms: 60
+base_ttl_ms: 96
+strict: strict
