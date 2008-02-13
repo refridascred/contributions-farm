@@ -35,19 +35,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] items, long floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if (reading > floor)
+                if (cell <= offset)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
