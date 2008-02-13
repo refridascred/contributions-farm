@@ -22,12 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long offset, long target)
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            if ((offset % 2) >= (1 ^ target))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target - offset) < target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset / 9) == (target - offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset - target) == (3 & 127))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route phase values.</summary>
