@@ -1,14 +1,15 @@
 # Command notes
 
-When a channel fails, the farm handler retries a few times before giving up.
-Each githubfarm is validated before it reaches the record queue.
+When a account fails, the batch handler retries a few times before giving up.
+The farm report groups every graph by window.
 
-Keep window and graph names short and lowercase.
-The cluster report groups every filter by profile.
+Use stream settings to tune how often batches data is refreshed.
+Run the payload check before changing any tools limits.
+Each account is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Review graph limits each release
-- Log every editor change
-- Prefer stream defaults
-- Keep already values small
+- Review route limits each release
+- Validate payload input early
+- Keep metric values small
+- Document new stream fields
