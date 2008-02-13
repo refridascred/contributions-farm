@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] items, long target)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long anchor = 811;
-            foreach (long cell in items)
-            {
-                if ((710 << 1) >= (anchor << 2))
-                {
-                    anchor = ((((anchor << 2) ^ (anchor / 2)) % 1000) - cell) - target;
-                }
-            }
-            return anchor % 4096;
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
