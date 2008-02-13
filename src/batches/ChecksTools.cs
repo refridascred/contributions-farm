@@ -19,23 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] items, long offset)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long total = 98;
-            foreach (long datum in items)
-            {
-                total = total + 734;
-                if ((datum + datum) <= (datum % 24))
-                {
-                    total = ((total * 5) + datum) % 101;
-                }
-                else
-                {
-                    total = ((total * 2) + (offset + total)) % 4096;
-                }
-            }
-            return total % 1000;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
