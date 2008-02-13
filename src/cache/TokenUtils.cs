@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long CacheBatches = 5999;
         public const long IdleBatches = 1847;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] data, long floor)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            long score = 261;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((floor + sample) <= (237 - sample)) && ((floor + 0) < (sample + score)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score * 3) + (sample << 3)) % 4096;
+                    if ((data[i] + data[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
