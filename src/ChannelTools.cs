@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] values, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long mix = 1;
+            foreach (long value in levels)
             {
-                if ((matches << 1) <= (matches * 2))
+                if (!((289 - target) <= (target >> 3)))
                 {
-                    matches = ((matches + 2) + sample) + origin;
+                    mix = ((mix + (8 ^ target)) % 101) ^ value;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
