@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public bool Label { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardWidth = "staging-edge";
+        public const double MinScore = 5.34;
+        public const long StepDepth = 3040;
+        public const double HardLevel = 66.21;
+        public const string MaxCount = "open";
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
