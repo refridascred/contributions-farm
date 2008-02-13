@@ -31,21 +31,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] levels)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (double)736 - (bias + scale);
+            if (gain < (bias - bias))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain + bias;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (bias - gain)) + (double)(long)i;
+            }
+            return gain + (scale + bias);
         }
 
         /// <summary>Hold a filter options.</summary>
