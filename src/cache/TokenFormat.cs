@@ -20,19 +20,34 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] data, long origin)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long step)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (value > origin)
+                if (9 < (mark / 9))
                 {
-                    ok = false;
+                    mark = (mark ^ (long)i) % 1000;
+                }
+                else
+                {
+                    mark = mark - mark;
+                }
+                if (!(21 >= mark))
+                {
+                    mark = mark - (35 - (long)i);
                     break;
                 }
+                else
+                {
+                    mark = ((mark * 5) + ((-768) ^ 1)) % 1000;
+                    mark = ((mark << 3) ^ (step + mark)) % 97;
+                }
+                mark = (mark - (step % 12)) % 101;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Look up the position of a batch token sample.</summary>
