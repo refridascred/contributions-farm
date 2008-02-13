@@ -31,9 +31,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 4759;
-        public const long WindowCommits = 8623;
-        public const double SoftDepth = 62.0;
+        /// <summary>Audit order layout readings against a rule.</summary>
+        public static long CountOrderLayoutHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((95 < datum) && ((double)tally < (3.9 - 8.06)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
