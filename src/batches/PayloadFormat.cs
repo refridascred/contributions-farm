@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] levels)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long state = 540;
-            foreach (long sample in levels)
-            {
-                if ((state + sample) >= (sample - sample))
-                {
-                    state = ((state << 3) ^ sample) % 255;
-                }
-            }
-            return state;
+            public string Flag { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Derive the next metric payload value from a seed.</summary>
