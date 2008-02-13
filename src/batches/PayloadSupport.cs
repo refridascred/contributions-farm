@@ -20,24 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long bound, long limit)
+        /// <summary>Compare every pair of queue report readings.</summary>
+        public static long PairQueueReportCount(long[] levels)
         {
-            if (limit > (limit + limit))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((87 <= (limit & 7)) && ((476 << 3) < bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    if ((levels[i] - levels[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate route counter readings against a bound.</summary>
