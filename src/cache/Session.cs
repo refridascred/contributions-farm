@@ -22,19 +22,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double bias, double bias2)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long step, long floor)
         {
-            double gain = bias - bias;
-            if (gain >= bias)
+            if ((step & 255) >= (step + step))
             {
-                gain = (gain - (double)34) - bias2;
+                return 7;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                gain = (gain - 10.0) + (double)(long)i;
+                if (floor >= (floor + 0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step != (double)509)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((-992) >> 2) < (floor + step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return gain - (double)2;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
