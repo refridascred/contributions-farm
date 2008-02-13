@@ -46,19 +46,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] values, long offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long mix = 7;
+            foreach (long reading in readings)
             {
-                if (item < offset)
+                if ((mix >> 2) > (reading - 365))
                 {
-                    valid = false;
+                    mix = ((mix - (reading ^ (long)readings.Length)) % 101) - bound;
+                }
+                else
+                {
+                    mix = mix ^ mix;
+                }
+                if ((reading & 31) <= mix)
+                {
                     break;
                 }
             }
-            return valid;
+            return mix;
         }
     }
 }
