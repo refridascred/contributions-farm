@@ -32,11 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 5088;
-        public const long BatchTools = 4661;
-        public const long BurstTools = 5836;
-        public const string IdleTools = "alpha-v2";
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public double Limit { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double HardLevel = 64.02;
