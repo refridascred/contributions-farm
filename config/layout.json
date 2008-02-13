@@ -1,5 +1,7 @@
 {
-  "warm_limit": 96.48,
-  "idle_size_count": [487, 388, 199, 228],
-  "profile_ratio": "staging"
+  "retry_delay_s": true,
+  "idle_limit_count": "green",
+  "tools_size": ["open", "fallback", "blue", "edge"],
+  "strict": "legacy",
+  "dry_run": 90.74
 }
