@@ -11,15 +11,21 @@ namespace Common.Utilities
         public const long BurstRatio = 4609;
         public const string IdleWidth = "latest-1";
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double rate, double bias)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] readings)
         {
-            double scale = bias - (bias * 15.0);
-            if (scale >= (rate / 9.0))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale - scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale + (0.28 / 6.0);
+            return hits;
         }
 
         /// <summary>Iterate the payload schema series from a seed.</summary>
