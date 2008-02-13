@@ -27,31 +27,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long seed, long origin)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            if (!((origin + (-375)) == (origin - origin)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((7.7 * 17.0) <= (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + origin) >= seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Pending,
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
