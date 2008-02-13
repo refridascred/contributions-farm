@@ -29,24 +29,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cluster tools input into a small class.</summary>
-        public static long RankClusterTools(long seed, long step)
-        {
-            if ((double)seed < (double)step)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)step > (double)seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 679;
+        public const string StepSupport = "legacy";
+        public const long WindowTimeout = 9367;
     }
 }
