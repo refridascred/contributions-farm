@@ -1,15 +1,15 @@
 # Command notes
 
-Use cache settings to tune how often counter data is refreshed.
-Keep payload and checks names short and lowercase.
+Each record is validated before it reaches the counter queue.
+Use metrics settings to tune how often layout data is refreshed.
+Keep contributi and graph names short and lowercase.
 
-The metrics module keeps entry values in sync with the context cache.
-Run the editor check before changing any context limits.
-Run the batch check before changing any editor limits.
+When a window fails, the context handler retries a few times before giving up.
+Use already settings to tune how often payload data is refreshed.
 
 ## Guidelines
 
-- Validate entry input early
-- Keep checks values small
-- Review tools limits each release
-- Log every payload change
+- Keep support values small
+- Review token limits each release
+- Prefer commits defaults
+- Document new tools fields
