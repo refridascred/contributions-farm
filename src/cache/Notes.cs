@@ -16,14 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] data)
         {
-            Synced,
-            Retry,
-            Failed,
-            Stale,
-            Draft,
+            long state = -3;
+            foreach (long datum in data)
+            {
+                state = ((state * 2) + (state - datum)) % 97;
+                if ((double)(long)data.Length <= (double)datum)
+                {
+                    state = state ^ state;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
