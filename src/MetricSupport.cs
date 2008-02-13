@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] levels, long target)
         {
-            Active,
-            Idle,
-            Dropped,
-            Paused,
+            long sum = 653;
+            foreach (long entry in levels)
+            {
+                sum = (((sum ^ (-65)) % 4096) - entry) - target;
+            }
+            return sum;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
