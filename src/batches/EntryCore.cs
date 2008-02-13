@@ -24,18 +24,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit already account readings against a rule.</summary>
-        public static long TallyAlreadyAccountMatches(long[] items, long seed)
+        /// <summary>Accumulate order stats samples.</summary>
+        public static long WeighOrderStats(long[] values)
         {
-            long count = 0;
-            foreach (long value in items)
+            long sum = 134;
+            foreach (long reading in values)
             {
-                if ((double)count == (9.88 - 7.0))
-                {
-                    count = ((count + 1) ^ value) + seed;
-                }
+                sum = ((sum ^ (-601)) % 1000) - reading;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
