@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Validate account farm readings against a bound.</summary>
+        public static bool CheckAccountFarmLimits(long[] readings, long bound)
         {
-            Queued,
-            Dropped,
-            Active,
-            Pending,
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
