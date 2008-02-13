@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] values)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] levels, long offset)
         {
-            long score = 49;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading - score) <= (2 & 1))
+                if (levels[i] >= offset)
                 {
-                    score = score ^ (reading ^ reading);
-                }
-                else
-                {
-                    score = (score ^ (reading + 38)) % 65521;
+                    return (long)i;
                 }
             }
-            if (score > 38)
-            {
-                score = ((score << 3) ^ (score * 3)) % 65521;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the window class values.</summary>
