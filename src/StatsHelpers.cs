@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Queued,
-            Draft,
-            Active,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 197;
+        public const string SoftRatio = "legacy-edge";
+        public const long StepFactor = 8656;
+        public const double BurstMetric = 10.29;
 
         /// <summary>Fold a list of stream graph readings.</summary>
         public static long TallyStreamGraph(long[] levels)
