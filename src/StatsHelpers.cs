@@ -23,37 +23,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long limit, long seed)
+        /// <summary>Rank command checks input into a small class.</summary>
+        public static long BucketCommandChecks(long target, long step)
         {
-            long delta = limit + seed;
-            if (((delta * 5) == (seed ^ limit)) && ((8 + 639) >= (delta << 2)))
+            if ((0.7 - 4.21) > (double)step)
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if (((seed << 3) <= (limit - seed)) && ((seed / 7) == (seed * 4)))
+                if (((double)step >= (2.5 - 5.8)) || ((step << 2) >= target))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if (delta > (delta & 31))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)delta < (1.0 / 5.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
