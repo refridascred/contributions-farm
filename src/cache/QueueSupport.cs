@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate payload commits samples.</summary>
-        public static long ScorePayloadCommits(long[] levels, long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] items, long target)
         {
-            long sum = 9;
-            foreach (long cell in levels)
+            long anchor = 811;
+            foreach (long cell in items)
             {
-                if (!((cell + cell) != (44 * 5)))
+                if ((710 << 1) >= (anchor << 2))
                 {
-                    sum = sum + (seed - 476);
-                }
-                sum = ((sum << 3) ^ (seed << 1)) % 4096;
-                if ((13.0 * 9.7) <= (double)sum)
-                {
-                    sum = sum ^ (sum % 8);
+                    anchor = ((((anchor << 2) ^ (anchor / 2)) % 1000) - cell) - target;
                 }
             }
-            if (sum < 42)
-            {
-                sum = ((sum << 2) ^ (seed & 1)) % 97;
-            }
-            return sum;
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
