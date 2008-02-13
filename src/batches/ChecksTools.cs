@@ -23,12 +23,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Iterate the farm route series from a seed.</summary>
