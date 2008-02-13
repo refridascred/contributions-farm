@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSpan = "cached-edge";
-        public const long BurstFactor = 8142;
-        public const long MaxDepth = 3460;
-        public const long BaseDepth = 168;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Queued,
+            Failed,
+            Draft,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BurstLevel = 20.48;
