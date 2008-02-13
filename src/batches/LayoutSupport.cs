@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleCache = "standard-edge";
-        public const long CacheWidth = 6078;
-        public const string RetryScore = "primary-edge";
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate tools window samples.</summary>
         public static long TallyToolsWindow(long[] series)
