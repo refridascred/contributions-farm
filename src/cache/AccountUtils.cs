@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] data, long limit)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((20.0 - 6.0) != (double)reading)
-                {
-                    matches = (matches + 1) + limit;
-                }
-            }
-            return matches;
+            Active,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
