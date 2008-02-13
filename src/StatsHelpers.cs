@@ -29,10 +29,22 @@ namespace Common.Utilities
         public const long BaseDepth = 9031;
         public const long RetryEntry = 9830;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardDepth = 2187;
-        public const long RetryGraph = 150;
-        public const double BatchGraph = 76.91;
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long FindContributiIndex(long[] series, long offset)
