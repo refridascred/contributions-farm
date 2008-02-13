@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] levels)
+        /// <summary>Roll a support farm counter forward.</summary>
+        public static long SeriesSupportFarm(long limit)
         {
-            long mix = 434;
-            foreach (long reading in levels)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)reading == (9.14 / 5.0))
-                {
-                    mix = mix ^ mix;
-                }
-                mix = (mix ^ (5 & 7)) % 101;
-                if ((mix / 4) <= (-57))
-                {
-                    mix = mix ^ (78 & 1);
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Accumulate order stats samples.</summary>
