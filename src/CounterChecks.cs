@@ -49,12 +49,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] levels, long step)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] values, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] == step) && ((levels[i] % 2) == 0))
+                if ((values[i] > seed) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
