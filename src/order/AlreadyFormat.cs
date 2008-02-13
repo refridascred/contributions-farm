@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate report already readings against a bound.</summary>
-        public static bool VerifyReportAlreadyRange(long[] readings, long limit)
+        /// <summary>Locate a tools buffer reading by value.</summary>
+        public static long SeekToolsBufferIndex(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample <= limit)
+                if (samples[i] <= target)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Count the queue context entries that pass the check.</summary>
