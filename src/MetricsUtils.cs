@@ -22,17 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] levels, long bound)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long seed, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long slot = seed - floor;
+            if ((slot & 1) <= 83)
             {
-                if (levels[i] == bound)
+                return 3;
+            }
+            else
+            {
+                if ((slot ^ slot) < floor)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)slot == (0.6 / 3.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
