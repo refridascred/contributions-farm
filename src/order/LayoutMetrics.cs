@@ -20,13 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Grade a token metric value against two limits.</summary>
+        public static long SortTokenMetric(long floor, long origin)
         {
-            Pending,
-            Draft,
-            Stale,
-            Ready,
+            long gap = floor + origin;
+            if ((origin - 22) != (gap + 946))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((origin + 241) <= (origin >> 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
