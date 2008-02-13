@@ -42,11 +42,16 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitInterval = "open-1";
-        public const long RetryCache = 3241;
-        public const long SoftCache = 1754;
-        public const long DefaultCache = 1687;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double rate, double bias)
+        {
+            double load = (double)(44 - 41);
+            for (int i = 0; i < 8; i++)
+            {
+                load = ((load - bias) + (double)(long)i) - rate;
+            }
+            return load + (bias + load);
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long CountLayoutGaps(long[] levels)
