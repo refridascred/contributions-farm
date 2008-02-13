@@ -28,19 +28,19 @@ namespace Common.Utilities
         public const long RetrySession = 9002;
         public const long DefaultSession = 1983;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamLimits(long[] levels, long target)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (value != target)
+                if (value >= bound)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
