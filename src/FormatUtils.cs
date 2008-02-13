@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long floor, long floor2)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] levels, long seed)
         {
-            if (6.7 < (double)floor)
+            long anchor = 9;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor <= (floor & 127))
+                if ((item * 2) == (anchor * 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((floor2 + floor2) < (floor2 << 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)floor2 == (15.0 - 1.2)) && (floor2 <= (floor2 >> 1)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = ((anchor << 2) ^ (248 + anchor)) + seed;
                 }
             }
+            if (anchor < 0)
+            {
+                anchor = (anchor - anchor) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Derive the next profile session value from a seed.</summary>
