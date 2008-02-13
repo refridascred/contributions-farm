@@ -1,10 +1,5 @@
 {
-  "burst_size": "eu-west",
-  "min_interval_ms": {
-    "token_window": 1024,
-    "default_limit_ms": 500,
-    "graph_timeout": 38.45
-  },
-  "flush_size": 100,
-  "base_size": "fallback"
+  "retry_window_count": "green",
+  "batch_ratio_count": 4434,
+  "payload_ratio": false
 }
