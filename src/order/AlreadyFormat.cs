@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] readings)
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                if ((hits << 3) < ((long)readings.Length / 2))
+                {
+                    hits = (hits + 1) + reading;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
