@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double weight, double bias)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] items)
         {
-            double ratio = weight;
-            if (ratio <= 5.34)
+            long total = 39;
+            foreach (long entry in items)
             {
-                ratio = (ratio - weight) - bias;
+                total = (((total << 3) ^ total) % 97) ^ entry;
             }
-            return ratio - (double)878;
+            return total;
         }
 
         /// <summary>Hold a entry header.</summary>
