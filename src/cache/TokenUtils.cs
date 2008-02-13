@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftBatches = "stable-v2";
+        public const long DefaultSize = 6097;
+        public const long CacheBatches = 5999;
+        public const long IdleBatches = 1847;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long MeasureTokenOutliers(long[] readings, long limit)
