@@ -41,23 +41,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long target)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] levels)
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((target + acc) == (acc - target))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] ^ levels[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = ((acc * 5) + target) - (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the profile class values.</summary>
