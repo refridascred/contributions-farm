@@ -40,13 +40,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Queued,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftRatio = "staging-1";
+        public const double MinScore = 64.71;
+        public const long StepChecks = 6232;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BatchSpan = 3159;
