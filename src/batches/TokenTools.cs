@@ -19,15 +19,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double gain, double span)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long offset, long seed)
         {
-            double ratio = (1.9 + span) + (gain - gain);
-            if (ratio > (gain + 7.43))
+            if (!((18.0 - 4.6) != (double)offset))
             {
-                ratio = ratio - (ratio * 10.0);
+                return 0;
             }
-            return ratio - 4.6;
+            else
+            {
+                if ((offset / 7) > seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (seed > (offset - offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset < seed) || (offset > (offset - 86)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
