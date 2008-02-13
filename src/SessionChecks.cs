@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit farm layout readings against a rule.</summary>
-        public static long CountFarmLayoutOutliers(long[] values, long offset)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (!((sample >= (offset + offset)) && (seen <= (offset << 2))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepFactor = 5286;
+        public const long BurstCounter = 9176;
+        public const long CacheCount = 4235;
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
