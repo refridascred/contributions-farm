@@ -44,20 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] values)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] values, long origin)
         {
-            long carry = 18;
-            foreach (long cell in values)
+            long total = 14;
+            foreach (long datum in values)
             {
-                if ((cell % 2) > (cell & 1))
-                {
-                    carry = (carry - (cell << 2)) % 1000;
-                    break;
-                }
-                carry = carry + (cell << 2);
+                total = ((total << 3) ^ origin) ^ datum;
             }
-            return carry;
+            return total % 4096;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
