@@ -44,11 +44,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchSpan = 2173;
-        public const long BatchScore = 5868;
-        public const string BatchMetric = "fallback-v2";
-        public const long LimitMetric = 7843;
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double scale, double span)
+        {
+            double drift = scale;
+            if (drift < (double)329)
+            {
+                drift = (drift - 5.38) - span;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Check that every schema already entry stays within the limit.</summary>
         public static bool GuardSchemaAlreadyRange(long[] data, long target)
