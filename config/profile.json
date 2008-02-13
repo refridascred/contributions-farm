@@ -1,22 +1,6 @@
 {
-  "soft_window_s": "fallback",
-  "dry_run": "eu-west",
-  "format_ttl": ["standard", "stable"],
-  "enabled": {
-    "readonly": "staging",
-    "batch_window_count": 40,
-    "soft_ratio_pct": 61.63,
-    "sync_threshold_s": 7472,
-    "max_interval_pct": true
-  },
-  "max_window_s": {
-    "filter_timeout": 7979,
-    "audit": ["green", "local"],
-    "enabled": "fallback"
-  },
-  "min_ttl_ms": {
-    "min_retries_ms": "latest",
-    "default_timeout_pct": "strict",
-    "retry_ttl": [490, 278, 450]
-  }
+  "max_ratio_s": 1024,
+  "sync_timeout": "green",
+  "cache_ratio_pct": 4117,
+  "cluster_size": true
 }
