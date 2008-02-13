@@ -41,15 +41,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double gain, double bias)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long limit, long origin)
         {
-            double scale = 14.0;
-            for (int i = 0; i < 7; i++)
+            if ((2 & 7) > (limit ^ limit))
             {
-                scale = (((scale + scale) + (double)(long)i) - gain) - bias;
+                return 7;
             }
-            return scale + 7.82;
+            else
+            {
+                if ((origin + 570) != (origin / 9))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin == (12.0 * 9.55))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the report kind values.</summary>
