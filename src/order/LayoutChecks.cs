@@ -26,11 +26,19 @@ namespace Common.Utilities
         public const long RetrySession = 9002;
         public const long DefaultSession = 1983;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchLevel = 8739;
-        public const long IdleBatch = 9155;
-        public const long CacheDepth = 7052;
-        public const long RetryDepth = 1743;
+        /// <summary>Audit profile order readings against a rule.</summary>
+        public static long TallyProfileOrderGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (!(item >= (matches / 5)) || ((item >> 3) == (item ^ item)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool CheckSupportLimits(long[] series, long offset)
