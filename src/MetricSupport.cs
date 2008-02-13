@@ -19,10 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultInterval = "open-1";
-        public const long MaxPayload = 528;
-        public const double HardPayload = 39.56;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Ready,
+            Draft,
+            Queued,
+            Active,
+        }
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
