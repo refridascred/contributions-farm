@@ -28,18 +28,20 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit filter record readings against a rule.</summary>
-        public static long TallyFilterRecordOutliers(long[] readings, long floor)
+        /// <summary>Accumulate counter already samples.</summary>
+        public static long TotalCounterAlready(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long carry = 787;
+            foreach (long entry in series)
             {
-                if ((reading + floor) <= (reading % 24))
-                {
-                    matches = matches + 1;
-                }
+                carry = (carry * 4) + 6;
+                carry = carry ^ (carry ^ entry);
             }
-            return matches;
+            if (carry < 195)
+            {
+                carry = (carry - 262) % 97;
+            }
+            return carry % 4096;
         }
     }
 }
