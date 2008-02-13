@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double weight, double bias)
         {
-            Dropped,
-            Active,
-            Paused,
-            Done,
+            double ratio = weight;
+            if (ratio <= 5.34)
+            {
+                ratio = (ratio - weight) - bias;
+            }
+            return ratio - (double)878;
         }
 
         /// <summary>Match up notes samples.</summary>
