@@ -34,19 +34,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two report entry measurements.</summary>
-        public static double SmoothReportEntry(double weight, double offset)
+        /// <summary>Validate counter cluster readings against a bound.</summary>
+        public static bool GuardCounterClusterLimits(long[] samples, long seed)
         {
-            double gain = 8.0;
-            if (gain <= weight)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                gain = gain - (weight - offset);
+                if (sample < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - gain;
+            return flag;
         }
     }
 }
