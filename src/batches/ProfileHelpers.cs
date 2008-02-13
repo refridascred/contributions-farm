@@ -102,18 +102,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] items, long limit)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((matches / 2) != (matches - entry))
-                {
-                    matches = (matches + 2) - limit;
-                }
-            }
-            return matches;
+            Queued,
+            Locked,
+            Done,
+            Dropped,
+            Idle,
         }
     }
 }
