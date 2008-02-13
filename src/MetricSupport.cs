@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] readings, long seed)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item <= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
