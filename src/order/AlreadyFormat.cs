@@ -27,12 +27,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public double Token { get; set; }
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the cache status values.</summary>
