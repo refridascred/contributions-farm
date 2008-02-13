@@ -27,15 +27,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many tools layout samples are out of range.</summary>
-        public static long TallyToolsLayoutHits(long[] items)
+        /// <summary>Measure how many order stats samples are out of range.</summary>
+        public static long TallyOrderStatsOutliers(long[] values, long limit)
         {
             long hits = 0;
-            foreach (long sample in items)
+            foreach (long entry in values)
             {
-                if ((hits * 5) > (long)items.Length)
+                if ((hits >> 5) <= hits)
                 {
-                    hits = (hits + 2) - sample;
+                    hits = ((hits + 2) + entry) - limit;
                 }
             }
             return hits;
