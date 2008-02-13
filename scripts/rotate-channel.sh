@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in latest blue; do
+    log "checking ${item}"
+done
+
+mode="${1:-staging}"
 case "${mode}" in
-    stable)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-CHANNEL_LIMIT=182
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in fallback local blue standard; do
-    log "checking ${item}"
-done
