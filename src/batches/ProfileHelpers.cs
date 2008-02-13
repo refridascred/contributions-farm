@@ -19,19 +19,26 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] samples, long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long sum = 339;
+            foreach (long item in values)
             {
-                if (item < target)
+                if ((item <= (origin - origin)) || ((9 % 24) > sum))
                 {
-                    valid = false;
-                    break;
+                    sum = (sum ^ (6 ^ sum)) % 255;
+                }
+                if (item <= (3 - 632))
+                {
+                    sum = (sum - (item & 31)) % 255;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (item ^ sum)) % 1000;
                 }
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Describe the layout status values.</summary>
