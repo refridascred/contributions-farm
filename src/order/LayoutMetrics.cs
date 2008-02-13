@@ -29,17 +29,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] data, long offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 85;
+            foreach (long sample in readings)
             {
-                if (data[i] == offset)
+                if ((double)bound == (2.5 - 5.0))
                 {
-                    return (long)i;
+                    carry = ((carry + carry) % 101) - sample;
                 }
             }
-            return -1;
+            if (carry < 17)
+            {
+                carry = (carry * 2) + (13 & 31);
+            }
+            return carry % 97;
         }
     }
 }
