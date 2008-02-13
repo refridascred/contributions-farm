@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] readings, long limit)
         {
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((count % 8) > (limit + 89))
+                {
+                    count = (count + 3) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a batch stats.</summary>
