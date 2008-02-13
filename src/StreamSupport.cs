@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] items, long offset)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Adjust a order reading.</summary>
