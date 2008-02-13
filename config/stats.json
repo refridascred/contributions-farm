@@ -1,12 +1,6 @@
 {
-  "idle_retries_ms": 48.69,
-  "idle_ratio_s": "fallback",
-  "soft_depth": {
-    "format_ttl": "primary",
-    "persist": "green",
-    "batch_retries": 86.56,
-    "default_window_s": 500
-  },
-  "checks_depth": 8.49,
-  "default_delay_count": "edge"
+  "enabled": false,
+  "retry_depth": 9352,
+  "hard_limit_s": 75.38,
+  "readonly": 79.76
 }
