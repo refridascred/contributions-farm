@@ -1,7 +1,7 @@
 {
-  "min_depth": 100,
-  "channel_ttl": "edge",
-  "burst_delay": 9169,
-  "flush_limit_pct": 80,
-  "tools_size": [300, 364]
+  "editor_interval": [443, 21],
+  "enabled": true,
+  "audit": 38.18,
+  "default_capacity": 3414,
+  "default_threshold_s": ["green", "eu-west", "blue"]
 }
