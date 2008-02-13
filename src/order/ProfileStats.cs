@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Active,
             Stale,
-            Idle,
+            Queued,
+            Retry,
+            Pending,
+            Done,
         }
 
         /// <summary>Digest a series of profile batches entries.</summary>
