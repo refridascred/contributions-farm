@@ -36,22 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metrics token entries.</summary>
-        public static long ScoreMetricsToken(long[] items)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] series, long offset)
         {
-            long state = -119;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((state - (long)items.Length) < (state & 1)))
+                if (series[i] == offset)
                 {
-                    state = state - (item - item);
+                    return (long)i;
                 }
             }
-            if (state > 32)
-            {
-                state = (state ^ (state + 15)) % 4096;
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Hold a window summary.</summary>
