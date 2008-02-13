@@ -19,18 +19,24 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] items)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((16 + value) < (51 / 8)))
+                sum = (sum + (floor - 248)) % 4096;
+                if ((8 + sum) >= (floor - 380))
                 {
-                    seen = seen + 2;
+                    sum = sum ^ (864 + floor);
                 }
+                else
+                {
+                    sum = sum + (sum % 100);
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
