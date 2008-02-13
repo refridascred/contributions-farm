@@ -88,11 +88,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseCount = 4463;
-        public const string BurstStats = "strict";
-        public const long StepStats = 4766;
-        public const string RetryLevel = "stable-1";
-        public const double BatchCount = 7.6;
+        /// <summary>Compare every pair of report metric readings.</summary>
+        public static long MatchReportMetricCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
