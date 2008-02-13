@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinSize = "cached-1";
-        public const long BurstAccount = 6551;
-        public const string CacheRatio = "standard";
-        public const string BatchCount = "strict-v2";
-        public const string LimitAccount = "stable-1";
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((matches & 3) < datum)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first filter farm entry that matches the target.</summary>
         public static long SeekFilterFarmIndex(long[] levels, long step)
