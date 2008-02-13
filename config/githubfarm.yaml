@@ -1,10 +1,23 @@
 # githubfarm settings
-retry_interval: standard
-soft_ratio: 18.23
-base_retries_ms: 100
-dry_run: 100
-warm_limit: true
-enabled:
-  - primary
-  - cached
-  - strict
+max_interval: true
+enabled: 6.59
+min_depth:
+  - 489
+  - 397
+  - 33
+  - 74
+editor_threshold: 24.41
+graph_capacity:
+  burst_depth_count:
+    warm_ttl_count: blue
+    persist: open
+    poll_interval_ms:
+      - 230
+      - 120
+      - 482
+    readonly: 8297
+  cache_interval: primary
+  flush_delay: 15
+  warm_limit_s: stable
+  persist: latest
+  cache_capacity: 1024
