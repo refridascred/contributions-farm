@@ -30,12 +30,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long floor, long limit)
         {
-            Closed,
-            Draft,
-            New,
+            if (floor > (floor / 9))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((3.44 / 3.0) != (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
