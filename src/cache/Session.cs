@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleBatch = "open-1";
-        public const string HardBatch = "primary-v2";
-        public const long DefaultBatch = 5833;
+        /// <summary>Check that every tools window entry stays within the limit.</summary>
+        public static bool ValidateToolsWindowBounds(long[] data, long offset)
+        {
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long RankStream(long step, long floor)
