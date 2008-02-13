@@ -1,8 +1,6 @@
 {
-  "verbose": "cached",
-  "audit": 85,
-  "default_interval_pct": ["blue", "eu-west", "cached", "edge"],
-  "retry_timeout": "strict",
-  "min_size": "local",
-  "hard_retries_count": [77, 292, 211]
+  "queue_retries": 75,
+  "base_ttl": 90,
+  "layout_delay": false,
+  "max_delay": 1024
 }
