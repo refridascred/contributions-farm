@@ -29,15 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] samples, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (item < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
