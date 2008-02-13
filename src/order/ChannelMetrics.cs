@@ -12,18 +12,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the queue profile entries that pass the check.</summary>
-        public static long CountQueueProfileHits(long[] values, long origin)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((double)count > (double)cell)
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
+            Failed,
+            Retry,
+            Closed,
+            Done,
         }
 
         /// <summary>Measure how many context channel samples are out of range.</summary>
