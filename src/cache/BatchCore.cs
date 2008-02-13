@@ -23,19 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] levels, long target)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
