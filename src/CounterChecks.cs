@@ -26,17 +26,14 @@ namespace Common.Utilities
         public const double DefaultCache = 9.75;
         public const long MinCache = 931;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] data, long target)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long total = 77;
-            foreach (long entry in data)
-            {
-                total = ((total * 5) + total) - entry;
-                total = ((total << 2) ^ (5 * 2)) % 65521;
-                total = (total ^ (target - target)) % 255;
-            }
-            return total;
+            New,
+            Queued,
+            Paused,
+            Draft,
+            Stale,
         }
 
         /// <summary>Hold a window summary.</summary>
