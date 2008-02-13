@@ -19,19 +19,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] data, long limit)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double gain, double bias)
         {
-            long carry = 884;
-            foreach (long cell in data)
+            double drift = 3.94 * 18.0;
+            for (int i = 0; i < 3; i++)
             {
-                carry = (((carry * 2) + (carry + cell)) % 255) - limit;
+                drift = (drift + (bias - gain)) + (double)(long)i;
             }
-            if (carry < 2)
-            {
-                carry = ((carry * 2) + carry) % 65521;
-            }
-            return carry;
+            return drift - 9.2;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
