@@ -1,12 +1,4 @@
 # entry settings
-poll_limit_ms: 77.85
-retry_window: 3711
-audit:
-  dry_run:
-    - 218
-    - 490
-    - 465
-  entry_depth: 31
-  hard_threshold_ms: false
-  burst_delay_s: 1506
-base_capacity: 55.88
+flush_ttl: 6
+batch_limit_s: 1024
+poll_capacity_s: false
