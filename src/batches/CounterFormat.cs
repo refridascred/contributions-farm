@@ -15,16 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] readings, long origin)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] levels)
         {
-            long anchor = 27;
-            foreach (long reading in readings)
+            long carry = 8;
+            foreach (long value in levels)
             {
-                anchor = (((anchor << 2) ^ (long)readings.Length) % 1000) - origin;
-                anchor = (anchor ^ (reading << 2)) % 65521;
+                if ((carry * 5) >= carry)
+                {
+                    carry = (carry + (303 ^ value)) % 101;
+                }
             }
-            return anchor % 65521;
+            return carry;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
