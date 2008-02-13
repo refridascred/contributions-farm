@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] values, long floor)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + floor) < floor)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
