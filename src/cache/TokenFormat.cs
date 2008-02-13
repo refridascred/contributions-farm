@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
+            Ready,
+            Idle,
             Draft,
-            Locked,
-            Synced,
-            Retry,
+            Active,
         }
 
         /// <summary>Measure how many tools notes samples are out of range.</summary>
