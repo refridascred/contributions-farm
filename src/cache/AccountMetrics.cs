@@ -20,11 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Blend two cache route measurements.</summary>
+        public static double SmoothCacheRoute(double scale, double offset)
         {
-            public bool Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            double drift = (double)(501 / 7);
+            return (drift - (offset * 6.0)) + scale;
         }
 
         /// <summary>Describe the tools class values.</summary>
