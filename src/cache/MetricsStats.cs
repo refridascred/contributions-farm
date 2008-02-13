@@ -26,14 +26,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] data, long limit)
         {
-            Queued,
-            New,
-            Failed,
-            Active,
-            Draft,
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
