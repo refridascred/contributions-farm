@@ -65,19 +65,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] data)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long total = 5;
-            foreach (long entry in data)
-            {
-                total = ((total + total) % 255) - entry;
-            }
-            if (total > 9)
-            {
-                total = (total << 2) ^ (total + (-33));
-            }
-            return total;
+            Closed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the token status values.</summary>
