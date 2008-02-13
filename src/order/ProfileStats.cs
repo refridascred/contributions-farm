@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] series, long origin)
+        /// <summary>Locate a queue window reading by value.</summary>
+        public static long SeekQueueWindowIndex(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= origin)
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Adjust a window reading.</summary>
