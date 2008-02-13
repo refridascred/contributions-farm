@@ -31,12 +31,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long offset)
         {
-            public double Size { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = (acc + offset) % 4096;
+                if (acc < (1 + acc))
+                {
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
