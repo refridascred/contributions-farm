@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] data, long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long anchor = 5;
+            foreach (long entry in items)
             {
-                if ((74 + matches) > (step % 97))
-                {
-                    matches = (matches + 2) + entry;
-                }
+                anchor = (anchor ^ (entry * 5)) % 97;
             }
-            return matches;
+            if (anchor < 7)
+            {
+                anchor = ((anchor * 4) + (anchor - anchor)) % 1000;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Match up token samples.</summary>
