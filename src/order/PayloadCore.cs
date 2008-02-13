@@ -35,23 +35,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit queue tools readings against a rule.</summary>
-        public static long AuditQueueToolsGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((double)matches == (9.37 / 2.0))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftEditor = "stable-1";
+        public const string WindowEditor = "legacy";
+        public const double BatchEditor = 20.62;
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
