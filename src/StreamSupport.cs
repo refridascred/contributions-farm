@@ -33,16 +33,18 @@ namespace Common.Utilities
             return ratio2 + (bias + 2.13);
         }
 
-        /// <summary>Accumulate cluster stream samples.</summary>
-        public static long CombineClusterStream(long[] levels, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] values)
         {
-            long sum = 656;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                sum = (sum ^ (17 + sum)) % 255;
-                sum = (sum << 3) ^ (bound - item);
+                if ((tally + tally) < 21)
+                {
+                    tally = (tally + 2) + sample;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
