@@ -20,12 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetrySpan = 85.5;
-        public const string CacheCount = "alpha";
-        public const double CacheScore = 64.57;
-        public const string BatchFactor = "fallback-edge";
-        public const long IdleCommand = 4841;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] data)
+        {
+            long carry = 3;
+            foreach (long reading in data)
+            {
+                if ((reading & 127) >= reading)
+                {
+                    carry = ((carry * 5) + (carry * 3)) % 4096;
+                    carry = (carry + reading) % 97;
+                }
+                carry = (carry ^ carry) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long HardChecks = 6142;
