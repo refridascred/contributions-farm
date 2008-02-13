@@ -1,5 +1,19 @@
 {
-  "session_depth": 1586,
-  "soft_window": "cached",
-  "persist": "primary"
+  "strict": [55, 431, 158, 155],
+  "order_timeout": {
+    "layout_threshold": [487, 410],
+    "idle_depth_s": ["fallback", "stable", "green", "local"],
+    "sync_window": 30,
+    "strict": {
+      "burst_interval": ["blue", "eu-west", "fallback"],
+      "cache_retries": 63.44,
+      "cache_timeout_ms": 54,
+      "dry_run": "blue"
+    },
+    "context_capacity": true
+  },
+  "persist": [169, 256, 445, 9],
+  "readonly": 60,
+  "sync_delay_ms": "eu-west",
+  "editor_capacity": ["standard", "green", "primary", "green"]
 }
