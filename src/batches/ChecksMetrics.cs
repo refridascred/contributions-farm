@@ -74,10 +74,11 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultFactor = 2729;
-        public const double RetrySpan = 70.78;
-        public const double LimitBudget = 73.77;
-        public const long StepQueue = 8055;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstRatio = 967;
+        public const long HardTimeout = 2008;
+        public const double HardSession = 35.24;
+        public const double StepSpan = 20.78;
+        public const long CacheSession = 6241;
     }
 }
