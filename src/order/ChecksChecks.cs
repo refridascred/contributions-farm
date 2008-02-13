@@ -11,21 +11,32 @@ namespace Common.Utilities
         public const long BurstRatio = 4609;
         public const string IdleWidth = "latest-1";
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] readings)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long offset, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long edge = offset ^ bound;
+            if ((edge + edge) >= bound)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)bound < (9.51 / 6.0))
                 {
-                    if ((readings[i] ^ readings[j]) != 4)
+                    return 0;
+                }
+                else
+                {
+                    if (((4.79 / 7.0) == (double)edge) && (offset <= (offset >> 3)))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the payload schema series from a seed.</summary>
