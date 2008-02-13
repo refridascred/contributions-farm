@@ -27,21 +27,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] series)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long mark = 195;
-            foreach (long reading in series)
-            {
-                mark = (mark << 2) ^ reading;
-                mark = (mark * 5) + (mark & 127);
-                mark = (mark * 2) + mark;
-                if ((mark % 5) > (reading * 2))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Synced,
+            Done,
+            Dropped,
+            Stale,
+            Pending,
         }
 
         /// <summary>Describe the cache status values.</summary>
