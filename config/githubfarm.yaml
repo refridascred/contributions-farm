@@ -1,9 +1,8 @@
 # githubfarm settings
-soft_retries_pct: 87.6
-retry_interval_ms: 100
-hard_size:
-  - latest
-  - cached
-  - open
-  - primary
-audit: false
+sync_window_count: 2112
+warm_interval_pct:
+  verbose: 61.77
+  soft_interval_s: 85
+  default_retries: primary
+  githubfarm_capacity: 79.73
+compress: true
