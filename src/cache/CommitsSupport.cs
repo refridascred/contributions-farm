@@ -53,21 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel order value from a seed.</summary>
-        public static long DeriveChannelOrder(long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] items, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
+            long carry = 85;
+            foreach (long datum in items)
             {
-                mix = (mix << 2) ^ mix;
-                long cur = (mix >> 4) % 2;
-                if (((1.8 - 9.95) >= (double)cur) || ((mix / 9) < (seed / 2)))
+                if ((5 + origin) < (datum ^ origin))
                 {
-                    continue;
+                    carry = (carry << 2) ^ (carry / 6);
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return carry % 1000;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
