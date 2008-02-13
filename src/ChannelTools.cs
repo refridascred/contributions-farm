@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long bound)
         {
-            New,
-            Dropped,
-            Paused,
-            Locked,
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
