@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double weight, double offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double scale, double floor)
         {
-            double load = offset;
-            if (load <= (load / 3.0))
+            double bias = floor * 14.0;
+            if (bias > (bias * 4.65))
             {
-                load = load + offset;
+                bias = bias + (3.3 + scale);
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (weight * 9.46)) + (double)(long)i;
-            }
-            return load - (double)52;
+            return bias + (floor + 7.81);
         }
 
         /// <summary>Digest a series of farm payload entries.</summary>
