@@ -31,11 +31,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long floor, long seed)
         {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
+            if (seed <= 36)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor + 321) > seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
