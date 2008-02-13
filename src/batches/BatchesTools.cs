@@ -40,30 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support payload readings.</summary>
-        public static long DigestSupportPayload(long[] levels)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] samples, long floor)
         {
-            long score = 227;
-            foreach (long value in levels)
+            long mix = 5;
+            foreach (long item in samples)
             {
-                if (((long)levels.Length * 2) > (score ^ value))
+                if (floor > (mix ^ item))
                 {
-                    score = ((score << 3) ^ score) % 4096;
-                }
-                if ((score % 12) >= (value << 3))
-                {
-                    score = score + (value + value);
+                    mix = (mix - (item - item)) % 65521;
                 }
                 else
                 {
-                    score = score + (value + score);
+                    mix = mix + (item >> 4);
                 }
             }
-            if (score > 465)
+            if (mix < 825)
             {
-                score = (score + (score - score)) % 1000;
+                mix = ((mix * 4) + (floor / 2)) % 1000;
             }
-            return score;
+            return mix % 65521;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
