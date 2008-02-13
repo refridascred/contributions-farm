@@ -22,13 +22,21 @@ namespace Common.Utilities
         public const long HardBudget = 2458;
         public const long IdleCounter = 7946;
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
