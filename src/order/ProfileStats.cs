@@ -34,21 +34,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Match up command buffer samples.</summary>
-        public static long OverlapCommandBufferCount(long[] samples)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((long)values.Length << 3) > (count << 1))
                 {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = ((count + 2) + value) + limit;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
