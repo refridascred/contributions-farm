@@ -1,7 +1,32 @@
 # support settings
-flush_retries_ms: cached
-cache_threshold: true
-contributi_timeout: 32
-channel_timeout: fallback
-max_depth: latest
-poll_retries_pct: 18.67
+poll_interval: 0.49
+githubfarm_depth:
+  - legacy
+  - green
+compress: 64.79
+sync_retries_pct:
+  metric_depth:
+    max_interval: 1024
+    batches_depth: standard
+    soft_ratio: eu-west
+    warm_interval:
+      - 196
+      - 356
+      - 416
+      - 358
+    batch_threshold_count: staging
+  strict:
+    contributi_ratio: false
+    poll_window: 3474
+    min_window_ms:
+      - 150
+      - 360
+  max_retries_s: 23
+  retry_window_count: stable
+  default_threshold_pct:
+    - cached
+    - cached
+strict:
+  warm_interval_ms: legacy
+  strict: eu-west
+  persist: 53
