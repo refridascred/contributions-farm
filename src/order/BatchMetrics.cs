@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] items)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long anchor = 8;
-            foreach (long datum in items)
-            {
-                if ((datum + datum) >= (datum / 5))
-                {
-                    anchor = (anchor * 2) + 36;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (long)items.Length) % 97;
-                }
-            }
-            return anchor % 1000;
+            Synced,
+            Ready,
+            Idle,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
