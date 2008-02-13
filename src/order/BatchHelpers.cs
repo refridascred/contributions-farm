@@ -38,15 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] items)
         {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                if (!(reading < (count - reading)))
+                {
+                    count = count + 3;
+                }
             }
-            return state;
+            return count;
         }
     }
 }
