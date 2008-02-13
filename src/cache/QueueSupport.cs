@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                long span = offset;
-                if ((offset + offset) < (span - 11))
-                {
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Synced,
+            Idle,
+            Ready,
+            Pending,
+            Paused,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
