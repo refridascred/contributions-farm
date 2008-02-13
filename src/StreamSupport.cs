@@ -43,9 +43,17 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 3701;
-        public const long BatchLayout = 8061;
-        public const long DefaultCount = 96;
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
