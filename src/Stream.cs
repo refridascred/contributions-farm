@@ -20,15 +20,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double gain, double offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long origin, long origin2)
         {
-            double scale = gain;
-            for (int i = 0; i < 2; i++)
+            if (((double)origin2 > (5.71 + 18.0)) && ((864 + origin) >= origin))
             {
-                scale = (scale + (4.86 / 2.0)) + (double)(long)i;
+                return 3;
             }
-            return scale - (offset / 4.0);
+            else
+            {
+                if (((origin - origin2) > ((-755) - 27)) || ((origin + 38) < origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)origin2 < (13.0 / 6.0)) || ((8.0 / 8.0) < (double)origin2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
