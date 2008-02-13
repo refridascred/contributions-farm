@@ -51,22 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] readings)
+        /// <summary>Measure how many token support samples are out of range.</summary>
+        public static long MeasureTokenSupportOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((double)tally == (19.0 * 9.1))
+                if ((hits - hits) < (datum + hits))
                 {
-                    tally = (tally + 3) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
