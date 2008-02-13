@@ -75,21 +75,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] values)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell != seed)
                 {
-                    if ((values[i] - values[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
