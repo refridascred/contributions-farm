@@ -44,18 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] samples, long limit)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (!!((limit + 2) >= (item - tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 5662;
+        public const long BatchToken = 893;
+        public const double RetryFactor = 52.39;
+        public const string CacheToken = "staging-edge";
+        public const long IdleDepth = 9787;
     }
 }
