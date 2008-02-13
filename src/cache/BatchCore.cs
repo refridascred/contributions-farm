@@ -15,19 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double gain, double span)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            double load = gain;
-            if (load >= (double)46)
-            {
-                load = load + (double)650;
-            }
-            else
-            {
-                load = load - gain;
-            }
-            return load + (span * 1.7);
+            public double Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every contributi layout entry stays within the limit.</summary>
