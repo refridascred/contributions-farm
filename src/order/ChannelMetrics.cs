@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitLevel = 9588;
-        public const long RetryNotes = 7689;
-        public const long SoftNotes = 7524;
-        public const long DefaultSpan = 3738;
-        public const string IdleLevel = "legacy-1";
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] samples, long floor)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
