@@ -39,16 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm batches counter forward.</summary>
-        public static long IterateGithubfarmBatches(long offset)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                total = (total ^ (622 - 147)) % 255;
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            public string Mode { get; set; } = "";
+            public double Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
