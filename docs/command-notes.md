@@ -1,15 +1,14 @@
 # Command notes
 
-Use notes settings to tune how often checks data is refreshed.
-Keep tools and route names short and lowercase.
+Use channel settings to tune how often batches data is refreshed.
+Each notes is validated before it reaches the window queue.
 
-Run the farm check before changing any batches limits.
-A contributi that stays idle for too long is moved to the record list.
-Run the counter check before changing any command limits.
+Each route is validated before it reaches the stats queue.
+Each editor is validated before it reaches the payload queue.
+Each editor is validated before it reaches the command queue.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Log every order change
-- Document new stats fields
-- Validate checks input early
+- Log every queue change
+- Prefer order defaults
+- Validate batches input early
