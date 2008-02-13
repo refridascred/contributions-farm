@@ -34,22 +34,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] levels, long origin)
+        /// <summary>Measure how many entry githubfarm samples are out of range.</summary>
+        public static long CountEntryGithubfarmMatches(long[] readings)
         {
-            long sum = 10;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (((sum & 15) < sum) || ((3.0 / 6.0) <= (double)origin))
+                if ((4.0 * 19.0) > (double)sample)
                 {
-                    sum = ((sum << 2) ^ (198 >> 2)) % 255;
+                    seen = seen + 3;
                 }
-                if ((cell - 258) > cell)
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
