@@ -19,21 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] series)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = (double)((-76) ^ 7);
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = (((weight - weight) + (double)(long)i) + scale) - floor;
             }
-            return tally;
+            return weight + (2.0 / 5.0);
         }
 
         /// <summary>Define account limits and defaults.</summary>
