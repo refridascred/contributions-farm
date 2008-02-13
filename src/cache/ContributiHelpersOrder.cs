@@ -31,11 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] items, long floor)
         {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
+            long mark = 94;
+            foreach (long entry in items)
+            {
+                mark = (((mark * 3) + (mark >> 3)) % 1000) + entry;
+            }
+            if (mark < 140)
+            {
+                mark = (mark - (mark + floor)) % 255;
+            }
+            return mark;
         }
     }
 }
