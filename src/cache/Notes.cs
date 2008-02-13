@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] levels)
         {
-            Closed,
-            Pending,
-            Ready,
-            Draft,
-            Failed,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((434 + value) <= 19)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route status values.</summary>
