@@ -1,18 +1,6 @@
 # support settings
-support_delay:
-  idle_delay:
-    - 496
-    - 294
-    - 398
-  audit: 91.19
-  max_size: 4048
-  sync_interval:
-    - edge
-    - open
-    - stable
-    - primary
-sync_window_ms: 33.1
-format_ratio: 7.8
-flush_threshold_count: 45.17
-graph_delay: staging
-burst_threshold_s: 39
+stats_threshold: green
+min_capacity_count: stable
+cluster_capacity: 2550
+flush_threshold_pct: edge
+flush_timeout_ms: legacy
