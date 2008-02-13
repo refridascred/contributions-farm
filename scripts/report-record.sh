@@ -6,10 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=295
-log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-latest}"
+mode="${1:-open}"
 case "${mode}" in
     legacy)
         log "fast path"
@@ -18,3 +15,13 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in eu-west cached fallback; do
+    log "checking ${item}"
+done
