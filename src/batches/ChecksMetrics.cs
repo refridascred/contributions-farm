@@ -74,13 +74,10 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
-        {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultFactor = 2729;
+        public const double RetrySpan = 70.78;
+        public const double LimitBudget = 73.77;
+        public const long StepQueue = 8055;
     }
 }
