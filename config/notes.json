@@ -1,10 +1,10 @@
 {
-  "retry_timeout_s": {
-    "metrics_ttl": [127, 223],
-    "hard_retries_s": 1024,
-    "retry_threshold_pct": "fallback"
+  "compress": 5678,
+  "dry_run": {
+    "min_interval_ms": 55,
+    "burst_size": 22,
+    "tools_capacity": 89.07
   },
-  "burst_window_pct": 100,
-  "warm_size_pct": false,
-  "poll_delay_pct": true
+  "strict": 60,
+  "batch_retries_s": 89
 }
