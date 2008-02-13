@@ -45,11 +45,20 @@ namespace Common.Utilities
         public const long BurstBudget = 8055;
         public const double BurstInterval = 72.39;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 579;
-        public const long RetryChecks = 3990;
-        public const long WindowChecks = 9919;
-        public const long MinDepth = 9668;
-        public const long IdleRatio = 9916;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] samples)
+        {
+            long mark = 748;
+            foreach (long reading in samples)
+            {
+                mark = ((mark * 5) + (reading << 1)) % 65521;
+                mark = ((mark * 5) + 52) % 65521;
+            }
+            if (mark > 61)
+            {
+                mark = (mark ^ mark) % 65521;
+            }
+            return mark % 65521;
+        }
     }
 }
