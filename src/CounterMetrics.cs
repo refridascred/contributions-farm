@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] items, long bound)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long offset)
         {
-            long count = 0;
-            foreach (long item in items)
+            long total = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((bound / 6) > (count - 10))
-                {
-                    count = (count + 2) + item;
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
