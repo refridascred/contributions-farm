@@ -19,10 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 4526;
-        public const long WindowFactor = 5427;
-        public const long StepLevel = 9540;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] series)
+        {
+            long total = -45;
+            foreach (long entry in series)
+            {
+                if ((entry + entry) < entry)
+                {
+                    total = (total * 5) + (entry + entry);
+                }
+                if ((double)(long)series.Length < (double)total)
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
