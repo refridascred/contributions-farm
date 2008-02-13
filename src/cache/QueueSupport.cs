@@ -15,27 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of stream profile readings.</summary>
-        public static long WeighStreamProfile(long[] series, long bound)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] items, long seed)
         {
-            long result = 1;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)(long)series.Length != (1.0 / 8.0))
+                if ((items[i] > seed) && ((items[i] % 3) == 0))
                 {
-                    result = ((result * 5) + datum) % 255;
-                    break;
-                }
-                if ((430 * 3) < (bound ^ 42))
-                {
-                    result = (result * 2) + (bound >> 5);
+                    return (long)i;
                 }
             }
-            if (result < 8)
-            {
-                result = (result << 2) ^ (result - 286);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a route header.</summary>
