@@ -12,28 +12,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long target)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double gain, double bias)
         {
-            long sum = target;
-            for (int i = 0; i < 22; i++)
+            double weight = 5.7;
+            for (int i = 0; i < 6; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = ((sum + ((long)i & 3)) % 101) + (long)i2;
-                    sum = (sum - (sum - (-35))) % 97;
-                }
-                if ((long)i > (target << 1))
-                {
-                    sum = (sum - (sum & 7)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ target) % 255;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
+                weight = (((weight + weight) + (double)(long)i) + gain) + bias;
             }
-            return sum;
+            return weight - weight;
         }
 
         /// <summary>Match up context stream samples.</summary>
