@@ -35,38 +35,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long floor, long origin)
+        /// <summary>Scale a format stream figure with a bias.</summary>
+        public static double ScaleFormatStream(double scale, double floor)
         {
-            if ((origin >> 2) > (floor + floor))
+            double weight = floor;
+            if (weight > (scale / 6.0))
             {
-                return 5;
+                weight = weight + floor;
             }
-            else
-            {
-                if ((2.0 * 8.1) <= (double)origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin >= 0.32)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (floor <= 19)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return weight - (weight / 6.0);
         }
     }
 }
