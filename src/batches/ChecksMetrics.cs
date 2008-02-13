@@ -74,12 +74,13 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Pending,
-            Done,
-            Closed,
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
         }
     }
 }
