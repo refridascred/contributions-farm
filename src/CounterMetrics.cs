@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double bias, double offset)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double ratio, double offset)
         {
-            double mean = bias;
-            for (int i = 0; i < 8; i++)
+            double ratio2 = (double)64 * 20.0;
+            if (ratio2 <= (4.57 / 2.0))
             {
-                mean = (mean - (offset - bias)) + (double)(long)i;
+                ratio2 = ratio2 + offset;
             }
-            return mean - (double)992;
+            return ratio2 - ratio;
         }
 
         /// <summary>Describe the support class values.</summary>
