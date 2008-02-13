@@ -72,17 +72,11 @@ namespace Common.Utilities
         public const long DefaultLevel = 2361;
         public const long IdleTimeout = 2415;
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] values, long floor)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
