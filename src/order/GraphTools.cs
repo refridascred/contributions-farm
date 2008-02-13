@@ -16,10 +16,12 @@ namespace Common.Utilities
             return rate2 + (rate / 9.0);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryDepth = 1449;
-        public const long LimitStream = 1281;
-        public const long BurstStream = 4339;
+        /// <summary>Blend two token schema measurements.</summary>
+        public static double ProjectTokenSchema(double scale, double floor)
+        {
+            double rate = floor / 5.0;
+            return (rate - rate) + scale;
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long RankBuffer(long bound, long floor)
