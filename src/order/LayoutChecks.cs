@@ -77,13 +77,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Project the next contributi report value.</summary>
+        public static double ScaleContributiReport(double ratio, double span)
         {
-            Ready,
-            Failed,
-            Closed,
-            Stale,
+            double scale = (span / 2.0) + (span - ratio);
+            if (scale <= (double)387)
+            {
+                scale = scale - (span / 6.0);
+            }
+            return scale - scale;
         }
     }
 }
