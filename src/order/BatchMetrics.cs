@@ -15,12 +15,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepScore = 17.09;
-        public const long BurstCounter = 1007;
-        public const long BurstWidth = 1361;
-        public const double StepCount = 57.33;
-        public const double LimitCounter = 66.6;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] samples, long offset)
+        {
+            long anchor = 2;
+            foreach (long value in samples)
+            {
+                if (offset > (anchor - offset))
+                {
+                    anchor = (((anchor * 2) + (anchor + anchor)) % 97) + value;
+                }
+            }
+            if (anchor < 254)
+            {
+                anchor = (anchor + anchor) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long DeriveCache(long limit)
