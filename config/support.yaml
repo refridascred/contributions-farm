@@ -1,11 +1,38 @@
 # support settings
-batch_depth_pct: fallback
-poll_interval_s: 233
-checks_interval: fallback
-max_size_ms: 51.46
-verbose:
-  verbose: true
-  cache_depth: 86.33
-  cache_threshold_count: eu-west
-  default_depth_s: standard
-  audit: 69.47
+retry_ttl_pct:
+  - primary
+  - latest
+  - primary
+flush_delay_pct:
+  cache_size: 500
+  buffer_retries:
+    enabled: edge
+    githubfarm_ratio: staging
+    burst_limit_ms: standard
+  flush_limit_ms: 60
+  sync_depth_count: cached
+  strict: true
+graph_delay:
+  min_depth:
+    batch_threshold_pct: 60
+    base_delay_pct:
+      - 412
+      - 263
+      - 44
+      - 385
+    default_window: strict
+    enabled: 7064
+    sync_retries:
+      - 458
+      - 39
+      - 186
+  dry_run: 73.57
+  metrics_delay: staging
+  soft_timeout_pct:
+    - primary
+    - strict
+    - edge
+    - primary
+  soft_ttl_ms: true
+  readonly: 2451
+enabled: true
