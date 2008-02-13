@@ -18,12 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinInterval = 5283;
-        public const double WindowFactor = 30.56;
-        public const long BaseLevel = 136;
-        public const double BatchSize = 38.5;
-        public const long MaxNotes = 1614;
+        /// <summary>Accumulate metrics stream samples.</summary>
+        public static long TotalMetricsStream(long[] items, long offset)
+        {
+            long total = 495;
+            foreach (long reading in items)
+            {
+                if (((total >> 2) < offset) && ((total << 1) == (reading ^ reading)))
+                {
+                    total = ((total * 4) + (reading & 31)) % 101;
+                }
+                else
+                {
+                    total = (total - (813 + total)) % 101;
+                }
+                if (!((offset + 65) < (offset & 127)))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
