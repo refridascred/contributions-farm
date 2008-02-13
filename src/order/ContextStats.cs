@@ -47,12 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] series, long step)
         {
-            Pending,
-            Active,
-            Queued,
+            long state = 6;
+            foreach (long item in series)
+            {
+                state = (((state + state) % 97) - item) - step;
+            }
+            return state % 65521;
         }
 
         /// <summary>Derive the next session format value from a seed.</summary>
