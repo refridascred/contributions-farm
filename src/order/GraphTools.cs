@@ -36,32 +36,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long bound, long floor)
+        /// <summary>Accumulate channel graph samples.</summary>
+        public static long FoldChannelGraph(long[] data)
         {
-            long bound2 = bound - floor;
-            if ((bound2 / 6) <= bound2)
+            long score = 814;
+            foreach (long entry in data)
             {
-                return 3;
+                score = (score << 3) ^ (entry - entry);
             }
-            else
-            {
-                if ((double)bound2 >= (7.05 - 7.61))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound & 63) > (bound2 * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return score % 4096;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
