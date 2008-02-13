@@ -13,11 +13,20 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 658;
-        public const long MaxWidth = 1105;
-        public const string BaseCommand = "standard-edge";
-        public const long WindowCommand = 8040;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] levels, long bound)
+        {
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long HardSupport = 2007;
