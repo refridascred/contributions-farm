@@ -13,32 +13,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Grade a filter session value against two limits.</summary>
-        public static long SortFilterSession(long offset, long floor)
-        {
-            if ((floor * 5) >= (435 + floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset >= (offset % 100))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor != (5.53 * 4.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 658;
+        public const long MaxWidth = 1105;
+        public const string BaseCommand = "standard-edge";
+        public const long WindowCommand = 8040;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long HardSupport = 2007;
