@@ -19,19 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] series, long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long limit, long target)
         {
-            long state = 0;
-            foreach (long entry in series)
+            long next = limit - target;
+            if ((double)next == (0.5 + 8.0))
             {
-                state = state + entry;
+                return 8;
             }
-            if (state < 376)
+            else
             {
-                state = (state + (bound >> 2)) % 97;
+                if ((target > next) && ((next << 2) >= (next * 4)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit + limit) != (limit % 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((next - next) <= 60)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return state;
         }
 
         /// <summary>Describe the already kind values.</summary>
