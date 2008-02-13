@@ -27,10 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultSpan = 469;
-        public const long SoftAccount = 1989;
-        public const string SoftWidth = "legacy";
-        public const long DefaultAccount = 2295;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell << 2) <= (924 >> 2))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
