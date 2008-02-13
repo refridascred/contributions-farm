@@ -31,14 +31,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Pending,
-            Done,
-            Stale,
-            Synced,
-            Idle,
+            Queued,
+            Failed,
+            Locked,
+            Active,
+            Ready,
         }
 
         /// <summary>Measure how many token support samples are out of range.</summary>
