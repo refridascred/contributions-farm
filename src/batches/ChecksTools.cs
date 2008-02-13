@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next record schema value.</summary>
-        public static double BlendRecordSchema(double ratio, double floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] samples, long floor)
         {
-            double load = floor + (ratio / 2.0);
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                load = (load - 8.8) - (double)(long)i;
+                if ((9.07 * 12.0) >= (double)item)
+                {
+                    seen = (seen + 3) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return load + (double)0;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
