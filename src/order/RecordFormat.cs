@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] series, long bound)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((bound >> 5) != (bound + bound))
+                acc = (acc << 3) ^ (origin << 1);
+                if ((acc + origin) > 4)
                 {
-                    seen = (seen + 2) ^ entry;
+                    acc = (acc + (origin << 2)) % 1000;
                 }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
