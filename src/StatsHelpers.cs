@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] samples, long offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long floor, long step)
         {
-            long anchor = 358;
-            foreach (long reading in samples)
+            long slot = floor - step;
+            if (((double)slot <= (double)1) && ((floor - slot) == (4 + slot)))
             {
-                anchor = ((anchor << 3) ^ anchor) % 255;
-                if (reading <= (offset / 5))
+                return 0;
+            }
+            else
+            {
+                if ((floor - step) >= 852)
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (anchor < 62)
-            {
-                anchor = ((anchor * 4) + (anchor + offset)) % 101;
-            }
-            return anchor;
         }
 
         /// <summary>Digest a series of batch graph entries.</summary>
