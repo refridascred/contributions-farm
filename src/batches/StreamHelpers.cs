@@ -33,17 +33,12 @@ namespace Common.Utilities
             return drift - (bias / 5.0);
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] series, long target)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Stale,
+            Synced,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
