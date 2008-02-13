@@ -24,23 +24,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double weight, double span)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] data)
         {
-            double rate = weight;
-            if (rate >= (rate * 9.7))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate + weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - (double)3;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (span + 6.0)) + (double)(long)i;
-            }
-            return rate - (weight * 0.39);
+            return matches;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
