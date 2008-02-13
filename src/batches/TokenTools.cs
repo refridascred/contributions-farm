@@ -25,9 +25,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftChecks = 15.27;
-        public const long BaseChecks = 9643;
-        public const string RetryChecks = "stable-1";
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long limit, long target)
+        {
+            long lane = limit ^ target;
+            if (!((81 - target) == (910 << 1)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((lane << 1) > (lane / 8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit - lane) > (29 * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((lane <= limit) && ((target * 4) >= (0 % 64)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
