@@ -47,11 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
