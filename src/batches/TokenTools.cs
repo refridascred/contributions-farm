@@ -19,10 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinStats = 84.69;
-        public const double BatchStats = 52.11;
-        public const long LimitStats = 4610;
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double ratio, double offset)
+        {
+            double mean = (double)((-4) << 3);
+            if (mean < offset)
+            {
+                mean = mean - ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (mean + mean)) + (double)(long)i;
+            }
+            return mean + 10.0;
+        }
 
         /// <summary>Grade a session schema value against two limits.</summary>
         public static long BucketSessionSchema(long seed, long seed2)
