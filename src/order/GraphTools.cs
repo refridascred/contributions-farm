@@ -29,15 +29,38 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate channel graph samples.</summary>
-        public static long FoldChannelGraph(long[] data)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long origin, long offset)
         {
-            long score = 814;
-            foreach (long entry in data)
+            if ((42 >> 4) > (origin + origin))
             {
-                score = (score << 3) ^ (entry - entry);
+                return 6;
             }
-            return score % 4096;
+            else
+            {
+                if ((offset >> 4) < (origin & 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((origin - 4) <= 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((2.32 - 7.0) <= (double)offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
