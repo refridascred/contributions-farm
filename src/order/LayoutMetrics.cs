@@ -20,10 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftFactor = "alpha";
-        public const double IdleInterval = 28.33;
-        public const string StepBudget = "alpha-edge";
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Locked,
+            Done,
+            Synced,
+        }
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
