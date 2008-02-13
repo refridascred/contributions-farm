@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyMatches(long[] samples)
         {
-            Failed,
-            Locked,
-            Closed,
-            Paused,
-            New,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item - count) < (11 - count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
