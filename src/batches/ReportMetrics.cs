@@ -14,12 +14,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long step, long bound)
         {
-            public bool Score { get; set; }
-            public bool Level { get; set; }
-            public bool Region { get; set; }
+            long prev = step - bound;
+            if ((step + bound) < (step << 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)prev <= (20.0 * 0.01))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)prev < (4.3 + 9.43))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((prev + 5) != (5 - prev))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up commits samples.</summary>
