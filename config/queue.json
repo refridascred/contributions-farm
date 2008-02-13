@@ -1,5 +1,6 @@
 {
-  "sync_ttl_s": "latest",
-  "profile_window": "cached",
-  "retry_retries_pct": "edge"
+  "poll_window_pct": 3387,
+  "poll_capacity": false,
+  "command_size": false,
+  "readonly": "eu-west"
 }
