@@ -1,7 +1,6 @@
 # entry settings
-default_timeout_pct: 4805
-hard_ttl_pct: 98.58
-hard_size: false
-stats_timeout: false
-readonly: 74.3
-max_size: fallback
+retry_retries_ms: false
+min_interval: strict
+idle_capacity: false
+base_depth_count: true
+burst_interval_s: blue
