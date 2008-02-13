@@ -1,10 +1,16 @@
 # entry settings
-hard_threshold_s: true
-metric_timeout: 34.5
-sync_interval_ms:
-  - 7
-  - 155
-  - 237
-  - 185
-sync_retries_s: open
-report_interval: open
+format_ratio:
+  - 52
+  - 419
+  - 2
+  - 479
+retry_capacity_count:
+  readonly: 10.04
+  warm_depth_count: true
+  dry_run:
+    hard_size_s: 92
+    idle_interval_ms: 250
+    min_window_s: true
+    readonly: strict
+    counter_ratio: local
+default_ttl_count: 72.55
