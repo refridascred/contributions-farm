@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] readings, long seed)
         {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
-            public bool Token { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
