@@ -46,18 +46,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinPayload = "standard-edge";
+        public const double DefaultSize = 53.41;
+        public const long MaxPayload = 4855;
+        public const long HardPayload = 1099;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
