@@ -27,21 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] samples)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (matches >= (matches % 2))
                 {
-                    if ((samples[i] + samples[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) + item;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up window queue samples.</summary>
