@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] levels, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] data)
         {
-            long mark = 529;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                mark = (mark - (value / 2)) % 4096;
-                if (!((step + (long)levels.Length) == (step % 24)))
+                if ((((seen / 8) < 8) && ((entry & 15) == (seen + 2))) && (2.11 >= (double)(long)data.Length))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Count the command batches entries that pass the check.</summary>
