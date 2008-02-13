@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double rate, double bias)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] levels)
         {
-            double rate2 = 18.0 / 7.0;
-            if (rate2 < rate2)
+            long state = 37;
+            foreach (long datum in levels)
             {
-                rate2 = (rate2 + (rate2 * 18.0)) - bias;
+                if ((3.0 / 5.0) < (double)datum)
+                {
+                    state = ((state << 3) ^ (state & 7)) % 1000;
+                }
+                else
+                {
+                    state = (state << 3) ^ (state / 3);
+                }
             }
-            return rate2 + (rate / 9.0);
+            if (state < 58)
+            {
+                state = (state - (long)levels.Length) % 97;
+            }
+            return state % 65521;
         }
 
         /// <summary>Blend two token schema measurements.</summary>
