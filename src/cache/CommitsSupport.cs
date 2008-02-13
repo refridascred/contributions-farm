@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double rate, double bias)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            double weight = bias / 9.0;
-            for (int i = 0; i < 3; i++)
-            {
-                weight = ((weight - 17.0) - (double)(long)i) + rate;
-            }
-            return weight + (double)0;
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
