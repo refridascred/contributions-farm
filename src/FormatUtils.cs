@@ -54,19 +54,11 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (!(entry >= hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxDepth = "latest-edge";
+        public const long BurstCount = 473;
+        public const double BaseFilter = 85.08;
+        public const long WindowFilter = 7285;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long WeighAccount(long[] levels)
