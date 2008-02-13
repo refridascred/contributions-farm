@@ -52,22 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] readings, long target)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (!(tally <= (reading / 3)))
-                {
-                    tally = (tally + 1) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Done,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
