@@ -29,16 +29,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long limit)
+        /// <summary>Validate farm tools readings against a bound.</summary>
+        public static bool GuardFarmToolsRange(long[] series, long target)
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                result = ((result << 2) ^ ((long)i + limit)) % 4096;
-                result = ((result * 5) + (long)i) % 97;
+                if (cell != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
