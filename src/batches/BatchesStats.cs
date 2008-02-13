@@ -32,15 +32,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a format stream figure with a bias.</summary>
-        public static double ScaleFormatStream(double scale, double floor)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] readings, long floor)
         {
-            double weight = floor;
-            if (weight > (scale / 6.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight + floor;
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return weight - (weight / 6.0);
+            return -1;
         }
     }
 }
