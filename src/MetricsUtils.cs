@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long HardContext = 6733;
         public const string BurstRatio = "alpha";
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] data)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] levels, long bound)
         {
-            long mix = 76;
-            foreach (long item in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((-206) << 2) > (item ^ mix)))
+                if (levels[i] == bound)
                 {
-                    mix = (mix - ((-14) ^ mix)) % 65521;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
