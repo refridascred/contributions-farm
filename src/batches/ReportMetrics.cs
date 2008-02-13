@@ -20,23 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (!((count + count) > count) || ((count ^ (long)levels.Length) > count))
-                {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 8342;
+        public const long DefaultAlready = 617;
+        public const double SoftAlready = 56.31;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
