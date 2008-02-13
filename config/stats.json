@@ -1,7 +1,8 @@
 {
-  "poll_timeout_pct": 26,
-  "min_size": 33,
-  "strict": [12, 232, 397, 171],
-  "hard_interval_pct": [114, 78, 10, 336],
-  "max_timeout_pct": "green"
+  "poll_interval_count": "open",
+  "poll_limit_s": [454, 489],
+  "filter_depth": "staging",
+  "warm_interval": 1024,
+  "default_window": "eu-west",
+  "enabled": 4218
 }
