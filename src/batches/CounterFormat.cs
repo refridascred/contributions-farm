@@ -39,12 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] items, long origin)
         {
-            Pending,
-            Active,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= origin) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
