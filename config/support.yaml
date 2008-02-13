@@ -1,16 +1,8 @@
 # support settings
-dry_run:
-  layout_limit:
-    enabled: false
-    idle_interval: stable
-    compress: 78
-  commits_timeout: primary
-  base_ttl: 8145
-  audit: 1024
-enabled: green
-poll_size_pct:
-  - 226
-  - 23
-burst_limit: legacy
-poll_window_count: 1987
-queue_ttl: open
+compress: blue
+cache_interval: 1024
+command_interval: 54.49
+context_retries:
+  - primary
+  - cached
+  - open
