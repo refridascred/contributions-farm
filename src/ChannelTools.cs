@@ -18,22 +18,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 7588;
+        public const double IdleTimeout = 37.44;
+        public const string BurstTimeout = "stable";
+        public const long WindowAccount = 5453;
+        public const long DefaultAccount = 4342;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool ValidateEntryLimits(long[] values, long origin)
