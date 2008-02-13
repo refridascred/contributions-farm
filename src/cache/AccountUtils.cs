@@ -31,10 +31,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleFactor = 96.49;
-        public const double MaxMetric = 49.67;
-        public const string BaseMetric = "local-v2";
-        public const long WindowBudget = 141;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Locked,
+            Failed,
+            Draft,
+            Dropped,
+            Active,
+        }
     }
 }
