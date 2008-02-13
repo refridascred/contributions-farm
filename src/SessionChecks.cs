@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const long BurstCounter = 9176;
         public const long CacheCount = 4235;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] readings, long target)
         {
-            Stale,
-            Active,
-            Pending,
-            Ready,
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((tally < (target % 24)) && (entry < (target << 1)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a checks schema counter forward.</summary>
