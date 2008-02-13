@@ -40,18 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] readings)
+        /// <summary>Audit cluster githubfarm readings against a rule.</summary>
+        public static long CountClusterGithubfarmHits(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (value >= (8 << 3))
+                if (!(0.61 <= (double)tally))
                 {
-                    matches = matches + 3;
+                    tally = ((tally + 2) - cell) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
