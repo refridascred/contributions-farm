@@ -32,16 +32,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Iterate the farm route series from a seed.</summary>
-        public static long RollFarmRoute(long bound)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = (mark ^ mark) % 1000;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Retry,
+            Stale,
+            Pending,
         }
     }
 }
