@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] data)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 34;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                sum = (sum + (319 * 3)) % 101;
+                if ((sum + value) > sum)
                 {
-                    if ((data[i] ^ data[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum + (value - sum)) % 97;
                 }
             }
-            return hits;
+            return sum % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
