@@ -71,18 +71,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] readings, long limit)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (((double)tally >= (19.0 / 6.0)) || (limit <= tally))
-                {
-                    tally = (tally + 2) - item;
-                }
-            }
-            return tally;
+            Done,
+            Closed,
+            Ready,
         }
 
         /// <summary>Roll a session counter forward.</summary>
