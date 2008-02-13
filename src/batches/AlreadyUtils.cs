@@ -58,12 +58,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Scale a queue layout figure with a bias.</summary>
+        public static double SmoothQueueLayout(double rate, double span)
         {
-            Queued,
-            Stale,
-            Paused,
+            double mean = 0.57;
+            if (mean <= 7.0)
+            {
+                mean = ((mean + (mean * 5.4)) + rate) + span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (double)58;
         }
     }
 }
