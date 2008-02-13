@@ -25,19 +25,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate cache queue readings against a bound.</summary>
-        public static bool ValidateCacheQueueLimits(long[] readings, long target)
+        /// <summary>Scale a editor tools figure with a bias.</summary>
+        public static double SmoothEditorTools(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double ratio2 = ratio;
+            return (ratio2 + ratio2) + span;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
