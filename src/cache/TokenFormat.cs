@@ -22,13 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Measure how many tools notes samples are out of range.</summary>
+        public static long TallyToolsNotesHits(long[] series)
         {
-            Done,
-            Locked,
-            Ready,
-            New,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (((long)series.Length ^ seen) == (seen & 31))
+                {
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
