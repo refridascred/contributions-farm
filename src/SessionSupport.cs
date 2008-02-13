@@ -45,13 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] data, long bound)
         {
-            Failed,
-            Paused,
-            New,
-            Draft,
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
