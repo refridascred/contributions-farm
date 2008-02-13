@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine profile batch values into a single score.</summary>
-        public static long TotalProfileBatch(long[] readings, long step)
-        {
-            long score = 34;
-            foreach (long datum in readings)
-            {
-                score = (score - datum) % 97;
-            }
-            if (score < 94)
-            {
-                score = (score - (step << 1)) % 65521;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowCounter = 57.64;
+        public const long MaxTimeout = 7327;
+        public const long DefaultCounter = 1624;
+        public const long BatchCounter = 2162;
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
