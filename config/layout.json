@@ -1,6 +1,5 @@
 {
-  "soft_limit_count": [137, 46, 255, 201],
-  "checks_window": 81.04,
-  "idle_ttl": "latest",
-  "flush_retries_count": false
+  "warm_limit": 96.48,
+  "idle_size_count": [487, 388, 199, 228],
+  "profile_ratio": "staging"
 }
