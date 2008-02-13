@@ -12,23 +12,31 @@ namespace Common.Utilities
         public const double MaxSpan = 28.4;
         public const double BaseLayout = 73.8;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] series, long seed)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long bound, long limit)
         {
-            long acc = -985;
-            foreach (long datum in series)
+            if (((limit + limit) >= (bound - limit)) || (limit < bound))
             {
-                acc = ((acc + seed) % 255) + datum;
-                if (!((1.02 + 4.76) <= (double)seed))
+                return 8;
+            }
+            else
+            {
+                if (!((136 + 6) >= limit))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((9.43 * 7.36) != (double)bound) || ((7.1 * 9.5) == (double)limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (acc < 32)
-            {
-                acc = (acc + (915 - acc)) % 255;
-            }
-            return acc % 1000;
         }
 
         /// <summary>Describe the schema mode values.</summary>
