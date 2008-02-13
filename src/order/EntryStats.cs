@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double rate, double bias)
+        /// <summary>Look up the position of a token metric sample.</summary>
+        public static long LookupTokenMetricIndex(long[] data, long limit)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = (bias2 - (rate + bias2)) + (double)(long)i;
+                if ((data[i] <= limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - bias;
+            return -1;
         }
 
         /// <summary>Accumulate queue samples.</summary>
