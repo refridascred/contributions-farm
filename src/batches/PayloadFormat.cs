@@ -25,17 +25,31 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Locate a format window reading by value.</summary>
-        public static long FindFormatWindowIndex(long[] samples, long seed)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long step, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((step - step) >= 56)
             {
-                if ((samples[i] > seed) && ((samples[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if (((double)step < 1.16) && ((4.0 / 4.0) == (double)limit))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((step * 5) >= (limit + step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
