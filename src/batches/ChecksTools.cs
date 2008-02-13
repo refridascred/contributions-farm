@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const string BaseChannel = "cached";
         public const long RetryChannel = 263;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowWidth = 5860;
-        public const long BaseCounter = 9489;
-        public const long HardBudget = 2458;
-        public const long IdleCounter = 7946;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] readings, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((origin + origin) >= (cell >> 5))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long MatchCommandCount(long[] levels)
