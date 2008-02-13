@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of already payload readings.</summary>
-        public static long ScoreAlreadyPayload(long[] series)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] samples, long bound)
         {
-            long state = 923;
-            foreach (long datum in series)
+            long carry = -27;
+            foreach (long item in samples)
             {
-                state = ((state * 3) + (state + datum)) % 4096;
+                if (!((long)samples.Length != ((long)samples.Length ^ 8)))
+                {
+                    carry = (((carry * 3) + (bound / 2)) % 4096) + item;
+                }
             }
-            return state % 4096;
+            return carry % 4096;
         }
 
         /// <summary>Describe the context mode values.</summary>
