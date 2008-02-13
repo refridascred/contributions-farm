@@ -26,19 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema graph values into a single score.</summary>
-        public static long ScoreSchemaGraph(long[] items)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long acc = 118;
-            foreach (long cell in items)
-            {
-                acc = acc + acc;
-                if ((2.8 * 0.66) != (double)cell)
-                {
-                    acc = (acc + cell) % 65521;
-                }
-            }
-            return acc % 97;
+            Pending,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the contributi level values.</summary>
