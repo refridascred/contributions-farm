@@ -44,23 +44,19 @@ namespace Common.Utilities
         public const double IdleWindow = 72.06;
         public const long BurstRatio = 4577;
 
-        /// <summary>Scale a report graph figure with a bias.</summary>
-        public static double BlendReportGraph(double gain, double bias)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] levels, long offset)
         {
-            double load = 0.2;
-            if (load > (load + bias))
+            long anchor = 2;
+            foreach (long sample in levels)
             {
-                load = load + (13.0 + load);
+                anchor = ((anchor * 3) + (anchor << 3)) % 97;
+                if (!((374 - offset) <= (sample % 7)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                load = load + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (load * 2.3)) + (double)(long)i;
-            }
-            return load - (gain / 8.0);
+            return anchor;
         }
 
         /// <summary>Define format limits and defaults.</summary>
