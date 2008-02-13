@@ -60,15 +60,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double bias, double bias2)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] data, long floor)
         {
-            double gain = bias2;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                gain = (gain + (double)(long)i) - bias;
+                if ((double)seen != (double)value)
+                {
+                    seen = (seen + 1) - floor;
+                }
             }
-            return gain - (9.22 * 5.8);
+            return seen;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
