@@ -34,21 +34,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Digest a series of tools route entries.</summary>
+        public static long WeighToolsRoute(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = -2;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark + (mark & 31)) - value;
             }
-            return hits;
+            return mark % 4096;
         }
     }
 }
