@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] series, long bound)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long limit, long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            if (((step << 3) >= 8) || (step >= ((-261) >> 4)))
             {
-                if (cell >= (54 * 4))
+                return 5;
+            }
+            else
+            {
+                if (step <= (limit << 1))
                 {
-                    hits = (hits + 3) + bound;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + step) < (step + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
