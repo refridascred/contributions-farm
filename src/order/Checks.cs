@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] data, long step)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
