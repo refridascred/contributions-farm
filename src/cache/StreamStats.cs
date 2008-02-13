@@ -24,11 +24,13 @@ namespace Common.Utilities
         public const long WindowFactor = 5427;
         public const long StepLevel = 9540;
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double bias, double offset)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            double gain = (bias / 3.0) * 4.16;
-            return gain + offset;
+            Pending,
+            Ready,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
