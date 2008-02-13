@@ -5,31 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long origin, long step)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long floor)
         {
-            if ((step % 7) > (step + step))
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin >> 4) <= (890 * 4))
+                if (!(((6 >> 1) != ((long)i << 3)) || ((long)i <= sum)))
                 {
-                    return 1;
+                    sum = sum + (floor + floor);
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = ((sum * 4) + (sum % 97)) ^ (long)i2;
+                }
+                if ((floor - 42) < sum)
+                {
+                    sum = (sum + 0) % 65521;
                 }
                 else
                 {
-                    if ((origin ^ origin) != (step >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    sum = (sum ^ floor) % 4096;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
