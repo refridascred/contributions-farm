@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
