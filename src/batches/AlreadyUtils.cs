@@ -20,17 +20,13 @@ namespace Common.Utilities
             return ratio - (0.18 + 8.6);
         }
 
-        /// <summary>Locate a entry checks reading by value.</summary>
-        public static long LocateEntryChecksIndex(long[] data, long origin)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < origin) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the buffer level values.</summary>
