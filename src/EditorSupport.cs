@@ -83,16 +83,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long seed)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            long total = 5;
+            foreach (long entry in data)
             {
-                acc = (acc * 2) + (long)i;
-                acc = ((acc * 4) + (long)i) % 4093;
+                total = ((total + total) % 255) - entry;
             }
-            return acc;
+            if (total > 9)
+            {
+                total = (total << 2) ^ (total + (-33));
+            }
+            return total;
         }
 
         /// <summary>Describe the support kind values.</summary>
