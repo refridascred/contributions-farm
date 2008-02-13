@@ -1,7 +1,6 @@
-id,token,active
-1,565,956
-2,926,54.89
-3,382,staging
-4,318,9.79
-5,standard,strict
-6,strict,staging
+id,rank,weight
+1,220,stable
+2,latest,227
+3,73,363
+4,29.3,staging
+5,603,88.31
