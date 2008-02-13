@@ -56,18 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache cluster readings against a rule.</summary>
-        public static long MeasureCacheClusterGaps(long[] levels, long origin)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)reading != (13.0 * 2.65))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 3) - origin;
+                    if ((samples[i] + samples[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
