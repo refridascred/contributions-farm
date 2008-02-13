@@ -54,18 +54,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (tally >= (793 + entry))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseCount = 4463;
+        public const string BurstStats = "strict";
+        public const long StepStats = 4766;
+        public const string RetryLevel = "stable-1";
+        public const double BatchCount = 7.6;
     }
 }
