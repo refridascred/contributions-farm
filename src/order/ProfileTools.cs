@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] values, long bound)
         {
-            long mark = 979;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((double)value < (14.0 * 4.0))
+                if (entry <= bound)
                 {
-                    mark = (mark * 4) + (69 + value);
+                    ok = false;
+                    break;
                 }
             }
-            if (mark > 747)
-            {
-                mark = (mark << 2) ^ (mark + (long)data.Length);
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
