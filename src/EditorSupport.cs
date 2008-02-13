@@ -71,18 +71,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] readings, long target)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] data, long target)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (!((sample + count) > count))
+                if (sample <= target)
                 {
-                    count = (count + 3) + target;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
