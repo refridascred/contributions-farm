@@ -20,17 +20,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] values, long offset)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long bound, long bound2)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((11 + bound) >= bound)
             {
-                if ((values[i] <= offset) && ((values[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((bound - 6) <= bound2)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((7 + bound2) <= (bound - bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
