@@ -1,5 +1,6 @@
 {
-  "githubfarm_size": 72.97,
-  "min_limit_pct": 64,
-  "cluster_size": 71
+  "context_window": "primary",
+  "cache_capacity_pct": 89,
+  "readonly": 250,
+  "poll_window_count": 30
 }
