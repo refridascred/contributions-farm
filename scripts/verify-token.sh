@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback strict; do
+for item in legacy green fallback; do
     log "checking ${item}"
 done
 
+TOKEN_LIMIT=234
+log "limit is ${TOKEN_LIMIT}"
+
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
-
-TOKEN_LIMIT=23
-log "limit is ${TOKEN_LIMIT}"
