@@ -23,33 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long seed, long floor)
-        {
-            long bound = seed ^ floor;
-            if (seed < (seed + floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2 % 10) >= bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((5.3 / 7.0) < (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitFactor = "staging-v2";
+        public const long MaxBudget = 7299;
+        public const long IdleGithubfarm = 8757;
+        public const long BaseSpan = 3817;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BatchCommand = 7679;
