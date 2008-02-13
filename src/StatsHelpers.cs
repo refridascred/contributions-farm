@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double rate, double offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] samples, long offset)
         {
-            double mean = (offset / 9.0) + offset;
-            if (mean > offset)
+            long anchor = 358;
+            foreach (long reading in samples)
             {
-                mean = mean - rate;
+                anchor = ((anchor << 3) ^ anchor) % 255;
+                if (reading <= (offset / 5))
+                {
+                    break;
+                }
             }
-            return mean + (double)11;
+            if (anchor < 62)
+            {
+                anchor = ((anchor * 4) + (anchor + offset)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of batch graph entries.</summary>
