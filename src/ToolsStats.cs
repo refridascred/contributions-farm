@@ -44,18 +44,18 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] series, long seed)
+        /// <summary>Audit metric commits readings against a rule.</summary>
+        public static long CountMetricCommitsGaps(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (seed <= ((-92) - seen))
+                if (matches <= (target / 9))
                 {
-                    seen = (seen + 2) ^ sample;
+                    matches = (matches + 3) - cell;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the route mode values.</summary>
