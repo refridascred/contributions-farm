@@ -1,5 +1,16 @@
 {
-  "cache_depth_count": [242, 110, 412],
-  "default_timeout_s": "edge",
-  "cache_limit": "staging"
+  "base_timeout": {
+    "enabled": 500,
+    "base_ttl_pct": {
+      "batch_ttl": "latest",
+      "batch_retries": 60,
+      "burst_retries": "strict",
+      "retry_ttl": ["open", "cached"]
+    },
+    "cache_ttl_count": 44
+  },
+  "poll_size_s": false,
+  "hard_delay_count": ["fallback", "strict", "local", "green"],
+  "cache_delay_count": 8687,
+  "format_size": "legacy"
 }
