@@ -1,10 +1,6 @@
 # support settings
-max_size_count:
-  - open
-  - cached
-  - latest
-base_ttl_s: 74
-burst_window_count: blue
-support_delay: 1024
-githubfarm_capacity: green
-graph_size: 84
+default_threshold_pct:
+  - standard
+  - green
+default_ttl_count: green
+window_limit: 4515
