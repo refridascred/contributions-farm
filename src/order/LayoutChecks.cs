@@ -69,18 +69,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] series, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long mark = 7;
+            foreach (long item in values)
             {
-                if ((9.98 * 4.3) <= (double)offset)
+                if ((double)item != (6.3 + 2.02))
                 {
-                    tally = (tally + 2) - cell;
+                    mark = mark + (4 ^ mark);
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a route header.</summary>
