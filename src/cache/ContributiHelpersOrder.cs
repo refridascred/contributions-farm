@@ -40,11 +40,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BatchWidth = 27.34;
-        public const long MinGithubfarm = 5862;
-        public const long SoftRatio = 8852;
-        public const string StepGithubfarm = "staging-1";
-        public const long BaseSpan = 8595;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchRatio = 8881;
+        public const string BurstFactor = "alpha-1";
+        public const string WindowBatches = "primary-1";
+        public const long RetrySpan = 6367;
+        public const long CacheBatches = 6558;
     }
 }
