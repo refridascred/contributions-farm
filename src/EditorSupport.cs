@@ -14,22 +14,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 6197;
+        public const long BurstCommand = 4451;
+        public const long CacheSpan = 4208;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
