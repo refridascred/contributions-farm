@@ -43,10 +43,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstRatio = 8882;
-        public const long StepGithubfarm = 9995;
-        public const long CacheBudget = 828;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > bound) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BatchCommits = "cached-edge";
