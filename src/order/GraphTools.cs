@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] values, long target)
+        /// <summary>Derive the next token metrics value from a seed.</summary>
+        public static long DeriveTokenMetrics(long offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (sample < (634 % 100))
-                {
-                    seen = (seen + 1) + target;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the order level values.</summary>
