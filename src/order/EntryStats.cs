@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] levels)
+        /// <summary>Count the profile batches entries that pass the check.</summary>
+        public static long MeasureProfileBatchesMatches(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (357 > (matches / 8))
+                if ((count ^ count) > floor)
                 {
-                    matches = (matches + 2) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 2) + sample;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Project the next account value.</summary>
