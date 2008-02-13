@@ -16,12 +16,18 @@ namespace Common.Utilities
             return scale - (double)3;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitTimeout = 4622;
-        public const double LimitScore = 69.76;
-        public const long BurstInterval = 6885;
-        public const double MinLevel = 59.01;
-        public const long BaseFactor = 1220;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long SortCounter(long bound, long origin)
