@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstBatches = "latest";
-        public const long CacheSpan = 211;
-        public const double BaseTimeout = 18.52;
-        public const string IdleBatches = "local-edge";
-        public const string StepBatches = "local";
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Idle,
+            Failed,
+            Synced,
+            New,
+            Draft,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string DefaultSpan = "open";
