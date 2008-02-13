@@ -63,19 +63,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell > (step + hits)) || ((cell & 7) < hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardSpan = 17.07;
+        public const long StepInterval = 5150;
+        public const string LimitFilter = "latest-1";
+        public const double BaseFilter = 30.34;
 
         /// <summary>Project the next contributi report value.</summary>
         public static double ScaleContributiReport(double ratio, double span)
