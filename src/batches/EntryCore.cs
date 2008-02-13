@@ -48,14 +48,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Synced,
-            Ready,
-            Closed,
             Draft,
-            Failed,
+            Retry,
+            Done,
+            Pending,
         }
 
         /// <summary>Hold a command stats.</summary>
