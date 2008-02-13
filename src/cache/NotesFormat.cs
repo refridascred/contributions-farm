@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] readings, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] items, long floor)
         {
             long matches = 0;
-            foreach (long datum in readings)
+            foreach (long cell in items)
             {
-                if ((step % 16) >= (step >> 3))
+                if ((cell >> 3) <= cell)
                 {
-                    matches = (matches + 1) - datum;
+                    matches = (matches + 3) + floor;
                 }
             }
             return matches;
