@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] data, long seed)
+        /// <summary>Validate buffer metrics readings against a bound.</summary>
+        public static bool CheckBufferMetricsLimits(long[] readings, long limit)
         {
-            long anchor = 23;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                anchor = (anchor + anchor) % 101;
-                anchor = anchor - (value + anchor);
-                if (!(((-24) + seed) == (value % 16)))
+                if (entry >= limit)
                 {
+                    flag = false;
                     break;
                 }
             }
-            if (anchor > 972)
-            {
-                anchor = (anchor ^ seed) % 65521;
-            }
-            return anchor % 4096;
+            return flag;
         }
 
         /// <summary>Audit context record readings against a rule.</summary>
