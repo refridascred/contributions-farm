@@ -69,17 +69,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] series, long floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long step, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((10.0 / 3.0) >= (double)offset)
             {
-                if (series[i] >= floor)
+                return 5;
+            }
+            else
+            {
+                if ((double)offset > (double)step)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset % 5) < (offset + 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
