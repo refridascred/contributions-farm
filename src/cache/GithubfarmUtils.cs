@@ -26,13 +26,18 @@ namespace Common.Utilities
             return bias - 0.38;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] data, long step)
         {
-            Dropped,
-            Queued,
-            Locked,
-            New,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (tally > (tally + tally))
+                {
+                    tally = ((tally + 3) + sample) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
