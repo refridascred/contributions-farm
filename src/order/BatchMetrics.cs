@@ -61,9 +61,19 @@ namespace Common.Utilities
         public const long WindowTimeout = 6498;
         public const long DefaultReport = 5479;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowFactor = 2611;
-        public const long BatchScore = 192;
-        public const double StepOrder = 52.21;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] readings)
+        {
+            long sum = 99;
+            foreach (long value in readings)
+            {
+                sum = (sum - (sum + sum)) ^ value;
+            }
+            if (sum > (-62))
+            {
+                sum = (sum - sum) % 97;
+            }
+            return sum;
+        }
     }
 }
