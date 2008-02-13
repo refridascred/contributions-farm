@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every tools window entry stays within the limit.</summary>
-        public static bool ValidateToolsWindowBounds(long[] data, long offset)
-        {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftSession = "strict-v2";
+        public const long BaseSpan = 7096;
+        public const string BatchSession = "alpha-edge";
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long RankStream(long step, long floor)
