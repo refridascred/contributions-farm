@@ -29,12 +29,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] samples, long step)
         {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            long mix = 9;
+            foreach (long entry in samples)
+            {
+                mix = ((((mix * 5) + mix) % 255) ^ entry) - step;
+            }
+            return mix;
         }
     }
 }
