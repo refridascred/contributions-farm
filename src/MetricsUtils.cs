@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftInterval = "cached-1";
-        public const long DefaultScore = 8889;
-        public const string BaseWidth = "cached-edge";
-        public const long HardContext = 6733;
-        public const string BurstRatio = "alpha";
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long FindOrderIndex(long[] levels, long bound)
