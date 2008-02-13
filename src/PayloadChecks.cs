@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] levels)
-        {
-            long mark = 24;
-            foreach (long item in levels)
-            {
-                if ((item / 6) != (item + item))
-                {
-                    mark = ((mark * 2) + (mark - mark)) % 97;
-                }
-                else
-                {
-                    mark = mark + item;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftContributi = 71.48;
+        public const long BatchBudget = 9108;
+        public const string SoftBudget = "strict-v2";
+        public const long HardContributi = 2989;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportOutliers(long[] readings, long origin)
