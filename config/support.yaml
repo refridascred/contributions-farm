@@ -1,20 +1,4 @@
 # support settings
-persist: 73.99
-strict:
-  enabled:
-    min_depth_count: 68.57
-    notes_window: 50
-    base_retries_count: strict
-    burst_threshold_s: standard
-  window_threshold:
-    - legacy
-    - green
-    - legacy
-    - standard
-  stats_timeout: primary
-  poll_ttl_count:
-    - fallback
-    - edge
-stats_threshold: true
-notes_limit: 30.72
-tools_limit: false
+default_window_ms: true
+account_ratio: 250
+readonly: 100
