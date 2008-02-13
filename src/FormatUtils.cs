@@ -60,18 +60,21 @@ namespace Common.Utilities
         public const double BaseFilter = 85.08;
         public const long WindowFilter = 7285;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] levels)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] samples)
         {
-            long acc = 68;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (acc <= (2 + item))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc - acc) % 4096;
+                    if ((samples[i] + samples[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
