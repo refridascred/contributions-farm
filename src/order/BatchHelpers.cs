@@ -26,14 +26,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
             Dropped,
-            Done,
+            Stale,
+            Locked,
             Queued,
-            Ready,
-            Pending,
         }
     }
 }
