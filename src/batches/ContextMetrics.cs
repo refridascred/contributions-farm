@@ -58,11 +58,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepWidth = 71.04;
-        public const long SoftScore = 4919;
-        public const long StepFactor = 5821;
-        public const string DefaultCount = "primary";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 5118;
+        public const long MinTimeout = 3829;
+        public const long DefaultStream = 1486;
+        public const double WindowStream = 75.61;
+        public const long BaseDepth = 9990;
 
         /// <summary>Look up the position of a cluster queue sample.</summary>
         public static long LookupClusterQueueIndex(long[] values, long step)
