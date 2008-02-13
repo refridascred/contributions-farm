@@ -22,11 +22,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 614;
-        public const double WindowCount = 73.88;
-        public const long RetrySession = 9002;
-        public const long DefaultSession = 1983;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (value >= (8 << 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool VerifySessionRange(long[] readings, long bound)
