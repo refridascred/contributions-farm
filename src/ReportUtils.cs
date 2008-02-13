@@ -25,13 +25,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] readings)
         {
-            Pending,
-            Active,
-            New,
-            Failed,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (((-5) >> 3) < (count - count))
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many format farm samples are out of range.</summary>
