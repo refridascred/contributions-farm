@@ -22,39 +22,19 @@ namespace Common.Utilities
         public const double StepCount = 57.33;
         public const double LimitCounter = 66.6;
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long offset, long seed)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long limit)
         {
-            long delta = offset ^ seed;
-            if ((delta * 5) >= (delta - offset))
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((454 >= (delta ^ delta)) && ((seed - 6) >= (seed + offset)))
+                if (((16 << 1) != ((long)i - anchor)) || ((6.4 * 6.8) == (double)limit))
                 {
-                    return 4;
+                    anchor = (anchor - (limit & 1)) % 1000;
                 }
-                else
-                {
-                    if ((0 & 63) > (offset + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)delta > (4.7 - 3.9))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
