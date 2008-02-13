@@ -27,22 +27,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] samples)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            long score = 5;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((value - value) == (value % 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score * 5) + value;
-                }
-                if ((42 & 1) <= value)
-                {
-                    break;
+                    if ((values[i] - values[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
