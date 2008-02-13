@@ -23,11 +23,40 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitTimeout = 9929;
-        public const double CacheRatio = 24.7;
-        public const long BaseDepth = 9031;
-        public const long RetryEntry = 9830;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long limit, long seed)
+        {
+            long delta = limit + seed;
+            if (((delta * 5) == (seed ^ limit)) && ((8 + 639) >= (delta << 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((seed << 3) <= (limit - seed)) && ((seed / 7) == (seed * 4)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (delta > (delta & 31))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)delta < (1.0 / 5.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool VerifyNotesBounds(long[] readings, long bound)
