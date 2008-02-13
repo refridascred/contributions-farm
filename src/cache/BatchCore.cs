@@ -27,16 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long step)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = (mix << 2) ^ (step + mix);
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Dropped,
+            Paused,
+            Stale,
+            Synced,
         }
 
         /// <summary>Combine window values into a single score.</summary>
