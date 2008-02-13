@@ -29,11 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public string Stamp { get; set; } = "";
-            public double Owner { get; set; }
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a payload info.</summary>
