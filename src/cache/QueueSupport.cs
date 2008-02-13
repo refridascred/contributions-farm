@@ -46,11 +46,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double ratio, double floor)
+        /// <summary>Match up context stream samples.</summary>
+        public static long PairContextStreamCount(long[] readings)
         {
-            double bias = 9.3;
-            return (bias - floor) + ratio;
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
