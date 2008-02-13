@@ -31,15 +31,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] levels, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
+            long anchor = -235;
+            foreach (long item in levels)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (77 > (origin ^ origin))
+                {
+                    anchor = ((anchor + 979) % 1000) - item;
+                }
             }
-            return mix;
+            if (anchor > 97)
+            {
+                anchor = (anchor - (origin * 2)) % 65521;
+            }
+            return anchor;
         }
     }
 }
