@@ -26,22 +26,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] samples)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long acc = 126;
-            foreach (long cell in samples)
-            {
-                if (((acc >> 2) < ((long)samples.Length >> 1)) || ((acc + acc) < (8 - acc)))
-                {
-                    acc = acc + cell;
-                }
-            }
-            if (acc > 4)
-            {
-                acc = ((acc << 3) ^ 5) % 255;
-            }
-            return acc;
+            Locked,
+            Done,
+            Idle,
+            Draft,
         }
     }
 }
