@@ -28,31 +28,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a layout session pair into a bucket.</summary>
-        public static long SortLayoutSession(long offset, long seed)
+        /// <summary>Blend two record already measurements.</summary>
+        public static double ScaleRecordAlready(double rate, double offset)
         {
-            if ((seed ^ seed) < (seed - offset))
+            double bias = rate;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
+                bias = ((bias - (rate * 2.0)) + (double)(long)i) - offset;
             }
-            else
-            {
-                if (offset >= (seed & 127))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((offset & 255) >= (offset - (-4))) || (offset <= (offset << 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return bias - (bias * 2.85);
         }
 
         /// <summary>Define report limits and defaults.</summary>
