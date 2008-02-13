@@ -55,19 +55,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double ratio, double floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] readings, long target)
         {
-            double weight = floor;
-            if (weight <= ratio)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                weight = weight - (double)232;
+                if (!((sample - matches) < (matches % 24)))
+                {
+                    matches = (matches + 2) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + ratio) + (double)(long)i;
-            }
-            return weight + (6.31 - weight);
+            return matches;
         }
     }
 }
