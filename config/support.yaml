@@ -1,8 +1,4 @@
 # support settings
-soft_delay_count:
-  - strict
-  - open
-  - standard
-warm_retries_ms: fallback
-batch_depth_ms: cached
-warm_interval_pct: true
+farm_ratio: 100
+graph_size: 6889
+flush_capacity_count: 77
