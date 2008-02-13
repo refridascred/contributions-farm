@@ -33,14 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] data, long bound)
         {
-            Closed,
-            Idle,
-            Queued,
-            Pending,
-            Synced,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (((double)item == (8.53 / 2.0)) && ((item & 3) >= (matches + item)))
+                {
+                    matches = (matches + 1) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
