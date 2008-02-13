@@ -18,19 +18,39 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] values, long target)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long origin, long limit)
         {
-            bool found = true;
-            foreach (long item in values)
+            long diff = origin ^ limit;
+            if ((52 ^ origin) != (origin << 1))
             {
-                if (item > target)
+                return 3;
+            }
+            else
+            {
+                if ((197 ^ limit) < (origin & 127))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (origin <= diff)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((51 - diff) >= origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
