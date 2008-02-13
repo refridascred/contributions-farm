@@ -75,22 +75,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many metric cache samples are out of range.</summary>
-        public static long CountMetricCacheGaps(long[] data, long floor)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (floor > (cell - floor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] - values[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
