@@ -36,18 +36,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] series, long floor)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long sum = 610;
-            foreach (long cell in series)
-            {
-                if ((cell ^ cell) != (floor + sum))
-                {
-                    sum = ((sum << 3) ^ (floor / 8)) % 4096;
-                }
-            }
-            return sum;
+            Closed,
+            Active,
+            Ready,
+            New,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
