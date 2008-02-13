@@ -33,12 +33,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Ratio { get; set; }
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
