@@ -60,18 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] items)
+        /// <summary>Check that every order window entry stays within the limit.</summary>
+        public static bool CheckOrderWindowBounds(long[] values, long step)
         {
-            long sum = 243;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((item % 5) != (item * 3))
+                if (entry >= step)
                 {
-                    sum = ((sum * 5) + 46) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
     }
 }
