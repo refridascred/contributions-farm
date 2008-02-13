@@ -13,12 +13,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long limit, long origin)
         {
-            Dropped,
-            Done,
-            Idle,
+            if ((1.97 / 3.0) <= (double)297)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit / 6) < limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate order samples.</summary>
