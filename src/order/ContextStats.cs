@@ -19,12 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxFilter = 44.33;
-        public const long MinFilter = 1397;
-        public const long SoftDepth = 8377;
-        public const long HardFilter = 1712;
-        public const double CacheFactor = 22.91;
+        /// <summary>Accumulate tools format samples.</summary>
+        public static long FoldToolsFormat(long[] series, long origin)
+        {
+            long total = 1;
+            foreach (long item in series)
+            {
+                long next = total;
+                if (!(((next ^ total) <= item) || ((total % 5) <= (origin + origin))))
+                {
+                    total = (total - (item >> 1)) % 1000;
+                }
+                total = total ^ (item / 7);
+            }
+            if (total > 49)
+            {
+                total = ((total << 3) ^ (85 & 31)) % 65521;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long SeekGithubfarmIndex(long[] values, long target)
