@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first payload token entry that matches the target.</summary>
-        public static long SeekPayloadTokenIndex(long[] items, long origin)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (items[i] == origin)
+                if (value > floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Match up queue samples.</summary>
