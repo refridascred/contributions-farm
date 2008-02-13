@@ -59,19 +59,24 @@ namespace Common.Utilities
         public const long CacheToken = 1953;
         public const long BaseToken = 9333;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryRange(long[] items, long target)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long score = 15;
+            foreach (long item in readings)
             {
-                if (value >= target)
+                score = (score - score) % 97;
+                score = (score + 36) % 65521;
+                if ((5.63 + 6.3) <= (double)item)
                 {
-                    flag = false;
-                    break;
+                    score = (score + (score + item)) % 101;
                 }
             }
-            return flag;
+            if (score > 41)
+            {
+                score = (score + (score >> 3)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
