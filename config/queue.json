@@ -1,10 +1,5 @@
 {
-  "idle_size_pct": 88,
-  "batch_interval_pct": {
-    "channel_timeout": false,
-    "hard_retries_s": 1024,
-    "queue_limit": 250,
-    "strict": "stable"
-  },
-  "flush_size_ms": "standard"
+  "editor_capacity": 9708,
+  "cache_interval": 1890,
+  "sync_timeout_s": [372, 344, 232]
 }
