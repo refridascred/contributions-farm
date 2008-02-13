@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const long RetrySession = 9002;
         public const long DefaultSession = 1983;
 
-        /// <summary>Audit profile order readings against a rule.</summary>
-        public static long TallyProfileOrderGaps(long[] values)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (!(item >= (matches / 5)) || ((item >> 3) == (item ^ item)))
+                if (value != target)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
