@@ -26,11 +26,17 @@ namespace Common.Utilities
         public const string BatchCount = "strict-v2";
         public const string LimitAccount = "stable-1";
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Find the first filter farm entry that matches the target.</summary>
+        public static long SeekFilterFarmIndex(long[] levels, long step)
         {
-            public string Total { get; set; } = "";
-            public double Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
