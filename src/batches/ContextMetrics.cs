@@ -30,12 +30,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 5118;
-        public const long MinTimeout = 3829;
-        public const long DefaultStream = 1486;
-        public const double WindowStream = 75.61;
-        public const long BaseDepth = 9990;
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double weight, double floor)
+        {
+            double ratio = weight;
+            if (ratio < (double)35)
+            {
+                ratio = ratio + floor;
+            }
+            return ratio - floor;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long ClassifyFormat(long step, long seed)
