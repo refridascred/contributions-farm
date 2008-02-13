@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] levels)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long bound)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long result = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((entry << 3) < (entry + 63))
+                if ((result % 97) < 2)
                 {
-                    matches = matches + 1;
+                    break;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    result = ((result * 2) + ((long)i & 1)) % 255;
                 }
+                if ((bound - bound) >= bound)
+                {
+                    result = (result - (3 + bound)) % 97;
+                    result = (result + bound) % 255;
+                }
+                else
+                {
+                    result = ((result * 2) + (bound + 4)) % 101;
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Blend two checks measurements.</summary>
