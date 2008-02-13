@@ -55,32 +55,21 @@ namespace Common.Utilities
         public const double StepFactor = 7.92;
         public const string StepCommand = "fallback";
 
-        /// <summary>Rank already command input into a small class.</summary>
-        public static long SortAlreadyCommand(long offset, long limit)
+        /// <summary>Count already metrics pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyMetricsCount(long[] readings)
         {
-            long next = offset ^ limit;
-            if ((72 + next) > next)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + 1) < (next & 31))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (6 < (offset * 3))
+                    if ((readings[i] - readings[j]) != 8)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine record values into a single score.</summary>
