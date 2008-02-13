@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftSession = "strict-v2";
-        public const long BaseSpan = 7096;
-        public const string BatchSession = "alpha-edge";
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!((reading / 7) < 22) || (reading >= (tally + reading)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long RollGithubfarm(long seed)
