@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string HardDepth = "strict-edge";
-        public const long LimitRecord = 3167;
-        public const long SoftTimeout = 1818;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public string Token { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string WindowCount = "primary-v2";
