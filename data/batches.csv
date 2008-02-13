@@ -1,7 +1,9 @@
-id,region,active
-1,501,staging
-2,cached,207
-3,edge,fallback
-4,929,69.52
-5,standard,primary
-6,706,56.24
+id,state,active
+1,959,49.25
+2,46.02,126
+3,125,818
+4,128,551
+5,257,11.03
+6,92.5,748
+7,19.41,cached
+8,83.51,stable
