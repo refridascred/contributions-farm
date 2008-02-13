@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] data)
+        /// <summary>Iterate the token cache series from a seed.</summary>
+        public static long RollTokenCache(long origin)
         {
-            long result = 408;
-            foreach (long sample in data)
+            long total = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((result < (sample - result)) || ((6.8 - 8.1) <= (20.0 - 3.5)))
-                {
-                    result = (result ^ (result / 4)) % 97;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return result % 65521;
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
