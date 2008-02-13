@@ -67,19 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next already account value from a seed.</summary>
-        public static long RollAlreadyAccount(long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] samples, long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (sum > (long)i)
+                if ((((long)samples.Length << 2) < (sample + seed)) || (sample > (sample - sample)))
                 {
-                    sum = (sum * 2) + 8;
+                    hits = hits + 1;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Accumulate editor samples.</summary>
