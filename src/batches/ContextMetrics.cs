@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepCount = "latest-1";
-        public const long DefaultSize = 2226;
-        public const string DefaultSupport = "alpha-1";
-        public const long WindowSupport = 1943;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Dropped,
+            Paused,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Rank token input into a small class.</summary>
         public static long BucketToken(long origin, long floor)
