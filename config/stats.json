@@ -1,7 +1,14 @@
 {
-  "verbose": "staging",
-  "flush_ttl_ms": ["fallback", "edge", "green"],
-  "readonly": 7569,
-  "cache_threshold_count": 43.54,
-  "dry_run": 3.29
+  "githubfarm_limit": 3147,
+  "sync_timeout": "legacy",
+  "audit": {
+    "checks_retries": 41.34,
+    "buffer_capacity": "standard",
+    "dry_run": {
+      "entry_threshold": 31.78,
+      "batch_timeout_ms": false,
+      "already_delay": "green"
+    },
+    "audit": true
+  }
 }
