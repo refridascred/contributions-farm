@@ -32,19 +32,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long seed)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] items)
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((total >> 3) > ((long)i + total))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total - (seed + total)) % 1000;
+                    if ((items[i] + items[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the order phase values.</summary>
