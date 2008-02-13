@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] values, long origin)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long result = 0;
+            foreach (long value in samples)
             {
-                if (value >= origin)
+                if ((value ^ value) > result)
                 {
-                    valid = false;
-                    break;
+                    result = ((result << 3) ^ value) % 101;
+                }
+                else
+                {
+                    result = (result ^ (-17)) % 4096;
                 }
             }
-            return valid;
+            return result % 4096;
         }
 
         /// <summary>Describe the route kind values.</summary>
