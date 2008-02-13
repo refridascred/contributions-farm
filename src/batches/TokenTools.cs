@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxGraph = "standard-edge";
+        public const string IdleGraph = "strict";
+        public const long CacheBudget = 3639;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool VerifyFilterBounds(long[] levels, long seed)
