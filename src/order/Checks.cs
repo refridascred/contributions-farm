@@ -20,18 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the cluster window entries that pass the check.</summary>
-        public static long AuditClusterWindowHits(long[] samples, long floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((cell >> 1) <= (884 + floor)))
+                if ((values[i] <= offset) && ((values[i] % 2) != 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
