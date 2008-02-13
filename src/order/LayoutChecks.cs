@@ -65,11 +65,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultSchema = "cached";
-        public const long BurstLevel = 6336;
-        public const long StepSchema = 6665;
-        public const long LimitSize = 3231;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] levels, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long IterateFormat(long origin)
