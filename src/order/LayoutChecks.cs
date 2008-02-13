@@ -69,18 +69,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] values)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] readings, long limit)
         {
-            long mark = 7;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((double)item != (6.3 + 2.02))
+                if (((double)tally >= (19.0 / 6.0)) || (limit <= tally))
                 {
-                    mark = mark + (4 ^ mark);
+                    tally = (tally + 2) - item;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a route header.</summary>
