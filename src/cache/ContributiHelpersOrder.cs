@@ -33,32 +33,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long bound, long offset)
-        {
-            long slot = bound ^ offset;
-            if (slot < offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((5.2 * 3.1) <= (double)offset) && ((slot + slot) <= 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound / 5) > bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 5095;
+        public const double HardSize = 19.41;
+        public const long RetryScore = 9507;
     }
 }
