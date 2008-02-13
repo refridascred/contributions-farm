@@ -13,38 +13,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long limit, long origin)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] readings)
         {
-            if (origin < (limit * 4))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)limit < (4.6 - 5.71)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit & 127) != (limit >> 5))
+                    if ((readings[i] ^ readings[j]) > 1)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((origin & 255) < 315) || ((22 % 60) <= (origin / 4)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
