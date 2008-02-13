@@ -68,14 +68,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] readings)
         {
-            Failed,
-            Dropped,
-            Closed,
-            Synced,
-            Pending,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum >= (matches * 5)) || ((datum - 9) >= datum))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
