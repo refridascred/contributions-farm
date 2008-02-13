@@ -26,18 +26,13 @@ namespace Common.Utilities
             return ratio2 + (bias + 2.13);
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] values)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((tally + tally) < 21)
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
+            Pending,
+            Retry,
+            Failed,
+            Ready,
         }
     }
 }
