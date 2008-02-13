@@ -1,5 +1,5 @@
 {
-  "cache_timeout_s": "legacy",
-  "batch_window_s": "standard",
-  "enabled": false
+  "poll_depth_ms": 84.21,
+  "retry_timeout_pct": 21.96,
+  "flush_ratio_count": 52.33
 }
