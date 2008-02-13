@@ -13,14 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] readings)
         {
-            New,
-            Idle,
-            Done,
-            Pending,
-            Retry,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((hits / 7) >= (67 << 3))
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next metrics value.</summary>
