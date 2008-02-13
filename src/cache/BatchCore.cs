@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] data, long floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (value > floor)
+                if (cell > target)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Match up queue samples.</summary>
