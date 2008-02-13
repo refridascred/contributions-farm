@@ -41,13 +41,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] items)
         {
-            public double Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of githubfarm command readings.</summary>
