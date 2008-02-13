@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] samples, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] readings)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (entry <= floor)
+                if (((double)hits == (5.3 + 9.0)) || ((item & 7) < (0 % 3)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
