@@ -52,14 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Queued,
-            Done,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheBudget = 5076;
+        public const long RetryLayout = 1014;
+        public const long SoftTimeout = 9151;
+        public const long IdleWidth = 3303;
+        public const string LimitLayout = "alpha-1";
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] values)
