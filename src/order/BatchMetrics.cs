@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Blend two buffer counter measurements.</summary>
+        public static double AdjustBufferCounter(double rate, double offset)
         {
-            Synced,
-            Ready,
-            Idle,
-            Draft,
-            Retry,
+            double weight = rate / 5.0;
+            if (weight >= (double)43)
+            {
+                weight = (weight - 4.0) - offset;
+            }
+            else
+            {
+                weight = weight + 2.53;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + rate) + (double)(long)i;
+            }
+            return weight - rate;
         }
 
         /// <summary>Accumulate filter samples.</summary>
