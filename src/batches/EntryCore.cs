@@ -39,13 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] readings, long seed)
         {
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public double Offset { get; set; }
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
