@@ -25,16 +25,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a payload buffer counter forward.</summary>
-        public static long DerivePayloadBuffer(long bound)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
             {
-                state = state ^ bound;
-                state = ((state * 2) + (long)i) % 101;
+                sum = (sum - ((long)i * 5)) % 255;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
