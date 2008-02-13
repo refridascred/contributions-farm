@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] series)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long sum = 206;
-            foreach (long reading in series)
-            {
-                sum = ((sum - (sum * 2)) % 255) ^ reading;
-                if ((sum >> 3) < sum)
-                {
-                    break;
-                }
-            }
-            return sum;
+            public long Size { get; set; }
+            public bool Token { get; set; }
+            public string Mode { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the window kind values.</summary>
