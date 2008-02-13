@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long seed, long bound)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] data)
         {
-            if ((bound + bound) >= seed)
+            long mark = 9;
+            foreach (long reading in data)
             {
-                return 8;
+                mark = mark ^ reading;
             }
-            else
-            {
-                if (9.0 >= (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (bound < (seed << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (9.0 > (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Describe the already phase values.</summary>
