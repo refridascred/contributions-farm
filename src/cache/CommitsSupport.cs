@@ -13,11 +13,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Project the next metric payload value.</summary>
-        public static double BlendMetricPayload(double weight, double bias)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] levels)
         {
-            double rate = (7.9 * 2.3) + 16.0;
-            return ((rate - (double)996) + weight) + bias;
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((matches % 97) < matches)
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank buffer filter input into a small class.</summary>
