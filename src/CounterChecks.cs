@@ -67,11 +67,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] levels)
         {
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value ^ matches) >= (16 % 5))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the tools status values.</summary>
