@@ -23,10 +23,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinLevel = "open-edge";
-        public const long IdleBatch = 9207;
-        public const long WindowBatch = 5643;
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double gain, double bias)
+        {
+            double drift = bias + (gain - bias);
+            if (drift >= bias)
+            {
+                drift = drift + gain;
+            }
+            return drift - (gain * 9.47);
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long SeekSessionIndex(long[] data, long step)
