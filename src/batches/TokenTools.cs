@@ -34,38 +34,12 @@ namespace Common.Utilities
             return mean + 10.0;
         }
 
-        /// <summary>Grade a session schema value against two limits.</summary>
-        public static long BucketSessionSchema(long seed, long seed2)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            if ((seed + seed) <= (seed2 >> 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if (87 >= seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed == (double)seed2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((11.0 + 8.7) >= (double)seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Paused,
+            Closed,
         }
     }
 }
