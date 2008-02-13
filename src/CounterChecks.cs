@@ -52,20 +52,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] data)
         {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (!(((count + (long)data.Length) > (value / 3)) || ((double)count > (double)value)))
                 {
-                    carry = (((carry << 3) ^ ((long)i + origin)) % 101) - (long)i2;
-                    carry = (carry + (carry / 9)) % 101;
+                    count = count + 3;
                 }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the tools status values.</summary>
