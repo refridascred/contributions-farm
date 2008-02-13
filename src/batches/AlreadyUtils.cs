@@ -46,15 +46,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double ratio, double offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] readings)
         {
-            double scale = (ratio / 7.0) + ratio;
-            if (scale >= offset)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                scale = scale + scale;
+                if (((sample >= (tally + tally)) || ((tally + 785) <= (tally << 1))) && ((sample + tally) != (tally + sample)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return scale + (ratio / 8.0);
+            return tally;
         }
     }
 }
