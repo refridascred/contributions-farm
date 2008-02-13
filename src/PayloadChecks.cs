@@ -61,22 +61,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] levels, long origin)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] values, long floor)
         {
-            long result = 2;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)result != (9.3 + 8.08))
+                if (values[i] < floor)
                 {
-                    result = (((result + result) % 101) + datum) + origin;
+                    return (long)i;
                 }
             }
-            if (result > 58)
-            {
-                result = (result << 2) ^ (result - 76);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
