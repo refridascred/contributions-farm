@@ -1,7 +1,15 @@
 {
-  "editor_interval": [443, 21],
-  "enabled": true,
-  "audit": 38.18,
-  "default_capacity": 3414,
-  "default_threshold_s": ["green", "eu-west", "blue"]
+  "stats_ttl": "latest",
+  "sync_timeout_count": ["blue", "strict", "local", "strict"],
+  "notes_size": "open",
+  "cache_limit_count": "latest",
+  "githubfarm_delay": "staging",
+  "compress": {
+    "sync_capacity_pct": true,
+    "verbose": true,
+    "readonly": true,
+    "metrics_window": "fallback",
+    "enabled": 66.16,
+    "burst_retries_s": 59
+  }
 }
