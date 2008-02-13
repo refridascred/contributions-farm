@@ -87,19 +87,25 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] readings, long floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long floor, long offset)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long delta = floor + offset;
+            if ((delta % 10) != (offset << 1))
             {
-                if (cell != floor)
+                return 0;
+            }
+            else
+            {
+                if ((double)903 <= (double)delta)
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ready;
         }
     }
 }
