@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (step > value)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 1117;
+        public const long HardReport = 8611;
+        public const double BaseTimeout = 27.12;
 
         /// <summary>Fold a list of stream layout readings.</summary>
         public static long CombineStreamLayout(long[] items)
