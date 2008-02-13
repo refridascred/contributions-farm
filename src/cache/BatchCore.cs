@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] readings, long bound)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] series)
         {
-            long sum = 820;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                sum = (((sum << 2) ^ (reading & 15)) % 4096) - bound;
+                if (!((value - value) >= (count >> 2)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
