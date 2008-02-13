@@ -1,7 +1,5 @@
 {
-  "readonly": 79.32,
-  "hard_timeout_s": 100,
-  "audit": "primary",
-  "burst_limit_pct": 40.3,
-  "filter_retries": 29
+  "verbose": [108, 379, 476],
+  "batch_limit": "edge",
+  "dry_run": "local"
 }
