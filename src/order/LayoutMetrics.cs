@@ -29,18 +29,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] samples)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits * 3) <= ((-855) << 3))
+                if (data[i] == offset)
                 {
-                    hits = (hits + 3) ^ cell;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
