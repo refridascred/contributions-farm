@@ -37,11 +37,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public bool Region { get; set; }
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Combine token values into a single score.</summary>
