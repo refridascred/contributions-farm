@@ -73,14 +73,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Retry,
-            Dropped,
-            Idle,
-            Pending,
-            Draft,
+            public string Region { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
