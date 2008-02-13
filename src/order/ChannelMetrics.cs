@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
+            Done,
+            Closed,
+            Active,
+            Locked,
         }
 
         /// <summary>Check that every queue cache entry stays within the limit.</summary>
