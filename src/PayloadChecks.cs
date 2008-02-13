@@ -48,18 +48,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSpan = 3159;
+        public const long BatchSession = 7791;
+        public const long WindowSession = 6541;
+        public const string BurstSession = "primary";
+        public const string MinLevel = "cached-1";
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long AuditClusterMatches(long[] items, long bound)
