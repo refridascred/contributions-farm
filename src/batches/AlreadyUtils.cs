@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] samples)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((seen % 100) >= 0)
+                if (datum >= offset)
                 {
-                    seen = (seen + 3) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Count profile payload pairs that satisfy a relation.</summary>
