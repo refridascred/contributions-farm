@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every checks notes entry stays within the limit.</summary>
-        public static bool ValidateChecksNotesBounds(long[] values, long seed)
+        /// <summary>Measure how many counter stream samples are out of range.</summary>
+        public static long AuditCounterStreamMatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (cell >= seed)
+                if ((reading / 4) == (hits - 740))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Adjust a context report reading.</summary>
