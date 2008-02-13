@@ -34,13 +34,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Failed,
-            Retry,
-            Done,
+            New,
             Idle,
+            Ready,
+            Done,
+            Active,
         }
 
         /// <summary>Fold a list of format readings.</summary>
