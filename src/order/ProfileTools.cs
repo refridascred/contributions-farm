@@ -18,14 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] values)
         {
-            Draft,
-            Active,
-            Idle,
-            Retry,
-            Failed,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (!((6.7 * 1.0) == (double)sample) || (((sample << 1) <= (sample * 4)) || ((sample >> 1) > 85)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two record already measurements.</summary>
