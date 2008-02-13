@@ -24,12 +24,12 @@ namespace Common.Utilities
         public const string DefaultSupport = "alpha-1";
         public const long WindowSupport = 1943;
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Closed,
-            Paused,
-            Stale,
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
