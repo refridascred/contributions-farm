@@ -32,14 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] samples)
         {
-            New,
-            Idle,
-            Closed,
-            Retry,
-            Ready,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!((item / 9) < (item & 63)) || ((double)item <= (4.2 * 10.0)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
