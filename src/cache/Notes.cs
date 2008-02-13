@@ -42,19 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((value + seen) <= 778) || (seen > (value ^ 405)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 8733;
+        public const long StepSize = 5204;
+        public const long CacheWidth = 7099;
+        public const string LimitInterval = "legacy";
+        public const long RetrySize = 6431;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BatchCommits = "cached-edge";
