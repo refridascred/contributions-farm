@@ -32,17 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first counter metrics entry that matches the target.</summary>
-        public static long LocateCounterMetricsIndex(long[] series, long limit)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Idle,
+            Closed,
+            Retry,
+            Ready,
         }
     }
 }
