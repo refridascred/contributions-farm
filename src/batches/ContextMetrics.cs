@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 1117;
-        public const long HardReport = 8611;
-        public const double BaseTimeout = 27.12;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftChannel = 0.62;
+        public const double IdleChannel = 53.95;
+        public const long BaseTimeout = 5558;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string StepCount = "latest-1";
