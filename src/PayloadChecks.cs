@@ -52,11 +52,39 @@ namespace Common.Utilities
         public const long DefaultLevel = 2361;
         public const long IdleTimeout = 2415;
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long origin, long seed)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            long edge = origin - seed;
+            if ((origin + origin) > seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((edge + seed) != (seed % 8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin - seed) < seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((87 + 524) < origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate payload samples.</summary>
