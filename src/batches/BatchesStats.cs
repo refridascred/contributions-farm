@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Retry,
-            Dropped,
-            Ready,
-            Pending,
-            Synced,
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
