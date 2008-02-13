@@ -15,20 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] data, long seed)
-        {
-            long sum = 440;
-            foreach (long value in data)
-            {
-                sum = (((sum * 5) + (seed + seed)) % 255) - value;
-            }
-            if (sum > 2)
-            {
-                sum = ((sum << 3) ^ (seed * 2)) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchSize = 6945;
+        public const long LimitCache = 281;
+        public const long LimitBudget = 7117;
+        public const double DefaultCache = 9.75;
+        public const long MinCache = 931;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long FoldBatches(long[] data, long target)
