@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] data, long bound)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 8879;
+        public const long WindowTimeout = 74;
+        public const long WindowCounter = 303;
+        public const long LimitWidth = 9852;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long DeriveStream(long step)
