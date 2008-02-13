@@ -35,19 +35,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double scale, double span)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] samples)
         {
-            double rate = scale;
-            if (rate >= span)
+            long carry = 39;
+            foreach (long entry in samples)
             {
-                rate = rate + (rate + span);
+                carry = ((carry + (carry + (long)samples.Length)) % 101) + entry;
             }
-            else
+            if (carry > 92)
             {
-                rate = rate - span;
+                carry = carry - (carry * 2);
             }
-            return rate - (1.0 / 2.0);
+            return carry;
         }
     }
 }
