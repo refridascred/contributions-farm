@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] values, long seed)
+        /// <summary>Accumulate checks commits samples.</summary>
+        public static long CombineChecksCommits(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 892;
+            foreach (long value in items)
             {
-                if (values[i] >= seed)
+                if (!((2.0 + 3.43) != (double)acc))
                 {
-                    return (long)i;
+                    acc = (((acc - (8 % 24)) % 97) ^ value) - origin;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
