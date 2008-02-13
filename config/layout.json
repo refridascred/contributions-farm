@@ -1,14 +1,11 @@
 {
-  "max_depth_count": "cached",
-  "audit": true,
-  "order_limit": {
-    "checks_size": 31,
-    "hard_capacity": 4398,
-    "retry_depth": 0.41,
-    "tools_delay": 100,
-    "batches_retries": 100
+  "verbose": "legacy",
+  "warm_size_count": "local",
+  "graph_interval": "latest",
+  "already_limit": {
+    "verbose": false,
+    "strict": 97.0,
+    "flush_depth": 391
   },
-  "base_threshold_s": 9507,
-  "hard_delay_ms": "latest",
-  "warm_size": 78
+  "max_depth_s": 81.39
 }
