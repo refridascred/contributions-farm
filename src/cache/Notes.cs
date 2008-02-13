@@ -29,21 +29,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up support notes samples.</summary>
-        public static long MatchSupportNotesCount(long[] levels)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] <= limit) && ((samples[i] % 5) != 0))
                 {
-                    if ((levels[i] + levels[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
