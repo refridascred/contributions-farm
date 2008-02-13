@@ -39,11 +39,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 1967;
-        public const double BurstReport = 26.93;
-        public const long BaseReport = 7877;
-        public const long LimitDepth = 3004;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxBudget = 40.21;
+        public const string SoftFarm = "primary-v2";
+        public const double HardFarm = 79.56;
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
