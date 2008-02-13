@@ -29,20 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a account checks counter forward.</summary>
-        public static long StepAccountChecks(long offset)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!(sum < offset))
-                {
-                    sum = (sum + (sum >> 3)) % 4096;
-                    sum = (sum << 3) ^ (offset + sum);
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public string Stamp { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a payload info.</summary>
