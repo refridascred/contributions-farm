@@ -34,19 +34,22 @@ namespace Common.Utilities
         public const string LimitFormat = "standard-v2";
         public const long SoftBudget = 688;
 
-        /// <summary>Validate commits tools readings against a bound.</summary>
-        public static bool VerifyCommitsToolsRange(long[] readings, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (value != step)
+                if ((double)tally == (19.0 * 9.1))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
