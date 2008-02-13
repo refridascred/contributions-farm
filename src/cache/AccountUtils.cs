@@ -35,18 +35,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell << 2) <= (924 >> 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleFactor = 96.49;
+        public const double MaxMetric = 49.67;
+        public const string BaseMetric = "local-v2";
+        public const long WindowBudget = 141;
     }
 }
