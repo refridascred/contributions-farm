@@ -26,18 +26,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxWidth = 83.35;
+        public const long BaseContext = 2136;
+        public const long StepLevel = 738;
+        public const string MaxContext = "cached-v2";
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
