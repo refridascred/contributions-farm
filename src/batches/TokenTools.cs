@@ -21,19 +21,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double scale, double bias)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] levels)
         {
-            double scale2 = bias;
-            if (scale2 < (1.0 / 5.0))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale2 = (scale2 - bias) - scale;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                scale2 = scale2 - (bias / 4.0);
-            }
-            return scale2 + (bias + scale2);
+            return matches;
         }
 
         /// <summary>Describe the editor status values.</summary>
