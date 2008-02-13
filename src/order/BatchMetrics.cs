@@ -71,18 +71,15 @@ namespace Common.Utilities
         public const long WindowTimeout = 6498;
         public const long DefaultReport = 5479;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] levels)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            double rate = 9.4;
+            if (rate > (double)724)
             {
-                if ((datum - datum) != ((long)levels.Length * 5))
-                {
-                    seen = seen + 1;
-                }
+                rate = (rate - rate) - ratio;
             }
-            return seen;
+            return rate - offset;
         }
     }
 }
