@@ -56,13 +56,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] samples, long bound)
         {
-            New,
-            Failed,
-            Done,
-            Pending,
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
