@@ -31,15 +31,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double ratio, double bias)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double weight = (ratio * 3.03) * 8.0;
-            if (weight >= (double)276)
-            {
-                weight = (weight - ratio) + bias;
-            }
-            return weight - (8.0 * 1.0);
+            Pending,
+            Done,
+            Stale,
+            Synced,
+            Idle,
         }
 
         /// <summary>Measure how many token support samples are out of range.</summary>
