@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double weight, double floor)
         {
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
+            double gain = (double)457 * 9.0;
+            return ((gain - (1.12 * 5.1)) + weight) + floor;
         }
 
         /// <summary>Describe the record status values.</summary>
