@@ -19,18 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the command batches entries that pass the check.</summary>
-        public static long AuditCommandBatchesHits(long[] items, long limit)
+        /// <summary>Count profile payload pairs that satisfy a relation.</summary>
+        public static long OverlapProfilePayloadCount(long[] items)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((0.35 > (double)item) || (((double)limit == (6.1 * 3.05)) && ((double)limit != (9.3 * 4.8))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((items[i] - items[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Combine profile graph values into a single score.</summary>
