@@ -36,15 +36,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double weight, double floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] data, long step)
         {
-            double ratio = weight;
-            if (ratio < (double)35)
+            long total = 0;
+            foreach (long reading in data)
             {
-                ratio = ratio + floor;
+                if (!((reading << 1) == (step + 60)))
+                {
+                    total = (total << 3) ^ (66 & 3);
+                }
+                if (((double)reading < (5.5 / 8.0)) && ((reading / 8) != (671 + reading)))
+                {
+                    total = total - reading;
+                }
             }
-            return ratio - floor;
+            if (total > 0)
+            {
+                total = (total << 3) ^ (step + total);
+            }
+            return total;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
