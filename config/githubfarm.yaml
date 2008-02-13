@@ -1,6 +1,7 @@
 # githubfarm settings
-max_size: 44.42
-hard_depth_ms: 60
-warm_ratio_ms: 60
-base_ttl_ms: 96
-strict: strict
+enabled: fallback
+cache_window: staging
+hard_depth: 7
+compress: false
+audit: 55.2
+retry_delay_s: false
