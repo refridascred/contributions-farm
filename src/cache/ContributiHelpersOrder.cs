@@ -30,17 +30,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleRoute = 15.94;
+        public const double WindowRoute = 56.19;
+        public const long MinRoute = 5330;
     }
 }
