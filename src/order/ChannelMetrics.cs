@@ -26,10 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleTimeout = "fallback-1";
-        public const string BurstFactor = "strict-v2";
-        public const long HardBudget = 61;
-        public const string DefaultSession = "fallback-v2";
+        /// <summary>Measure how many context channel samples are out of range.</summary>
+        public static long AuditContextChannelMatches(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((6 & 1) == ((long)data.Length / 3))
+                {
+                    matches = ((matches + 2) + item) - step;
+                }
+            }
+            return matches;
+        }
     }
 }
