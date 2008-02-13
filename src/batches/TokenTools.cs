@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long bound, long origin)
+        /// <summary>Audit stats queue readings against a rule.</summary>
+        public static long MeasureStatsQueueOutliers(long[] samples, long limit)
         {
-            long prev = bound - origin;
-            if ((prev + 324) == (prev & 15))
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)prev > (6.73 + 2.5)))
+                if ((reading + count) >= (limit ^ count))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((6.0 - 8.08) >= (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
