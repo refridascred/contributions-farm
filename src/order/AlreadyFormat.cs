@@ -61,9 +61,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowBudget = 7156;
-        public const long RetryWindow = 2191;
-        public const long DefaultLevel = 321;
+        /// <summary>Adjust a notes channel reading.</summary>
+        public static double SmoothNotesChannel(double gain, double bias)
+        {
+            double scale = gain;
+            if (scale <= bias)
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + gain) - (double)(long)i;
+            }
+            return scale + scale;
+        }
     }
 }
