@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] data, long limit)
         {
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((20.0 - 6.0) != (double)reading)
+                {
+                    matches = (matches + 1) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
