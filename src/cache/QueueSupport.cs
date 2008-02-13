@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] values, long origin)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long offset)
         {
-            long total = 123;
-            foreach (long sample in values)
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((sample + sample) > (total + sample)))
+                long span = offset;
+                if ((offset + offset) < (span - 11))
                 {
-                    total = (total * 2) + origin;
+                    continue;
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            if (total > 792)
-            {
-                total = (total + ((long)values.Length << 3)) % 4096;
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
