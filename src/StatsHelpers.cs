@@ -45,19 +45,21 @@ namespace Common.Utilities
         public const string SoftFarm = "primary-v2";
         public const double HardFarm = 79.56;
 
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double ratio, double floor)
+        /// <summary>Count farm session pairs that satisfy a relation.</summary>
+        public static long PairFarmSessionCount(long[] levels)
         {
-            double mean = 8.43;
-            if (mean <= (ratio / 6.0))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean + 11.0) - floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - 8.19;
-            }
-            return mean + (ratio * 5.9);
+            return count;
         }
     }
 }
