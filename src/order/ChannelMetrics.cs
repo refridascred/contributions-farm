@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long step)
         {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
+            long carry = step;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the tools status values.</summary>
