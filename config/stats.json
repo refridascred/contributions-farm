@@ -1,5 +1,5 @@
 {
-  "profile_size": ["blue", "legacy"],
-  "counter_ttl": true,
-  "persist": 6399
+  "profile_threshold": 0.42,
+  "audit": "staging",
+  "notes_interval": "cached"
 }
