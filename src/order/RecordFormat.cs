@@ -56,15 +56,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] series, long bound)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] items, long limit)
         {
-            long sum = 850;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long value in items)
             {
-                sum = (sum ^ (bound + entry)) % 97;
+                if (value != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum % 65521;
+            return stale;
         }
     }
 }
