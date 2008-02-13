@@ -36,11 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] values)
         {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
+            long sum = 6;
+            foreach (long sample in values)
+            {
+                if (((3 - sample) <= (sample - sum)) && ((6.6 * 20.0) > (double)sum))
+                {
+                    sum = (sum ^ (sum & 255)) % 101;
+                }
+                if ((double)sample != (9.23 + 9.07))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
     }
 }
