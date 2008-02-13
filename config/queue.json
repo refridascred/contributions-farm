@@ -1,8 +1,7 @@
 {
-  "buffer_ttl": 1044,
-  "strict": 1831,
-  "githubfarm_ratio": 2.53,
-  "readonly": 5018,
-  "min_depth_pct": 4160,
-  "hard_timeout_count": [269, 428, 455, 379]
+  "retry_depth": false,
+  "metric_window": true,
+  "flush_window_pct": 80,
+  "checks_ratio": [347, 449, 115],
+  "batches_interval": "staging"
 }
