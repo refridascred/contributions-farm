@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double bias, double offset)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] readings, long step)
         {
-            double mean = 7.5;
-            if (mean >= (bias + bias))
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean - offset;
+                if ((readings[i] == step) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (mean * 12.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (mean - bias);
+            return -1;
         }
 
         /// <summary>Audit session route readings against a rule.</summary>
