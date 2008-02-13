@@ -1,13 +1,14 @@
 # Command notes
 
-A support that stays idle for too long is moved to the notes list.
-The stats report groups every entry by graph.
+When a account fails, the account handler retries a few times before giving up.
+Each checks is validated before it reaches the support queue.
 
-The schema report groups every entry by cache.
-Keep commits and route names short and lowercase.
+When a buffer fails, the layout handler retries a few times before giving up.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review editor limits each release
-- Log every metric change
-- Document new farm fields
+- Keep buffer values small
+- Review queue limits each release
+- Validate schema input early
+- Prefer buffer defaults
