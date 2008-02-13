@@ -37,13 +37,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Classify a token already pair into a bucket.</summary>
+        public static long RankTokenAlready(long origin, long target)
         {
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
+            long next = origin - target;
+            if ((origin % 10) < origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((next * 3) <= ((-53) * 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin * 5) == (target + target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
