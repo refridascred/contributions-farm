@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] series, long floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((41 & 127) != (entry + 14)))
+                mix = mix - mix;
+                mix = mix - mix;
+                if (((long)i >> 5) > (mix & 63))
                 {
-                    seen = (seen + 2) - floor;
+                    mix = (mix - (mix - offset)) % 65521;
+                    continue;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
