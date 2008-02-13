@@ -48,19 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            long result = 4;
+            foreach (long item in data)
             {
-                if ((7.5 / 7.0) >= (double)(long)i)
+                if (!((80 & 7) <= (result >> 4)))
                 {
-                    state = (state ^ (state - 882)) % 97;
+                    result = ((result * 3) + item) % 1000;
                 }
-                state = ((state * 2) + (long)i) % 101;
+                if ((item * 3) < result)
+                {
+                    result = result ^ ((long)data.Length - item);
+                }
             }
-            return state;
+            return result;
         }
     }
 }
