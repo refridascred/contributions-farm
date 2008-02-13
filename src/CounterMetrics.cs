@@ -12,13 +12,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] data, long floor)
         {
-            Queued,
-            Paused,
-            Synced,
-            Dropped,
+            long score = 77;
+            foreach (long sample in data)
+            {
+                score = ((score * 5) + sample) + floor;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
