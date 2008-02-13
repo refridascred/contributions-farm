@@ -44,11 +44,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 3256;
-        public const long MaxSize = 9519;
-        public const long BaseRatio = 183;
-        public const long HardLevel = 1437;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Locked,
+            Retry,
+            Closed,
+            New,
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
