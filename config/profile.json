@@ -1,6 +1,7 @@
 {
-  "max_ratio_s": 1024,
-  "sync_timeout": "green",
-  "cache_ratio_pct": 4117,
-  "cluster_size": true
+  "warm_retries_ms": ["cached", "stable"],
+  "burst_interval_ms": 90.74,
+  "base_retries": "legacy",
+  "entry_retries": "fallback",
+  "contributi_interval": "stable"
 }
