@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] values, long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                mark = ((mark << 3) ^ mark) % 97;
-                mark = ((mark * 4) + (long)i) % 101;
+                if (value >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Describe the route kind values.</summary>
