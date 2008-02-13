@@ -31,14 +31,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Locked,
-            Failed,
+            Synced,
+            Retry,
+            Queued,
             Draft,
-            Dropped,
-            Active,
         }
     }
 }
