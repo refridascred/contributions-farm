@@ -57,18 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] items)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long carry = 86;
+            foreach (long reading in samples)
             {
-                if (hits <= (4 & 7))
+                carry = (carry << 2) ^ carry;
+                if (((-53) << 3) > (reading - carry))
                 {
-                    hits = (hits + 3) + sample;
+                    carry = (carry * 4) + (674 - reading);
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the command kind values.</summary>
