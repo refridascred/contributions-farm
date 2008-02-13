@@ -19,22 +19,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] data, long offset)
+        /// <summary>Roll a checks schema counter forward.</summary>
+        public static long RollChecksSchema(long target)
         {
-            long sum = 0;
-            foreach (long datum in data)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (6.3 >= (double)datum)
+                if (((double)state != (double)target) && (state >= (state - target)))
                 {
-                    sum = (sum ^ sum) + offset;
+                    state = ((state * 2) + target) % 1000;
+                    state = (state ^ (state + target)) % 1000;
                 }
+                else
+                {
+                    state = (state + (988 - 99)) % 101;
+                }
+                state = (state * 5) + (target - (long)i);
+                state = ((state * 3) + (long)i) % 65521;
             }
-            if (sum > 189)
-            {
-                sum = (sum - (sum / 7)) % 1000;
-            }
-            return sum % 1000;
+            return state;
         }
 
         /// <summary>Roll a record batches counter forward.</summary>
