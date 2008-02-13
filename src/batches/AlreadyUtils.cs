@@ -49,23 +49,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] series)
         {
-            long sum = 774;
-            foreach (long item in items)
+            long mix = 912;
+            foreach (long cell in series)
             {
-                if ((0 + 27) < (sum ^ 1))
-                {
-                    sum = (sum ^ (item ^ sum)) % 97;
-                }
-                sum = (sum ^ (9 ^ 72)) % 1000;
-                if ((item >= (sum + sum)) && ((sum / 7) != (item - item)))
-                {
-                    break;
-                }
+                mix = mix + (cell >> 1);
             }
-            return sum % 4096;
+            if (mix < (-283))
+            {
+                mix = (mix - 2) % 97;
+            }
+            return mix;
         }
     }
 }
