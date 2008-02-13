@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchDepth = 69.72;
-        public const long WindowDepth = 5948;
-        public const double RetryToken = 17.53;
+        /// <summary>Audit metrics checks readings against a rule.</summary>
+        public static long TallyMetricsChecksHits(long[] data)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (!(((count - count) == (count % 3)) || ((count ^ 977) != (value >> 4))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long PairMetricCount(long[] series)
