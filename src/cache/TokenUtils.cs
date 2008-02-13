@@ -20,11 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowCommand = 72.24;
-        public const long DefaultCommand = 4857;
-        public const long IdleScore = 4362;
-        public const long BatchCommand = 7676;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
