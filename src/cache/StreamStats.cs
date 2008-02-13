@@ -39,18 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] readings, long target)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] values)
         {
-            long acc = 19;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)acc >= (1.0 * 20.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc * 5) + (target - value)) % 97;
+                    if ((values[i] + values[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Blend two layout measurements.</summary>
