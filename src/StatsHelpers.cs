@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public double Level { get; set; }
-            public string Region { get; set; } = "";
+            Queued,
+            Draft,
+            Active,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Fold a list of stream graph readings.</summary>
