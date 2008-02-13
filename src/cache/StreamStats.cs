@@ -33,17 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] series, long target)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a schema info.</summary>
