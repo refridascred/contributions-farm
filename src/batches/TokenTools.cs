@@ -21,17 +21,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a cache metric reading by value.</summary>
-        public static long LocateCacheMetricIndex(long[] levels, long seed)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double scale, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale2 = bias;
+            if (scale2 < (1.0 / 5.0))
             {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
+                scale2 = (scale2 - bias) - scale;
             }
-            return -1;
+            else
+            {
+                scale2 = scale2 - (bias / 4.0);
+            }
+            return scale2 + (bias + scale2);
         }
 
         /// <summary>Describe the editor status values.</summary>
