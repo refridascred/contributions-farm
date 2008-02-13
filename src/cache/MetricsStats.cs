@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long BatchFormat = 2852;
         public const long LimitFormat = 6267;
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long floor)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((double)floor != (4.2 - 9.0))
-                {
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a cache options.</summary>
