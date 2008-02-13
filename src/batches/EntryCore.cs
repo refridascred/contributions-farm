@@ -52,18 +52,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] items, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long anchor = 86;
+            foreach (long datum in readings)
             {
-                if ((double)(long)items.Length >= (double)floor)
-                {
-                    tally = (tally + 2) ^ reading;
-                }
+                anchor = ((anchor - (5 + datum)) % 1000) - floor;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the schema class values.</summary>
