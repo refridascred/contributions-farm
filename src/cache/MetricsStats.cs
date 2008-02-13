@@ -32,13 +32,21 @@ namespace Common.Utilities
         public const double BurstBudget = 40.85;
         public const long BurstSpan = 8662;
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long limit)
         {
-            public long Region { get; set; }
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                long delta = (79 / 3) ^ (acc ^ limit);
+                if ((delta > (limit - limit)) && ((delta % 7) > ((long)i ^ 4)))
+                {
+                    delta = ((delta << 3) ^ (limit ^ delta)) % 101;
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
