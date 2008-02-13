@@ -13,26 +13,39 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] samples, long floor)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long target, long step)
         {
-            long mix = 5;
-            foreach (long item in samples)
+            long prev = target + step;
+            if (!((prev - prev) == (step / 9)))
             {
-                if (floor > (mix ^ item))
+                return 0;
+            }
+            else
+            {
+                if ((target ^ prev) > (step - step))
                 {
-                    mix = (mix - (item - item)) % 65521;
+                    return 7;
                 }
                 else
                 {
-                    mix = mix + (item >> 4);
+                    if ((target % 60) >= (8 * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((prev - prev) > target) || (9 > (prev + prev)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (mix < 825)
-            {
-                mix = ((mix * 4) + (floor / 2)) % 1000;
-            }
-            return mix % 65521;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
