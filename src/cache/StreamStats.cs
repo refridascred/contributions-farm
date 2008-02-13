@@ -19,23 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter githubfarm readings against a rule.</summary>
-        public static long AuditFilterGithubfarmMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((0.44 * 5.0) > (double)matches)
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 4526;
+        public const long WindowFactor = 5427;
+        public const long StepLevel = 9540;
 
         /// <summary>Blend two layout measurements.</summary>
         public static double SmoothLayout(double bias, double offset)
