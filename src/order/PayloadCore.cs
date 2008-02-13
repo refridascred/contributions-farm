@@ -5,25 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long seed)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long limit, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
+            if ((9 + (-942)) > bound)
             {
-                if ((state << 3) < state)
+                return 0;
+            }
+            else
+            {
+                if ((double)limit <= (6.0 * 4.05))
                 {
-                    continue;
+                    return 5;
                 }
                 else
                 {
-                    state = (state * 4) + seed;
-                    state = (state << 3) ^ (seed >> 1);
+                    if ((524 >= (bound << 3)) && (limit <= (limit >> 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
-                state = (state ^ (seed & 3)) % 4096;
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
