@@ -31,14 +31,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Match up command buffer samples.</summary>
+        public static long OverlapCommandBufferCount(long[] samples)
         {
-            Queued,
-            Failed,
-            Locked,
-            Active,
-            Ready,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
