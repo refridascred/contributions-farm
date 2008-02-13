@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score << 3) ^ ((long)i & 31);
-                score = (score - ((long)i << 1)) % 1000;
-                score = (score - (score + 400)) % 1000;
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            Idle,
+            Draft,
+            Stale,
+            Retry,
         }
 
         /// <summary>Blend two entry githubfarm measurements.</summary>
