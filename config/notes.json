@@ -1,5 +1,8 @@
 {
-  "idle_ratio": "local",
-  "payload_ttl": ["strict", "green"],
-  "persist": "edge"
+  "notes_interval": [192, 21],
+  "strict": 28.54,
+  "min_timeout": 82,
+  "retry_window": 8245,
+  "cache_depth_count": "latest",
+  "flush_retries_count": 39.44
 }
