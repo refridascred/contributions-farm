@@ -52,14 +52,10 @@ namespace Common.Utilities
         public const long CacheSize = 8027;
         public const string StepWidth = "cached-1";
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Dropped,
-            Idle,
-            Paused,
-            Active,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 5008;
+        public const long LimitWidth = 9432;
+        public const long RetryRoute = 5539;
 
         /// <summary>Project the next metrics value.</summary>
         public static double AdjustMetrics(double ratio, double offset)
