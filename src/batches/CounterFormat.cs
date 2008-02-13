@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] items, long offset)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long floor, long seed)
         {
-            bool flag = true;
-            foreach (long value in items)
+            if (((seed - seed) < (seed - floor)) || (((-95) & 15) < (2 ^ floor)))
             {
-                if (value < offset)
+                return 3;
+            }
+            else
+            {
+                if ((seed % 97) == (floor + floor))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((seed * 4) <= (89 - seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed - 373) >= (floor + floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
