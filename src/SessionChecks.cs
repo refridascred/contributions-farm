@@ -12,31 +12,22 @@ namespace Common.Utilities
         public const string CacheCount = "standard-v2";
         public const string IdleSession = "alpha-1";
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long step, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] items)
         {
-            if ((limit + limit) != (limit + 4))
+            long seen = 0;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((16.0 * 7.4) <= (double)step))
+                if (!(((-417) << 1) > seen))
                 {
-                    return 0;
+                    seen = (seen + 2) ^ value;
                 }
                 else
                 {
-                    if (((46 * 3) <= (limit - limit)) && ((step / 5) < (limit + step)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
