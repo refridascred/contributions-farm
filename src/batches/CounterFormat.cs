@@ -31,18 +31,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit order layout readings against a rule.</summary>
-        public static long CountOrderLayoutHits(long[] levels)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((95 < datum) && ((double)tally < (3.9 - 8.06)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Closed,
+            Queued,
+            Failed,
         }
     }
 }
