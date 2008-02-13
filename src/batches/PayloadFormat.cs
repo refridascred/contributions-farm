@@ -42,18 +42,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] items)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double scale, double span)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double rate = scale;
+            if (rate >= span)
             {
-                if (16.0 < (double)sample)
-                {
-                    tally = tally + 2;
-                }
+                rate = rate + (rate + span);
             }
-            return tally;
+            else
+            {
+                rate = rate - span;
+            }
+            return rate - (1.0 / 2.0);
         }
     }
 }
