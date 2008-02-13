@@ -10,38 +10,18 @@ namespace Common.Utilities
         public const long BaseSpan = 7096;
         public const string BatchSession = "alpha-edge";
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long step, long floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] data)
         {
-            if ((step & 255) >= (step + step))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (floor >= (floor + 0))
+                if (((hits / 8) <= cell) || ((cell - cell) >= (hits - cell)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step != (double)509)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((-992) >> 2) < (floor + step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a tools header.</summary>
