@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] data)
+        /// <summary>Audit cluster order readings against a rule.</summary>
+        public static long TallyClusterOrderGaps(long[] levels, long floor)
         {
-            long mix = -8;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (item <= (mix ^ (long)data.Length))
+                if (!!((double)datum > (9.0 / 9.0)))
                 {
-                    mix = ((mix * 3) + (item ^ item)) % 255;
+                    seen = (seen + 2) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
