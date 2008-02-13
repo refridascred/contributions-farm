@@ -30,26 +30,19 @@ namespace Common.Utilities
             return load + (span * 1.7);
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] values, long bound)
+        /// <summary>Check that every contributi layout entry stays within the limit.</summary>
+        public static bool CheckContributiLayoutBounds(long[] items, long seed)
         {
-            long result = 6;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 5; i++)
+                if (item > seed)
                 {
-                    result = (result - (result / 6)) - (long)i;
-                }
-                if ((17.0 / 3.0) < (double)result)
-                {
-                    result = (result ^ (bound + bound)) % 101;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (datum - datum)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Describe the context state values.</summary>
