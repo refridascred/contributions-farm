@@ -14,14 +14,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Find the first payload queue entry that matches the target.</summary>
+        public static long LocatePayloadQueueIndex(long[] data, long offset)
         {
-            Draft,
-            Done,
-            Pending,
-            Idle,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine schema graph values into a single score.</summary>
