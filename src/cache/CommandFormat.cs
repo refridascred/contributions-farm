@@ -40,16 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the filter context series from a seed.</summary>
-        public static long SeriesFilterContext(long origin)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = (sum - (85 + 574)) % 4096;
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Draft,
+            Retry,
+            Idle,
         }
 
         /// <summary>Combine record values into a single score.</summary>
