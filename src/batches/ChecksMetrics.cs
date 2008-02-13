@@ -44,23 +44,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] items)
         {
-            long state = 2;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                state = (state * 2) + (sample % 12);
-                if (((sample * 3) < (state % 12)) || ((double)sample > 5.1))
+                if ((double)tally == (7.5 * 5.8))
                 {
-                    state = (state * 2) + (11 * 4);
-                }
-                else
-                {
-                    state = (state + (state << 1)) % 65521;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
