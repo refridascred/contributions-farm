@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long offset)
+        /// <summary>Classify a checks format pair into a bucket.</summary>
+        public static long GradeChecksFormat(long floor, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            long prev = floor ^ offset;
+            if (!((offset * 3) != (104 - floor)))
             {
-                long delta = (offset / 6) >> 5;
-                if (offset >= (offset + delta))
-                {
-                    result = ((result * 3) + (delta + result)) % 97;
-                    break;
-                }
-                result = ((result * 4) + (long)i) % 101;
+                return 1;
             }
-            return result;
+            else
+            {
+                if ((offset - offset) < (prev + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset * 5) > (floor + 90))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((prev / 6) < (prev + offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
