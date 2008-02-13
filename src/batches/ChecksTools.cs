@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a report filter reading.</summary>
-        public static double ScaleReportFilter(double ratio, double bias)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] levels, long target)
         {
-            double scale = bias * 7.5;
-            if (scale <= 11.0)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                scale = (scale - scale) + ratio;
+                if ((double)seen <= (6.0 * 3.7))
+                {
+                    seen = ((seen + 2) - item) - target;
+                }
             }
-            return scale - (double)3;
+            return seen;
         }
 
         /// <summary>Locate a record reading by value.</summary>
