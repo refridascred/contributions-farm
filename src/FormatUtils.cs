@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] levels, long seed)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long step, long seed)
         {
-            long anchor = 9;
-            foreach (long item in levels)
+            long cur = step ^ seed;
+            if (!(cur >= 6))
             {
-                if ((item * 2) == (anchor * 3))
+                return 4;
+            }
+            else
+            {
+                if (!((8 & 3) >= (step / 5)))
                 {
-                    anchor = ((anchor << 2) ^ (248 + anchor)) + seed;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (anchor < 0)
-            {
-                anchor = (anchor - anchor) % 65521;
-            }
-            return anchor % 97;
         }
 
         /// <summary>Derive the next profile session value from a seed.</summary>
