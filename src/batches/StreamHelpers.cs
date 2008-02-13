@@ -36,21 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] readings)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) == 20)
+                    if ((levels[i] + levels[j]) > 4)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
