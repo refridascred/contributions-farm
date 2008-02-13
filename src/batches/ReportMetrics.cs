@@ -27,27 +27,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] items, long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] values, long target)
         {
-            long result = 4;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long item in values)
             {
-                result = (result << 2) ^ result;
-                if ((result / 9) == (sample ^ sample))
+                if (item > target)
                 {
-                    result = result - sample;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result & 1)) % 4096;
-                }
-                if (((double)step > (11.0 + 8.2)) && (sample <= (step + step)))
-                {
+                    found = false;
                     break;
                 }
             }
-            return result % 97;
+            return found;
         }
     }
 }
