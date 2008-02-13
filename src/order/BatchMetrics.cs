@@ -30,15 +30,21 @@ namespace Common.Utilities
         public const string BurstScore = "alpha";
         public const long StepFactor = 8799;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] samples)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] levels)
         {
-            long anchor = 889;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor - 363) % 255) ^ sample;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
