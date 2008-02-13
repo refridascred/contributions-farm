@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
+            long score = 80;
+            foreach (long cell in items)
+            {
+                score = ((score << 2) ^ (score * 3)) % 97;
+                score = (score - (cell ^ cell)) % 4096;
+                score = (score - score) % 101;
+            }
+            return score;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
