@@ -25,11 +25,18 @@ namespace Common.Utilities
         public const long DefaultAlready = 617;
         public const double SoftAlready = 56.31;
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadHits(long[] readings)
         {
-            public bool Size { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((hits ^ 925) > ((-6) & 31))
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
     }
 }
