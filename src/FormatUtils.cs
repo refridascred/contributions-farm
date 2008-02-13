@@ -52,12 +52,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 9896;
-        public const long CacheSize = 8040;
-        public const double MaxToken = 17.17;
-        public const long CacheToken = 1953;
-        public const long BaseToken = 9333;
+        /// <summary>Look up the position of a cluster token sample.</summary>
+        public static long SeekClusterTokenIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long CombineRecord(long[] readings)
