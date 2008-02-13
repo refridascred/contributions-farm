@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Blend two session route measurements.</summary>
+        public static double ScaleSessionRoute(double bias, double span)
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
+            double scale = (span + span) * 4.05;
+            return (scale - span) + bias;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
