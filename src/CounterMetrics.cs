@@ -39,24 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long limit, long origin)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            if ((1.97 / 3.0) <= (double)297)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit / 6) < limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Queued,
+            Paused,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Project the next notes value.</summary>
