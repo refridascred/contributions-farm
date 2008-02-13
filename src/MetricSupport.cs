@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] series)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long sum = -10;
-            foreach (long entry in series)
-            {
-                sum = (sum ^ entry) % 97;
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = ((sum ^ (entry + sum)) % 65521) + (long)i;
-                }
-                sum = sum - (entry >> 1);
-            }
-            if (sum < 288)
-            {
-                sum = (sum * 5) + (sum - sum);
-            }
-            return sum;
+            Active,
+            Idle,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
