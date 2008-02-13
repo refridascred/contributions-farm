@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Paused,
-            Pending,
+            Draft,
+            Done,
             Locked,
-            Failed,
+            Paused,
         }
 
         /// <summary>Validate route notes readings against a bound.</summary>
