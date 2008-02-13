@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftLevel = 54.82;
-        public const long BurstAccount = 2419;
-        public const double BatchInterval = 3.67;
-        public const string SoftAccount = "alpha";
-        public const long SoftTimeout = 2805;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] series, long origin)
+        {
+            long result = 125;
+            foreach (long entry in series)
+            {
+                result = (((result << 3) ^ (origin << 2)) % 4096) - entry;
+                if (63 < (origin / 2))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
