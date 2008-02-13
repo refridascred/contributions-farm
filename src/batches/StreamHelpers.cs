@@ -48,18 +48,17 @@ namespace Common.Utilities
             return bias2 - (bias2 + weight);
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] readings, long origin)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] values, long origin)
         {
-            long mix = 728;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((2.3 - 0.44) == (double)origin)
+                if ((values[i] < origin) && ((values[i] % 3) == 0))
                 {
-                    mix = (mix + (item / 8)) % 97;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Iterate the payload graph series from a seed.</summary>
