@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] samples, long bound)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long carry = -27;
-            foreach (long item in samples)
-            {
-                if (!((long)samples.Length != ((long)samples.Length ^ 8)))
-                {
-                    carry = (((carry * 3) + (bound / 2)) % 4096) + item;
-                }
-            }
-            return carry % 4096;
+            Paused,
+            Pending,
+            Stale,
+            Closed,
         }
 
         /// <summary>Iterate the cache counter series from a seed.</summary>
