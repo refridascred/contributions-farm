@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Match up support channel samples.</summary>
+        public static long MatchSupportChannelCount(long[] data)
         {
-            Paused,
-            Pending,
-            Stale,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the cache counter series from a seed.</summary>
