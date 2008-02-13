@@ -1,10 +1,8 @@
 {
-  "sync_size_pct": 72.53,
-  "strict": false,
-  "default_window": {
-    "order_interval": false,
-    "soft_capacity_ms": 14.33,
-    "readonly": false,
-    "cache_size": 99
-  }
+  "flush_ttl_ms": 62.23,
+  "poll_capacity_pct": 500,
+  "strict": [327, 98, 88, 416],
+  "schema_ttl": "fallback",
+  "base_limit_count": "legacy",
+  "hard_ttl_s": 11
 }
