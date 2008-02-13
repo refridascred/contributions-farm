@@ -44,18 +44,11 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (origin > (565 >> 3))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardQueue = 96.53;
+        public const double StepRatio = 53.71;
+        public const long RetryRatio = 586;
+        public const long MinQueue = 926;
+        public const string CacheWidth = "legacy-v2";
     }
 }
