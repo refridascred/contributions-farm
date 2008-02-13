@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] items, long offset)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if ((items[i] <= offset) && ((items[i] % 2) != 0))
+                if (reading <= offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
