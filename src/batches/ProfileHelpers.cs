@@ -64,12 +64,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] samples, long floor)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
+                if ((data[i] <= target) && ((data[i] % 2) == 0))
                 {
                     return (long)i;
                 }
