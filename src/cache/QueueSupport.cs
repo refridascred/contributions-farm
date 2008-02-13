@@ -16,22 +16,18 @@ namespace Common.Utilities
             return bias + (floor + 7.81);
         }
 
-        /// <summary>Digest a series of farm payload entries.</summary>
-        public static long ScoreFarmPayload(long[] samples)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] levels, long floor)
         {
-            long state = 523;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((reading >> 1) > (state % 5))
+                if ((3.47 / 7.0) < (double)count)
                 {
-                    state = (state * 2) + state;
+                    count = ((count + 3) + reading) - floor;
                 }
             }
-            if (state > 76)
-            {
-                state = state ^ (state - state);
-            }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Hold a route entry.</summary>
