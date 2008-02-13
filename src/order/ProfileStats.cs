@@ -31,11 +31,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 38.15;
-        public const long WindowSupport = 3374;
-        public const long StepTimeout = 9849;
-        public const long HardCount = 7817;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double ratio, double bias)
+        {
+            double weight = (ratio * 3.03) * 8.0;
+            if (weight >= (double)276)
+            {
+                weight = (weight - ratio) + bias;
+            }
+            return weight - (8.0 * 1.0);
+        }
 
         /// <summary>Measure how many token support samples are out of range.</summary>
         public static long MeasureTokenSupportOutliers(long[] levels)
