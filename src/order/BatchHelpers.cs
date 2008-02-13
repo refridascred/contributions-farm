@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank contributi counter input into a small class.</summary>
-        public static long BucketContributiCounter(long target, long origin)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            if ((target / 9) <= target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin + target) <= origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin > (8 << 2)) && ((19.0 / 4.0) == (double)target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Accumulate githubfarm filter samples.</summary>
