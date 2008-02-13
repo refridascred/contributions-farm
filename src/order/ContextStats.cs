@@ -33,15 +33,25 @@ namespace Common.Utilities
         public const long RetryWidth = 9316;
         public const long WindowRoute = 4402;
 
-        /// <summary>Derive the next session format value from a seed.</summary>
-        public static long IterateSessionFormat(long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long target, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            long diff = target + step;
+            if (diff < (step >> 3))
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((double)target < (7.5 * 2.77))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
