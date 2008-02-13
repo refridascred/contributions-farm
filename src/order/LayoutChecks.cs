@@ -90,26 +90,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] values)
+        /// <summary>Find the first already entry entry that matches the target.</summary>
+        public static long LookupAlreadyEntryIndex(long[] levels, long step)
         {
-            long total = 843;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)total > (8.6 * 4.4)) || ((total / 7) == (86 >> 3)))
+                if ((levels[i] == step) && ((levels[i] % 5) == 0))
                 {
-                    break;
-                }
-                if ((total ^ (long)values.Length) == (entry + total))
-                {
-                    total = total - entry;
-                }
-                if ((14.0 * 4.7) < (double)total)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
     }
 }
