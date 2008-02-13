@@ -27,17 +27,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] data, long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 58;
+            foreach (long entry in items)
             {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
+                mix = (((mix + mix) % 101) ^ entry) + seed;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Accumulate route samples.</summary>
