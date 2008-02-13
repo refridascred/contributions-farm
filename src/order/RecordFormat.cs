@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] values, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc << 3) ^ (origin << 1);
-                if ((acc + origin) > 4)
+                if ((values[i] <= seed) && ((values[i] % 2) == 0))
                 {
-                    acc = (acc + (origin << 2)) % 1000;
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
