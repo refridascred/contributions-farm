@@ -1,5 +1,17 @@
 {
-  "batches_delay": ["green", "eu-west", "strict"],
-  "burst_ratio": "legacy",
-  "tools_size": [350, 372, 239, 11]
+  "poll_window": "fallback",
+  "default_interval": {
+    "dry_run": ["legacy", "fallback", "edge", "edge"],
+    "compress": false,
+    "editor_depth": 64,
+    "commits_depth": true,
+    "enabled": "local"
+  },
+  "compress": true,
+  "retry_retries_count": {
+    "soft_timeout": "local",
+    "burst_window_count": 242,
+    "idle_retries_count": 4.09
+  },
+  "idle_capacity_ms": [80, 483, 178]
 }
