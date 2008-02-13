@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const long HardSupport = 6108;
         public const long SoftSupport = 1882;
 
-        /// <summary>Roll a session context counter forward.</summary>
-        public static long DeriveSessionContext(long bound)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 3) + bound) % 101;
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            public double Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
