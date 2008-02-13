@@ -43,19 +43,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] series, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (datum != offset)
+                if ((9.98 * 4.3) <= (double)offset)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) - cell;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
