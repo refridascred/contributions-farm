@@ -43,10 +43,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 6448;
-        public const long DefaultLevel = 2361;
-        public const long IdleTimeout = 2415;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Failed,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long GradeRoute(long origin, long seed)
