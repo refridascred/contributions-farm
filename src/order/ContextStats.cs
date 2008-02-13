@@ -19,13 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] series, long origin)
         {
-            Closed,
-            Paused,
-            Dropped,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batches state values.</summary>
