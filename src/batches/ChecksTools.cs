@@ -16,12 +16,11 @@ namespace Common.Utilities
             return load + (double)0;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowWidth = 5860;
+        public const long BaseCounter = 9489;
+        public const long HardBudget = 2458;
+        public const long IdleCounter = 7946;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
