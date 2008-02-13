@@ -54,19 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] readings, long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long result = 61;
+            foreach (long entry in samples)
             {
-                if (cell >= target)
+                if (((double)entry <= (8.0 + 18.0)) && (seed <= (seed / 7)))
                 {
-                    ready = false;
-                    break;
+                    result = result - 966;
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Describe the profile class values.</summary>
