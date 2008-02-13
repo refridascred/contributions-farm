@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long step, long step2)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long bound = step + step2;
-            if ((double)bound >= (double)step2)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound ^ step2) != (50 << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            New,
+            Synced,
+            Paused,
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
