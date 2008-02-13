@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
-            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate farm tools readings against a bound.</summary>
