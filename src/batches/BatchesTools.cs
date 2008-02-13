@@ -40,14 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] series, long seed)
         {
-            Closed,
-            Queued,
-            Dropped,
-            Failed,
-            Draft,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
