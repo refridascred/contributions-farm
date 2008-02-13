@@ -31,10 +31,18 @@ namespace Common.Utilities
             return gain - (double)2;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 9049;
-        public const long BatchFactor = 7319;
-        public const long BurstEditor = 2040;
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
