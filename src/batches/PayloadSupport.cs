@@ -35,18 +35,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many support filter samples are out of range.</summary>
-        public static long MeasureSupportFilterHits(long[] series, long origin)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (((double)seen <= (double)695) && ((origin ^ seen) <= (8 - origin)))
-                {
-                    seen = (seen + 2) - cell;
-                }
-            }
-            return seen;
+            New,
+            Paused,
+            Pending,
+            Synced,
         }
     }
 }
