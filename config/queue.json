@@ -1,5 +1,8 @@
 {
-  "poll_limit": "edge",
-  "poll_limit_count": "edge",
-  "flush_limit_count": 4996
+  "burst_ttl_s": 100,
+  "retry_ttl_pct": "local",
+  "enabled": "staging",
+  "min_window_count": ["standard", "standard", "staging", "standard"],
+  "flush_ratio_s": [254, 170, 386, 484],
+  "compress": "open"
 }
