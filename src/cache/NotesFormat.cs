@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] levels, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (levels[i] >= offset)
+                if (((tally << 3) > (sample + sample)) && (((double)sample != (double)tally) || (((-983) - sample) <= (tally / 9))))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the window class values.</summary>
