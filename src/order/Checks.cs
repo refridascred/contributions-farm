@@ -49,19 +49,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] values, long limit)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Stale,
+            Retry,
         }
     }
 }
