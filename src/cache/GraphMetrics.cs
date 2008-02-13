@@ -29,13 +29,21 @@ namespace Common.Utilities
         public const long RetryFactor = 4839;
         public const string WindowCounter = "strict";
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] levels)
         {
-            public long Size { get; set; }
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a filter options.</summary>
