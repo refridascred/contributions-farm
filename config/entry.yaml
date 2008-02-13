@@ -1,4 +1,13 @@
 # entry settings
-flush_ttl: 6
-batch_limit_s: 1024
-poll_capacity_s: false
+retry_interval_ms: 83
+flush_window: 250
+base_delay_pct:
+  support_threshold:
+    - 250
+    - 484
+    - 472
+    - 420
+  cache_window_ms: false
+  enabled: 30
+  burst_depth: 41
+  base_ttl_ms: 11
