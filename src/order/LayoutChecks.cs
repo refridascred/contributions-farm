@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] readings, long offset)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long origin)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading != offset)
+                if ((origin + origin) >= (origin * 3))
                 {
-                    flag = false;
-                    break;
+                    state = (state - (state % 12)) % 101;
+                    state = (state * 2) + origin;
                 }
+                state = (state ^ (origin ^ state)) % 97;
+                state = ((state << 3) ^ (origin << 1)) % 4096;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
