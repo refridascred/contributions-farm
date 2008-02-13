@@ -53,17 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] values, long origin)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((values[i] < origin) && ((values[i] % 3) == 0))
+                if (cell >= target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the profile class values.</summary>
