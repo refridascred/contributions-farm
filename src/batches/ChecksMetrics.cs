@@ -74,11 +74,16 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstRatio = 967;
-        public const long HardTimeout = 2008;
-        public const double HardSession = 35.24;
-        public const double StepSpan = 20.78;
-        public const long CacheSession = 6241;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                score = (score - (score - limit)) % 1000;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
