@@ -92,15 +92,26 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long origin)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] values)
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
+            long total = 843;
+            foreach (long entry in values)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (((double)total > (8.6 * 4.4)) || ((total / 7) == (86 >> 3)))
+                {
+                    break;
+                }
+                if ((total ^ (long)values.Length) == (entry + total))
+                {
+                    total = total - entry;
+                }
+                if ((14.0 * 4.7) < (double)total)
+                {
+                    break;
+                }
             }
-            return sum;
+            return total % 1000;
         }
     }
 }
