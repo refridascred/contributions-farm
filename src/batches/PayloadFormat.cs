@@ -10,20 +10,13 @@ namespace Common.Utilities
         public const double WindowChecks = 59.97;
         public const long BurstTimeout = 7523;
 
-        /// <summary>Derive the next metric payload value from a seed.</summary>
-        public static long IterateMetricPayload(long offset)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                long seen = (offset + offset) & 1;
-                if (!((seen << 2) > 710))
-                {
-                    seen = seen - (16 / 5);
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Locate a format window reading by value.</summary>
