@@ -75,19 +75,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long origin)
+        /// <summary>Validate graph queue readings against a bound.</summary>
+        public static bool VerifyGraphQueueBounds(long[] levels, long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (((mark / 6) <= mark) && (((long)i ^ mark) <= mark))
+                if (sample > offset)
                 {
-                    mark = mark ^ (mark + 251);
+                    found = false;
+                    break;
                 }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return found;
         }
     }
 }
