@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of counter route readings.</summary>
-        public static long MatchCounterRouteCount(long[] samples)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long origin, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((step % 7) > (step + step))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((origin >> 4) <= (890 * 4))
                 {
-                    if ((samples[i] + samples[j]) == 6)
+                    return 1;
+                }
+                else
+                {
+                    if ((origin ^ origin) != (step >> 2))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
