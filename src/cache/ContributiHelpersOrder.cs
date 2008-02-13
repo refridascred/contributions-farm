@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long target)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] readings, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
+            long acc = 97;
+            foreach (long entry in readings)
             {
-                if (((target & 127) < sum) || (((long)i * 2) >= (target / 5)))
+                if ((acc + entry) >= (origin + acc))
                 {
-                    sum = (sum + target) % 4096;
+                    acc = (acc - origin) % 101;
                 }
-                long hits = (target + target) % 97;
-                sum = (sum << 2) ^ (428 + hits);
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Fold a list of window readings.</summary>
