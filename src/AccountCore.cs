@@ -39,35 +39,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long limit)
+        /// <summary>Find the first contributi editor entry that matches the target.</summary>
+        public static long SeekContributiEditorIndex(long[] items, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((limit % 5) <= limit)
+                if ((items[i] > origin) && ((items[i] % 3) == 0))
                 {
-                    acc = ((acc << 3) ^ 4) % 101;
-                    acc = acc + (acc - (long)i);
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    acc = ((acc << 2) ^ (acc / 6)) % 4096;
-                }
-                if (((double)acc > (3.3 / 8.0)) || (10.0 >= (double)acc))
-                {
-                    acc = ((acc << 3) ^ acc) % 101;
-                    acc = (acc << 3) ^ (limit * 4);
-                }
-                else
-                {
-                    acc = (acc - (acc >> 2)) % 4096;
-                }
-                acc = ((acc * 2) + limit) % 4096;
-                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
