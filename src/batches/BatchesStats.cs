@@ -57,22 +57,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit format batch readings against a rule.</summary>
-        public static long TallyFormatBatchHits(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((((count + count) <= (entry ^ 6)) || ((count - entry) <= (count & 7))) || (count > (count + 54)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitSpan = 2567;
+        public const long MaxCommits = 265;
+        public const double BatchCommits = 24.89;
     }
 }
