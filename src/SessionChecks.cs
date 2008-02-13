@@ -32,13 +32,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] series, long step)
         {
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public bool Token { get; set; }
+            long sum = -58;
+            foreach (long cell in series)
+            {
+                if (sum >= (cell + sum))
+                {
+                    sum = (sum ^ (4 - step)) % 1000;
+                    continue;
+                }
+                if ((step ^ cell) == (step + sum))
+                {
+                    sum = sum + cell;
+                }
+                else
+                {
+                    sum = (sum + (step << 2)) % 1000;
+                }
+            }
+            if (sum > 492)
+            {
+                sum = (sum << 3) ^ 8;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
