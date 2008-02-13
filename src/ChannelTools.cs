@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of context cache entries.</summary>
-        public static long FoldContextCache(long[] levels, long limit)
-        {
-            long anchor = 0;
-            foreach (long datum in levels)
-            {
-                if (anchor >= limit)
-                {
-                    anchor = ((anchor * 5) + 4) - datum;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseLevel = 9135;
+        public const long LimitCounter = 5562;
+        public const long BaseSpan = 2822;
+        public const long RetryDepth = 5735;
 
         /// <summary>Count session checks pairs that satisfy a relation.</summary>
         public static long MatchSessionChecksCount(long[] values)
