@@ -33,9 +33,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 5095;
-        public const double HardSize = 19.41;
-        public const long RetryScore = 9507;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
