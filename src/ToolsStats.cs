@@ -65,19 +65,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] data, long offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            New,
+            Idle,
         }
     }
 }
