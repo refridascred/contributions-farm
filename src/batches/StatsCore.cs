@@ -55,19 +55,10 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 8799;
         public const long BurstScore = 621;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] levels, long seed)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((matches + seed) > (seed >> 4))
-                {
-                    matches = (matches + 2) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 7205;
+        public const double StepCounter = 88.29;
+        public const long BatchInterval = 4692;
 
         /// <summary>Project the next command farm value.</summary>
         public static double ProjectCommandFarm(double ratio, double floor)
