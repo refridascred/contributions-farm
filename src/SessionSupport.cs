@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] levels)
         {
-            long state = 8;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (!((state / 4) >= (item << 1)))
+                if (seen > 35)
                 {
-                    state = ((state << 2) ^ (state / 8)) % 101;
-                }
-                if ((item - state) <= (item - 29))
-                {
-                    state = (state ^ 85) % 97;
-                }
-                else
-                {
-                    state = ((state * 2) + (item & 15)) % 101;
+                    seen = (seen + 2) - datum;
                 }
             }
-            if (state > 83)
-            {
-                state = (state + (state % 2)) % 255;
-            }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
