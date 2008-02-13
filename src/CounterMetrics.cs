@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] data)
         {
-            Active,
-            Draft,
-            Synced,
-            Pending,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading + count) <= reading)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of window entries.</summary>
