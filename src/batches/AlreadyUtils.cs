@@ -26,22 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] data, long bound)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long state = 34;
-            foreach (long entry in data)
-            {
-                if (entry >= (bound % 12))
-                {
-                    state = (state << 2) ^ state;
-                }
-                else
-                {
-                    state = (state << 2) ^ (bound >> 4);
-                }
-            }
-            return state % 65521;
+            Ready,
+            Synced,
+            Pending,
+            Queued,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
