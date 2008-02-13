@@ -20,39 +20,19 @@ namespace Common.Utilities
             return scale - (double)1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long limit, long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] series)
         {
-            long next = limit - target;
-            if ((double)next == (0.5 + 8.0))
+            long sum = 206;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target > next) && ((next << 2) >= (next * 4)))
+                sum = ((sum - (sum * 2)) % 255) ^ reading;
+                if ((sum >> 3) < sum)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit + limit) != (limit % 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((next - next) <= 60)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Measure how many support filter samples are out of range.</summary>
