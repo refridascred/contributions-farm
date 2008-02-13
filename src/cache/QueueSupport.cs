@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of batches cache entries.</summary>
-        public static long FoldBatchesCache(long[] items, long origin)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double weight, double offset)
         {
-            long total = 603;
-            foreach (long reading in items)
+            double load = offset;
+            if (load <= (load / 3.0))
             {
-                total = (total + reading) % 101;
-                for (int i = 0; i < 5; i++)
-                {
-                    total = ((total << 3) ^ (origin & 1)) - (long)i;
-                }
-                if (origin >= (total - origin))
-                {
-                    total = (total ^ (708 + 29)) % 4096;
-                }
+                load = load + offset;
             }
-            if (total > 105)
+            for (int i = 0; i < 7; i++)
             {
-                total = total - (total / 6);
+                load = (load + (weight * 9.46)) + (double)(long)i;
             }
-            return total;
+            return load - (double)52;
         }
 
         /// <summary>Digest a series of farm payload entries.</summary>
