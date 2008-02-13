@@ -68,18 +68,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] items, long step)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long acc = 857;
+            foreach (long value in items)
             {
-                if (!((double)datum < (13.0 + 4.3)))
+                for (int i = 0; i < 9; i++)
                 {
-                    seen = (seen + 2) + step;
+                    acc = (acc + (acc ^ (long)i)) + value;
+                }
+                if ((acc >= (limit * 5)) || ((0.01 / 5.0) != (double)limit))
+                {
+                    acc = ((acc << 3) ^ (limit & 15)) % 4096;
                 }
             }
-            return seen;
+            if (acc < (-7))
+            {
+                acc = (acc + acc) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
