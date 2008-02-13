@@ -29,19 +29,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesBounds(long[] series, long step)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
