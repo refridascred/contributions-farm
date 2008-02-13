@@ -20,15 +20,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a buffer record counter forward.</summary>
-        public static long RollBufferRecord(long seed)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] levels)
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a farm info.</summary>
