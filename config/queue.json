@@ -1,6 +1,14 @@
 {
-  "soft_interval": [385, 167],
-  "readonly": 46,
-  "strict": 33,
-  "base_ttl_count": 83
+  "dry_run": true,
+  "warm_limit_count": 54.0,
+  "compress": {
+    "format_delay": 500,
+    "default_capacity_count": "legacy",
+    "dry_run": 1024,
+    "cluster_ttl": "blue",
+    "audit": 60
+  },
+  "enabled": 54.58,
+  "readonly": "staging",
+  "soft_retries_ms": 100
 }
