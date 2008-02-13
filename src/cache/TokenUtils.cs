@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
