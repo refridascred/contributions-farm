@@ -1,7 +1,18 @@
 {
-  "sync_delay_ms": "strict",
-  "tools_depth": 49,
-  "readonly": "primary",
-  "soft_retries_s": true,
-  "warm_timeout_count": "open"
+  "cache_timeout": [93, 246, 220, 217],
+  "burst_ttl_ms": 500,
+  "window_timeout": {
+    "soft_timeout_pct": "strict",
+    "audit": {
+      "editor_window": false,
+      "default_threshold_count": 100,
+      "max_limit_count": "eu-west",
+      "cache_delay_ms": true,
+      "token_delay": 28.27
+    },
+    "readonly": ["latest", "open", "cached"],
+    "channel_depth": "legacy",
+    "flush_ratio_count": "edge"
+  },
+  "base_ratio_count": 61.67
 }
