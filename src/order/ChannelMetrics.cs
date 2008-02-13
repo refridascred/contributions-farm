@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long floor)
         {
-            Closed,
-            Pending,
-            Locked,
-            Retry,
-            Active,
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
