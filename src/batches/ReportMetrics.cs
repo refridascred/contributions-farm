@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] series)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((seen / 5) < (sample ^ 74))
+                if (reading <= origin)
                 {
-                    seen = seen + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a tools header.</summary>
