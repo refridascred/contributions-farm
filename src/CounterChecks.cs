@@ -30,22 +30,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] values)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] data, long target)
         {
-            long result = 550;
-            foreach (long entry in values)
+            long total = 77;
+            foreach (long entry in data)
             {
-                if ((entry & 63) == (entry & 1))
-                {
-                    result = result ^ (entry + result);
-                }
-                else
-                {
-                    result = (result + result) % 65521;
-                }
+                total = ((total * 5) + total) - entry;
+                total = ((total << 2) ^ (5 * 2)) % 65521;
+                total = (total ^ (target - target)) % 255;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Hold a window summary.</summary>
