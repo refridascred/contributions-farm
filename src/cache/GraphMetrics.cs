@@ -20,21 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of format commits readings.</summary>
-        public static long PairFormatCommitsCount(long[] readings)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -36;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample < (sample - bound))
                 {
-                    if ((readings[i] ^ readings[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor * 5) + (sample + bound)) % 101;
+                }
+                else
+                {
+                    anchor = anchor - (anchor ^ sample);
                 }
             }
-            return tally;
+            if (anchor < 41)
+            {
+                anchor = (anchor << 2) ^ 599;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
