@@ -74,10 +74,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 9623;
-        public const double MaxCommits = 89.47;
-        public const long SoftCommits = 4763;
-        public const string RetryDepth = "open";
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] levels)
+        {
+            long acc = -1;
+            foreach (long item in levels)
+            {
+                acc = (acc * 4) + (item << 2);
+            }
+            if (acc < 5)
+            {
+                acc = (acc - (acc & 1)) % 65521;
+            }
+            return acc;
+        }
     }
 }
