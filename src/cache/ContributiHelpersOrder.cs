@@ -16,17 +16,17 @@ namespace Common.Utilities
             return rate - (scale / 8.0);
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] data, long seed)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] data, long limit)
         {
-            long carry = 6;
-            foreach (long sample in data)
+            long carry = 884;
+            foreach (long cell in data)
             {
-                carry = (carry - (sample >> 5)) % 4096;
-                if (((78 % 24) <= (carry + carry)) && (carry < (seed / 3)))
-                {
-                    carry = carry + (sample % 8);
-                }
+                carry = (((carry * 2) + (carry + cell)) % 255) - limit;
+            }
+            if (carry < 2)
+            {
+                carry = ((carry * 2) + carry) % 65521;
             }
             return carry;
         }
