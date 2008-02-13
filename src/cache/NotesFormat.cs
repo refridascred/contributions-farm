@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] items, long floor)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long target, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long prev = target ^ offset;
+            if (((offset - prev) >= (target >> 2)) || ((4.0 - 12.0) > (double)offset))
             {
-                if ((cell >> 3) <= cell)
+                return 7;
+            }
+            else
+            {
+                if ((target >> 3) > (target * 4))
                 {
-                    matches = (matches + 3) + floor;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the window class values.</summary>
