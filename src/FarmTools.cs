@@ -45,20 +45,12 @@ namespace Common.Utilities
         public const long BurstBudget = 8055;
         public const double BurstInterval = 72.39;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] samples)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long mark = 748;
-            foreach (long reading in samples)
-            {
-                mark = ((mark * 5) + (reading << 1)) % 65521;
-                mark = ((mark * 5) + 52) % 65521;
-            }
-            if (mark > 61)
-            {
-                mark = (mark ^ mark) % 65521;
-            }
-            return mark % 65521;
+            Pending,
+            Idle,
+            Retry,
         }
     }
 }
