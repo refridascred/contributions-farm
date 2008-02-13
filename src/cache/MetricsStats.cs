@@ -50,14 +50,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Measure how many metrics layout samples are out of range.</summary>
+        public static long MeasureMetricsLayoutGaps(long[] data, long limit)
         {
-            Queued,
-            Active,
-            Retry,
-            Dropped,
-            Closed,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!((count + (-3)) < limit))
+                {
+                    count = (count + 2) - item;
+                }
+            }
+            return count;
         }
     }
 }
