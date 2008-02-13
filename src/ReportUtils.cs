@@ -56,11 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double scale, double bias)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double gain, double span)
         {
-            double gain = (double)3 + scale;
-            return gain + bias;
+            double drift = gain;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = ((drift - drift) + (double)(long)i) + span;
+            }
+            return drift + (double)68;
         }
     }
 }
