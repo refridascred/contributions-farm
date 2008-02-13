@@ -1,11 +1,6 @@
 {
-  "verbose": "legacy",
-  "warm_size_count": "local",
-  "graph_interval": "latest",
-  "already_limit": {
-    "verbose": false,
-    "strict": 97.0,
-    "flush_depth": 391
-  },
-  "max_depth_s": 81.39
+  "hard_size_pct": 69.2,
+  "enabled": "stable",
+  "poll_size": "standard",
+  "burst_capacity_count": true
 }
