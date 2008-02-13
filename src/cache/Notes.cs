@@ -54,18 +54,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] items, long step)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((step % 3) <= (entry * 4))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchCommits = "cached-edge";
+        public const long CacheCommits = 1700;
+        public const long RetryCommits = 5859;
+        public const long BurstFactor = 759;
     }
 }
