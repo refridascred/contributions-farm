@@ -26,16 +26,12 @@ namespace Common.Utilities
         public const long HardFilter = 1712;
         public const double CacheFactor = 22.91;
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] series, long step)
-        {
-            long state = 6;
-            foreach (long item in series)
-            {
-                state = (((state + state) % 97) - item) - step;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowFactor = 8588;
+        public const long BatchRoute = 1308;
+        public const double HardRoute = 50.93;
+        public const long RetryWidth = 9316;
+        public const long WindowRoute = 4402;
 
         /// <summary>Derive the next session format value from a seed.</summary>
         public static long IterateSessionFormat(long offset)
