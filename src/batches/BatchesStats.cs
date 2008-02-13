@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long bound, long origin)
         {
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
+            if (bound >= (734 - origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound < (11 & 15)) || ((bound * 4) == (bound + 6)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((3.8 * 2.36) >= (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin >= bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
