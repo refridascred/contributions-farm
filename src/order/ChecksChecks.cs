@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 4296;
-        public const long BaseNotes = 4139;
-        public const long BurstRatio = 4609;
-        public const string IdleWidth = "latest-1";
+        /// <summary>Fold a list of already payload readings.</summary>
+        public static long ScoreAlreadyPayload(long[] series)
+        {
+            long state = 923;
+            foreach (long datum in series)
+            {
+                state = ((state * 3) + (state + datum)) % 4096;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long ClassifyBuffer(long offset, long bound)
