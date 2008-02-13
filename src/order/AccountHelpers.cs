@@ -27,13 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public bool Count { get; set; }
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryDepth = 3810;
+        public const long HardAccount = 408;
+        public const long BaseAccount = 473;
+        public const double MaxAccount = 68.08;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool ValidateSupportBounds(long[] values, long step)
