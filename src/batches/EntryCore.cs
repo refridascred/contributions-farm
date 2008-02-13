@@ -48,15 +48,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] readings, long floor)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long anchor = 86;
-            foreach (long datum in readings)
-            {
-                anchor = ((anchor - (5 + datum)) % 1000) - floor;
-            }
-            return anchor;
+            Closed,
+            Stale,
+            Draft,
+            New,
         }
 
         /// <summary>Adjust a schema reading.</summary>
