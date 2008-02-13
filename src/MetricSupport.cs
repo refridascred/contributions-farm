@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Paused,
-            Retry,
-            Done,
-            Pending,
+            public double Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the cluster state values.</summary>
