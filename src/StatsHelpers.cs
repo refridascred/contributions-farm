@@ -45,18 +45,14 @@ namespace Common.Utilities
         public const long BaseReport = 7877;
         public const long LimitDepth = 3004;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] levels)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((count / 3) < (count - item))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Draft,
+            Queued,
+            Ready,
+            Active,
+            Failed,
         }
     }
 }
