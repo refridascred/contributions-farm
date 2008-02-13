@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] samples)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] items)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally + tally) < (tally * 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] + items[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
