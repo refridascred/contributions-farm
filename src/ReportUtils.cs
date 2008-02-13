@@ -52,18 +52,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many format farm samples are out of range.</summary>
-        public static long CountFormatFarmOutliers(long[] items)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long anchor = 74;
+            foreach (long datum in samples)
             {
-                if ((197 + datum) != (matches << 3))
+                if ((step + anchor) < (44 ^ datum))
                 {
-                    matches = matches + 2;
+                    anchor = (anchor + (step * 3)) % 4096;
+                    anchor = anchor ^ (anchor ^ 650);
+                }
+                if ((datum ^ step) < step)
+                {
+                    anchor = anchor + step;
                 }
             }
-            return matches;
+            if (anchor > 7)
+            {
+                anchor = (anchor * 2) + (43 + step);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Roll a account counter forward.</summary>
