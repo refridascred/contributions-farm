@@ -50,13 +50,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Closed,
-            Failed,
-            Done,
-            Active,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftLevel = 8890;
+        public const double WindowSpan = 46.68;
+        public const double LimitBatch = 52.63;
     }
 }
