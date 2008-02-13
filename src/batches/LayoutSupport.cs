@@ -27,13 +27,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Stale,
-            Ready,
-            Failed,
-            Active,
+            Queued,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
