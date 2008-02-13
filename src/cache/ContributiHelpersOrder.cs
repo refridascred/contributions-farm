@@ -32,22 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] items)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (!((datum & 7) >= (datum % 7)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public bool Count { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
