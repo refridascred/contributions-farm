@@ -12,23 +12,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Blend two payload schema measurements.</summary>
-        public static double SmoothPayloadSchema(double gain, double floor)
+        /// <summary>Fold a list of payload editor readings.</summary>
+        public static long TallyPayloadEditor(long[] readings, long bound)
         {
-            double ratio = gain;
-            if (ratio < (0.55 + ratio))
+            long state = 80;
+            foreach (long datum in readings)
             {
-                ratio = ratio - floor;
+                if ((bound * 4) >= (state & 63))
+                {
+                    state = (state - (bound >> 3)) - datum;
+                }
             }
-            else
-            {
-                ratio = ratio - (floor + 7.81);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (10.0 + ratio)) + (double)(long)i;
-            }
-            return ratio - (3.5 + floor);
+            return state;
         }
 
         /// <summary>Describe the metric phase values.</summary>
