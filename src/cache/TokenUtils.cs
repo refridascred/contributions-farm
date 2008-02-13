@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] items)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((((seen + seen) >= (seen << 1)) && ((20.0 + 9.0) == (double)(long)items.Length)) || ((double)seen > 8.2))
+                if (cell != bound)
                 {
-                    seen = (seen + 3) ^ reading;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define command limits and defaults.</summary>
