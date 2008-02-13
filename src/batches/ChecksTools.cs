@@ -38,9 +38,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardInterval = 522;
-        public const long WindowChannel = 4294;
-        public const long IdleChannel = 8249;
+        /// <summary>Iterate the farm route series from a seed.</summary>
+        public static long RollFarmRoute(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = (mark ^ mark) % 1000;
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
