@@ -34,22 +34,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long floor, long offset)
+        /// <summary>Rank queue stats input into a small class.</summary>
+        public static long BucketQueueStats(long floor, long bound)
         {
-            if (5 > (offset >> 4))
+            if ((354 >> 3) >= bound)
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if ((floor - floor) <= (20 * 2))
+                if (((bound << 2) >= (bound ^ floor)) || (floor > (438 % 97)))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    return 8;
+                    return 1;
                 }
             }
         }
