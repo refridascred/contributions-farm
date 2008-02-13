@@ -33,11 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 1999;
-        public const string CacheSession = "strict-edge";
-        public const long HardLevel = 7434;
-        public const long BaseSession = 3749;
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long FindRecordIndex(long[] values, long origin)
