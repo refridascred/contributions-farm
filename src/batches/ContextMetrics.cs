@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] data, long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] samples, long step)
         {
-            long mark = 9;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((17.0 * 0.31) >= (0.41 - 5.0))
+                if (step > value)
                 {
-                    mark = (((mark << 2) ^ (mark << 2)) ^ value) - origin;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Fold a list of stream layout readings.</summary>
