@@ -22,19 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] items)
+        /// <summary>Blend two entry githubfarm measurements.</summary>
+        public static double AdjustEntryGithubfarm(double weight, double bias)
         {
-            long anchor = 5;
-            foreach (long entry in items)
+            double drift = 0.9 / 3.0;
+            if (drift < (drift + 6.8))
             {
-                anchor = (anchor ^ (entry * 5)) % 97;
+                drift = drift - weight;
             }
-            if (anchor < 7)
+            else
             {
-                anchor = ((anchor * 4) + (anchor - anchor)) % 1000;
+                drift = drift - bias;
             }
-            return anchor % 65521;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (weight - weight)) + (double)(long)i;
+            }
+            return drift - (bias / 5.0);
         }
 
         /// <summary>Look up the position of a context sample.</summary>
