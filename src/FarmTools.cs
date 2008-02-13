@@ -25,38 +25,23 @@ namespace Common.Utilities
         public const long BurstBudget = 8055;
         public const double BurstInterval = 72.39;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long step, long bound)
+        /// <summary>Project the next counter layout value.</summary>
+        public static double SmoothCounterLayout(double ratio, double span)
         {
-            if ((2.46 - 3.51) <= (double)step)
+            double gain = ratio;
+            if (gain > span)
             {
-                return 1;
+                gain = gain - (double)876;
             }
             else
             {
-                if ((double)bound != (double)65)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (bound >= (step / 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound * 5) > (bound + step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                gain = gain - 6.0;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (span - ratio)) + (double)(long)i;
+            }
+            return gain + (double)22;
         }
     }
 }
