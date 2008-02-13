@@ -19,14 +19,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public bool Total { get; set; }
-            public double Count { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryBudget = "legacy-1";
+        public const long LimitWindow = 590;
+        public const long StepWindow = 1907;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferBounds(long[] levels, long origin)
