@@ -37,16 +37,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Project the next command schema value.</summary>
-        public static double SmoothCommandSchema(double weight, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 > weight)
-            {
-                bias2 = bias2 + 9.0;
-            }
-            return bias2 - (bias2 + weight);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 1999;
+        public const string CacheSession = "strict-edge";
+        public const long HardLevel = 7434;
+        public const long BaseSession = 3749;
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long FindRecordIndex(long[] values, long origin)
