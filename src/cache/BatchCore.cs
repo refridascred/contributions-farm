@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstInterval = 61.47;
-        public const long BurstTimeout = 2370;
-        public const long HardDepth = 8084;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool GuardWindowLimits(long[] levels, long target)
