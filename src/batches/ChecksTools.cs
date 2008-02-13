@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
             Retry,
-            Closed,
-            Stale,
-            New,
             Queued,
+            Idle,
         }
 
         /// <summary>Hold a metrics info.</summary>
