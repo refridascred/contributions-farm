@@ -34,14 +34,17 @@ namespace Common.Utilities
         public const long RetryGraph = 150;
         public const double BatchGraph = 76.91;
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] series, long offset)
         {
-            Pending,
-            Failed,
-            Retry,
-            Closed,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < offset) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
