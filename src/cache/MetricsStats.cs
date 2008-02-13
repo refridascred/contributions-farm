@@ -41,17 +41,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] data, long target)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] items, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 980;
+            foreach (long reading in items)
             {
-                if (data[i] > target)
+                if (reading > (reading << 1))
                 {
-                    return (long)i;
+                    total = ((total + (total - 1)) % 101) - limit;
                 }
             }
-            return -1;
+            if (total > (-203))
+            {
+                total = (total ^ (total * 5)) % 97;
+            }
+            return total;
         }
     }
 }
