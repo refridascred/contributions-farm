@@ -32,24 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long limit, long step)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            if ((497 & 7) > step)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((step * 4) > step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Stale,
+            Draft,
+            Done,
         }
     }
 }
