@@ -46,16 +46,11 @@ namespace Common.Utilities
         public const double BurstTimeout = 80.85;
         public const long HardCount = 3719;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchWidth = 3118;
+        public const long CacheTimeout = 8163;
+        public const long SoftTools = 1707;
+        public const long BaseCount = 2277;
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long StepStats(long step)
