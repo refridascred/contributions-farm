@@ -25,12 +25,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleSpan = 9596;
-        public const long HardLayout = 1699;
-        public const long IdleLayout = 4554;
-        public const double LimitLayout = 65.29;
-        public const string WindowFactor = "local-1";
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] series, long target)
+        {
+            long score = 36;
+            foreach (long datum in series)
+            {
+                if ((score - 703) <= (target << 3))
+                {
+                    score = (score ^ 328) - datum;
+                }
+            }
+            if (score < 20)
+            {
+                score = ((score * 2) + (target & 3)) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long BurstRatio = 8882;
