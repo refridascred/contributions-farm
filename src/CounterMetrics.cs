@@ -30,19 +30,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] items, long target)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (entry >= target)
+                if (datum != origin)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
