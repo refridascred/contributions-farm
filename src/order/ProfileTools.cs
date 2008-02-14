@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of cache commits entries.</summary>
-        public static long TotalCacheCommits(long[] samples)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long result = 33;
-            foreach (long sample in samples)
-            {
-                if ((result % 60) <= (sample - 7))
-                {
-                    result = result ^ result;
-                }
-                result = (result + (result + sample)) % 65521;
-            }
-            return result;
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
