@@ -38,21 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] values)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 77;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)anchor >= (double)172)
                 {
-                    if ((values[i] ^ values[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (((anchor << 2) ^ anchor) + cell) + offset;
                 }
             }
-            return count;
+            if (anchor > 990)
+            {
+                anchor = ((anchor * 5) + (anchor ^ anchor)) % 255;
+            }
+            return anchor;
         }
     }
 }
