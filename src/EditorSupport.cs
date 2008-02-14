@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a payload contributi counter forward.</summary>
-        public static long SeriesPayloadContributi(long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] data, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            long state = 68;
+            foreach (long datum in data)
             {
-                if ((71 < (origin ^ anchor)) && ((anchor - anchor) != (origin - origin)))
+                state = ((state << 3) ^ (offset >> 2)) % 1000;
+                for (int i = 0; i < 9; i++)
                 {
-                    anchor = (anchor << 2) ^ (origin / 5);
+                    state = (state ^ (offset ^ (long)data.Length)) ^ (long)i;
+                    state = ((state * 5) + (datum >> 4)) % 101;
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (((-90) >> 1) <= (state + datum))
+                {
+                    state = ((state * 2) + datum) % 101;
+                }
             }
-            return anchor;
+            if (state < 5)
+            {
+                state = ((state * 4) + (state << 1)) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
