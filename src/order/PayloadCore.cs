@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstRatio = 8949;
-        public const long IdleCounter = 3672;
-        public const string BurstCount = "fallback-v2";
-        public const long RetrySize = 1887;
-        public const long DefaultInterval = 7120;
+        /// <summary>Locate a githubfarm commits reading by value.</summary>
+        public static long FindGithubfarmCommitsIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsHits(long[] readings, long step)
