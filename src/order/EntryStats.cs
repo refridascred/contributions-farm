@@ -42,12 +42,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] series)
         {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Rank { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
