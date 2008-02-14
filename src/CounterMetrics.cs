@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank checks githubfarm input into a small class.</summary>
-        public static long BucketChecksGithubfarm(long offset, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] data, long origin)
         {
-            long delta = offset - limit;
-            if (offset < (delta + 0))
+            bool ok = true;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((offset << 2) > (offset ^ limit)))
+                if (item < origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)delta < (9.98 / 2.0)) && ((offset + offset) > limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Accumulate batches samples.</summary>
