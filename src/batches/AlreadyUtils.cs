@@ -23,21 +23,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count profile payload pairs that satisfy a relation.</summary>
-        public static long OverlapProfilePayloadCount(long[] items)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                carry = carry + (value + value);
+                if ((39 + carry) < 593)
                 {
-                    if ((items[i] - items[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (carry < 77)
+            {
+                carry = (carry << 3) ^ (carry >> 2);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Check that every stats githubfarm entry stays within the limit.</summary>
