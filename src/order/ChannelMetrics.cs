@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 6540;
-        public const long BaseSize = 3499;
-        public const string WindowRecord = "open";
-        public const string HardScore = "primary-v2";
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (((hits - hits) <= (hits & 15)) || !((hits * 5) != (hits * 2)))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsGaps(long[] samples, long seed)
