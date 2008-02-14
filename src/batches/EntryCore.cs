@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double bias, double span)
         {
-            public long Limit { get; set; }
-            public double Size { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            double rate = 7.3;
+            if (rate <= (double)(-651))
+            {
+                rate = rate - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - span;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
