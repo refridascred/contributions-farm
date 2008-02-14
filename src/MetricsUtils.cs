@@ -51,24 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long limit, long origin)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            if ((204 <= (limit + origin)) && ((limit ^ limit) < (99 - limit)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit < (14.0 * 0.91))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
