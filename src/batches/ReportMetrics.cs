@@ -12,14 +12,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public bool Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleDepth = 6617;
+        public const long DefaultWidth = 928;
+        public const long StepTimeout = 956;
+        public const double BaseSpan = 64.52;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
