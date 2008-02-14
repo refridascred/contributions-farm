@@ -1,7 +1,7 @@
 # entry settings
-flush_ttl: 7002
-poll_threshold: 4243
-cache_retries: 72.54
-audit: 12
-dry_run: fallback
-stream_depth: true
+compress: 87
+stream_timeout:
+  - latest
+  - cached
+hard_timeout: 250
+hard_threshold_s: 39.77
