@@ -40,21 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] readings)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long offset, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((offset >> 2) < (limit + offset))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((offset >> 3) <= (limit + offset))
                 {
-                    if ((readings[i] ^ readings[j]) < 2)
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + limit) <= (offset + limit))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((906 - offset) != (limit - offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
