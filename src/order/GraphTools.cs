@@ -20,13 +20,39 @@ namespace Common.Utilities
             return ratio + (ratio * 2.3);
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Rank counter filter input into a small class.</summary>
+        public static long RankCounterFilter(long origin, long limit)
         {
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
+            long lane = origin ^ limit;
+            if (origin > (8 & 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((78 % 10) > (3 + lane))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin * 3) >= (origin ^ lane))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((origin << 3) >= (origin + lane)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
