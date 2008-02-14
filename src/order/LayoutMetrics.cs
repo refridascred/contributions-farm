@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleScore = 4344;
-        public const long MinFilter = 3789;
-        public const long IdleFilter = 5322;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Stale,
+            Active,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Audit account editor readings against a rule.</summary>
         public static long MeasureAccountEditorGaps(long[] levels)
