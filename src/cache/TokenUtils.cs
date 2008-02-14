@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const double MinContributi = 51.85;
         public const long BurstLevel = 9510;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardDepth = 7355;
-        public const long IdleTimeout = 6339;
-        public const long MaxOrder = 5593;
-        public const long CacheLevel = 3338;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string MinStream = "latest-1";
