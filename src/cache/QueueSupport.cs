@@ -60,14 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Locked,
-            Paused,
-            Retry,
-            Idle,
-            Dropped,
+            Synced,
+            Pending,
+            Active,
         }
     }
 }
