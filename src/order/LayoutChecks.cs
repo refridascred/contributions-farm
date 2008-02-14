@@ -59,11 +59,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardSpan = 17.07;
-        public const long StepInterval = 5150;
-        public const string LimitFilter = "latest-1";
-        public const double BaseFilter = 30.34;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Failed,
+            Ready,
+            New,
+            Retry,
+        }
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
