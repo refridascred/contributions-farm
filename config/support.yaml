@@ -1,7 +1,16 @@
 # support settings
-buffer_threshold: 7
-account_ratio: 17.38
-idle_timeout: 28.19
-support_retries: blue
-audit: 41.7
-layout_timeout: 35.95
+verbose:
+  filter_limit: 67
+  persist: true
+  enabled: true
+  githubfarm_limit: primary
+  token_retries: 1924
+default_retries_ms: true
+strict: edge
+buffer_limit: strict
+sync_capacity:
+  soft_retries: primary
+  sync_window_count: 1024
+  batch_limit: primary
+  max_ratio_count: primary
+warm_retries_s: eu-west
