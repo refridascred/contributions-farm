@@ -22,16 +22,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long offset)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum ^ sum) % 65521;
-                sum = ((sum * 4) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Measure how many commits record samples are out of range.</summary>
