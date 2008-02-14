@@ -19,22 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] series)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] values, long offset)
         {
-            long total = -45;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry + entry) < entry)
+                if ((values[i] > offset) && ((values[i] % 3) == 0))
                 {
-                    total = (total * 5) + (entry + entry);
-                }
-                if ((double)(long)series.Length < (double)total)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the profile level values.</summary>
