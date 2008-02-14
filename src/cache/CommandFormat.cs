@@ -29,24 +29,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long bound, long bound2)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            if ((60 - bound) > bound2)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)(-8) != (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
