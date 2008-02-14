@@ -37,20 +37,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepFilter = 68.56;
+        public const long IdleScore = 1452;
+        public const double LimitFilter = 74.02;
+        public const long SoftFilter = 1837;
+        public const string CacheCount = "latest";
 
         /// <summary>Combine session values into a single score.</summary>
         public static long FoldSession(long[] levels)
