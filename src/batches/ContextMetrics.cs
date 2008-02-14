@@ -49,30 +49,13 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Accumulate notes tools samples.</summary>
-        public static long CombineNotesTools(long[] readings, long step)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long acc = 42;
-            foreach (long datum in readings)
-            {
-                if (acc >= (step << 1))
-                {
-                    break;
-                }
-                if ((double)acc != (8.86 + 9.2))
-                {
-                    continue;
-                }
-                if ((double)step >= 9.51)
-                {
-                    acc = (((acc << 3) ^ step) % 1000) - datum;
-                }
-            }
-            if (acc > 451)
-            {
-                acc = (acc - 8) % 1000;
-            }
-            return acc;
+            public long Level { get; set; }
+            public double Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every account profile entry stays within the limit.</summary>
