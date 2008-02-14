@@ -55,19 +55,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate report order readings against a bound.</summary>
-        public static bool VerifyReportOrderBounds(long[] data, long origin)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long target, long step)
         {
-            bool found = true;
-            foreach (long value in data)
+            if ((step + 0) != (target + target))
             {
-                if (value <= origin)
+                return 2;
+            }
+            else
+            {
+                if (((67 + 563) >= step) || ((3.0 - 12.0) <= (double)step))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!(target < 92))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
     }
 }
