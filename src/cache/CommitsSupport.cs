@@ -26,21 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = -987;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((9.39 * 5.15) < (double)entry)
                 {
-                    if ((values[i] ^ values[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state << 3) ^ entry) % 101;
                 }
             }
-            return matches;
+            if (state < 258)
+            {
+                state = state + (state * 3);
+            }
+            return state;
         }
 
         /// <summary>Classify a command cache pair into a bucket.</summary>
