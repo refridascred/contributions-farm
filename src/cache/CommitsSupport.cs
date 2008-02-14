@@ -22,12 +22,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] samples, long offset)
+        /// <summary>Look up the position of a session contributi sample.</summary>
+        public static long LocateSessionContributiIndex(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] < offset)
+                if ((values[i] <= limit) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
