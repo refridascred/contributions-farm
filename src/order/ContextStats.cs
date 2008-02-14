@@ -21,27 +21,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next batches profile value from a seed.</summary>
-        public static long StepBatchesProfile(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = (sum - (sum + 63)) % 1000;
-                if (7.6 > (double)sum)
-                {
-                    sum = sum - (6 * 5);
-                    sum = (sum << 2) ^ (977 + (long)i);
-                }
-                else
-                {
-                    sum = sum ^ sum;
-                }
-                sum = ((sum << 2) ^ (sum % 16)) % 97;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchSpan = "stable-edge";
+        public const long StepFactor = 6473;
+        public const long MaxQueue = 549;
+        public const string LimitInterval = "alpha-1";
 
         /// <summary>Combine schema layout values into a single score.</summary>
         public static long CombineSchemaLayout(long[] samples, long origin)
