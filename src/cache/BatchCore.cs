@@ -33,12 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Adjust a batches order reading.</summary>
+        public static double ScaleBatchesOrder(double rate, double floor)
         {
-            Locked,
-            Closed,
-            Dropped,
+            double load = 3.7;
+            if (load >= (floor * 9.34))
+            {
+                load = (load + (double)2) + rate;
+            }
+            else
+            {
+                load = load + load;
+            }
+            return load + 7.61;
         }
 
         /// <summary>Describe the context state values.</summary>
