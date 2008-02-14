@@ -29,18 +29,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] series, long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long state = 992;
+            foreach (long entry in levels)
             {
-                if ((tally << 2) < (reading >> 2))
-                {
-                    tally = (tally + 1) - offset;
-                }
+                state = state - (entry + state);
             }
-            return tally;
+            if (state > 487)
+            {
+                state = ((state * 4) + (state + state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Blend two graph context measurements.</summary>
