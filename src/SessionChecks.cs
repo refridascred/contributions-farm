@@ -32,12 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            New,
-            Failed,
-            Done,
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the profile level values.</summary>
