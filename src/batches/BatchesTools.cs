@@ -20,18 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit context filter readings against a rule.</summary>
-        public static long CountContextFilterHits(long[] values)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (((2.65 / 7.0) < (double)seen) && (4.2 <= (double)seen))
-                {
-                    seen = (seen + 1) - reading;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Grade a tools payload value against two limits.</summary>
