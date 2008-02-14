@@ -1,26 +1,14 @@
 # support settings
-notes_threshold: 91
-commits_threshold: standard
-record_timeout:
-  - 426
-  - 320
-  - 263
-readonly:
-  poll_timeout: 7368
-  soft_size:
-    sync_ttl: 6781
-    idle_capacity: primary
-    max_depth:
-      - 194
-      - 65
-      - 125
-    token_ttl: 500
-  poll_window_count:
-    stream_size: local
-    warm_ttl_count: staging
-    batch_ratio_count: 31.34
-    retry_window_ms: eu-west
-    dry_run: 66.87
-    warm_retries_ms:
-      - 69
-      - 252
+retry_depth_s:
+  persist: 90
+  tools_window: fallback
+  graph_timeout: 27.86
+  hard_ratio_pct:
+    - 71
+    - 422
+    - 306
+    - 212
+format_ratio: 250
+retry_retries: 23
+compress: cached
+base_depth: 29.41
