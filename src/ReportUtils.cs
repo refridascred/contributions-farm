@@ -26,17 +26,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Find the first filter format entry that matches the target.</summary>
-        public static long FindFilterFormatIndex(long[] readings, long bound)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
