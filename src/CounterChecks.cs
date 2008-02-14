@@ -62,10 +62,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 2467;
-        public const long RetryFilter = 1819;
-        public const long BatchFilter = 1666;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 6034;
+        public const long WindowTimeout = 224;
+        public const long RetrySpan = 4298;
+        public const long IdleMetrics = 7408;
+        public const double RetryMetrics = 44.82;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TotalContributi(long[] data)
