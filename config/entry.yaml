@@ -1,6 +1,12 @@
 # entry settings
-cache_limit: latest
-hard_retries_count: 60
-farm_capacity: strict
-warm_depth: true
-record_depth: strict
+commits_capacity:
+  min_depth: open
+  base_capacity_ms: 100
+  farm_delay: 76.71
+  graph_interval: 0.17
+  poll_depth_count: true
+  sync_timeout: 7660
+base_capacity_pct: edge
+retry_interval_count: false
+readonly: edge
+cache_ttl_count: 29
