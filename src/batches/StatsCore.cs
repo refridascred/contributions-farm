@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Classify a buffer session pair into a bucket.</summary>
+        public static long SortBufferSession(long step, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
+            long cur = step ^ offset;
+            if (cur < step)
             {
-                score = ((score * 4) + (long)i) % 101;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((offset ^ 5) == (offset / 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset > (step - cur)) && (cur > (offset + cur)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
