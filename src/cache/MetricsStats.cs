@@ -18,12 +18,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetrySpan = 4530;
-        public const double BurstQueue = 27.95;
-        public const double DefaultQueue = 98.92;
-        public const string LimitSize = "alpha-v2";
-        public const string HardBudget = "stable-1";
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountGaps(long[] data, long origin)
