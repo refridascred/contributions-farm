@@ -86,17 +86,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the entry editor series from a seed.</summary>
-        public static long DeriveEntryEditor(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 4) + (result * 4)) % 65521;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 916;
+        public const double DefaultToken = 10.72;
+        public const long CacheToken = 7320;
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
