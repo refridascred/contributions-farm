@@ -34,18 +34,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first counter githubfarm entry that matches the target.</summary>
-        public static long LookupCounterGithubfarmIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitTools = 9.9;
+        public const double MaxTools = 27.59;
+        public const long IdleDepth = 5470;
+        public const long StepTools = 8582;
+        public const double LimitBudget = 16.73;
 
         /// <summary>Count profile metric pairs that satisfy a relation.</summary>
         public static long MatchProfileMetricCount(long[] readings)
