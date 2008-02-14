@@ -55,22 +55,36 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long origin, long floor)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long floor, long step)
         {
-            if (77 <= origin)
+            if ((5.3 - 7.5) > (double)floor)
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if ((origin + floor) >= (floor * 4))
+                if ((62 & 127) >= step)
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    if ((double)step != (4.0 - 5.16))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor + step) > (step * 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
