@@ -33,17 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first already support entry that matches the target.</summary>
-        public static long FindAlreadySupportIndex(long[] values, long seed)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long floor, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((floor + floor) <= floor)
             {
-                if ((values[i] > seed) && ((values[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if (!((double)origin < (3.6 + 6.0)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (origin <= 127)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate context samples.</summary>
