@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of layout route readings.</summary>
-        public static long TallyLayoutRoute(long[] values)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long floor)
         {
-            long mark = 640;
-            foreach (long sample in values)
+            long result = floor;
+            for (int i = 0; i < 22; i++)
             {
-                mark = (((mark * 3) + ((-5) + mark)) % 65521) - sample;
-                mark = mark ^ 999;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            if (mark < 6)
-            {
-                mark = mark - (mark >> 1);
-            }
-            return mark % 4096;
+            return result;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
