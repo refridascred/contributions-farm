@@ -16,17 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] levels, long limit)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 5;
+            foreach (long reading in readings)
             {
-                if (levels[i] == limit)
+                if (((result + reading) >= (reading + (-4))) || ((result & 127) == (result + result)))
                 {
-                    return (long)i;
+                    result = (result << 2) ^ (reading - reading);
                 }
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
