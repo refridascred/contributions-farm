@@ -1,7 +1,5 @@
 {
-  "verbose": "blue",
-  "flush_retries_ms": "blue",
-  "account_limit": 30,
-  "retry_window_pct": false,
-  "channel_depth": "staging"
+  "retry_limit_pct": "blue",
+  "warm_size_pct": "edge",
+  "sync_timeout_count": false
 }
