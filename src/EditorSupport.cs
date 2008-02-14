@@ -77,11 +77,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Measure how many stream token samples are out of range.</summary>
+        public static long MeasureStreamTokenGaps(long[] samples)
         {
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (!(reading <= (441 + hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
