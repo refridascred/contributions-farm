@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] data)
+        /// <summary>Derive the next filter command value from a seed.</summary>
+        public static long StepFilterCommand(long seed)
         {
-            long total = 59;
-            foreach (long reading in data)
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                total = ((total * 2) + (reading + total)) % 97;
+                anchor = (anchor ^ (seed + (long)i)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            if (total > 77)
-            {
-                total = (total * 5) + (long)data.Length;
-            }
-            return total % 97;
+            return anchor;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
