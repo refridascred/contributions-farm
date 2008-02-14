@@ -20,22 +20,19 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] items, long bound)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double bias3 = (double)(0 - (-509));
+            if (bias3 < bias2)
             {
-                if (((tally - (-8)) >= tally) && (((tally & 15) > (sample * 2)) && ((2.1 / 4.0) <= (double)tally)))
-                {
-                    tally = (tally + 1) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias3 = (bias3 - (bias2 - bias3)) - bias;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                bias3 = (bias3 - (bias2 + bias2)) + (double)(long)i;
+            }
+            return bias3 + bias2;
         }
 
         /// <summary>Describe the notes mode values.</summary>
