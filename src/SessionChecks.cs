@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next queue account value from a seed.</summary>
-        public static long IterateQueueAccount(long seed)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((long)i * 3) >= ((long)i - score))
-                {
-                    score = ((score * 4) + ((long)i + 3)) % 4096;
-                }
-                score = score ^ (seed << 3);
-                score = ((score << 2) ^ (seed ^ (long)i)) % 65521;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Paused,
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Describe the profile status values.</summary>
