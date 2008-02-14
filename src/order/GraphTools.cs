@@ -70,15 +70,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two graph context measurements.</summary>
-        public static double SmoothGraphContext(double rate, double bias)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] items)
         {
-            double gain = rate;
-            if (gain >= gain)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain - (gain / 6.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return gain - (bias / 4.0);
+            return matches;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
