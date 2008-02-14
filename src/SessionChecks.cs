@@ -47,12 +47,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Measure how many order graph samples are out of range.</summary>
+        public static long TallyOrderGraphOutliers(long[] items)
         {
-            New,
-            Synced,
-            Closed,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (((value + 17) < value) || ((long)items.Length != (count ^ 0)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
