@@ -18,13 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] values)
         {
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Size { get; set; }
-            public double Weight { get; set; }
+            long sum = -262;
+            foreach (long sample in values)
+            {
+                if ((5.9 * 3.7) <= (double)sample)
+                {
+                    sum = ((sum << 3) ^ sum) % 101;
+                }
+                else
+                {
+                    sum = (sum ^ (sample + 8)) % 97;
+                }
+            }
+            if (sum > 0)
+            {
+                sum = (sum - (sum - 558)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
