@@ -1,8 +1,13 @@
 {
-  "compress": false,
-  "payload_retries": 60,
-  "filter_timeout": "primary",
-  "batch_retries_count": true,
-  "token_interval": 1203,
-  "default_limit": 84
+  "hard_ttl": "green",
+  "cache_threshold_s": false,
+  "compress": "stable",
+  "retry_window_pct": {
+    "hard_ttl": 27.73,
+    "batch_ratio": 23.11,
+    "warm_timeout": "open",
+    "enabled": true
+  },
+  "base_retries": 74.38,
+  "readonly": 24.97
 }
