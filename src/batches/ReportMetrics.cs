@@ -39,12 +39,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] samples)
         {
-            Closed,
-            Idle,
-            Dropped,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((10.0 * 8.0) >= (double)value)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
