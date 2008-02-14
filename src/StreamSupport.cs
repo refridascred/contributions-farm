@@ -28,13 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] data, long bound)
         {
-            public double Label { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (cell <= (bound ^ bound))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
