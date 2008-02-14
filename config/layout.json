@@ -1,5 +1,19 @@
 {
-  "persist": 500,
-  "min_threshold_s": 61,
-  "tools_window": 8814
+  "verbose": {
+    "verbose": [58, 325, 490],
+    "default_limit_pct": 30,
+    "max_ttl": false,
+    "base_timeout_ms": {
+      "warm_ttl_ms": 4,
+      "cache_threshold_ms": "legacy",
+      "retry_threshold": [230, 486, 84],
+      "metric_window": false,
+      "compress": "blue"
+    }
+  },
+  "compress": false,
+  "poll_retries_s": 7962,
+  "context_capacity": 8397,
+  "hard_size_ms": 10.6,
+  "poll_ttl_ms": 69.06
 }
