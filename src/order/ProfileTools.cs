@@ -27,19 +27,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit support stats readings against a rule.</summary>
-        public static long MeasureSupportStatsHits(long[] items, long seed)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((tally % 100) == (0 & 63))
-                {
-                    tally = ((tally + 3) ^ sample) - seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 5895;
+        public const long DefaultSpan = 3690;
+        public const string HardWidth = "primary-1";
 
         /// <summary>Derive the next contributi graph value from a seed.</summary>
         public static long SeriesContributiGraph(long target)
