@@ -47,21 +47,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] data)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (anchor + (origin << 2)) % 65521;
+                anchor = ((anchor * 3) + 47) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
     }
 }
