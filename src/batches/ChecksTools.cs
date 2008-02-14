@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double ratio, double bias)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] values, long origin)
         {
-            double gain = (double)(844 - 163);
-            return ((gain - 7.8) + ratio) + bias;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == origin) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up batch token samples.</summary>
