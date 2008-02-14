@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] series, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((series[i] <= limit) && ((series[i] % 3) != 0))
+                if (entry <= (seen ^ 9))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
