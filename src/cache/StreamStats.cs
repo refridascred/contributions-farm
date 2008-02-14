@@ -30,12 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long target)
         {
-            Done,
-            Pending,
-            Idle,
+            long mix = target;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
