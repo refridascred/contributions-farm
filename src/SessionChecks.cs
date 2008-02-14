@@ -28,23 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a checks schema counter forward.</summary>
-        public static long RollChecksSchema(long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long limit)
         {
-            long state = target;
+            long state = limit;
             for (int i = 0; i < 10; i++)
             {
-                if (((double)state != (double)target) && (state >= (state - target)))
+                if ((state * 4) < limit)
                 {
-                    state = ((state * 2) + target) % 1000;
-                    state = (state ^ (state + target)) % 1000;
+                    continue;
                 }
-                else
-                {
-                    state = (state + (988 - 99)) % 101;
-                }
-                state = (state * 5) + (target - (long)i);
-                state = ((state * 3) + (long)i) % 65521;
+                state = ((state * 2) + (long)i) % 1000;
             }
             return state;
         }
