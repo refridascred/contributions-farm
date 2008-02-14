@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache window series from a seed.</summary>
-        public static long SeriesCacheWindow(long offset)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] samples)
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Measure how many profile token samples are out of range.</summary>
