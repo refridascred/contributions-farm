@@ -26,15 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] series, long step)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] values)
         {
             long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (step < matches)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) + sample;
+                    if ((values[i] ^ values[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
