@@ -1,24 +1,6 @@
 # entry settings
-verbose: 70
-enabled:
-  persist:
-    min_ttl_pct: true
-    payload_retries: 500
-    idle_window: primary
-  account_limit: true
-  counter_size:
-    report_depth: true
-    persist: false
-    max_size_count: cached
-    context_interval: 17
-    stream_ttl: 1024
-    strict: blue
-  warm_delay: eu-west
-  base_delay_ms: true
-  batch_delay_count:
-    - 492
-    - 408
-    - 399
-idle_capacity: 100
-base_limit_pct: 5.41
-poll_retries_ms: local
+retry_interval: 29
+profile_threshold: 39
+batch_size: 48.36
+base_timeout_count: standard
+max_retries: blue
