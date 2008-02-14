@@ -60,39 +60,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long seed, long seed2)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] levels)
         {
-            long cur = seed + seed2;
-            if (seed2 < (seed2 >> 2))
+            long result = 272;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed2 ^ cur) > cur)
+                result = ((result << 3) ^ (result * 4)) % 97;
+                result = ((result << 2) ^ datum) % 4096;
+                if (((result / 9) > (result - result)) && ((datum - result) == ((long)levels.Length + result)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((142 << 3) == (seed2 - seed2)) && ((seed2 - seed) != (cur - cur)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (cur <= (775 - seed2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
