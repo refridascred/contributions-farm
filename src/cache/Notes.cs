@@ -19,13 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many route stream samples are out of range.</summary>
