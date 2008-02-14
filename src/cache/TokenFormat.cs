@@ -20,32 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long target, long limit)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long offset = target + limit;
-            if ((target / 5) <= 886)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((6 >> 3) != (target & 63))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset + 9) < target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Active,
+            Failed,
+            New,
         }
 
         /// <summary>Validate schema window readings against a bound.</summary>
