@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] series)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((sample & 3) != (sample % 10))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Retry,
+            Queued,
+            Idle,
         }
 
         /// <summary>Derive the next cache account value from a seed.</summary>
