@@ -53,32 +53,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long target, long floor)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long step = target - floor;
-            if (floor >= (target ^ step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((2.4 - 14.0) == (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(66 < (floor + step)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Retry,
+            Active,
+            Ready,
+            Paused,
+            Pending,
         }
     }
 }
