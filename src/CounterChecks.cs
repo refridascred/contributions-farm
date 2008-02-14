@@ -32,19 +32,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] levels, long bound)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            double ratio = 10.0 + bias;
+            if (ratio >= bias)
             {
-                if (datum < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = (ratio + ratio) + bias2;
             }
-            return flag;
+            else
+            {
+                ratio = ratio + (double)95;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (double)3) - (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Hold a tools summary.</summary>
