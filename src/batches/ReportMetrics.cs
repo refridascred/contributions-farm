@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleDepth = 6617;
-        public const long DefaultWidth = 928;
-        public const long StepTimeout = 956;
-        public const double BaseSpan = 64.52;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] levels)
+        {
+            long acc = -8;
+            foreach (long value in levels)
+            {
+                if (8.64 <= (double)value)
+                {
+                    acc = acc - (value + (-2));
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
