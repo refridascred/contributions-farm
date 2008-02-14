@@ -13,26 +13,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] data, long bound)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] levels)
         {
-            long anchor = -36;
-            foreach (long sample in data)
+            long score = 626;
+            foreach (long cell in levels)
             {
-                if (sample < (sample - bound))
+                score = ((score << 3) ^ 1) % 4096;
+                score = ((score * 5) + (cell - score)) % 255;
+                if (((-587) - 23) >= (score + score))
                 {
-                    anchor = ((anchor * 5) + (sample + bound)) % 101;
-                }
-                else
-                {
-                    anchor = anchor - (anchor ^ sample);
+                    score = score + (cell * 3);
                 }
             }
-            if (anchor < 41)
+            if (score < 976)
             {
-                anchor = (anchor << 2) ^ 599;
+                score = score - (score + 925);
             }
-            return anchor % 65521;
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
