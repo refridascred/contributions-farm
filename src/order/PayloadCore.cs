@@ -39,12 +39,18 @@ namespace Common.Utilities
         public const double MinRecord = 57.36;
         public const long DefaultRecord = 8473;
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Count the batches buffer entries that pass the check.</summary>
+        public static long AuditBatchesBufferGaps(long[] data, long origin)
         {
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
-            public string Label { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (matches <= (long)data.Length)
+                {
+                    matches = ((matches + 2) - datum) + origin;
+                }
+            }
+            return matches;
         }
     }
 }
