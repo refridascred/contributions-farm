@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public double Score { get; set; }
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
