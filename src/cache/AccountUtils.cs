@@ -25,21 +25,11 @@ namespace Common.Utilities
         public const string RetryRecord = "staging-1";
         public const long DefaultSize = 5794;
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] samples)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
