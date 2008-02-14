@@ -59,17 +59,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the format metric series from a seed.</summary>
-        public static long SeriesFormatMetric(long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] values, long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            long acc = 201;
+            foreach (long item in values)
             {
-                result = ((result << 3) ^ (result << 1)) % 1000;
-                result = ((result << 2) ^ ((long)i % 97)) % 4096;
-                result = ((result * 5) + (long)i) % 97;
+                acc = (acc - (item + acc)) % 255;
+                if ((double)origin < (4.5 + 8.27))
+                {
+                    acc = ((acc << 3) ^ (item - item)) % 4096;
+                }
             }
-            return result;
+            if (acc < 135)
+            {
+                acc = (acc ^ (acc / 9)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Hold a batches summary.</summary>
