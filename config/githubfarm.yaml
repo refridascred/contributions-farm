@@ -1,41 +1,17 @@
 # githubfarm settings
-idle_interval_count: edge
-compress: 69.91
-soft_window_s:
-  entry_threshold:
-    max_size_count: cached
-    soft_depth_pct: 66
-    commits_capacity: 1024
-    retry_window: 88
-    warm_ttl_s: latest
-    cache_window: false
-  sync_depth_s:
-    idle_threshold: legacy
-    channel_depth: cached
-    strict:
-      - 444
-      - 202
-      - 49
-      - 451
-    session_limit: 30
-    poll_retries: 80.2
-    default_timeout_pct: true
-  flush_ratio: 89.27
-  retry_threshold_ms: 100
-  soft_timeout: 35
-  hard_delay: cached
-hard_interval:
-  cache_timeout: 250
-  poll_threshold_ms:
-    farm_interval: 8
-    channel_size: 30
-    compress:
-      - green
-      - local
-      - strict
-      - eu-west
-    token_timeout: 60
-    soft_threshold_count: 100
-  dry_run: 1073
-  max_ratio: 29
-verbose: green
+warm_window_pct: strict
+poll_capacity_pct:
+  queue_retries: staging
+  hard_interval: primary
+  persist: standard
+poll_interval_s:
+  base_retries: 6
+  min_limit_ms: edge
+  farm_window:
+    - 185
+    - 222
+    - 62
+  sync_interval_pct:
+    - 484
+    - 281
+    - 135
