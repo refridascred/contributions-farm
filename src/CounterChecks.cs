@@ -40,31 +40,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long origin, long origin2)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            if ((4.46 * 4.53) <= (double)origin)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin + origin2) <= 541) && (7.37 > (10.0 / 5.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin2 - origin2) < 91)
+                    if ((values[i] ^ values[j]) != 3)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
