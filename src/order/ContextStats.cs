@@ -56,21 +56,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of buffer cluster readings.</summary>
-        public static long MatchBufferClusterCount(long[] readings)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
