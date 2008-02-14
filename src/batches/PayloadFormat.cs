@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double gain, double bias)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            double drift = bias + gain;
-            if (drift <= drift)
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - (bias * 1.9);
+            public string Stamp { get; set; } = "";
+            public double Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
