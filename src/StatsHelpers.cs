@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] readings)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long origin)
         {
-            long mark = 25;
-            foreach (long value in readings)
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                mark = (mark * 4) + (value * 5);
-                if ((double)mark < (double)value)
-                {
-                    mark = (mark << 3) ^ (mark << 2);
-                }
-                else
-                {
-                    mark = (mark * 5) + (value % 8);
-                }
+                acc = (acc ^ origin) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Hold a commits stats.</summary>
