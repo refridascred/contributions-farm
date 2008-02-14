@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] values)
+        /// <summary>Compare every pair of command metric readings.</summary>
+        public static long PairCommandMetricCount(long[] values)
         {
             long matches = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry - matches) != ((long)values.Length + 60))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
