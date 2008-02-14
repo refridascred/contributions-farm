@@ -13,15 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a editor checks figure with a bias.</summary>
-        public static double ScaleEditorChecks(double scale, double floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] levels, long offset)
         {
-            double drift = 4.0;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                drift = ((drift + drift) - (double)(long)i) - scale;
+                if (sample != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift + (drift - floor);
+            return stale;
         }
 
         /// <summary>Adjust a channel reading.</summary>
