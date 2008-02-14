@@ -13,22 +13,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] values, long limit)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            double mean = scale;
+            if (mean >= (mean / 9.0))
             {
-                if ((limit - sample) > (tally % 16))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = (mean - scale) - floor;
             }
-            return tally;
+            else
+            {
+                mean = mean + (scale / 6.0);
+            }
+            return mean + (double)54;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
