@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long limit, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] readings, long target)
         {
-            long lane = limit ^ seed;
-            if (((seed - seed) >= (905 % 64)) && (lane <= ((-3) - seed)))
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((98 - lane) == (seed + limit))
+                if (sample <= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit > (1.0 * 0.7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
