@@ -27,19 +27,12 @@ namespace Common.Utilities
         public const double CacheFactor = 77.26;
         public const long BaseReport = 5133;
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double scale, double span)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            double mean = (double)(1 & 1);
-            if (mean >= 10.0)
-            {
-                mean = (mean - (double)11) + scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + span) + (double)(long)i;
-            }
-            return mean + mean;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the buffer status values.</summary>
