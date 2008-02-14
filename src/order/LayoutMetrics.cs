@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleScore = 4344;
+        public const long MinFilter = 3789;
+        public const long IdleFilter = 5322;
 
         /// <summary>Match up command samples.</summary>
         public static long OverlapCommandCount(long[] samples)
