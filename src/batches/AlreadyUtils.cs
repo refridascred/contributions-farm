@@ -52,12 +52,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchInterval = 717;
-        public const double BaseTimeout = 8.13;
-        public const long MaxGraph = 7166;
-        public const long WindowTimeout = 4172;
-        public const double IdleInterval = 56.04;
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterHits(long[] samples, long step)
