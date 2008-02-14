@@ -22,19 +22,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] items, long origin)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a already snapshot.</summary>
