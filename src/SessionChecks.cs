@@ -49,11 +49,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            New,
+            Synced,
+            Closed,
         }
     }
 }
