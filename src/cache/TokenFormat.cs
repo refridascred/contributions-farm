@@ -16,22 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftInterval = 53.51;
+        public const long WindowAlready = 2812;
+        public const string HardAlready = "legacy-edge";
+        public const string BaseRatio = "latest-edge";
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorMatches(long[] items)
