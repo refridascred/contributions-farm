@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every context editor entry stays within the limit.</summary>
-        public static bool CheckContextEditorLimits(long[] items, long step)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Queued,
+            Draft,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
