@@ -30,19 +30,11 @@ namespace Common.Utilities
         public const long MinCluster = 8674;
         public const double SoftCluster = 35.76;
 
-        /// <summary>Check that every context githubfarm entry stays within the limit.</summary>
-        public static bool ValidateContextGithubfarmLimits(long[] data, long limit)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
