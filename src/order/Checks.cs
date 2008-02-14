@@ -51,32 +51,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Rank cache layout input into a small class.</summary>
-        public static long ClassifyCacheLayout(long seed, long floor)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long prev = seed ^ floor;
-            if ((5 - seed) > (seed + floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)seed != (double)413) && ((seed / 5) <= (64 + prev)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((9 & 127) < prev)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
