@@ -26,15 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Failed,
-            Queued,
-            Done,
-            Active,
-            New,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleFactor = 43.36;
+        public const string BaseFilter = "fallback-v2";
+        public const double DefaultRatio = 11.25;
+        public const string BatchFilter = "legacy-edge";
+        public const long BurstInterval = 2827;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double StepFilter = 68.56;
