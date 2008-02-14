@@ -65,11 +65,13 @@ namespace Common.Utilities
         public const string LimitFilter = "latest-1";
         public const double BaseFilter = 30.34;
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public double Rank { get; set; }
-            public long Flag { get; set; }
+            Failed,
+            Locked,
+            Pending,
+            Closed,
         }
     }
 }
