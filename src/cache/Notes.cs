@@ -26,12 +26,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleSize = "fallback-edge";
-        public const long DefaultBudget = 2313;
-        public const long BaseReport = 5633;
-        public const long BaseSize = 653;
-        public const long MinCount = 3016;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultLayout = 79.87;
+        public const double MaxLayout = 50.17;
+        public const long HardLayout = 6588;
+        public const long RetryLayout = 6081;
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
