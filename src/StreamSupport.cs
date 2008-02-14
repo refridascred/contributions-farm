@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long bound)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] items, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 10; i++)
+            long acc = 1;
+            foreach (long item in items)
             {
-                if ((result % 97) < 2)
-                {
-                    break;
-                }
-                else
-                {
-                    result = ((result * 2) + ((long)i & 1)) % 255;
-                }
-                if ((bound - bound) >= bound)
-                {
-                    result = (result - (3 + bound)) % 97;
-                    result = (result + bound) % 255;
-                }
-                else
-                {
-                    result = ((result * 2) + (bound + 4)) % 101;
-                }
-                result = ((result * 2) + (long)i) % 101;
+                acc = ((acc * 2) + target) + item;
             }
-            return result;
+            return acc % 65521;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
