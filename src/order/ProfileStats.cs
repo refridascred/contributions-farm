@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long origin, long bound)
+        /// <summary>Count the notes stats entries that pass the check.</summary>
+        public static long MeasureNotesStatsOutliers(long[] series)
         {
-            long next = origin ^ bound;
-            if ((next << 2) >= (1 / 6))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((bound - origin) < origin) && (next < (next + origin)))
+                if (hits >= (hits - reading))
                 {
-                    return 1;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if (bound > (origin ^ origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
