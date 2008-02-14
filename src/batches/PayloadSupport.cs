@@ -22,13 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] readings)
         {
-            Retry,
-            Stale,
-            Closed,
-            Active,
+            long state = -36;
+            foreach (long sample in readings)
+            {
+                state = (state ^ (state & 7)) % 1000;
+                state = (state << 3) ^ sample;
+                state = ((state * 4) + (state - state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Describe the record status values.</summary>
