@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((long)values.Length << 3) < origin)
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultSize = "latest-edge";
+        public const string MaxCommand = "strict-edge";
+        public const string LimitCommand = "open-edge";
+        public const long WindowCommand = 1982;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowOutliers(long[] samples, long floor)
