@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit profile filter readings against a rule.</summary>
