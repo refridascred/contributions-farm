@@ -23,15 +23,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] levels, long seed)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] values)
         {
             long matches = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)sample > 7.6) && ((double)seed > (12.0 * 9.9)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((values[i] ^ values[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
