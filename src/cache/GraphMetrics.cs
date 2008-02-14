@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] items)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((datum - tally) < tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Locked,
+            Stale,
+            Dropped,
+            Active,
+            Failed,
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
