@@ -45,11 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardQueue = 96.53;
-        public const double StepRatio = 53.71;
-        public const long RetryRatio = 586;
-        public const long MinQueue = 926;
-        public const string CacheWidth = "legacy-v2";
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((15.0 + 17.0) > (double)floor)
+                {
+                    tally = (tally + 3) + sample;
+                }
+            }
+            return tally;
+        }
     }
 }
