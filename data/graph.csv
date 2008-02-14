@@ -1,11 +1,6 @@
-id,active,count,owner
-1,346,stable,446
-2,966,staging,49.29
-3,261,864,blue
-4,321,342,edge
-5,703,96.66,71.33
-6,primary,234,831
-7,585,open,green
-8,169,blue,603
-9,7.08,green,69.24
-10,local,staging,216
+id,label,state,level
+1,22.72,364,89.66
+2,640,staging,745
+3,latest,749,546
+4,589,17.46,standard
+5,345,edge,45.13
