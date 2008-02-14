@@ -29,18 +29,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] items, long offset)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (82 < (offset + 1))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public bool Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
