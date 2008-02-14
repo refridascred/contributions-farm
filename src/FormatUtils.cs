@@ -18,17 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm metrics samples.</summary>
-        public static long TotalGithubfarmMetrics(long[] samples, long step)
-        {
-            long sum = 4;
-            foreach (long datum in samples)
-            {
-                sum = (((sum ^ (sum - sum)) % 97) + datum) - step;
-                sum = (sum << 3) ^ (8 / 7);
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftBudget = 7105;
+        public const double BatchLevel = 13.58;
+        public const long WindowCount = 2036;
 
         /// <summary>Blend two route measurements.</summary>
         public static double AdjustRoute(double rate, double span)
