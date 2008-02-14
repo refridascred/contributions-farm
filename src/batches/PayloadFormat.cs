@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public string Stamp { get; set; } = "";
-            public double Total { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryScore = 81.73;
+        public const double HardBudget = 77.43;
+        public const long LimitPayload = 6988;
+        public const double CachePayload = 0.75;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long TallyLayout(long[] series, long floor)
