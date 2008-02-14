@@ -1,13 +1,13 @@
 # entry settings
-soft_retries_ms:
-  - 87
-  - 240
-  - 169
-  - 119
-burst_ratio_count: 6654
-batch_window:
-  - blue
-  - latest
-  - blue
+persist: 1310
+hard_limit_count:
   - primary
-cluster_retries: 97.79
+  - blue
+  - legacy
+  - blue
+tools_size: 94
+sync_size:
+  base_timeout_count: legacy
+  retry_ratio: edge
+  dry_run: legacy
+  min_interval: 93
