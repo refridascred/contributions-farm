@@ -12,22 +12,23 @@ namespace Common.Utilities
             return (load - offset) + ratio;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] values)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long mark = -65;
+            foreach (long entry in values)
             {
-                if ((hits * 5) <= hits)
+                if (mark < (mark ^ mark))
                 {
-                    hits = (hits + 1) + datum;
+                    mark = (mark << 3) ^ (mark - entry);
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = mark - (entry + mark);
             }
-            return hits;
+            if (mark > 448)
+            {
+                mark = (mark + (mark >> 5)) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
