@@ -26,17 +26,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a metric counter sample.</summary>
-        public static long LocateMetricCounterIndex(long[] series, long step)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphRange(long[] series, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if ((series[i] == step) && ((series[i] % 3) == 0))
+                if (reading >= bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Roll a order counter forward.</summary>
