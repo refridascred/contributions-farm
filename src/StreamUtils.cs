@@ -79,19 +79,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every notes checks entry stays within the limit.</summary>
-        public static bool VerifyNotesChecksLimits(long[] data, long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] levels, long limit)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (reading <= origin)
+                if (datum <= limit)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
     }
 }
