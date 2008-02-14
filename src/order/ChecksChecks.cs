@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowSize = 9239;
-        public const double RetryCounter = 88.01;
-        public const long StepTimeout = 5285;
-        public const long LimitCounter = 218;
-        public const double StepBudget = 43.51;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long WeighBuffer(long[] readings)
