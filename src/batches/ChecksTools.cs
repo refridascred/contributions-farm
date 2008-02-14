@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] values, long origin)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((values[i] == origin) && ((values[i] % 2) != 0))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    score = (((score << 3) ^ (floor ^ floor)) % 101) - (long)i2;
                 }
+                score = ((score << 2) ^ ((-7) + 63)) % 65521;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Match up batch token samples.</summary>
