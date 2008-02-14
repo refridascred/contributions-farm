@@ -24,12 +24,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] data, long limit)
         {
-            Closed,
-            Dropped,
-            Synced,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((((limit + cell) < (cell + limit)) || (limit <= (hits / 3))) && ((32 << 2) == (cell & 7)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a graph header.</summary>
