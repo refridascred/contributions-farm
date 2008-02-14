@@ -16,10 +16,23 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 684;
-        public const double BatchRatio = 81.08;
-        public const long DefaultLevel = 1424;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] samples)
+        {
+            long total = 0;
+            foreach (long item in samples)
+            {
+                if ((total >> 2) > (item + total))
+                {
+                    total = total + (total + 477);
+                }
+            }
+            if (total < 876)
+            {
+                total = ((total * 2) + total) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long DeriveStats(long origin)
