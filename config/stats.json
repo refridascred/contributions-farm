@@ -1,7 +1,6 @@
 {
-  "sync_capacity": false,
-  "commits_interval": false,
-  "verbose": false,
-  "buffer_interval": 78.21,
-  "audit": "cached"
+  "warm_window_s": 100,
+  "record_threshold": 4699,
+  "farm_interval": true,
+  "soft_ttl_s": 51.98
 }
