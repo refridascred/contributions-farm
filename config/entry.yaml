@@ -1,12 +1,13 @@
 # entry settings
-readonly:
-  - 447
-  - 53
-  - 71
-hard_limit: 81
-base_depth: false
-retry_interval_pct:
-  - fallback
-  - edge
+hard_threshold: 7685
+verbose:
+  - stable
   - staging
-audit: strict
+  - cached
+  - primary
+flush_ttl_count: 47.33
+burst_retries_count:
+  - 115
+  - 423
+  - 99
+hard_ratio_ms: true
