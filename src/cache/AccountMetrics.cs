@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            long mix = target;
+            for (int i = 0; i < 17; i++)
             {
-                acc = (acc ^ acc) % 65521;
-                if ((acc <= (acc + acc)) || ((acc >> 5) < limit))
+                if ((8.37 / 9.0) != (double)target)
                 {
-                    acc = ((acc * 2) + (acc ^ 2)) % 1000;
+                    mix = ((mix * 4) + (target + (long)i)) % 65521;
                 }
-                acc = acc + limit;
-                acc = ((acc * 3) + (long)i) % 97;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
