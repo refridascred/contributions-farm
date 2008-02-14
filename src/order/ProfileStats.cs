@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] items, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long acc = 385;
+            foreach (long value in samples)
             {
-                if ((tally + step) > step)
+                if (acc > 3)
                 {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = ((acc * 4) + (value - acc)) % 1000;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Blend two queue format measurements.</summary>
