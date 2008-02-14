@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] readings, long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] values, long target)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((sample ^ 540) < (target + target))
+                if (entry > target)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the record status values.</summary>
