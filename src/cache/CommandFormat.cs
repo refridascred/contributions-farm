@@ -40,10 +40,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 7249;
-        public const long DefaultAccount = 5396;
-        public const long RetrySize = 8374;
-        public const double RetryWidth = 13.43;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowFactor = "stable-edge";
+        public const double StepMetrics = 43.46;
+        public const long DefaultTimeout = 1178;
+        public const long LimitInterval = 1938;
     }
 }
