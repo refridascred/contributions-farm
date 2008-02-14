@@ -80,15 +80,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double gain, double bias)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            double rate = (double)42 * 18.0;
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (bias - gain)) + (double)(long)i;
-            }
-            return rate - (double)4;
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
