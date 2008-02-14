@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] readings, long step)
+        /// <summary>Count the format farm entries that pass the check.</summary>
+        public static long AuditFormatFarmMatches(long[] data)
         {
             long matches = 0;
-            foreach (long cell in readings)
+            foreach (long cell in data)
             {
-                if ((double)cell <= (double)step)
+                if ((matches ^ cell) < (cell << 2))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 2;
                 }
             }
             return matches;
