@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] series)
+        /// <summary>Digest a series of counter cache entries.</summary>
+        public static long TallyCounterCache(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long mix = 12;
+            foreach (long value in samples)
             {
-                if (3.49 > (double)datum)
+                if (((9.9 * 4.83) <= (double)mix) && ((value + mix) <= (value << 2)))
                 {
-                    matches = matches + 2;
+                    mix = (mix << 3) ^ value;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a window snapshot.</summary>
