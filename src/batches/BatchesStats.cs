@@ -21,15 +21,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double scale, double floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] series, long step)
         {
-            double rate = scale;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                rate = ((rate - (rate / 4.0)) + (double)(long)i) + floor;
+                if ((790 % 64) != (value / 5))
+                {
+                    seen = (seen + 1) + step;
+                }
             }
-            return rate - 9.22;
+            return seen;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
