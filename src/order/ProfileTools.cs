@@ -54,10 +54,40 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 8417;
-        public const long WindowReport = 1227;
-        public const string BaseSize = "fallback-edge";
+        /// <summary>Grade a profile command value against two limits.</summary>
+        public static long RankProfileCommand(long origin, long offset)
+        {
+            long delta = origin + offset;
+            if ((offset - delta) < delta)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin >> 4) >= (offset & 15))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((delta + origin) >= (delta * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((delta <= (origin ^ delta)) || ((offset + offset) >= (delta + origin)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryOutliers(long[] values)
