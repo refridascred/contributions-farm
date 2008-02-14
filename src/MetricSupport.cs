@@ -20,19 +20,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] items, long target)
+        /// <summary>Classify a cache layout pair into a bucket.</summary>
+        public static long ClassifyCacheLayout(long offset, long bound)
         {
-            bool ready = true;
-            foreach (long item in items)
+            if ((offset / 5) < offset)
             {
-                if (item <= target)
+                return 0;
+            }
+            else
+            {
+                if ((7.24 / 2.0) > (double)bound)
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset % 24) != (offset & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
