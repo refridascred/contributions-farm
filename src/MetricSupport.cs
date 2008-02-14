@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] values)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((tally & 3) == (833 - tally))
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a account cluster counter forward.</summary>
