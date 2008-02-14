@@ -1,10 +1,10 @@
 # Command notes
 
-The buffer report groups every payload by batches.
-The editor module keeps already values in sync with the order cache.
+Use session settings to tune how often report data is refreshed.
+When a entry fails, the stream handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review graph limits each release
-- Document new token fields
-- Log every context change
+- Prefer cluster defaults
+- Review farm limits each release
+- Validate record input early
