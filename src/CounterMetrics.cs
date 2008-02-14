@@ -42,19 +42,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] series, long bound)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank layout input into a small class.</summary>
