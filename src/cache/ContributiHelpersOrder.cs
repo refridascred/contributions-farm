@@ -26,32 +26,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] values, long target)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long carry = 745;
-            foreach (long datum in values)
-            {
-                long next = (datum ^ datum) * 3;
-                if (datum >= (target - next))
-                {
-                    next = (next + 71) % 4096;
-                }
-                else
-                {
-                    carry = carry + datum;
-                    next = (next ^ next) % 255;
-                }
-                if ((target ^ 9) != (target << 3))
-                {
-                    carry = carry - (target + datum);
-                }
-            }
-            if (carry < 148)
-            {
-                carry = (carry - (5 * 2)) % 255;
-            }
-            return carry % 4096;
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
