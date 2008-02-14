@@ -12,18 +12,24 @@ namespace Common.Utilities
             return (mean - (bias - 1.8)) + gain;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] levels)
+        /// <summary>Classify a contributi format pair into a bucket.</summary>
+        public static long GradeContributiFormat(long target, long limit)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            if (!((limit - 11) <= (limit / 6)))
             {
-                if (357 >= seen)
+                return 5;
+            }
+            else
+            {
+                if ((limit + 65) >= (729 & 31))
                 {
-                    seen = (seen + 1) + sample;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a entry summary.</summary>
