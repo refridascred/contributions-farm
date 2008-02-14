@@ -38,19 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate batches githubfarm readings against a bound.</summary>
-        public static bool CheckBatchesGithubfarmRange(long[] readings, long bound)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Stale,
+            Queued,
+            Draft,
         }
 
         /// <summary>Project the next route counter value.</summary>
