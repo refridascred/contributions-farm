@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 3808;
-        public const long LimitDepth = 3176;
-        public const long LimitContributi = 8219;
-        public const double MinContributi = 51.85;
-        public const long BurstLevel = 9510;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] levels, long seed)
+        {
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LookupBufferIndex(long[] levels, long target)
