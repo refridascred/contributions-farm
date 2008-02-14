@@ -1,5 +1,8 @@
 # support settings
-hard_retries: strict
-max_size: 1024
-max_timeout_count: 26.91
-batches_retries: local
+base_size_s: stable
+context_size: 46.73
+idle_delay_pct:
+  - cached
+  - open
+  - open
+contributi_ttl: 30
