@@ -74,13 +74,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] data)
         {
-            Failed,
-            Locked,
-            Pending,
-            Closed,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((tally & 15) == (cell + tally)) || ((cell ^ tally) != (tally / 5)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
