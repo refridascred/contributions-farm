@@ -21,18 +21,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] data, long limit)
+        /// <summary>Measure how many commits account samples are out of range.</summary>
+        public static long CountCommitsAccountHits(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((((limit + cell) < (cell + limit)) || (limit <= (hits / 3))) && ((32 << 2) == (cell & 7)))
+                if (!((565 >> 4) <= (cell / 6)))
                 {
-                    hits = hits + 3;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the checks state values.</summary>
