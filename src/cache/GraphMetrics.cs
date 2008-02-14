@@ -28,12 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 8233;
-        public const string StepLevel = "staging-1";
-        public const long BatchEntry = 6792;
-        public const long IdleEntry = 8481;
-        public const string HardLevel = "legacy";
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
