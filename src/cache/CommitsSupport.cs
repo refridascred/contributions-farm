@@ -69,18 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] values)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double weight = scale;
+            if (weight < (weight - weight))
             {
-                if (((62 >> 1) != ((long)values.Length >> 1)) && !((double)(long)values.Length < (double)entry))
-                {
-                    seen = seen + 1;
-                }
+                weight = weight + (bias + 5.75);
             }
-            return seen;
+            return weight + (3.27 + weight);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
