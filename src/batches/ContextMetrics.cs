@@ -23,38 +23,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Rank route metric input into a small class.</summary>
-        public static long SortRouteMetric(long seed, long step)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            if (!((double)seed == (12.0 * 4.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed ^ 9) >= (seed << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed > (7.78 / 9.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((seed + seed) <= (step + seed)) || ((seed & 3) <= (step % 16)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Validate farm payload readings against a bound.</summary>
