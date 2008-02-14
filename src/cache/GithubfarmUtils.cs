@@ -20,13 +20,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] items, long limit)
         {
-            Dropped,
-            Failed,
-            Active,
-            Idle,
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
