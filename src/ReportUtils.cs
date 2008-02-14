@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many session record samples are out of range.</summary>
-        public static long MeasureSessionRecordMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + tally) <= (8 % 24))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryProfile = "legacy-1";
+        public const long SoftProfile = 275;
+        public const string LimitProfile = "latest-v2";
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
