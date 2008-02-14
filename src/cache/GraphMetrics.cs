@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] readings, long offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Ready,
+            Locked,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
