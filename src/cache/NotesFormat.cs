@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Synced,
-            Active,
-            Pending,
-            Idle,
-            Paused,
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
