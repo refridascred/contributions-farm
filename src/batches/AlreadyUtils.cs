@@ -48,12 +48,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] readings, long seed)
         {
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count batches cache pairs that satisfy a relation.</summary>
