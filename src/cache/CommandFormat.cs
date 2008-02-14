@@ -30,22 +30,19 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Count the support tools entries that pass the check.</summary>
-        public static long TallySupportToolsHits(long[] readings)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long carry = 7;
+            foreach (long value in series)
             {
-                if (((reading + reading) <= (reading + matches)) || (((-2) % 7) <= (matches & 31)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry * 5) + (bound >> 5)) - value;
             }
-            return matches;
+            if (carry > 7)
+            {
+                carry = ((carry * 3) + (bound % 60)) % 65521;
+            }
+            return carry % 65521;
         }
     }
 }
