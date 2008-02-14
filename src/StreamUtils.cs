@@ -78,19 +78,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] levels, long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (datum <= limit)
+                if ((double)hits > (double)offset)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) + entry;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
