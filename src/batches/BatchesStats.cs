@@ -22,12 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 2708;
-        public const double MinBudget = 64.79;
-        public const long HardDepth = 561;
-        public const long IdleSpan = 5192;
-        public const long IdleInterval = 4975;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double IdleRoute = 10.85;
