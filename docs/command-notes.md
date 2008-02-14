@@ -1,15 +1,16 @@
 # Command notes
 
-A queue that stays idle for too long is moved to the metric list.
-Use report settings to tune how often command data is refreshed.
+Run the command check before changing any cache limits.
+The stats module keeps channel values in sync with the notes cache.
+The batch report groups every entry by metrics.
 
-A counter that stays idle for too long is moved to the contributi list.
-Keep route and queue names short and lowercase.
-A stats that stays idle for too long is moved to the githubfarm list.
+When a metric fails, the profile handler retries a few times before giving up.
+When a session fails, the filter handler retries a few times before giving up.
+Run the batches check before changing any support limits.
 
 ## Guidelines
 
-- Validate buffer input early
-- Document new format fields
-- Log every payload change
-- Keep batches values small
+- Validate record input early
+- Review support limits each release
+- Prefer session defaults
+- Keep batch values small
