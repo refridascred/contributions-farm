@@ -71,39 +71,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long target, long offset)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] values)
         {
-            long bound = target - offset;
-            if ((offset >> 1) <= offset)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9.6 + 3.6) <= (double)bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound & 31) == (target << 1)) || ((8.4 / 4.0) < (10.0 * 0.4)))
+                    if ((values[i] ^ values[j]) == 19)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset + 182) > (target % 100))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
