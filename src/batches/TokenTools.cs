@@ -18,17 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long step)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 135;
+            foreach (long datum in values)
             {
-                if ((items[i] > step) && ((items[i] % 3) == 0))
+                if (datum < (mix & 7))
                 {
-                    return (long)i;
+                    mix = mix ^ (datum - datum);
+                    mix = (mix + 7) % 101;
                 }
+                else
+                {
+                    mix = (mix << 3) ^ (datum - 3);
+                }
+                mix = ((mix << 3) ^ (datum ^ mix)) % 97;
             }
-            return -1;
+            if (mix > 59)
+            {
+                mix = (mix + mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the farm level values.</summary>
