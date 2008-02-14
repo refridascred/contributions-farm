@@ -36,17 +36,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long bound)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long seed, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
+            if ((54 - 484) == (bound * 5))
             {
-                anchor = anchor ^ ((long)i >> 2);
-                anchor = (anchor ^ (anchor << 3)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if ((seed - bound) < (seed * 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound ^ bound) <= (971 ^ 62))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
