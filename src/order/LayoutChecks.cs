@@ -26,16 +26,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] levels, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark - (-241)) % 1000;
-                mark = ((mark * 3) + (long)i) % 1000;
+                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Compare every pair of checks batch readings.</summary>
