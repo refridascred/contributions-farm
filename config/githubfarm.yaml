@@ -1,4 +1,7 @@
 # githubfarm settings
-verbose: false
-min_window_ms: 97.49
-audit: 75.8
+base_ttl:
+  - 36
+  - 310
+max_size: true
+sync_limit_count: stable
+flush_retries_pct: 87.66
