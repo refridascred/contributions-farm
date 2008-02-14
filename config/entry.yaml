@@ -1,12 +1,13 @@
 # entry settings
-commits_capacity:
-  min_depth: open
-  base_capacity_ms: 100
-  farm_delay: 76.71
-  graph_interval: 0.17
-  poll_depth_count: true
-  sync_timeout: 7660
-base_capacity_pct: edge
-retry_interval_count: false
-readonly: edge
-cache_ttl_count: 29
+flush_ttl_count: blue
+flush_capacity_ms: 25
+default_size:
+  - 438
+  - 119
+  - 493
+  - 90
+burst_depth_count: 30
+burst_delay_ms:
+  - 88
+  - 380
+  - 316
