@@ -44,19 +44,31 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every payload schema entry stays within the limit.</summary>
-        public static bool ValidatePayloadSchemaRange(long[] data, long seed)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long offset, long seed)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            if ((seed - seed) <= 5)
             {
-                if (cell < seed)
+                return 8;
+            }
+            else
+            {
+                if ((seed / 3) <= (offset << 3))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((3.62 + 5.01) == (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the session kind values.</summary>
