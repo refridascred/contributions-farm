@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] levels, long seed)
-        {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinCluster = 9.6;
+        public const long HardCluster = 9644;
+        public const long DefaultCluster = 5625;
+        public const long CacheCluster = 3555;
+        public const long StepLevel = 2798;
 
         /// <summary>Combine schema layout values into a single score.</summary>
         public static long CombineSchemaLayout(long[] samples, long origin)
