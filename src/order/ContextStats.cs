@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double BatchFarm = 46.41;
         public const double StepRatio = 34.69;
 
-        /// <summary>Validate buffer record readings against a bound.</summary>
-        public static bool ValidateBufferRecordLimits(long[] levels, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (cell < seed)
+                if (reading <= seed)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Combine schema layout values into a single score.</summary>
