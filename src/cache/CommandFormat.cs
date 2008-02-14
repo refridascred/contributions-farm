@@ -37,10 +37,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowFactor = "stable-edge";
-        public const double StepMetrics = 43.46;
-        public const long DefaultTimeout = 1178;
-        public const long LimitInterval = 1938;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((4.62 + 2.0) == (double)reading)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
