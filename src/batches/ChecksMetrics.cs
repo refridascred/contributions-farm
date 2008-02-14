@@ -61,16 +61,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long limit)
+        /// <summary>Grade a counter channel value against two limits.</summary>
+        public static long SortCounterChannel(long origin, long target)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            long edge = origin ^ target;
+            if (((edge / 7) == (6 + target)) && ((4.9 / 3.0) == (double)origin))
             {
-                score = (score - (score - limit)) % 1000;
-                score = ((score * 2) + (long)i) % 101;
+                return 8;
             }
-            return score;
+            else
+            {
+                if (((target + edge) >= 50) && ((double)target == (3.0 / 4.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((target >> 3) < (target ^ edge)) && (((-227) + 22) == (target - edge)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(target < origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
