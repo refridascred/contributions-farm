@@ -39,26 +39,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] readings, long limit)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long sum = 3;
-            foreach (long datum in readings)
-            {
-                if ((double)limit <= (double)925)
-                {
-                    sum = (sum - (datum + sum)) % 4096;
-                }
-                if ((sum << 3) <= (sum * 2))
-                {
-                    break;
-                }
-            }
-            if (sum < 4)
-            {
-                sum = ((sum << 3) ^ sum) % 1000;
-            }
-            return sum % 97;
+            Locked,
+            Paused,
+            New,
+            Ready,
+            Active,
         }
     }
 }
