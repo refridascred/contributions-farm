@@ -33,21 +33,24 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long bound, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((bound + bound) > (bound * 5))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (bound <= origin)
                 {
-                    if ((levels[i] - levels[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
