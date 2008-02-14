@@ -50,13 +50,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Count counter already pairs that satisfy a relation.</summary>
+        public static long OverlapCounterAlreadyCount(long[] series)
         {
-            Pending,
-            Draft,
-            Stale,
-            Retry,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
