@@ -37,10 +37,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 2892;
-        public const string BurstStats = "stable-v2";
-        public const double StepTimeout = 49.57;
-        public const long IdleCount = 6185;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (!((double)sample > 7.6) && ((double)seed > (12.0 * 9.9)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
