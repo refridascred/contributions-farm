@@ -23,11 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 5521;
-        public const double RetryContext = 66.5;
-        public const string StepContext = "legacy-1";
-        public const long BatchLevel = 1434;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank record stream input into a small class.</summary>
         public static long BucketRecordStream(long offset, long floor)
