@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] samples)
+        /// <summary>Measure how many queue schema samples are out of range.</summary>
+        public static long AuditQueueSchemaHits(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (!(3.2 > (double)datum) && !((hits / 8) != (hits >> 4)))
+                if ((((179 + seed) < 11) && ((16.0 / 8.0) < (double)reading)) || !(seed > (seen & 15)))
                 {
-                    hits = hits + 3;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
