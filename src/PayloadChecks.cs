@@ -35,18 +35,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] levels, long seed)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (!((tally + tally) > (datum ^ seed)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
