@@ -58,21 +58,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] levels)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((series[i] == target) && ((series[i] % 5) == 0))
                 {
-                    if ((levels[i] + levels[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
