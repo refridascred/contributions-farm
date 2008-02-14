@@ -32,18 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 7065;
+        public const long BaseLevel = 6883;
+        public const long BaseTimeout = 2493;
+        public const long WindowLevel = 525;
+        public const double HardOrder = 23.04;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long MeasureGraphMatches(long[] samples, long floor)
