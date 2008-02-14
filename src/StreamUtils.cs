@@ -50,18 +50,18 @@ namespace Common.Utilities
             return ratio - (rate - ratio);
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] readings)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((double)matches < (14.0 / 7.0))
+                if ((sample / 3) >= (count << 2))
                 {
-                    matches = (matches + 2) ^ value;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
