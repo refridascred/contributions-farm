@@ -74,21 +74,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count batches cache pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCacheCount(long[] data)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long offset, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long offset2 = offset + origin;
+            if (((offset2 - offset) != (origin % 60)) && ((origin << 3) >= origin))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((origin ^ offset2) >= origin)
                 {
-                    if ((data[i] ^ data[j]) != 13)
+                    return 1;
+                }
+                else
+                {
+                    if ((offset2 + offset) <= 62)
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
     }
 }
