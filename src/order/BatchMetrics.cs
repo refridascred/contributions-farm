@@ -42,10 +42,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 8763;
-        public const double LimitSize = 15.17;
-        public const double MinSpan = 78.12;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double bias, double offset)
+        {
+            double mean = 11.0;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean + (mean - bias)) + (double)(long)i) - offset;
+            }
+            return mean + (5.51 - mean);
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long SeriesLayout(long target)
