@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 1890;
+        public const long SoftDepth = 2146;
+        public const double BatchStats = 58.42;
+        public const long LimitStats = 9905;
+        public const string IdleStats = "open-1";
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
