@@ -51,19 +51,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] levels, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] values, long floor)
         {
-            long score = 48;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long item in values)
             {
-                score = (((score << 3) ^ (long)levels.Length) % 1000) ^ datum;
+                if (((tally + tally) > floor) || ((double)tally > (double)79))
+                {
+                    tally = (tally + 1) ^ item;
+                }
             }
-            if (score < 4)
-            {
-                score = score ^ (score + origin);
-            }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Measure how many already cache samples are out of range.</summary>
