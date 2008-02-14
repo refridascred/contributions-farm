@@ -13,18 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine filter profile values into a single score.</summary>
-        public static long TallyFilterProfile(long[] items, long origin)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long acc = 52;
-            foreach (long value in items)
-            {
-                if (value <= (value + value))
-                {
-                    acc = (acc ^ 2) + origin;
-                }
-            }
-            return acc % 4096;
+            Done,
+            Active,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a command summary.</summary>
