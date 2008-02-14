@@ -23,18 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] samples, long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] items)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long score = 4;
+            foreach (long sample in items)
             {
-                if (!(((44 * 3) >= (origin / 9)) && ((double)count < 9.5)))
+                score = (score - (score + score)) ^ sample;
+                if (!((2.98 + 8.6) == (double)(long)items.Length))
                 {
-                    count = (count + 3) - reading;
+                    break;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
