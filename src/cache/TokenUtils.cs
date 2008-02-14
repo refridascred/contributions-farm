@@ -60,12 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (((hits << 3) > value) && (((6.17 + 2.31) <= (1.98 - 1.07)) || ((hits ^ hits) > (value << 3))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
