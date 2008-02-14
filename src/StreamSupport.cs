@@ -36,9 +36,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetryInterval = "strict-v2";
-        public const string HardRatio = "stable";
-        public const string SoftSupport = "fallback";
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
