@@ -1,6 +1,8 @@
 # githubfarm settings
-audit: 6117
-sync_ratio_s: 94
-compress: latest
-poll_window_ms: 60
-min_retries: 86.59
+soft_ratio: false
+graph_ratio: 500
+idle_ttl_ms: 7629
+retry_ttl_s:
+  - 317
+  - 28
+  - 337
