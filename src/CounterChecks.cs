@@ -28,23 +28,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double bias, double bias2)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long floor, long offset)
         {
-            double ratio = 10.0 + bias;
-            if (ratio >= bias)
+            long edge = floor + offset;
+            if ((edge & 3) <= (offset + 481))
             {
-                ratio = (ratio + ratio) + bias2;
+                return 1;
             }
             else
             {
-                ratio = ratio + (double)95;
+                if (floor < (floor >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (double)3) - (double)(long)i;
-            }
-            return ratio + ratio;
         }
 
         /// <summary>Hold a tools summary.</summary>
