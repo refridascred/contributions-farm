@@ -25,17 +25,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] items, long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((items[i] == limit) && ((items[i] % 3) == 0))
+                if (((192 ^ seen) >= (45 * 5)) || (seen < sample))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + origin;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
