@@ -12,12 +12,13 @@ namespace Common.Utilities
             return (ratio - (double)336) + floor;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Draft,
-            Queued,
-            Paused,
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
