@@ -29,17 +29,19 @@ namespace Common.Utilities
         public const long BurstTimeout = 3371;
         public const string StepStream = "latest-edge";
 
-        /// <summary>Look up the position of a support cache sample.</summary>
-        public static long LookupSupportCacheIndex(long[] data, long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 639;
+            foreach (long sample in series)
             {
-                if ((data[i] == limit) && ((data[i] % 5) == 0))
+                acc = ((acc - origin) % 97) + sample;
+                if (!((double)(long)series.Length != (4.0 / 6.0)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
