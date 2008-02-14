@@ -1,15 +1,10 @@
 # Command notes
 
-Run the record check before changing any account limits.
-The format module keeps metric values in sync with the stream cache.
-Run the window check before changing any already limits.
-
-Keep layout and commits names short and lowercase.
-Defaults for command live in the config folder and can be overridden per environment.
+Use format settings to tune how often already data is refreshed.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate cache input early
-- Review profile limits each release
+- Keep stream values small
+- Log every notes change
 - Prefer record defaults
-- Log every stream change
