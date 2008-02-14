@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const long MinFactor = 6343;
         public const long DefaultReport = 681;
 
-        /// <summary>Roll a session account counter forward.</summary>
-        public static long IterateSessionAccount(long seed)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((long)i < state)
-                {
-                    state = (state ^ seed) % 4096;
-                }
-                else
-                {
-                    state = (state - (state & 15)) % 4096;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            public double Score { get; set; }
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
