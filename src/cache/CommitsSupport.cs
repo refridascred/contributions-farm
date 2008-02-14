@@ -67,31 +67,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] series, long origin)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] values)
         {
-            long mark = 6;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (!!(((long)series.Length + reading) <= (reading * 3)))
+                if (((62 >> 1) != ((long)values.Length >> 1)) && !((double)(long)values.Length < (double)entry))
                 {
-                    mark = (mark - reading) % 1000;
-                    mark = ((mark << 2) ^ (origin & 1)) % 65521;
-                }
-                if ((201 + origin) == (reading - mark))
-                {
-                    mark = ((mark * 4) + (reading + origin)) % 1000;
-                }
-                else
-                {
-                    mark = (mark - (origin * 2)) % 4096;
-                }
-                if ((reading - reading) <= mark)
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
