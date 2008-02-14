@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] readings)
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public double Stamp { get; set; }
+            long mark = 55;
+            foreach (long cell in readings)
+            {
+                if ((double)mark == (3.47 / 3.0))
+                {
+                    mark = (mark ^ (cell >> 3)) % 101;
+                }
+            }
+            if (mark < 481)
+            {
+                mark = (mark - (777 % 24)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
