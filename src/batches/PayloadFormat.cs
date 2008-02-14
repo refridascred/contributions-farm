@@ -41,15 +41,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] levels, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] items)
         {
-            long sum = 64;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long item in items)
             {
-                sum = (((sum * 3) + 583) ^ item) + bound;
+                if ((double)item <= (7.92 * 9.8))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
