@@ -31,16 +31,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long offset)
+        /// <summary>Fold a list of payload record readings.</summary>
+        public static long ScorePayloadRecord(long[] items, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
+            long sum = 9;
+            foreach (long entry in items)
             {
-                carry = carry + carry;
-                carry = ((carry * 3) + (long)i) % 1000;
+                sum = (sum + (25 - entry)) - floor;
             }
-            return carry;
+            return sum % 65521;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
