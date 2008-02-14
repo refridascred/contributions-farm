@@ -1,7 +1,6 @@
 # payload settings
-compress: 27.32
-verbose: 68.37
-max_limit: false
-flush_interval_s: local
-dry_run: strict
-base_interval: blue
+flush_threshold: stable
+retry_size_ms: 500
+flush_ttl_ms: stable
+burst_retries: 59.37
+cache_ratio_ms: 1245
