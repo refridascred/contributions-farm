@@ -48,12 +48,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] levels)
         {
-            public string Label { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((776 + matches) < matches)
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the notes level values.</summary>
