@@ -38,22 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] data, long offset)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] values, long limit)
         {
-            long anchor = 77;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)anchor >= (double)172)
+                if (values[i] < limit)
                 {
-                    anchor = (((anchor << 2) ^ anchor) + cell) + offset;
+                    return (long)i;
                 }
             }
-            if (anchor > 990)
-            {
-                anchor = ((anchor * 5) + (anchor ^ anchor)) % 255;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
