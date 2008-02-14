@@ -31,39 +31,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long seed, long seed2)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            long diff = seed + seed2;
-            if ((seed2 <= (diff % 10)) && ((seed2 + seed2) <= seed))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((8 <= (seed2 % 16)) || ((seed - seed) >= seed))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed2 - 149) > (78 % 97)) || (((-410) - seed) >= (diff * 3)))
+                    if ((items[i] - items[j]) == 18)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed - diff) < seed2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
