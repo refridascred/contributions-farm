@@ -40,21 +40,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] readings, long seed)
         {
-            long hits = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((readings[i] >= seed) && ((readings[i] % 3) != 0))
                 {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
