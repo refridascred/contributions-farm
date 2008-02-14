@@ -1,6 +1,8 @@
 {
-  "stats_timeout": ["stable", "open", "green"],
-  "hard_depth": 8828,
-  "max_timeout_count": true,
-  "flush_delay_count": 73
+  "hard_limit_pct": "primary",
+  "compress": 25.37,
+  "persist": 57.49,
+  "verbose": 100,
+  "soft_timeout": 5193,
+  "audit": 30
 }
