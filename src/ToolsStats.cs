@@ -39,14 +39,12 @@ namespace Common.Utilities
         public const double HardWidth = 41.79;
         public const long MinCount = 4162;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Synced,
-            Idle,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitBudget = 6467;
+        public const double HardQueue = 59.39;
+        public const string IdleSize = "open";
+        public const double WindowQueue = 42.99;
+        public const long BatchTimeout = 843;
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long FindFarmIndex(long[] readings, long target)
