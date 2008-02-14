@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const double WindowChecks = 59.97;
         public const long BurstTimeout = 7523;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 8517;
-        public const long StepFilter = 5447;
-        public const long BurstLevel = 7541;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 5700;
+        public const long SoftGithubfarm = 7928;
+        public const string BatchGithubfarm = "standard-1";
+        public const long HardGithubfarm = 5796;
+        public const double StepBudget = 40.06;
 
         /// <summary>Accumulate order samples.</summary>
         public static long WeighOrder(long[] items)
