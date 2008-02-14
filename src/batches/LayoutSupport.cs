@@ -34,18 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] items, long step)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((entry / 5) > (matches * 2))
-                {
-                    matches = (matches + 2) + step;
-                }
-            }
-            return matches;
+            double scale = gain + (double)25;
+            return (scale - (double)(-7)) + bias;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
