@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 2198;
-        public const long RetryLevel = 6049;
-        public const string LimitDepth = "local-edge";
-        public const long BurstRatio = 8762;
+        /// <summary>Look up the position of a profile commits sample.</summary>
+        public static long SeekProfileCommitsIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > floor) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a batch token reading.</summary>
         public static double BlendBatchToken(double bias, double floor)
