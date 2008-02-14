@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a window account reading by value.</summary>
-        public static long FindWindowAccountIndex(long[] data, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (data[i] <= seed)
+                if ((double)tally > (4.8 + 3.6))
                 {
-                    return (long)i;
+                    tally = ((tally + 3) + datum) - origin;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
