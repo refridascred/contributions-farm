@@ -32,22 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch cache samples are out of range.</summary>
-        public static long MeasureBatchCacheHits(long[] samples, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((double)sample != (7.0 + 20.0))
+                if (value < floor)
                 {
-                    matches = (matches + 3) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
