@@ -42,13 +42,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double bias, double floor)
         {
-            New,
-            Active,
-            Stale,
-            Ready,
+            double scale = (double)((-1) + 97);
+            if (scale > bias)
+            {
+                scale = (scale - bias) - floor;
+            }
+            return scale - bias;
         }
     }
 }
