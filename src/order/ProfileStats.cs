@@ -48,9 +48,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 8187;
-        public const double BatchSpan = 40.89;
-        public const double IdleAlready = 20.49;
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] samples, long offset)
+        {
+            long state = 7;
+            foreach (long cell in samples)
+            {
+                state = (state + (offset - state)) + cell;
+            }
+            if (state < 35)
+            {
+                state = ((state << 3) ^ (offset + 7)) % 97;
+            }
+            return state;
+        }
     }
 }
