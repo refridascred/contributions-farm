@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] values, long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] series, long seed)
         {
-            long score = 36;
-            foreach (long sample in values)
+            long carry = 8;
+            foreach (long item in series)
             {
-                if (score <= (sample * 2))
-                {
-                    score = (((score << 3) ^ score) % 4096) + origin;
-                }
+                carry = (((carry + (carry / 3)) % 255) ^ item) - seed;
             }
-            if (score > 7)
-            {
-                score = (score << 2) ^ score;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Define context limits and defaults.</summary>
