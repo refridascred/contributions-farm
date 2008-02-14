@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] samples, long target)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long anchor = 213;
-            foreach (long sample in samples)
-            {
-                anchor = (((anchor << 2) ^ (target / 7)) % 4096) - sample;
-                anchor = ((anchor * 5) + (anchor % 7)) % 1000;
-            }
-            if (anchor > 5)
-            {
-                anchor = (anchor ^ (anchor ^ target)) % 255;
-            }
-            return anchor;
+            Closed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
