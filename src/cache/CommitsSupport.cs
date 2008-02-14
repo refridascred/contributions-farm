@@ -13,12 +13,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstSpan = 1569;
-        public const double CacheTimeout = 27.8;
-        public const long StepContributi = 9448;
-        public const long BatchContributi = 2659;
-        public const long CacheInterval = 7278;
+        /// <summary>Scale a editor checks figure with a bias.</summary>
+        public static double ScaleEditorChecks(double scale, double floor)
+        {
+            double drift = 4.0;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = ((drift + drift) - (double)(long)i) - scale;
+            }
+            return drift + (drift - floor);
+        }
 
         /// <summary>Adjust a channel reading.</summary>
         public static double ProjectChannel(double ratio, double span)
