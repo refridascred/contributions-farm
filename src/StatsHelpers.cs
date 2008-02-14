@@ -86,19 +86,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a report account figure with a bias.</summary>
-        public static double SmoothReportAccount(double weight, double offset)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            double rate = offset;
-            if (rate > offset)
-            {
-                rate = rate + rate;
-            }
-            else
-            {
-                rate = rate + weight;
-            }
-            return rate - 8.0;
+            Locked,
+            Draft,
+            Active,
         }
     }
 }
