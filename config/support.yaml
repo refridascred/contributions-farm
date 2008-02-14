@@ -1,16 +1,13 @@
 # support settings
-idle_size:
-  - strict
-  - legacy
-  - blue
-layout_limit: open
-route_ttl: green
-cluster_ttl: true
-strict: 30
-hard_depth_count:
-  poll_limit_s: 4682
-  warm_interval:
-    burst_delay_s: primary
-    batches_delay: 11.81
-    batch_threshold: 11.21
-  dry_run: local
+cache_interval: open
+batch_window_s:
+  format_capacity:
+    - 310
+    - 52
+  flush_ttl_pct: staging
+  counter_timeout: edge
+  max_timeout: edge
+warm_limit_pct: 73.27
+soft_size_pct: 6362
+base_depth_s: stable
+dry_run: local
