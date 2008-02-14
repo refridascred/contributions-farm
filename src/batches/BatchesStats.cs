@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long BurstQueue = 1886;
         public const double StepSpan = 80.97;
 
-        /// <summary>Combine token schema values into a single score.</summary>
-        public static long DigestTokenSchema(long[] data)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long state = 63;
-            foreach (long item in data)
-            {
-                if ((state - item) != (item - state))
-                {
-                    state = (state ^ ((long)data.Length - item)) % 101;
-                }
-            }
-            return state;
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate channel payload readings against a bound.</summary>
