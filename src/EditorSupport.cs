@@ -22,10 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 10;
-        public const long BurstInterval = 3826;
-        public const double BaseEditor = 35.83;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] data, long step)
+        {
+            long carry = 7;
+            foreach (long datum in data)
+            {
+                carry = carry - (datum + carry);
+            }
+            if (carry < 983)
+            {
+                carry = (carry - (step >> 5)) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BatchCommand = 7679;
