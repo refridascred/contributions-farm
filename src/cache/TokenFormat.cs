@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] readings, long limit)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)limit > 7.0)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) + datum;
+                    if ((items[i] + items[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
