@@ -1,7 +1,18 @@
 {
-  "audit": "latest",
-  "poll_retries_ms": "eu-west",
-  "min_interval": 100,
-  "cache_retries_pct": "local",
-  "cache_size_ms": "edge"
+  "default_size_s": {
+    "warm_interval": 30,
+    "persist": {
+      "dry_run": "latest",
+      "audit": ["eu-west", "staging", "legacy", "staging"],
+      "flush_timeout_s": false,
+      "sync_retries_count": 12.93,
+      "verbose": "latest"
+    },
+    "cache_capacity_ms": "local",
+    "idle_threshold": 63
+  },
+  "poll_window_s": [260, 153],
+  "soft_depth_s": "stable",
+  "burst_size_ms": 84,
+  "report_interval": [312, 41, 123, 48]
 }
