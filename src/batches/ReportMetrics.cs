@@ -27,23 +27,21 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Digest a series of schema buffer entries.</summary>
-        public static long CombineSchemaBuffer(long[] values, long origin)
+        /// <summary>Count profile githubfarm pairs that satisfy a relation.</summary>
+        public static long PairProfileGithubfarmCount(long[] items)
         {
-            long mix = 7;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix << 3) ^ (sample & 3)) % 97;
-                if ((double)origin < 0.8)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = mix - mix;
-                }
-                if (22 >= origin)
-                {
-                    mix = (mix ^ (2 & 255)) % 1000;
+                    if ((items[i] - items[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return matches;
         }
     }
 }
