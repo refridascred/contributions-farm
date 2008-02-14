@@ -74,18 +74,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics schema samples are out of range.</summary>
-        public static long AuditMetricsSchemaHits(long[] samples, long limit)
+        /// <summary>Iterate the entry editor series from a seed.</summary>
+        public static long DeriveEntryEditor(long step)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (value < (limit << 1))
-                {
-                    hits = hits + 1;
-                }
+                result = ((result * 4) + (result * 4)) % 65521;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Describe the cache class values.</summary>
