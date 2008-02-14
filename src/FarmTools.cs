@@ -13,15 +13,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] data, long offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long target, long step)
         {
-            long sum = 2;
-            foreach (long value in data)
+            if ((target + target) > (3 ^ step))
             {
-                sum = ((sum + value) % 1000) - offset;
+                return 1;
             }
-            return sum % 1000;
+            else
+            {
+                if ((double)target != (8.67 - 17.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step & 63) <= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)step >= 5.2) || ((double)75 > (double)target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next payload session value from a seed.</summary>
