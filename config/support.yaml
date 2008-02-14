@@ -1,5 +1,11 @@
 # support settings
-idle_size: eu-west
-default_delay_pct: standard
-hard_size: 75.38
-strict: 46
+audit: 2148
+warm_timeout_ms: true
+layout_interval: 6238
+hard_timeout_ms: false
+sync_window_s:
+  farm_limit: true
+  max_threshold_pct: 70.14
+  hard_limit_pct: green
+  queue_window: true
+  soft_ttl: 1024
