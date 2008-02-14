@@ -35,18 +35,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] levels)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell << 2) > cell) && ((tally >> 5) < (1 ^ 8)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
