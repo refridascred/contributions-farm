@@ -1,10 +1,5 @@
 # githubfarm settings
-batch_capacity: 26
-token_size:
-  - legacy
-  - green
-  - open
-  - fallback
-audit: false
-default_window_s: 81
-sync_limit_count: true
+hard_threshold_count: local
+idle_retries_ms: false
+soft_window_pct: 45
+counter_threshold: 47.54
