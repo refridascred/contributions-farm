@@ -1,4 +1,15 @@
 # githubfarm settings
-burst_ttl_s: 250
-channel_interval: 33.48
-sync_retries: true
+burst_retries_pct: cached
+sync_ttl: primary
+audit:
+  - edge
+  - cached
+  - fallback
+  - edge
+base_delay_s:
+  - 426
+  - 354
+max_capacity_ms:
+  - blue
+  - local
+base_timeout: 4968
