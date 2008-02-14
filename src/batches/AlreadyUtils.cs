@@ -60,18 +60,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] samples, long step)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((2.3 + 8.3) < (double)step)
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
