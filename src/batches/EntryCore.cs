@@ -26,12 +26,20 @@ namespace Common.Utilities
         public const double RetryLevel = 31.08;
         public const double BatchTools = 76.75;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitRatio = 2342;
-        public const long SoftDepth = 7518;
-        public const long RetryCluster = 9127;
-        public const double SoftCluster = 88.06;
-        public const long WindowSize = 4090;
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double rate, double offset)
+        {
+            double gain = (double)(9 >> 4);
+            if (gain < 5.0)
+            {
+                gain = (gain - gain) - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + 6.5) - (double)(long)i;
+            }
+            return gain - (8.0 - rate);
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LookupRouteIndex(long[] readings, long offset)
