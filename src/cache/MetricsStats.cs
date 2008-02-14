@@ -70,18 +70,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout checks samples are out of range.</summary>
-        public static long MeasureLayoutChecksHits(long[] readings, long target)
+        /// <summary>Fold a list of payload queue readings.</summary>
+        public static long DigestPayloadQueue(long[] data)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long anchor = 55;
+            foreach (long item in data)
             {
-                if ((double)count > 1.0)
+                if ((anchor ^ item) == (item * 4))
                 {
-                    count = ((count + 1) + sample) + target;
+                    anchor = ((anchor * 2) + (item + 111)) % 65521;
                 }
+                anchor = ((anchor << 3) ^ (item - item)) % 101;
+                anchor = (anchor - (item * 3)) % 65521;
             }
-            return count;
+            return anchor % 97;
         }
     }
 }
