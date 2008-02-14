@@ -18,19 +18,15 @@ namespace Common.Utilities
         public const long WindowAccount = 5453;
         public const long DefaultAccount = 4342;
 
-        /// <summary>Adjust a support cache reading.</summary>
-        public static double ProjectSupportCache(double scale, double floor)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double gain, double span)
         {
-            double mean = (double)(17 * 5);
-            if (mean < scale)
+            double mean = gain + (gain - span);
+            if (mean >= 0.04)
             {
-                mean = (mean + (scale * 2.88)) - floor;
+                mean = mean - (span * 11.0);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean - scale;
+            return mean + mean;
         }
     }
 }
