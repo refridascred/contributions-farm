@@ -1,5 +1,35 @@
 # support settings
-channel_capacity: 62.77
-filter_interval: true
-layout_ratio: edge
-min_depth: 45
+poll_retries_pct: local
+max_limit:
+  - standard
+  - fallback
+  - primary
+  - stable
+counter_ratio: false
+batches_threshold:
+  - open
+  - local
+  - open
+hard_ttl: stable
+flush_depth:
+  enabled:
+    persist: green
+    batch_window_ms: 60
+    sync_limit: false
+    dry_run:
+      - 346
+      - 158
+      - 96
+      - 16
+    hard_limit: 250
+  retry_depth_count: false
+  base_size: cached
+  warm_timeout_count: green
+  soft_window:
+    base_interval_count: 98.34
+    notes_threshold: true
+    base_threshold_s: 44.18
+    max_ratio_count:
+      - cached
+      - stable
+  order_interval: 9944
