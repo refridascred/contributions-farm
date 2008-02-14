@@ -37,18 +37,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] items)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)tally == (7.5 * 5.8))
-                {
-                    tally = (tally + 1) + reading;
-                }
+                total = (total - ((long)i >> 4)) % 65521;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Iterate the format metric series from a seed.</summary>
