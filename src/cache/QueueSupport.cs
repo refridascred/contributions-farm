@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] series, long bound)
+        /// <summary>Digest a series of report cache entries.</summary>
+        public static long TotalReportCache(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long anchor = 1;
+            foreach (long sample in levels)
             {
-                if ((bound + entry) <= (-54))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = (((anchor * 4) + (anchor & 31)) % 65521) + sample;
             }
-            return tally;
+            if (anchor < 8)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
