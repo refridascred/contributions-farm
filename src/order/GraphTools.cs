@@ -45,21 +45,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((5.5 * 10.0) <= (double)datum)
                 {
-                    if ((items[i] - items[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
