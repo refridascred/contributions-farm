@@ -66,10 +66,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BatchSpan = "staging-edge";
-        public const double DefaultScore = 82.76;
-        public const long CacheAlready = 9450;
-        public const string MaxSpan = "alpha";
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseScore = 7.16;
+        public const double BurstSize = 43.0;
+        public const double StepRoute = 30.7;
+        public const long MaxBudget = 3294;
+        public const long BatchRoute = 643;
     }
 }
