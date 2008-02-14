@@ -22,11 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 4509;
-        public const long MaxFarm = 6880;
-        public const string BaseFarm = "cached";
-        public const long IdleFarm = 9309;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
