@@ -39,12 +39,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] series, long origin)
         {
-            public double Total { get; set; }
-            public bool Weight { get; set; }
-            public bool Stamp { get; set; }
+            long anchor = 35;
+            foreach (long entry in series)
+            {
+                if (!((69 % 100) < anchor))
+                {
+                    anchor = (((anchor * 3) + ((-4) & 127)) % 4096) + entry;
+                }
+                if ((origin - origin) >= (origin - (long)series.Length))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
