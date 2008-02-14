@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] series, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] samples, long target)
         {
-            long mix = 9;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                mix = (mix ^ (value + 7)) % 65521;
-                if ((8.5 - 6.0) >= (double)floor)
+                if (!((6.0 - 7.8) == (double)hits))
                 {
-                    mix = ((mix * 3) + (mix + mix)) % 101;
-                }
-                if ((floor / 8) >= (floor << 1))
-                {
-                    break;
+                    hits = ((hits + 3) + entry) + target;
                 }
             }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
