@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of layout order readings.</summary>
-        public static long TallyLayoutOrder(long[] series)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] samples)
         {
-            long mix = 39;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (((double)value >= (7.33 - 8.1)) && (mix >= (long)series.Length))
+                if ((entry >> 3) >= entry)
                 {
-                    mix = (mix - value) % 255;
+                    count = count + 3;
                 }
                 else
                 {
-                    mix = (mix << 3) ^ (mix % 64);
+                    count = count - 1;
                 }
             }
-            if (mix > (-3))
-            {
-                mix = (mix - mix) % 255;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the context level values.</summary>
