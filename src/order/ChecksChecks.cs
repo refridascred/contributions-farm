@@ -20,23 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long mark = -65;
-            foreach (long entry in values)
-            {
-                if (mark < (mark ^ mark))
-                {
-                    mark = (mark << 3) ^ (mark - entry);
-                }
-                mark = mark - (entry + mark);
-            }
-            if (mark > 448)
-            {
-                mark = (mark + (mark >> 5)) % 255;
-            }
-            return mark % 97;
+            Failed,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the cache mode values.</summary>
