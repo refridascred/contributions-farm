@@ -65,18 +65,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] items)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)count > (10.0 - 4.0))
-                {
-                    count = (count + 1) - reading;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
+            public long Label { get; set; }
         }
     }
 }
