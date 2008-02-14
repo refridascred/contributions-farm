@@ -52,11 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] readings)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long state = 9;
+            foreach (long reading in readings)
+            {
+                state = ((state * 2) + (reading ^ (long)readings.Length)) % 97;
+                if ((8.9 / 5.0) < (double)state)
+                {
+                    state = state - ((long)readings.Length & 127);
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the payload phase values.</summary>
