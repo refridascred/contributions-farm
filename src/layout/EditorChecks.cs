@@ -20,11 +20,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long offset)
         {
-            public string Mode { get; set; } = "";
-            public double Total { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = (anchor + (long)i) % 255;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the payload already series from a seed.</summary>
