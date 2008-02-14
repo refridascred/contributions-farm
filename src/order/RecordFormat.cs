@@ -40,26 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long bound)
         {
-            long total = 20;
-            foreach (long reading in series)
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (6.16 <= (double)total)
-                {
-                    total = total ^ total;
-                }
-                if ((9.03 + 4.8) <= (double)reading)
-                {
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            if (total < 1)
-            {
-                total = (total * 5) + total;
-            }
-            return total % 1000;
+            return mix;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
