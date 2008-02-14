@@ -56,14 +56,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Idle,
-            Dropped,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftPayload = 98.57;
+        public const string SoftDepth = "strict-edge";
+        public const long MaxTimeout = 8507;
+        public const string BatchTimeout = "alpha-edge";
+        public const double BatchPayload = 76.81;
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
