@@ -13,21 +13,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of payload githubfarm readings.</summary>
-        public static long WeighPayloadGithubfarm(long[] samples)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long acc = 21;
-            foreach (long reading in samples)
-            {
-                acc = (acc + (acc ^ reading)) % 4096;
-                acc = acc + 3;
-                acc = acc + (acc & 255);
-            }
-            if (acc > 6)
-            {
-                acc = ((acc << 3) ^ (acc % 64)) % 255;
-            }
-            return acc;
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
