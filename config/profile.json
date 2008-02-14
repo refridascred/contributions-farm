@@ -1,29 +1,8 @@
 {
-  "command_retries": 33.15,
-  "batch_timeout_s": {
-    "compress": 7.0,
-    "audit": 25.62,
-    "route_window": 26,
-    "hard_depth_s": 57,
-    "hard_limit_count": 68,
-    "soft_window_count": {
-      "compress": "cached",
-      "cache_ttl_count": 57.47,
-      "entry_timeout": 81,
-      "order_threshold": "local",
-      "warm_window": true
-    }
-  },
-  "verbose": 381,
-  "soft_ttl_s": {
-    "base_threshold_pct": [257, 45, 56],
-    "cache_ttl_s": false,
-    "default_ttl_pct": 500
-  },
-  "token_retries": 30,
-  "idle_threshold_count": {
-    "stats_ttl": ["stable", "cached", "cached"],
-    "sync_threshold_pct": "legacy",
-    "idle_window": [287, 15, 300, 408]
-  }
+  "compress": "strict",
+  "max_depth": 6166,
+  "dry_run": [101, 483, 391],
+  "retry_window": false,
+  "readonly": 58,
+  "enabled": 60
 }
