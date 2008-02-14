@@ -21,18 +21,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many commits account samples are out of range.</summary>
-        public static long CountCommitsAccountHits(long[] values)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long bound)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((565 >> 4) <= (cell / 6)))
-                {
-                    count = count + 3;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
