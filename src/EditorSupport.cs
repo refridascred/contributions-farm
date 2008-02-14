@@ -61,21 +61,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long limit)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] data, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
+            long result = 892;
+            foreach (long entry in data)
             {
-                score = score + (limit ^ 114);
-                if (!((9.5 * 9.84) != (double)limit))
+                for (int i = 0; i < 8; i++)
                 {
-                    score = (score * 4) + ((long)i - score);
+                    result = ((result - ((-85) & 3)) % 97) - (long)i;
                 }
-                score = (score + (score * 2)) % 101;
-                score = ((score * 5) + (long)i) % 65521;
+                if (((limit - entry) <= (entry / 8)) || ((double)result >= (3.2 + 7.61)))
+                {
+                    result = (result << 2) ^ (limit % 5);
+                }
+                if ((result & 63) > result)
+                {
+                    result = (result - (91 + entry)) % 255;
+                }
             }
-            return score;
+            return result;
         }
 
         /// <summary>Measure how many stream token samples are out of range.</summary>
