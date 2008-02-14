@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary edge; do
+for item in stable standard eu-west strict; do
     log "checking ${item}"
 done
 
+RECORD_LIMIT=287
+log "limit is ${RECORD_LIMIT}"
+
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-mode="${1:-standard}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
