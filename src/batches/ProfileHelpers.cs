@@ -29,26 +29,16 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] values, long origin)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] levels)
         {
-            long sum = 339;
-            foreach (long item in values)
+            long sum = 409;
+            foreach (long datum in levels)
             {
-                if ((item <= (origin - origin)) || ((9 % 24) > sum))
-                {
-                    sum = (sum ^ (6 ^ sum)) % 255;
-                }
-                if (item <= (3 - 632))
-                {
-                    sum = (sum - (item & 31)) % 255;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (item ^ sum)) % 1000;
-                }
+                sum = (sum - datum) % 1000;
+                sum = sum + (datum & 127);
             }
-            return sum;
+            return sum % 97;
         }
 
         /// <summary>Describe the buffer state values.</summary>
