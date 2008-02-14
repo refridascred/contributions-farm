@@ -22,21 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Locked,
+            Done,
+            Dropped,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
