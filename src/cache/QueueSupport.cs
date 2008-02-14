@@ -18,18 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] items, long seed)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] series)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long mark = 899;
+            foreach (long sample in series)
             {
-                if ((((long)items.Length > (entry + 57)) || ((entry + count) <= (count & 255))) || ((7.0 - 8.0) > (double)entry))
+                if ((double)sample < (8.0 - 5.6))
                 {
-                    count = (count + 3) + seed;
+                    mark = (mark ^ (774 * 4)) % 1000;
+                }
+                else
+                {
+                    mark = (mark * 2) + mark;
                 }
             }
-            return count;
+            if (mark > 5)
+            {
+                mark = (mark * 2) + (mark + 3);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
