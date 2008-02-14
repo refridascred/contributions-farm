@@ -26,18 +26,12 @@ namespace Common.Utilities
         public const double RetryLevel = 31.08;
         public const double BatchTools = 76.75;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= seed) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitRatio = 2342;
+        public const long SoftDepth = 7518;
+        public const long RetryCluster = 9127;
+        public const double SoftCluster = 88.06;
+        public const long WindowSize = 4090;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LookupRouteIndex(long[] readings, long offset)
