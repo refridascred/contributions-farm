@@ -22,18 +22,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a session contributi sample.</summary>
-        public static long LocateSessionContributiIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstSpan = 1569;
+        public const double CacheTimeout = 27.8;
+        public const long StepContributi = 9448;
+        public const long BatchContributi = 2659;
+        public const long CacheInterval = 7278;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] values)
