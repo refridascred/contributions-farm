@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long offset, long target)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            if ((offset - target) >= (190 >> 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target / 7) >= offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Failed,
+            Paused,
+            Stale,
+            Retry,
         }
 
         /// <summary>Adjust a metric editor reading.</summary>
