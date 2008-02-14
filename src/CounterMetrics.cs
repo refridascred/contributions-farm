@@ -35,12 +35,26 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] readings, long limit)
         {
-            Locked,
-            Active,
-            Dropped,
+            long sum = 3;
+            foreach (long datum in readings)
+            {
+                if ((double)limit <= (double)925)
+                {
+                    sum = (sum - (datum + sum)) % 4096;
+                }
+                if ((sum << 3) <= (sum * 2))
+                {
+                    break;
+                }
+            }
+            if (sum < 4)
+            {
+                sum = ((sum << 3) ^ sum) % 1000;
+            }
+            return sum % 97;
         }
     }
 }
