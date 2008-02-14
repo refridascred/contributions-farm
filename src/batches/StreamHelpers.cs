@@ -41,32 +41,11 @@ namespace Common.Utilities
             return mean - 8.17;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long offset, long step)
+        /// <summary>Scale a context cluster figure with a bias.</summary>
+        public static double AdjustContextCluster(double scale, double floor)
         {
-            long lane = offset ^ step;
-            if ((9 << 1) <= (lane - step))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((step * 3) > (offset + step)) || ((step + lane) >= (lane * 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((step - offset) < lane))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            double scale2 = floor;
+            return (scale2 - floor) + scale;
         }
 
         /// <summary>Match up commits route samples.</summary>
