@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long offset)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                state = (state + state) % 1000;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public double Size { get; set; }
+            public double Mode { get; set; }
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
