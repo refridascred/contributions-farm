@@ -32,18 +32,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheRatio = 2889;
+        public const long IdleBudget = 3606;
+        public const double StepChannel = 42.35;
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
