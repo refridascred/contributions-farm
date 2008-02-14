@@ -12,23 +12,10 @@ namespace Common.Utilities
         public const long StepLevel = 2006;
         public const string StepAlready = "latest-1";
 
-        /// <summary>Measure how many filter format samples are out of range.</summary>
-        public static long CountFilterFormatMatches(long[] data, long limit)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((matches - limit) > (item + item))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheBuffer = 10.91;
+        public const long BaseSize = 4912;
+        public const long RetryBuffer = 9511;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TallyCluster(long[] data, long target)
