@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] series)
+        /// <summary>Digest a series of schema profile entries.</summary>
+        public static long TotalSchemaProfile(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 469;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                score = (score * 5) + (14 ^ score);
+                score = score ^ (score + entry);
+                if (score >= (entry % 97))
                 {
-                    if ((series[i] - series[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score - (entry >> 3)) % 65521;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
