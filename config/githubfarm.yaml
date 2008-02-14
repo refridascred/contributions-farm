@@ -1,8 +1,5 @@
 # githubfarm settings
-soft_ratio: false
-graph_ratio: 500
-idle_ttl_ms: 7629
-retry_ttl_s:
-  - 317
-  - 28
-  - 337
+window_window: 1024
+poll_window: 36
+default_ttl: 52.54
+enabled: false
