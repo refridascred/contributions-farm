@@ -76,14 +76,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public double Total { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 1712;
+        public const long MaxBatches = 8400;
+        public const double IdleFactor = 9.94;
 
         /// <summary>Measure how many already cache samples are out of range.</summary>
         public static long CountAlreadyCacheHits(long[] data)
