@@ -14,12 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] series)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            long mark = 8;
+            foreach (long value in series)
+            {
+                mark = mark + (value << 3);
+            }
+            if (mark < 6)
+            {
+                mark = (mark << 2) ^ (mark + mark);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
