@@ -1,8 +1,5 @@
 {
-  "poll_size_s": ["open", "eu-west", "local", "eu-west"],
-  "stream_size": 7369,
-  "enabled": "primary",
-  "soft_depth_ms": "primary",
-  "sync_size_pct": [483, 151, 387, 462],
-  "flush_interval_ms": ["primary", "stable", "primary"]
+  "verbose": [231, 50, 336],
+  "warm_size_ms": "fallback",
+  "sync_retries_ms": 97
 }
