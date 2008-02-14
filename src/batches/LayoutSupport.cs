@@ -72,22 +72,19 @@ namespace Common.Utilities
         public const long BaseLevel = 3817;
         public const long WindowStream = 8465;
 
-        /// <summary>Count the channel buffer entries that pass the check.</summary>
-        public static long CountChannelBufferMatches(long[] samples)
+        /// <summary>Validate editor command readings against a bound.</summary>
+        public static bool GuardEditorCommandBounds(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((8.13 + 12.0) >= (double)value)
+                if (item < offset)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
