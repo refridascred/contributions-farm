@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftWidth = 8.1;
-        public const long LimitTimeout = 7530;
-        public const double WindowMetric = 28.44;
-        public const long MaxDepth = 5645;
-        public const double CacheSize = 55.03;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 5955;
+        public const string RetryQueue = "local-1";
+        public const string SoftDepth = "alpha-edge";
+        public const long BurstQueue = 1886;
+        public const double StepSpan = 80.97;
 
         /// <summary>Combine token schema values into a single score.</summary>
         public static long DigestTokenSchema(long[] data)
