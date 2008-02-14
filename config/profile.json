@@ -1,15 +1,7 @@
 {
-  "base_timeout": true,
-  "retry_retries": {
-    "readonly": "latest",
-    "commits_size": "eu-west",
-    "verbose": "stable",
-    "soft_window": "latest",
-    "queue_capacity": [299, 148, 319, 311],
-    "persist": true
-  },
-  "warm_capacity_pct": "standard",
-  "session_threshold": 96.33,
-  "dry_run": 3.32,
-  "metrics_size": "cached"
+  "metric_delay": false,
+  "compress": [325, 322, 340, 164],
+  "hard_delay_s": false,
+  "editor_delay": "latest",
+  "hard_interval_ms": 57.52
 }
