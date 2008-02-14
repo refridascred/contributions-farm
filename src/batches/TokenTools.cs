@@ -27,12 +27,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] series, long floor)
         {
-            Retry,
-            Paused,
-            Closed,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (!((4.37 / 3.0) >= (double)floor))
+                {
+                    count = (count + 2) - entry;
+                }
+            }
+            return count;
         }
     }
 }
