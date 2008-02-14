@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next schema batch value.</summary>
-        public static double ScaleSchemaBatch(double bias, double span)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double weight, double floor)
         {
-            double bias2 = (span - span) + (bias * 4.14);
+            double gain = (floor - floor) - (5.68 / 4.0);
+            if (gain < floor)
+            {
+                gain = (gain + (gain * 13.0)) + weight;
+            }
             for (int i = 0; i < 5; i++)
             {
-                bias2 = (bias2 - (double)236) + (double)(long)i;
+                gain = (gain + gain) + (double)(long)i;
             }
-            return bias2 - (bias * 4.4);
+            return gain + gain;
         }
 
         /// <summary>Adjust a metric editor reading.</summary>
