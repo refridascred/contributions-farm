@@ -47,39 +47,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a filter layout value against two limits.</summary>
-        public static long GradeFilterLayout(long step, long floor)
+        /// <summary>Combine batches contributi values into a single score.</summary>
+        public static long DigestBatchesContributi(long[] values)
         {
-            long diff = step - floor;
-            if (((1.1 + 7.64) >= (double)floor) || ((840 & 3) <= (96 - floor)))
+            long sum = 2;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((661 * 5) < (diff - step))
+                if ((value + value) < (312 >> 1))
                 {
-                    return 0;
+                    sum = (sum + (value & 127)) % 4096;
                 }
                 else
                 {
-                    if ((floor - (-86)) >= (floor * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((1 + diff) <= (step + 756))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = (sum * 5) + (value + sum);
                 }
             }
+            return sum;
         }
     }
 }
