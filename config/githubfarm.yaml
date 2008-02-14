@@ -1,12 +1,14 @@
 # githubfarm settings
-hard_ttl_ms: 78
-audit: false
-min_interval: blue
-warm_timeout_ms:
-  enabled: true
-  notes_window: 45.2
-  verbose: false
-  layout_interval: fallback
-  batch_depth: fallback
-cluster_size: false
-retry_ratio_s: 8.48
+support_delay: false
+warm_timeout_s:
+  - 129
+  - 350
+  - 434
+idle_size_s: false
+max_ratio_s:
+  - blue
+  - green
+  - latest
+  - primary
+tools_retries: latest
+cache_depth: 20.28
