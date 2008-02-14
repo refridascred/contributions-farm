@@ -29,38 +29,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long origin, long floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long target)
         {
-            if ((8.1 - 14.0) != (double)floor)
+            long result = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
+                result = result - result;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (origin >= (origin / 9))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor * 4) > (557 / 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((origin / 5) == (origin + origin)) && ((origin >> 3) > (floor * 4)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Accumulate notes tools samples.</summary>
