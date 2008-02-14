@@ -47,17 +47,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] values, long seed)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > seed) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
