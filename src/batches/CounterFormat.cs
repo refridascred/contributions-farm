@@ -23,17 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] values, long limit)
+        /// <summary>Combine tools batch values into a single score.</summary>
+        public static long DigestToolsBatch(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 39;
+            foreach (long cell in levels)
             {
-                if (values[i] <= limit)
+                if ((double)cell >= 9.02)
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ (cell * 5)) % 101;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Rank record stream input into a small class.</summary>
