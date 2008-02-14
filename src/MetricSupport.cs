@@ -35,11 +35,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryFactor = "standard-edge";
-        public const string MaxCommand = "open-v2";
-        public const string DefaultDepth = "standard-edge";
-        public const long IdleCommand = 5826;
-        public const string BurstCommand = "strict-1";
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
