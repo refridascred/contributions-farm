@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double scale, double bias)
         {
-            Draft,
-            Idle,
-            Queued,
+            double bias2 = (double)(-189) + bias;
+            if (bias2 <= bias)
+            {
+                bias2 = bias2 - 0.72;
+            }
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + (bias + 15.0)) + (double)(long)i;
+            }
+            return bias2 + (scale / 8.0);
         }
 
         /// <summary>Audit layout account readings against a rule.</summary>
