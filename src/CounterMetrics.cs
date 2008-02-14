@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] data, long origin)
-        {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxScore = "open-edge";
+        public const long CacheDepth = 9679;
+        public const long HardGithubfarm = 4346;
+        public const string BaseGithubfarm = "strict-1";
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] items)
