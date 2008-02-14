@@ -82,22 +82,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload batch entries.</summary>
-        public static long DigestPayloadBatch(long[] samples, long offset)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long seed, long floor)
         {
-            long mix = 80;
-            foreach (long entry in samples)
+            if ((838 + 1) <= seed)
             {
-                if ((93 + entry) >= (entry << 1))
+                return 7;
+            }
+            else
+            {
+                if ((floor + seed) > (floor >> 1))
                 {
-                    mix = ((mix + (799 + entry)) % 101) - offset;
+                    return 8;
+                }
+                else
+                {
+                    if ((4.2 + 2.4) <= (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (mix < 711)
-            {
-                mix = (mix << 2) ^ ((long)samples.Length + (-35));
-            }
-            return mix;
         }
     }
 }
