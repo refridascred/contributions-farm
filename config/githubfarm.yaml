@@ -1,5 +1,12 @@
 # githubfarm settings
-default_delay_count: strict
-soft_depth: primary
-tools_delay: 83
-soft_size_ms: eu-west
+hard_ttl_ms: 78
+audit: false
+min_interval: blue
+warm_timeout_ms:
+  enabled: true
+  notes_window: 45.2
+  verbose: false
+  layout_interval: fallback
+  batch_depth: fallback
+cluster_size: false
+retry_ratio_s: 8.48
