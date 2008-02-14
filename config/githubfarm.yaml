@@ -1,11 +1,28 @@
 # githubfarm settings
-profile_interval: eu-west
-default_retries: staging
-readonly: 34.44
-sync_interval_s: legacy
+min_window:
+  readonly: 95.91
+  contributi_capacity: staging
+  burst_size_count: staging
+  hard_ttl_pct: 1024
+  warm_threshold_ms: fallback
+  strict:
+    - eu-west
+    - strict
+default_depth:
+  - 101
+  - 241
+  - 404
+  - 112
+default_limit_pct: false
 audit:
-  readonly: 1
-  max_depth_pct: standard
-  compress: 2303
-  soft_limit_s: false
-batch_depth_pct: 60
+  strict: true
+  hard_delay: true
+  retry_timeout: 50
+  record_timeout:
+    - local
+    - legacy
+  flush_capacity_count: false
+poll_delay_s:
+  - 353
+  - 322
+  - 16
