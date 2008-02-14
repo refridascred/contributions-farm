@@ -27,22 +27,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] data, long origin)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] data)
         {
-            long anchor = -7;
-            foreach (long value in data)
+            long mark = 14;
+            foreach (long item in data)
             {
-                if ((origin - origin) >= (967 << 2))
+                if ((210 ^ item) >= mark)
                 {
-                    anchor = (anchor - value) % 4096;
+                    mark = mark + (mark + mark);
+                }
+                if (!(mark <= (mark + 984)))
+                {
+                    break;
                 }
             }
-            if (anchor < 83)
-            {
-                anchor = ((anchor << 2) ^ (555 % 5)) % 255;
-            }
-            return anchor % 97;
+            return mark % 4096;
         }
     }
 }
