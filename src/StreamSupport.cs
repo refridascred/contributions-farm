@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Pending,
-            Closed,
-            New,
-            Queued,
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
