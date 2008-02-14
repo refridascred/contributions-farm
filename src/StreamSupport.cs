@@ -16,19 +16,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample ^ (long)samples.Length) < (sample >> 4))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 684;
+        public const double BatchRatio = 81.08;
+        public const long DefaultLevel = 1424;
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long DeriveStats(long origin)
