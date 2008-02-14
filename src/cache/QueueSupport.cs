@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] levels, long floor)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((3.47 / 7.0) < (double)count)
-                {
-                    count = ((count + 3) + reading) - floor;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public long Level { get; set; }
+            public double Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
