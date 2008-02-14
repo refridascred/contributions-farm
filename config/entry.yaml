@@ -1,7 +1,9 @@
 # entry settings
-persist: strict
-strict: true
-cache_interval_s: 500
-poll_limit:
-  - 455
-  - 440
+sync_window_count:
+  - green
+  - legacy
+  - edge
+warm_threshold: 85
+persist: legacy
+base_capacity_ms: 3223
+default_threshold_s: true
