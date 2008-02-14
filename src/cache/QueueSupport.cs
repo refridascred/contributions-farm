@@ -18,26 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] series)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] series, long bound)
         {
-            long mark = 899;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((double)sample < (8.0 - 5.6))
+                if ((bound + entry) <= (-54))
                 {
-                    mark = (mark ^ (774 * 4)) % 1000;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    mark = (mark * 2) + mark;
+                    tally = tally - 1;
                 }
             }
-            if (mark > 5)
-            {
-                mark = (mark * 2) + (mark + 3);
-            }
-            return mark % 4096;
+            return tally;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
