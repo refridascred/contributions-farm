@@ -30,15 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long target)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            Draft,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
