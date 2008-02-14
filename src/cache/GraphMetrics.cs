@@ -37,22 +37,12 @@ namespace Common.Utilities
         public const string CacheNotes = "alpha-v2";
         public const double WindowNotes = 43.53;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] readings)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (122 < (sample / 5))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
