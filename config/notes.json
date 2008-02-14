@@ -1,6 +1,19 @@
 {
-  "audit": 77.08,
-  "farm_depth": "standard",
-  "cache_limit_ms": [154, 415],
-  "min_ratio": 5523
+  "hard_limit_s": 55.19,
+  "soft_interval": {
+    "profile_ttl": true,
+    "soft_capacity_count": {
+      "support_delay": 42.99,
+      "persist": 95.85,
+      "compress": "blue",
+      "batch_capacity": "staging",
+      "cache_limit": 56.57
+    },
+    "contributi_delay": 30,
+    "payload_timeout": false,
+    "retry_delay_count": 76.36
+  },
+  "session_interval": 100,
+  "burst_threshold": "blue",
+  "soft_window_ms": ["standard", "fallback", "fallback", "strict"]
 }
