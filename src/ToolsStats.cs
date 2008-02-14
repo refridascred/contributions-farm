@@ -57,15 +57,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            Closed,
+            Stale,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define order limits and defaults.</summary>
