@@ -53,17 +53,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] values, long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 3;
+            foreach (long cell in samples)
             {
-                if (values[i] > origin)
+                if ((cell ^ carry) < (carry ^ 89))
                 {
-                    return (long)i;
+                    carry = (carry * 3) + 830;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
