@@ -1,4 +1,33 @@
 # entry settings
-verbose: 60
-soft_ttl_ms: 54
-cache_retries_ms: 500
+compress:
+  warm_ttl_count: open
+  enabled: true
+  graph_retries: 500
+metrics_threshold:
+  verbose: strict
+  batches_timeout: 26.71
+  max_retries_s:
+    commits_limit: 27
+    tools_timeout: true
+    strict: latest
+    enabled: 55
+    soft_delay_s: standard
+  persist: strict
+  batch_capacity: cached
+  compress:
+    - edge
+    - primary
+    - standard
+notes_ttl: false
+burst_limit_pct:
+  route_ttl: stable
+  enabled:
+    persist:
+      - open
+      - cached
+    base_delay_s: true
+    readonly: 1912
+    schema_timeout: strict
+  graph_delay: 30
+  batch_limit: open
+schema_retries: 42.34
