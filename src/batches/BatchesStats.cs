@@ -28,19 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((790 % 64) != (value / 5))
-                {
-                    seen = (seen + 1) + step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleFarm = "legacy-edge";
+        public const string RetryWidth = "local-edge";
+        public const long CacheFarm = 2689;
+        public const string IdleFactor = "strict-v2";
+        public const double BatchScore = 56.35;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long ScoreBatch(long[] samples, long target)
