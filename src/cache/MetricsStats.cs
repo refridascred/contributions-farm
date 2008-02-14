@@ -56,9 +56,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultBudget = 616;
-        public const string DefaultCommand = "cached-edge";
-        public const long LimitBudget = 1158;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] levels, long floor)
+        {
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
