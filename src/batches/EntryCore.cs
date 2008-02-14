@@ -69,18 +69,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] values)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long total = 40;
-            foreach (long reading in values)
-            {
-                if ((reading >> 5) <= (reading << 1))
-                {
-                    total = (total - (long)values.Length) % 101;
-                }
-            }
-            return total;
+            Pending,
+            Queued,
+            Stale,
+            Done,
         }
     }
 }
