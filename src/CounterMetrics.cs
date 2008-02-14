@@ -42,12 +42,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the session kind values.</summary>
