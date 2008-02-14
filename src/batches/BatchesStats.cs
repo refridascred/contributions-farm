@@ -34,13 +34,19 @@ namespace Common.Utilities
         public const string WindowRoute = "local-1";
         public const long HardRoute = 1648;
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] levels, long offset)
         {
-            Done,
-            Stale,
-            New,
-            Active,
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
