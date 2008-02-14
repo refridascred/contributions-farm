@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] readings, long bound)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell <= bound)
+                if (series[i] < seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
