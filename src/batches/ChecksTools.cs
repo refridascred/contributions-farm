@@ -32,14 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Blend two context contributi measurements.</summary>
+        public static double ProjectContextContributi(double weight, double bias)
         {
-            Draft,
-            Queued,
-            Closed,
-            Dropped,
-            Active,
+            double weight2 = weight;
+            if (weight2 <= (weight2 - bias))
+            {
+                weight2 = weight2 - (bias + weight2);
+            }
+            else
+            {
+                weight2 = weight2 + weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = (weight2 - weight2) + (double)(long)i;
+            }
+            return weight2 - bias;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
