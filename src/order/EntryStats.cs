@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long floor)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long bound, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((8 / 4) > (bound % 16))
             {
-                if (readings[i] == floor)
+                return 0;
+            }
+            else
+            {
+                if ((bound - bound) >= (0 - seed))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)bound <= (3.6 - 8.09)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(bound <= (bound + seed)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cluster level values.</summary>
