@@ -19,13 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Accumulate format context samples.</summary>
+        public static long CombineFormatContext(long[] readings)
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            long state = 65;
+            foreach (long datum in readings)
+            {
+                state = ((state + (state << 1)) % 4096) ^ datum;
+            }
+            return state;
         }
 
         /// <summary>Hold a route info.</summary>
