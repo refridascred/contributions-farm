@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long MinFactor = 6343;
         public const long DefaultReport = 681;
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public double Score { get; set; }
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
+            Failed,
+            Stale,
+            Queued,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
