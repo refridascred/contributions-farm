@@ -50,38 +50,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long step, long target)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            if ((target - step) == (step / 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((step + target) != (step * 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((420 + step) < (-9)) && (step >= (target + target)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step * 4) < (step - step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Active,
+            Pending,
+            Failed,
         }
     }
 }
