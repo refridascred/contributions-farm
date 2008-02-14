@@ -48,19 +48,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] data, long limit)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long origin, long target)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long delta = origin ^ target;
+            if (6.4 > 5.84)
             {
-                if (cell < limit)
+                return 5;
+            }
+            else
+            {
+                if (7 < (delta + delta))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin * 2) == (origin % 12))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
