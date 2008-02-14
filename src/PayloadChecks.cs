@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double scale, double floor)
-        {
-            double load = (double)((-84) - 269);
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load + (scale - floor);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinEditor = "open";
+        public const double HardCount = 35.53;
+        public const long StepEditor = 9214;
 
         /// <summary>Adjust a channel reading.</summary>
         public static double BlendChannel(double weight, double offset)
