@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next channel support value from a seed.</summary>
-        public static long DeriveChannelSupport(long offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    carry = (carry * 3) + ((long)i2 + (long)i2);
-                    carry = (carry - carry) % 97;
-                }
-                carry = ((carry * 2) + (offset + 3)) % 101;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Synced,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
