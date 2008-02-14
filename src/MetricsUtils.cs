@@ -45,11 +45,17 @@ namespace Common.Utilities
         public const double IdleFactor = 18.96;
         public const long LimitNotes = 1876;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 6568;
-        public const double MaxNotes = 59.97;
-        public const double HardDepth = 36.14;
-        public const long StepScore = 6890;
-        public const long BaseSpan = 7126;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
