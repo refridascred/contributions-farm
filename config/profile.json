@@ -1,14 +1,15 @@
 {
-  "dry_run": 2535,
-  "poll_ratio_count": 30,
-  "flush_timeout": "primary",
-  "report_timeout": {
-    "strict": 22.41,
-    "max_size": "standard",
-    "hard_window_count": [362, 53, 311, 432],
-    "verbose": 4002,
-    "commits_capacity": true
+  "base_timeout": true,
+  "retry_retries": {
+    "readonly": "latest",
+    "commits_size": "eu-west",
+    "verbose": "stable",
+    "soft_window": "latest",
+    "queue_capacity": [299, 148, 319, 311],
+    "persist": true
   },
-  "graph_delay": false,
-  "layout_ttl": "eu-west"
+  "warm_capacity_pct": "standard",
+  "session_threshold": 96.33,
+  "dry_run": 3.32,
+  "metrics_size": "cached"
 }
