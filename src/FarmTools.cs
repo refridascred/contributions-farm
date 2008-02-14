@@ -37,22 +37,16 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long origin)
         {
-            long total = 551;
-            foreach (long entry in levels)
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((6.1 / 8.0) < (double)entry)
-                {
-                    total = (total + (entry & 63)) % 65521;
-                }
-                else
-                {
-                    total = (total * 3) + (entry >> 2);
-                }
+                result = (result * 2) + (long)i;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return total;
+            return result;
         }
     }
 }
