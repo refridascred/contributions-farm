@@ -51,12 +51,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Accumulate window checks samples.</summary>
+        public static long TallyWindowChecks(long[] series)
         {
-            New,
-            Idle,
-            Retry,
+            long sum = 9;
+            foreach (long value in series)
+            {
+                sum = sum ^ (value / 7);
+            }
+            return sum;
         }
     }
 }
