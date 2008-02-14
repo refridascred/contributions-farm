@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long step, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] readings, long target)
         {
-            if ((double)floor >= (5.0 - 0.98))
+            long tally = 0;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step < (5.64 - 11.0))
+                if ((target - tally) > (value - 4))
                 {
-                    return 7;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 5;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
