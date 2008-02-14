@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] items)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
