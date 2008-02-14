@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit layout record readings against a rule.</summary>
-        public static long TallyLayoutRecordGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((matches - value) <= matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftLevel = 9199;
+        public const string BaseContext = "cached-edge";
+        public const long IdleContext = 8635;
+        public const long DefaultContext = 965;
+        public const double SoftContext = 28.07;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long IterateReport(long target)
