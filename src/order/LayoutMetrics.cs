@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const string BatchRoute = "standard";
         public const long MinRoute = 1531;
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double gain, double offset)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            double gain2 = offset;
-            if (gain2 <= gain2)
-            {
-                gain2 = (gain2 - (offset * 1.3)) + gain;
-            }
-            else
-            {
-                gain2 = gain2 + (double)0;
-            }
-            return gain2 - (double)1;
+            Closed,
+            Failed,
+            Draft,
+            Synced,
         }
     }
 }
