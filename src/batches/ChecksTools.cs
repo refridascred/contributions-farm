@@ -38,17 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] readings, long step)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] levels, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 53;
+            foreach (long item in levels)
             {
-                if (readings[i] <= step)
+                if ((47 << 2) <= (item + item))
                 {
-                    return (long)i;
+                    acc = ((acc ^ (item ^ acc)) % 101) - step;
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Define report limits and defaults.</summary>
