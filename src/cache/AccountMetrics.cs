@@ -44,13 +44,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long limit, long seed)
         {
-            Draft,
-            Stale,
-            Ready,
-            Failed,
+            if ((seed > (seed + limit)) || ((limit * 4) <= (seed << 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (limit <= 44)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
