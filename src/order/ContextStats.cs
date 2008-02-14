@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const string BurstFormat = "legacy";
         public const long BurstRatio = 7804;
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double gain, double offset)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            double ratio = offset + 3.0;
-            if (ratio > offset)
-            {
-                ratio = (ratio + (ratio * 4.0)) - gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (ratio / 9.0)) + (double)(long)i;
-            }
-            return ratio + (double)4;
+            public string Region { get; set; } = "";
+            public bool Total { get; set; }
+            public double Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
