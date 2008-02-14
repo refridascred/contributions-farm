@@ -35,19 +35,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] samples, long bound)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Level { get; set; }
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate editor buffer samples.</summary>
