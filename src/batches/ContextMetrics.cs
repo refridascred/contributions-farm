@@ -35,13 +35,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            public bool Score { get; set; }
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Check that every buffer tools entry stays within the limit.</summary>
