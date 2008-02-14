@@ -1,5 +1,7 @@
 # githubfarm settings
-strict: local
-channel_interval: 5613
-soft_size: 60
-persist: 5516
+batch_delay_ms: edge
+readonly: primary
+hard_capacity_ms: true
+min_delay_pct:
+  - eu-west
+  - strict
