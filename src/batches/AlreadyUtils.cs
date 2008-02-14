@@ -74,32 +74,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long offset, long origin)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            long offset2 = offset + origin;
-            if (((offset2 - offset) != (origin % 60)) && ((origin << 3) >= origin))
+            long score = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                score = ((score * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((origin ^ offset2) >= origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset2 + offset) <= 62)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
