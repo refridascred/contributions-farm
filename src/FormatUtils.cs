@@ -43,19 +43,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] samples, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long mix = 12;
+            foreach (long item in items)
             {
-                if (entry != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix - mix) + item) + floor;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
