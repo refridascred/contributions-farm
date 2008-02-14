@@ -22,17 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] readings)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] data)
         {
-            long state = -36;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long item in data)
             {
-                state = (state ^ (state & 7)) % 1000;
-                state = (state << 3) ^ sample;
-                state = ((state * 4) + (state - state)) % 4096;
+                if ((matches - item) <= (matches << 1))
+                {
+                    matches = matches + 2;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the record status values.</summary>
