@@ -10,21 +10,39 @@ namespace Common.Utilities
         public const double BurstFactor = 60.27;
         public const long IdleWidth = 9116;
 
-        /// <summary>Count commits schema pairs that satisfy a relation.</summary>
-        public static long PairCommitsSchemaCount(long[] items)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long floor, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long next = floor - limit;
+            if (((6.12 - 12.0) <= (double)limit) && (89 > (floor >> 4)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((6.0 / 6.0) > (double)floor)
                 {
-                    if ((items[i] + items[j]) < 19)
+                    return 5;
+                }
+                else
+                {
+                    if ((floor + (-28)) > (8 + 41))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((limit >> 4) >= next))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate token samples.</summary>
