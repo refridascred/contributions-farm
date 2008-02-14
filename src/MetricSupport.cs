@@ -34,11 +34,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CacheDepth = "local-v2";
-        public const string BurstTimeout = "strict-1";
-        public const long WindowPayload = 6614;
-        public const string BaseDepth = "strict";
-        public const long MinPayload = 379;
+        /// <summary>Locate a record account reading by value.</summary>
+        public static long FindRecordAccountIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > seed) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
