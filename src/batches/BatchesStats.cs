@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long CacheScore = 7371;
         public const long BaseWidth = 1542;
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] data, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 3;
+            foreach (long datum in data)
             {
-                if (data[i] >= origin)
+                if ((mix * 5) <= (mix ^ 2))
                 {
-                    return (long)i;
+                    mix = ((mix - mix) % 65521) ^ datum;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
