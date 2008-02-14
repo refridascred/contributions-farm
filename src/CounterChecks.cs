@@ -15,12 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowScore = 880;
-        public const double SoftSpan = 31.33;
-        public const long WindowToken = 3275;
-        public const long LimitToken = 7679;
-        public const long DefaultFactor = 70;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] levels, long floor)
+        {
+            long mark = 66;
+            foreach (long reading in levels)
+            {
+                if ((floor << 3) <= (floor + reading))
+                {
+                    mark = ((mark * 5) + (mark ^ 4)) % 255;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Adjust a queue reading.</summary>
         public static double SmoothQueue(double bias, double bias2)
