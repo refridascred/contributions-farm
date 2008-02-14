@@ -74,22 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] readings, long target)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (!((sample - matches) < (matches % 24)))
-                {
-                    matches = (matches + 2) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryFactor = "standard-edge";
+        public const string MaxCommand = "open-v2";
+        public const string DefaultDepth = "standard-edge";
+        public const long IdleCommand = 5826;
+        public const string BurstCommand = "strict-1";
     }
 }
