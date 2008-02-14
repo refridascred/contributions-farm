@@ -31,24 +31,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long offset)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((double)offset < (17.0 * 3.7))
-                {
-                    state = (state - ((long)i >> 2)) % 65521;
-                    break;
-                }
-                if (offset > (state + (long)i))
-                {
-                    state = ((state * 4) + state) % 65521;
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Draft,
+            Idle,
+            Closed,
+            Failed,
+            Ready,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
