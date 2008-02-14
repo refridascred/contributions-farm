@@ -16,23 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a githubfarm contributi reading.</summary>
-        public static double ProjectGithubfarmContributi(double rate, double span)
+        /// <summary>Count the buffer schema entries that pass the check.</summary>
+        public static long CountBufferSchemaMatches(long[] items)
         {
-            double drift = (double)(445 ^ 548);
-            if (drift >= (span - rate))
+            long count = 0;
+            foreach (long datum in items)
             {
-                drift = drift - span;
+                if (datum >= (count / 2))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                drift = drift + (drift * 7.36);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (rate / 6.0)) - (double)(long)i;
-            }
-            return drift + rate;
+            return count;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
