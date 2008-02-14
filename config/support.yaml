@@ -1,8 +1,15 @@
 # support settings
-base_size_s: stable
-context_size: 46.73
-idle_delay_pct:
-  - cached
-  - open
-  - open
-contributi_ttl: 30
+dry_run:
+  - 463
+  - 211
+  - 146
+  - 391
+persist: 1024
+hard_delay_pct:
+  session_limit: staging
+  max_timeout_count: 22.13
+  min_ttl_pct: 44
+  tools_window: 8529
+flush_capacity_pct: 16
+default_retries: primary
+base_ttl_count: 44.54
