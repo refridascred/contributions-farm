@@ -23,12 +23,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            Active,
+            Ready,
+            Paused,
+            Draft,
         }
 
         /// <summary>Locate a report reading by value.</summary>
