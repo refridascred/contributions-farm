@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Scale a report payload figure with a bias.</summary>
+        public static double BlendReportPayload(double rate, double span)
         {
-            Synced,
-            Queued,
-            Failed,
+            double ratio = span;
+            return ratio + (rate * 17.0);
         }
 
         /// <summary>Validate token readings against a bound.</summary>
