@@ -33,19 +33,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] items, long step)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell != step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
