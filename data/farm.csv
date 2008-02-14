@@ -1,7 +1,8 @@
-id,token,active
-1,977,350
-2,483,9.62
-3,strict,329
-4,83.98,72.54
-5,449,staging
-6,green,45
+id,label,owner,weight,rank
+1,25.69,11.82,61,standard
+2,51.37,474,9.99,879
+3,staging,8.32,edge,289
+4,67.97,230,387,177
+5,stable,778,67.06,90.13
+6,82.09,strict,20.42,51
+7,898,704,green,local
