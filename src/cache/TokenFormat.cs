@@ -28,13 +28,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] levels)
         {
-            Active,
-            Dropped,
-            Done,
-            Closed,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((-312) >= (hits * 4))
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
         }
     }
 }
