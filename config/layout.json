@@ -1,16 +1,17 @@
 {
-  "readonly": 30,
-  "default_retries_pct": "standard",
-  "poll_ttl_s": {
-    "filter_threshold": true,
-    "hard_window": [82, 449],
-    "enabled": {
-      "cache_interval": false,
-      "sync_window": 73,
-      "graph_delay": true,
-      "commits_delay": 57.95
-    },
-    "persist": 9
+  "min_ratio_pct": "legacy",
+  "retry_delay_pct": 50.19,
+  "min_retries_pct": {
+    "hard_interval_count": 500,
+    "retry_timeout_count": ["staging", "staging"],
+    "command_timeout": 7489,
+    "batches_depth": false,
+    "editor_retries": 51.1
   },
-  "audit": false
+  "flush_retries_count": 8959,
+  "payload_ttl": {
+    "warm_timeout_count": 60,
+    "audit": "legacy",
+    "poll_depth_s": [12, 71, 358, 199]
+  }
 }
