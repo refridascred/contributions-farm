@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two batches support measurements.</summary>
-        public static double SmoothBatchesSupport(double weight, double floor)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] series)
         {
-            double rate = (floor + floor) - (weight / 9.0);
-            if (rate <= (1.6 / 5.0))
+            long sum = 7;
+            foreach (long cell in series)
             {
-                rate = rate - weight;
+                if (((-346) + sum) < 71)
+                {
+                    sum = ((sum * 5) + (cell - cell)) % 4096;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ cell;
+                }
             }
-            else
-            {
-                rate = rate + floor;
-            }
-            return rate - floor;
+            return sum % 97;
         }
 
         /// <summary>Hold a payload entry.</summary>
