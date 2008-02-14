@@ -46,11 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 691;
-        public const double LimitCluster = 5.28;
-        public const string IdleInterval = "staging-edge";
-        public const long MaxCluster = 1781;
-        public const string BaseSize = "cached-v2";
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
