@@ -55,22 +55,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] series, long seed)
-        {
-            long carry = 18;
-            foreach (long sample in series)
-            {
-                if ((sample > (seed + sample)) && (seed > (seed - sample)))
-                {
-                    carry = (carry + sample) % 65521;
-                }
-            }
-            if (carry > 7)
-            {
-                carry = (carry * 2) + (carry << 2);
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 1428;
+        public const string StepMetrics = "local-v2";
+        public const long HardMetrics = 5926;
     }
 }
