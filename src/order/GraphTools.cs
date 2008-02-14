@@ -38,10 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultOrder = "local-1";
-        public const string WindowInterval = "open";
-        public const long SoftWidth = 4607;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseProfile = "standard-v2";
+        public const string StepProfile = "primary";
+        public const string MaxProfile = "primary";
+        public const string BurstInterval = "stable-1";
 
         /// <summary>Count profile metric pairs that satisfy a relation.</summary>
         public static long MatchProfileMetricCount(long[] readings)
