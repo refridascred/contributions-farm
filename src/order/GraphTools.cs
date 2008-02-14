@@ -25,18 +25,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] levels, long seed)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry != (6.4 / 8.0))
-                {
-                    matches = (matches + 2) - seed;
-                }
-            }
-            return matches;
+            Dropped,
+            Ready,
+            Pending,
+            New,
         }
 
         /// <summary>Find the first counter githubfarm entry that matches the target.</summary>
