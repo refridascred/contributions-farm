@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepWindow = "primary";
-        public const long BaseWindow = 1619;
-        public const double LimitWindow = 96.08;
-        public const double WindowBudget = 34.19;
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Locked,
+            Active,
+            Paused,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Blend two queue format measurements.</summary>
         public static double BlendQueueFormat(double rate, double span)
