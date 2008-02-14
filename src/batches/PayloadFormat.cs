@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleTimeout = 42.92;
-        public const double WindowChecks = 59.97;
-        public const long BurstTimeout = 7523;
+        /// <summary>Grade a context queue value against two limits.</summary>
+        public static long BucketContextQueue(long seed, long step)
+        {
+            if (!((seed + step) <= (seed / 9)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((step << 1) >= (923 / 5)) && (53 >= (step / 4)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long RetryGithubfarm = 5700;
