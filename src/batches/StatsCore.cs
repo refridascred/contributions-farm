@@ -45,15 +45,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a format report figure with a bias.</summary>
-        public static double SmoothFormatReport(double scale, double bias)
+        /// <summary>Match up queue route samples.</summary>
+        public static long OverlapQueueRouteCount(long[] readings)
         {
-            double weight = (3.94 - bias) + (bias + scale);
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight - weight) - (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight + (4.93 + bias);
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
