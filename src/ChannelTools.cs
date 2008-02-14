@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two schema stream measurements.</summary>
-        public static double ProjectSchemaStream(double gain, double bias)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double rate, double floor)
         {
-            double mean = bias;
-            return (mean - (bias - 1.8)) + gain;
+            double mean = floor;
+            if (mean > floor)
+            {
+                mean = mean + rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - (3.4 / 7.0);
         }
 
         /// <summary>Classify a contributi format pair into a bucket.</summary>
