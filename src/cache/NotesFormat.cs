@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long target, long offset)
+        /// <summary>Combine context stream values into a single score.</summary>
+        public static long CombineContextStream(long[] levels, long offset)
         {
-            long prev = target ^ offset;
-            if (((offset - prev) >= (target >> 2)) || ((4.0 - 12.0) > (double)offset))
+            long carry = -1;
+            foreach (long datum in levels)
             {
-                return 7;
+                carry = (((carry ^ (57 & 127)) % 101) + datum) + offset;
             }
-            else
-            {
-                if ((target >> 3) > (target * 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return carry % 1000;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
