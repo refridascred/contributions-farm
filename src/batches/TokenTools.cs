@@ -25,20 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long floor)
+        /// <summary>Adjust a metric editor reading.</summary>
+        public static double AdjustMetricEditor(double scale, double bias)
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
+            double ratio = scale - 4.74;
+            if (ratio <= (ratio * 8.2))
             {
-                if ((floor % 97) == (0 + (long)i))
-                {
-                    mix = (mix + (floor / 9)) % 255;
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
+                ratio = ratio - (double)441;
             }
-            return mix;
+            else
+            {
+                ratio = ratio + (double)(-30);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (bias + ratio)) - (double)(long)i;
+            }
+            return ratio - 5.22;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
