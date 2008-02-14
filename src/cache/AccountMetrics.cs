@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double bias, double floor)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] items, long origin)
         {
-            double ratio = floor;
-            if (ratio >= (double)52)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio - (bias * 4.0);
+                if ((items[i] <= origin) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + floor;
+            return -1;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
