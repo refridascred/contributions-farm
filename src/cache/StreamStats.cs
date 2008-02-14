@@ -12,12 +12,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardSpan = 13.9;
-        public const long DefaultStream = 9700;
-        public const double BaseStream = 10.37;
-        public const long BurstTimeout = 3371;
-        public const string StepStream = "latest-edge";
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public double Flag { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadBounds(long[] data, long step)
