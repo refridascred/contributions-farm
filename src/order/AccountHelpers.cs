@@ -36,15 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double rate, double bias)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] samples)
         {
-            double mean = rate;
-            if (mean < (double)3)
+            long count = 0;
+            foreach (long value in samples)
             {
-                mean = mean + (double)495;
+                if (((44 - 3) <= count) && ((value << 2) <= (count * 2)))
+                {
+                    count = count + 2;
+                }
             }
-            return mean - bias;
+            return count;
         }
 
         /// <summary>Describe the stats phase values.</summary>
