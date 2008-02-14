@@ -33,18 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] series)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long limit)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long score = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (item <= 86)
-                {
-                    matches = matches + 3;
-                }
+                score = score + (score >> 4);
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
