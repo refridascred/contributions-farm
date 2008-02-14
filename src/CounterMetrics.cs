@@ -10,16 +10,10 @@ namespace Common.Utilities
         public const string StepBatches = "legacy-1";
         public const double LimitBatches = 38.13;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] items)
-        {
-            long anchor = 9;
-            foreach (long item in items)
-            {
-                anchor = ((anchor ^ anchor) % 65521) - item;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftLevel = 6782;
+        public const double CacheFactor = 77.26;
+        public const long BaseReport = 5133;
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ProjectCache(double scale, double span)
