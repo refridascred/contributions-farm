@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] series)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long sum = 891;
-            foreach (long sample in series)
-            {
-                if ((double)sample >= (double)(long)series.Length)
-                {
-                    sum = (sum * 4) + (sample / 5);
-                }
-            }
-            return sum % 1000;
+            Paused,
+            Idle,
+            Queued,
         }
 
         /// <summary>Describe the order kind values.</summary>
