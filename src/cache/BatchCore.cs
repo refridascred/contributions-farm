@@ -20,19 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] values, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] items)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (datum >= origin)
+                if (entry <= ((-24) - entry))
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Combine format values into a single score.</summary>
