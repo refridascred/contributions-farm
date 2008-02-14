@@ -35,19 +35,13 @@ namespace Common.Utilities
         public const string IdleFactor = "strict-v2";
         public const double BatchScore = 56.35;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] samples, long target)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long mix = -230;
-            foreach (long datum in samples)
-            {
-                mix = (mix << 2) ^ (datum - target);
-            }
-            if (mix > 1)
-            {
-                mix = (mix + (target / 4)) % 4096;
-            }
-            return mix % 1000;
+            public double Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public double Token { get; set; }
         }
     }
 }
