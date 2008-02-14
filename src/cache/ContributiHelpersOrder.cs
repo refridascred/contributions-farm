@@ -20,13 +20,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Grade a editor profile value against two limits.</summary>
+        public static long BucketEditorProfile(long limit, long origin)
         {
-            Done,
-            Active,
-            New,
-            Paused,
+            if ((limit ^ origin) < origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin / 2) < limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a filter options.</summary>
