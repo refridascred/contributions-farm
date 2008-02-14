@@ -72,12 +72,22 @@ namespace Common.Utilities
         public const long BaseLevel = 3817;
         public const long WindowStream = 8465;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Count the channel buffer entries that pass the check.</summary>
+        public static long CountChannelBufferMatches(long[] samples)
         {
-            Pending,
-            Done,
-            Queued,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((8.13 + 12.0) >= (double)value)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
