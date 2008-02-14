@@ -1,14 +1,7 @@
 # entry settings
-max_ratio_pct: 46.49
-hard_ttl:
-  soft_retries:
-    verbose: 500
-    warm_window: 4935
-    max_depth_ms: 97.66
-  contributi_delay: 65
-  cache_ratio_count: true
-  graph_delay: true
-  burst_size_ms: 75.41
-cache_window: 1024
-base_size: false
-idle_timeout_ms: local
+idle_limit:
+  idle_depth: true
+  sync_size: 11
+  compress: staging
+default_size: 96.22
+sync_size_ms: 4337
