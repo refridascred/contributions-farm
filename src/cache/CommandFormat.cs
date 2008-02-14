@@ -14,11 +14,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepInterval = 8237;
-        public const long RetryTimeout = 8588;
-        public const long CacheNotes = 6692;
-        public const long MinLevel = 2121;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Done,
+            Synced,
+            Failed,
+            New,
+            Stale,
+        }
 
         /// <summary>Adjust a window reading.</summary>
         public static double BlendWindow(double weight, double bias)
