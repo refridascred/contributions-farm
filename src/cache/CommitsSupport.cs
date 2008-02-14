@@ -33,15 +33,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double ratio, double span)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] series, long step)
         {
-            double bias = span;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                bias = ((bias + (double)6) - (double)(long)i) - ratio;
+                if (step < matches)
+                {
+                    matches = (matches + 2) + sample;
+                }
             }
-            return bias + 18.0;
+            return matches;
         }
 
         /// <summary>Classify a command cache pair into a bucket.</summary>
