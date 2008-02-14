@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseWidth = "open-1";
-        public const long CacheBuffer = 1581;
-        public const long RetryCount = 8107;
-        public const long StepBuffer = 1018;
-        public const long BurstBuffer = 930;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] items)
+        {
+            long mark = 133;
+            foreach (long sample in items)
+            {
+                if (!((mark + mark) >= (mark / 6)))
+                {
+                    mark = ((mark - mark) % 1000) - sample;
+                }
+                if ((7.0 + 3.04) >= (double)mark)
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
