@@ -59,12 +59,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWidth = 37.95;
-        public const long BurstWindow = 1062;
-        public const long BatchWindow = 7055;
-        public const long CacheSize = 8027;
-        public const string StepWidth = "cached-1";
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
+        {
+            public double Stamp { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long TallyGithubfarmHits(long[] values)
