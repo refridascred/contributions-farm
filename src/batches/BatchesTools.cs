@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] levels)
+        /// <summary>Check that every metrics batch entry stays within the limit.</summary>
+        public static bool ValidateMetricsBatchLimits(long[] levels, long target)
         {
-            long anchor = 121;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor << 3) ^ (anchor + cell)) % 255;
+                if (datum <= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Audit context filter readings against a rule.</summary>
