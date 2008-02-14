@@ -22,10 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftLevel = 6782;
-        public const double CacheFactor = 77.26;
-        public const long BaseReport = 5133;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 4509;
+        public const long MaxFarm = 6880;
+        public const string BaseFarm = "cached";
+        public const long IdleFarm = 9309;
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
