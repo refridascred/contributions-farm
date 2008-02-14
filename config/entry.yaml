@@ -1,10 +1,11 @@
 # entry settings
-base_size_count: 28
-poll_depth_ms: 53
-min_ttl_count:
-  - 205
-  - 261
-  - 99
-  - 489
-strict: 43.66
-compress: staging
+record_timeout: fallback
+min_retries: true
+burst_size:
+  - cached
+  - fallback
+  - latest
+warm_depth:
+  - fallback
+  - cached
+  - staging
