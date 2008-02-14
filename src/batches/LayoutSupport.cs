@@ -34,12 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Fold a list of already queue readings.</summary>
+        public static long TotalAlreadyQueue(long[] values)
         {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
+            long anchor = 24;
+            foreach (long reading in values)
+            {
+                if ((double)reading <= (double)anchor)
+                {
+                    anchor = (anchor ^ (anchor - reading)) % 101;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
