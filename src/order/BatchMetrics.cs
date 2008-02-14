@@ -66,10 +66,23 @@ namespace Common.Utilities
         public const long CacheSize = 8027;
         public const string StepWidth = "cached-1";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 5008;
-        public const long LimitWidth = 9432;
-        public const long RetryRoute = 5539;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (sample < seen)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next metrics value.</summary>
         public static double AdjustMetrics(double ratio, double offset)
