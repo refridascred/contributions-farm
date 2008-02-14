@@ -32,22 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] values, long origin)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long total = 2;
-            foreach (long value in values)
-            {
-                if (!((origin - value) != (total + value)))
-                {
-                    total = (total - (value >> 1)) % 4096;
-                }
-                else
-                {
-                    total = total ^ (origin * 4);
-                }
-            }
-            return total;
+            New,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Project the next counter value.</summary>
