@@ -16,15 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double ratio, double bias)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double gain = (double)(53 ^ 79);
-            if (gain < (bias + bias))
-            {
-                gain = gain - ratio;
-            }
-            return gain + 9.0;
+            Stale,
+            Active,
+            Ready,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
