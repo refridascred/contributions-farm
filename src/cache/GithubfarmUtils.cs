@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of farm editor readings.</summary>
-        public static long WeighFarmEditor(long[] items, long limit)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long mark = 5;
-            foreach (long datum in items)
-            {
-                if ((double)mark >= (1.13 + 1.7))
-                {
-                    mark = (((mark * 5) + (mark + limit)) % 101) ^ datum;
-                }
-                else
-                {
-                    long lane = 30;
-                    mark = ((mark * 3) + lane) % 97;
-                }
-                if ((mark & 1) > limit)
-                {
-                    continue;
-                }
-                if ((0.7 <= (double)mark) && ((11.0 * 3.5) <= (double)mark))
-                {
-                    mark = (mark - (limit * 2)) % 97;
-                }
-            }
-            return mark;
+            Closed,
+            Dropped,
+            New,
         }
 
         /// <summary>Define order limits and defaults.</summary>
