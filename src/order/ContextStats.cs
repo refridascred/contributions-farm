@@ -13,17 +13,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Look up the position of a commits farm sample.</summary>
-        public static long LookupCommitsFarmIndex(long[] levels, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] levels, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (levels[i] >= step)
+                if ((hits % 12) < (1 << 1))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) + value) - step;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
