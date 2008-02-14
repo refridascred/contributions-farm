@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank batch counter input into a small class.</summary>
-        public static long GradeBatchCounter(long seed, long seed2)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] data, long seed)
         {
-            if (seed < (seed2 << 2))
+            long seen = 0;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed2 & 31) >= ((-575) << 2))
+                if ((7.86 * 7.3) >= (double)seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    seen = (seen + 3) - sample;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a session summary.</summary>
