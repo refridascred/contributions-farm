@@ -75,18 +75,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] series)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample * 4) < (count + 0))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the notes level values.</summary>
