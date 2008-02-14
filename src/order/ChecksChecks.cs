@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double ratio, double offset)
+        /// <summary>Validate report route readings against a bound.</summary>
+        public static bool GuardReportRouteLimits(long[] values, long target)
         {
-            double load = offset;
-            return (load - offset) + ratio;
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of record readings.</summary>
