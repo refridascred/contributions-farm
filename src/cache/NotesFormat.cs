@@ -33,12 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Audit command metric readings against a rule.</summary>
+        public static long AuditCommandMetricHits(long[] samples)
         {
-            Paused,
-            Ready,
-            Closed,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((double)hits != (double)733)
+                {
+                    hits = (hits + 3) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
