@@ -41,31 +41,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long offset, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] values)
         {
-            if ((seed - seed) <= 5)
+            long state = 59;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed / 3) <= (offset << 3))
+                if ((9.61 * 7.87) >= (double)reading)
                 {
-                    return 6;
+                    state = ((state * 3) + state) % 101;
+                    state = (state * 3) + (state / 5);
                 }
-                else
+                state = (state * 3) + (state + state);
+                if (((8.4 / 2.0) < (double)state) || ((reading - state) >= ((-2) + reading)))
                 {
-                    if ((3.62 + 5.01) == (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Accumulate window samples.</summary>
