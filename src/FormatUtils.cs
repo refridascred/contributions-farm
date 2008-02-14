@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long StepProfile = 7969;
         public const double SoftSize = 31.73;
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long total = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Idle,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a window snapshot.</summary>
