@@ -15,22 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] data)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!(((hits & 255) < (hits + reading)) || ((hits * 3) != (hits - 3))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Roll a format buffer counter forward.</summary>
