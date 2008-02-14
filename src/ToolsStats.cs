@@ -68,11 +68,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 1888;
+        public const long WindowCount = 3679;
+        public const double BurstOrder = 89.39;
+        public const long HardSize = 8757;
+        public const long BatchScore = 557;
     }
 }
