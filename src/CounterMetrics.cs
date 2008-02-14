@@ -56,12 +56,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
-            public double Region { get; set; }
+            Idle,
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the session kind values.</summary>
