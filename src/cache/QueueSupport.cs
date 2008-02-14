@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a buffer cluster value against two limits.</summary>
-        public static long ClassifyBufferCluster(long seed, long target)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double bias, double offset)
         {
-            long offset = seed + target;
-            if (97 < (seed % 12))
-            {
-                return 5;
-            }
-            else
-            {
-                if (seed >= (offset + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((8 ^ target) == (468 >> 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            double gain = (double)(60 + 8);
+            return ((gain - (double)72) + bias) + offset;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
