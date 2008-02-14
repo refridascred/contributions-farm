@@ -32,17 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] samples, long target)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < target) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Draft,
+            Done,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a notes entry.</summary>
