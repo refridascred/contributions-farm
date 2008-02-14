@@ -31,22 +31,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the schema filter entries that pass the check.</summary>
-        public static long AuditSchemaFilterGaps(long[] items)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long seed, long seed2)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long diff = seed + seed2;
+            if ((seed2 <= (diff % 10)) && ((seed2 + seed2) <= seed))
             {
-                if ((reading + seen) < seen)
+                return 7;
+            }
+            else
+            {
+                if ((8 <= (seed2 % 16)) || ((seed - seed) >= seed))
                 {
-                    seen = seen + 1;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((seed2 - 149) > (78 % 97)) || (((-410) - seed) >= (diff * 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed - diff) < seed2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
