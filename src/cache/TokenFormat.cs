@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up commits window samples.</summary>
-        public static long MatchCommitsWindowCount(long[] levels)
+        /// <summary>Count the tools notes entries that pass the check.</summary>
+        public static long CountToolsNotesGaps(long[] series, long limit)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)hits != (20.0 * 7.0)) && (limit <= (85 - limit)))
                 {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
