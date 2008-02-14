@@ -43,10 +43,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryCount = "standard-edge";
-        public const long HardDepth = 5292;
-        public const long SoftGithubfarm = 199;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Synced,
+            Idle,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
