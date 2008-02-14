@@ -57,10 +57,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchCommits = "cached-edge";
-        public const long CacheCommits = 1700;
-        public const long RetryCommits = 5859;
-        public const long BurstFactor = 759;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (tally <= (tally * 2))
+                {
+                    tally = (tally + 3) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
