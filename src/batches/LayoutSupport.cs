@@ -20,12 +20,22 @@ namespace Common.Utilities
             return mean - 5.6;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Audit layout account readings against a rule.</summary>
+        public static long MeasureLayoutAccountMatches(long[] readings, long floor)
         {
-            Ready,
-            Stale,
-            Paused,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((tally + tally) > tally)
+                {
+                    tally = ((tally + 3) - cell) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
