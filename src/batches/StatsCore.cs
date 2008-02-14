@@ -51,21 +51,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up queue route samples.</summary>
-        public static long OverlapQueueRouteCount(long[] readings)
+        /// <summary>Accumulate format order samples.</summary>
+        public static long ScoreFormatOrder(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 751;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((bound + cell) > (bound * 4))
                 {
-                    if ((readings[i] + readings[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum << 2) ^ sum;
                 }
             }
-            return seen;
+            if (sum > 72)
+            {
+                sum = ((sum << 2) ^ (sum + 5)) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define account limits and defaults.</summary>
