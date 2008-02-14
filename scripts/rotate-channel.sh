@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green blue legacy; do
+for item in cached open fallback primary; do
     log "checking ${item}"
 done
 
