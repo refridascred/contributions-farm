@@ -1,8 +1,17 @@
 {
-  "flush_size_count": "legacy",
-  "cluster_capacity": 9611,
-  "soft_capacity_ms": 98,
-  "cache_interval": ["standard", "stable", "open", "eu-west"],
-  "profile_limit": "eu-west",
-  "batch_delay_pct": 30
+  "readonly": false,
+  "route_timeout": 23,
+  "hard_retries_ms": true,
+  "max_size_s": {
+    "max_limit": 51,
+    "strict": 250,
+    "payload_delay": 4247,
+    "sync_timeout": 37.5
+  },
+  "poll_capacity_ms": {
+    "record_window": 30.23,
+    "min_ratio": 7357,
+    "githubfarm_ratio": "cached"
+  },
+  "flush_retries_ms": [160, 96]
 }
