@@ -1,13 +1,4 @@
 # support settings
-buffer_capacity: legacy
-strict:
-  - 90
-  - 262
-buffer_retries:
-  max_size: cached
-  batch_window_pct: 43
-  flush_threshold: open
-  contributi_ratio: strict
-  soft_ttl_ms: 58
-  min_delay_ms: 3145
-base_depth_ms: 88.32
+batch_timeout_pct: eu-west
+burst_timeout_count: 5304
+burst_interval_s: true
