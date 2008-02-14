@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 7771;
-        public const double BurstFactor = 60.27;
-        public const long IdleWidth = 9116;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 2198;
+        public const long RetryLevel = 6049;
+        public const string LimitDepth = "local-edge";
+        public const long BurstRatio = 8762;
 
         /// <summary>Adjust a batch token reading.</summary>
         public static double BlendBatchToken(double bias, double floor)
