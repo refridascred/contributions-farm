@@ -27,19 +27,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate channel command readings against a bound.</summary>
-        public static bool GuardChannelCommandLimits(long[] items, long bound)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long floor)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return flag;
+            return mark;
         }
     }
 }
