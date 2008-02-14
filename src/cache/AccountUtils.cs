@@ -23,15 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] readings, long floor)
+        /// <summary>Match up layout commits samples.</summary>
+        public static long OverlapLayoutCommitsCount(long[] readings)
         {
             long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry ^ floor) <= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((readings[i] + readings[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
