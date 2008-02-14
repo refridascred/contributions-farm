@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] readings, long target)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (sample <= target)
+                if (entry > floor)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Rank route metric input into a small class.</summary>
