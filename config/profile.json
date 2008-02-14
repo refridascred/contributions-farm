@@ -1,6 +1,5 @@
 {
-  "strict": 6080,
-  "already_window": "latest",
-  "retry_window_count": "blue",
-  "hard_timeout_ms": "open"
+  "hard_ratio": 18.01,
+  "idle_interval_pct": 31,
+  "retry_delay": "green"
 }
