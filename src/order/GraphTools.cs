@@ -48,13 +48,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Count profile metric pairs that satisfy a relation.</summary>
+        public static long MatchProfileMetricCount(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public bool Size { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
