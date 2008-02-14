@@ -29,13 +29,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] values, long seed)
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first support batch entry that matches the target.</summary>
