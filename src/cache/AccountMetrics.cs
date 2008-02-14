@@ -122,13 +122,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
-        {
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxEditor = 15.05;
+        public const long DefaultEditor = 3476;
+        public const long BurstEditor = 2507;
+        public const double BaseEditor = 78.84;
+        public const long CacheTimeout = 5036;
     }
 }
