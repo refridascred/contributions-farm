@@ -18,31 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] series, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] levels, long bound)
         {
-            long acc = 672;
-            foreach (long item in series)
+            long acc = 61;
+            foreach (long item in levels)
             {
-                if (((acc - acc) > (bound + 305)) && ((96 + 539) <= (acc + acc)))
+                acc = ((acc - acc) % 65521) ^ item;
+                if (acc > (long)levels.Length)
                 {
-                    acc = ((acc << 2) ^ (acc ^ item)) % 97;
-                }
-                if ((acc - acc) <= (90 >> 1))
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (acc % 3);
-                    acc = acc ^ (bound * 4);
-                }
-                if (bound <= (bound >> 5))
-                {
-                    acc = ((acc * 5) + bound) % 4096;
+                    acc = (acc ^ (acc * 3)) % 255;
                 }
             }
-            return acc;
+            if (acc < 21)
+            {
+                acc = ((acc * 2) + (bound + acc)) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
