@@ -51,13 +51,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
+            Draft,
+            New,
             Paused,
-            Ready,
-            Queued,
-            Locked,
+            Done,
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
