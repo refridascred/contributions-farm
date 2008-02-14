@@ -24,19 +24,21 @@ namespace Common.Utilities
         public const string WindowRoute = "local-1";
         public const long HardRoute = 1648;
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] levels, long offset)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long floor)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long sum = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (value <= offset)
+                sum = sum ^ 21;
+                if ((floor & 7) != ((long)i ^ sum))
                 {
-                    ready = false;
-                    break;
+                    sum = (sum * 5) + sum;
+                    sum = sum + (floor % 16);
                 }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return ready;
+            return sum;
         }
     }
 }
