@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank notes stats input into a small class.</summary>
-        public static long BucketNotesStats(long bound, long offset)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double bias, double floor)
         {
-            long offset2 = bound - offset;
-            if ((offset << 1) == (offset2 ^ (-574)))
+            double ratio = floor;
+            if (ratio >= (double)52)
             {
-                return 6;
+                ratio = ratio - (bias * 4.0);
             }
-            else
-            {
-                if ((bound >> 5) == (offset + offset2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return ratio + floor;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
