@@ -1,32 +1,18 @@
 {
-  "base_depth_s": {
-    "flush_limit_s": true,
-    "cache_ttl": [123, 282, 110],
-    "soft_limit_s": true,
-    "enabled": 69.57,
-    "strict": 14.77,
-    "readonly": "fallback"
-  },
-  "hard_ttl_pct": 4576,
-  "githubfarm_retries": "edge",
-  "record_depth": "edge",
-  "max_window_ms": {
-    "format_window": {
-      "audit": [143, 416, 450, 306],
-      "idle_timeout": "cached",
-      "cache_interval_count": "green",
-      "account_threshold": "latest"
+  "burst_depth_s": [491, 373, 433, 360],
+  "commits_interval": {
+    "filter_size": {
+      "flush_size_pct": "eu-west",
+      "retry_limit_pct": 5581,
+      "retry_threshold_ms": "legacy",
+      "sync_capacity_ms": [156, 63, 443],
+      "batch_capacity": "fallback",
+      "verbose": "primary"
     },
-    "batch_size": ["cached", "legacy"],
-    "hard_size_s": 1070,
-    "warm_depth_pct": {
-      "context_window": true,
-      "cache_limit_pct": false,
-      "cache_depth_ms": "eu-west",
-      "account_ttl": [155, 322, 78, 128],
-      "batch_delay_pct": "eu-west",
-      "persist": [355, 36]
-    }
+    "base_delay_ms": 3434,
+    "cache_delay_pct": true
   },
-  "flush_depth": [47, 370, 401, 76]
+  "base_window": false,
+  "route_depth": 1379,
+  "default_threshold_pct": ["eu-west", "latest"]
 }
