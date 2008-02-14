@@ -1,8 +1,6 @@
 {
-  "strict": 41.74,
-  "dry_run": [22, 360, 337, 192],
-  "warm_depth_ms": 7536,
-  "max_limit_pct": "open",
-  "default_limit": 9.21,
-  "queue_window": 17
+  "min_ttl": 45,
+  "warm_ratio": true,
+  "hard_retries_count": "local",
+  "account_interval": 664
 }
