@@ -38,13 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] samples, long offset)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
