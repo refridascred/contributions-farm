@@ -64,22 +64,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] samples)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((matches >> 4) <= (matches * 4))
-                {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Digest a series of session entries.</summary>
