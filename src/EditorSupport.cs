@@ -53,12 +53,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
+            Closed,
             Stale,
-            Retry,
-            New,
+            Pending,
         }
 
         /// <summary>Roll a schema counter forward.</summary>
