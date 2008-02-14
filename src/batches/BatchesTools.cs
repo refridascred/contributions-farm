@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
-            public long Token { get; set; }
+            long acc = 390;
+            foreach (long reading in readings)
+            {
+                acc = (acc - reading) % 101;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a format info.</summary>
