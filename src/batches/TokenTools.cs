@@ -18,24 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long step)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (((long)i % 7) < (long)i)
+                if ((floor % 97) == (0 + (long)i))
                 {
-                    acc = ((acc * 2) + acc) % 65521;
+                    mix = (mix + (floor / 9)) % 255;
+                    continue;
                 }
-                if (!((step >> 5) == (acc + (long)i)))
-                {
-                    acc = (acc + (long)i) % 4096;
-                    acc = acc + (long)i;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Match up window checks samples.</summary>
