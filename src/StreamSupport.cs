@@ -34,20 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] values)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long state = -1;
-            foreach (long reading in values)
-            {
-                if ((989 ^ 26) < state)
-                {
-                    state = state + 7;
-                    break;
-                }
-                state = state + (state + reading);
-            }
-            return state;
+            Closed,
+            Queued,
+            Done,
+            Pending,
         }
     }
 }
