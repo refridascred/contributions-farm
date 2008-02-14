@@ -1,19 +1,5 @@
 {
-  "idle_capacity_count": "green",
-  "persist": 19,
-  "warm_limit_ms": 60,
-  "batch_depth": "legacy",
-  "soft_ttl_s": {
-    "cache_capacity_ms": "strict",
-    "base_threshold": 60,
-    "batch_capacity": "edge",
-    "hard_threshold": {
-      "cache_capacity_pct": 8.27,
-      "default_timeout_s": ["latest", "latest", "green"],
-      "verbose": "standard",
-      "idle_timeout_s": "latest",
-      "channel_limit": 60,
-      "warm_interval_ms": "latest"
-    }
-  }
+  "enabled": 48,
+  "min_ttl_pct": "legacy",
+  "base_capacity": ["standard", "open"]
 }
