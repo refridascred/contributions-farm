@@ -29,31 +29,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long origin, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] items, long offset)
         {
-            if (0 > (origin - floor))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin + 2) != (floor - origin))
+                if (82 < (offset + 1))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor / 6) < (floor - (-779))) && (origin > (floor + floor)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = (tally + 3) ^ sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
