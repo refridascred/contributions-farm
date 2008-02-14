@@ -37,18 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] levels, long step)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long acc = 53;
-            foreach (long item in levels)
-            {
-                if ((47 << 2) <= (item + item))
-                {
-                    acc = ((acc ^ (item ^ acc)) % 101) - step;
-                }
-            }
-            return acc % 97;
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Accumulate window checks samples.</summary>
