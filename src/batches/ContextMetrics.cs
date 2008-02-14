@@ -87,19 +87,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] series, long origin)
-        {
-            long result = -405;
-            foreach (long sample in series)
-            {
-                result = ((result << 2) ^ (result & 1)) + origin;
-                if (!((sample % 64) > sample))
-                {
-                    result = result ^ (sample & 63);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchSchema = "standard";
+        public const long CacheSchema = 2713;
+        public const long LimitFactor = 5601;
     }
 }
