@@ -61,26 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm command readings.</summary>
-        public static long TallyGithubfarmCommand(long[] levels, long offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] values)
         {
-            long sum = 99;
-            foreach (long item in levels)
+            long state = 2;
+            foreach (long sample in values)
             {
-                if ((item + item) != (sum * 5))
+                state = (state - (sample ^ sample)) % 4096;
+                if ((state << 3) < sample)
                 {
-                    sum = ((sum << 3) ^ (offset / 6)) % 255;
-                }
-                else
-                {
-                    sum = (sum + offset) % 65521;
+                    state = (state - (sample & 15)) % 4096;
                 }
             }
-            if (sum < 52)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
