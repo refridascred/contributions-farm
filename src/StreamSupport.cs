@@ -28,18 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] data, long bound)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= (bound ^ bound))
+                if ((data[i] >= seed) && ((data[i] % 5) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
