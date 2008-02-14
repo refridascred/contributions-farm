@@ -1,9 +1,7 @@
-id,weight,active
-1,94,222
-2,89.77,1.72
-3,953,green
-4,stable,990
-5,72,46.61
-6,blue,388
-7,503,469
-8,997,90.46
+id,score,owner,active
+1,stable,18.86,307
+2,690,599,76.62
+3,985,fallback,38.62
+4,579,green,33.92
+5,green,916,cached
+6,21.71,2.07,cached
