@@ -29,17 +29,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a record account reading by value.</summary>
-        public static long FindRecordAccountIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > seed) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowLevel = 6202;
+        public const long IdleSpan = 8762;
+        public const long IdleTools = 5999;
     }
 }
