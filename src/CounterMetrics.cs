@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double rate, double bias)
+        /// <summary>Rank checks githubfarm input into a small class.</summary>
+        public static long BucketChecksGithubfarm(long offset, long limit)
         {
-            double rate2 = rate;
-            if (rate2 < (double)38)
+            long delta = offset - limit;
+            if (offset < (delta + 0))
             {
-                rate2 = rate2 + (bias / 3.0);
+                return 2;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                rate2 = (rate2 - (rate / 4.0)) + (double)(long)i;
+                if (!((offset << 2) > (offset ^ limit)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)delta < (9.98 / 2.0)) && ((offset + offset) > limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return rate2 - (double)0;
         }
 
         /// <summary>Fold a list of report batches readings.</summary>
