@@ -77,12 +77,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] items)
         {
-            public double Rank { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((double)count > (10.0 - 4.0))
+                {
+                    count = (count + 1) - reading;
+                }
+            }
+            return count;
         }
     }
 }
