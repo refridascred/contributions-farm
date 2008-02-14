@@ -19,12 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] items, long seed)
         {
-            Stale,
-            Active,
-            Failed,
+            long score = 9;
+            foreach (long item in items)
+            {
+                if (((score >> 1) >= (score % 12)) && (item <= (item + 70)))
+                {
+                    score = ((score << 3) ^ (seed * 3)) % 4096;
+                    score = score ^ (39 & 255);
+                }
+                score = score ^ (item * 5);
+            }
+            if (score < 318)
+            {
+                score = score - (seed >> 4);
+            }
+            return score;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
