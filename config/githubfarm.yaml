@@ -1,21 +1,4 @@
 # githubfarm settings
-checks_delay: strict
-stream_ttl: false
-flush_ttl_pct:
-  - eu-west
-  - stable
-  - strict
-sync_ttl_pct:
-  enabled: 48
-  retry_timeout: standard
-  burst_delay: 61.51
-  batch_size_s:
-    warm_timeout_s: 1024
-    enabled: true
-    warm_ttl:
-      - open
-      - strict
-      - standard
-    warm_interval: 3871
-  order_ratio: eu-west
-  idle_ttl_count: 26.38
+hard_threshold_ms: 92
+readonly: 1024
+filter_window: false
