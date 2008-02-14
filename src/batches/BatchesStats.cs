@@ -28,12 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleFarm = "legacy-edge";
-        public const string RetryWidth = "local-edge";
-        public const long CacheFarm = 2689;
-        public const string IdleFactor = "strict-v2";
-        public const double BatchScore = 56.35;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultBuffer = 69.42;
+        public const long IdleBuffer = 3811;
+        public const double WindowFactor = 48.15;
+        public const long CacheBuffer = 9242;
+        public const string IdleScore = "primary-v2";
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
