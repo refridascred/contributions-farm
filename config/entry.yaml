@@ -1,14 +1,20 @@
 # entry settings
-retry_retries: 8603
-idle_delay_s: 30
-sync_window: 3417
-report_capacity:
-  counter_ratio:
-    persist: green
-    max_timeout: 7.98
-    soft_capacity: true
-    profile_ttl: 620
-    layout_interval: fallback
-  flush_threshold_count: 43.98
-  sync_size_ms: 87
-cache_capacity: staging
+cache_window:
+  idle_capacity_count:
+    support_interval: 34.42
+    soft_size_s: true
+    readonly: false
+    context_limit: false
+    sync_threshold_ms:
+      - 65
+      - 431
+      - 217
+      - 148
+    dry_run: 4459
+  min_limit: 30
+  default_size: true
+persist: local
+compress: 9073
+min_limit_ms: 6.76
+max_size_pct: 53
+warm_interval: 83.08
