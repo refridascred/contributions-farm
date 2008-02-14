@@ -26,15 +26,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] values, long seed)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long origin, long floor)
         {
-            long mark = 93;
-            foreach (long reading in values)
+            long cur = origin - floor;
+            if ((floor + floor) < (origin >> 3))
             {
-                mark = ((mark + mark) - reading) - seed;
+                return 8;
             }
-            return mark % 97;
+            else
+            {
+                if ((double)cur > (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (floor >= (cur + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
