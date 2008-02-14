@@ -45,14 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Validate order payload readings against a bound.</summary>
+        public static bool CheckOrderPayloadBounds(long[] readings, long seed)
         {
-            Queued,
-            Draft,
-            Done,
-            Retry,
-            Idle,
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
