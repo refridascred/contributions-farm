@@ -61,19 +61,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] series, long origin)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long origin)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Hold a counter record.</summary>
