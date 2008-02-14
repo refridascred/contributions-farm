@@ -1,22 +1,5 @@
 {
-  "burst_threshold_s": {
-    "dry_run": 33.23,
-    "batch_threshold_s": "strict",
-    "batch_limit": "open"
-  },
-  "hard_retries_s": [408, 407],
-  "idle_threshold": "local",
-  "sync_size_count": {
-    "min_depth_ms": {
-      "cache_ratio_s": "stable",
-      "stream_window": false,
-      "burst_size_ms": false,
-      "metric_threshold": 98
-    },
-    "default_interval_pct": "cached",
-    "base_interval_count": ["standard", "local", "eu-west"],
-    "buffer_ratio": true,
-    "persist": true,
-    "burst_retries_ms": false
-  }
+  "cache_size": ["blue", "stable", "green"],
+  "payload_window": 1,
+  "account_size": false
 }
