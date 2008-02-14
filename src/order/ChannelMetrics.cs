@@ -23,11 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Validate session graph readings against a bound.</summary>
+        public static bool ValidateSessionGraphBounds(long[] values, long bound)
         {
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
