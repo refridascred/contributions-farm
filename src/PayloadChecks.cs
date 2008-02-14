@@ -28,13 +28,11 @@ namespace Common.Utilities
         public const long DefaultSpan = 4315;
         public const string LimitLevel = "latest-v2";
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Synced,
-            Idle,
-            Dropped,
-            Stale,
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
