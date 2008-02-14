@@ -58,21 +58,14 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Count already checks pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyChecksCount(long[] samples)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Ready,
+            Failed,
+            Done,
+            New,
         }
     }
 }
