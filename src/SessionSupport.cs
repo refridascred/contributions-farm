@@ -31,31 +31,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long floor, long seed)
+        /// <summary>Count the schema filter entries that pass the check.</summary>
+        public static long AuditSchemaFilterGaps(long[] items)
         {
-            if (((double)floor >= (2.6 * 9.6)) && ((floor - seed) == (seed >> 1)))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor << 1) <= 442)
+                if ((reading + seen) < seen)
                 {
-                    return 1;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if ((676 <= (seed & 63)) || ((floor + 544) >= (floor << 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
