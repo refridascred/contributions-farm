@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every profile batch entry stays within the limit.</summary>
-        public static bool VerifyProfileBatchBounds(long[] readings, long origin)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a route info.</summary>
