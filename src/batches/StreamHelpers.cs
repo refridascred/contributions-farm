@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Scale a counter cache figure with a bias.</summary>
+        public static double ProjectCounterCache(double bias, double floor)
         {
-            Idle,
-            Draft,
-            Stale,
-            Retry,
+            double gain = floor - floor;
+            if (gain >= (double)972)
+            {
+                gain = gain + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (bias - bias)) - (double)(long)i;
+            }
+            return gain - (gain / 8.0);
         }
 
         /// <summary>Blend two entry githubfarm measurements.</summary>
