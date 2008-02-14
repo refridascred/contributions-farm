@@ -49,13 +49,18 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the already account entries that pass the check.</summary>
+        public static long TallyAlreadyAccountHits(long[] readings)
         {
-            public long Level { get; set; }
-            public double Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (7.4 < (double)reading)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
