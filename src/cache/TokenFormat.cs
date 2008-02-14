@@ -30,22 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] items)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] items)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((cell - 139) < cell) && !((cell ^ cell) < (cell ^ 22)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] + items[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
