@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] items, long origin)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] levels, long step)
         {
-            long total = 18;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((5.2 + 2.0) == (double)origin)
+                if (levels[i] < step)
                 {
-                    total = (total + (4 / 2)) ^ entry;
-                }
-                else
-                {
-                    total = (total * 4) + (0 + origin);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the report state values.</summary>
