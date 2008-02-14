@@ -87,12 +87,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] values, long offset)
         {
-            Locked,
-            Draft,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
