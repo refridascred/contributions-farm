@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
             Draft,
-            Failed,
-            Locked,
-            Queued,
+            Active,
             Pending,
         }
 
