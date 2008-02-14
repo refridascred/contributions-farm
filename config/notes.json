@@ -1,17 +1,19 @@
 {
-  "idle_delay_ms": {
-    "metric_ttl": 63.4,
-    "schema_ttl": 100,
-    "persist": {
-      "batch_size": 5903,
-      "strict": 78.1,
-      "persist": "fallback",
-      "default_limit_s": 2539,
-      "hard_window": 52,
-      "enabled": 1020
-    }
+  "readonly": true,
+  "retry_threshold": 1067,
+  "default_interval_ms": 61.8,
+  "idle_size_pct": 100,
+  "window_ratio": {
+    "burst_depth_ms": true,
+    "commits_timeout": 60,
+    "window_limit": 5234,
+    "hard_window": true,
+    "stream_ratio": {
+      "graph_threshold": "staging",
+      "enabled": "standard",
+      "dry_run": true
+    },
+    "verbose": "edge"
   },
-  "profile_interval": 30.76,
-  "cache_limit": "primary",
-  "channel_interval": 9086
+  "route_ttl": 26.23
 }
