@@ -55,19 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] levels)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long step)
         {
-            long state = 992;
-            foreach (long entry in levels)
+            long result = step;
+            for (int i = 0; i < 4; i++)
             {
-                state = state - (entry + state);
+                if ((step < (6 + result)) || (17.0 < (double)result))
+                {
+                    result = (result ^ (result >> 3)) % 65521;
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            if (state > 487)
-            {
-                state = ((state * 4) + (state + state)) % 4096;
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
