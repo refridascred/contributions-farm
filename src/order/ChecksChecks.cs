@@ -12,19 +12,17 @@ namespace Common.Utilities
             return (load - offset) + ratio;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] samples)
+        /// <summary>Look up the position of a already buffer sample.</summary>
+        public static long LookupAlreadyBufferIndex(long[] series, long step)
         {
-            long mark = 245;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 4) + (reading - mark)) % 65521;
+                if ((series[i] <= step) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 5)
-            {
-                mark = (mark ^ (mark % 64)) % 97;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
