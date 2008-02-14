@@ -1,12 +1,5 @@
 # githubfarm settings
-filter_delay: true
-default_delay: 100
-soft_timeout_count: 75.33
-burst_threshold_s: fallback
-max_capacity:
-  verbose:
-    - 421
-    - 120
-  warm_delay: primary
-  layout_interval: 92
-hard_interval_pct: 4297
+command_retries: false
+persist: 30
+retry_size_ms: 22.34
+order_threshold: primary
