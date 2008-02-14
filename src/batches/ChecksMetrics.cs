@@ -30,11 +30,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 6593;
-        public const long RetryNotes = 1894;
-        public const double StepWidth = 13.79;
-        public const string MaxCount = "alpha";
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a route session reading.</summary>
         public static double ProjectRouteSession(double rate, double span)
