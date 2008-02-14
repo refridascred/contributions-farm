@@ -38,13 +38,12 @@ namespace Common.Utilities
         public const double BatchMetrics = 14.63;
         public const long BaseRatio = 4836;
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Rank queue stats input into a small class.</summary>
