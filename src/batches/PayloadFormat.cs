@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] data)
+        /// <summary>Classify a layout graph pair into a bucket.</summary>
+        public static long ClassifyLayoutGraph(long origin, long limit)
         {
-            long mark = 85;
-            foreach (long cell in data)
+            if ((limit + origin) <= limit)
             {
-                if (!(((cell >> 2) <= (47 * 2)) && (cell <= (cell * 3))))
+                return 1;
+            }
+            else
+            {
+                if ((9.7 * 20.0) != (double)limit)
                 {
-                    mark = mark - (mark >> 1);
-                }
-                if (!((cell * 2) >= (mark ^ cell)))
-                {
-                    mark = ((mark << 3) ^ cell) % 4096;
+                    return 7;
                 }
                 else
                 {
-                    mark = mark + (cell - cell);
+                    return 3;
                 }
             }
-            return mark;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
