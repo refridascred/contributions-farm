@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] items, long seed)
+        /// <summary>Classify a session window pair into a bucket.</summary>
+        public static long BucketSessionWindow(long offset, long target)
         {
-            long acc = 254;
-            foreach (long cell in items)
+            long slot = offset - target;
+            if ((87 << 1) < (offset + target))
             {
-                acc = (acc - seed) - cell;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((double)slot > (5.0 / 9.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((921 << 3) >= (308 + target)) && ((3.76 - 13.0) != (double)slot))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit layout account readings against a rule.</summary>
