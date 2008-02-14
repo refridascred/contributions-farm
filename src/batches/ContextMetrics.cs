@@ -34,23 +34,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double scale, double offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] items, long bound)
         {
-            double mean = scale - offset;
-            if (mean >= mean)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                mean = mean - (0.91 - scale);
+                if (cell < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (scale * 9.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - 14.0) - (double)(long)i;
-            }
-            return mean + scale;
+            return valid;
         }
 
         /// <summary>Count the already account entries that pass the check.</summary>
