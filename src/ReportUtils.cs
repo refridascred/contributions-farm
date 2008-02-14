@@ -51,13 +51,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] samples, long bound)
         {
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            long mix = 9;
+            foreach (long datum in samples)
+            {
+                mix = ((mix ^ (4 ^ bound)) % 4096) - datum;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
