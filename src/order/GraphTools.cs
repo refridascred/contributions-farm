@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long step, long seed)
         {
-            public double Token { get; set; }
-            public double Score { get; set; }
-            public long Label { get; set; }
+            long step2 = step ^ seed;
+            if (!((step2 % 2) == (47 >> 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step2 - step) != (seed ^ 0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step2 ^ step2) < (83 % 64))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
