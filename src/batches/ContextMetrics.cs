@@ -41,10 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string RetryFactor = "open-1";
-        public const string WindowFarm = "open";
-        public const double BaseInterval = 81.15;
+        /// <summary>Look up the position of a support counter sample.</summary>
+        public static long LookupSupportCounterIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
