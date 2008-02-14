@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every metrics batch entry stays within the limit.</summary>
-        public static bool ValidateMetricsBatchLimits(long[] levels, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (datum <= target)
+                if (((long)values.Length << 3) < origin)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) ^ reading;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Hold a notes info.</summary>
