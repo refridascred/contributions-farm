@@ -30,11 +30,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowProfile = "staging";
-        public const long MinProfile = 109;
-        public const double BaseLevel = 25.73;
-        public const long DefaultProfile = 5646;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
