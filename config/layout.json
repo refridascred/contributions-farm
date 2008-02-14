@@ -1,17 +1,5 @@
 {
-  "readonly": false,
-  "route_timeout": 23,
-  "hard_retries_ms": true,
-  "max_size_s": {
-    "max_limit": 51,
-    "strict": 250,
-    "payload_delay": 4247,
-    "sync_timeout": 37.5
-  },
-  "poll_capacity_ms": {
-    "record_window": 30.23,
-    "min_ratio": 7357,
-    "githubfarm_ratio": "cached"
-  },
-  "flush_retries_ms": [160, 96]
+  "editor_limit": "blue",
+  "warm_window_ms": "green",
+  "window_interval": true
 }
