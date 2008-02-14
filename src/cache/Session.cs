@@ -35,12 +35,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long floor, long bound)
         {
-            Locked,
-            Queued,
-            Synced,
+            if ((728 - bound) <= bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor + floor) > floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
