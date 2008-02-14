@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long LimitStats = 9905;
         public const string IdleStats = "open-1";
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Closed,
-            Stale,
-            Idle,
-            Synced,
-            Done,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 5898;
+        public const double RetryContributi = 59.68;
+        public const string WindowScore = "local-edge";
+        public const long DefaultLevel = 3739;
+        public const long IdleCount = 3918;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long ClassifyProfile(long seed, long bound)
