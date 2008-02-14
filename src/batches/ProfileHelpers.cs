@@ -85,25 +85,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long origin, long limit)
+        /// <summary>Measure how many already cache samples are out of range.</summary>
+        public static long CountAlreadyCacheHits(long[] data)
         {
-            long prev = origin - limit;
-            if ((origin + 8) != (limit / 5))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((prev ^ limit) >= (limit << 2)))
+                if ((matches % 100) < sample)
                 {
-                    return 4;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    return 5;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
