@@ -21,12 +21,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Closed,
-            Draft,
-            Active,
+            public string Size { get; set; } = "";
+            public double Offset { get; set; }
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
