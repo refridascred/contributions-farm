@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 5700;
-        public const long SoftGithubfarm = 7928;
-        public const string BatchGithubfarm = "standard-1";
-        public const long HardGithubfarm = 5796;
-        public const double StepBudget = 40.06;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double bias, double floor)
+        {
+            double weight = 17.0;
+            if (weight >= (floor - bias))
+            {
+                weight = weight - (floor + bias);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (weight / 5.0)) - (double)(long)i;
+            }
+            return weight + bias;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool ValidateContributiRange(long[] series, long seed)
