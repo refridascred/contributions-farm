@@ -44,35 +44,29 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a command cache pair into a bucket.</summary>
-        public static long RankCommandCache(long origin, long bound)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long limit, long origin)
         {
-            if ((double)bound <= (3.62 - 17.0))
+            long offset = limit + origin;
+            if ((origin / 4) < 2)
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if (origin < 617)
+                if ((origin ^ limit) < origin)
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if ((bound + origin) < bound)
+                    if ((offset >> 2) < 4)
                     {
-                        return 0;
+                        return 6;
                     }
                     else
                     {
-                        if ((double)origin < (3.0 - 1.8))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 5;
                     }
                 }
             }
