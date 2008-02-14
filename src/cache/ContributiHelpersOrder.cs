@@ -30,20 +30,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((floor % 60) <= (long)i)
-                {
-                    sum = ((sum << 3) ^ (floor % 3)) % 255;
-                }
-                sum = sum + floor;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryBudget = 92.29;
+        public const double StepEditor = 59.35;
+        public const long BatchBudget = 6116;
     }
 }
