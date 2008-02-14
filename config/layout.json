@@ -1,5 +1,5 @@
 {
-  "retry_ratio_ms": "open",
-  "poll_depth": 3922,
-  "min_ratio_pct": "primary"
+  "dry_run": 33.79,
+  "hard_capacity_s": 500,
+  "session_ratio": "blue"
 }
