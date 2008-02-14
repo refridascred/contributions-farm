@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
