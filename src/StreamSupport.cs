@@ -16,22 +16,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit record window readings against a rule.</summary>
-        public static long MeasureRecordWindowHits(long[] data)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((item & 3) >= 28)
+                if ((sample ^ (long)samples.Length) < (sample >> 4))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
