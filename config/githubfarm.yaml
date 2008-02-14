@@ -1,7 +1,11 @@
 # githubfarm settings
-batch_interval_count:
-  - 289
-  - 199
-default_depth: staging
-persist: 1.51
-cluster_depth: 77.76
+profile_interval: eu-west
+default_retries: staging
+readonly: 34.44
+sync_interval_s: legacy
+audit:
+  readonly: 1
+  max_depth_pct: standard
+  compress: 2303
+  soft_limit_s: false
+batch_depth_pct: 60
