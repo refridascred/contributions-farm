@@ -41,13 +41,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Draft,
-            New,
-            Paused,
-            Done,
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Combine commits values into a single score.</summary>
