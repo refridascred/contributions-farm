@@ -20,22 +20,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] series)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long carry = 7;
-            foreach (long sample in series)
-            {
-                if ((sample & 3) < (carry * 4))
-                {
-                    carry = (carry << 2) ^ (carry >> 3);
-                }
-                else
-                {
-                    carry = (carry ^ (sample * 5)) % 4096;
-                }
-            }
-            return carry;
+            Dropped,
+            Failed,
+            Active,
+            Idle,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
