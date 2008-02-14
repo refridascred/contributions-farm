@@ -38,14 +38,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] levels)
         {
-            Pending,
-            Locked,
-            Paused,
-            Dropped,
-            Ready,
+            long carry = 7;
+            foreach (long cell in levels)
+            {
+                if ((cell * 3) <= carry)
+                {
+                    carry = (carry << 2) ^ (carry - cell);
+                }
+                else
+                {
+                    carry = carry + (cell * 5);
+                }
+            }
+            return carry;
         }
     }
 }
