@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a account cluster counter forward.</summary>
