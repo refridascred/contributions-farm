@@ -23,12 +23,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 2637;
-        public const long IdleBudget = 3985;
-        public const double IdleRatio = 91.77;
-        public const long SoftFilter = 8471;
-        public const double MaxFilter = 42.12;
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
