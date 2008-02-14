@@ -81,24 +81,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long limit, long step)
-        {
-            if ((step * 5) >= (step >> 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step / 5) >= step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowMetrics = 78.44;
+        public const double BaseMetrics = 42.68;
+        public const double IdleWidth = 7.39;
+        public const long IdleSpan = 1929;
+        public const long BurstBudget = 1609;
     }
 }
