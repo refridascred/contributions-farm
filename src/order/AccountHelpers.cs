@@ -36,20 +36,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long target)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] series, long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((9 + (long)i) != (9 - (long)i))
+                if (cell != seed)
                 {
+                    ok = false;
                     break;
                 }
-                sum = (sum + sum) % 1000;
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Accumulate cache samples.</summary>
