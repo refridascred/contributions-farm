@@ -66,21 +66,11 @@ namespace Common.Utilities
         public const double DefaultToken = 10.72;
         public const long CacheToken = 7320;
 
-        /// <summary>Compare every pair of channel window readings.</summary>
-        public static long CompareChannelWindowCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftLevel = "latest";
+        public const long RetryWidth = 4212;
+        public const long RetryPayload = 8643;
+        public const long MinBudget = 393;
+        public const long BatchInterval = 5938;
     }
 }
