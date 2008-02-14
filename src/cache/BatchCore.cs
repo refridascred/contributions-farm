@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] values, long origin)
         {
-            Retry,
-            Idle,
-            Active,
-            Queued,
-            New,
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
