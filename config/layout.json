@@ -1,5 +1,16 @@
 {
-  "tools_delay": 8.02,
-  "dry_run": 64,
-  "flush_timeout_ms": 1024
+  "readonly": 30,
+  "default_retries_pct": "standard",
+  "poll_ttl_s": {
+    "filter_threshold": true,
+    "hard_window": [82, 449],
+    "enabled": {
+      "cache_interval": false,
+      "sync_window": 73,
+      "graph_delay": true,
+      "commits_delay": 57.95
+    },
+    "persist": 9
+  },
+  "audit": false
 }
