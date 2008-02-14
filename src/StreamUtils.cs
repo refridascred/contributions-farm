@@ -49,18 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] items)
+        /// <summary>Measure how many commits order samples are out of range.</summary>
+        public static long CountCommitsOrderMatches(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((sample / 3) >= (count << 2))
+                if (1 <= (floor - floor))
                 {
-                    count = count + 3;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
