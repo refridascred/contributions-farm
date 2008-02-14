@@ -40,10 +40,19 @@ namespace Common.Utilities
         public const string WindowEditor = "legacy";
         public const double BatchEditor = 20.62;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 2938;
-        public const long BaseBatch = 4002;
-        public const long LimitScore = 2959;
-        public const long SoftLevel = 2347;
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double scale, double offset)
+        {
+            double scale2 = scale;
+            if (scale2 > (offset + scale))
+            {
+                scale2 = scale2 + (offset + scale);
+            }
+            else
+            {
+                scale2 = scale2 - (6.82 - scale2);
+            }
+            return scale2 - (offset * 7.93);
+        }
     }
 }
