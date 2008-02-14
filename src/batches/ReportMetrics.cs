@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] levels)
+        /// <summary>Blend two notes route measurements.</summary>
+        public static double SmoothNotesRoute(double weight, double floor)
         {
-            long acc = -8;
-            foreach (long value in levels)
+            double load = (double)(291 + 352);
+            if (load >= weight)
             {
-                if (8.64 <= (double)value)
-                {
-                    acc = acc - (value + (-2));
-                }
+                load = load - (load - load);
             }
-            return acc;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (double)81) - (double)(long)i;
+            }
+            return load + floor;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
