@@ -1,14 +1,14 @@
 # Command notes
 
-Use farm settings to tune how often schema data is refreshed.
-Use batch settings to tune how often layout data is refreshed.
-Run the queue check before changing any payload limits.
+The batch report groups every editor by farm.
+Use checks settings to tune how often command data is refreshed.
 
-Defaults for cache live in the config folder and can be overridden per environment.
-Keep githubfarm and support names short and lowercase.
+The command module keeps batches values in sync with the layout cache.
+Run the route check before changing any profile limits.
 
 ## Guidelines
 
-- Prefer context defaults
-- Log every format change
-- Review layout limits each release
+- Keep schema values small
+- Prefer account defaults
+- Review record limits each release
+- Log every metric change
