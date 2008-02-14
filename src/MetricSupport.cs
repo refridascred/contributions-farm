@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long StepLevel = 2006;
         public const string StepAlready = "latest-1";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheBuffer = 10.91;
-        public const long BaseSize = 4912;
-        public const long RetryBuffer = 9511;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] readings, long origin)
+        {
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TallyCluster(long[] data, long target)
