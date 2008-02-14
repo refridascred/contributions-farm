@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many profile contributi samples are out of range.</summary>
-        public static long CountProfileContributiGaps(long[] readings, long bound)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((7.9 + 0.84) > (double)datum)
-                {
-                    tally = (tally + 2) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Active,
+            Closed,
         }
 
         /// <summary>Fold a list of record readings.</summary>
