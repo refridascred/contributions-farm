@@ -60,38 +60,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long target, long floor)
-        {
-            if ((target <= 48) || ((target + floor) <= (floor - target)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((0.8 * 9.67) != (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target > (6.0 + 3.2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (target < (target >> 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 4651;
+        public const long BatchSize = 104;
+        public const long CacheStream = 2645;
+        public const long MaxStream = 9154;
+        public const long DefaultStream = 7920;
     }
 }
