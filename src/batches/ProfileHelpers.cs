@@ -60,14 +60,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            Idle,
             Paused,
+            Ready,
+            Failed,
             Stale,
-            Queued,
-            Draft,
+            Done,
         }
 
         /// <summary>Measure how many already cache samples are out of range.</summary>
