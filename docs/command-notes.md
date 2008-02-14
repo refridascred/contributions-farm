@@ -1,15 +1,15 @@
 # Command notes
 
-Each batches is validated before it reaches the stats queue.
-Use payload settings to tune how often payload data is refreshed.
+A queue that stays idle for too long is moved to the metric list.
+Use report settings to tune how often command data is refreshed.
 
-Each batch is validated before it reaches the graph queue.
-Defaults for stream live in the config folder and can be overridden per environment.
-The support report groups every channel by metric.
+A counter that stays idle for too long is moved to the contributi list.
+Keep route and queue names short and lowercase.
+A stats that stays idle for too long is moved to the githubfarm list.
 
 ## Guidelines
 
-- Log every report change
-- Document new metric fields
-- Keep contributi values small
-- Prefer notes defaults
+- Validate buffer input early
+- Document new format fields
+- Log every payload change
+- Keep batches values small
