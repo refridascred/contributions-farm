@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] values)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long offset, long target)
         {
-            long count = 0;
-            foreach (long item in values)
+            if ((offset - target) >= (190 >> 4))
             {
-                if ((item / 4) >= (4 << 1))
+                return 4;
+            }
+            else
+            {
+                if ((target / 7) >= offset)
                 {
-                    count = count + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
