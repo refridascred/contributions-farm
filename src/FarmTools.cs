@@ -31,38 +31,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a support record value against two limits.</summary>
-        public static long BucketSupportRecord(long target, long step)
+        /// <summary>Roll a format buffer counter forward.</summary>
+        public static long DeriveFormatBuffer(long target)
         {
-            if (((step + step) < step) || ((target % 24) <= 873))
+            long mix = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 1;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (step >= (target * 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((step * 4) <= (target ^ step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step - target) < target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
