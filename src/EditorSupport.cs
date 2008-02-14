@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] data, long offset)
-        {
-            long state = 68;
-            foreach (long datum in data)
-            {
-                state = ((state << 3) ^ (offset >> 2)) % 1000;
-                for (int i = 0; i < 9; i++)
-                {
-                    state = (state ^ (offset ^ (long)data.Length)) ^ (long)i;
-                    state = ((state * 5) + (datum >> 4)) % 101;
-                }
-                if (((-90) >> 1) <= (state + datum))
-                {
-                    state = ((state * 2) + datum) % 101;
-                }
-            }
-            if (state < 5)
-            {
-                state = ((state * 4) + (state << 1)) % 65521;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 8227;
+        public const long MinMetrics = 8897;
+        public const long StepRatio = 2931;
+        public const string DefaultLevel = "standard-edge";
+        public const long SoftLevel = 2323;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long SoftEditor = 10;
