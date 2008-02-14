@@ -95,15 +95,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] values)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long mark = 3;
-            foreach (long cell in values)
-            {
-                mark = (mark - cell) % 255;
-            }
-            return mark % 97;
+            Idle,
+            Draft,
+            Stale,
+            Dropped,
+            Failed,
         }
     }
 }
