@@ -14,15 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] data, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] data)
         {
-            long total = 575;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long entry in data)
             {
-                total = (total - (offset * 5)) ^ item;
+                if (count >= entry)
+                {
+                    count = count + 2;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
