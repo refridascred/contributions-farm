@@ -14,23 +14,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] items, long target)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((entry - target) > (553 >> 4))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitScore = 7258;
+        public const string MaxSize = "local-edge";
+        public const double BaseCount = 6.23;
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
