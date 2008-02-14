@@ -31,12 +31,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 9970;
-        public const long DefaultSpan = 8594;
-        public const string MaxSchema = "primary";
-        public const long StepSchema = 2337;
-        public const string SoftSchema = "cached-v2";
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = mix ^ (seed >> 5);
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Look up the position of a tools channel sample.</summary>
         public static long SeekToolsChannelIndex(long[] readings, long limit)
