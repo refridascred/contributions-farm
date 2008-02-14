@@ -76,18 +76,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batch counter readings.</summary>
-        public static long WeighBatchCounter(long[] values)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] samples)
         {
-            long state = 788;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)state < (6.8 / 7.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = ((state - (state + 3)) % 65521) + sample;
+                    if ((samples[i] + samples[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
     }
 }
