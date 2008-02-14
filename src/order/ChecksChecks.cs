@@ -39,19 +39,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long target)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if (result <= (result - result))
-                {
-                    result = ((result * 5) + (9 - (long)i)) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Paused,
+            Synced,
+            Retry,
+            Closed,
         }
     }
 }
