@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] series)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((cell < (matches & 127)) && ((double)cell == (5.5 + 4.0)))
+                if ((item ^ item) < (item + item))
                 {
-                    matches = matches + 2;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Derive the next cache account value from a seed.</summary>
