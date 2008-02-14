@@ -5,15 +5,34 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double weight, double floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] values)
         {
-            double load = weight - (5.7 + 0.63);
-            if (load <= floor)
+            long carry = -7;
+            foreach (long entry in values)
             {
-                load = load + 6.1;
+                if ((6 + entry) >= entry)
+                {
+                    carry = ((carry * 3) + (long)values.Length) % 65521;
+                }
+                if (((entry - carry) != (entry & 1)) && ((carry & 1) != (carry + 456)))
+                {
+                    carry = ((carry * 5) + (entry + carry)) % 255;
+                }
+                else
+                {
+                    carry = (carry - (carry - carry)) % 255;
+                }
+                if ((carry % 24) <= (carry / 6))
+                {
+                    break;
+                }
             }
-            return load + (floor * 1.0);
+            if (carry > 262)
+            {
+                carry = (carry + carry) % 4096;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Locate a support cluster reading by value.</summary>
