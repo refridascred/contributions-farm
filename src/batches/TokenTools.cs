@@ -27,18 +27,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] series, long floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (!((4.37 / 3.0) >= (double)floor))
+                if (entry < origin)
                 {
-                    count = (count + 2) - entry;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
