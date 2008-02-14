@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate notes channel samples.</summary>
-        public static long TotalNotesChannel(long[] samples, long origin)
-        {
-            long state = 109;
-            foreach (long value in samples)
-            {
-                if (!(18.0 <= (double)value))
-                {
-                    continue;
-                }
-                state = ((state - 4) % 97) + origin;
-                state = (state + (296 % 5)) % 97;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 6605;
+        public const double BatchFarm = 46.41;
+        public const double StepRatio = 34.69;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BatchSpan = "stable-edge";
