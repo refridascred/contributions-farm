@@ -22,18 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] readings, long target)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((10 - target) <= (seen - sample))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Retry,
+            Idle,
+            Active,
+            Queued,
+            New,
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
