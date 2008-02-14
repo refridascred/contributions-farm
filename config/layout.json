@@ -1,26 +1,6 @@
 {
-  "readonly": "latest",
-  "default_retries": {
-    "stream_retries": {
-      "flush_delay": "cached",
-      "warm_threshold": "green",
-      "base_capacity": 24.87,
-      "checks_retries": 6450
-    },
-    "default_interval": {
-      "soft_limit_pct": "strict",
-      "poll_delay_count": true,
-      "batch_threshold": "strict",
-      "idle_depth_pct": 63.59
-    },
-    "min_depth": ["standard", "primary"],
-    "min_size_s": [349, 309, 241],
-    "commits_interval": {
-      "retry_threshold_pct": [208, 122, 385, 162],
-      "max_interval_count": 100,
-      "record_size": 74.27
-    }
-  },
-  "githubfarm_ratio": "blue",
-  "batch_capacity": 1225
+  "burst_limit": ["latest", "primary", "standard", "primary"],
+  "batch_depth_pct": "stable",
+  "sync_ratio": 47,
+  "verbose": 11
 }
