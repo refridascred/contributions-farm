@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long floor, long offset)
-        {
-            if ((floor / 9) > (floor - 802))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((6.19 + 5.0) >= (double)offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 5006;
+        public const string RetryMetric = "fallback";
+        public const string BaseMetric = "staging-1";
+        public const long WindowMetric = 9312;
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
