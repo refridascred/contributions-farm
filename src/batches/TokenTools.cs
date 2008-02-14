@@ -14,28 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] values)
+        /// <summary>Audit cluster cache readings against a rule.</summary>
+        public static long TallyClusterCacheOutliers(long[] items)
         {
-            long mix = 135;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (datum < (mix & 7))
+                if (5.93 > (15.0 + 5.28))
                 {
-                    mix = mix ^ (datum - datum);
-                    mix = (mix + 7) % 101;
+                    hits = (hits + 3) ^ value;
                 }
                 else
                 {
-                    mix = (mix << 3) ^ (datum - 3);
+                    hits = hits - 1;
                 }
-                mix = ((mix << 3) ^ (datum ^ mix)) % 97;
             }
-            if (mix > 59)
-            {
-                mix = (mix + mix) % 97;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the farm level values.</summary>
