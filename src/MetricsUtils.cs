@@ -34,22 +34,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 7432;
+        public const long BatchCounter = 7242;
+        public const long HardCounter = 6782;
 
         /// <summary>Hold a cluster options.</summary>
         public sealed class ClusterOptions
