@@ -38,11 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 8868;
-        public const double BurstTools = 27.09;
-        public const long MinRatio = 8925;
-        public const double WindowTools = 68.9;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Closed,
+            Draft,
+            Active,
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long TallyRecord(long[] readings, long seed)
