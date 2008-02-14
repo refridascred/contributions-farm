@@ -22,11 +22,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheWindow = 90.19;
+        public const long MinScore = 3114;
+        public const double SoftInterval = 53.88;
     }
 }
