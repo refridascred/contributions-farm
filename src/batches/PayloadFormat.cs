@@ -55,12 +55,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] values, long offset)
         {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long mix = 99;
+            foreach (long item in values)
+            {
+                mix = (mix ^ (item << 3)) - offset;
+            }
+            return mix;
         }
     }
 }
