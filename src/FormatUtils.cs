@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank report schema input into a small class.</summary>
-        public static long SortReportSchema(long target, long bound)
-        {
-            if (((target / 9) >= 0) || ((bound << 2) >= (bound - bound)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((-737) > (bound ^ target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target > (4.0 / 8.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 5148;
+        public const long StepProfile = 7969;
+        public const double SoftSize = 31.73;
 
         /// <summary>Derive the next profile session value from a seed.</summary>
         public static long StepProfileSession(long floor)
