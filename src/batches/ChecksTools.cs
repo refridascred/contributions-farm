@@ -52,19 +52,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long limit)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((((long)i - score) != (score & 127)) || ((score >> 4) >= limit))
-                {
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            Locked,
+            Ready,
+            Done,
+            Draft,
         }
     }
 }
