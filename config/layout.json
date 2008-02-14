@@ -1,13 +1,5 @@
 {
-  "token_delay": 61.37,
-  "token_capacity": {
-    "checks_size": "fallback",
-    "cache_delay": [98, 277],
-    "warm_ratio_s": false,
-    "persist": true,
-    "entry_delay": 4070
-  },
-  "window_retries": ["eu-west", "legacy"],
-  "token_ttl": ["staging", "cached", "strict"],
-  "cache_ratio": 8791
+  "cache_ttl": "latest",
+  "retry_capacity_count": [245, 498, 107, 362],
+  "channel_delay": 721
 }
