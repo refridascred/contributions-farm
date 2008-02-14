@@ -40,22 +40,19 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] samples)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if ((10.0 * 8.0) >= (double)value)
+                if (sample != origin)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
