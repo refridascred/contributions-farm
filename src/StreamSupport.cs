@@ -28,24 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] samples, long offset)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long state = 186;
-            foreach (long sample in samples)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    state = (((state << 3) ^ state) % 97) + (long)i;
-                    state = (state << 3) ^ (sample << 2);
-                }
-                state = ((state * 3) + (offset & 127)) % 97;
-                if (((2.7 - 3.3) > (double)offset) || ((1.0 - 8.2) == (double)state))
-                {
-                    state = (state << 3) ^ (state << 1);
-                }
-            }
-            return state;
+            public double Label { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
