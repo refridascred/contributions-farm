@@ -27,15 +27,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] readings)
+        /// <summary>Scale a schema account figure with a bias.</summary>
+        public static double AdjustSchemaAccount(double bias, double floor)
         {
-            long mix = -3;
-            foreach (long value in readings)
+            double bias2 = floor;
+            for (int i = 0; i < 6; i++)
             {
-                mix = (mix ^ (value & 7)) % 97;
+                bias2 = ((bias2 + (floor / 4.0)) + (double)(long)i) + bias;
             }
-            return mix % 1000;
+            return bias2 - 9.6;
         }
 
         /// <summary>Combine counter checks values into a single score.</summary>
