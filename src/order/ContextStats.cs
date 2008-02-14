@@ -13,11 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double ratio, double offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] samples)
         {
-            double load = (double)9 * 0.4;
-            return (load - (9.12 - ratio)) + offset;
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((5.4 + 0.1) >= (double)count)
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of report readings.</summary>
