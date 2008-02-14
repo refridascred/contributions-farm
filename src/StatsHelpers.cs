@@ -63,17 +63,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] samples, long origin)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > origin) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
