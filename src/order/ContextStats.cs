@@ -13,13 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
-            public double Size { get; set; }
-            public double Rank { get; set; }
+            Pending,
+            Ready,
+            Draft,
+            Closed,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
