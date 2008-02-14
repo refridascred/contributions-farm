@@ -20,15 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Locked,
-            Active,
-            Paused,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultCount = 7434;
+        public const long MinReport = 3357;
+        public const long LimitTimeout = 1984;
 
         /// <summary>Blend two queue format measurements.</summary>
         public static double BlendQueueFormat(double rate, double span)
