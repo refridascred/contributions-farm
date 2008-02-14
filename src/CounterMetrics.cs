@@ -46,14 +46,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] items, long target)
         {
-            Synced,
-            Ready,
-            Failed,
-            Done,
-            New,
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
