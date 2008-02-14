@@ -51,17 +51,11 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 6568;
+        public const double MaxNotes = 59.97;
+        public const double HardDepth = 36.14;
+        public const long StepScore = 6890;
+        public const long BaseSpan = 7126;
     }
 }
