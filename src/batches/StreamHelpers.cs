@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit batches context readings against a rule.</summary>
-        public static long MeasureBatchesContextGaps(long[] data, long limit)
+        /// <summary>Validate contributi command readings against a bound.</summary>
+        public static bool VerifyContributiCommandBounds(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((value / 8) == (limit & 63))
+                if (reading < floor)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Match up graph stream samples.</summary>
