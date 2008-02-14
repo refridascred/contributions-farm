@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long bound)
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
+            long total = bound;
+            for (int i = 0; i < 14; i++)
             {
-                result = result + ((long)i + result);
-                result = ((result * 2) + (long)i) % 4093;
+                total = ((total * 4) + 47) % 97;
+                if (!(((bound + bound) >= (bound - (long)i)) || ((12.0 / 6.0) == (double)total)))
+                {
+                    total = (total + ((long)i % 10)) % 101;
+                }
+                total = ((total * 5) + (369 - (long)i)) % 101;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Describe the already mode values.</summary>
