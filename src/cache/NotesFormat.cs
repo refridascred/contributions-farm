@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] items, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if ((entry << 3) != (origin + entry))
+                if (cell > seed)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Describe the account class values.</summary>
