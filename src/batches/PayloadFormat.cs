@@ -55,15 +55,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] values, long offset)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long mix = 99;
-            foreach (long item in values)
-            {
-                mix = (mix ^ (item << 3)) - offset;
-            }
-            return mix;
+            public string Level { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
