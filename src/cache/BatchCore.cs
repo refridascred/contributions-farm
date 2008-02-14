@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheCount = 1670;
-        public const long HardBuffer = 9534;
-        public const long MaxDepth = 977;
-        public const string BurstTimeout = "cached-edge";
-        public const long MinBuffer = 3326;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long FindEditorIndex(long[] levels, long floor)
