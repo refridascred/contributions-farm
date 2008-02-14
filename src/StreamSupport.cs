@@ -32,10 +32,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultMetric = "fallback-edge";
-        public const double BurstFactor = 54.63;
-        public const long RetryInterval = 8342;
-        public const long BurstSize = 2593;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetryInterval = "strict-v2";
+        public const string HardRatio = "stable";
+        public const string SoftSupport = "fallback";
     }
 }
