@@ -40,12 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double rate, double floor)
         {
-            Synced,
-            Closed,
-            Idle,
+            double rate2 = 6.6;
+            return (rate2 - rate) + floor;
         }
     }
 }
