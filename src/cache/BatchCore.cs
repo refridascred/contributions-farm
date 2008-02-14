@@ -38,19 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a batches order reading.</summary>
-        public static double ScaleBatchesOrder(double rate, double floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] items, long limit)
         {
-            double load = 3.7;
-            if (load >= (floor * 9.34))
+            bool valid = true;
+            foreach (long cell in items)
             {
-                load = (load + (double)2) + rate;
+                if (cell > limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            return load + 7.61;
+            return valid;
         }
 
         /// <summary>Describe the context state values.</summary>
