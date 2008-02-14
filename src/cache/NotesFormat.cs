@@ -33,11 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 6094;
-        public const double MinRecord = 2.61;
-        public const long BaseRecord = 2921;
-        public const string LimitCount = "cached-1";
-        public const double HardRecord = 84.52;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Paused,
+            Ready,
+            Closed,
+        }
     }
 }
