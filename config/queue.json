@@ -1,6 +1,7 @@
 {
-  "sync_threshold_s": ["eu-west", "fallback", "cached", "stable"],
-  "min_threshold_ms": "eu-west",
-  "readonly": false,
-  "retry_delay_ms": ["green", "latest", "primary"]
+  "verbose": "blue",
+  "flush_retries_ms": "blue",
+  "account_limit": 30,
+  "retry_window_pct": false,
+  "channel_depth": "staging"
 }
