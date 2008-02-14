@@ -33,12 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first filter farm entry that matches the target.</summary>
-        public static long SeekFilterFarmIndex(long[] levels, long step)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] > step)
+                if (series[i] < seed)
                 {
                     return (long)i;
                 }
