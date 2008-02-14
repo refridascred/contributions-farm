@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] levels, long origin)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double rate, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = bias;
+            if (weight <= (weight - weight))
             {
-                if ((levels[i] > origin) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - bias;
             }
-            return -1;
+            else
+            {
+                weight = weight + (5.0 / 2.0);
+            }
+            return weight - rate;
         }
 
         /// <summary>Accumulate cache samples.</summary>
