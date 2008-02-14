@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long bound, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] readings, long bound)
         {
-            if ((8 / 4) > (bound % 16))
+            long state = 1;
+            foreach (long reading in readings)
             {
-                return 0;
+                state = ((state - (34 - bound)) % 101) - reading;
             }
-            else
-            {
-                if ((bound - bound) >= (0 - seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)bound <= (3.6 - 8.09)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(bound <= (bound + seed)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return state % 1000;
         }
 
         /// <summary>Describe the cluster level values.</summary>
