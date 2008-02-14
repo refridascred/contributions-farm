@@ -22,13 +22,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] series, long bound)
         {
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Stamp { get; set; }
+            long result = 0;
+            foreach (long value in series)
+            {
+                if (!((double)result < (1.0 / 2.0)))
+                {
+                    result = result + (value >> 4);
+                }
+                if (!((bound + 768) != (value >> 1)))
+                {
+                    result = ((result * 3) + 623) % 255;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (bound * 4)) % 255;
+                }
+            }
+            if (result < 789)
+            {
+                result = (result << 3) ^ (result / 4);
+            }
+            return result % 65521;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
