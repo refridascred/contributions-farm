@@ -1,4 +1,4 @@
 # support settings
-batch_timeout_pct: eu-west
-burst_timeout_count: 5304
-burst_interval_s: true
+verbose: stable
+schema_limit: blue
+flush_depth: staging
