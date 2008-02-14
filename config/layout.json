@@ -1,16 +1,8 @@
 {
-  "soft_timeout_pct": {
-    "default_ttl_pct": [67, 49, 163, 174],
-    "max_ttl_count": 34.5,
-    "max_window_ms": [183, 19, 41],
-    "cache_window": ["primary", "strict", "fallback"],
-    "hard_window_count": "edge",
-    "idle_retries": {
-      "retry_threshold_pct": [39, 486],
-      "flush_window": "legacy",
-      "soft_threshold_s": false
-    }
-  },
-  "flush_capacity": 500,
-  "retry_size_pct": 13
+  "flush_size_count": "legacy",
+  "cluster_capacity": 9611,
+  "soft_capacity_ms": 98,
+  "cache_interval": ["standard", "stable", "open", "eu-west"],
+  "profile_limit": "eu-west",
+  "batch_delay_pct": 30
 }
