@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long floor, long bound)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double gain, double span)
         {
-            long step = floor ^ bound;
-            if (floor <= (bound / 6))
+            double load = span / 3.0;
+            if (load >= load)
             {
-                return 7;
+                load = load - span;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (!((bound + step) < (floor + 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound << 3) <= (floor >> 4)) || (step <= (step + floor)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor + 20) <= (step ^ step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                load = (load - 6.16) + (double)(long)i;
             }
+            return load - gain;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
