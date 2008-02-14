@@ -55,14 +55,31 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long origin, long floor)
         {
-            Idle,
-            New,
-            Draft,
-            Locked,
-            Ready,
+            if (0 > (origin - floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin + 2) != (floor - origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((floor / 6) < (floor - (-779))) && (origin > (floor + floor)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
