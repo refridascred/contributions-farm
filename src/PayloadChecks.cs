@@ -51,17 +51,22 @@ namespace Common.Utilities
         public const string BurstSession = "primary";
         public const string MinLevel = "cached-1";
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] levels, long limit)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (levels[i] == limit)
+                if (((sample - sample) == (step << 2)) && (((double)sample == (5.71 / 5.0)) && ((seen - sample) > (seen + seen))))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
