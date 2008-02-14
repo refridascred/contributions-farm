@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
-            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Derive the next buffer graph value from a seed.</summary>
