@@ -80,11 +80,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftOrder = "open-edge";
-        public const long RetryOrder = 6071;
-        public const double WindowOrder = 12.08;
-        public const string WindowTimeout = "strict-1";
-        public const double BatchOrder = 48.05;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchStats = "cached-1";
+        public const long BaseStats = 7338;
+        public const long StepStats = 7030;
     }
 }
