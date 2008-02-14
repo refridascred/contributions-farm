@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] values, long limit)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (entry > limit)
+                if (item >= offset)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
