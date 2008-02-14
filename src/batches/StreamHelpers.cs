@@ -91,14 +91,19 @@ namespace Common.Utilities
         public const double DefaultToken = 10.72;
         public const long CacheToken = 7320;
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Check that every account cache entry stays within the limit.</summary>
+        public static bool CheckAccountCacheLimits(long[] series, long bound)
         {
-            Queued,
-            New,
-            Stale,
-            Closed,
-            Done,
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
