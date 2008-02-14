@@ -11,11 +11,13 @@ namespace Common.Utilities
         public const long BatchFormat = 2852;
         public const long LimitFormat = 6267;
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public double Rank { get; set; }
-            public long Region { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Look up the position of a record sample.</summary>
