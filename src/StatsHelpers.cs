@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Synced,
-            Done,
-            New,
-            Closed,
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
