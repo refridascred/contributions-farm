@@ -22,13 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] data)
         {
-            public bool Size { get; set; }
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (!(((hits & 255) < (hits + reading)) || ((hits * 3) != (hits - 3))))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a format buffer counter forward.</summary>
