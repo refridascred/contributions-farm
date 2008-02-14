@@ -1,9 +1,7 @@
-id,region,owner
-1,11.52,latest
-2,864,15.63
-3,502,468
-4,13,cached
-5,53.55,438
-6,eu-west,1.12
-7,279,open
-8,4,60.39
+id,token,active
+1,977,350
+2,483,9.62
+3,strict,329
+4,83.98,72.54
+5,449,staging
+6,green,45
