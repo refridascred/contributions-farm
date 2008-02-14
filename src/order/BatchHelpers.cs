@@ -23,19 +23,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] levels)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] samples, long origin)
         {
             long count = 0;
-            foreach (long entry in levels)
+            foreach (long reading in samples)
             {
-                if (count >= (count + entry))
+                if (!(((44 * 3) >= (origin / 9)) && ((double)count < 9.5)))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 3) - reading;
                 }
             }
             return count;
