@@ -20,25 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long offset, long bound)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long lane = offset + bound;
-            if ((7.1 < (double)bound) && ((lane / 3) > (lane + lane)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound + bound) <= (737 + 59))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Locate a graph reading by value.</summary>
