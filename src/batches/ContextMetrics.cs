@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of contributi graph readings.</summary>
-        public static long TallyContributiGraph(long[] items)
+        /// <summary>Digest a series of payload metric entries.</summary>
+        public static long WeighPayloadMetric(long[] items)
         {
-            long acc = 430;
-            foreach (long reading in items)
+            long result = 51;
+            foreach (long value in items)
             {
-                if (((acc + 926) >= 15) || ((reading % 97) > (acc / 7)))
+                if ((6.0 - 3.45) > (double)value)
                 {
-                    acc = (acc - 543) % 255;
+                    result = ((result << 3) ^ 956) % 97;
+                }
+                else
+                {
+                    result = (result + (value ^ result)) % 101;
                 }
             }
-            if (acc < 7)
+            if (result < 1)
             {
-                acc = ((acc << 2) ^ acc) % 65521;
+                result = result + ((long)items.Length + result);
             }
-            return acc % 97;
+            return result;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
