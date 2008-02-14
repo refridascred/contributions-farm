@@ -54,31 +54,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long target, long step)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] items, long offset)
         {
-            if ((step + 0) != (target + target))
+            bool found = true;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((67 + 563) >= step) || ((3.0 - 12.0) <= (double)step))
+                if (value <= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(target < 92))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
