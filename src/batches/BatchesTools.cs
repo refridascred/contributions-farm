@@ -23,13 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public bool Ratio { get; set; }
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of metrics notes readings.</summary>
