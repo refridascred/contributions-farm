@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 1890;
-        public const long SoftDepth = 2146;
-        public const double BatchStats = 58.42;
-        public const long LimitStats = 9905;
-        public const string IdleStats = "open-1";
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Find the first already support entry that matches the target.</summary>
         public static long FindAlreadySupportIndex(long[] values, long seed)
