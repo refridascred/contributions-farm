@@ -20,13 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Failed,
-            Synced,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 2982;
+        public const long IdleWindow = 1020;
+        public const long BurstWindow = 550;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LookupOrderIndex(long[] series, long bound)
