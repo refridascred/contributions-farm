@@ -13,14 +13,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Active,
-            Done,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 6600;
+        public const long BatchFilter = 7274;
+        public const double BurstScore = 79.81;
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
