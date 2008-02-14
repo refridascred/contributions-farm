@@ -13,13 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] series, long origin)
         {
-            Pending,
-            Ready,
-            Draft,
-            Closed,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
