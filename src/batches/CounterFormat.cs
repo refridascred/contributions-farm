@@ -40,20 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long target)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double gain, double floor)
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
+            double weight = floor;
+            if (weight < gain)
             {
-                score = (score + (score & 127)) % 255;
-                if (((-1) / 6) <= score)
-                {
-                    score = (score * 2) + target;
-                }
-                score = ((score * 2) + (long)i) % 1000;
+                weight = weight + (double)0;
             }
-            return score;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - gain) - (double)(long)i;
+            }
+            return weight - (double)419;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
