@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double gain, double span)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long floor, long offset)
         {
-            double weight = span;
-            for (int i = 0; i < 3; i++)
+            if ((floor / 9) > (floor - 802))
             {
-                weight = (weight - (double)542) + (double)(long)i;
+                return 5;
             }
-            return weight - gain;
+            else
+            {
+                if (!((6.19 + 5.0) >= (double)offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
