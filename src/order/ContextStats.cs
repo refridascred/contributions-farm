@@ -21,17 +21,26 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] series, long seed)
+        /// <summary>Derive the next batches profile value from a seed.</summary>
+        public static long StepBatchesProfile(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (series[i] == seed)
+                sum = (sum - (sum + 63)) % 1000;
+                if (7.6 > (double)sum)
                 {
-                    return (long)i;
+                    sum = sum - (6 * 5);
+                    sum = (sum << 2) ^ (977 + (long)i);
                 }
+                else
+                {
+                    sum = sum ^ sum;
+                }
+                sum = ((sum << 2) ^ (sum % 16)) % 97;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Combine schema layout values into a single score.</summary>
