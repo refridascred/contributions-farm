@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] levels, long offset)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((-3) & 255) == (item + offset))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Pending,
+            Done,
+            Active,
+            Stale,
         }
 
         /// <summary>Fold a list of record readings.</summary>
