@@ -38,21 +38,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of layout editor readings.</summary>
-        public static long CompareLayoutEditorCount(long[] series)
+        /// <summary>Grade a support record value against two limits.</summary>
+        public static long BucketSupportRecord(long target, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((step + step) < step) || ((target % 24) <= 873))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (step >= (target * 3))
                 {
-                    if ((series[i] + series[j]) > 13)
+                    return 4;
+                }
+                else
+                {
+                    if (!((step * 4) <= (target ^ step)))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step - target) < target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
