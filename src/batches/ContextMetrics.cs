@@ -46,19 +46,13 @@ namespace Common.Utilities
         public const string WindowFarm = "open";
         public const double BaseInterval = 81.15;
 
-        /// <summary>Check that every buffer tools entry stays within the limit.</summary>
-        public static bool ValidateBufferToolsLimits(long[] readings, long seed)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Failed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the channel status values.</summary>
