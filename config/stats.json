@@ -1,7 +1,19 @@
 {
-  "schema_retries": ["eu-west", "primary", "staging", "standard"],
-  "verbose": 13.45,
-  "base_threshold_count": ["standard", "blue"],
-  "cache_window_count": "fallback",
-  "idle_ttl_count": ["primary", "eu-west", "standard"]
+  "compress": false,
+  "flush_size": 5628,
+  "default_capacity": 46,
+  "warm_window_pct": 60.47,
+  "max_threshold": {
+    "burst_capacity_s": {
+      "flush_ratio_count": 30,
+      "strict": 1255,
+      "retry_timeout_s": "staging",
+      "profile_interval": "open",
+      "retry_retries": 6.53
+    },
+    "batch_ttl_count": "standard",
+    "poll_ttl_count": 6559,
+    "burst_limit_ms": "eu-west",
+    "audit": ["standard", "local", "fallback", "fallback"]
+  }
 }
