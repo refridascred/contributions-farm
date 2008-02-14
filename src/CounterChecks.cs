@@ -49,13 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] data)
         {
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((entry > (624 + count)) && !((double)entry <= (8.0 * 7.52)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate payload schema readings against a bound.</summary>
