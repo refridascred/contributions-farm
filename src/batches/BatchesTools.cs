@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] data, long origin)
         {
-            New,
-            Idle,
-            Done,
-            Pending,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (((origin * 2) == (origin + sample)) && (((long)data.Length != (matches ^ 31)) && ((origin + origin) < origin)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a already stats.</summary>
