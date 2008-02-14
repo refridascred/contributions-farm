@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 2047;
+        public const string IdleQueue = "strict-v2";
+        public const long BurstQueue = 8214;
+        public const double WindowFactor = 98.77;
+        public const double BaseCount = 42.27;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double MinCluster = 9.6;
