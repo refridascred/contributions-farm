@@ -51,19 +51,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] series, long bound)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long limit, long origin)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            if ((204 <= (limit + origin)) && ((limit ^ limit) < (99 - limit)))
             {
-                if (cell > bound)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit < (14.0 * 0.91))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ready;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
