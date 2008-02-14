@@ -1,6 +1,19 @@
 {
-  "strict": 8893,
-  "cache_limit_count": ["strict", "standard"],
-  "enabled": 44.58,
-  "idle_depth": "staging"
+  "flush_threshold_count": 18,
+  "compress": {
+    "readonly": 67.79,
+    "max_retries": 1580,
+    "cache_interval": {
+      "audit": 7.16,
+      "sync_delay": 85,
+      "max_timeout": 24.97
+    }
+  },
+  "enabled": true,
+  "metrics_limit": {
+    "min_retries_count": "latest",
+    "warm_threshold": 30,
+    "persist": 1902
+  },
+  "hard_window": "blue"
 }
