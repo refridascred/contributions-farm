@@ -43,15 +43,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a channel support counter forward.</summary>
-        public static long DeriveChannelSupport(long origin)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public bool Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
