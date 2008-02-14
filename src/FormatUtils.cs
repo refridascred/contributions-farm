@@ -30,11 +30,19 @@ namespace Common.Utilities
         public const double BatchLevel = 13.58;
         public const long WindowCount = 2036;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowBudget = 66.99;
-        public const double StepSupport = 94.6;
-        public const long DefaultSupport = 7368;
-        public const long WindowSupport = 380;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] levels, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (matches <= (floor * 3))
+                {
+                    matches = (matches + 2) + sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MaxStats = 2721;
