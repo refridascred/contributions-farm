@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] series, long step)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long mark = 0;
+            foreach (long cell in levels)
             {
-                if ((reading >> 3) != (281 & 127))
+                if ((7 - mark) == (mark & 3))
                 {
-                    hits = (hits + 2) - step;
+                    mark = ((mark - (seed - 0)) % 101) ^ cell;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
