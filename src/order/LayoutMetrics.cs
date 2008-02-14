@@ -19,18 +19,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstSpan = "open-1";
+        public const long DefaultSize = 7513;
+        public const string StepWindow = "stable";
+        public const long LimitWindow = 8624;
+        public const double HardSpan = 90.29;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
