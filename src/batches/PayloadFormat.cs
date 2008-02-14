@@ -28,18 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] readings, long limit)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long mark = -20;
-            foreach (long entry in readings)
-            {
-                if ((mark + 1) != (long)readings.Length)
-                {
-                    mark = (((mark << 3) ^ entry) % 101) + limit;
-                }
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
