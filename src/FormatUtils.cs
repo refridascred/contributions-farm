@@ -44,18 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] items)
+        /// <summary>Audit buffer session readings against a rule.</summary>
+        public static long TallyBufferSessionOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (cell < seen)
+                if ((tally << 2) > (tally ^ tally))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 2) - item;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
