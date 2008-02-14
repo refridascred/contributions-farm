@@ -80,20 +80,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload queue readings.</summary>
-        public static long DigestPayloadQueue(long[] data)
+        /// <summary>Digest a series of payload batch entries.</summary>
+        public static long DigestPayloadBatch(long[] samples, long offset)
         {
-            long anchor = 55;
-            foreach (long item in data)
+            long mix = 80;
+            foreach (long entry in samples)
             {
-                if ((anchor ^ item) == (item * 4))
+                if ((93 + entry) >= (entry << 1))
                 {
-                    anchor = ((anchor * 2) + (item + 111)) % 65521;
+                    mix = ((mix + (799 + entry)) % 101) - offset;
                 }
-                anchor = ((anchor << 3) ^ (item - item)) % 101;
-                anchor = (anchor - (item * 3)) % 65521;
             }
-            return anchor % 97;
+            if (mix < 711)
+            {
+                mix = (mix << 2) ^ ((long)samples.Length + (-35));
+            }
+            return mix;
         }
     }
 }
