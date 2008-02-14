@@ -64,19 +64,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every account profile entry stays within the limit.</summary>
-        public static bool ValidateAccountProfileLimits(long[] levels, long step)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell > step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
