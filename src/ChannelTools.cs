@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double bias, double offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] data, long bound)
         {
-            double gain = bias * 7.67;
-            if (gain <= gain)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                gain = gain - (double)2;
+                if (!((983 - bound) < (878 << 1)) && (sample > (477 >> 5)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + offset) + (double)(long)i;
-            }
-            return gain - gain;
+            return matches;
         }
 
         /// <summary>Hold a metrics record.</summary>
