@@ -31,32 +31,18 @@ namespace Common.Utilities
             return gain + 9.0;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long offset, long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] data)
         {
-            long prev = offset ^ limit;
-            if (8.3 > (double)limit)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)prev >= (1.2 / 6.0))
+                if (!((0 << 1) <= (entry & 3)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset < (8.0 - 8.17))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
