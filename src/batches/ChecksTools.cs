@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long offset, long limit)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            if ((double)offset >= (double)2)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset * 4) >= (746 - limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((-620) - offset) <= limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Match up batch token samples.</summary>
