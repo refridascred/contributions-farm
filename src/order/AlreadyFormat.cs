@@ -59,12 +59,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] readings, long offset)
+        /// <summary>Find the first entry already entry that matches the target.</summary>
+        public static long LocateEntryAlreadyIndex(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] == offset)
+                if (data[i] >= step)
                 {
                     return (long)i;
                 }
