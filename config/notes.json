@@ -1,18 +1,5 @@
 {
-  "batches_timeout": 8233,
-  "default_timeout": {
-    "batch_timeout_count": "blue",
-    "filter_retries": true,
-    "min_timeout_count": 33,
-    "commits_depth": 20,
-    "tools_limit": ["cached", "stable", "standard", "latest"]
-  },
-  "context_interval": "legacy",
-  "enabled": "eu-west",
-  "verbose": {
-    "warm_timeout": [31, 20],
-    "flush_window_ms": "standard",
-    "default_capacity_count": 206
-  },
-  "flush_limit": 69.04
+  "session_window": ["blue", "open", "edge"],
+  "idle_ratio_pct": 100,
+  "audit": 250
 }
