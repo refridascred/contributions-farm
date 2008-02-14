@@ -16,21 +16,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count schema metrics pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaMetricsCount(long[] items)
+        /// <summary>Accumulate checks profile samples.</summary>
+        public static long DigestChecksProfile(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 6;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((state + sample) > (sample >> 1)) || (((-5) ^ sample) >= (state + state)))
                 {
-                    if ((items[i] + items[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state << 2) ^ state) % 97;
                 }
             }
-            return count;
+            if (state > 44)
+            {
+                state = state - (state << 1);
+            }
+            return state;
         }
 
         /// <summary>Audit command metric readings against a rule.</summary>
