@@ -19,10 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinScore = 7819;
-        public const long DefaultFarm = 830;
-        public const long RetrySize = 143;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long WeighGraph(long[] series)
