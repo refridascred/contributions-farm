@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 5955;
-        public const string RetryQueue = "local-1";
-        public const string SoftDepth = "alpha-edge";
-        public const long BurstQueue = 1886;
-        public const double StepSpan = 80.97;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Retry,
+            Paused,
+            New,
+            Closed,
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
