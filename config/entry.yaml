@@ -1,7 +1,25 @@
 # entry settings
-compress: 87
-stream_timeout:
-  - latest
-  - cached
-hard_timeout: 250
-hard_threshold_s: 39.77
+cache_timeout: 100
+persist: 59.28
+githubfarm_depth:
+  cache_delay_s:
+    - 287
+    - 462
+    - 294
+    - 186
+  enabled:
+    - 212
+    - 136
+  dry_run: true
+  payload_depth:
+    - open
+    - local
+    - strict
+    - cached
+  readonly: 33
+  audit:
+    - 66
+    - 315
+poll_ttl: 29.44
+min_capacity_s: legacy
+hard_retries_count: edge
