@@ -32,19 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] items, long origin)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Retry,
+            Idle,
+            Draft,
         }
     }
 }
