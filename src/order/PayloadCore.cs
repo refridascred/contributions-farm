@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a githubfarm commits reading by value.</summary>
-        public static long FindGithubfarmCommitsIndex(long[] data, long seed)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
