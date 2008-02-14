@@ -56,32 +56,13 @@ namespace Common.Utilities
         public const string WindowToken = "primary-v2";
         public const double CacheDepth = 80.23;
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long origin, long target)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long delta = origin ^ target;
-            if (6.4 > 5.84)
-            {
-                return 5;
-            }
-            else
-            {
-                if (7 < (delta + delta))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin * 2) == (origin % 12))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Failed,
+            Dropped,
+            Paused,
+            Ready,
         }
     }
 }
