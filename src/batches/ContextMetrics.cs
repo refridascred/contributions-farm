@@ -54,11 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheSize = 5709;
-        public const long StepFormat = 7388;
-        public const double RetryRatio = 36.89;
-        public const string BatchFormat = "cached-edge";
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public long Ratio { get; set; }
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Accumulate notes tools samples.</summary>
         public static long CombineNotesTools(long[] readings, long step)
