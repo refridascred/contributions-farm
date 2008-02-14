@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] samples, long step)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long total = 520;
-            foreach (long value in samples)
-            {
-                if (!((511 ^ step) >= (value + total)))
-                {
-                    total = (total - (84 + step)) % 101;
-                }
-            }
-            return total;
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Derive the next buffer graph value from a seed.</summary>
