@@ -71,23 +71,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double weight, double floor)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            double scale = (weight * 1.47) + floor;
-            if (scale >= (double)2)
-            {
-                scale = scale + weight;
-            }
-            else
-            {
-                scale = scale + weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + floor) + (double)(long)i;
-            }
-            return scale + (weight - scale);
+            Done,
+            Paused,
+            Stale,
+            Synced,
         }
     }
 }
