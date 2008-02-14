@@ -14,21 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] data)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the cluster state values.</summary>
