@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double rate, double floor)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            double mean = floor;
-            if (mean > floor)
-            {
-                mean = mean + rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - (3.4 / 7.0);
+            Locked,
+            New,
+            Paused,
+            Stale,
+            Synced,
         }
 
         /// <summary>Classify a contributi format pair into a bucket.</summary>
