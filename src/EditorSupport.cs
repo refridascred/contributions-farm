@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 6144;
-        public const long RetryAccount = 7617;
-        public const long BaseSpan = 7641;
-        public const double HardBudget = 12.72;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] levels, long origin)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((item + 3) == (item & 1))
+                {
+                    hits = (hits + 1) + origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long DigestCluster(long[] data, long step)
