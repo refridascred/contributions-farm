@@ -32,21 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Measure how many batch cache samples are out of range.</summary>
+        public static long MeasureBatchCacheHits(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)sample != (7.0 + 20.0))
                 {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
