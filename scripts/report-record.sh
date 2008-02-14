@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict stable; do
+RECORD_LIMIT=116
+log "limit is ${RECORD_LIMIT}"
+
+for item in local green eu-west; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-blue}"
+mode="${1:-stable}"
 case "${mode}" in
-    fallback)
+    stable)
         log "fast path"
         ;;
     *)
