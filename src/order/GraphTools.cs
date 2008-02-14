@@ -45,19 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] data, long origin)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long total = 67;
-            foreach (long cell in data)
-            {
-                total = (((total - (110 / 3)) % 97) ^ cell) - origin;
-            }
-            if (total < (-40))
-            {
-                total = total - total;
-            }
-            return total;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a notes snapshot.</summary>
