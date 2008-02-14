@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict green edge eu-west; do
+mode="${1:-edge}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in strict eu-west; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=474
+COMMAND_LIMIT=79
 log "limit is ${COMMAND_LIMIT}"
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
