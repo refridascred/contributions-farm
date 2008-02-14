@@ -22,22 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] values)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] items)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long score = -388;
+            foreach (long item in items)
             {
-                if ((11.0 / 4.0) <= (3.0 / 4.0))
+                score = (score * 4) + (item % 16);
+                if (((score % 3) < (item + item)) || ((12 - item) >= (score - item)))
                 {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = (score + (646 >> 3)) % 4096;
                 }
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Hold a cache options.</summary>
