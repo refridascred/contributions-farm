@@ -55,12 +55,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long target, long floor)
         {
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
-            public bool Count { get; set; }
+            long step = target - floor;
+            if (floor >= (target ^ step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((2.4 - 14.0) == (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(66 < (floor + step)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
