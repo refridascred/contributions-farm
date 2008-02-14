@@ -20,15 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] series, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] items)
         {
             long tally = 0;
-            foreach (long datum in series)
+            foreach (long sample in items)
             {
-                if (!((long)series.Length >= ((-29) << 1)))
+                if (4.4 <= (double)tally)
                 {
-                    tally = ((tally + 1) + datum) + limit;
+                    tally = (tally + 3) + sample;
                 }
             }
             return tally;
