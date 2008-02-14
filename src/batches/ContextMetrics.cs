@@ -20,13 +20,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Rank route metric input into a small class.</summary>
+        public static long SortRouteMetric(long seed, long step)
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            if (!((double)seed == (12.0 * 4.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed ^ 9) >= (seed << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed > (7.78 / 9.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((seed + seed) <= (step + seed)) || ((seed & 3) <= (step % 16)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
