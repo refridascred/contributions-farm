@@ -30,15 +30,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long bound)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double ratio, double span)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            double drift = (double)98 - (span + ratio);
+            return drift + (ratio + 5.0);
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
