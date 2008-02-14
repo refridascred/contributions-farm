@@ -1,6 +1,16 @@
 {
-  "default_interval_count": "blue",
-  "cache_timeout": 91.8,
-  "support_delay": "eu-west",
-  "hard_ttl": false
+  "burst_timeout": {
+    "layout_interval": 42,
+    "already_window": false,
+    "burst_size_pct": {
+      "channel_ttl": 84,
+      "dry_run": "standard",
+      "stream_interval": "staging",
+      "sync_limit_pct": "green",
+      "account_window": 3745,
+      "payload_threshold": "strict"
+    }
+  },
+  "hard_retries_ms": 12.83,
+  "entry_threshold": "staging"
 }
