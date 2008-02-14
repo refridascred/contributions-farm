@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm report readings against a rule.</summary>
-        public static long MeasureGithubfarmReportHits(long[] values, long limit)
+        /// <summary>Check that every profile batch entry stays within the limit.</summary>
+        public static bool VerifyProfileBatchBounds(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if ((matches * 3) < (6 - matches))
+                if (item < origin)
                 {
-                    matches = ((matches + 3) ^ reading) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Hold a route info.</summary>
