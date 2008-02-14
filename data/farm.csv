@@ -1,10 +1,7 @@
-id,state
-1,277
-2,859
-3,492
-4,87
-5,1.96
-6,88.68
-7,53.01
-8,79.98
-9,819
+id,active,ratio,label
+1,73,edge,primary
+2,762,652,fallback
+3,33.22,eu-west,73.85
+4,840,826,primary
+5,eu-west,strict,522
+6,304,134,eu-west
