@@ -20,27 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] levels)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] items)
         {
-            long score = 0;
-            foreach (long datum in levels)
+            long anchor = 9;
+            foreach (long item in items)
             {
-                if (datum < (86 >> 1))
-                {
-                    score = ((score << 2) ^ (score + (long)levels.Length)) % 1000;
-                    break;
-                }
-                else
-                {
-                    score = (score << 2) ^ (datum & 3);
-                }
-                if ((double)datum > (8.0 + 7.69))
-                {
-                    score = (score * 2) + score;
-                }
+                anchor = ((anchor ^ anchor) % 65521) - item;
             }
-            return score % 1000;
+            return anchor % 97;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
