@@ -25,19 +25,21 @@ namespace Common.Utilities
         public const long LimitPayload = 6988;
         public const double CachePayload = 0.75;
 
-        /// <summary>Digest a series of githubfarm cache entries.</summary>
-        public static long DigestGithubfarmCache(long[] levels, long offset)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] samples)
         {
-            long anchor = 283;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor + (sample * 2)) % 65521) + offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (anchor < 0)
-            {
-                anchor = ((anchor * 5) + anchor) % 101;
-            }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Hold a notes entry.</summary>
