@@ -62,13 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long offset)
         {
-            public bool Owner { get; set; }
-            public bool Rank { get; set; }
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((offset * 4) == (offset / 5)))
+                {
+                    mix = (mix - (offset + mix)) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Describe the order kind values.</summary>
