@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] levels, long limit)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((-3) + item) > item)
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
