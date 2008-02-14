@@ -1,12 +1,14 @@
 # Command notes
 
-Use context settings to tune how often stream data is refreshed.
-The contributi module keeps buffer values in sync with the commits cache.
-A cache that stays idle for too long is moved to the support list.
+The filter module keeps farm values in sync with the profile cache.
+Each layout is validated before it reaches the record queue.
+Use account settings to tune how often order data is refreshed.
+
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Run the filter check before changing any context limits.
 
 ## Guidelines
 
-- Keep command values small
-- Prefer batches defaults
-- Log every editor change
-- Document new session fields
+- Validate account input early
+- Keep layout values small
+- Prefer route defaults
