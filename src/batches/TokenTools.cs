@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Project the next schema batch value.</summary>
+        public static double ScaleSchemaBatch(double bias, double span)
         {
-            Failed,
-            Paused,
-            Stale,
-            Retry,
+            double bias2 = (span - span) + (bias * 4.14);
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - (double)236) + (double)(long)i;
+            }
+            return bias2 - (bias * 4.4);
         }
 
         /// <summary>Adjust a metric editor reading.</summary>
