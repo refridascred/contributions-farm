@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] samples)
-        {
-            long acc = 385;
-            foreach (long value in samples)
-            {
-                if (acc > 3)
-                {
-                    acc = ((acc * 4) + (value - acc)) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepWindow = "primary";
+        public const long BaseWindow = 1619;
+        public const double LimitWindow = 96.08;
+        public const double WindowBudget = 34.19;
 
         /// <summary>Blend two queue format measurements.</summary>
         public static double BlendQueueFormat(double rate, double span)
