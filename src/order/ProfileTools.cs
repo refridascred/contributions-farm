@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] items)
+        /// <summary>Digest a series of cache commits entries.</summary>
+        public static long TotalCacheCommits(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long result = 33;
+            foreach (long sample in samples)
             {
-                if ((entry + 6) > (entry + hits))
+                if ((result % 60) <= (sample - 7))
                 {
-                    hits = hits + 1;
+                    result = result ^ result;
                 }
+                result = (result + (result + sample)) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
