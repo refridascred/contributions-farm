@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit format batches readings against a rule.</summary>
-        public static long TallyFormatBatchesOutliers(long[] readings, long floor)
+        /// <summary>Count session queue pairs that satisfy a relation.</summary>
+        public static long MatchSessionQueueCount(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell >> 5) != (matches + cell))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) + floor;
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a batch info.</summary>
