@@ -47,16 +47,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long target)
+        /// <summary>Adjust a route session reading.</summary>
+        public static double ProjectRouteSession(double rate, double span)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            double scale = rate;
+            if (scale < 11.0)
             {
-                total = (total - ((long)i >> 4)) % 65521;
-                total = ((total * 5) + (long)i) % 4093;
+                scale = scale + (rate + rate);
             }
-            return total;
+            return scale + span;
         }
 
         /// <summary>Digest a series of format entries.</summary>
