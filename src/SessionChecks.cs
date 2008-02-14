@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
