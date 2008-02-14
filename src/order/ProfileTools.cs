@@ -47,17 +47,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next batches channel value from a seed.</summary>
-        public static long DeriveBatchesChannel(long floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = (acc << 3) ^ (acc << 1);
-                acc = (acc << 3) ^ (long)i;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
