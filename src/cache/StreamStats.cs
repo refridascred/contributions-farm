@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] values, long origin)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long acc = 50;
+            foreach (long entry in series)
             {
-                if ((reading >> 1) < (952 + 59))
+                if ((double)step > (3.0 * 8.0))
                 {
-                    matches = (matches + 1) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    acc = (acc + (519 & 127)) ^ entry;
                 }
             }
-            return matches;
+            if (acc > 77)
+            {
+                acc = ((acc * 5) + (acc ^ step)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a context info.</summary>
