@@ -52,22 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine schema payload values into a single score.</summary>
-        public static long CombineSchemaPayload(long[] samples)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long carry = 96;
-            foreach (long datum in samples)
-            {
-                if (carry >= (carry >> 1))
-                {
-                    carry = (carry ^ (carry >> 4)) + datum;
-                }
-                else
-                {
-                    carry = (carry - (33 ^ carry)) % 4096;
-                }
-            }
-            return carry;
+            Stale,
+            Retry,
+            New,
         }
 
         /// <summary>Roll a schema counter forward.</summary>
