@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double weight, double span)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            double mean = span;
-            if (mean < (20.0 + span))
-            {
-                mean = mean - (double)1;
-            }
-            else
-            {
-                mean = mean + (3.19 + weight);
-            }
-            return mean - 5.6;
+            Draft,
+            Idle,
+            Queued,
         }
 
         /// <summary>Audit layout account readings against a rule.</summary>
