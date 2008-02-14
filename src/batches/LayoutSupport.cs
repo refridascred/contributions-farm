@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public double Size { get; set; }
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
+            Ready,
+            Stale,
+            Paused,
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
