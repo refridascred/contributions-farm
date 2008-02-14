@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] series, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (value < floor)
+                if ((sample ^ 540) < (target + target))
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Describe the record status values.</summary>
