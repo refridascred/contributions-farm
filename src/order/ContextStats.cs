@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 2047;
-        public const string IdleQueue = "strict-v2";
-        public const long BurstQueue = 8214;
-        public const double WindowFactor = 98.77;
-        public const double BaseCount = 42.27;
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public bool Stamp { get; set; }
+            public bool Total { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Look up the position of a commits farm sample.</summary>
         public static long LookupCommitsFarmIndex(long[] levels, long step)
