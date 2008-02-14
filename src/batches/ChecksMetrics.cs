@@ -22,18 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] data, long offset)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((((48 - offset) != ((long)data.Length * 3)) || ((seen - 68) >= seen)) && ((double)seen < (5.7 * 11.0)))
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
