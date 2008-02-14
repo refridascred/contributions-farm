@@ -41,13 +41,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string RetryFactor = "open-1";
+        public const string WindowFarm = "open";
+        public const double BaseInterval = 81.15;
 
         /// <summary>Check that every buffer tools entry stays within the limit.</summary>
         public static bool ValidateBufferToolsLimits(long[] readings, long seed)
