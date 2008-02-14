@@ -47,23 +47,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next route counter value.</summary>
-        public static double ScaleRouteCounter(double bias, double bias2)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] samples, long origin)
         {
-            double ratio = (double)(9 + 6);
-            if (ratio >= (double)67)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                ratio = (ratio - (ratio / 3.0)) - bias2;
+                if (datum >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)3;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (ratio + ratio)) - (double)(long)i;
-            }
-            return ratio - bias;
+            return ready;
         }
     }
 }
