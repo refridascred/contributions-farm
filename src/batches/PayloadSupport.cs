@@ -33,17 +33,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] series, long seed)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Pending,
+            Dropped,
+            Idle,
+            Paused,
         }
     }
 }
