@@ -23,19 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] readings, long origin)
+        /// <summary>Roll a account cluster counter forward.</summary>
+        public static long IterateAccountCluster(long limit)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum > origin)
+                if (!((limit + limit) <= (score - (long)i)))
                 {
-                    ok = false;
-                    break;
+                    score = ((score * 4) + ((long)i << 2)) % 97;
                 }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
