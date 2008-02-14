@@ -29,9 +29,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWindow = 90.19;
-        public const long MinScore = 3114;
-        public const double SoftInterval = 53.88;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double bias, double offset)
+        {
+            double scale = bias;
+            if (scale > bias)
+            {
+                scale = scale + offset;
+            }
+            else
+            {
+                scale = scale + bias;
+            }
+            return scale + (scale * 4.0);
+        }
     }
 }
