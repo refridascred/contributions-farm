@@ -40,19 +40,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double scale, double span)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] readings)
         {
-            double drift = scale;
-            if (drift < (double)329)
+            long mix = -115;
+            foreach (long cell in readings)
             {
-                drift = (drift - 5.38) - span;
+                if ((double)(long)readings.Length < (double)mix)
+                {
+                    mix = (mix + (mix + (long)readings.Length)) % 1000;
+                }
+                if (mix >= (mix + mix))
+                {
+                    mix = (mix ^ mix) % 1000;
+                }
+                if ((1.18 * 1.0) > (double)cell)
+                {
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - drift;
+            return mix % 65521;
         }
 
         /// <summary>Check that every schema already entry stays within the limit.</summary>
