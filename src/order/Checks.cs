@@ -65,19 +65,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] readings)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] data, long floor)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long cell in data)
             {
-                if (sample > (sample / 6))
+                if ((floor * 5) != (cell & 31))
                 {
                     count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
                 }
             }
             return count;
