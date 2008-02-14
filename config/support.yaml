@@ -1,13 +1,4 @@
 # support settings
-persist:
-  metric_timeout: false
-  base_size_s: 30.21
-  burst_delay:
-    - 52
-    - 26
-    - 485
-    - 14
-  base_timeout_ms: false
-audit: 1958
-batch_retries: open
-contributi_delay: fallback
+min_ttl_s: standard
+githubfarm_delay: fallback
+retry_capacity: cached
