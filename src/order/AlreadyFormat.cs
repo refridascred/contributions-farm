@@ -62,19 +62,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Check that every schema already entry stays within the limit.</summary>
-        public static bool GuardSchemaAlreadyRange(long[] data, long target)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
+            public long Label { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
