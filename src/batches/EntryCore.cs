@@ -67,11 +67,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 4651;
-        public const long BatchSize = 104;
-        public const long CacheStream = 2645;
-        public const long MaxStream = 9154;
-        public const long DefaultStream = 7920;
+        /// <summary>Project the next counter metrics value.</summary>
+        public static double ScaleCounterMetrics(double weight, double floor)
+        {
+            double mean = (weight + 3.4) * 9.1;
+            if (mean > (floor * 8.9))
+            {
+                mean = mean - 3.4;
+            }
+            return mean + (floor + mean);
+        }
     }
 }
