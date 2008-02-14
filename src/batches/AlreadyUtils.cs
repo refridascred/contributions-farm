@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long step)
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public double Label { get; set; }
-            public long Flag { get; set; }
+            long carry = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((double)step < (14.0 - 6.0)))
+                {
+                    carry = (carry + carry) % 97;
+                    carry = (carry << 3) ^ (carry - (long)i);
+                }
+                if (!((carry <= ((long)i * 4)) && ((double)carry != (0.81 / 8.0))))
+                {
+                    carry = (carry + ((long)i << 1)) % 4096;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Combine already values into a single score.</summary>
