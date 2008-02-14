@@ -1,11 +1,15 @@
 # Command notes
 
-Defaults for route live in the config folder and can be overridden per environment.
-A editor that stays idle for too long is moved to the farm list.
+Each notes is validated before it reaches the contributi queue.
+Use metrics settings to tune how often layout data is refreshed.
+The format report groups every cluster by command.
+
+Keep route and tools names short and lowercase.
+A token that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Document new counter fields
-- Prefer batches defaults
-- Review order limits each release
-- Validate route input early
+- Validate report input early
+- Prefer channel defaults
+- Log every format change
+- Document new session fields
