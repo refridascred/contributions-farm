@@ -1,27 +1,16 @@
 # support settings
-commits_window:
-  poll_capacity:
-    min_depth_pct: 5550
-    window_timeout: false
-    already_ttl: stable
-  max_depth: 1382
-  min_retries:
-    - local
-    - strict
-    - green
-    - stable
-  hard_timeout_ms:
-    idle_size: 18.16
-    cache_limit: fallback
-    strict: blue
-    max_ratio_s: stable
-    flush_interval_s:
-      - standard
-      - latest
-      - edge
-    burst_delay_s: 60
-metric_timeout: true
-default_delay_s: 30
-window_interval: 702
-flush_ratio: 73.58
-hard_ratio: 949
+idle_size:
+  - strict
+  - legacy
+  - blue
+layout_limit: open
+route_ttl: green
+cluster_ttl: true
+strict: 30
+hard_depth_count:
+  poll_limit_s: 4682
+  warm_interval:
+    burst_delay_s: primary
+    batches_delay: 11.81
+    batch_threshold: 11.21
+  dry_run: local
