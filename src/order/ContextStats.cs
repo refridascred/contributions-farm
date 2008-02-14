@@ -28,22 +28,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] items, long floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long state = 521;
+            foreach (long item in values)
             {
-                if ((9.13 - 2.34) > (double)floor)
+                if (!((item / 9) == (57 ^ 2)))
                 {
-                    hits = (hits + 2) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    state = state ^ (item % 3);
                 }
             }
-            return hits;
+            return state % 65521;
         }
 
         /// <summary>Hold a batches info.</summary>
