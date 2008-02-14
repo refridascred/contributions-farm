@@ -80,12 +80,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double gain, double bias)
         {
-            Stale,
-            New,
-            Idle,
+            double rate = (double)42 * 18.0;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (bias - gain)) + (double)(long)i;
+            }
+            return rate - (double)4;
         }
     }
 }
