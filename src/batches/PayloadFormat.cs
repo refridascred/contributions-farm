@@ -46,12 +46,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public string Level { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 8434;
+        public const long DefaultBuffer = 8626;
+        public const double BatchBuffer = 42.66;
+        public const double MinBuffer = 87.73;
+        public const string MaxBuffer = "fallback";
     }
 }
