@@ -61,10 +61,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 1751;
-        public const long WindowChecks = 4987;
-        public const double IdleDepth = 61.09;
-        public const string BurstRatio = "fallback";
+        /// <summary>Derive the next batches channel value from a seed.</summary>
+        public static long DeriveBatchesChannel(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = (acc << 3) ^ (acc << 1);
+                acc = (acc << 3) ^ (long)i;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
