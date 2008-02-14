@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine context stream values into a single score.</summary>
-        public static long CombineContextStream(long[] levels, long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long floor, long target)
         {
-            long carry = -1;
-            foreach (long datum in levels)
+            long lane = floor ^ target;
+            if (target > (floor << 2))
             {
-                carry = (((carry ^ (57 & 127)) % 101) + datum) + offset;
+                return 5;
             }
-            return carry % 1000;
+            else
+            {
+                if (((lane >> 1) >= (-476)) || ((39 + 111) > (lane & 31)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor << 1) <= (lane - 190))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many buffer cache samples are out of range.</summary>
