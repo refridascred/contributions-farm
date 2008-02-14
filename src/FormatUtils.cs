@@ -60,15 +60,18 @@ namespace Common.Utilities
         public const string WindowToken = "primary-v2";
         public const double CacheDepth = 80.23;
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long floor)
+        /// <summary>Fold a list of batch counter readings.</summary>
+        public static long WeighBatchCounter(long[] values)
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
+            long state = 788;
+            foreach (long sample in values)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if ((double)state < (6.8 / 7.0))
+                {
+                    state = ((state - (state + 3)) % 65521) + sample;
+                }
             }
-            return total;
+            return state;
         }
     }
 }
