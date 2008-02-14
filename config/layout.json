@@ -1,7 +1,6 @@
 {
-  "min_limit_pct": ["strict", "open", "stable", "strict"],
-  "tools_ttl": true,
-  "strict": false,
-  "idle_delay_s": 81.77,
-  "burst_delay_count": ["green", "legacy", "edge"]
+  "soft_limit": false,
+  "min_ttl_ms": ["primary", "standard", "cached", "open"],
+  "schema_depth": 1024,
+  "account_ratio": 100
 }
