@@ -27,22 +27,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] series, long target)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3.0 / 4.0) > (double)target)
+                if ((samples[i] >= limit) && ((samples[i] % 3) != 0))
                 {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a session info.</summary>
