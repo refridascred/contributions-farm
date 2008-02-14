@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] series)
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)step < (14.0 - 6.0)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry + carry) % 97;
-                    carry = (carry << 3) ^ (carry - (long)i);
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if (!((carry <= ((long)i * 4)) && ((double)carry != (0.81 / 8.0))))
-                {
-                    carry = (carry + ((long)i << 1)) % 4096;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a profile info.</summary>
