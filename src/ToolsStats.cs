@@ -44,18 +44,12 @@ namespace Common.Utilities
         public const long HardDepth = 5292;
         public const long SoftGithubfarm = 199;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] series, long offset)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((hits - 0) == (offset * 2))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
