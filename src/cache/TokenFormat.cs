@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const double MinSession = 16.11;
         public const long WindowSession = 6622;
 
-        /// <summary>Count the tools notes entries that pass the check.</summary>
-        public static long CountToolsNotesGaps(long[] series, long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (((double)hits != (20.0 * 7.0)) && (limit <= (85 - limit)))
+                if (sample != seed)
                 {
-                    hits = (hits + 1) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Validate channel command readings against a bound.</summary>
