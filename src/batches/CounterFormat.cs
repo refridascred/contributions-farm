@@ -25,18 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] readings, long limit)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((limit - limit) != (tally + tally))
-                {
-                    tally = (tally + 2) ^ value;
-                }
-            }
-            return tally;
+            Locked,
+            Stale,
+            Done,
+            Closed,
+            Active,
         }
     }
 }
