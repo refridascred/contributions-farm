@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] data)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((matches - item) <= (matches << 1))
+                if (value < floor)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Describe the record status values.</summary>
