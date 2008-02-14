@@ -13,27 +13,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] samples)
-        {
-            long acc = 546;
-            foreach (long value in samples)
-            {
-                if (((double)acc == (double)value) && ((acc ^ (-29)) >= (acc >> 2)))
-                {
-                    acc = (acc - (8 / 5)) % 101;
-                }
-                if (((-372) - acc) != (705 >> 5))
-                {
-                    break;
-                }
-            }
-            if (acc < 57)
-            {
-                acc = acc - ((long)samples.Length ^ acc);
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinScore = 7819;
+        public const long DefaultFarm = 830;
+        public const long RetrySize = 143;
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
