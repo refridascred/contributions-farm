@@ -20,12 +20,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Dropped,
-            Ready,
-            Pending,
+            Locked,
+            Closed,
             New,
         }
 
