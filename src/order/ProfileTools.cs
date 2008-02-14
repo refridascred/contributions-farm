@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] data)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] series, long limit)
         {
-            long acc = 3;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item * 2) <= (acc % 100))
+                if ((series[i] <= limit) && ((series[i] % 3) != 0))
                 {
-                    acc = ((acc * 2) + item) % 65521;
+                    return (long)i;
                 }
             }
-            if (acc < 3)
-            {
-                acc = ((acc << 3) ^ (acc * 2)) % 4096;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
