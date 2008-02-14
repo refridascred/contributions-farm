@@ -1,24 +1,5 @@
 # support settings
-hard_limit_pct: true
-soft_delay_s:
-  - legacy
-  - local
-  - open
-warm_ttl: false
-burst_delay_pct: 52
-warm_limit_count:
-  flush_size: strict
-  default_depth: true
-  hard_retries_ms: 4511
-  base_depth_count:
-    verbose: 500
-    warm_threshold: 60
-    payload_ratio: 70
-    batch_window_pct: false
-    persist:
-      - 130
-      - 336
-      - 483
-  soft_window: 7842
-  dry_run: 36.13
-idle_size: true
+warm_timeout_count: 82.1
+max_delay: 100
+burst_retries: 72
+burst_window: latest
