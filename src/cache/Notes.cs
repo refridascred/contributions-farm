@@ -14,12 +14,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Audit profile filter readings against a rule.</summary>
+        public static long AuditProfileFilterOutliers(long[] levels)
         {
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((seen % 97) == (seen & 1))
+                {
+                    seen = (seen + 3) - sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the already batches entries that pass the check.</summary>
