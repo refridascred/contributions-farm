@@ -59,13 +59,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryTimeout = 4007;
+        public const string StepFarm = "alpha-v2";
+        public const long LimitWidth = 791;
     }
 }
