@@ -47,13 +47,12 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
+            Stale,
+            New,
+            Dropped,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
