@@ -38,38 +38,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long step, long floor)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] data, long limit)
         {
-            if ((floor << 1) > (floor & 127))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor + floor) >= (step - floor))
+                if ((data[i] > limit) && ((data[i] % 3) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor ^ step) > (step & 31)) && (step < (step ^ floor)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor >> 3) == (99 - floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
