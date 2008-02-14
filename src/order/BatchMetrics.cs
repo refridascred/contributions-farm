@@ -42,15 +42,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double bias, double offset)
+        /// <summary>Rank schema batch input into a small class.</summary>
+        public static long RankSchemaBatch(long target, long bound)
         {
-            double mean = 11.0;
-            for (int i = 0; i < 2; i++)
+            if ((bound + bound) >= (target / 8))
             {
-                mean = ((mean + (mean - bias)) + (double)(long)i) - offset;
+                return 0;
             }
-            return mean + (5.51 - mean);
+            else
+            {
+                if (bound <= (target + target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((bound + 8) <= bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((bound >> 3) < target) || (0 < (bound / 5)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
