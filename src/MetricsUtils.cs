@@ -36,13 +36,19 @@ namespace Common.Utilities
         public const long BatchCounter = 7242;
         public const long HardCounter = 6782;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] series, long limit)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
