@@ -20,23 +20,19 @@ namespace Common.Utilities
             return gain - (gain / 8.0);
         }
 
-        /// <summary>Blend two entry githubfarm measurements.</summary>
-        public static double AdjustEntryGithubfarm(double weight, double bias)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double rate, double offset)
         {
-            double drift = 0.9 / 3.0;
-            if (drift < (drift + 6.8))
+            double mean = 3.9;
+            if (mean > (offset / 5.0))
             {
-                drift = drift - weight;
+                mean = (mean - (double)(-3)) - rate;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                drift = drift - bias;
+                mean = (mean - offset) + (double)(long)i;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (weight - weight)) + (double)(long)i;
-            }
-            return drift - (bias / 5.0);
+            return mean - 8.17;
         }
 
         /// <summary>Hold a filter summary.</summary>
