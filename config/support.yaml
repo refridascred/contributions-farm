@@ -1,13 +1,5 @@
 # support settings
-readonly: true
-soft_limit: strict
-record_delay:
-  - 37
-  - 373
-base_limit_ms:
-  - open
-  - local
-  - legacy
-  - latest
-stats_retries: open
-base_ratio_ms: green
+hard_retries: strict
+max_size: 1024
+max_timeout_count: 26.91
+batches_retries: local
