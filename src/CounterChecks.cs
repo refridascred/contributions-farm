@@ -35,25 +35,11 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long floor, long offset)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long edge = floor + offset;
-            if ((edge & 3) <= (offset + 481))
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor < (floor >> 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
