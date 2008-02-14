@@ -68,12 +68,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySchema = 2597;
-        public const string BaseCount = "latest-v2";
-        public const double DefaultSchema = 58.6;
-        public const string HardBudget = "stable";
-        public const string LimitSchema = "stable-1";
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!(((long)i - bound) >= (bound + (long)i)))
+                {
+                    score = (score * 4) + bound;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Scale a report account figure with a bias.</summary>
         public static double SmoothReportAccount(double weight, double offset)
