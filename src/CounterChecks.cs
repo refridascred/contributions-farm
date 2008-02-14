@@ -62,14 +62,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Active,
-            Paused,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 2467;
+        public const long RetryFilter = 1819;
+        public const long BatchFilter = 1666;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TotalContributi(long[] data)
