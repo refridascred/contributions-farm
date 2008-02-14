@@ -62,21 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count payload metric pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadMetricCount(long[] levels)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 3;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (((score * 3) + score) % 255) + cell;
             }
-            return hits;
+            return score % 4096;
         }
 
         /// <summary>Describe the payload phase values.</summary>
