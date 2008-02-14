@@ -13,11 +13,39 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long bound, long floor)
         {
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
+            long delta = bound + floor;
+            if ((bound < floor) && ((floor / 8) < (8 - floor)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (delta > (0 >> 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (delta >= (delta >> 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor >> 1) >= delta)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel class values.</summary>
