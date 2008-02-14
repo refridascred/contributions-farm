@@ -58,13 +58,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Closed,
-            Done,
-            Idle,
-            Paused,
+            Ready,
+            New,
+            Synced,
+            Active,
+            Draft,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
