@@ -34,11 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] items)
         {
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
