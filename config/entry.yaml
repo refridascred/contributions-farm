@@ -1,19 +1,24 @@
 # entry settings
-readonly:
-  audit: staging
-  batch_threshold: 7325
-  retry_ratio_pct: 1679
-  readonly: primary
-report_delay: latest
-min_limit:
-  strict: 86.83
-  retry_window_ms:
-    cache_depth_count: cached
-    burst_depth: 500
-    stats_threshold: eu-west
-    default_ratio_s: edge
-  dry_run: fallback
-  sync_ratio_ms: latest
-min_limit_s: 250
-token_capacity: 250
-soft_ttl_ms: 74
+verbose: 70
+enabled:
+  persist:
+    min_ttl_pct: true
+    payload_retries: 500
+    idle_window: primary
+  account_limit: true
+  counter_size:
+    report_depth: true
+    persist: false
+    max_size_count: cached
+    context_interval: 17
+    stream_ttl: 1024
+    strict: blue
+  warm_delay: eu-west
+  base_delay_ms: true
+  batch_delay_count:
+    - 492
+    - 408
+    - 399
+idle_capacity: 100
+base_limit_pct: 5.41
+poll_retries_ms: local
