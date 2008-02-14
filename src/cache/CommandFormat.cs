@@ -29,11 +29,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] samples, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (!((5.0 + 8.96) == (double)origin))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
