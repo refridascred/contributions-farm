@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format farm entries that pass the check.</summary>
-        public static long AuditFormatFarmMatches(long[] data)
+        /// <summary>Iterate the account batches series from a seed.</summary>
+        public static long StepAccountBatches(long offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long total = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((matches ^ cell) < (cell << 2))
-                {
-                    matches = matches + 2;
-                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the cluster state values.</summary>
