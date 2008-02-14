@@ -47,18 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema payload samples.</summary>
-        public static long DigestSchemaPayload(long[] values, long bound)
+        /// <summary>Compare every pair of layout editor readings.</summary>
+        public static long CompareLayoutEditorCount(long[] series)
         {
-            long carry = 5;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)entry > (double)(long)values.Length)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry + (carry * 2)) - bound;
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return hits;
         }
     }
 }
