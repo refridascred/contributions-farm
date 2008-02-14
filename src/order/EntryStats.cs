@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public double Region { get; set; }
-            public double Level { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftFactor = 66.33;
+        public const long BurstFactor = 7648;
+        public const long IdleWidth = 9011;
+        public const long DefaultTimeout = 5158;
+        public const long BurstLayout = 6394;
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
