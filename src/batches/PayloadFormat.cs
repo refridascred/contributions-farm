@@ -17,19 +17,19 @@ namespace Common.Utilities
         public const long HardGithubfarm = 5796;
         public const double StepBudget = 40.06;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] items)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] series, long seed)
         {
-            long mark = 440;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                mark = ((mark + (mark + mark)) % 97) - item;
+                if (sample > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mark < 70)
-            {
-                mark = ((mark * 4) + (mark - mark)) % 4096;
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Hold a payload options.</summary>
