@@ -16,10 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseFactor = 92.57;
-        public const long DefaultBatches = 7570;
-        public const long MinBatches = 9113;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] items, long target)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (target >= hits)
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorMatches(long[] items)
