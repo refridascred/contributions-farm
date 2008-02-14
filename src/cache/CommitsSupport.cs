@@ -81,21 +81,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long limit, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((step * 5) >= (step >> 5))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((step / 5) >= step)
                 {
-                    if ((levels[i] + levels[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
     }
 }
