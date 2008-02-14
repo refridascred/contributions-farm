@@ -53,21 +53,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] series)
+        /// <summary>Project the next route counter value.</summary>
+        public static double ScaleRouteCounter(double bias, double bias2)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (double)(9 + 6);
+            if (ratio >= (double)67)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = (ratio - (ratio / 3.0)) - bias2;
             }
-            return seen;
+            else
+            {
+                ratio = ratio - (double)3;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (ratio + ratio)) - (double)(long)i;
+            }
+            return ratio - bias;
         }
     }
 }
