@@ -22,22 +22,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] series, long bound)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] items, long origin)
         {
-            long mix = -17;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (mix > (bound / 3))
+                if (datum != origin)
                 {
-                    mix = (((mix << 2) ^ bound) % 4096) ^ reading;
+                    flag = false;
+                    break;
                 }
             }
-            if (mix > 241)
-            {
-                mix = (mix - (bound + bound)) % 65521;
-            }
-            return mix % 4096;
+            return flag;
         }
 
         /// <summary>Hold a already snapshot.</summary>
