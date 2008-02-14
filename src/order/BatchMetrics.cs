@@ -30,21 +30,21 @@ namespace Common.Utilities
         public const string BurstScore = "alpha";
         public const long StepFactor = 8799;
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] levels)
+        /// <summary>Compare every pair of githubfarm command readings.</summary>
+        public static long OverlapGithubfarmCommandCount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) > 9)
+                    if ((values[i] + values[j]) > 2)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
