@@ -38,12 +38,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
-        {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultOrder = "local-1";
+        public const string WindowInterval = "open";
+        public const long SoftWidth = 4607;
 
         /// <summary>Count profile metric pairs that satisfy a relation.</summary>
         public static long MatchProfileMetricCount(long[] readings)
