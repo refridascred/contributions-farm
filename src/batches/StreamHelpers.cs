@@ -70,19 +70,21 @@ namespace Common.Utilities
         public const double DefaultToken = 10.72;
         public const long CacheToken = 7320;
 
-        /// <summary>Check that every account cache entry stays within the limit.</summary>
-        public static bool CheckAccountCacheLimits(long[] series, long bound)
+        /// <summary>Compare every pair of channel window readings.</summary>
+        public static long CompareChannelWindowCount(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry >= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
