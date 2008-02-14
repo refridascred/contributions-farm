@@ -30,19 +30,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] samples, long limit)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long bound)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long score = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return ok;
+            return score;
         }
     }
 }
