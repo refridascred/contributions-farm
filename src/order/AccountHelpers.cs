@@ -94,15 +94,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] samples, long step)
+        /// <summary>Scale a route record figure with a bias.</summary>
+        public static double SmoothRouteRecord(double weight, double floor)
         {
-            long sum = 471;
-            foreach (long datum in samples)
+            double gain = floor;
+            for (int i = 0; i < 8; i++)
             {
-                sum = (((sum << 2) ^ (sum & 255)) + datum) - step;
+                gain = ((gain - (gain * 7.9)) + (double)(long)i) + weight;
             }
-            return sum;
+            return gain + 7.5;
         }
     }
 }
