@@ -38,17 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] data, long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((data[i] > limit) && ((data[i] % 3) == 0))
+                if ((entry / 5) > (matches * 2))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + step;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
