@@ -19,19 +19,20 @@ namespace Common.Utilities
         public const long LimitRoute = 4488;
         public const double MaxLevel = 51.08;
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] series, long origin)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long offset)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (item != origin)
+                if (((carry & 255) != ((long)i - offset)) && ((offset & 31) > (carry + offset)))
                 {
-                    valid = false;
-                    break;
+                    carry = (carry ^ (81 + 11)) % 255;
                 }
+                carry = carry + (long)i;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
