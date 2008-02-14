@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] samples)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 52;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (bound < (bound - bound))
                 {
-                    if ((samples[i] + samples[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix << 2) ^ mix) - cell;
                 }
             }
-            return hits;
+            if (mix > 474)
+            {
+                mix = (mix - (mix + bound)) % 255;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
