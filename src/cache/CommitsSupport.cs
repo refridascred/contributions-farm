@@ -35,18 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] data)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] values)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long total = 52;
+            foreach (long entry in values)
             {
-                if (matches >= (matches % 2))
+                if ((total ^ entry) <= (entry & 255))
                 {
-                    matches = (matches + 2) + item;
+                    total = (total + (entry << 3)) % 1000;
                 }
             }
-            return matches;
+            if (total > 145)
+            {
+                total = ((total * 5) + (total - total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
