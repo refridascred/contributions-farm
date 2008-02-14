@@ -47,17 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] readings, long seed)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Closed,
+            Pending,
         }
     }
 }
