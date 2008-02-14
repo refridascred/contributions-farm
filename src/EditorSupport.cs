@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 8227;
-        public const long MinMetrics = 8897;
-        public const long StepRatio = 2931;
-        public const string DefaultLevel = "standard-edge";
-        public const long SoftLevel = 2323;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] series, long floor)
+        {
+            long result = 56;
+            foreach (long entry in series)
+            {
+                if (((entry - (-46)) >= (result & 255)) && ((47 + floor) >= (entry & 31)))
+                {
+                    result = (result << 3) ^ (6 - entry);
+                }
+                if ((floor % 60) != (entry % 8))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long SoftEditor = 10;
