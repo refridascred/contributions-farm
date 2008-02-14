@@ -40,19 +40,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] levels, long origin)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Measure how many order graph samples are out of range.</summary>
