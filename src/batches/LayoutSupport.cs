@@ -52,15 +52,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] data)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long score = 3;
-            foreach (long cell in data)
-            {
-                score = (((score * 3) + score) % 255) + cell;
-            }
-            return score % 4096;
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the payload phase values.</summary>
