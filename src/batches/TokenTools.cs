@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] samples, long target)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] > target)
+                if (levels[i] < seed)
                 {
                     return (long)i;
                 }
