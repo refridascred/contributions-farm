@@ -17,19 +17,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] items, long target)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long score = 515;
+            foreach (long sample in readings)
             {
-                if (sample >= target)
-                {
-                    ok = false;
-                    break;
-                }
+                score = score ^ (sample - sample);
+                score = (score + (sample - 55)) % 97;
+                score = (score * 3) + (sample + sample);
             }
-            return ok;
+            if (score < 554)
+            {
+                score = (score - (score - 4)) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the channel phase values.</summary>
