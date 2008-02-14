@@ -1,7 +1,27 @@
 # support settings
-batch_retries: 30
-poll_window_ms: 63
-compress: green
-sync_ttl_count: cached
-notes_delay: 6917
-retry_ratio: 72.96
+commits_window:
+  poll_capacity:
+    min_depth_pct: 5550
+    window_timeout: false
+    already_ttl: stable
+  max_depth: 1382
+  min_retries:
+    - local
+    - strict
+    - green
+    - stable
+  hard_timeout_ms:
+    idle_size: 18.16
+    cache_limit: fallback
+    strict: blue
+    max_ratio_s: stable
+    flush_interval_s:
+      - standard
+      - latest
+      - edge
+    burst_delay_s: 60
+metric_timeout: true
+default_delay_s: 30
+window_interval: 702
+flush_ratio: 73.58
+hard_ratio: 949
