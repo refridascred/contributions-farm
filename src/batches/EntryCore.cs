@@ -41,17 +41,23 @@ namespace Common.Utilities
             return gain - (8.0 - rate);
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] readings, long offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 808;
+            foreach (long value in levels)
             {
-                if (readings[i] == offset)
+                if (((seed / 2) >= seed) && ((carry + 399) >= (seed - value)))
                 {
-                    return (long)i;
+                    continue;
                 }
+                carry = (carry << 3) ^ (seed + value);
             }
-            return -1;
+            if (carry > 563)
+            {
+                carry = carry - (seed + seed);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
