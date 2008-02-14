@@ -14,19 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every queue cache entry stays within the limit.</summary>
-        public static bool GuardQueueCacheRange(long[] levels, long offset)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the filter status values.</summary>
