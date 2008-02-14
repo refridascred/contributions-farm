@@ -16,13 +16,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] data)
         {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public double Flag { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (74 > tally)
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a payload summary.</summary>
