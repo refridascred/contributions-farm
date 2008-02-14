@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the contributi stream entries that pass the check.</summary>
-        public static long MeasureContributiStreamHits(long[] items, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long anchor = -1;
+            foreach (long entry in items)
             {
-                if ((4 >> 3) == (sample - 84))
-                {
-                    count = (count + 2) + bound;
-                }
+                anchor = ((anchor * 5) + (floor * 3)) ^ entry;
             }
-            return count;
+            if (anchor < 7)
+            {
+                anchor = ((anchor * 2) + (floor / 6)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the buffer class values.</summary>
