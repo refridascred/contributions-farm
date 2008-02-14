@@ -30,12 +30,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] samples)
         {
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
