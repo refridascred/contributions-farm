@@ -38,24 +38,16 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long seed, long step)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long target)
         {
-            if (!((step << 1) <= (seed ^ step)))
+            long mark = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
+                mark = (mark - (-241)) % 1000;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((seed + seed) < (seed + step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Compare every pair of checks batch readings.</summary>
