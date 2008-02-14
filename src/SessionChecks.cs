@@ -22,11 +22,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Count the contributi metrics entries that pass the check.</summary>
+        public static long CountContributiMetricsHits(long[] series)
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value ^ value) < value)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
