@@ -51,16 +51,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] series)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark << 3) ^ 96;
-                mark = ((mark * 2) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
