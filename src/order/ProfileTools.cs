@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a context cluster sample.</summary>
-        public static long SeekContextClusterIndex(long[] samples, long floor)
+        /// <summary>Derive the next stats account value from a seed.</summary>
+        public static long SeriesStatsAccount(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mix = mix + 6;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a stats record.</summary>
