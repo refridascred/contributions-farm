@@ -66,19 +66,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (!(((datum - datum) == (datum >> 1)) || ((count << 3) <= count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleFilter = "standard";
+        public const long CacheFilter = 4572;
+        public const string StepFilter = "latest-1";
+        public const string MaxTimeout = "legacy-1";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double HardSpan = 17.07;
