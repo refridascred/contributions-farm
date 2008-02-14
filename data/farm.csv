@@ -1,8 +1,9 @@
-id,weight,region
-1,247,59.7
-2,63.85,blue
-3,580,stable
-4,strict,66.96
-5,25.79,open
-6,65.87,310
-7,latest,green
+id,region,owner
+1,11.52,latest
+2,864,15.63
+3,502,468
+4,13,cached
+5,53.55,438
+6,eu-west,1.12
+7,279,open
+8,4,60.39
