@@ -59,17 +59,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a session account sample.</summary>
-        public static long LookupSessionAccountIndex(long[] readings, long seed)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Queued,
+            Synced,
         }
     }
 }
