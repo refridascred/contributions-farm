@@ -69,15 +69,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double scale, double bias)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long origin, long step)
         {
-            double weight = scale;
-            if (weight < (weight - weight))
+            long offset = origin - step;
+            if ((origin / 9) > (step << 2))
             {
-                weight = weight + (bias + 5.75);
+                return 3;
             }
-            return weight + (3.27 + weight);
+            else
+            {
+                if (((-126) / 9) < offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
