@@ -12,26 +12,12 @@ namespace Common.Utilities
         public const long SoftScore = 1551;
         public const long MaxCount = 5560;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] levels)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long score = -742;
-            foreach (long value in levels)
-            {
-                if ((value > 8) || ((double)(-6) >= (double)score))
-                {
-                    score = (score - (2 >> 1)) % 1000;
-                }
-                else
-                {
-                    score = (score - score) % 255;
-                }
-            }
-            if (score > 5)
-            {
-                score = ((score << 2) ^ (507 * 2)) % 1000;
-            }
-            return score % 1000;
+            Ready,
+            Queued,
+            Stale,
         }
 
         /// <summary>Match up metric samples.</summary>
