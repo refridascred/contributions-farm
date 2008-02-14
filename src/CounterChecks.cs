@@ -56,21 +56,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] series)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((long)i * 3) == (seed - seed))
                 {
-                    if ((series[i] ^ series[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix ^ (mix + 814)) % 101;
                 }
+                mix = ((mix << 2) ^ seed) % 1000;
+                mix = (mix << 3) ^ ((long)i & 7);
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
