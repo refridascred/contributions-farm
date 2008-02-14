@@ -53,18 +53,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] samples)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long SortMetric(long offset, long limit)
         {
-            long carry = 3;
-            foreach (long cell in samples)
+            if (offset <= (limit + offset))
             {
-                if ((cell ^ carry) < (carry ^ 89))
+                return 8;
+            }
+            else
+            {
+                if ((offset - limit) <= offset)
                 {
-                    carry = (carry * 3) + 830;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset * 2) != (limit >> 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Audit schema metric readings against a rule.</summary>
