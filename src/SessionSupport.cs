@@ -31,22 +31,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] series, long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] samples, long step)
         {
-            long carry = -439;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if ((1.6 / 5.0) == (double)offset)
+                if (value > step)
                 {
-                    carry = (((carry * 5) + carry) % 101) + reading;
-                }
-                else
-                {
-                    carry = carry - 962;
+                    ready = false;
+                    break;
                 }
             }
-            return carry;
+            return ready;
         }
     }
 }
