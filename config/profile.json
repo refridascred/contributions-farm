@@ -1,5 +1,8 @@
 {
-  "compress": 62.8,
-  "warm_interval_count": "blue",
-  "burst_threshold_count": ["latest", "fallback", "strict", "strict"]
+  "strict": 41.74,
+  "dry_run": [22, 360, 337, 192],
+  "warm_depth_ms": 7536,
+  "max_limit_pct": "open",
+  "default_limit": 9.21,
+  "queue_window": 17
 }
