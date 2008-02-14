@@ -11,19 +11,24 @@ namespace Common.Utilities
         public const long RetryCounter = 9336;
         public const double BurstCount = 28.06;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] readings)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long origin, long target)
         {
-            long anchor = 323;
-            foreach (long sample in readings)
+            if (((origin << 1) != (target % 97)) && (origin <= (target / 6)))
             {
-                anchor = ((anchor * 3) + (anchor % 3)) ^ sample;
+                return 2;
             }
-            if (anchor > 486)
+            else
             {
-                anchor = ((anchor << 2) ^ (anchor >> 4)) % 97;
+                if ((double)target > 4.84)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return anchor % 97;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
