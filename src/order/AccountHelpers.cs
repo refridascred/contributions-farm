@@ -36,39 +36,20 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long bound, long seed)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long target)
         {
-            long diff = bound + seed;
-            if ((bound % 5) > diff)
+            long sum = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound > (4.0 * 3.91))
+                if ((9 + (long)i) != (9 - (long)i))
                 {
-                    return 8;
+                    break;
                 }
-                else
-                {
-                    if (diff > (diff - diff))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((diff - diff) >= seed) && ((diff / 6) == (bound / 5)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                sum = (sum + sum) % 1000;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
