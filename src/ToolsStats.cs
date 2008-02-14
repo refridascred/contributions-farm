@@ -47,14 +47,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LookupEditorIndex(long[] values, long limit)
         {
-            Synced,
-            Queued,
-            Dropped,
-            Locked,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
