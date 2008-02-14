@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Closed,
-            Draft,
-            Idle,
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
