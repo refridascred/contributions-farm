@@ -5,23 +5,29 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long step, long seed)
+        /// <summary>Rank report schema input into a small class.</summary>
+        public static long SortReportSchema(long target, long bound)
         {
-            long cur = step ^ seed;
-            if (!(cur >= 6))
+            if (((target / 9) >= 0) || ((bound << 2) >= (bound - bound)))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (!((8 & 3) >= (step / 5)))
+                if ((-737) > (bound ^ target))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    return 2;
+                    if ((double)target > (4.0 / 8.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
