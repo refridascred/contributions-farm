@@ -49,12 +49,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
