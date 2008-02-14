@@ -19,20 +19,19 @@ namespace Common.Utilities
         public const long LimitRoute = 4488;
         public const double MaxLevel = 51.08;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] series, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (((carry & 255) != ((long)i - offset)) && ((offset & 31) > (carry + offset)))
+                if (cell != bound)
                 {
-                    carry = (carry ^ (81 + 11)) % 255;
+                    valid = false;
+                    break;
                 }
-                carry = carry + (long)i;
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
