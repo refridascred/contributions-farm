@@ -25,19 +25,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate notes contributi readings against a bound.</summary>
-        public static bool CheckNotesContributiRange(long[] values, long limit)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long limit)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading < limit)
+                if (!((12.0 * 18.0) >= (double)mix))
                 {
-                    valid = false;
-                    break;
+                    mix = mix - (limit / 9);
                 }
+                if ((9.1 - 1.2) >= (double)(long)i)
+                {
+                    mix = (mix + (97 * 2)) % 97;
+                }
+                mix = (mix + (long)i) % 255;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return valid;
+            return mix;
         }
     }
 }
