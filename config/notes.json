@@ -1,14 +1,10 @@
 {
-  "base_delay_s": [165, 285, 453, 383],
-  "warm_timeout_pct": false,
-  "base_size": 70,
-  "burst_retries_count": ["primary", "open"],
-  "base_delay_ms": {
-    "context_delay": ["open", "stable", "local"],
-    "warm_depth_s": 71.85,
-    "retry_limit": false,
-    "poll_threshold_pct": "stable",
-    "readonly": 97.78,
-    "githubfarm_size": ["staging", "cached", "legacy"]
-  }
+  "poll_timeout_ms": {
+    "flush_interval_s": 6480,
+    "hard_limit_s": true,
+    "audit": 4010
+  },
+  "persist": [20, 302],
+  "idle_capacity_s": false,
+  "min_size": 30
 }
