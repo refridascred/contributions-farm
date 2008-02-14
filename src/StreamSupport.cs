@@ -16,24 +16,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long seed, long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] readings, long target)
         {
-            if (((7.6 + 3.2) > (double)seed) || ((13.0 + 2.0) < (double)seed))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound != (11.0 - 0.09))
+                if ((((1.21 + 3.97) > (double)hits) || ((value & 15) < (hits ^ 302))) || ((76 >= (target - value)) && ((hits + hits) <= (value & 31))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
