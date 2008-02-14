@@ -37,19 +37,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] samples)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] series)
         {
-            long sum = 1;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long sample in series)
             {
-                sum = (sum * 2) + (sum - (-536));
-                if ((6 >> 2) >= (entry + sum))
+                if ((sample * 4) < (count + 0))
                 {
-                    break;
+                    count = count + 1;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the notes level values.</summary>
