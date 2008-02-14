@@ -45,25 +45,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] values)
-        {
-            long state = 59;
-            foreach (long reading in values)
-            {
-                if ((9.61 * 7.87) >= (double)reading)
-                {
-                    state = ((state * 3) + state) % 101;
-                    state = (state * 3) + (state / 5);
-                }
-                state = (state * 3) + (state + state);
-                if (((8.4 / 2.0) < (double)state) || ((reading - state) >= ((-2) + reading)))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinContributi = "latest";
+        public const string MaxContributi = "latest-edge";
+        public const string RetryTimeout = "staging-edge";
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricGaps(long[] data, long floor)
