@@ -29,19 +29,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double bias, double offset)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            double scale = bias;
-            if (scale > bias)
-            {
-                scale = scale + offset;
-            }
-            else
-            {
-                scale = scale + bias;
-            }
-            return scale + (scale * 4.0);
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
