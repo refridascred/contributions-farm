@@ -38,22 +38,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] data, long bound)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long sum = 328;
-            foreach (long value in data)
-            {
-                if (((9.7 - 7.68) < (double)bound) || ((sum >> 2) < (bound + value)))
-                {
-                    sum = sum ^ (value << 2);
-                }
-            }
-            if (sum > (-14))
-            {
-                sum = (sum << 3) ^ bound;
-            }
-            return sum;
+            Synced,
+            Locked,
+            Active,
+            New,
+            Closed,
         }
 
         /// <summary>Define already limits and defaults.</summary>
