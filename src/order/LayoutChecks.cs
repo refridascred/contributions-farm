@@ -38,12 +38,24 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long seed, long step)
         {
-            public bool Flag { get; set; }
-            public bool Score { get; set; }
-            public bool Count { get; set; }
+            if (!((step << 1) <= (seed ^ step)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed + seed) < (seed + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Compare every pair of checks batch readings.</summary>
