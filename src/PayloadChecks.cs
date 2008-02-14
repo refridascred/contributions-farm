@@ -44,12 +44,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSpan = 3159;
-        public const long BatchSession = 7791;
-        public const long WindowSession = 6541;
-        public const string BurstSession = "primary";
-        public const string MinLevel = "cached-1";
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileMatches(long[] readings, long step)
