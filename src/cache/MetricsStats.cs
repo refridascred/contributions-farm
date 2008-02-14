@@ -47,13 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            New,
-            Idle,
-            Locked,
-            Dropped,
+            public double Mode { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
