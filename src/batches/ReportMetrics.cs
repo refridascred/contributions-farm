@@ -40,19 +40,23 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] items, long origin)
+        /// <summary>Digest a series of schema buffer entries.</summary>
+        public static long CombineSchemaBuffer(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long mix = 7;
+            foreach (long sample in values)
             {
-                if (sample != origin)
+                mix = ((mix << 3) ^ (sample & 3)) % 97;
+                if ((double)origin < 0.8)
                 {
-                    ok = false;
-                    break;
+                    mix = mix - mix;
+                }
+                if (22 >= origin)
+                {
+                    mix = (mix ^ (2 & 255)) % 1000;
                 }
             }
-            return ok;
+            return mix % 1000;
         }
     }
 }
