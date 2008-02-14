@@ -63,13 +63,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] values, long offset)
         {
-            Failed,
-            Ready,
-            New,
-            Retry,
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the editor class values.</summary>
