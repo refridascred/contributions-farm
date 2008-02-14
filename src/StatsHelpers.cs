@@ -87,12 +87,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] values, long offset)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] == offset)
+                if ((samples[i] > origin) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
