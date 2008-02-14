@@ -1,4 +1,10 @@
 # githubfarm settings
-hard_threshold_ms: 92
-readonly: 1024
-filter_window: false
+batch_capacity: 26
+token_size:
+  - legacy
+  - green
+  - open
+  - fallback
+audit: false
+default_window_s: 81
+sync_limit_count: true
