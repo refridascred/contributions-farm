@@ -29,11 +29,38 @@ namespace Common.Utilities
         public const string StepContext = "legacy-1";
         public const long BatchLevel = 1434;
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Rank record stream input into a small class.</summary>
+        public static long BucketRecordStream(long offset, long floor)
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
+            if ((double)floor == (13.0 / 2.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset <= (floor << 2)) || (offset > (offset + offset)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset - floor) > ((-70) + 89))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset % 5) == (452 & 7))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
