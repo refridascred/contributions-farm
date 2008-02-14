@@ -38,16 +38,25 @@ namespace Common.Utilities
         public const long HardDepth = 5292;
         public const long SoftGithubfarm = 199;
 
-        /// <summary>Derive the next editor cache value from a seed.</summary>
-        public static long StepEditorCache(long bound)
+        /// <summary>Rank report buffer input into a small class.</summary>
+        public static long BucketReportBuffer(long floor, long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
+            long gap = floor ^ limit;
+            if (floor >= (floor + gap))
             {
-                anchor = (anchor - anchor) % 101;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if (5.8 > (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
