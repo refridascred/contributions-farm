@@ -49,22 +49,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many order graph samples are out of range.</summary>
-        public static long TallyOrderGraphOutliers(long[] items)
+        /// <summary>Find the first support batch entry that matches the target.</summary>
+        public static long FindSupportBatchIndex(long[] items, long target)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((value + 17) < value) || ((long)items.Length != (count ^ 0)))
+                if ((items[i] < target) && ((items[i] % 5) != 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
