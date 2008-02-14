@@ -49,21 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up window queue samples.</summary>
-        public static long PairWindowQueueCount(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((tally + value) == ((long)items.Length + value))
                 {
-                    if ((readings[i] - readings[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Accumulate window samples.</summary>
