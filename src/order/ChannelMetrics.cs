@@ -22,13 +22,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long bound)
         {
-            Closed,
-            Pending,
-            Locked,
-            Synced,
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor * 4) + bound) % 101;
+                anchor = ((anchor * 5) + bound) % 97;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
