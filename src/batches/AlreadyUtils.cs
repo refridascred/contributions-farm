@@ -44,19 +44,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every stats githubfarm entry stays within the limit.</summary>
-        public static bool VerifyStatsGithubfarmLimits(long[] values, long bound)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Stale,
+            Done,
         }
 
         /// <summary>Define record limits and defaults.</summary>
