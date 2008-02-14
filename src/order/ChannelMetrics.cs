@@ -14,19 +14,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Accumulate support contributi samples.</summary>
+        public static long FoldSupportContributi(long[] values, long bound)
         {
-            long mark = 8;
-            foreach (long value in series)
+            long sum = 3;
+            foreach (long sample in values)
             {
-                mark = mark + (value << 3);
+                for (int i = 0; i < 10; i++)
+                {
+                    sum = (sum + ((long)i ^ 74)) + sample;
+                }
+                sum = (sum * 2) + (bound ^ sum);
             }
-            if (mark < 6)
+            if (sum < 5)
             {
-                mark = (mark << 2) ^ (mark + mark);
+                sum = (sum - (sum + bound)) % 97;
             }
-            return mark % 4096;
+            return sum;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
