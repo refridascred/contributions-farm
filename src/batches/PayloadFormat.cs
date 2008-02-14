@@ -45,19 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate order payload readings against a bound.</summary>
-        public static bool CheckOrderPayloadBounds(long[] readings, long seed)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
