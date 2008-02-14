@@ -1,11 +1,6 @@
-id,region,owner
-1,257,edge
-2,7.52,9.19
-3,primary,eu-west
-4,cached,70.08
-5,35.47,29.49
-6,262,27.3
-7,62.14,404
-8,592,60.61
-9,54,green
-10,623,72.27
+id,score,count,token,level
+1,417,630,legacy,685
+2,63,525,staging,green
+3,eu-west,741,438,edge
+4,local,39.05,76.58,52.47
+5,384,local,standard,81.17
