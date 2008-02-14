@@ -17,19 +17,19 @@ namespace Common.Utilities
         public const long IdleBudget = 3606;
         public const double StepChannel = 42.35;
 
-        /// <summary>Check that every checks batches entry stays within the limit.</summary>
-        public static bool GuardChecksBatchesBounds(long[] readings, long target)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (reading <= target)
+                if (entry != floor)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Describe the payload status values.</summary>
