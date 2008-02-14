@@ -13,17 +13,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a payload cache reading by value.</summary>
-        public static long LookupPayloadCacheIndex(long[] data, long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 546;
+            foreach (long value in samples)
             {
-                if (data[i] >= offset)
+                if (((double)acc == (double)value) && ((acc ^ (-29)) >= (acc >> 2)))
                 {
-                    return (long)i;
+                    acc = (acc - (8 / 5)) % 101;
+                }
+                if (((-372) - acc) != (705 >> 5))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc < 57)
+            {
+                acc = acc - ((long)samples.Length ^ acc);
+            }
+            return acc;
         }
 
         /// <summary>Hold a route info.</summary>
