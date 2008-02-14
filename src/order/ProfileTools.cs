@@ -25,12 +25,14 @@ namespace Common.Utilities
         public const long WindowFactor = 1015;
         public const long HardWidth = 6250;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxGraph = "open-edge";
-        public const string HardGraph = "legacy";
-        public const string SoftTimeout = "alpha-v2";
-        public const double SoftRatio = 10.4;
-        public const long MinGraph = 5764;
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public string Label { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Derive the next contributi graph value from a seed.</summary>
         public static long SeriesContributiGraph(long target)
