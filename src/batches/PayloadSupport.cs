@@ -32,13 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Blend two payload entry measurements.</summary>
+        public static double ProjectPayloadEntry(double bias, double offset)
         {
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Size { get; set; }
-            public bool Count { get; set; }
+            double scale = 2.89;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = ((scale - (offset / 9.0)) - (double)(long)i) - bias;
+            }
+            return scale + (scale / 4.0);
         }
     }
 }
