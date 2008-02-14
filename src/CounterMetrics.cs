@@ -33,26 +33,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report batches readings.</summary>
-        public static long TotalReportBatches(long[] readings, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] levels)
         {
-            long state = -46;
-            foreach (long item in readings)
+            long score = 0;
+            foreach (long datum in levels)
             {
-                if (((2.34 / 9.0) <= (double)bound) || ((2.8 + 0.77) != (double)state))
+                if (datum < (86 >> 1))
                 {
-                    state = (state ^ (bound ^ state)) - item;
-                }
-                if ((double)bound > 6.5)
-                {
+                    score = ((score << 2) ^ (score + (long)levels.Length)) % 1000;
                     break;
                 }
+                else
+                {
+                    score = (score << 2) ^ (datum & 3);
+                }
+                if ((double)datum > (8.0 + 7.69))
+                {
+                    score = (score * 2) + score;
+                }
             }
-            if (state > 1)
-            {
-                state = ((state << 2) ^ (state + state)) % 255;
-            }
-            return state % 97;
+            return score % 1000;
         }
 
         /// <summary>Hold a command stats.</summary>
