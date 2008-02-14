@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report cache entries.</summary>
-        public static long TotalReportCache(long[] levels)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long anchor = 1;
-            foreach (long sample in levels)
-            {
-                anchor = (((anchor * 4) + (anchor & 31)) % 65521) + sample;
-            }
-            if (anchor < 8)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            Closed,
+            Stale,
+            Idle,
+            Synced,
+            Done,
         }
 
         /// <summary>Rank profile input into a small class.</summary>
