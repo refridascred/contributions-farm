@@ -13,20 +13,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long origin)
+        /// <summary>Classify a counter route pair into a bucket.</summary>
+        public static long BucketCounterRoute(long bound, long seed)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            if ((double)712 != (double)seed)
             {
-                if ((long)i == (mix % 12))
-                {
-                    mix = (mix ^ (302 * 2)) % 1000;
-                }
-                mix = mix - (long)i;
-                mix = ((mix * 2) + (long)i) % 97;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if (16.0 > (double)bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
