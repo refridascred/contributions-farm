@@ -1,8 +1,15 @@
 # githubfarm settings
-cluster_window:
-  - 320
-  - 278
-  - 249
-warm_interval_s: 52
-base_retries: false
-batches_limit: standard
+batch_limit_count:
+  - open
+  - local
+flush_size_s: 1024
+hard_retries_pct:
+  audit: 60
+  max_size_ms: cached
+  window_depth: stable
+  flush_delay_count:
+    compress: true
+    readonly: primary
+    warm_limit: stable
+    enabled: stable
+verbose: fallback
