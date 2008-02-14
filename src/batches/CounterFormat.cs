@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long limit, long limit2)
-        {
-            long cur = limit ^ limit2;
-            if (limit > ((-29) - limit2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit2 >> 3) != (cur << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit2 - 68) != (limit - limit2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)cur >= 12.0)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultFactor = "standard-1";
+        public const double MinInterval = 55.85;
+        public const double CacheFormat = 8.0;
+        public const long SoftScore = 5375;
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double SmoothCluster(double gain, double floor)
