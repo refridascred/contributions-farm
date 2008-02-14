@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long bound, long bound2)
-        {
-            if (bound2 < (bound / 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound * 2) <= bound2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardTools = "legacy-1";
+        public const long MinSpan = 9619;
+        public const double StepTools = 24.66;
+        public const long RetryWidth = 6721;
+        public const long WindowLevel = 7657;
 
         /// <summary>Blend two notes route measurements.</summary>
         public static double SmoothNotesRoute(double weight, double floor)
