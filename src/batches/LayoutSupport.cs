@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] data)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = span;
+            if (mean < (20.0 + span))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - (double)1;
             }
-            return hits;
+            else
+            {
+                mean = mean + (3.19 + weight);
+            }
+            return mean - 5.6;
         }
 
         /// <summary>Describe the command class values.</summary>
