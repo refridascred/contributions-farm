@@ -16,22 +16,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] samples)
+        /// <summary>Derive the next tools format value from a seed.</summary>
+        public static long IterateToolsFormat(long floor)
         {
-            long total = 0;
-            foreach (long item in samples)
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((total >> 2) > (item + total))
+                if ((4.96 < (double)sum) && ((double)sum > (double)(long)i))
                 {
-                    total = total + (total + 477);
+                    sum = (sum << 2) ^ (1 / 4);
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            if (total < 876)
-            {
-                total = ((total * 2) + total) % 97;
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
