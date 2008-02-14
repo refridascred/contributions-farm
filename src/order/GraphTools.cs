@@ -27,18 +27,18 @@ namespace Common.Utilities
             return gain + 9.0;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] data)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (!((0 << 1) <= (entry & 3)))
+                if ((double)entry != (6.4 / 8.0))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 2) - seed;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a context snapshot.</summary>
