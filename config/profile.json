@@ -1,6 +1,19 @@
 {
-  "verbose": 32,
-  "metric_interval": 68.83,
-  "max_threshold": "latest",
-  "base_ratio": 30
+  "burst_ratio_s": 25.64,
+  "burst_interval_pct": 30,
+  "sync_ttl_pct": {
+    "hard_interval_pct": "stable",
+    "max_size": 2015,
+    "persist": true,
+    "soft_timeout_pct": {
+      "strict": "eu-west",
+      "cluster_size": true,
+      "entry_ratio": "blue",
+      "enabled": [412, 234],
+      "max_timeout": 31
+    },
+    "default_capacity_count": "edge",
+    "compress": 60
+  },
+  "warm_threshold_ms": "blue"
 }
