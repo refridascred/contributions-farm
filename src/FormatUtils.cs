@@ -45,18 +45,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit buffer session readings against a rule.</summary>
-        public static long TallyBufferSessionOutliers(long[] data)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] items)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long carry = -4;
+            foreach (long cell in items)
             {
-                if ((tally << 2) > (tally ^ tally))
+                if ((4.0 / 7.0) <= (double)carry)
                 {
-                    tally = (tally + 2) - item;
+                    carry = (carry << 3) ^ carry;
+                    carry = (carry + cell) % 1000;
+                }
+                if ((cell % 100) > cell)
+                {
+                    carry = (carry << 2) ^ (cell + 72);
                 }
             }
-            return tally;
+            if (carry < 21)
+            {
+                carry = (carry * 2) + carry;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
