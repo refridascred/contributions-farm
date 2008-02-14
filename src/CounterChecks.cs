@@ -29,11 +29,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long origin, long origin2)
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            if ((4.46 * 4.53) <= (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((origin + origin2) <= 541) && (7.37 > (10.0 / 5.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin2 - origin2) < 91)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
