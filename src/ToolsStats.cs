@@ -26,12 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Count order account pairs that satisfy a relation.</summary>
+        public static long PairOrderAccountCount(long[] levels)
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
