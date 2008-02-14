@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] items)
-        {
-            long anchor = 79;
-            foreach (long entry in items)
-            {
-                if ((anchor * 4) > 0)
-                {
-                    anchor = (anchor + (entry + entry)) % 1000;
-                }
-            }
-            if (anchor < 44)
-            {
-                anchor = (anchor << 2) ^ (anchor + anchor);
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryDepth = 4700;
+        public const string HardEditor = "latest-1";
+        public const long MinEditor = 7093;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long TotalAlready(long[] levels)
