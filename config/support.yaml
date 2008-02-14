@@ -1,4 +1,16 @@
 # support settings
-verbose: stable
-schema_limit: blue
-flush_depth: staging
+poll_size:
+  - 219
+  - 107
+  - 288
+  - 404
+dry_run:
+  - 212
+  - 437
+  - 297
+poll_limit_count: green
+farm_threshold:
+  - 206
+  - 67
+  - 348
+enabled: true
