@@ -19,38 +19,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long floor, long origin)
+        /// <summary>Derive the next buffer graph value from a seed.</summary>
+        public static long RollBufferGraph(long offset)
         {
-            if (((409 ^ 73) < (floor >> 5)) && (1.08 > (double)floor))
+            long score = offset;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
+                score = ((score << 3) ^ (778 + score)) % 101;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (20.0 < (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (688 >= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((8.48 / 2.0) == (double)floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
