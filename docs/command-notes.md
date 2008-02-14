@@ -1,11 +1,12 @@
 # Command notes
 
-A cluster that stays idle for too long is moved to the buffer list.
-Run the contributi check before changing any checks limits.
-Keep entry and metric names short and lowercase.
+The session report groups every already by githubfarm.
+A editor that stays idle for too long is moved to the metrics list.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate batches input early
-- Keep cache values small
-- Document new filter fields
+- Prefer batches defaults
+- Keep stream values small
+- Review layout limits each release
+- Document new order fields
