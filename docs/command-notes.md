@@ -1,11 +1,15 @@
 # Command notes
 
-Use batch settings to tune how often batches data is refreshed.
-Each format is validated before it reaches the stats queue.
-The stats module keeps batch values in sync with the schema cache.
+The window module keeps session values in sync with the record cache.
+The order report groups every token by contributi.
+When a commits fails, the already handler retries a few times before giving up.
+
+Use batches settings to tune how often counter data is refreshed.
+The window module keeps support values in sync with the route cache.
+A entry that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Log every tools change
-- Prefer command defaults
-- Review profile limits each release
+- Prefer already defaults
+- Document new channel fields
+- Log every queue change
