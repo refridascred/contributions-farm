@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a report payload figure with a bias.</summary>
-        public static double BlendReportPayload(double rate, double span)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            double ratio = span;
-            return ratio + (rate * 17.0);
+            Paused,
+            Stale,
+            Active,
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
