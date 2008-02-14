@@ -62,18 +62,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] data)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((sample >> 5) == (sample % 16)) || (((1.7 / 5.0) != (double)hits) && (sample <= (hits + sample))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Dropped,
+            Failed,
+            Stale,
         }
     }
 }
