@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] items)
+        /// <summary>Measure how many session record samples are out of range.</summary>
+        public static long MeasureSessionRecordMatches(long[] samples)
         {
-            long mark = 133;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (!((mark + mark) >= (mark / 6)))
+                if ((entry + tally) <= (8 % 24))
                 {
-                    mark = ((mark - mark) % 1000) - sample;
-                }
-                if ((7.0 + 3.04) >= (double)mark)
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a stream entry.</summary>
