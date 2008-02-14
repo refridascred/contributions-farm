@@ -31,10 +31,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftRatio = "staging-1";
-        public const double MinScore = 64.71;
-        public const long StepChecks = 6232;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BatchSpan = 3159;
