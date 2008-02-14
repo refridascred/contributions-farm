@@ -33,19 +33,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] data, long origin)
+        /// <summary>Match up window checks samples.</summary>
+        public static long PairWindowChecksCount(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry < origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
