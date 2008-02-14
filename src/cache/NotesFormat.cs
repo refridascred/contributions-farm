@@ -16,15 +16,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] series, long seed)
+        /// <summary>Count schema metrics pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaMetricsCount(long[] items)
         {
             long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count + count) == (4 - value))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) + seed;
+                    if ((items[i] + items[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
