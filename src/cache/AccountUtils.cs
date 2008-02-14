@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a cluster context value against two limits.</summary>
-        public static long ClassifyClusterContext(long limit, long limit2)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] values)
         {
-            long next = limit + limit2;
-            if (limit2 > (next - 964))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6.4 * 0.5) != (double)limit2)
+                if ((623 * 5) <= (7 - datum))
                 {
-                    return 3;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    return 4;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next filter layout value from a seed.</summary>
