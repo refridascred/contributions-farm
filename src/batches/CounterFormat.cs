@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double bias, double bias2)
         {
-            Retry,
-            New,
-            Dropped,
-            Active,
+            double bias3 = (5.3 / 2.0) + (6.55 * 2.42);
+            if (bias3 < bias)
+            {
+                bias3 = (bias3 + (bias + bias3)) + bias2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias3 = (bias3 - 9.0) + (double)(long)i;
+            }
+            return bias3 + (5.4 * 2.0);
         }
 
         /// <summary>Describe the queue state values.</summary>
