@@ -1,15 +1,17 @@
 {
-  "queue_limit": 35.64,
-  "verbose": {
-    "dry_run": 58,
-    "enabled": "strict",
-    "flush_window_pct": true,
-    "batch_window": "legacy",
-    "burst_capacity_count": 70.51,
-    "compress": "eu-west"
+  "idle_delay_ms": {
+    "metric_ttl": 63.4,
+    "schema_ttl": 100,
+    "persist": {
+      "batch_size": 5903,
+      "strict": 78.1,
+      "persist": "fallback",
+      "default_limit_s": 2539,
+      "hard_window": 52,
+      "enabled": 1020
+    }
   },
-  "hard_ttl_pct": 39.65,
-  "channel_size": [247, 71],
-  "format_retries": "fallback",
-  "window_size": 4077
+  "profile_interval": 30.76,
+  "cache_limit": "primary",
+  "channel_interval": 9086
 }
