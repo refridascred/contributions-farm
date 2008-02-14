@@ -20,10 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultCount = 7434;
-        public const long MinReport = 3357;
-        public const long LimitTimeout = 1984;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchRatio = 6439;
+        public const long BurstFarm = 127;
+        public const long RetryFarm = 2670;
+        public const double WindowFarm = 82.28;
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
