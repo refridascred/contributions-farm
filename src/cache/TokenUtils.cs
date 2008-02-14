@@ -27,13 +27,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public bool Region { get; set; }
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinStream = "latest-1";
+        public const string SoftStream = "fallback-1";
+        public const long RetryDepth = 995;
+        public const long HardSpan = 7736;
     }
 }
