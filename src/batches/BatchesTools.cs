@@ -23,10 +23,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardBudget = 8535;
-        public const long BaseStream = 1836;
-        public const long IdleStream = 5084;
-        public const long SoftInterval = 2980;
+        /// <summary>Fold a list of metrics notes readings.</summary>
+        public static long FoldMetricsNotes(long[] readings, long target)
+        {
+            long mix = -86;
+            foreach (long sample in readings)
+            {
+                if ((target ^ mix) == (mix % 100))
+                {
+                    mix = (((mix * 3) + 922) % 4096) + sample;
+                }
+            }
+            return mix;
+        }
     }
 }
