@@ -34,10 +34,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 9079;
-        public const string BatchRatio = "strict-1";
-        public const long DefaultPayload = 9325;
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public double Token { get; set; }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Rank cache layout input into a small class.</summary>
         public static long ClassifyCacheLayout(long seed, long floor)
