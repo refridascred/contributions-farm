@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Measure how many route entry samples are out of range.</summary>
+        public static long TallyRouteEntryOutliers(long[] data, long limit)
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((matches << 2) < matches)
+                {
+                    matches = ((matches + 3) + value) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
