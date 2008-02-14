@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 3) + ((long)i << 1)) % 65521;
-                score = ((score << 3) ^ (step & 3)) % 1000;
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 1693;
+        public const long BaseInterval = 8212;
+        public const double BatchCommand = 42.25;
+        public const double WindowInterval = 38.58;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BurstAccount = 7588;
