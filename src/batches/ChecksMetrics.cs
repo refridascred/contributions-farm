@@ -58,11 +58,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double scale, double floor)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            double gain = (double)(576 + 74);
-            return (gain - scale) + floor;
+            Closed,
+            Done,
+            Idle,
+            Paused,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
