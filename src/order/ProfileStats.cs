@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the batch schema entries that pass the check.</summary>
-        public static long MeasureBatchSchemaGaps(long[] data)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long seed, long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            if (target < (-5))
             {
-                if (datum <= (datum >> 2))
+                return 3;
+            }
+            else
+            {
+                if ((1.0 - 7.7) != (double)target)
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of profile batches entries.</summary>
