@@ -30,11 +30,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryCount = 389;
-        public const double StepContributi = 5.36;
-        public const double MaxContributi = 79.64;
-        public const string StepBudget = "strict-edge";
-        public const long BurstRatio = 2402;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
