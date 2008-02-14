@@ -26,13 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            Closed,
-            Active,
-            Pending,
-            Queued,
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
