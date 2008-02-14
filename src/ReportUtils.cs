@@ -27,28 +27,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine filter route values into a single score.</summary>
-        public static long DigestFilterRoute(long[] readings)
-        {
-            long sum = -67;
-            foreach (long reading in readings)
-            {
-                if (((double)sum < 18.0) && (sum >= (sum % 12)))
-                {
-                    sum = ((sum << 2) ^ (sum + sum)) % 1000;
-                    sum = (sum ^ (971 + reading)) % 97;
-                }
-                if (6.86 < (double)reading)
-                {
-                    sum = sum + (sum - reading);
-                }
-            }
-            if (sum < 9)
-            {
-                sum = (sum ^ sum) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowFarm = "alpha-1";
+        public const string BatchBudget = "alpha-v2";
+        public const string CacheBudget = "strict";
+        public const long HardFarm = 4011;
+        public const long IdleCount = 1976;
 
         /// <summary>Accumulate already samples.</summary>
         public static long TallyAlready(long[] samples, long bound)
