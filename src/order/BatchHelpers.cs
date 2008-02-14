@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a contributi farm value against two limits.</summary>
-        public static long ClassifyContributiFarm(long origin, long limit)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] values)
         {
-            long delta = origin + limit;
-            if (((delta + delta) > delta) && ((origin >> 5) >= (delta % 64)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin & 63) > (delta + origin))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((delta + delta) > origin) && ((origin - limit) > delta))
+                    if ((values[i] ^ values[j]) == 1)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (delta < (67 / 7))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the support mode values.</summary>
