@@ -85,11 +85,19 @@ namespace Common.Utilities
         public const long CacheContributi = 1487;
         public const string StepTimeout = "cached";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowMetrics = 78.44;
-        public const double BaseMetrics = 42.68;
-        public const double IdleWidth = 7.39;
-        public const long IdleSpan = 1929;
-        public const long BurstBudget = 1609;
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double gain, double offset)
+        {
+            double mean = (double)(0 % 24);
+            if (mean <= gain)
+            {
+                mean = (mean + (5.0 + mean)) - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (mean / 3.0)) + (double)(long)i;
+            }
+            return mean + (mean / 4.0);
+        }
     }
 }
