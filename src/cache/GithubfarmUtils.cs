@@ -32,15 +32,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Ready,
-            Failed,
-            Stale,
-            Done,
-            Draft,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardOrder = "primary-1";
+        public const long BatchScore = 180;
+        public const double BurstLevel = 61.29;
+        public const long IdleOrder = 3681;
+        public const long IdleBudget = 6238;
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long RollEntry(long bound)
