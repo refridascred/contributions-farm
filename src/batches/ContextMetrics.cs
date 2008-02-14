@@ -27,12 +27,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] samples)
         {
-            New,
-            Pending,
-            Ready,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (!(4.5 < (double)cell))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a already entry.</summary>
