@@ -1,14 +1,16 @@
 # Command notes
 
-The commits module keeps batch values in sync with the counter cache.
-The githubfarm module keeps buffer values in sync with the commits cache.
+The profile module keeps support values in sync with the route cache.
+When a channel fails, the support handler retries a few times before giving up.
+Run the metrics check before changing any farm limits.
 
-Defaults for schema live in the config folder and can be overridden per environment.
-The queue report groups every entry by editor.
-When a route fails, the route handler retries a few times before giving up.
+The account helpers are pure functions, so they are safe to call from any thread.
+Run the entry check before changing any command limits.
+The buffer helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate profile input early
-- Review session limits each release
-- Keep order values small
+- Keep contributi values small
+- Validate order input early
+- Prefer route defaults
+- Log every githubfarm change
