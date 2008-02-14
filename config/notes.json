@@ -1,5 +1,10 @@
 {
-  "cache_timeout_ms": 1024,
-  "support_delay": true,
-  "retry_delay": 29.85
+  "readonly": {
+    "batch_timeout_count": 23,
+    "poll_window": "primary",
+    "sync_delay_ms": ["latest", "open"],
+    "cache_ttl_s": true
+  },
+  "soft_ttl_ms": 55.56,
+  "already_interval": [242, 248, 178, 78]
 }
