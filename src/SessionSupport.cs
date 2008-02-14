@@ -23,10 +23,20 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftBudget = 8750;
-        public const double DefaultTools = 34.28;
-        public const long WindowCount = 2708;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] values, long bound)
+        {
+            long anchor = 13;
+            foreach (long sample in values)
+            {
+                anchor = (anchor + (bound % 2)) + sample;
+            }
+            if (anchor > 48)
+            {
+                anchor = (anchor * 2) + (78 / 7);
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
