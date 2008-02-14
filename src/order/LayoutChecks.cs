@@ -82,17 +82,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long target)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] series, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long result = 0;
+            foreach (long cell in series)
             {
-                score = score ^ (768 + score);
-                score = (score ^ (target / 7)) % 255;
-                score = ((score * 2) + (long)i) % 65521;
+                if ((3.86 < (double)(long)series.Length) || ((double)offset < 7.8))
+                {
+                    result = result ^ (0 - offset);
+                }
+                if (((double)cell > (double)result) || ((offset & 127) > (result - cell)))
+                {
+                    result = result ^ (result - result);
+                }
             }
-            return score;
+            if (result < 2)
+            {
+                result = ((result << 2) ^ (result ^ offset)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
