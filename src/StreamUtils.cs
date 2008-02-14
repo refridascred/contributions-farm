@@ -56,10 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFactor = 405;
-        public const string WindowFilter = "staging-1";
-        public const long MaxFilter = 9395;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Idle,
+            New,
+            Synced,
+        }
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
