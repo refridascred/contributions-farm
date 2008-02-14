@@ -60,13 +60,15 @@ namespace Common.Utilities
         public const string WindowToken = "primary-v2";
         public const double CacheDepth = 80.23;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long floor)
         {
-            Failed,
-            Dropped,
-            Paused,
-            Ready,
+            long total = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
