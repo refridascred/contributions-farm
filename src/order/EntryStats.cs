@@ -44,19 +44,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] samples, long origin)
+        /// <summary>Blend two batch contributi measurements.</summary>
+        public static double SmoothBatchContributi(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            double ratio = bias;
+            for (int i = 0; i < 2; i++)
             {
-                if (datum >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ((ratio + (double)344) + (double)(long)i) + floor;
             }
-            return ready;
+            return ratio - (bias * 6.48);
         }
     }
 }
