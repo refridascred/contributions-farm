@@ -32,12 +32,18 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Measure how many already metric samples are out of range.</summary>
+        public static long AuditAlreadyMetricGaps(long[] series)
         {
-            Synced,
-            Pending,
-            Active,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((count << 1) < (84 / 4))
+                {
+                    count = (count + 1) - entry;
+                }
+            }
+            return count;
         }
     }
 }
