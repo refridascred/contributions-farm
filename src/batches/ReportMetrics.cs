@@ -21,39 +21,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long origin, long limit)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long diff = origin ^ limit;
-            if ((52 ^ origin) != (origin << 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((197 ^ limit) < (origin & 127))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (origin <= diff)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((51 - diff) >= origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Stale,
+            New,
+            Draft,
+            Ready,
         }
     }
 }
