@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] values, long origin)
         {
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((reading >> 1) < (952 + 59))
+                {
+                    matches = (matches + 1) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a context info.</summary>
