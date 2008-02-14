@@ -41,27 +41,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] items)
-        {
-            long sum = 403;
-            foreach (long cell in items)
-            {
-                sum = sum + (cell % 8);
-                if ((cell & 7) == (sum + cell))
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-                else
-                {
-                    sum = (sum - (sum >> 5)) % 4096;
-                }
-            }
-            if (sum < 6)
-            {
-                sum = (sum - (453 - sum)) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepStream = 46.75;
+        public const string IdleStream = "staging-1";
+        public const double BurstScore = 32.52;
+        public const double BatchInterval = 15.48;
     }
 }
