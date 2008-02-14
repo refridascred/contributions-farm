@@ -20,16 +20,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitInterval = 85.58;
+        public const long CacheInterval = 1854;
+        public const long WindowStats = 3317;
+        public const string LimitStats = "latest";
+        public const long BatchCount = 8842;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool GuardMetricsBounds(long[] values, long limit)
