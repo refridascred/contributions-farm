@@ -22,32 +22,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long origin, long floor)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long origin)
         {
-            long cur = origin - floor;
-            if ((floor + floor) < (origin >> 3))
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)cur > (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor >= (cur + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
