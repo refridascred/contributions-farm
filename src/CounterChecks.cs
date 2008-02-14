@@ -62,12 +62,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 6034;
-        public const long WindowTimeout = 224;
-        public const long RetrySpan = 4298;
-        public const long IdleMetrics = 7408;
-        public const double RetryMetrics = 44.82;
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TotalContributi(long[] data)
