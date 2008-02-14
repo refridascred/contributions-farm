@@ -23,19 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double bias, double bias2)
+        /// <summary>Audit githubfarm buffer readings against a rule.</summary>
+        public static long CountGithubfarmBufferGaps(long[] samples)
         {
-            double bias3 = (double)(0 - (-509));
-            if (bias3 < bias2)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                bias3 = (bias3 - (bias2 - bias3)) - bias;
+                if (value <= (value << 2))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias3 = (bias3 - (bias2 + bias2)) + (double)(long)i;
-            }
-            return bias3 + bias2;
+            return matches;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
