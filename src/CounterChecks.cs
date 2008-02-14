@@ -52,19 +52,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate payload schema readings against a bound.</summary>
-        public static bool CheckPayloadSchemaLimits(long[] items, long seed)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Paused,
+            Closed,
+            Stale,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
