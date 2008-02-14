@@ -65,19 +65,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] series, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] readings)
         {
-            long state = 786;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                state = ((state - (8 / 9)) % 255) + item;
+                if (sample > (sample / 6))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (state > (-901))
-            {
-                state = ((state << 2) ^ (limit & 63)) % 4096;
-            }
-            return state % 4096;
+            return count;
         }
     }
 }
