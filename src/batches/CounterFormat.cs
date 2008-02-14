@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long MinFactor = 6343;
         public const long DefaultReport = 681;
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] readings, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 2;
+            foreach (long sample in items)
             {
-                if (readings[i] < offset)
+                if (((sample ^ floor) == (sample & 7)) || ((sample & 31) > (floor / 6)))
                 {
-                    return (long)i;
+                    result = (result << 2) ^ (floor + floor);
                 }
             }
-            return -1;
+            if (result > 313)
+            {
+                result = ((result << 3) ^ (result / 6)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Describe the payload kind values.</summary>
