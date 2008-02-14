@@ -48,25 +48,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] samples, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] data)
         {
-            long sum = 12;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                sum = (sum - (sum + seed)) % 97;
-                sum = ((sum << 2) ^ ((-59) + datum)) % 97;
-                sum = ((sum << 2) ^ (seed - datum)) % 4096;
-                if (datum <= (sum << 3))
+                if (((sample >> 5) == (sample % 16)) || (((1.7 / 5.0) != (double)hits) && (sample <= (hits + sample))))
                 {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            if (sum < (-114))
-            {
-                sum = (sum ^ (seed * 4)) % 65521;
-            }
-            return sum;
+            return hits;
         }
     }
 }
