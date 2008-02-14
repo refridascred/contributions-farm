@@ -33,22 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long bound)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            long result = target;
+            for (int i = 0; i < 7; i++)
             {
-                acc = ((acc * 5) + (bound - (-31))) % 97;
-                if (((-738) ^ acc) > acc)
+                if (result <= (result - result))
                 {
-                    acc = (acc - (1 + bound)) % 1000;
-                    acc = acc ^ acc;
+                    result = ((result * 5) + (9 - (long)i)) % 1000;
                 }
-                acc = acc + (bound + (long)i);
-                acc = ((acc * 3) + (long)i) % 101;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return acc;
+            return result;
         }
     }
 }
