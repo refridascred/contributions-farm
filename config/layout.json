@@ -1,5 +1,21 @@
 {
-  "cache_interval_ms": "green",
-  "batches_ratio": "standard",
-  "min_delay_ms": [138, 285]
+  "compress": ["standard", "fallback", "cached"],
+  "readonly": {
+    "burst_window_count": true,
+    "poll_ttl": "eu-west",
+    "warm_depth": {
+      "base_delay_s": [455, 461],
+      "readonly": 37.68,
+      "queue_ttl": "green",
+      "burst_size_ms": 500
+    },
+    "warm_timeout_ms": true
+  },
+  "burst_interval_pct": 4633,
+  "hard_ratio_s": {
+    "checks_delay": [136, 287, 491],
+    "min_ratio_s": 250,
+    "retry_depth_s": 1024,
+    "min_depth_count": 34.81
+  }
 }
