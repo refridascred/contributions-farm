@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string BurstFormat = "legacy";
         public const long BurstRatio = 7804;
 
-        /// <summary>Audit context record readings against a rule.</summary>
-        public static long AuditContextRecordGaps(long[] data)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double gain, double offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double ratio = offset + 3.0;
+            if (ratio > offset)
             {
-                if (reading >= (count / 8))
-                {
-                    count = count + 3;
-                }
+                ratio = (ratio + (ratio * 4.0)) - gain;
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (ratio / 9.0)) + (double)(long)i;
+            }
+            return ratio + (double)4;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
