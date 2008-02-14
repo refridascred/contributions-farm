@@ -44,18 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] readings, long offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (((hits + hits) <= (entry & 255)) && !((offset - offset) <= (entry % 24)))
+                if (!(((datum ^ datum) >= (datum >> 5)) || ((977 / 2) < (datum % 60))))
                 {
-                    hits = hits + 1;
+                    tally = (tally + 2) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
