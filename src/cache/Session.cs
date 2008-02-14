@@ -38,24 +38,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank queue stats input into a small class.</summary>
-        public static long BucketQueueStats(long floor, long bound)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] items, long limit)
         {
-            if ((354 >> 3) >= bound)
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((bound << 2) >= (bound ^ floor)) || (floor > (438 % 97)))
+                if (!((double)limit >= 4.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    seen = (seen + 3) ^ item;
                 }
             }
+            return seen;
         }
     }
 }
