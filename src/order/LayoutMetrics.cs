@@ -29,22 +29,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] readings, long bound)
+        /// <summary>Measure how many profile token samples are out of range.</summary>
+        public static long CountProfileTokenGaps(long[] series)
         {
-            long carry = 85;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((double)bound == (2.5 - 5.0))
+                if (!!((matches + matches) >= 403))
                 {
-                    carry = ((carry + carry) % 101) - sample;
+                    matches = (matches + 3) + cell;
                 }
             }
-            if (carry < 17)
-            {
-                carry = (carry * 2) + (13 & 31);
-            }
-            return carry % 97;
+            return matches;
         }
     }
 }
