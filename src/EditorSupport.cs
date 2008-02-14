@@ -29,11 +29,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string LimitFactor = "staging-v2";
-        public const long MaxBudget = 7299;
-        public const long IdleGithubfarm = 8757;
-        public const long BaseSpan = 3817;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 10;
+        public const long BurstInterval = 3826;
+        public const double BaseEditor = 35.83;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BatchCommand = 7679;
