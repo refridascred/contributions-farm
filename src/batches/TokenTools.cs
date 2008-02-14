@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double ratio, double offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] values)
         {
-            double mean = (double)((-4) << 3);
-            if (mean < offset)
+            long carry = 500;
+            foreach (long sample in values)
             {
-                mean = mean - ratio;
+                if ((sample < (carry >> 2)) && ((carry & 3) >= 7))
+                {
+                    carry = carry + (374 % 64);
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (mean + mean)) + (double)(long)i;
-            }
-            return mean + 10.0;
+            return carry % 97;
         }
 
         /// <summary>Describe the farm level values.</summary>
