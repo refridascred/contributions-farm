@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const long MaxDepth = 5645;
         public const double CacheSize = 55.03;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxFactor = 3275;
+        public const long BaseOrder = 1203;
+        public const double MaxRatio = 26.69;
+        public const long StepRatio = 2866;
+        public const string BatchWidth = "staging-1";
 
         /// <summary>Define route limits and defaults.</summary>
         public const double IdleRoute = 10.85;
