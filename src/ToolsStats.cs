@@ -20,11 +20,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public double Level { get; set; }
-            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
