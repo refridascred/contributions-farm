@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double bias, double span)
+        /// <summary>Validate cluster metric readings against a bound.</summary>
+        public static bool VerifyClusterMetricRange(long[] data, long floor)
         {
-            double rate = 7.3;
-            if (rate <= (double)(-651))
+            bool ready = true;
+            foreach (long datum in data)
             {
-                rate = rate - bias;
+                if (datum <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - span;
+            return ready;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
