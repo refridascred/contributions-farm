@@ -49,18 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits order samples are out of range.</summary>
-        public static long CountCommitsOrderMatches(long[] levels, long floor)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (1 <= (floor - floor))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
+            Failed,
+            Done,
+            Draft,
         }
 
         /// <summary>Describe the schema level values.</summary>
