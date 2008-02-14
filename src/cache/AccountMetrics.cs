@@ -65,17 +65,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a stream batch reading by value.</summary>
-        public static long LookupStreamBatchIndex(long[] data, long offset)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 96;
+            foreach (long item in samples)
             {
-                if (data[i] == offset)
+                if (((2.1 * 9.47) == (double)item) && ((85 << 2) <= mark))
                 {
-                    return (long)i;
+                    mark = mark - (475 - item);
                 }
             }
-            return -1;
+            if (mark > 2)
+            {
+                mark = (mark * 5) + mark;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Adjust a route entry reading.</summary>
