@@ -23,12 +23,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 7550;
-        public const double HardCluster = 22.91;
-        public const string WindowWidth = "fallback";
-        public const long MinCluster = 8674;
-        public const double SoftCluster = 35.76;
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a command snapshot.</summary>
         public sealed class CommandSnapshot
