@@ -35,13 +35,13 @@ namespace Common.Utilities
         public const long CacheBuffer = 9242;
         public const string IdleScore = "primary-v2";
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-            public double Token { get; set; }
+            Done,
+            Pending,
+            Retry,
+            Failed,
         }
     }
 }
