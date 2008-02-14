@@ -14,21 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up layout commits samples.</summary>
-        public static long OverlapLayoutCommitsCount(long[] readings)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public string Token { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
