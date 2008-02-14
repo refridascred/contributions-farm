@@ -16,22 +16,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate checks profile samples.</summary>
-        public static long DigestChecksProfile(long[] levels)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long target)
         {
-            long state = 6;
-            foreach (long sample in levels)
+            long sum = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (((state + sample) > (sample >> 1)) || (((-5) ^ sample) >= (state + state)))
-                {
-                    state = ((state << 2) ^ state) % 97;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            if (state > 44)
-            {
-                state = state - (state << 1);
-            }
-            return state;
+            return sum;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
