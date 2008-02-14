@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] levels, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] values)
         {
-            long result = 2;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((reading * 5) != (origin % 97))
+                if ((tally & 3) == (833 - tally))
                 {
-                    result = ((result << 3) ^ (origin % 64)) % 65521;
-                }
-                else
-                {
-                    result = result - (result + reading);
+                    tally = (tally + 3) + cell;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Roll a account cluster counter forward.</summary>
