@@ -59,11 +59,26 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardWidth = 1959;
-        public const long MaxAccount = 9133;
-        public const string BurstAccount = "standard";
-        public const double RetryFactor = 29.91;
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long target, long limit)
+        {
+            long gap = target ^ limit;
+            if (target >= (limit << 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((target / 6) < (gap + target)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Check that every profile counter entry stays within the limit.</summary>
         public static bool ValidateProfileCounterBounds(long[] data, long limit)
