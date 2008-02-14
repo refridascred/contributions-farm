@@ -26,16 +26,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next batches metrics value from a seed.</summary>
-        public static long SeriesBatchesMetrics(long step)
+        /// <summary>Validate channel payload readings against a bound.</summary>
+        public static bool GuardChannelPayloadRange(long[] series, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                mix = (mix + (2 / 3)) % 255;
-                mix = ((mix * 3) + (long)i) % 97;
+                if (cell > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
