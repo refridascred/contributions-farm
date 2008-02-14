@@ -35,18 +35,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile token samples are out of range.</summary>
-        public static long CountProfileTokenGaps(long[] series)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!!((matches + matches) >= 403))
+                if ((items[i] > origin) && ((items[i] % 3) != 0))
                 {
-                    matches = (matches + 3) + cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
