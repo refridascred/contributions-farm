@@ -20,39 +20,15 @@ namespace Common.Utilities
             return ratio + (ratio * 2.3);
         }
 
-        /// <summary>Rank counter filter input into a small class.</summary>
-        public static long RankCounterFilter(long origin, long limit)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double ratio, double bias)
         {
-            long lane = origin ^ limit;
-            if (origin > (8 & 1))
+            double gain = (double)(53 ^ 79);
+            if (gain < (bias + bias))
             {
-                return 8;
+                gain = gain - ratio;
             }
-            else
-            {
-                if ((78 % 10) > (3 + lane))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin * 3) >= (origin ^ lane))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((origin << 3) >= (origin + lane)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return gain + 9.0;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
