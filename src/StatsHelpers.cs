@@ -33,35 +33,35 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long offset, long limit)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long target, long target2)
         {
-            long bound = offset + limit;
-            if ((offset - bound) >= (bound + limit))
+            long lane = target + target2;
+            if ((lane - lane) >= lane)
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((2 << 1) > (bound % 16))
+                if ((target2 % 24) == (target2 >> 3))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if ((9.0 + 9.0) != (double)limit)
+                    if (!(29 > (target / 7)))
                     {
-                        return 8;
+                        return 7;
                     }
                     else
                     {
-                        if ((offset - offset) == (limit ^ limit))
+                        if (4 > (target2 ^ lane))
                         {
-                            return 2;
+                            return 3;
                         }
                         else
                         {
-                            return 0;
+                            return 4;
                         }
                     }
                 }
