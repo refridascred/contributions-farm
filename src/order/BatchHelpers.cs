@@ -49,15 +49,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] data)
+        /// <summary>Measure how many contributi entry samples are out of range.</summary>
+        public static long AuditContributiEntryHits(long[] data)
         {
             long seen = 0;
             foreach (long value in data)
             {
-                if (((value + seen) < seen) || (seen >= (95 ^ value)))
+                if ((double)value == (6.69 + 4.33))
                 {
-                    seen = seen + 2;
+                    seen = seen + 1;
                 }
                 else
                 {
