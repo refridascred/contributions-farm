@@ -1,17 +1,6 @@
 # githubfarm settings
-min_size_pct: local
-sync_ttl: standard
-command_threshold: 100
-batches_window:
-  - 334
-  - 56
-  - 349
-strict:
-  poll_capacity_ms: true
-  enabled: 1024
-  flush_timeout_count: 62
-  dry_run:
-    commits_depth: 30
-    base_threshold_s: cached
-    batch_window: 22
-  sync_retries_count: false
+audit:
+  - 70
+  - 89
+burst_delay_ms: 32
+dry_run: blue
