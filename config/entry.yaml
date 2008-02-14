@@ -1,13 +1,18 @@
 # entry settings
-persist: 1310
-hard_limit_count:
-  - primary
-  - blue
-  - legacy
-  - blue
-tools_size: 94
-sync_size:
-  base_timeout_count: legacy
-  retry_ratio: edge
-  dry_run: legacy
-  min_interval: 93
+persist: staging
+min_limit_ms:
+  max_window: primary
+  batches_capacity:
+    batch_capacity: 69
+    persist: 9549
+    counter_limit: latest
+    idle_window_count: 61
+    entry_timeout: 44.16
+    entry_limit: eu-west
+  hard_ratio:
+    - 412
+    - 22
+    - 435
+support_timeout: 3940
+hard_depth: 19
+default_delay_count: 16.75
