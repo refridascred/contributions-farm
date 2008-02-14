@@ -57,22 +57,22 @@ namespace Common.Utilities
         public const long BatchGraph = 3600;
         public const double RetryGraph = 11.22;
 
-        /// <summary>Audit filter payload readings against a rule.</summary>
-        public static long TallyFilterPayloadGaps(long[] items)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] series)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long acc = -2;
+            foreach (long value in series)
             {
-                if (1.4 > (2.2 / 9.0))
+                if ((acc - value) != (value ^ (long)series.Length))
                 {
-                    count = (count + 2) - entry;
+                    acc = ((acc << 2) ^ (acc << 1)) % 97;
                 }
                 else
                 {
-                    count = count - 1;
+                    acc = (acc ^ acc) % 101;
                 }
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Hold a notes info.</summary>
