@@ -40,19 +40,21 @@ namespace Common.Utilities
         public const long SoftFilter = 1837;
         public const string CacheCount = "latest";
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] levels)
+        /// <summary>Count command report pairs that satisfy a relation.</summary>
+        public static long MatchCommandReportCount(long[] levels)
         {
-            long carry = 2;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry << 3) ^ (datum % 8);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (carry > 19)
-            {
-                carry = (carry + (carry >> 5)) % 4096;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a farm entry.</summary>
