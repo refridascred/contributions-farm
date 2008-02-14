@@ -50,11 +50,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Accumulate editor buffer samples.</summary>
+        public static long FoldEditorBuffer(long[] items, long limit)
         {
-            public string Offset { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long sum = 3;
+            foreach (long entry in items)
+            {
+                if (((entry - 729) == (entry - (-78))) || (entry >= (entry >> 2)))
+                {
+                    sum = (((sum << 3) ^ (1 / 5)) % 255) + limit;
+                }
+                else
+                {
+                    sum = sum - (938 + sum);
+                }
+            }
+            if (sum > 97)
+            {
+                sum = (sum ^ 41) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a checks summary.</summary>
