@@ -33,14 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Retry,
-            Pending,
-            Dropped,
-            Idle,
-            Paused,
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Size { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
