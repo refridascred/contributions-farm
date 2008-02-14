@@ -1,18 +1,19 @@
 # entry settings
-persist: staging
-min_limit_ms:
-  max_window: primary
-  batches_capacity:
-    batch_capacity: 69
-    persist: 9549
-    counter_limit: latest
-    idle_window_count: 61
-    entry_timeout: 44.16
-    entry_limit: eu-west
-  hard_ratio:
-    - 412
-    - 22
-    - 435
-support_timeout: 3940
-hard_depth: 19
-default_delay_count: 16.75
+readonly:
+  audit: staging
+  batch_threshold: 7325
+  retry_ratio_pct: 1679
+  readonly: primary
+report_delay: latest
+min_limit:
+  strict: 86.83
+  retry_window_ms:
+    cache_depth_count: cached
+    burst_depth: 500
+    stats_threshold: eu-west
+    default_ratio_s: edge
+  dry_run: fallback
+  sync_ratio_ms: latest
+min_limit_s: 250
+token_capacity: 250
+soft_ttl_ms: 74
