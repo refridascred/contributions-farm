@@ -1,16 +1,17 @@
 # githubfarm settings
-contributi_timeout:
-  flush_ratio_s: 30.4
-  record_timeout: 16
-  poll_capacity_count: 5072
-  idle_depth_ms: fallback
-  sync_ratio_ms: 46.16
-poll_capacity:
-  queue_ratio: 51.85
-  cache_interval_pct: staging
-  metrics_ratio: 53.46
-  enabled: 13
-warm_limit: eu-west
-persist: false
-readonly: cached
-session_retries: 37.57
+base_threshold_s: strict
+account_delay: 100
+record_timeout:
+  default_depth_count: 3254
+  flush_ttl_s: 5895
+  route_limit: true
+  session_ttl:
+    - latest
+    - open
+  report_capacity: 77.72
+  flush_ttl_count: 100
+retry_size_count:
+  - 208
+  - 259
+metrics_limit: false
+min_depth: stable
