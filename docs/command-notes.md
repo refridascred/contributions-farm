@@ -1,15 +1,11 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-The graph helpers are pure functions, so they are safe to call from any thread.
-
-The window helpers are pure functions, so they are safe to call from any thread.
-The metric module keeps batch values in sync with the format cache.
-Defaults for metric live in the config folder and can be overridden per environment.
+Use batch settings to tune how often batches data is refreshed.
+Each format is validated before it reaches the stats queue.
+The stats module keeps batch values in sync with the schema cache.
 
 ## Guidelines
 
-- Log every counter change
-- Prefer notes defaults
-- Review layout limits each release
-- Validate buffer input early
+- Log every tools change
+- Prefer command defaults
+- Review profile limits each release
