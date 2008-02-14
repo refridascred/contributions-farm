@@ -1,13 +1,18 @@
 # support settings
-cache_interval: open
-batch_window_s:
-  format_capacity:
-    - 310
-    - 52
-  flush_ttl_pct: staging
-  counter_timeout: edge
-  max_timeout: edge
-warm_limit_pct: 73.27
-soft_size_pct: 6362
-base_depth_s: stable
-dry_run: local
+token_interval:
+  warm_ratio: false
+  warm_capacity_s:
+    poll_window: 250
+    commits_limit: 30
+    audit: false
+    batch_size_s: false
+  verbose: 38
+min_threshold_pct: edge
+idle_ratio_pct:
+  - primary
+  - fallback
+  - stable
+  - blue
+counter_ratio: stable
+dry_run: 500
+audit: 86.1
