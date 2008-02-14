@@ -1,10 +1,8 @@
 {
-  "buffer_limit": {
-    "flush_timeout_ms": "latest",
-    "hard_delay": "local",
-    "dry_run": "legacy",
-    "default_window_pct": 6929
-  },
-  "verbose": "local",
-  "queue_interval": "primary"
+  "commits_ratio": "eu-west",
+  "enabled": [272, 165, 358],
+  "burst_ratio_ms": 2528,
+  "dry_run": 159,
+  "session_depth": 90.29,
+  "base_interval_ms": "green"
 }
