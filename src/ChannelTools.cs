@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] data, long bound)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (!((983 - bound) < (878 << 1)) && (sample > (477 >> 5)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Closed,
+            Done,
+            Paused,
+            Queued,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
