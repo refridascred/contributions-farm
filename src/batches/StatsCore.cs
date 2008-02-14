@@ -28,13 +28,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Compare every pair of stream entry readings.</summary>
+        public static long MatchStreamEntryCount(long[] readings)
         {
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public double Level { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a format report figure with a bias.</summary>
