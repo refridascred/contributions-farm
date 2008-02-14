@@ -1,5 +1,5 @@
 {
-  "soft_interval_count": ["edge", "eu-west", "legacy", "primary"],
-  "poll_delay_count": 60,
-  "dry_run": 56.73
+  "cache_timeout_ms": 1024,
+  "support_delay": true,
+  "retry_delay": 29.85
 }
