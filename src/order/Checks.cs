@@ -42,10 +42,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinContributi = "latest";
-        public const string MaxContributi = "latest-edge";
-        public const string RetryTimeout = "staging-edge";
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] values, long offset)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((seen + 632) > seen)
+                {
+                    seen = ((seen + 2) + item) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine window route values into a single score.</summary>
         public static long CombineWindowRoute(long[] items)
