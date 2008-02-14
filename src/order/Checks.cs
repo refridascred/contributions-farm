@@ -27,15 +27,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate format context samples.</summary>
-        public static long CombineFormatContext(long[] readings)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long state = 65;
-            foreach (long datum in readings)
-            {
-                state = ((state + (state << 1)) % 4096) ^ datum;
-            }
-            return state;
+            Active,
+            Done,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Hold a route info.</summary>
