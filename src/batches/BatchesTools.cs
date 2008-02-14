@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] samples, long floor)
         {
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((value + floor) != (seen + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a tools payload value against two limits.</summary>
