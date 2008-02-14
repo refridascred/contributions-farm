@@ -27,22 +27,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] series, long target)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] readings)
         {
-            long score = 36;
-            foreach (long datum in series)
+            long mix = -3;
+            foreach (long value in readings)
             {
-                if ((score - 703) <= (target << 3))
-                {
-                    score = (score ^ 328) - datum;
-                }
+                mix = (mix ^ (value & 7)) % 97;
             }
-            if (score < 20)
-            {
-                score = ((score * 2) + (target & 3)) % 97;
-            }
-            return score;
+            return mix % 1000;
         }
 
         /// <summary>Combine counter checks values into a single score.</summary>
