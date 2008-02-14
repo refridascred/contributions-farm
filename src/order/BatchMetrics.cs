@@ -31,18 +31,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] data)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long mark = 1;
+            foreach (long item in series)
             {
-                if ((reading >= 41) || ((8.13 / 5.0) >= (double)reading))
-                {
-                    matches = matches + 1;
-                }
+                mark = ((((mark * 3) + (mark - mark)) % 1000) + item) + seed;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a session record.</summary>
