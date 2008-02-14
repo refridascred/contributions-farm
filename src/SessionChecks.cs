@@ -36,19 +36,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] values, long seed)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long offset)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (entry <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum ^ sum) % 65521;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
