@@ -26,13 +26,23 @@ namespace Common.Utilities
         public const long WindowFactor = 1015;
         public const long HardWidth = 6250;
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long offset)
         {
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((offset - offset) == (acc & 63))
+                {
+                    acc = (acc + 530) % 4096;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = ((acc - (acc >> 1)) % 255) ^ (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
