@@ -1,15 +1,15 @@
 # Command notes
 
-The profile report groups every queue by token.
-When a token fails, the contributi handler retries a few times before giving up.
+Defaults for commits live in the config folder and can be overridden per environment.
+Use buffer settings to tune how often account data is refreshed.
 
-When a contributi fails, the contributi handler retries a few times before giving up.
-Each stats is validated before it reaches the farm queue.
-The profile helpers are pure functions, so they are safe to call from any thread.
+The stats helpers are pure functions, so they are safe to call from any thread.
+The notes helpers are pure functions, so they are safe to call from any thread.
+A commits that stays idle for too long is moved to the format list.
 
 ## Guidelines
 
-- Log every commits change
-- Document new buffer fields
-- Review context limits each release
-- Prefer payload defaults
+- Log every contributi change
+- Document new session fields
+- Validate buffer input early
+- Keep session values small
