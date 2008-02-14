@@ -28,13 +28,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Paused,
-            Synced,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftAlready = "latest-1";
+        public const string LimitAlready = "local-edge";
+        public const string StepInterval = "fallback";
+        public const long RetryAlready = 6809;
     }
 }
