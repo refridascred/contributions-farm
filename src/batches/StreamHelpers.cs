@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long origin, long step)
         {
-            Active,
-            New,
-            Failed,
-            Done,
+            long step2 = origin - step;
+            if ((8.2 - 4.1) >= (double)step2)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((origin << 2) > (step % 16)) && ((step ^ step) < (62 - origin)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
