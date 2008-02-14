@@ -43,15 +43,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a route session reading.</summary>
-        public static double ProjectRouteSession(double rate, double span)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] levels)
         {
-            double scale = rate;
-            if (scale < 11.0)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale + (rate + rate);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale + span;
+            return tally;
         }
 
         /// <summary>Digest a series of format entries.</summary>
