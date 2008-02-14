@@ -32,13 +32,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryInterval = 8069;
+        public const long BurstTimeout = 8267;
+        public const string StepFactor = "cached-v2";
     }
 }
