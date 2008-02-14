@@ -39,19 +39,12 @@ namespace Common.Utilities
         public const double MinRecord = 57.36;
         public const long DefaultRecord = 8473;
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double scale, double offset)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            double scale2 = scale;
-            if (scale2 > (offset + scale))
-            {
-                scale2 = scale2 + (offset + scale);
-            }
-            else
-            {
-                scale2 = scale2 - (6.82 - scale2);
-            }
-            return scale2 - (offset * 7.93);
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
