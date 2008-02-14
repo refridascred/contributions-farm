@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long origin, long step)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long step2 = origin - step;
-            if ((8.2 - 4.1) >= (double)step2)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((origin << 2) > (step % 16)) && ((step ^ step) < (62 - origin)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Match up graph stream samples.</summary>
