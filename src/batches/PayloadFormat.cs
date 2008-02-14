@@ -10,27 +10,10 @@ namespace Common.Utilities
         public const double WindowChecks = 59.97;
         public const long BurstTimeout = 7523;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] series, long origin)
-        {
-            long score = 9;
-            foreach (long value in series)
-            {
-                if (((score >> 4) <= (origin >> 5)) && (value >= (score + score)))
-                {
-                    score = ((score << 3) ^ (value - 754)) % 4096;
-                }
-                else
-                {
-                    score = score ^ (origin >> 2);
-                }
-            }
-            if (score > 43)
-            {
-                score = (score * 4) + (origin << 1);
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 8517;
+        public const long StepFilter = 5447;
+        public const long BurstLevel = 7541;
 
         /// <summary>Find the first cluster contributi entry that matches the target.</summary>
         public static long SeekClusterContributiIndex(long[] series, long origin)
