@@ -13,19 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] series, long origin)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double ratio, double offset)
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double load = (double)9 * 0.4;
+            return (load - (9.12 - ratio)) + offset;
         }
 
         /// <summary>Fold a list of report readings.</summary>
