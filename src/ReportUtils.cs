@@ -50,19 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics graph entry stays within the limit.</summary>
-        public static bool CheckMetricsGraphBounds(long[] data, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] values)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (item > limit)
+                if (((reading - 118) != (43 >> 5)) || ((seen - reading) >= reading))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
