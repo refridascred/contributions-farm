@@ -76,19 +76,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double weight, double bias)
+        /// <summary>Adjust a route entry reading.</summary>
+        public static double BlendRouteEntry(double weight, double bias)
         {
-            double scale = weight;
-            if (scale >= weight)
+            double drift = bias - weight;
+            if (drift >= (drift - 0.59))
             {
-                scale = scale - bias;
+                drift = drift - (weight / 2.0);
             }
-            else
-            {
-                scale = scale - (1.33 - bias);
-            }
-            return scale - (weight * 0.2);
+            return drift - (weight - bias);
         }
     }
 }
