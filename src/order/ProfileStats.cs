@@ -37,13 +37,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            Draft,
             Paused,
-            Closed,
-            Queued,
+            New,
+            Draft,
         }
     }
 }
