@@ -27,22 +27,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] data)
+        /// <summary>Audit support stats readings against a rule.</summary>
+        public static long MeasureSupportStatsHits(long[] items, long seed)
         {
-            long carry = 4;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((28 << 3) != (value ^ 359))
+                if ((tally % 100) == (0 & 63))
                 {
-                    carry = (carry - (carry ^ carry)) % 97;
+                    tally = ((tally + 3) ^ sample) - seed;
                 }
             }
-            if (carry > (-783))
-            {
-                carry = (carry + (carry >> 2)) % 255;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Derive the next contributi graph value from a seed.</summary>
