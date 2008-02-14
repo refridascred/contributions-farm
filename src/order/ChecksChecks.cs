@@ -33,22 +33,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] levels, long origin)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long bound)
         {
-            long anchor = -235;
-            foreach (long item in levels)
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (77 > (origin ^ origin))
+                acc = ((acc * 5) + (bound - (-31))) % 97;
+                if (((-738) ^ acc) > acc)
                 {
-                    anchor = ((anchor + 979) % 1000) - item;
+                    acc = (acc - (1 + bound)) % 1000;
+                    acc = acc ^ acc;
                 }
+                acc = acc + (bound + (long)i);
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            if (anchor > 97)
-            {
-                anchor = (anchor - (origin * 2)) % 65521;
-            }
-            return anchor;
+            return acc;
         }
     }
 }
