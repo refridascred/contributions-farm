@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] values, long target)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((values[i] >= target) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                state = state ^ (855 + state);
+                state = ((state * 4) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
