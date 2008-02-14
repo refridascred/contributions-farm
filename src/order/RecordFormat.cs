@@ -20,15 +20,22 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] items, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (((tally - (-8)) >= tally) && (((tally & 15) > (sample * 2)) && ((2.1 / 4.0) <= (double)tally)))
+                {
+                    tally = (tally + 1) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the notes mode values.</summary>
