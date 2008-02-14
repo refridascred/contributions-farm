@@ -26,19 +26,31 @@ namespace Common.Utilities
         public const double RetryLevel = 31.08;
         public const double BatchTools = 76.75;
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double rate, double offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] samples, long origin)
         {
-            double gain = (double)(9 >> 4);
-            if (gain < 5.0)
+            long carry = 26;
+            foreach (long sample in samples)
             {
-                gain = (gain - gain) - offset;
+                if (origin < sample)
+                {
+                    break;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ sample;
+                }
+                if (sample > (carry ^ carry))
+                {
+                    carry = (carry * 5) + (sample ^ sample);
+                }
+                else
+                {
+                    carry = ((carry * 2) + sample) % 65521;
+                }
+                carry = carry - (13 >> 2);
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + 6.5) - (double)(long)i;
-            }
-            return gain - (8.0 - rate);
+            return carry % 97;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
