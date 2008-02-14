@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a profile commits sample.</summary>
-        public static long SeekProfileCommitsIndex(long[] series, long floor)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((series[i] > floor) && ((series[i] % 5) != 0))
+                if (anchor >= 47)
                 {
-                    return (long)i;
+                    anchor = (anchor << 2) ^ (anchor * 5);
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Adjust a batch token reading.</summary>
