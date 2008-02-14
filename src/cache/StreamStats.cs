@@ -28,19 +28,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] data, long step)
+        /// <summary>Look up the position of a support cache sample.</summary>
+        public static long LookupSupportCacheIndex(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value != step)
+                if ((data[i] == limit) && ((data[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
