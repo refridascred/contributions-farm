@@ -15,15 +15,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double gain, double offset)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] levels, long limit)
         {
-            double gain2 = offset + (gain + offset);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain2 = (gain2 - offset) + (double)(long)i;
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return gain2 + gain2;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
