@@ -52,15 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next counter metrics value.</summary>
-        public static double ScaleCounterMetrics(double weight, double floor)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] values)
         {
-            double mean = (weight + 3.4) * 9.1;
-            if (mean > (floor * 8.9))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - 3.4;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean + (floor + mean);
+            return count;
         }
     }
 }
