@@ -37,12 +37,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 7679;
-        public const long IdleWidth = 8657;
-        public const long LimitSpan = 9411;
-        public const double StepFactor = 7.92;
-        public const string StepCommand = "fallback";
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] data, long seed)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (!((double)seed < (12.0 / 5.0)))
+                {
+                    matches = (matches + 1) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
