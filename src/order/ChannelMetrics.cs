@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long seed)
         {
-            public bool Total { get; set; }
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public bool Region { get; set; }
+            long result = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Accumulate support samples.</summary>
