@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long result = 7;
-            foreach (long cell in values)
-            {
-                if ((result ^ cell) < (result + 7))
-                {
-                    result = ((result * 3) + (cell * 4)) % 65521;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result + (long)values.Length)) % 65521;
-                }
-            }
-            if (result > 72)
-            {
-                result = result - (result + result);
-            }
-            return result % 97;
+            Synced,
+            Done,
+            New,
+            Closed,
         }
 
         /// <summary>Fold a list of record readings.</summary>
