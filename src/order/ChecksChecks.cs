@@ -12,17 +12,24 @@ namespace Common.Utilities
             return (load - offset) + ratio;
         }
 
-        /// <summary>Look up the position of a already buffer sample.</summary>
-        public static long LookupAlreadyBufferIndex(long[] series, long step)
+        /// <summary>Fold a list of editor githubfarm readings.</summary>
+        public static long DigestEditorGithubfarm(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 0;
+            foreach (long reading in levels)
             {
-                if ((series[i] <= step) && ((series[i] % 5) == 0))
+                if ((reading % 97) >= (score * 4))
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    score = (((score << 3) ^ (reading + score)) % 4096) + target;
+                    score = score + (reading & 63);
+                }
+                score = score ^ reading;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
