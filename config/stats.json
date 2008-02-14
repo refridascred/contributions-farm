@@ -1,23 +1,12 @@
 {
-  "base_ttl_ms": "strict",
-  "idle_threshold_ms": 67.37,
-  "strict": {
-    "persist": {
-      "burst_delay_count": true,
-      "buffer_depth": 29.66,
-      "default_limit": [188, 494, 171, 96],
-      "base_timeout_pct": [384, 317],
-      "retry_ttl_count": true
-    },
-    "readonly": ["primary", "standard", "legacy"],
-    "soft_limit": 9591,
-    "sync_size": 95,
-    "support_ratio": [250, 254, 365, 499],
-    "strict": {
-      "soft_capacity": "primary",
-      "default_ratio_s": 41.81,
-      "dry_run": "stable"
-    }
+  "payload_delay": "local",
+  "idle_capacity": false,
+  "contributi_limit": {
+    "context_interval": 59.34,
+    "default_ratio_pct": 250,
+    "commits_window": "stable",
+    "dry_run": "green"
   },
-  "max_window": 31.23
+  "checks_window": "cached",
+  "readonly": "green"
 }
