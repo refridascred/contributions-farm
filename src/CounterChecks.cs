@@ -16,18 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the buffer schema entries that pass the check.</summary>
-        public static long CountBufferSchemaMatches(long[] items)
+        /// <summary>Locate a support cluster reading by value.</summary>
+        public static long LookupSupportClusterIndex(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum >= (count / 2))
+                if (values[i] > floor)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
