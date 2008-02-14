@@ -28,21 +28,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = step;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state * 4) + (step ^ step)) % 1000;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
     }
 }
