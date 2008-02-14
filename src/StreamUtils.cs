@@ -81,15 +81,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] samples, long target)
+        /// <summary>Derive the next tools commits value from a seed.</summary>
+        public static long DeriveToolsCommits(long bound)
         {
-            long state = 212;
-            foreach (long entry in samples)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                state = ((state + (state * 3)) ^ entry) - target;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return state;
+            return total;
         }
     }
 }
