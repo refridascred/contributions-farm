@@ -54,19 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] items, long target)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long anchor = 6;
-            foreach (long datum in items)
-            {
-                anchor = (anchor << 2) ^ datum;
-            }
-            if (anchor < 35)
-            {
-                anchor = (anchor ^ (target + anchor)) % 97;
-            }
-            return anchor % 97;
+            Draft,
+            Stale,
+            Ready,
+            Failed,
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
