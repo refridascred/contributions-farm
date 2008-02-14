@@ -58,18 +58,20 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] values, long floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long carry = 65;
+            foreach (long value in levels)
             {
-                if (((tally + tally) > floor) || ((double)tally > (double)79))
-                {
-                    tally = (tally + 1) ^ item;
-                }
+                carry = ((carry - (limit & 3)) % 101) ^ value;
+                carry = carry ^ (limit + limit);
             }
-            return tally;
+            if (carry < 35)
+            {
+                carry = (carry ^ (limit & 63)) % 255;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
