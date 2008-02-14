@@ -1,17 +1,4 @@
 # githubfarm settings
-warm_window_pct: strict
-poll_capacity_pct:
-  queue_retries: staging
-  hard_interval: primary
-  persist: standard
-poll_interval_s:
-  base_retries: 6
-  min_limit_ms: edge
-  farm_window:
-    - 185
-    - 222
-    - 62
-  sync_interval_pct:
-    - 484
-    - 281
-    - 135
+verbose: false
+min_window_ms: 97.49
+audit: 75.8
