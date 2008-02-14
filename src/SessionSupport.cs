@@ -23,11 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 7583;
-        public const long WindowBatch = 191;
-        public const long CacheBudget = 5130;
-        public const long DefaultBatch = 7066;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 2637;
+        public const long IdleBudget = 3985;
+        public const double IdleRatio = 91.77;
+        public const long SoftFilter = 8471;
+        public const double MaxFilter = 42.12;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
