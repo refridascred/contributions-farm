@@ -33,17 +33,12 @@ namespace Common.Utilities
         public const double MinContext = 35.09;
         public const long DefaultContext = 578;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] items, long bound)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Synced,
+            Locked,
         }
 
         /// <summary>Blend two buffer measurements.</summary>
