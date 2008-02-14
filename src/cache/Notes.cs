@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] data)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((9.44 / 8.0) <= (double)reading)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            New,
+            Active,
+            Retry,
         }
 
         /// <summary>Hold a payload snapshot.</summary>
