@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxBatch = "legacy-v2";
-        public const long MinBatch = 9412;
-        public const double DefaultBatch = 81.8;
-        public const double HardBatch = 19.87;
-        public const double MinWidth = 41.29;
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long ScoreSupport(long[] items, long origin)
