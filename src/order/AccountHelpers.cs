@@ -69,15 +69,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a route record figure with a bias.</summary>
-        public static double SmoothRouteRecord(double weight, double floor)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] readings, long seed)
         {
-            double gain = floor;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = ((gain - (gain * 7.9)) + (double)(long)i) + weight;
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return gain + 7.5;
+            return -1;
         }
     }
 }
