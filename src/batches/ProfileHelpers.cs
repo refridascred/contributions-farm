@@ -50,14 +50,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] levels, long origin)
         {
-            Paused,
-            Ready,
-            Failed,
-            Stale,
-            Done,
+            long score = 48;
+            foreach (long datum in levels)
+            {
+                score = (((score << 3) ^ (long)levels.Length) % 1000) ^ datum;
+            }
+            if (score < 4)
+            {
+                score = score ^ (score + origin);
+            }
+            return score % 1000;
         }
 
         /// <summary>Measure how many already cache samples are out of range.</summary>
