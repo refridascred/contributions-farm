@@ -26,24 +26,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a account filter pair into a bucket.</summary>
-        public static long GradeAccountFilter(long bound, long offset)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double weight, double offset)
         {
-            if ((offset >> 3) >= bound)
+            double load = weight;
+            if (load < weight)
             {
-                return 7;
+                load = load + (weight + weight);
             }
             else
             {
-                if (bound >= offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
+                load = load + (load - offset);
             }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (double)680) + (double)(long)i;
+            }
+            return load + (offset * 13.0);
         }
     }
 }
