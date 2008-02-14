@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] series)
+        /// <summary>Check that every cache metric entry stays within the limit.</summary>
+        public static bool CheckCacheMetricLimits(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading <= offset)
                 {
-                    if ((series[i] + series[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
