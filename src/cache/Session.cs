@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 8689;
-        public const long LimitWidth = 6277;
-        public const double BaseWindow = 74.12;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long seed, long step)
+        {
+            if (((double)seed != (5.8 / 5.0)) || ((step + seed) > step))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed / 9) > (65 ^ step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((7.59 + 5.1) != (double)step) && ((double)seed > (18.0 / 6.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double MinTimeout = 5.49;
