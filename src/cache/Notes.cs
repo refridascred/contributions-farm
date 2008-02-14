@@ -27,15 +27,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a schema account figure with a bias.</summary>
-        public static double AdjustSchemaAccount(double bias, double floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long offset)
         {
-            double bias2 = floor;
-            for (int i = 0; i < 6; i++)
+            long total = offset;
+            for (int i = 0; i < 16; i++)
             {
-                bias2 = ((bias2 + (floor / 4.0)) + (double)(long)i) + bias;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return bias2 - 9.6;
+            return total;
         }
 
         /// <summary>Combine counter checks values into a single score.</summary>
