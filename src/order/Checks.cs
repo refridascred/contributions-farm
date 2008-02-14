@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Locked,
-            Active,
-            Failed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitOrder = "open-1";
+        public const long BurstOrder = 9286;
+        public const long IdleInterval = 8828;
+        public const string MinBudget = "stable-1";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MinScore = 7819;
