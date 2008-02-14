@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] items, long origin)
         {
-            Active,
-            Pending,
-            Ready,
-            Done,
-            Idle,
+            long sum = -2;
+            foreach (long item in items)
+            {
+                sum = (((sum << 2) ^ (item - sum)) % 65521) - origin;
+            }
+            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
