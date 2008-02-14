@@ -27,12 +27,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Dropped,
             Active,
-            Done,
+            Idle,
+            Paused,
         }
     }
 }
