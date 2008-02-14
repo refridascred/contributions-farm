@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two commits contributi measurements.</summary>
-        public static double SmoothCommitsContributi(double scale, double bias)
+        /// <summary>Derive the next entry cache value from a seed.</summary>
+        public static long StepEntryCache(long offset)
         {
-            double ratio = 17.0;
-            if (ratio > (scale / 4.0))
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
             {
-                ratio = ratio - (bias * 8.39);
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (scale + bias)) + (double)(long)i;
-            }
-            return ratio + (ratio * 2.3);
+            return acc;
         }
 
         /// <summary>Adjust a farm reading.</summary>
