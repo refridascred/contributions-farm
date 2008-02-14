@@ -40,14 +40,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long floor, long seed)
         {
-            Queued,
-            Pending,
-            Synced,
-            Closed,
-            Active,
+            if (((double)floor >= (2.6 * 9.6)) && ((floor - seed) == (seed >> 1)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor << 1) <= 442)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((676 <= (seed & 63)) || ((floor + 544) >= (floor << 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
