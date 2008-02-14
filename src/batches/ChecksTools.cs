@@ -37,26 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] readings, long bound)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] data)
         {
-            long mix = 7;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mix >> 2) > (reading - 365))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix - (reading ^ (long)readings.Length)) % 101) - bound;
-                }
-                else
-                {
-                    mix = mix ^ mix;
-                }
-                if ((reading & 31) <= mix)
-                {
-                    break;
+                    if ((data[i] ^ data[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
     }
 }
