@@ -31,15 +31,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double gain, double span)
-        {
-            double mean = gain + (gain - span);
-            if (mean >= 0.04)
-            {
-                mean = mean - (span * 11.0);
-            }
-            return mean + mean;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardLayout = "standard-1";
+        public const long SoftFactor = 5639;
+        public const long MaxSize = 8945;
+        public const long IdleSize = 2876;
+        public const double WindowLayout = 1.16;
     }
 }
