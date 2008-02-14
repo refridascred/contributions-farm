@@ -53,13 +53,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] readings, long seed)
         {
-            Dropped,
-            Draft,
-            Closed,
-            Ready,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
