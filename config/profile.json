@@ -1,5 +1,8 @@
 {
-  "max_depth": 66,
-  "min_timeout_ms": false,
-  "base_delay": "eu-west"
+  "commits_size": 2867,
+  "idle_window_ms": "staging",
+  "base_capacity_pct": 25,
+  "min_capacity_pct": true,
+  "entry_timeout": ["strict", "local", "latest", "open"],
+  "poll_capacity_ms": "eu-west"
 }
