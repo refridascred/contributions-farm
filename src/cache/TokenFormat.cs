@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] items, long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (step < (step % 2))
+                if (value != offset)
                 {
-                    matches = (matches + 3) ^ cell;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
