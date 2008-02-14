@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const long MinFilter = 3789;
         public const long IdleFilter = 5322;
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] samples)
+        /// <summary>Audit account editor readings against a rule.</summary>
+        public static long MeasureAccountEditorGaps(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((810 % 7) < (entry % 24))
                 {
-                    if ((samples[i] - samples[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
