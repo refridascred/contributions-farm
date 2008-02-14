@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] levels, long origin)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((item + 3) == (item & 1))
+                if (value <= floor)
                 {
-                    hits = (hits + 1) + origin;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
