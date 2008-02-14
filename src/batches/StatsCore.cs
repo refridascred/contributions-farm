@@ -51,22 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format order samples.</summary>
-        public static long ScoreFormatOrder(long[] items, long bound)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long sum = 751;
-            foreach (long cell in items)
-            {
-                if ((bound + cell) > (bound * 4))
-                {
-                    sum = (sum << 2) ^ sum;
-                }
-            }
-            if (sum > 72)
-            {
-                sum = ((sum << 2) ^ (sum + 5)) % 65521;
-            }
-            return sum % 97;
+            public string Ratio { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
