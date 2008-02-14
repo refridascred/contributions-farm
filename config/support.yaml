@@ -1,22 +1,13 @@
 # support settings
-hard_limit_s: staging
-soft_ttl_ms: 1
-idle_depth_s:
-  burst_depth: 8976
-  audit: 250
-  report_ratio:
-    max_ratio_ms:
-      - 46
-      - 61
-      - 248
-    dry_run: staging
-    base_capacity_ms:
-      - standard
-      - standard
-      - blue
-    readonly: 70.02
-    stats_ttl: 11.3
-  verbose: legacy
-tools_size:
-  - edge
-  - fallback
+readonly: true
+soft_limit: strict
+record_delay:
+  - 37
+  - 373
+base_limit_ms:
+  - open
+  - local
+  - legacy
+  - latest
+stats_retries: open
+base_ratio_ms: green
