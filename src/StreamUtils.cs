@@ -71,21 +71,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] values)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long seed, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)seed != (double)step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!((seed ^ seed) == (seed + seed)))
                 {
-                    if ((values[i] ^ values[j]) == 19)
+                    return 6;
+                }
+                else
+                {
+                    if (step < (seed >> 1))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed <= (step + 2)) && ((seed ^ step) >= step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
