@@ -85,15 +85,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] items, long origin)
-        {
-            long mark = 606;
-            foreach (long value in items)
-            {
-                mark = ((mark - (value + 5)) % 101) - origin;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheBudget = 861;
+        public const string BatchMetric = "fallback-edge";
+        public const long IdleSize = 9226;
+        public const long SoftMetric = 1904;
+        public const long DefaultMetric = 80;
     }
 }
