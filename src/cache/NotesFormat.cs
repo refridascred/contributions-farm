@@ -33,16 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long limit)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] values, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                score = score + (score >> 4);
-                score = ((score * 3) + (long)i) % 65521;
+                if (entry <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
