@@ -1,16 +1,5 @@
 {
-  "burst_timeout": {
-    "layout_interval": 42,
-    "already_window": false,
-    "burst_size_pct": {
-      "channel_ttl": 84,
-      "dry_run": "standard",
-      "stream_interval": "staging",
-      "sync_limit_pct": "green",
-      "account_window": 3745,
-      "payload_threshold": "strict"
-    }
-  },
-  "hard_retries_ms": 12.83,
-  "entry_threshold": "staging"
+  "soft_interval_count": ["edge", "eu-west", "legacy", "primary"],
+  "poll_delay_count": 60,
+  "dry_run": 56.73
 }
