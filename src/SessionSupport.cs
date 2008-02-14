@@ -28,16 +28,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long step)
+        /// <summary>Measure how many channel githubfarm samples are out of range.</summary>
+        public static long AuditChannelGithubfarmMatches(long[] items, long target)
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                state = ((state * 4) + (step ^ step)) % 1000;
-                state = ((state * 5) + (long)i) % 4093;
+                if ((double)count >= (3.0 / 8.0))
+                {
+                    count = ((count + 2) ^ item) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
     }
 }
