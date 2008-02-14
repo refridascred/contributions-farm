@@ -1,9 +1,12 @@
 {
-  "flush_depth": true,
-  "max_retries_pct": "legacy",
-  "cache_limit_s": {
-    "idle_ratio": 91,
-    "audit": "green",
-    "warm_interval_ms": "open"
-  }
+  "burst_limit": 7062,
+  "cache_delay_s": [400, 231, 459],
+  "base_limit": "standard",
+  "retry_size": {
+    "burst_limit": true,
+    "cache_ratio_ms": [476, 298],
+    "hard_window": 90
+  },
+  "strict": 1024,
+  "min_delay_pct": 78.12
 }
