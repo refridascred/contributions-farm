@@ -37,18 +37,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] data, long target)
-        {
-            long mark = 685;
-            foreach (long item in data)
-            {
-                if ((item - target) < (mark % 100))
-                {
-                    mark = (mark + item) % 1000;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CacheDepth = "local-v2";
+        public const string BurstTimeout = "strict-1";
+        public const long WindowPayload = 6614;
+        public const string BaseDepth = "strict";
+        public const long MinPayload = 379;
     }
 }
