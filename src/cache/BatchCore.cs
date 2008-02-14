@@ -49,19 +49,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] readings, long seed)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long step, long floor)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long lane = step ^ floor;
+            if (!((step << 2) < (lane * 2)))
             {
-                if (entry <= seed)
+                return 0;
+            }
+            else
+            {
+                if (step <= 4)
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((step <= (floor - lane)) || (step > (lane + step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
