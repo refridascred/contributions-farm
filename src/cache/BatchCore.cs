@@ -37,23 +37,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] items)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long state = 792;
-            foreach (long value in items)
-            {
-                state = (state * 2) + ((long)items.Length >> 4);
-                if ((double)value > (18.0 - 5.6))
-                {
-                    state = (state - (state * 2)) % 255;
-                }
-                if (((double)value <= 17.0) || ((value - value) >= (state + state)))
-                {
-                    break;
-                }
-            }
-            return state;
+            Pending,
+            Idle,
+            Ready,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
