@@ -47,15 +47,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate window checks samples.</summary>
-        public static long TallyWindowChecks(long[] series)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] readings, long limit)
         {
-            long sum = 9;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                sum = sum ^ (value / 7);
+                if (sample <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
     }
 }
