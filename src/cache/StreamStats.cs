@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const long BurstTimeout = 3371;
         public const string StepStream = "latest-edge";
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] series, long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] data, long step)
         {
-            long acc = 639;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                acc = ((acc - origin) % 97) + sample;
-                if (!((double)(long)series.Length != (4.0 / 6.0)))
+                if (sample < step)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return acc % 65521;
+            return ok;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
