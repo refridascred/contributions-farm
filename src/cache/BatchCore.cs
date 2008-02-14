@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long step)
         {
-            Idle,
-            Failed,
-            Synced,
-            New,
-            Draft,
+            long mix = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((775 * 4) < (step % 97))
+                {
+                    continue;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
