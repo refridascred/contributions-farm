@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] items, long limit)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] levels, long limit)
         {
-            long result = 68;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit / 4) <= reading)
+                if (levels[i] > limit)
                 {
-                    result = (result << 3) ^ result;
-                }
-                else
-                {
-                    result = ((result * 5) + 456) % 101;
+                    return (long)i;
                 }
             }
-            if (result > 393)
-            {
-                result = result - (result & 127);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the channel phase values.</summary>
