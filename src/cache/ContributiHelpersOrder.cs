@@ -29,13 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Stale,
-            Idle,
-            Done,
+            Ready,
             Paused,
+            Closed,
         }
     }
 }
