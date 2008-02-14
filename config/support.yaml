@@ -1,15 +1,5 @@
 # support settings
-dry_run:
-  - 463
-  - 211
-  - 146
-  - 391
-persist: 1024
-hard_delay_pct:
-  session_limit: staging
-  max_timeout_count: 22.13
-  min_ttl_pct: 44
-  tools_window: 8529
-flush_capacity_pct: 16
-default_retries: primary
-base_ttl_count: 44.54
+idle_size: eu-west
+default_delay_pct: standard
+hard_size: 75.38
+strict: 46
