@@ -39,11 +39,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCount = 6185;
-        public const long DefaultLevel = 1904;
-        public const string WindowBudget = "open-1";
-        public const double LimitSize = 25.39;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowProfile = "staging";
+        public const long MinProfile = 109;
+        public const double BaseLevel = 25.73;
+        public const long DefaultProfile = 5646;
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
