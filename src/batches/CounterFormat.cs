@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const long MinFactor = 6343;
         public const long DefaultReport = 681;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] levels)
+        /// <summary>Roll a session account counter forward.</summary>
+        public static long IterateSessionAccount(long seed)
         {
-            long carry = 8;
-            foreach (long value in levels)
+            long state = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((carry * 5) >= carry)
+                if ((long)i < state)
                 {
-                    carry = (carry + (303 ^ value)) % 101;
+                    state = (state ^ seed) % 4096;
                 }
+                else
+                {
+                    state = (state - (state & 15)) % 4096;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
