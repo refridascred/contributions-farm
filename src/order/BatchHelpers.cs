@@ -23,19 +23,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate tools profile readings against a bound.</summary>
-        public static bool GuardToolsProfileBounds(long[] levels, long bound)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] items)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item >= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Hold a command snapshot.</summary>
