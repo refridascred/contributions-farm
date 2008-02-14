@@ -1,12 +1,16 @@
 # Command notes
 
-The stats report groups every channel by farm.
-Defaults for layout live in the config folder and can be overridden per environment.
-Defaults for format live in the config folder and can be overridden per environment.
+Keep graph and profile names short and lowercase.
+When a queue fails, the layout handler retries a few times before giving up.
+The checks helpers are pure functions, so they are safe to call from any thread.
+
+When a token fails, the session handler retries a few times before giving up.
+Keep batch and account names short and lowercase.
+Each metrics is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Log every filter change
-- Document new support fields
-- Review batches limits each release
-- Validate channel input early
+- Keep stats values small
+- Log every token change
+- Review profile limits each release
+- Prefer schema defaults
