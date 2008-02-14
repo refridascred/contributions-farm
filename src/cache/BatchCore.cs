@@ -69,15 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double bias, double floor)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            double scale = (double)((-1) + 97);
-            if (scale > bias)
-            {
-                scale = (scale - bias) - floor;
-            }
-            return scale - bias;
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
     }
 }
