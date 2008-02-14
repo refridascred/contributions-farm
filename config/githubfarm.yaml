@@ -1,25 +1,4 @@
 # githubfarm settings
-poll_timeout:
-  cache_delay:
-    already_threshold:
-      - 261
-      - 384
-      - 161
-      - 452
-    soft_retries_s: 60
-    sync_window_pct: 11
-    batch_window_count: 100
-    base_limit: stable
-  stream_delay: edge
-  soft_ttl_s: 40
-  max_threshold_ms:
-    context_depth: false
-    context_ttl: 49.36
-    readonly: open
-retry_depth: 7209
-command_threshold:
-  compress: 1024
-  poll_limit: 26.8
-  sync_timeout: 68.99
-  flush_ttl_ms: legacy
-schema_size: 50.7
+farm_timeout: 30
+flush_retries_count: 46.35
+burst_delay: 74.56
