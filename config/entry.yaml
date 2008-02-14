@@ -1,13 +1,4 @@
 # entry settings
-hard_threshold: 7685
-verbose:
-  - stable
-  - staging
-  - cached
-  - primary
-flush_ttl_count: 47.33
-burst_retries_count:
-  - 115
-  - 423
-  - 99
-hard_ratio_ms: true
+window_ratio: latest
+burst_capacity: 2163
+retry_capacity_ms: stable
