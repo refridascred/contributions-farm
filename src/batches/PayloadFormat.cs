@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double bias, double floor)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double gain, double bias)
         {
-            double weight = 17.0;
-            if (weight >= (floor - bias))
+            double drift = bias + gain;
+            if (drift <= drift)
             {
-                weight = weight - (floor + bias);
+                drift = drift - bias;
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 2; i++)
             {
-                weight = (weight - (weight / 5.0)) - (double)(long)i;
+                drift = (drift + drift) + (double)(long)i;
             }
-            return weight + bias;
+            return drift - (bias * 1.9);
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
