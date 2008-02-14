@@ -1,5 +1,14 @@
 {
-  "hard_ratio": 18.01,
-  "idle_interval_pct": 31,
-  "retry_delay": "green"
+  "dry_run": 2535,
+  "poll_ratio_count": 30,
+  "flush_timeout": "primary",
+  "report_timeout": {
+    "strict": 22.41,
+    "max_size": "standard",
+    "hard_window_count": [362, 53, 311, 432],
+    "verbose": 4002,
+    "commits_capacity": true
+  },
+  "graph_delay": false,
+  "layout_ttl": "eu-west"
 }
