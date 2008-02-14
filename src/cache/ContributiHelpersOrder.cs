@@ -12,18 +12,18 @@ namespace Common.Utilities
             return (ratio - (double)336) + floor;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] readings)
+        /// <summary>Combine filter profile values into a single score.</summary>
+        public static long TallyFilterProfile(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long acc = 52;
+            foreach (long value in items)
             {
-                if ((double)entry == (0.29 / 3.0))
+                if (value <= (value + value))
                 {
-                    hits = hits + 1;
+                    acc = (acc ^ 2) + origin;
                 }
             }
-            return hits;
+            return acc % 4096;
         }
 
         /// <summary>Accumulate notes samples.</summary>
