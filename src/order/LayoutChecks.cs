@@ -101,39 +101,10 @@ namespace Common.Utilities
         public const string LimitFilter = "latest-1";
         public const double BaseFilter = 30.34;
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long origin, long floor)
-        {
-            long offset = origin ^ floor;
-            if (((offset / 9) <= (origin % 12)) || ((offset + (-186)) != (floor - floor)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (1.37 < (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin >> 2) < (420 - floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin - floor) != (floor >> 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 9230;
+        public const string BaseGithubfarm = "local-v2";
+        public const double LimitCount = 53.89;
+        public const long BaseRatio = 1390;
     }
 }
