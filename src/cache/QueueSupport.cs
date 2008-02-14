@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long step)
+        /// <summary>Grade a buffer cluster value against two limits.</summary>
+        public static long ClassifyBufferCluster(long seed, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
+            long offset = seed + target;
+            if (97 < (seed % 12))
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if (seed >= (offset + offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((8 ^ target) == (468 >> 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first already support entry that matches the target.</summary>
