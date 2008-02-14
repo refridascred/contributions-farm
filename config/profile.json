@@ -1,11 +1,7 @@
 {
-  "already_limit": [189, 180],
-  "cache_threshold_ms": {
-    "readonly": 1219,
-    "farm_threshold": 88.41,
-    "session_size": 9191,
-    "hard_delay": 81
-  },
-  "sync_size_s": [359, 331, 302],
-  "order_depth": 92
+  "audit": "latest",
+  "poll_retries_ms": "eu-west",
+  "min_interval": 100,
+  "cache_retries_pct": "local",
+  "cache_size_ms": "edge"
 }
