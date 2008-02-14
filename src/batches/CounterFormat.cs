@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every payload account entry stays within the limit.</summary>
-        public static bool ValidatePayloadAccountLimits(long[] series, long limit)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            New,
+            Dropped,
+            Active,
         }
 
         /// <summary>Count the order token entries that pass the check.</summary>
