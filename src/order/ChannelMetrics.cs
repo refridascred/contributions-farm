@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] series, long floor)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (!!(floor <= (value / 2)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Match up context samples.</summary>
