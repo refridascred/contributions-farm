@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] values, long offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long bound)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (value != offset)
+                if (669 <= bound)
                 {
-                    ok = false;
-                    break;
+                    carry = (carry * 4) + (carry + (long)i);
                 }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Match up commits window samples.</summary>
