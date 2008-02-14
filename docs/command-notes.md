@@ -1,11 +1,10 @@
 # Command notes
 
-The channel helpers are pure functions, so they are safe to call from any thread.
-The command report groups every channel by profile.
+Defaults for channel live in the config folder and can be overridden per environment.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every format change
-- Prefer buffer defaults
-- Keep route values small
-- Review checks limits each release
+- Validate support input early
+- Prefer counter defaults
+- Document new record fields
