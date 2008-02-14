@@ -42,20 +42,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] readings)
-        {
-            long state = 9;
-            foreach (long reading in readings)
-            {
-                state = ((state * 2) + (reading ^ (long)readings.Length)) % 97;
-                if ((8.9 / 5.0) < (double)state)
-                {
-                    state = state - ((long)readings.Length & 127);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultStream = "local-edge";
+        public const long SoftStream = 5329;
+        public const double StepStream = 10.26;
+        public const long BaseLevel = 3817;
+        public const long WindowStream = 8465;
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
