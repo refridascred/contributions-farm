@@ -56,16 +56,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long seed)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark ^ (seed + seed)) % 65521;
-                mark = ((mark * 3) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
