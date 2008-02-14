@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every cache metric entry stays within the limit.</summary>
-        public static bool CheckCacheMetricLimits(long[] levels, long offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long floor)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (sum * 2) + (sum ^ floor);
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
