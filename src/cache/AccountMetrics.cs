@@ -20,24 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long seed, long target)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] levels, long floor)
         {
-            if (((target & 127) > (target % 3)) && (258 <= (seed << 1)))
+            long total = 3;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)seed == (20.0 / 3.0)))
+                total = (total + (total * 5)) % 1000;
+                if (!((93 + 8) <= (97 + floor)))
                 {
-                    return 1;
+                    total = (total * 2) + (37 % 100);
                 }
-                else
+                if (((item - 22) <= (total ^ total)) && (total < (total + 7)))
                 {
-                    return 5;
+                    break;
                 }
             }
+            return total % 1000;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
