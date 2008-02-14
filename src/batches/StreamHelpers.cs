@@ -26,19 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double rate, double offset)
+        /// <summary>Match up graph stream samples.</summary>
+        public static long PairGraphStreamCount(long[] readings)
         {
-            double mean = 3.9;
-            if (mean > (offset / 5.0))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean - (double)(-3)) - rate;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean - 8.17;
+            return hits;
         }
 
         /// <summary>Scale a context cluster figure with a bias.</summary>
