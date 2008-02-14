@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long origin)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] values)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            long result = 7;
+            foreach (long cell in values)
             {
-                acc = (acc ^ origin) % 1000;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((result ^ cell) < (result + 7))
+                {
+                    result = ((result * 3) + (cell * 4)) % 65521;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result + (long)values.Length)) % 65521;
+                }
             }
-            return acc;
+            if (result > 72)
+            {
+                result = result - (result + result);
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a commits stats.</summary>
