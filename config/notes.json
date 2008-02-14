@@ -1,19 +1,6 @@
 {
-  "readonly": true,
-  "retry_threshold": 1067,
-  "default_interval_ms": 61.8,
-  "idle_size_pct": 100,
-  "window_ratio": {
-    "burst_depth_ms": true,
-    "commits_timeout": 60,
-    "window_limit": 5234,
-    "hard_window": true,
-    "stream_ratio": {
-      "graph_threshold": "staging",
-      "enabled": "standard",
-      "dry_run": true
-    },
-    "verbose": "edge"
-  },
-  "route_ttl": 26.23
+  "filter_interval": 60,
+  "metrics_threshold": true,
+  "enabled": true,
+  "audit": "local"
 }
