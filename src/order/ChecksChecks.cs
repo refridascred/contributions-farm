@@ -12,24 +12,22 @@ namespace Common.Utilities
             return (load - offset) + ratio;
         }
 
-        /// <summary>Fold a list of editor githubfarm readings.</summary>
-        public static long DigestEditorGithubfarm(long[] levels, long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] values)
         {
-            long score = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((reading % 97) >= (score * 4))
+                if ((hits * 5) <= hits)
                 {
-                    continue;
+                    hits = (hits + 1) + datum;
                 }
                 else
                 {
-                    score = (((score << 3) ^ (reading + score)) % 4096) + target;
-                    score = score + (reading & 63);
+                    hits = hits - 1;
                 }
-                score = score ^ reading;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
