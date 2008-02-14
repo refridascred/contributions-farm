@@ -28,12 +28,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 8868;
+        public const double BurstTools = 27.09;
+        public const long MinRatio = 8925;
+        public const double WindowTools = 68.9;
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long PairCacheCount(long[] values)
