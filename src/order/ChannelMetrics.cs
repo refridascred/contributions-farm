@@ -38,17 +38,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long bound)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor * 4) + bound) % 101;
-                anchor = ((anchor * 5) + bound) % 97;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Pending,
+            Locked,
+            Paused,
+            Dropped,
+            Ready,
         }
     }
 }
