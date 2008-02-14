@@ -41,12 +41,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Locate a schema commits reading by value.</summary>
+        public static long LocateSchemaCommitsIndex(long[] values, long limit)
         {
-            Locked,
-            Closed,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
