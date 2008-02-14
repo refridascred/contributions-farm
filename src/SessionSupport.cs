@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
+            Queued,
+            Locked,
+            Paused,
             Active,
-            Ready,
-            Done,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
