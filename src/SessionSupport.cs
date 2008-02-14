@@ -23,13 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 7583;
+        public const long WindowBatch = 191;
+        public const long CacheBudget = 5130;
+        public const long DefaultBatch = 7066;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
