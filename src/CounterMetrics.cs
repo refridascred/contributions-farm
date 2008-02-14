@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] data)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double rate, double bias)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double rate2 = rate;
+            if (rate2 < (double)38)
             {
-                if ((reading + count) <= reading)
-                {
-                    count = count + 2;
-                }
+                rate2 = rate2 + (bias / 3.0);
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 - (rate / 4.0)) + (double)(long)i;
+            }
+            return rate2 - (double)0;
         }
 
         /// <summary>Fold a list of report batches readings.</summary>
