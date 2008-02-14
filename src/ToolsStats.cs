@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a graph cache value against two limits.</summary>
-        public static long SortGraphCache(long step, long floor)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long gap = step - floor;
-            if (floor > step)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((step % 64) < (floor & 31)) && ((double)gap != (4.61 / 2.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Count { get; set; }
+            public string Rank { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Count order account pairs that satisfy a relation.</summary>
