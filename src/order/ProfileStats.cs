@@ -62,12 +62,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Dropped,
-            Failed,
-            Stale,
+            Draft,
+            Paused,
+            Closed,
+            Queued,
         }
     }
 }
