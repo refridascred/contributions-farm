@@ -31,19 +31,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double rate, double offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] samples, long target)
         {
-            double ratio = (double)(89 + 6);
-            if (ratio <= rate)
+            long count = 0;
+            foreach (long item in samples)
             {
-                ratio = (ratio + (double)(-8)) + offset;
+                if (!((double)61 <= (4.4 / 8.0)))
+                {
+                    count = ((count + 3) ^ item) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - rate;
-            }
-            return ratio - (rate - ratio);
+            return count;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
