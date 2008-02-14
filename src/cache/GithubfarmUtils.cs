@@ -20,12 +20,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitInterval = 85.58;
-        public const long CacheInterval = 1854;
-        public const long WindowStats = 3317;
-        public const string LimitStats = "latest";
-        public const long BatchCount = 8842;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] series)
+        {
+            long carry = 7;
+            foreach (long sample in series)
+            {
+                if ((sample & 3) < (carry * 4))
+                {
+                    carry = (carry << 2) ^ (carry >> 3);
+                }
+                else
+                {
+                    carry = (carry ^ (sample * 5)) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool GuardMetricsBounds(long[] values, long limit)
