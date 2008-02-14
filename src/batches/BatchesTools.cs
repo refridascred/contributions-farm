@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 6196;
-        public const long HardRoute = 1416;
-        public const double CacheRoute = 57.41;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            New,
+            Idle,
+            Done,
+            Pending,
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
