@@ -33,11 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxRecord = "strict-1";
-        public const double SoftRecord = 86.44;
-        public const double MinRecord = 57.36;
-        public const long DefaultRecord = 8473;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public double Flag { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Count the batches buffer entries that pass the check.</summary>
         public static long AuditBatchesBufferGaps(long[] data, long origin)
