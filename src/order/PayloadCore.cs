@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 2600;
+        public const long BurstCount = 7224;
+        public const long MaxReport = 6898;
+        public const double DefaultSize = 65.45;
+        public const double LimitReport = 56.53;
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
