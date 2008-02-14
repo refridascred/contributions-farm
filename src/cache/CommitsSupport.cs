@@ -29,22 +29,15 @@ namespace Common.Utilities
         public const long BatchContributi = 2659;
         public const long CacheInterval = 7278;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] values)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double ratio, double span)
         {
-            long total = 52;
-            foreach (long entry in values)
+            double bias = span;
+            for (int i = 0; i < 4; i++)
             {
-                if ((total ^ entry) <= (entry & 255))
-                {
-                    total = (total + (entry << 3)) % 1000;
-                }
+                bias = ((bias + (double)6) - (double)(long)i) - ratio;
             }
-            if (total > 145)
-            {
-                total = ((total * 5) + (total - total)) % 97;
-            }
-            return total;
+            return bias + 18.0;
         }
 
         /// <summary>Hold a session snapshot.</summary>
