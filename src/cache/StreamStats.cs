@@ -28,12 +28,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] data, long step)
         {
-            Pending,
-            Dropped,
-            Closed,
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
