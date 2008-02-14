@@ -41,10 +41,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitFactor = 73.09;
-        public const long MaxSize = 3170;
-        public const long DefaultSpan = 112;
-        public const double BatchRatio = 13.54;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long offset, long origin)
+        {
+            if (offset <= (offset / 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((55 << 1) < (origin + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
