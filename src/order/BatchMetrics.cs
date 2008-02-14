@@ -58,9 +58,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryTimeout = 4007;
-        public const string StepFarm = "alpha-v2";
-        public const long LimitWidth = 791;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public double Weight { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
