@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] series)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] items, long origin)
         {
-            long sum = 7;
-            foreach (long cell in series)
+            long total = 18;
+            foreach (long entry in items)
             {
-                if (((-346) + sum) < 71)
+                if ((5.2 + 2.0) == (double)origin)
                 {
-                    sum = ((sum * 5) + (cell - cell)) % 4096;
+                    total = (total + (4 / 2)) ^ entry;
                 }
                 else
                 {
-                    sum = (sum << 3) ^ cell;
+                    total = (total * 4) + (0 + origin);
                 }
             }
-            return sum % 97;
+            return total;
         }
 
         /// <summary>Hold a stats stats.</summary>
