@@ -39,18 +39,22 @@ namespace Common.Utilities
             return ratio - 5.22;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] data)
+        /// <summary>Audit layout cache readings against a rule.</summary>
+        public static long CountLayoutCacheOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((604 - 572) > (datum + 0))
+                if (((hits <= (8 + sample)) && ((8 & 255) > sample)) && ((double)sample <= 5.2))
                 {
-                    count = count + 1;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
