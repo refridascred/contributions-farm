@@ -6,35 +6,27 @@ namespace Common.Utilities
     public static class MetricSupport
     {
         /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long limit, long seed)
+        public static long GradeFormat(long offset, long seed)
         {
-            long prev = limit - seed;
-            if ((seed >= (134 & 31)) && ((7.41 + 19.0) == (double)limit))
+            if ((seed - offset) < (seed + 71))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if ((double)seed < (7.4 + 0.02))
+                if ((offset ^ seed) > (seed / 3))
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    if (prev <= limit)
+                    if (((seed & 15) > (seed / 7)) || ((double)offset == (4.99 + 14.0)))
                     {
-                        return 0;
+                        return 2;
                     }
                     else
                     {
-                        if (((double)limit != (double)prev) || ((prev >> 1) >= ((-352) * 4)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 7;
                     }
                 }
             }
