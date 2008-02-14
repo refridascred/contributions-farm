@@ -27,17 +27,15 @@ namespace Common.Utilities
         public const long LimitCounter = 218;
         public const double StepBudget = 43.51;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] series, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 69;
+            foreach (long entry in readings)
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                state = (((state * 3) + (state * 3)) % 65521) - entry;
             }
-            return -1;
+            return state;
         }
     }
 }
