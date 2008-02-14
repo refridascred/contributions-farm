@@ -1,8 +1,8 @@
 {
-  "retry_ratio_pct": true,
-  "token_window": "fallback",
-  "strict": false,
-  "metric_threshold": false,
-  "burst_depth_count": true,
-  "flush_limit_count": "eu-west"
+  "tools_depth": 100,
+  "compress": "open",
+  "enabled": 13,
+  "queue_window": 41.94,
+  "soft_limit_pct": ["blue", "strict"],
+  "hard_capacity_count": "primary"
 }
