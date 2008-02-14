@@ -1,9 +1,7 @@
-id,region,score,state
-1,78.28,8.47,eu-west
-2,stable,40.26,edge
-3,strict,19,75.13
-4,426,19.32,32.27
-5,81,standard,196
-6,primary,973,456
-7,321,978,87.36
-8,standard,59.35,993
+id,label,active
+1,58.52,39.26
+2,strict,53.19
+3,979,706
+4,strict,open
+5,883,62.06
+6,20.24,19.68
