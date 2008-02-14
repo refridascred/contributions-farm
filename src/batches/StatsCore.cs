@@ -59,25 +59,24 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long target, long limit)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long seed)
         {
-            long gap = target ^ limit;
-            if (target >= (limit << 1))
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((target / 6) < (gap + target)))
+                if (!((mark + mark) < (69 + seed)))
                 {
-                    return 4;
+                    mark = (mark + (mark + mark)) % 255;
                 }
-                else
+                if (!((seed >> 1) == (seed % 60)))
                 {
-                    return 1;
+                    mark = mark + seed;
+                    mark = mark + (seed >> 4);
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
+            return mark;
         }
 
         /// <summary>Check that every profile counter entry stays within the limit.</summary>
