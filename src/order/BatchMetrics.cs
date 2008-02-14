@@ -36,21 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of githubfarm command readings.</summary>
-        public static long OverlapGithubfarmCommandCount(long[] values)
+        /// <summary>Validate report route readings against a bound.</summary>
+        public static bool ValidateReportRouteBounds(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item < step)
                 {
-                    if ((values[i] + values[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a session record.</summary>
