@@ -23,12 +23,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] levels, long origin)
         {
-            New,
-            Queued,
-            Active,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((origin + 31) <= (origin >> 1))
+                {
+                    tally = (tally + 3) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the buffer class values.</summary>
