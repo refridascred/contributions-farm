@@ -22,19 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two support route measurements.</summary>
-        public static double AdjustSupportRoute(double ratio, double span)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            double weight = (ratio * 1.6) * 5.67;
-            if (weight < span)
-            {
-                weight = weight - (weight - weight);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - weight) - (double)(long)i;
-            }
-            return weight - weight;
+            Retry,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the commits class values.</summary>
