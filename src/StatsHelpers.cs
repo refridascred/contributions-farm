@@ -40,12 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] samples)
         {
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((1.8 + 3.43) < (double)sample)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
