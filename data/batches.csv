@@ -1,7 +1,6 @@
-id,token,state,owner,score
-1,open,688,primary,79.65
-2,local,open,135,582
-3,primary,fallback,local,edge
-4,59.48,739,34.19,29.13
-5,209,fallback,standard,688
-6,14.01,66.2,latest,884
+id,active,region,level
+1,stable,50.25,76.93
+2,49.13,58.11,1.53
+3,56.56,976,998
+4,eu-west,28.3,fallback
+5,58.51,24.05,86.01
