@@ -1,14 +1,15 @@
 # Command notes
 
-Each layout is validated before it reaches the route queue.
-When a report fails, the filter handler retries a few times before giving up.
-When a window fails, the githubfarm handler retries a few times before giving up.
+Each batches is validated before it reaches the stats queue.
+Use payload settings to tune how often payload data is refreshed.
 
-The window report groups every farm by farm.
-The record module keeps already values in sync with the already cache.
+Each batch is validated before it reaches the graph queue.
+Defaults for stream live in the config folder and can be overridden per environment.
+The support report groups every channel by metric.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Document new token fields
-- Keep metric values small
+- Log every report change
+- Document new metric fields
+- Keep contributi values small
+- Prefer notes defaults
