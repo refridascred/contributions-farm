@@ -71,13 +71,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Count the githubfarm window entries that pass the check.</summary>
+        public static long MeasureGithubfarmWindowMatches(long[] values, long limit)
         {
-            Paused,
-            Active,
-            Pending,
-            Failed,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((limit % 100) <= (item + limit))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
