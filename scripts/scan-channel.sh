@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local blue; do
+mode="${1:-local}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in blue cached edge local; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=280
-log "limit is ${CHANNEL_LIMIT}"
