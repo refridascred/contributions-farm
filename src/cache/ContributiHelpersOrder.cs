@@ -12,19 +12,12 @@ namespace Common.Utilities
             return (ratio - (double)336) + floor;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] data, long origin)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Queued,
+            Paused,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
