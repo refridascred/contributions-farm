@@ -1,14 +1,14 @@
 # Command notes
 
-The batch report groups every editor by farm.
-Use checks settings to tune how often command data is refreshed.
+Run the context check before changing any cluster limits.
+Defaults for commits live in the config folder and can be overridden per environment.
 
-The command module keeps batches values in sync with the layout cache.
-Run the route check before changing any profile limits.
+Keep tools and record names short and lowercase.
+Each profile is validated before it reaches the record queue.
 
 ## Guidelines
 
-- Keep schema values small
-- Prefer account defaults
-- Review record limits each release
-- Log every metric change
+- Review payload limits each release
+- Document new buffer fields
+- Prefer format defaults
+- Validate token input early
