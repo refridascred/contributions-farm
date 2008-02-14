@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
+            Done,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the order phase values.</summary>
