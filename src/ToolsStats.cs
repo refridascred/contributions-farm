@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] values, long offset)
+        /// <summary>Grade a graph cache value against two limits.</summary>
+        public static long SortGraphCache(long step, long floor)
         {
-            long acc = 45;
-            foreach (long item in values)
+            long gap = step - floor;
+            if (floor > step)
             {
-                acc = (acc - (acc - offset)) ^ item;
-                if ((offset + (long)values.Length) >= (747 & 31))
+                return 7;
+            }
+            else
+            {
+                if (((step % 64) < (floor & 31)) && ((double)gap != (4.61 / 2.0)))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Hold a commits entry.</summary>
