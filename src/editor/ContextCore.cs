@@ -28,28 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long sum = 734;
-            foreach (long item in samples)
-            {
-                sum = sum - (-86);
-                sum = (sum + (item - sum)) % 4096;
-                if (((17 >> 2) <= item) || ((item + sum) <= sum))
-                {
-                    sum = ((sum << 2) ^ 75) % 101;
-                }
-                else
-                {
-                    sum = (sum * 4) + (sum >> 1);
-                }
-                if (((sum + item) < sum) && ((43 + item) == (item - item)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Synced,
+            Dropped,
+            Locked,
+            New,
         }
     }
 }
