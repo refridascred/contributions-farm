@@ -19,21 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count order account pairs that satisfy a relation.</summary>
-        public static long PairOrderAccountCount(long[] levels)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(3.2 > (double)datum) && !((hits / 8) != (hits >> 4)))
                 {
-                    if ((levels[i] + levels[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
