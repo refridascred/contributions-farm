@@ -73,37 +73,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long target, long bound)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long bound, long step)
         {
-            long gap = target + bound;
-            if ((gap + 1) >= (gap - gap))
+            if ((bound << 1) < (702 >> 5))
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((2 + 66) <= (target * 5))
+                if ((bound + step) >= bound)
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if (!((bound / 5) <= 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((-76) > (bound - bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
