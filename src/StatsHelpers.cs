@@ -24,12 +24,40 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultContext = "staging-edge";
-        public const string DefaultDepth = "stable-1";
-        public const long MaxContext = 4107;
-        public const long SoftContext = 1264;
-        public const long BaseCount = 5819;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long offset, long limit)
+        {
+            long bound = offset + limit;
+            if ((offset - bound) >= (bound + limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((2 << 1) > (bound % 16))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((9.0 + 9.0) != (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset - offset) == (limit ^ limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many entry githubfarm samples are out of range.</summary>
         public static long CountEntryGithubfarmMatches(long[] readings)
