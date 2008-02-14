@@ -19,24 +19,12 @@ namespace Common.Utilities
         public const long LimitRoute = 4488;
         public const double MaxLevel = 51.08;
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((offset - offset) == (acc & 63))
-                {
-                    acc = (acc + 530) % 4096;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = ((acc - (acc >> 1)) % 255) ^ (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowCounter = "legacy-1";
+        public const string IdleInterval = "legacy-v2";
+        public const long DefaultCounter = 3719;
+        public const string StepCounter = "latest";
+        public const long SoftTimeout = 6128;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long ScoreQueue(long[] levels)
