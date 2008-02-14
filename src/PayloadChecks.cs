@@ -39,13 +39,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            public double Total { get; set; }
+            public bool Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
