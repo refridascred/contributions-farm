@@ -28,15 +28,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Active,
+            Dropped,
+            Done,
+            Closed,
         }
     }
 }
