@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 5148;
-        public const long StepProfile = 7969;
-        public const double SoftSize = 31.73;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
