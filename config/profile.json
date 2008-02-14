@@ -1,5 +1,8 @@
 {
-  "cache_limit_count": "open",
-  "dry_run": "strict",
-  "idle_interval_count": "fallback"
+  "compress": 37.72,
+  "persist": 70,
+  "idle_interval": 44,
+  "soft_limit": "staging",
+  "session_window": "local",
+  "poll_retries_ms": 33.85
 }
