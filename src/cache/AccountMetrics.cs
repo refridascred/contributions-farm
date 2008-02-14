@@ -69,19 +69,39 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] series, long step)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long seed, long seed2)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long cur = seed + seed2;
+            if (seed2 < (seed2 >> 2))
             {
-                if (reading > step)
+                return 4;
+            }
+            else
+            {
+                if ((seed2 ^ cur) > cur)
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((142 << 3) == (seed2 - seed2)) && ((seed2 - seed) != (cur - cur)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (cur <= (775 - seed2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Rank checks report input into a small class.</summary>
