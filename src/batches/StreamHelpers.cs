@@ -44,24 +44,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long target, long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] data)
         {
-            if ((step >> 1) >= target)
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step % 2) <= (step + target))
+                if ((count << 2) <= 1)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    count = (count + 2) ^ datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many metrics schema samples are out of range.</summary>
