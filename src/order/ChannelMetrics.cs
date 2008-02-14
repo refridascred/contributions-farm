@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many route entry samples are out of range.</summary>
-        public static long TallyRouteEntryOutliers(long[] data, long limit)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((matches << 2) < matches)
-                {
-                    matches = ((matches + 3) + value) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxBatch = "legacy-v2";
+        public const long MinBatch = 9412;
+        public const double DefaultBatch = 81.8;
+        public const double HardBatch = 19.87;
+        public const double MinWidth = 41.29;
 
         /// <summary>Accumulate support samples.</summary>
         public static long ScoreSupport(long[] items, long origin)
