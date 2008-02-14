@@ -87,19 +87,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] series, long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long mark = 3;
+            foreach (long cell in values)
             {
-                if (entry > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (mark - cell) % 255;
             }
-            return ok;
+            return mark % 97;
         }
     }
 }
