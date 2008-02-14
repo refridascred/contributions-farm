@@ -1,28 +1,13 @@
 {
-  "tools_threshold": true,
-  "batch_ttl_ms": {
-    "verbose": 3376,
-    "stats_capacity": 30,
-    "sync_depth": [286, 79, 421],
-    "command_timeout": {
-      "counter_threshold": true,
-      "idle_retries_ms": 30.47,
-      "sync_depth": 26.01
-    }
-  },
-  "base_capacity_s": {
-    "sync_timeout_count": ["stable", "standard", "strict", "legacy"],
-    "githubfarm_limit": "legacy",
-    "counter_delay": {
-      "idle_ratio": 6412,
-      "cache_window_s": 32,
-      "audit": 63.94,
-      "poll_ttl": true,
-      "hard_interval_count": 30,
-      "batch_ratio_pct": 59
-    },
-    "command_ttl": [9, 228],
-    "retry_interval": 31.34
-  },
-  "record_depth": false
+  "persist": 9156,
+  "stream_ratio": [123, 274, 207],
+  "burst_delay_count": ["green", "staging"],
+  "flush_threshold_pct": 79,
+  "base_delay_pct": {
+    "default_ttl_count": true,
+    "channel_size": 8,
+    "batch_threshold": 81.1,
+    "compress": "open",
+    "dry_run": 250
+  }
 }
