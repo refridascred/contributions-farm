@@ -34,12 +34,39 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long bound, long bound2)
         {
-            Pending,
-            Idle,
-            Ready,
+            long bound3 = bound + bound2;
+            if ((180 * 2) >= (bound3 + bound2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound3 != (6.37 + 3.6))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound3 % 100) >= (bound << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound % 3) < (bound2 + 533))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next context value.</summary>
