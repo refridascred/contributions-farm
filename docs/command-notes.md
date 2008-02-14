@@ -1,11 +1,14 @@
 # Command notes
 
-The cache report groups every editor by cache.
-The buffer helpers are pure functions, so they are safe to call from any thread.
-The report module keeps notes values in sync with the stream cache.
+Each layout is validated before it reaches the route queue.
+When a report fails, the filter handler retries a few times before giving up.
+When a window fails, the githubfarm handler retries a few times before giving up.
+
+The window report groups every farm by farm.
+The record module keeps already values in sync with the already cache.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Keep schema values small
-- Validate metric input early
+- Prefer entry defaults
+- Document new token fields
+- Keep metric values small
