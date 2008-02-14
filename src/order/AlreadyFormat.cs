@@ -55,17 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first entry already entry that matches the target.</summary>
-        public static long LocateEntryAlreadyIndex(long[] data, long step)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (data[i] >= step)
+                if (value != target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
