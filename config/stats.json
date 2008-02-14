@@ -1,31 +1,7 @@
 {
-  "cache_retries": "primary",
-  "retry_ratio": {
-    "channel_ratio": {
-      "payload_threshold": 47.21,
-      "cache_retries_ms": "open",
-      "warm_capacity_ms": "legacy",
-      "cache_ratio_s": 1236
-    },
-    "warm_window": "legacy",
-    "sync_timeout_pct": {
-      "strict": "blue",
-      "stream_size": true,
-      "base_retries_ms": 6267
-    }
-  },
-  "retry_delay_pct": "cached",
-  "context_depth": 2044,
-  "hard_retries": {
-    "sync_retries_ms": {
-      "min_depth_s": 500,
-      "burst_threshold_ms": "edge",
-      "burst_size_s": 38.75,
-      "dry_run": ["green", "open", "legacy", "standard"],
-      "poll_depth": 17.12
-    },
-    "report_window": 66,
-    "default_ratio_count": 22,
-    "batches_capacity": true
-  }
+  "sync_capacity": false,
+  "commits_interval": false,
+  "verbose": false,
+  "buffer_interval": 78.21,
+  "audit": "cached"
 }
