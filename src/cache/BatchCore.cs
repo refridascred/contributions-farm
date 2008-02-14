@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of schema account readings.</summary>
-        public static long CompareSchemaAccountCount(long[] data)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long offset, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long gap = offset ^ limit;
+            if ((offset + 672) <= (gap * 4))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((offset - gap) == (offset - limit))
                 {
-                    if ((data[i] + data[j]) != 5)
+                    return 1;
+                }
+                else
+                {
+                    if ((5 * 2) < limit)
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset & 3) != (limit & 15))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the editor state values.</summary>
