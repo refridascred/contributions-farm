@@ -63,12 +63,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Locate a stream batch reading by value.</summary>
+        public static long LookupStreamBatchIndex(long[] data, long offset)
         {
-            public long Rank { get; set; }
-            public double Region { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a route reading.</summary>
