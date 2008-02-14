@@ -40,13 +40,18 @@ namespace Common.Utilities
             return bias + 18.0;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] levels, long step)
         {
-            public bool Region { get; set; }
-            public double Owner { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item <= (double)46)
+                {
+                    seen = (seen + 3) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
