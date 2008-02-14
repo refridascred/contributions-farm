@@ -22,11 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
+            Done,
+            Synced,
+            New,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a cache options.</summary>
