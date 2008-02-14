@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer notes samples are out of range.</summary>
-        public static long AuditBufferNotesHits(long[] series, long seed)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (seed < hits)
+                if (cell != seed)
                 {
-                    hits = (hits + 1) - cell;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
