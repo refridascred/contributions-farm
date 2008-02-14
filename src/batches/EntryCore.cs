@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate cluster metric readings against a bound.</summary>
-        public static bool VerifyClusterMetricRange(long[] data, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (datum <= floor)
+                if (sample != offset)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
