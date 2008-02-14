@@ -41,22 +41,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi entry samples are out of range.</summary>
-        public static long AuditContributiEntryHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((double)value == (6.69 + 4.33))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitFactor = 73.09;
+        public const long MaxSize = 3170;
+        public const long DefaultSpan = 112;
+        public const double BatchRatio = 13.54;
     }
 }
