@@ -53,19 +53,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] items, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long value in items)
+            long sum = 64;
+            foreach (long item in levels)
             {
-                if (value <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                sum = (((sum * 3) + 583) ^ item) + bound;
             }
-            return found;
+            return sum;
         }
     }
 }
