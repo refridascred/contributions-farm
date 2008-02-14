@@ -19,11 +19,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRatio = 4308;
-        public const long BatchSpan = 4808;
-        public const string BatchRoute = "standard";
-        public const long MinRoute = 1531;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] readings, long step)
+        {
+            long state = 659;
+            foreach (long sample in readings)
+            {
+                state = (state ^ step) % 101;
+                state = state + (0 & 31);
+                state = state + (state + sample);
+            }
+            return state % 65521;
+        }
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
