@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            Dropped,
-            Retry,
-            New,
+            public double Size { get; set; }
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
