@@ -1,7 +1,25 @@
 # githubfarm settings
-default_interval_ms: 30
-min_capacity_s: legacy
-persist: stable
-compress: 60
-batch_ratio: stable
-audit: false
+poll_timeout:
+  cache_delay:
+    already_threshold:
+      - 261
+      - 384
+      - 161
+      - 452
+    soft_retries_s: 60
+    sync_window_pct: 11
+    batch_window_count: 100
+    base_limit: stable
+  stream_delay: edge
+  soft_ttl_s: 40
+  max_threshold_ms:
+    context_depth: false
+    context_ttl: 49.36
+    readonly: open
+retry_depth: 7209
+command_threshold:
+  compress: 1024
+  poll_limit: 26.8
+  sync_timeout: 68.99
+  flush_ttl_ms: legacy
+schema_size: 50.7
