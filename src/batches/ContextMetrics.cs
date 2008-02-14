@@ -27,11 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public bool Token { get; set; }
-            public bool Size { get; set; }
+            New,
+            Pending,
+            Ready,
         }
 
         /// <summary>Hold a graph entry.</summary>
