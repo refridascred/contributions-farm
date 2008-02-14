@@ -44,14 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] samples, long step)
         {
-            Failed,
-            Done,
-            Synced,
-            Active,
-            Idle,
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
