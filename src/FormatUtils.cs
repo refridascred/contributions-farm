@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] series, long target)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long step, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)floor >= (5.0 - 0.98))
             {
-                if (series[i] > target)
+                return 8;
+            }
+            else
+            {
+                if ((double)step < (5.64 - 11.0))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
