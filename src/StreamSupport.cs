@@ -28,15 +28,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long origin)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] samples, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
+            long state = 186;
+            foreach (long sample in samples)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                for (int i = 0; i < 5; i++)
+                {
+                    state = (((state << 3) ^ state) % 97) + (long)i;
+                    state = (state << 3) ^ (sample << 2);
+                }
+                state = ((state * 3) + (offset & 127)) % 97;
+                if (((2.7 - 3.3) > (double)offset) || ((1.0 - 8.2) == (double)state))
+                {
+                    state = (state << 3) ^ (state << 1);
+                }
             }
-            return result;
+            return state;
         }
     }
 }
