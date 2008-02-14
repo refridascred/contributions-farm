@@ -35,17 +35,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Locate a support cluster reading by value.</summary>
-        public static long LookupSupportClusterIndex(long[] values, long floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (values[i] > floor)
+                if (item != bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
