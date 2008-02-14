@@ -1,12 +1,8 @@
 {
-  "soft_limit": 54,
-  "commits_depth": {
-    "flush_timeout_count": 500,
-    "sync_window": [185, 487],
-    "poll_timeout": 9171,
-    "verbose": "local"
-  },
-  "payload_window": "blue",
-  "poll_ttl_ms": 20,
-  "schema_window": "strict"
+  "batch_timeout": [80, 236, 101, 245],
+  "warm_window_ms": false,
+  "sync_retries": true,
+  "batch_interval_ms": 59,
+  "batch_limit": 54.65,
+  "cache_window_count": 68.52
 }
