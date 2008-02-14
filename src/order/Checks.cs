@@ -43,14 +43,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public double Token { get; set; }
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleSize = 64.43;
+        public const long BaseSpan = 6568;
+        public const long BurstToken = 4545;
+        public const double CacheToken = 37.67;
 
         /// <summary>Hold a payload info.</summary>
         public sealed class PayloadInfo
