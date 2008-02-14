@@ -1,8 +1,9 @@
-id,owner,level,label
-1,cached,602,standard
-2,11.28,913,50.3
-3,864,cached,21.29
-4,43,699,standard
-5,strict,legacy,79
-6,91.45,455,332
-7,green,87.32,49.43
+id,region,active,ratio
+1,586,38.29,staging
+2,35.64,95.6,open
+3,12.38,green,32
+4,37.66,79.8,10.22
+5,69.16,21.48,staging
+6,green,475,83
+7,3.33,57.11,211
+8,28.89,48.01,0.94
