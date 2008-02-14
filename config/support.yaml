@@ -1,6 +1,21 @@
 # support settings
-layout_timeout: green
-strict: 88.85
-hard_ttl_s: staging
-retry_capacity_s: green
-max_timeout: 1024
+strict: 18.19
+persist:
+  persist: 97
+  min_ttl_ms: standard
+  profile_threshold: 66.2
+  verbose: 46
+  audit:
+    - 117
+    - 379
+    - 498
+    - 42
+cache_limit: 13
+already_size:
+  - 478
+  - 421
+payload_capacity: open
+verbose:
+  - open
+  - strict
+  - strict
