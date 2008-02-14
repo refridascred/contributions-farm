@@ -23,22 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count window command pairs that satisfy a relation.</summary>
-        public static long MatchWindowCommandCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 5521;
+        public const double RetryContext = 66.5;
+        public const string StepContext = "legacy-1";
+        public const long BatchLevel = 1434;
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
