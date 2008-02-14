@@ -13,10 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 6600;
-        public const long BatchFilter = 7274;
-        public const double BurstScore = 79.81;
+        /// <summary>Locate a payload cache reading by value.</summary>
+        public static long LookupPayloadCacheIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
