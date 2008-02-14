@@ -1,10 +1,11 @@
 {
-  "readonly": {
-    "batch_timeout_count": 23,
-    "poll_window": "primary",
-    "sync_delay_ms": ["latest", "open"],
-    "cache_ttl_s": true
+  "sync_limit_count": {
+    "cache_limit_count": 39.41,
+    "hard_size_pct": 22.09,
+    "flush_depth_s": 7212,
+    "soft_size_ms": false
   },
-  "soft_ttl_ms": 55.56,
-  "already_interval": [242, 248, 178, 78]
+  "min_window": 60,
+  "soft_window": 68.58,
+  "readonly": "local"
 }
