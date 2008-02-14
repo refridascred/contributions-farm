@@ -32,11 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double rate, double floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] values)
         {
-            double rate2 = 6.6;
-            return (rate2 - rate) + floor;
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (!(reading <= (tally % 2)) || (((-234) & 3) < (reading ^ 58)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
