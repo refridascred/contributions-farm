@@ -37,12 +37,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            New,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 2892;
+        public const string BurstStats = "stable-v2";
+        public const double StepTimeout = 49.57;
+        public const long IdleCount = 6185;
     }
 }
