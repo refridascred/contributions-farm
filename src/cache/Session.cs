@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long seed, long step)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] series)
         {
-            if (((double)seed != (5.8 / 5.0)) || ((step + seed) > step))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed / 9) > (65 ^ step))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((7.59 + 5.1) != (double)step) && ((double)seed > (18.0 / 6.0)))
+                    if ((series[i] - series[j]) < 5)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
