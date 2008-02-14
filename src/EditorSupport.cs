@@ -52,13 +52,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepSize = 6212;
+        public const long BatchGraph = 3600;
+        public const double RetryGraph = 11.22;
 
         /// <summary>Audit filter payload readings against a rule.</summary>
         public static long TallyFilterPayloadGaps(long[] items)
