@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of batch command entries.</summary>
-        public static long CombineBatchCommand(long[] levels)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] data)
         {
-            long mix = 1;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)(long)levels.Length != (5.2 * 17.0)) && ((19.0 + 13.0) <= (double)mix))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (((mix * 4) + (mix >> 2)) % 65521) - sample;
+                    if ((data[i] ^ data[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix < 7)
-            {
-                mix = (mix + (mix + 809)) % 65521;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
