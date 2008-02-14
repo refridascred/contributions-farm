@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] data, long floor)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long mix = -901;
-            foreach (long value in data)
-            {
-                if ((677 < (value + mix)) || ((1.8 - 6.0) > (double)value))
-                {
-                    mix = mix - ((long)data.Length + floor);
-                }
-                else
-                {
-                    mix = ((mix * 5) + (-25)) % 65521;
-                }
-            }
-            return mix;
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public double Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine already values into a single score.</summary>
