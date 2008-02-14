@@ -52,19 +52,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] series, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] data)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (datum < floor)
+                if (hits > (8 + datum))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
