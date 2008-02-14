@@ -1,11 +1,6 @@
 {
-  "sync_limit_count": {
-    "cache_limit_count": 39.41,
-    "hard_size_pct": 22.09,
-    "flush_depth_s": 7212,
-    "soft_size_ms": false
-  },
-  "min_window": 60,
-  "soft_window": 68.58,
-  "readonly": "local"
+  "profile_interval": true,
+  "readonly": 6719,
+  "strict": 6.85,
+  "burst_threshold": ["green", "strict", "green", "edge"]
 }
