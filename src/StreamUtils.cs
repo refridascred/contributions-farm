@@ -79,9 +79,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string WindowTimeout = "alpha";
-        public const long IdleGraph = 836;
-        public const long RetryGraph = 4055;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] values, long step)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (!((step * 2) >= (value - 69)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
