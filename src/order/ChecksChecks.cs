@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate report route readings against a bound.</summary>
-        public static bool GuardReportRouteLimits(long[] values, long target)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (sample > target)
+                if ((double)tally <= 5.1)
                 {
-                    found = false;
-                    break;
+                    tally = ((tally + 2) + datum) - offset;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
