@@ -14,19 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next tools format value from a seed.</summary>
-        public static long IterateToolsFormat(long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] series, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((4.96 < (double)sum) && ((double)sum > (double)(long)i))
+                if (!((long)series.Length >= ((-29) << 1)))
                 {
-                    sum = (sum << 2) ^ (1 / 4);
+                    tally = ((tally + 1) + datum) + limit;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
