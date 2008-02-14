@@ -44,15 +44,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] levels, long step)
+        /// <summary>Measure how many layout checks samples are out of range.</summary>
+        public static long MeasureLayoutChecksHits(long[] readings, long target)
         {
             long count = 0;
-            foreach (long reading in levels)
+            foreach (long sample in readings)
             {
-                if ((double)reading <= (9.14 + 7.8))
+                if ((double)count > 1.0)
                 {
-                    count = (count + 3) - step;
+                    count = ((count + 1) + sample) + target;
                 }
             }
             return count;
