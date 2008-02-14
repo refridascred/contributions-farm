@@ -33,18 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] samples, long origin)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            double gain = (16.0 / 8.0) / 5.0;
+            if (gain > (weight - weight))
             {
-                if (!((5.0 + 8.96) == (double)origin))
-                {
-                    hits = (hits + 2) + datum;
-                }
+                gain = gain - (double)(-36);
             }
-            return hits;
+            return gain - bias;
         }
 
         /// <summary>Count the support tools entries that pass the check.</summary>
