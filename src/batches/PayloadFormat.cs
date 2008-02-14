@@ -55,9 +55,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 1428;
-        public const string StepMetrics = "local-v2";
-        public const long HardMetrics = 5926;
+        /// <summary>Validate report order readings against a bound.</summary>
+        public static bool VerifyReportOrderBounds(long[] data, long origin)
+        {
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
