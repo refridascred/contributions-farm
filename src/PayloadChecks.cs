@@ -37,12 +37,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 7210;
-        public const long MaxGithubfarm = 3474;
-        public const long RetryTimeout = 3082;
-        public const long RetryGithubfarm = 7888;
-        public const long BatchWidth = 9928;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i3 = 0; i3 < 12; i3++)
+                {
+                    total = ((total << 2) ^ (total - floor)) ^ (long)i3;
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BatchSpan = 3159;
