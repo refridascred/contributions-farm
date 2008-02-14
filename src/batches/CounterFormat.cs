@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] data, long limit)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long limit, long limit2)
         {
-            long state = 210;
-            foreach (long reading in data)
+            long cur = limit ^ limit2;
+            if (limit > ((-29) - limit2))
             {
-                if ((reading > limit) || ((0 / 9) < (limit - 829)))
+                return 0;
+            }
+            else
+            {
+                if ((limit2 >> 3) != (cur << 2))
                 {
-                    state = (state * 5) + (434 + state);
+                    return 7;
                 }
                 else
                 {
-                    state = (state ^ 95) % 65521;
+                    if ((limit2 - 68) != (limit - limit2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)cur >= 12.0)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
