@@ -39,31 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stream account value against two limits.</summary>
-        public static long SortStreamAccount(long origin, long floor)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            if ((14.0 * 3.0) <= (double)origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor > (5.0 - 7.14))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin > (1.2 + 7.1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            New,
+            Pending,
+            Active,
+            Idle,
         }
     }
 }
