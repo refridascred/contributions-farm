@@ -32,18 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue schema samples are out of range.</summary>
-        public static long AuditQueueSchemaHits(long[] values, long seed)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((((179 + seed) < 11) && ((16.0 / 8.0) < (double)reading)) || !(seed > (seen & 15)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
