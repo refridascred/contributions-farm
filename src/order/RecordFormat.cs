@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long limit, long target)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            if ((target % 2) < limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((limit / 9) >= (limit / 5)) || ((target - 0) == (target << 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
