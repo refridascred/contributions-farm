@@ -1,8 +1,8 @@
-id,label,rank
-1,386,edge
-2,116,95.15
-3,54.6,146
-4,strict,staging
-5,local,54
-6,513,594
-7,local,4.41
+id,owner,state,label,ratio
+1,687,721,23.71,46.47
+2,local,59,992,eu-west
+3,40.27,969,262,staging
+4,36.33,550,edge,latest
+5,23,24.56,19,green
+6,43.44,fallback,strict,193
+7,edge,149,19.76,700
