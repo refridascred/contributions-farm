@@ -1,4 +1,4 @@
 # githubfarm settings
-farm_timeout: 30
-flush_retries_count: 46.35
-burst_delay: 74.56
+burst_ttl_s: 250
+channel_interval: 33.48
+sync_retries: true
