@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitOrder = "open-1";
-        public const long BurstOrder = 9286;
-        public const long IdleInterval = 8828;
-        public const string MinBudget = "stable-1";
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (!!((5.43 * 3.43) < (double)datum))
+                {
+                    tally = (tally + 1) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MinScore = 7819;
