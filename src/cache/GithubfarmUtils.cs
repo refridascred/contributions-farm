@@ -17,18 +17,15 @@ namespace Common.Utilities
         public const long IdleBudget = 3606;
         public const double StepChannel = 42.35;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] levels)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long bound)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((matches << 1) == (cell * 3))
-                {
-                    matches = matches + 2;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the payload status values.</summary>
