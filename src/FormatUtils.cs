@@ -62,18 +62,19 @@ namespace Common.Utilities
         public const double BaseFilter = 85.08;
         public const long WindowFilter = 7285;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] series)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if ((648 - tally) >= reading)
+                if (cell < limit)
                 {
-                    tally = tally + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
