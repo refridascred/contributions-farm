@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 2600;
-        public const long BurstCount = 7224;
-        public const long MaxReport = 6898;
-        public const double DefaultSize = 65.45;
-        public const double LimitReport = 56.53;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] items, long offset)
+        {
+            long sum = 75;
+            foreach (long value in items)
+            {
+                sum = (((sum + ((long)items.Length + 30)) % 255) ^ value) - offset;
+            }
+            if (sum < 6)
+            {
+                sum = (sum * 5) + sum;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
