@@ -35,14 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            Active,
-            Stale,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 9970;
+        public const long DefaultSpan = 8594;
+        public const string MaxSchema = "primary";
+        public const long StepSchema = 2337;
+        public const string SoftSchema = "cached-v2";
 
         /// <summary>Blend two batch contributi measurements.</summary>
         public static double SmoothBatchContributi(double bias, double floor)
