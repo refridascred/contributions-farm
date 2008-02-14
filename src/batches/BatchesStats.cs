@@ -38,23 +38,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
+            long state = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((carry * 2) < floor))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    carry = (carry ^ (6 << 3)) % 1000;
+                    state = ((state + (65 + step)) % 4096) ^ (long)i2;
+                    state = ((state << 3) ^ state) % 4096;
                 }
-                if ((((long)i >> 5) > floor) && (10.0 >= (double)carry))
-                {
-                    break;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
+                state = (state << 2) ^ step;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return carry;
+            return state;
         }
     }
 }
