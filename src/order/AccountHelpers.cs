@@ -52,18 +52,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit support window readings against a rule.</summary>
-        public static long AuditSupportWindowMatches(long[] readings, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (792 <= (origin ^ reading))
+                if (hits <= (cell + 3))
                 {
-                    seen = seen + 2;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the entry status values.</summary>
