@@ -43,26 +43,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate editor buffer samples.</summary>
-        public static long FoldEditorBuffer(long[] items, long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long limit)
         {
-            long sum = 3;
-            foreach (long entry in items)
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (((entry - 729) == (entry - (-78))) || (entry >= (entry >> 2)))
+                for (int i3 = 0; i3 < 9; i3++)
                 {
-                    sum = (((sum << 3) ^ (1 / 5)) % 255) + limit;
+                    mark = (((mark * 4) + ((long)i * 2)) % 97) ^ (long)i3;
                 }
-                else
+                if (((limit + mark) < (1 + limit)) || ((limit & 15) > (mark - mark)))
                 {
-                    sum = sum - (938 + sum);
+                    mark = (mark << 2) ^ limit;
                 }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            if (sum > 97)
-            {
-                sum = (sum ^ 41) % 1000;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Hold a checks summary.</summary>
