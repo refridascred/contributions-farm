@@ -66,11 +66,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleFilter = "standard";
-        public const long CacheFilter = 4572;
-        public const string StepFilter = "latest-1";
-        public const string MaxTimeout = "legacy-1";
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 15; i++)
+            {
+                score = score ^ (768 + score);
+                score = (score ^ (target / 7)) % 255;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double HardSpan = 17.07;
