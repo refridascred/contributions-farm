@@ -39,38 +39,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank schema batch input into a small class.</summary>
-        public static long RankSchemaBatch(long target, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] values, long floor)
         {
-            if ((bound + bound) >= (target / 8))
+            bool found = true;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound <= (target + target))
+                if (sample > floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((bound + 8) <= bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((bound >> 3) < target) || (0 < (bound / 5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
