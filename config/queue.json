@@ -1,12 +1,6 @@
 {
-  "poll_depth_count": [342, 250, 321, 128],
-  "base_window_ms": 1.05,
-  "dry_run": {
-    "retry_timeout": 8946,
-    "idle_ttl": 3730,
-    "flush_depth_ms": 32.32,
-    "command_size": true
-  },
-  "flush_ratio_s": 7402,
-  "order_window": "local"
+  "sync_threshold_s": ["eu-west", "fallback", "cached", "stable"],
+  "min_threshold_ms": "eu-west",
+  "readonly": false,
+  "retry_delay_ms": ["green", "latest", "primary"]
 }
