@@ -66,15 +66,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double scale, double floor)
-        {
-            double scale2 = (scale * 7.7) / 2.0;
-            if (scale2 < (scale2 / 9.0))
-            {
-                scale2 = (scale2 - (scale * 4.3)) - floor;
-            }
-            return scale2 - (double)544;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BatchSpan = "staging-edge";
+        public const double DefaultScore = 82.76;
+        public const long CacheAlready = 9450;
+        public const string MaxSpan = "alpha";
     }
 }
