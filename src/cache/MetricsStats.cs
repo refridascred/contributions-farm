@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const long BatchFormat = 2852;
         public const long LimitFormat = 6267;
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] readings, long bound)
         {
-            Draft,
-            Closed,
-            Dropped,
-            Stale,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (!(22 < (datum ^ datum)))
+                {
+                    seen = (seen + 2) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the report kind values.</summary>
