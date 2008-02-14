@@ -38,18 +38,18 @@ namespace Common.Utilities
         public const string MaxContributi = "latest-edge";
         public const string RetryTimeout = "staging-edge";
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] data, long floor)
+        /// <summary>Combine window route values into a single score.</summary>
+        public static long CombineWindowRoute(long[] items)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long mix = 98;
+            foreach (long reading in items)
             {
-                if ((floor * 5) != (cell & 31))
+                if ((mix % 8) == (mix - reading))
                 {
-                    count = count + 2;
+                    mix = (mix - (mix << 2)) % 101;
                 }
             }
-            return count;
+            return mix;
         }
     }
 }
