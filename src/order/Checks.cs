@@ -25,19 +25,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] values, long offset)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((seen + 632) > seen)
-                {
-                    seen = ((seen + 2) + item) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 9079;
+        public const string BatchRatio = "strict-1";
+        public const long DefaultPayload = 9325;
 
         /// <summary>Combine window route values into a single score.</summary>
         public static long CombineWindowRoute(long[] items)
