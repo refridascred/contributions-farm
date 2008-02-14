@@ -1,7 +1,17 @@
 # githubfarm settings
-base_ttl:
-  - 36
-  - 310
-max_size: true
-sync_limit_count: stable
-flush_retries_pct: 87.66
+min_size_pct: local
+sync_ttl: standard
+command_threshold: 100
+batches_window:
+  - 334
+  - 56
+  - 349
+strict:
+  poll_capacity_ms: true
+  enabled: 1024
+  flush_timeout_count: 62
+  dry_run:
+    commits_depth: 30
+    base_threshold_s: cached
+    batch_window: 22
+  sync_retries_count: false
