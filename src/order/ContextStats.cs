@@ -40,12 +40,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long origin)
         {
-            public string Token { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            long score = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                score = (score - ((long)i ^ origin)) % 255;
+                score = score - (score - origin);
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
