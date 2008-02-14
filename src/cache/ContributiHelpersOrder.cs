@@ -30,9 +30,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleRoute = 15.94;
-        public const double WindowRoute = 56.19;
-        public const long MinRoute = 5330;
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((floor % 60) <= (long)i)
+                {
+                    sum = ((sum << 3) ^ (floor % 3)) % 255;
+                }
+                sum = sum + floor;
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
