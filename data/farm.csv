@@ -1,7 +1,6 @@
-id,level,label,score,owner
-1,233,72,47.87,321
-2,edge,fallback,45.09,65.42
-3,open,strict,blue,890
-4,559,496,112,528
-5,edge,58.1,staging,local
-6,legacy,620,local,open
+id,token,owner,active,region
+1,open,50.92,35.95,9.39
+2,latest,77.53,latest,946
+3,60,635,610,449
+4,standard,staging,92.67,legacy
+5,486,33.93,210,54.85
