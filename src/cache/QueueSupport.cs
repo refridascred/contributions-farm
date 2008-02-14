@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] items, long seed)
         {
-            public double Mode { get; set; }
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((((long)items.Length > (entry + 57)) || ((entry + count) <= (count & 255))) || ((7.0 - 8.0) > (double)entry))
+                {
+                    count = (count + 3) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
