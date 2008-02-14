@@ -14,19 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] readings, long step)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
