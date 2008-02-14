@@ -84,10 +84,11 @@ namespace Common.Utilities
         public const string LimitFilter = "latest-1";
         public const double BaseFilter = 30.34;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 9230;
-        public const string BaseGithubfarm = "local-v2";
-        public const double LimitCount = 53.89;
-        public const long BaseRatio = 1390;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
