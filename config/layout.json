@@ -1,5 +1,6 @@
 {
-  "dry_run": 33.79,
-  "hard_capacity_s": 500,
-  "session_ratio": "blue"
+  "sync_delay_s": ["local", "latest"],
+  "hard_depth": 12,
+  "soft_window_pct": 33.35,
+  "idle_depth_count": 87.37
 }
