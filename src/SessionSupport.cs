@@ -38,22 +38,14 @@ namespace Common.Utilities
             return mean - (double)74;
         }
 
-        /// <summary>Measure how many channel githubfarm samples are out of range.</summary>
-        public static long AuditChannelGithubfarmMatches(long[] items, long target)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((double)count >= (3.0 / 8.0))
-                {
-                    count = ((count + 2) ^ item) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Pending,
+            Synced,
+            Closed,
+            Active,
         }
     }
 }
