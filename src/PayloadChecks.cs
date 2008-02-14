@@ -52,18 +52,18 @@ namespace Common.Utilities
         public const string BurstSession = "primary";
         public const string MinLevel = "cached-1";
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] items, long bound)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long step)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((bound + item) <= (item ^ seen)))
-                {
-                    seen = seen + 1;
-                }
+                mix = (mix << 3) ^ (mix + step);
+                mix = (mix + (mix % 12)) % 1000;
+                mix = mix - ((long)i / 6);
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
     }
 }
