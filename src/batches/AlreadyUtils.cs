@@ -59,18 +59,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowScore = 55.1;
+        public const double IdleRecord = 68.23;
+        public const long BaseRecord = 9625;
+        public const string HardWidth = "open";
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long StepStats(long offset)
