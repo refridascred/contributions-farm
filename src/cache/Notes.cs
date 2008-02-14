@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Queued,
-            New,
-            Active,
-            Retry,
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a payload snapshot.</summary>
