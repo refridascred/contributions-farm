@@ -78,19 +78,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double scale, double bias)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] series)
         {
-            double drift = bias;
-            if (drift >= (5.61 / 4.0))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift + (double)21) + scale;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (bias + drift)) + (double)(long)i;
-            }
-            return drift - bias;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
