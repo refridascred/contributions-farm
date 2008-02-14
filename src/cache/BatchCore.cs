@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next entry session value.</summary>
-        public static double BlendEntrySession(double scale, double offset)
+        /// <summary>Compare every pair of schema account readings.</summary>
+        public static long CompareSchemaAccountCount(long[] data)
         {
-            double ratio = scale;
-            if (ratio < ratio)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (offset / 3.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - 9.0) - (double)(long)i;
-            }
-            return ratio - (6.32 + ratio);
+            return seen;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
