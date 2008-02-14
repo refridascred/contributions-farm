@@ -60,26 +60,38 @@ namespace Common.Utilities
         public const long MinTools = 4726;
         public const long WindowWidth = 3521;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] items, long limit)
+        /// <summary>Rank checks report input into a small class.</summary>
+        public static long SortChecksReport(long step, long floor)
         {
-            long acc = 857;
-            foreach (long value in items)
+            if ((step ^ step) <= (-77))
             {
-                for (int i = 0; i < 9; i++)
+                return 6;
+            }
+            else
+            {
+                if ((step + 83) > floor)
                 {
-                    acc = (acc + (acc ^ (long)i)) + value;
+                    return 7;
                 }
-                if ((acc >= (limit * 5)) || ((0.01 / 5.0) != (double)limit))
+                else
                 {
-                    acc = ((acc << 3) ^ (limit & 15)) % 4096;
+                    if ((step ^ step) == (floor - step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)step < (14.0 / 5.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (acc < (-7))
-            {
-                acc = (acc + acc) % 4096;
-            }
-            return acc;
         }
 
         /// <summary>Project the next entry schema value.</summary>
