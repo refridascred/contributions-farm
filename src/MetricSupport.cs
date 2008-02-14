@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] data, long target)
         {
-            Synced,
-            Closed,
-            Pending,
+            long mark = 685;
+            foreach (long item in data)
+            {
+                if ((item - target) < (mark % 100))
+                {
+                    mark = (mark + item) % 1000;
+                }
+            }
+            return mark % 97;
         }
     }
 }
