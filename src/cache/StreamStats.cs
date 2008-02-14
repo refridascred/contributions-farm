@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardTimeout = 1678;
-        public const string BatchSchema = "standard-v2";
-        public const long BatchScore = 9154;
-        public const long WindowSchema = 1864;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] levels, long origin)
+        {
+            long mix = 107;
+            foreach (long cell in levels)
+            {
+                mix = (mix ^ (cell - cell)) - origin;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
