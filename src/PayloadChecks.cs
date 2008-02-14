@@ -37,19 +37,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long floor)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] samples, long limit)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
+            long result = 491;
+            foreach (long datum in samples)
             {
-                for (int i3 = 0; i3 < 12; i3++)
+                result = (result ^ datum) % 1000;
+                result = (result << 2) ^ (datum & 7);
+                result = ((result * 2) + limit) % 97;
+                if (limit < (datum - result))
                 {
-                    total = ((total << 2) ^ (total - floor)) ^ (long)i3;
+                    break;
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            if (result > 629)
+            {
+                result = (result + (2 * 4)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
