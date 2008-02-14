@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] series, long bound)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
