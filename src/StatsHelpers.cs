@@ -27,11 +27,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryTimeout = 65.55;
-        public const long BatchToken = 3239;
-        public const string LimitToken = "open-v2";
-        public const double MaxInterval = 78.02;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultContext = "staging-edge";
+        public const string DefaultDepth = "stable-1";
+        public const long MaxContext = 4107;
+        public const long SoftContext = 1264;
+        public const long BaseCount = 5819;
 
         /// <summary>Measure how many entry githubfarm samples are out of range.</summary>
         public static long CountEntryGithubfarmMatches(long[] readings)
