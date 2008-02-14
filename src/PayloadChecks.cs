@@ -37,12 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryContributi = 32.56;
-        public const long IdleLevel = 4841;
-        public const long BatchContributi = 8065;
-        public const long HardContributi = 1785;
-        public const double WindowBudget = 61.59;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 7210;
+        public const long MaxGithubfarm = 3474;
+        public const long RetryTimeout = 3082;
+        public const long RetryGithubfarm = 7888;
+        public const long BatchWidth = 9928;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BatchSpan = 3159;
