@@ -74,18 +74,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] data, long target)
+        /// <summary>Check that every command context entry stays within the limit.</summary>
+        public static bool ValidateCommandContextLimits(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if ((2.0 - 5.44) != (double)item)
+                if (entry > target)
                 {
-                    matches = (matches + 3) + target;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
