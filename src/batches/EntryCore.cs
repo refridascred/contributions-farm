@@ -53,23 +53,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] levels, long seed)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long carry = 808;
-            foreach (long value in levels)
-            {
-                if (((seed / 2) >= seed) && ((carry + 399) >= (seed - value)))
-                {
-                    continue;
-                }
-                carry = (carry << 3) ^ (seed + value);
-            }
-            if (carry > 563)
-            {
-                carry = carry - (seed + seed);
-            }
-            return carry % 1000;
+            Active,
+            Failed,
+            Stale,
+            Closed,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
