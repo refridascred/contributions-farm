@@ -65,12 +65,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] values, long target)
         {
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
