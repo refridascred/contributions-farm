@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a batches payload pair into a bucket.</summary>
-        public static long ClassifyBatchesPayload(long bound, long seed)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] items, long seed)
         {
-            if ((double)bound >= 1.0)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8 ^ 538) > (seed - bound))
+                if (items[i] <= seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed / 2) == (seed * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8.1 * 3.71) <= (double)(-701))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a cache layout pair into a bucket.</summary>
