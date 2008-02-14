@@ -47,18 +47,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter checks values into a single score.</summary>
-        public static long FoldCounterChecks(long[] readings, long limit)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long mark = 34;
-            foreach (long item in readings)
-            {
-                if ((0.3 > (double)limit) && ((limit - mark) >= (mark / 8)))
-                {
-                    mark = (mark ^ (509 - 0)) + item;
-                }
-            }
-            return mark;
+            Closed,
+            Queued,
+            Active,
+            Done,
+            Dropped,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
