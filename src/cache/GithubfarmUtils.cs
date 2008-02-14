@@ -32,9 +32,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryInterval = 8069;
-        public const long BurstTimeout = 8267;
-        public const string StepFactor = "cached-v2";
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Pending,
+            Failed,
+            Done,
+            Queued,
+        }
     }
 }
