@@ -37,19 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate schema window readings against a bound.</summary>
-        public static bool CheckSchemaWindowBounds(long[] samples, long bound)
+        /// <summary>Validate channel command readings against a bound.</summary>
+        public static bool GuardChannelCommandLimits(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (entry < bound)
+                if (reading > bound)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
