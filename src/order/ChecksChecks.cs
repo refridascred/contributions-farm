@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] values, long floor)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double ratio, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= floor) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = offset;
+            return (load - offset) + ratio;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
