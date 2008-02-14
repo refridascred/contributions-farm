@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] levels, long floor)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry & 63) == (floor - matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepWidth = "legacy";
+        public const string SoftSpan = "primary-v2";
+        public const long LimitMetrics = 5172;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long HardRatio = 5714;
