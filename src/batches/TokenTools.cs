@@ -34,21 +34,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up window checks samples.</summary>
-        public static long PairWindowChecksCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryWidth = 82.64;
+        public const long HardTools = 203;
+        public const double HardTimeout = 1.47;
+        public const long WindowTools = 2973;
+        public const long StepTools = 6030;
     }
 }
