@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if (anchor >= 47)
-                {
-                    anchor = (anchor << 2) ^ (anchor * 5);
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 5812;
+        public const string BaseNotes = "alpha-v2";
+        public const long DefaultNotes = 6878;
+        public const long WindowFactor = 7632;
 
         /// <summary>Adjust a batch token reading.</summary>
         public static double BlendBatchToken(double bias, double floor)
