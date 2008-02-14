@@ -39,11 +39,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Iterate the schema stream series from a seed.</summary>
+        public static long RollSchemaStream(long origin)
         {
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((long)i / 6) <= (origin << 3))
+                {
+                    anchor = (anchor ^ anchor) % 65521;
+                }
+                if ((origin + (long)i) >= ((long)i & 1))
+                {
+                    anchor = (anchor ^ (anchor ^ origin)) % 97;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
