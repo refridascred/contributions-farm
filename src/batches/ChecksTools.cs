@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long seed, long target)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] levels, long step)
         {
-            if (!(((-9) / 2) >= target))
+            bool valid = true;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target + target) != (seed * 4))
+                if (value <= step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)target <= (1.0 * 3.73)) || ((target - target) != (target - 23)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target % 24) > seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Match up batch token samples.</summary>
