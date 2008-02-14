@@ -54,19 +54,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] levels, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (entry >= floor)
+                if (item <= offset)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
     }
 }
