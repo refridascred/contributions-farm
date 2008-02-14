@@ -28,19 +28,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the already batches entries that pass the check.</summary>
-        public static long CountAlreadyBatchesMatches(long[] samples, long target)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((count + cell) < (target << 1))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 6697;
+        public const double MinContext = 35.09;
+        public const long DefaultContext = 578;
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
