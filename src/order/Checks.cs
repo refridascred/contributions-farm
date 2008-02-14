@@ -44,18 +44,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] data)
+        /// <summary>Check that every payload schema entry stays within the limit.</summary>
+        public static bool ValidatePayloadSchemaRange(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if ((((double)97 != (double)hits) && ((hits % 7) != (reading / 5))) && (reading > (726 >> 4)))
+                if (cell < seed)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Describe the session kind values.</summary>
