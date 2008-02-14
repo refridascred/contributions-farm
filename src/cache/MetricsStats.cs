@@ -47,37 +47,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long bound, long seed)
+        /// <summary>Rank schema order input into a small class.</summary>
+        public static long RankSchemaOrder(long bound, long seed)
         {
-            long edge = bound + seed;
-            if ((edge + 85) == (bound + seed))
+            if (((-78) - 2) >= seed)
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if (((bound & 1) <= 5) && ((seed - bound) <= seed))
+                if ((seed - seed) <= (509 << 2))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if ((bound - edge) > bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed ^ seed) > (bound ^ bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
