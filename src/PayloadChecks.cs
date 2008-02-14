@@ -20,13 +20,21 @@ namespace Common.Utilities
         public const long DefaultSpan = 4315;
         public const string LimitLevel = "latest-v2";
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] series)
         {
-            Active,
-            Ready,
-            Paused,
-            Draft,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
