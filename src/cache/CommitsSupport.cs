@@ -35,18 +35,38 @@ namespace Common.Utilities
             return bias + 18.0;
         }
 
-        /// <summary>Count the profile route entries that pass the check.</summary>
-        public static long TallyProfileRouteOutliers(long[] readings)
+        /// <summary>Classify a command cache pair into a bucket.</summary>
+        public static long RankCommandCache(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            if ((double)bound <= (3.62 - 17.0))
             {
-                if (entry < (entry - tally))
+                return 7;
+            }
+            else
+            {
+                if (origin < 617)
                 {
-                    tally = tally + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + origin) < bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin < (3.0 - 1.8))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
