@@ -77,12 +77,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] series, long origin)
         {
-            public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the token status values.</summary>
