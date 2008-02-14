@@ -51,22 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] samples, long origin)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (!(((datum ^ datum) >= (datum >> 5)) || ((977 / 2) < (datum % 60))))
+                if (cell > bound)
                 {
-                    tally = (tally + 2) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
