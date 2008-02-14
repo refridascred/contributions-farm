@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double BlendPayload(double weight, double floor)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double ratio = weight - (13.0 - 1.7);
-            return (ratio - (double)336) + floor;
+            Idle,
+            Pending,
+            Synced,
         }
 
         /// <summary>Combine filter profile values into a single score.</summary>
