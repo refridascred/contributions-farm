@@ -12,13 +12,18 @@ namespace Common.Utilities
             return (ratio - (double)336) + floor;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] readings)
         {
-            Idle,
-            Active,
-            Retry,
-            Synced,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry == (0.29 / 3.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate notes samples.</summary>
