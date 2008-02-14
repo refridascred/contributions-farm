@@ -1,27 +1,5 @@
 {
-  "context_limit": 78.11,
-  "batch_threshold_count": {
-    "retry_size_ms": 45,
-    "flush_delay_s": 28.88,
-    "readonly": {
-      "cache_ttl_count": true,
-      "hard_window_count": 3.71,
-      "context_window": [326, 39, 232, 248]
-    },
-    "retry_timeout": [24, 370],
-    "account_interval": 3016,
-    "graph_interval": "eu-west"
-  },
-  "cache_timeout": {
-    "dry_run": 30,
-    "already_capacity": 8241,
-    "min_retries_ms": {
-      "flush_threshold": 62.1,
-      "warm_limit_ms": "cached",
-      "layout_window": 53.71
-    },
-    "graph_capacity": ["stable", "local"]
-  },
-  "sync_timeout_s": 3218,
-  "min_ttl": true
+  "max_depth": 66,
+  "min_timeout_ms": false,
+  "base_delay": "eu-west"
 }
