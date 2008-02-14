@@ -18,11 +18,22 @@ namespace Common.Utilities
         public const long DefaultFarm = 830;
         public const long RetrySize = 143;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
+            long anchor = 2;
+            foreach (long entry in series)
+            {
+                if ((entry % 10) != (835 & 127))
+                {
+                    anchor = (anchor * 5) + (entry - entry);
+                }
+                if ((8.0 / 9.0) > (double)anchor)
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
