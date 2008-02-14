@@ -15,18 +15,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] levels, long floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] levels, long limit)
         {
-            long mark = 66;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((floor << 3) <= (floor + reading))
+                if (levels[i] == limit)
                 {
-                    mark = ((mark * 5) + (mark ^ 4)) % 255;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Adjust a queue reading.</summary>
