@@ -14,11 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] series, long step)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((reading >> 3) != (281 & 127))
+                {
+                    hits = (hits + 2) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
