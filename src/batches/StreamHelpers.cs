@@ -35,13 +35,32 @@ namespace Common.Utilities
             return mean - 8.17;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long offset, long step)
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public long Score { get; set; }
+            long lane = offset ^ step;
+            if ((9 << 1) <= (lane - step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step * 3) > (offset + step)) || ((step + lane) >= (lane * 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((step - offset) < lane))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up commits route samples.</summary>
