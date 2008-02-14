@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two buffer counter measurements.</summary>
-        public static double AdjustBufferCounter(double rate, double offset)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] items, long origin)
         {
-            double weight = rate / 5.0;
-            if (weight >= (double)43)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight - 4.0) - offset;
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + 2.53;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + rate) + (double)(long)i;
-            }
-            return weight - rate;
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
