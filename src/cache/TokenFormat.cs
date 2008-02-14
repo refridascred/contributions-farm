@@ -22,19 +22,22 @@ namespace Common.Utilities
         public const double DefaultQueue = 71.84;
         public const long StepBudget = 8533;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] series, long target)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] items)
         {
-            long score = 8;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long cell in items)
             {
-                score = (((score << 3) ^ (target + target)) % 4096) - value;
+                if (((cell - 139) < cell) && !((cell ^ cell) < (cell ^ 22)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (score > 48)
-            {
-                score = ((score * 3) + (157 ^ score)) % 65521;
-            }
-            return score % 1000;
+            return count;
         }
     }
 }
