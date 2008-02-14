@@ -72,12 +72,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public double Size { get; set; }
-            public double Flag { get; set; }
-            public string Level { get; set; } = "";
+            Idle,
+            Synced,
+            Active,
+            Ready,
         }
     }
 }
