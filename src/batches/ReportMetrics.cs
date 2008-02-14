@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long bound, long bound2)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (bound2 < (bound / 3))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((bound * 2) <= bound2)
                 {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
