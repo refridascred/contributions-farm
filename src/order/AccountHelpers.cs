@@ -94,14 +94,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] samples, long step)
         {
-            Closed,
-            Failed,
-            Dropped,
-            Queued,
-            Synced,
+            long sum = 471;
+            foreach (long datum in samples)
+            {
+                sum = (((sum << 2) ^ (sum & 255)) + datum) - step;
+            }
+            return sum;
         }
     }
 }
