@@ -60,23 +60,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] items, long bound)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long acc = 0;
-            foreach (long item in items)
-            {
-                acc = (acc + (bound >> 3)) % 255;
-                if ((bound ^ item) >= ((-8) + (long)items.Length))
-                {
-                    acc = (acc + (acc % 12)) % 1000;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (item >> 4);
-                }
-            }
-            return acc;
+            Locked,
+            Paused,
+            Retry,
+            Idle,
+            Dropped,
         }
     }
 }
