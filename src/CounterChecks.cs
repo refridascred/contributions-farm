@@ -16,18 +16,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Adjust a githubfarm contributi reading.</summary>
+        public static double ProjectGithubfarmContributi(double rate, double span)
         {
-            long result = 5;
-            foreach (long reading in readings)
+            double drift = (double)(445 ^ 548);
+            if (drift >= (span - rate))
             {
-                if (((result + reading) >= (reading + (-4))) || ((result & 127) == (result + result)))
-                {
-                    result = (result << 2) ^ (reading - reading);
-                }
+                drift = drift - span;
             }
-            return result % 1000;
+            else
+            {
+                drift = drift + (drift * 7.36);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (rate / 6.0)) - (double)(long)i;
+            }
+            return drift + rate;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
