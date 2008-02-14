@@ -1,14 +1,12 @@
 # Command notes
 
-Run the context check before changing any cluster limits.
-Defaults for commits live in the config folder and can be overridden per environment.
-
-Keep tools and record names short and lowercase.
-Each profile is validated before it reaches the record queue.
+Use context settings to tune how often stream data is refreshed.
+The contributi module keeps buffer values in sync with the commits cache.
+A cache that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Review payload limits each release
-- Document new buffer fields
-- Prefer format defaults
-- Validate token input early
+- Keep command values small
+- Prefer batches defaults
+- Log every editor change
+- Document new session fields
