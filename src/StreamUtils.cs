@@ -31,22 +31,32 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] samples, long target)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long bound, long bound2)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long cur = bound + bound2;
+            if ((bound2 + bound) >= (bound2 - 8))
             {
-                if (!((double)61 <= (4.4 / 8.0)))
+                return 7;
+            }
+            else
+            {
+                if (((bound + bound2) <= (bound2 >> 4)) && ((cur - 7) <= cur))
                 {
-                    count = ((count + 3) ^ item) - target;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((bound2 > (bound2 >> 3)) || ((8.85 * 5.0) == (double)cur))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the buffer class values.</summary>
