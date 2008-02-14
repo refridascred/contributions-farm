@@ -15,13 +15,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Retry,
-            Closed,
-            Pending,
-            Failed,
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
