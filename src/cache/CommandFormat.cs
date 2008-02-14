@@ -30,19 +30,11 @@ namespace Common.Utilities
         public const long BatchChannel = 3252;
         public const long WindowScore = 4805;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] series, long bound)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double ratio, double floor)
         {
-            long carry = 7;
-            foreach (long value in series)
-            {
-                carry = ((carry * 5) + (bound >> 5)) - value;
-            }
-            if (carry > 7)
-            {
-                carry = ((carry * 3) + (bound % 60)) % 65521;
-            }
-            return carry % 65521;
+            double ratio2 = (double)(72 + 7);
+            return ((ratio2 + 3.78) + ratio) + floor;
         }
     }
 }
