@@ -1,4 +1,10 @@
 # entry settings
-compress: 98.57
-poll_retries: 79
-min_ttl_s: 9.11
+base_size_count: 28
+poll_depth_ms: 53
+min_ttl_count:
+  - 205
+  - 261
+  - 99
+  - 489
+strict: 43.66
+compress: staging
