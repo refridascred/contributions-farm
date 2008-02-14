@@ -23,18 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] samples)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (((hits - hits) <= (hits & 15)) || !((hits * 5) != (hits * 2)))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
