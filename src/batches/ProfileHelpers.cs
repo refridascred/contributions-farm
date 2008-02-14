@@ -51,20 +51,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] levels, long limit)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long carry = 65;
-            foreach (long value in levels)
-            {
-                carry = ((carry - (limit & 3)) % 101) ^ value;
-                carry = carry ^ (limit + limit);
-            }
-            if (carry < 35)
-            {
-                carry = (carry ^ (limit & 63)) % 255;
-            }
-            return carry % 4096;
+            Paused,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Check that every command context entry stays within the limit.</summary>
