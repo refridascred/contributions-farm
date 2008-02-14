@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long target, long step)
         {
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            if (((step << 3) < target) || ((step >> 3) < (step * 2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target - target) >= step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Roll a account cluster counter forward.</summary>
