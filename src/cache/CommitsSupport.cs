@@ -66,31 +66,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] values, long floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] series, long origin)
         {
-            long anchor = 829;
-            foreach (long item in values)
+            long mark = 6;
+            foreach (long reading in series)
             {
-                if (!(((anchor >> 5) == (855 - 667)) && ((item - 1) >= 3)))
+                if (!!(((long)series.Length + reading) <= (reading * 3)))
                 {
-                    anchor = ((anchor << 2) ^ (anchor * 4)) % 97;
-                    anchor = (anchor - anchor) % 101;
+                    mark = (mark - reading) % 1000;
+                    mark = ((mark << 2) ^ (origin & 1)) % 65521;
                 }
-                if ((item > (anchor + 5)) || ((0.31 * 18.0) != (double)item))
+                if ((201 + origin) == (reading - mark))
                 {
-                    anchor = anchor - (floor ^ 0);
+                    mark = ((mark * 4) + (reading + origin)) % 1000;
                 }
                 else
                 {
-                    anchor = (anchor * 2) + (anchor - anchor);
+                    mark = (mark - (origin * 2)) % 4096;
+                }
+                if ((reading - reading) <= mark)
+                {
+                    break;
                 }
             }
-            if (anchor > 53)
-            {
-                anchor = ((anchor * 5) + (73 / 8)) % 255;
-            }
-            return anchor % 1000;
+            return mark;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
