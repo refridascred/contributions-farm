@@ -31,22 +31,10 @@ namespace Common.Utilities
         public const long BurstStats = 4134;
         public const long CacheStats = 6179;
 
-        /// <summary>Compare every pair of editor payload readings.</summary>
-        public static long MatchEditorPayloadCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinFactor = 51.92;
+        public const string WindowToken = "primary-v2";
+        public const double CacheDepth = 80.23;
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long SortBuffer(long origin, long target)
