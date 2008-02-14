@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            Synced,
+            Closed,
+            Idle,
         }
     }
 }
