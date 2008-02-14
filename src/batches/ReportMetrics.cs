@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
+            public double Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a format info.</summary>
