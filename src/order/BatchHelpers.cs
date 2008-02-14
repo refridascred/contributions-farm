@@ -23,21 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Validate tools profile readings against a bound.</summary>
+        public static bool GuardToolsProfileBounds(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item >= bound)
                 {
-                    if ((data[i] + data[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Hold a command snapshot.</summary>
