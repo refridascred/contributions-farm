@@ -27,15 +27,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Measure how many route stream samples are out of range.</summary>
+        public static long MeasureRouteStreamOutliers(long[] readings, long step)
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if (!((tally - step) >= (entry + 566)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Combine counter checks values into a single score.</summary>
