@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next cache account value from a seed.</summary>
-        public static long StepCacheAccount(long limit)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((double)mark != (2.8 / 5.0)))
-                {
-                    mark = (mark + mark) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Idle,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Hold a stream header.</summary>
