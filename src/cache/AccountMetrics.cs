@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of format report entries.</summary>
-        public static long TotalFormatReport(long[] samples)
+        /// <summary>Rank notes stats input into a small class.</summary>
+        public static long BucketNotesStats(long bound, long offset)
         {
-            long acc = 45;
-            foreach (long reading in samples)
+            long offset2 = bound - offset;
+            if ((offset << 1) == (offset2 ^ (-574)))
             {
-                if (!(((reading - reading) >= (acc % 12)) && ((reading ^ reading) < reading)))
-                {
-                    acc = (acc * 2) + (reading + acc);
-                }
-                acc = (acc << 3) ^ (reading >> 2);
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((bound >> 5) == (offset + offset2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
