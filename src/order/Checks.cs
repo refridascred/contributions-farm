@@ -30,18 +30,32 @@ namespace Common.Utilities
         public const string BatchRatio = "strict-1";
         public const long DefaultPayload = 9325;
 
-        /// <summary>Combine window route values into a single score.</summary>
-        public static long CombineWindowRoute(long[] items)
+        /// <summary>Rank cache layout input into a small class.</summary>
+        public static long ClassifyCacheLayout(long seed, long floor)
         {
-            long mix = 98;
-            foreach (long reading in items)
+            long prev = seed ^ floor;
+            if ((5 - seed) > (seed + floor))
             {
-                if ((mix % 8) == (mix - reading))
+                return 3;
+            }
+            else
+            {
+                if (((double)seed != (double)413) && ((seed / 5) <= (64 + prev)))
                 {
-                    mix = (mix - (mix << 2)) % 101;
+                    return 7;
+                }
+                else
+                {
+                    if ((9 & 127) < prev)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mix;
         }
     }
 }
