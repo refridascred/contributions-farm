@@ -59,19 +59,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] items, long origin)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long state = 36;
-            foreach (long datum in items)
-            {
-                state = ((state + (datum - datum)) % 4096) - origin;
-                if ((double)state <= (2.9 + 6.6))
-                {
-                    state = ((state * 4) + (state + datum)) % 1000;
-                }
-            }
-            return state % 65521;
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
