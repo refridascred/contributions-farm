@@ -34,19 +34,17 @@ namespace Common.Utilities
             return drift - (bias * 1.9);
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] series, long seed)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long total = 4;
+            foreach (long cell in series)
             {
-                if (sample > seed)
-                {
-                    valid = false;
-                    break;
-                }
+                total = total + (cell << 3);
+                total = (total + (cell ^ cell)) % 97;
+                total = total - (floor << 2);
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Hold a notes entry.</summary>
