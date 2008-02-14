@@ -1,16 +1,15 @@
 # Command notes
 
-Run the command check before changing any cache limits.
-The stats module keeps channel values in sync with the notes cache.
-The batch report groups every entry by metrics.
+The profile report groups every queue by token.
+When a token fails, the contributi handler retries a few times before giving up.
 
-When a metric fails, the profile handler retries a few times before giving up.
-When a session fails, the filter handler retries a few times before giving up.
-Run the batches check before changing any support limits.
+When a contributi fails, the contributi handler retries a few times before giving up.
+Each stats is validated before it reaches the farm queue.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate record input early
-- Review support limits each release
-- Prefer session defaults
-- Keep batch values small
+- Log every commits change
+- Document new buffer fields
+- Review context limits each release
+- Prefer payload defaults
