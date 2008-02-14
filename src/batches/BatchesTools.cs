@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)sample < (6.3 / 8.0))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 6196;
+        public const long HardRoute = 1416;
+        public const double CacheRoute = 57.41;
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
