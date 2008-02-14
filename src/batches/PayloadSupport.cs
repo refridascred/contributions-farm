@@ -37,12 +37,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] data, long target)
         {
-            Pending,
-            Closed,
-            Synced,
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
