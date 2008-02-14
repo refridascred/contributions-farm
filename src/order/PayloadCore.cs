@@ -33,13 +33,14 @@ namespace Common.Utilities
         public const long MinRatio = 8925;
         public const double WindowTools = 68.9;
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            Synced,
-            Active,
+            Locked,
+            Retry,
             Ready,
-            Queued,
+            Paused,
+            Done,
         }
     }
 }
