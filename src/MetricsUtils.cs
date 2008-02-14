@@ -40,16 +40,10 @@ namespace Common.Utilities
         public const long BatchCounter = 7242;
         public const long HardCounter = 6782;
 
-        /// <summary>Scale a profile order figure with a bias.</summary>
-        public static double ScaleProfileOrder(double weight, double offset)
-        {
-            double bias = (weight - 2.7) + offset;
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (double)409) - (double)(long)i;
-            }
-            return bias + offset;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchFactor = "open";
+        public const double IdleFactor = 18.96;
+        public const long LimitNotes = 1876;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long HardNotes = 6568;
