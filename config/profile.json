@@ -1,5 +1,6 @@
 {
-  "already_delay": "local",
-  "token_capacity": 29.9,
-  "sync_ratio_pct": 15
+  "verbose": 32,
+  "metric_interval": 68.83,
+  "max_threshold": "latest",
+  "base_ratio": 30
 }
