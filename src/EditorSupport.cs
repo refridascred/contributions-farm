@@ -75,19 +75,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] readings, long offset)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long state = 758;
-            foreach (long item in readings)
-            {
-                state = (state - 7) + item;
-            }
-            if (state > (-98))
-            {
-                state = (state - (offset * 3)) % 65521;
-            }
-            return state % 65521;
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
