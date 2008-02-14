@@ -29,9 +29,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryBudget = 92.29;
-        public const double StepEditor = 59.35;
-        public const long BatchBudget = 6116;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Stale,
+            Idle,
+            Done,
+            Paused,
+        }
     }
 }
