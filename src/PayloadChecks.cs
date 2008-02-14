@@ -40,14 +40,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCount = 6185;
+        public const long DefaultLevel = 1904;
+        public const string WindowBudget = "open-1";
+        public const double LimitSize = 25.39;
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
