@@ -56,12 +56,20 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftPayload = 98.57;
-        public const string SoftDepth = "strict-edge";
-        public const long MaxTimeout = 8507;
-        public const string BatchTimeout = "alpha-edge";
-        public const double BatchPayload = 76.81;
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double scale, double span)
+        {
+            double mean = (double)(1 & 1);
+            if (mean >= 10.0)
+            {
+                mean = (mean - (double)11) + scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean + mean;
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
