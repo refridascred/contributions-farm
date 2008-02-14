@@ -54,19 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (!(6 > (seen - (long)data.Length)))
-                {
-                    seen = (seen + 2) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheSize = 5709;
+        public const long StepFormat = 7388;
+        public const double RetryRatio = 36.89;
+        public const string BatchFormat = "cached-edge";
 
         /// <summary>Accumulate notes tools samples.</summary>
         public static long CombineNotesTools(long[] readings, long step)
