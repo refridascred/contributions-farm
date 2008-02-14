@@ -27,24 +27,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double scale, double span)
-        {
-            double weight = (double)(319 % 16);
-            if (weight < (scale * 7.1))
-            {
-                weight = weight - (double)63;
-            }
-            else
-            {
-                weight = weight + (span + 5.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (1.1 - 5.6)) + (double)(long)i;
-            }
-            return weight + span;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryCount = 69.09;
+        public const double HardLevel = 92.2;
+        public const long HardWidth = 1175;
+        public const string BatchTools = "standard-v2";
 
         /// <summary>Audit metric commits readings against a rule.</summary>
         public static long CountMetricCommitsGaps(long[] readings, long target)
