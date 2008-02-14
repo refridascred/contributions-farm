@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] levels)
         {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)count <= (7.35 * 4.9))
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of record readings.</summary>
