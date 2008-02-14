@@ -44,11 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 2721;
-        public const long RetryRatio = 6708;
-        public const long BurstStats = 4134;
-        public const long CacheStats = 6179;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (cell < seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double MinFactor = 51.92;
