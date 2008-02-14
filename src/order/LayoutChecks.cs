@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Retry,
-            Pending,
-            Done,
-            Active,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 5486;
+        public const long WindowInterval = 3641;
+        public const long RetryCounter = 9336;
+        public const double BurstCount = 28.06;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long WeighRecord(long[] readings)
