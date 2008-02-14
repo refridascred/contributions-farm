@@ -47,26 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] data)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long result = 131;
-            foreach (long item in data)
-            {
-                if ((item & 31) > (item + result))
-                {
-                    result = (result << 3) ^ (-9);
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result - result)) % 255;
-                }
-                if ((12 - result) <= (item ^ item))
-                {
-                    break;
-                }
-            }
-            return result;
+            public bool Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the token status values.</summary>
