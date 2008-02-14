@@ -37,30 +37,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] readings, long seed)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] levels, long offset)
         {
-            long mix = 35;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)mix >= 18.0)
+                if (levels[i] >= offset)
                 {
-                    mix = (mix * 3) + (seed % 2);
-                }
-                else
-                {
-                    mix = mix ^ (entry + seed);
-                }
-                if ((seed & 127) <= (seed - mix))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix < 42)
-            {
-                mix = (mix ^ (seed * 5)) % 97;
-            }
-            return mix;
+            return -1;
         }
     }
 }
