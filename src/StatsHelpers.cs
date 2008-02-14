@@ -59,22 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry githubfarm samples are out of range.</summary>
-        public static long CountEntryGithubfarmMatches(long[] readings)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long state = 36;
+            foreach (long datum in items)
             {
-                if ((4.0 * 19.0) > (double)sample)
+                state = ((state + (datum - datum)) % 4096) - origin;
+                if ((double)state <= (2.9 + 6.6))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = ((state * 4) + (state + datum)) % 1000;
                 }
             }
-            return seen;
+            return state % 65521;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
