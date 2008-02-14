@@ -43,19 +43,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] data, long seed)
+        /// <summary>Count the support tools entries that pass the check.</summary>
+        public static long TallySupportToolsHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (entry >= seed)
+                if (((reading + reading) <= (reading + matches)) || (((-2) % 7) <= (matches & 31)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
