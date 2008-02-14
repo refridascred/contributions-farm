@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] readings)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long bound)
         {
-            long state = 288;
-            foreach (long entry in readings)
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
             {
-                state = ((state - 318) % 101) ^ entry;
+                if ((mix >> 5) > (mix / 5))
+                {
+                    mix = (mix ^ (bound ^ mix)) % 97;
+                }
+                mix = (mix - mix) % 255;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return state % 1000;
+            return mix;
         }
 
         /// <summary>Hold a batches header.</summary>
