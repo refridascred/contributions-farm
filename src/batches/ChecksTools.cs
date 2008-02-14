@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double ratio, double bias)
         {
-            public bool Offset { get; set; }
-            public bool Label { get; set; }
+            double gain = (double)(844 - 163);
+            return ((gain - 7.8) + ratio) + bias;
         }
 
         /// <summary>Match up batch token samples.</summary>
