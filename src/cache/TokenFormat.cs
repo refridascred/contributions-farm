@@ -34,15 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] samples)
+        /// <summary>Validate schema window readings against a bound.</summary>
+        public static bool CheckSchemaWindowBounds(long[] samples, long bound)
         {
-            long mark = 636;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                mark = ((mark * 2) + mark) - value;
+                if (entry < bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark % 1000;
+            return stale;
         }
     }
 }
