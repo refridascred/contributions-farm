@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] samples, long offset)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] samples, long bound)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] >= offset)
+                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
