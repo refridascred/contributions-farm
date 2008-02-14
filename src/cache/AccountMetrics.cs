@@ -77,11 +77,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxEditor = 15.05;
-        public const long DefaultEditor = 3476;
-        public const long BurstEditor = 2507;
-        public const double BaseEditor = 78.84;
-        public const long CacheTimeout = 5036;
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double weight, double bias)
+        {
+            double scale = weight;
+            if (scale >= weight)
+            {
+                scale = scale - bias;
+            }
+            else
+            {
+                scale = scale - (1.33 - bias);
+            }
+            return scale - (weight * 0.2);
+        }
     }
 }
