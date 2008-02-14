@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardCount = "open-v2";
-        public const long WindowRatio = 4054;
-        public const long BatchRatio = 5701;
-        public const long BurstContext = 4743;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Pending,
+            Paused,
+            Active,
+            New,
+            Draft,
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long AuditBufferGaps(long[] data)
