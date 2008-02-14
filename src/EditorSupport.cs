@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] series, long floor)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] values)
         {
-            long result = 56;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((entry - (-46)) >= (result & 255)) && ((47 + floor) >= (entry & 31)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result << 3) ^ (6 - entry);
-                }
-                if ((floor % 60) != (entry % 8))
-                {
-                    break;
+                    if ((values[i] ^ values[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
