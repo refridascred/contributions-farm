@@ -1,14 +1,6 @@
 {
-  "compress": {
-    "retry_ttl_ms": 6.61,
-    "min_window_ms": false,
-    "dry_run": [116, 428, 189],
-    "verbose": [466, 313, 283, 294],
-    "cache_size": false
-  },
-  "token_threshold": 81,
-  "min_ratio": "legacy",
-  "default_ttl": true,
-  "readonly": 4223,
-  "batch_depth_pct": true
+  "record_delay": true,
+  "min_window_pct": 85.3,
+  "base_timeout_ms": "legacy",
+  "audit": [305, 95, 188]
 }
