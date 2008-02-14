@@ -20,15 +20,12 @@ namespace Common.Utilities
             return bias3 + (5.4 * 2.0);
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Retry,
-            Pending,
-            Active,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftGithubfarm = "open-1";
+        public const double IdleRatio = 14.43;
+        public const long CacheGithubfarm = 389;
+        public const long WindowGithubfarm = 8083;
+        public const double HardGithubfarm = 41.1;
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
