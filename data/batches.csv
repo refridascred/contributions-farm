@@ -1,6 +1,6 @@
-id,rank,ratio,label
-1,89.18,53.44,65.15
-2,865,481,714
-3,stable,441,latest
-4,13.73,55.35,558
-5,71.0,43.08,662
+id,rank,token
+1,cached,430
+2,open,40.26
+3,green,117
+4,850,10.91
+5,400,staging
