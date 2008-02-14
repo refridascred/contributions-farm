@@ -25,17 +25,19 @@ namespace Common.Utilities
         public const long LimitPayload = 6988;
         public const double CachePayload = 0.75;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] series, long floor)
+        /// <summary>Digest a series of githubfarm cache entries.</summary>
+        public static long DigestGithubfarmCache(long[] levels, long offset)
         {
-            long total = 4;
-            foreach (long cell in series)
+            long anchor = 283;
+            foreach (long sample in levels)
             {
-                total = total + (cell << 3);
-                total = (total + (cell ^ cell)) % 97;
-                total = total - (floor << 2);
+                anchor = ((anchor + (sample * 2)) % 65521) + offset;
             }
-            return total;
+            if (anchor < 0)
+            {
+                anchor = ((anchor * 5) + anchor) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a notes entry.</summary>
