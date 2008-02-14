@@ -1,10 +1,7 @@
-id,count,weight
-1,66.67,latest
-2,open,65.94
-3,797,559
-4,50.06,954
-5,88.0,legacy
-6,standard,161
-7,491,48
-8,64,163
-9,strict,82.99
+id,level,owner,token,count
+1,849,85.19,open,741
+2,59.57,71.49,246,62.82
+3,61.67,929,standard,85
+4,13.69,primary,primary,84.71
+5,fallback,10.23,legacy,735
+6,34.32,52.5,908,79.75
