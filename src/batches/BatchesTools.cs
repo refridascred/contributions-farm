@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] samples, long floor)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((value + floor) != (seen + seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Ready,
+            Idle,
+            Done,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
