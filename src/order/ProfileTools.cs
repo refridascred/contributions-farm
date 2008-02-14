@@ -61,22 +61,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading == (5.0 + 7.0))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 1751;
+        public const long WindowChecks = 4987;
+        public const double IdleDepth = 61.09;
+        public const string BurstRatio = "fallback";
     }
 }
