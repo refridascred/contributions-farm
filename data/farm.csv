@@ -1,6 +1,9 @@
-id,weight,level,state
-1,234,49.57,fallback
-2,95.14,77.1,legacy
-3,909,65.91,963
-4,899,86.42,98.23
-5,69.08,standard,91.2
+id,owner,state,label,ratio
+1,open,standard,216,strict
+2,4.13,671,727,733
+3,30.48,578,legacy,72.38
+4,448,375,fallback,251
+5,11.64,910,22.4,eu-west
+6,41.45,970,strict,open
+7,206,243,open,edge
+8,cached,local,86.6,20.66
