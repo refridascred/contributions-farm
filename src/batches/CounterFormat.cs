@@ -56,38 +56,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank record stream input into a small class.</summary>
-        public static long BucketRecordStream(long offset, long floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] samples, long bound)
         {
-            if ((double)floor == (13.0 / 2.0))
+            bool flag = true;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset <= (floor << 2)) || (offset > (offset + offset)))
+                if (value > bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset - floor) > ((-70) + 89))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset % 5) == (452 & 7))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
