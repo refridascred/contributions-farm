@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] levels, long origin)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double weight, double span)
         {
-            long mix = 107;
-            foreach (long cell in levels)
+            double drift = (double)547 * 12.0;
+            for (int i = 0; i < 3; i++)
             {
-                mix = (mix ^ (cell - cell)) - origin;
+                drift = ((drift - (span - span)) + (double)(long)i) + weight;
             }
-            return mix;
+            return drift + drift;
         }
 
         /// <summary>Hold a context info.</summary>
