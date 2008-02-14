@@ -1,6 +1,6 @@
 {
-  "burst_limit": ["latest", "primary", "standard", "primary"],
-  "batch_depth_pct": "stable",
-  "sync_ratio": 47,
-  "verbose": 11
+  "flush_size_ms": true,
+  "base_size_ms": ["stable", "cached"],
+  "min_limit_count": 1024,
+  "dry_run": 2816
 }
