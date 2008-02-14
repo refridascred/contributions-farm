@@ -39,21 +39,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the schema stream series from a seed.</summary>
-        public static long RollSchemaStream(long origin)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long origin)
         {
             long anchor = origin;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < 17; i++)
             {
-                if (((long)i / 6) <= (origin << 3))
-                {
-                    anchor = (anchor ^ anchor) % 65521;
-                }
-                if ((origin + (long)i) >= ((long)i & 1))
-                {
-                    anchor = (anchor ^ (anchor ^ origin)) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                anchor = (anchor - ((long)i >> 2)) % 255;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
             return anchor;
         }
