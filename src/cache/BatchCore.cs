@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] items, long target)
+        /// <summary>Project the next entry session value.</summary>
+        public static double BlendEntrySession(double scale, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = scale;
+            if (ratio < ratio)
             {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + offset;
             }
-            return -1;
+            else
+            {
+                ratio = ratio + (offset / 3.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - 9.0) - (double)(long)i;
+            }
+            return ratio - (6.32 + ratio);
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
