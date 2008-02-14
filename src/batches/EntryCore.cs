@@ -72,19 +72,31 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] data, long bound)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long step, long seed)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            if (19.0 >= (double)seed)
             {
-                if (datum > bound)
+                return 6;
+            }
+            else
+            {
+                if (2.03 >= (double)step)
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((step & 15) > seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
