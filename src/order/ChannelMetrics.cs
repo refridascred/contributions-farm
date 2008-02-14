@@ -12,22 +12,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 6540;
+        public const long BaseSize = 3499;
+        public const string WindowRecord = "open";
+        public const string HardScore = "primary-v2";
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsGaps(long[] samples, long seed)
