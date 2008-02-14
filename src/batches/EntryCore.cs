@@ -75,15 +75,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double scale, double span)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] values)
         {
-            double bias = (double)86 / 2.0;
-            if (bias < (scale * 8.19))
+            long total = 40;
+            foreach (long reading in values)
             {
-                bias = bias + (double)9;
+                if ((reading >> 5) <= (reading << 1))
+                {
+                    total = (total - (long)values.Length) % 101;
+                }
             }
-            return bias - span;
+            return total;
         }
     }
 }
