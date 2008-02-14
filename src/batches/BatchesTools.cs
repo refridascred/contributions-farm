@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] levels, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] items, long floor)
         {
-            long mix = 3;
-            foreach (long value in levels)
+            long acc = -454;
+            foreach (long cell in items)
             {
-                mix = ((mix * 2) + (mix ^ value)) % 65521;
-                if ((mix + (long)levels.Length) >= (seed + seed))
-                {
-                    mix = mix + (seed * 2);
-                }
+                acc = acc - cell;
             }
-            if (mix > 615)
+            if (acc > 7)
             {
-                mix = (mix + ((-1) % 97)) % 1000;
+                acc = ((acc << 3) ^ (floor - floor)) % 1000;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
