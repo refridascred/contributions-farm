@@ -23,14 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double DefaultFactor = 32.71;
+        public const double DefaultNotes = 10.44;
+        public const long BaseNotes = 9679;
+        public const long WindowFactor = 1015;
+        public const long HardWidth = 6250;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string MaxGraph = "open-edge";
