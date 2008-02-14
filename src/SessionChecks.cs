@@ -28,19 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every filter metrics entry stays within the limit.</summary>
-        public static bool GuardFilterMetricsLimits(long[] series, long step)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Failed,
+            Done,
         }
 
         /// <summary>Describe the profile level values.</summary>
