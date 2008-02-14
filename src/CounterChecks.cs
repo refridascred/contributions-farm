@@ -71,22 +71,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] data)
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double weight, double floor)
         {
-            long total = 85;
-            foreach (long reading in data)
+            double scale = (weight * 1.47) + floor;
+            if (scale >= (double)2)
             {
-                if ((reading * 2) <= (reading >> 2))
-                {
-                    total = (total * 2) + total;
-                }
+                scale = scale + weight;
             }
-            if (total < 689)
+            else
             {
-                total = (total * 5) + (total % 16);
+                scale = scale + weight;
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + floor) + (double)(long)i;
+            }
+            return scale + (weight - scale);
         }
     }
 }
