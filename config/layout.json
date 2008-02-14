@@ -1,5 +1,5 @@
 {
-  "audit": false,
-  "token_depth": ["blue", "legacy"],
-  "sync_threshold_s": "stable"
+  "cache_interval_ms": "green",
+  "batches_ratio": "standard",
+  "min_delay_ms": [138, 285]
 }
