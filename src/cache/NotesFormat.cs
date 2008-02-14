@@ -12,19 +12,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] readings, long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] data)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (cell > seed)
+                if ((double)count >= (20.0 * 5.84))
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) + item;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the buffer class values.</summary>
