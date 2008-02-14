@@ -16,15 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long origin)
+        /// <summary>Audit context filter readings against a rule.</summary>
+        public static long CountContextFilterHits(long[] values)
         {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (((2.65 / 7.0) < (double)seen) && (4.2 <= (double)seen))
+                {
+                    seen = (seen + 1) - reading;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Grade a tools payload value against two limits.</summary>
