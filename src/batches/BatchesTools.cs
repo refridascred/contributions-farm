@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultSize = "latest-edge";
-        public const string MaxCommand = "strict-edge";
-        public const string LimitCommand = "open-edge";
-        public const long WindowCommand = 1982;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((anchor - 193) > (target >> 5)) || ((double)target >= 7.3))
+                {
+                    anchor = anchor + ((-556) + target);
+                    break;
+                }
+                else
+                {
+                    anchor = anchor + (61 + 274);
+                }
+                if (((long)i & 1) < anchor)
+                {
+                    anchor = (anchor + target) % 65521;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowOutliers(long[] samples, long floor)
