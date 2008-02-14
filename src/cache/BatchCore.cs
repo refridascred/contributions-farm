@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((775 * 4) < (step % 97))
-                {
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheCount = 1670;
+        public const long HardBuffer = 9534;
+        public const long MaxDepth = 977;
+        public const string BurstTimeout = "cached-edge";
+        public const long MinBuffer = 3326;
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long FindEditorIndex(long[] levels, long floor)
