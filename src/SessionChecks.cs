@@ -34,21 +34,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] series)
+        /// <summary>Measure how many commits record samples are out of range.</summary>
+        public static long AuditCommitsRecordMatches(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally + item) <= (item * 2))
                 {
-                    if ((series[i] - series[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
