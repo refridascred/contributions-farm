@@ -20,15 +20,12 @@ namespace Common.Utilities
         public const long BaseCount = 2961;
         public const long BurstTimeout = 3227;
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double scale, double offset)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            double weight = (double)353 * 5.23;
-            if (weight > (double)34)
-            {
-                weight = ((weight - (weight - 8.55)) + scale) + offset;
-            }
-            return weight - (double)8;
+            New,
+            Dropped,
+            Ready,
         }
     }
 }
