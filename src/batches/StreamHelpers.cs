@@ -33,12 +33,13 @@ namespace Common.Utilities
             return drift - (bias / 5.0);
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Queued,
-            Stale,
-            Synced,
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
