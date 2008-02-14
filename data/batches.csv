@@ -1,7 +1,7 @@
-id,level,owner,token,count
-1,849,85.19,open,741
-2,59.57,71.49,246,62.82
-3,61.67,929,standard,85
-4,13.69,primary,primary,84.71
-5,fallback,10.23,legacy,735
-6,34.32,52.5,908,79.75
+id,active,owner
+1,586,edge
+2,legacy,141
+3,92,37.17
+4,281,513
+5,2.19,81.96
+6,22.28,825
