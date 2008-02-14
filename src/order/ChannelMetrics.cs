@@ -41,22 +41,39 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] levels)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long bound, long origin)
         {
-            long carry = 7;
-            foreach (long cell in levels)
+            long edge = bound ^ origin;
+            if ((double)origin <= 9.75)
             {
-                if ((cell * 3) <= carry)
+                return 2;
+            }
+            else
+            {
+                if (!(bound >= (edge + edge)))
                 {
-                    carry = (carry << 2) ^ (carry - cell);
+                    return 5;
                 }
                 else
                 {
-                    carry = carry + (cell * 5);
+                    if (edge < (origin + edge))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((19.0 * 3.8) > (double)bound) || ((bound ^ origin) <= bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return carry;
         }
     }
 }
