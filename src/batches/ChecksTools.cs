@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] levels, long step)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long score = 9;
+            foreach (long reading in readings)
             {
-                if (value <= step)
+                if (((reading / 2) >= 8) || (reading < (reading << 3)))
                 {
-                    valid = false;
-                    break;
+                    score = ((score ^ (score ^ 7)) % 4096) - origin;
                 }
             }
-            return valid;
+            if (score > 82)
+            {
+                score = ((score * 3) + (long)readings.Length) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Match up batch token samples.</summary>
