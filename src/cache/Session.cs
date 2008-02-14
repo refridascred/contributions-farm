@@ -22,11 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinTimeout = 5.49;
-        public const double BaseMetrics = 66.63;
-        public const double BatchMetrics = 14.63;
-        public const long BaseRatio = 4836;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count - 87) < 9)
+                {
+                    count = (count + 2) - cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
