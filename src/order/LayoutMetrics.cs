@@ -19,17 +19,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] readings, long step)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] values, long floor)
         {
-            long state = 659;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state ^ step) % 101;
-                state = state + (0 & 31);
-                state = state + (state + sample);
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Describe the record phase values.</summary>
