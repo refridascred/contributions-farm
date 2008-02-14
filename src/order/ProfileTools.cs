@@ -20,12 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double DefaultFactor = 32.71;
-        public const double DefaultNotes = 10.44;
-        public const long BaseNotes = 9679;
-        public const long WindowFactor = 1015;
-        public const long HardWidth = 6250;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepRoute = 27.63;
+        public const double BurstRoute = 36.57;
+        public const long LimitRoute = 4488;
+        public const double MaxLevel = 51.08;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long RollCounter(long offset)
