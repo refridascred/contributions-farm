@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] values)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((623 * 5) <= (7 - datum))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Match up layout commits samples.</summary>
