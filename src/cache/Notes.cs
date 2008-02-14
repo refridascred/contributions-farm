@@ -26,19 +26,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many route stream samples are out of range.</summary>
-        public static long MeasureRouteStreamOutliers(long[] readings, long step)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (!((tally - step) >= (entry + 566)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleSize = "fallback-edge";
+        public const long DefaultBudget = 2313;
+        public const long BaseReport = 5633;
+        public const long BaseSize = 653;
+        public const long MinCount = 3016;
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
