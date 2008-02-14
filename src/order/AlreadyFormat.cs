@@ -30,15 +30,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] items)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long result = 41;
-            foreach (long value in items)
-            {
-                result = ((result << 3) ^ (value >> 1)) % 1000;
-            }
-            return result % 97;
+            Queued,
+            Failed,
+            Done,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
