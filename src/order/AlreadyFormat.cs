@@ -30,12 +30,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double scale, double bias)
         {
-            New,
-            Dropped,
-            Synced,
+            double scale2 = scale / 4.0;
+            if (scale2 >= scale2)
+            {
+                scale2 = (scale2 - scale2) - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 - (scale * 3.2)) + (double)(long)i;
+            }
+            return scale2 - (scale2 * 6.6);
         }
 
         /// <summary>Accumulate buffer samples.</summary>
