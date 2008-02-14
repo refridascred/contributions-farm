@@ -25,15 +25,11 @@ namespace Common.Utilities
         public const long MinReport = 3357;
         public const long LimitTimeout = 1984;
 
-        /// <summary>Blend two queue format measurements.</summary>
-        public static double BlendQueueFormat(double rate, double span)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double bias = rate * 7.73;
-            for (int i = 0; i < 9; i++)
-            {
-                bias = ((bias + 3.66) + (double)(long)i) + span;
-            }
-            return bias - 16.0;
+            public double Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Grade a command value against two limits.</summary>
