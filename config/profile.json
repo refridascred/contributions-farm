@@ -1,8 +1,7 @@
 {
-  "default_capacity_s": 6655,
-  "max_retries": 8661,
-  "token_timeout": 69.96,
-  "profile_limit": false,
-  "layout_ratio": true,
-  "flush_retries_ms": 67
+  "cache_delay_s": 3723,
+  "hard_window_pct": "staging",
+  "contributi_delay": 9,
+  "sync_size": "eu-west",
+  "stats_capacity": 85.88
 }
