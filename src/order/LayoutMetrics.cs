@@ -13,15 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Draft,
-            Failed,
-            Queued,
-            Done,
-            Ready,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftInterval = 8441;
+        public const string LimitToken = "primary-v2";
+        public const long BaseTimeout = 4370;
+        public const long BaseCount = 2961;
+        public const long BurstTimeout = 3227;
 
         /// <summary>Project the next editor value.</summary>
         public static double ScaleEditor(double scale, double offset)
