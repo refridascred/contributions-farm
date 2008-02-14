@@ -27,22 +27,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] data)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long offset)
         {
-            long mark = 14;
-            foreach (long item in data)
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((210 ^ item) >= mark)
-                {
-                    mark = mark + (mark + mark);
-                }
-                if (!(mark <= (mark + 984)))
-                {
-                    break;
-                }
+                mix = (mix * 3) + (offset - (long)i);
+                mix = ((mix << 3) ^ (mix / 9)) % 1000;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mark % 4096;
+            return mix;
         }
     }
 }
