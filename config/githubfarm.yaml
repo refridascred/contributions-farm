@@ -1,5 +1,11 @@
 # githubfarm settings
-window_window: 1024
-poll_window: 36
-default_ttl: 52.54
-enabled: false
+batch_threshold_ms: true
+githubfarm_ratio: true
+batch_size_s: standard
+burst_retries:
+  - 308
+  - 177
+batch_retries_pct: 5672
+verbose:
+  - 416
+  - 471
