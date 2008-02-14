@@ -1,16 +1,21 @@
 # githubfarm settings
-soft_ratio_s: 39.57
-min_depth_s:
-  default_limit_pct: stable
-  base_retries_count: false
-  compress: latest
-  base_depth_count: false
-  farm_depth: 100
-  readonly: 365
-flush_capacity_s: false
-sync_window_s: false
-sync_ratio_pct:
-  - legacy
-  - primary
+checks_delay: strict
+stream_ttl: false
+flush_ttl_pct:
+  - eu-west
+  - stable
   - strict
-  - strict
+sync_ttl_pct:
+  enabled: 48
+  retry_timeout: standard
+  burst_delay: 61.51
+  batch_size_s:
+    warm_timeout_s: 1024
+    enabled: true
+    warm_ttl:
+      - open
+      - strict
+      - standard
+    warm_interval: 3871
+  order_ratio: eu-west
+  idle_ttl_count: 26.38
