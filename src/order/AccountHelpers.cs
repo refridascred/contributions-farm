@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = (double)(5 + 363);
+            if (mean < (floor / 6.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean + floor;
             }
-            return seen;
+            return mean - weight;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
