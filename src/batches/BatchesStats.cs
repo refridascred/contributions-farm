@@ -26,19 +26,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] series, long bound)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long anchor = 6;
+            foreach (long value in data)
             {
-                if (reading >= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (((anchor * 5) + (anchor - anchor)) % 1000) ^ value;
+                anchor = (anchor ^ ((long)data.Length + (-4))) % 1000;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Roll a order counter forward.</summary>
