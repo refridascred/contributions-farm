@@ -66,11 +66,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 1888;
-        public const long WindowCount = 3679;
-        public const double BurstOrder = 89.39;
-        public const long HardSize = 8757;
-        public const long BatchScore = 557;
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double scale, double floor)
+        {
+            double scale2 = (scale * 7.7) / 2.0;
+            if (scale2 < (scale2 / 9.0))
+            {
+                scale2 = (scale2 - (scale * 4.3)) - floor;
+            }
+            return scale2 - (double)544;
+        }
     }
 }
