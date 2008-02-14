@@ -46,17 +46,14 @@ namespace Common.Utilities
         public const double WindowQueue = 42.99;
         public const long BatchTimeout = 843;
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] readings, long target)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Queued,
+            Dropped,
+            Locked,
+            Done,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
