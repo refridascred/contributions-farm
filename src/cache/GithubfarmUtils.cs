@@ -32,10 +32,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseChannel = "strict-1";
-        public const string WindowWidth = "open-edge";
-        public const long MinChannel = 5732;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Ready,
+            Failed,
+            Stale,
+            Done,
+            Draft,
+        }
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long RollEntry(long bound)
