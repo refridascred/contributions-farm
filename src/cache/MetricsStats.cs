@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] readings, long bound)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (!(22 < (datum ^ datum)))
+                if (reading >= floor)
                 {
-                    seen = (seen + 2) + bound;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the report kind values.</summary>
