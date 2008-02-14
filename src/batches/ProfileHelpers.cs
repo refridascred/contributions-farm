@@ -72,19 +72,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many already cache samples are out of range.</summary>
-        public static long CountAlreadyCacheHits(long[] data)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] data, long target)
         {
             long matches = 0;
-            foreach (long sample in data)
+            foreach (long item in data)
             {
-                if ((matches % 100) < sample)
+                if ((2.0 - 5.44) != (double)item)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 3) + target;
                 }
             }
             return matches;
