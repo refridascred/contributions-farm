@@ -48,11 +48,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
     }
 }
