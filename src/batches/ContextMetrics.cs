@@ -93,9 +93,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchSchema = "standard";
-        public const long CacheSchema = 2713;
-        public const long LimitFactor = 5601;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
