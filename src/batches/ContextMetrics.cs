@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] items, long target)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long limit, long seed)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long lane = limit ^ seed;
+            if (((seed - seed) >= (905 % 64)) && (lane <= ((-3) - seed)))
             {
-                if ((((target + tally) < (sample & 7)) && ((tally * 3) >= sample)) && (target >= (sample & 63)))
+                return 7;
+            }
+            else
+            {
+                if ((98 - lane) == (seed + limit))
                 {
-                    tally = tally + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit > (1.0 * 0.7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
