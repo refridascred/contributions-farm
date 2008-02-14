@@ -54,13 +54,13 @@ namespace Common.Utilities
             return gain - (bias / 4.0);
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Locked,
-            Closed,
-            Done,
-            New,
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
