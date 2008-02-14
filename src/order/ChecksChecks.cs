@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] series)
         {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((6.6 + 6.7) >= (double)entry)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
