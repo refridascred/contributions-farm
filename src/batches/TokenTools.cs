@@ -19,24 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] items, long seed)
+        /// <summary>Measure how many buffer notes samples are out of range.</summary>
+        public static long AuditBufferNotesHits(long[] series, long seed)
         {
-            long score = 9;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (((score >> 1) >= (score % 12)) && (item <= (item + 70)))
+                if (seed < hits)
                 {
-                    score = ((score << 3) ^ (seed * 3)) % 4096;
-                    score = score ^ (39 & 255);
+                    hits = (hits + 1) - cell;
                 }
-                score = score ^ (item * 5);
             }
-            if (score < 318)
-            {
-                score = score - (seed >> 4);
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
