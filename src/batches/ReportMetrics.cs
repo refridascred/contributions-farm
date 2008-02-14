@@ -31,13 +31,12 @@ namespace Common.Utilities
         public const long StepTimeout = 956;
         public const double BaseSpan = 64.52;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
             Stale,
-            New,
-            Draft,
-            Ready,
+            Queued,
+            Paused,
         }
     }
 }
