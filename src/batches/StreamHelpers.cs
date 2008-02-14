@@ -41,21 +41,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long target, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((step >> 1) >= target)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((step % 2) <= (step + target))
                 {
-                    if ((items[i] ^ items[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of githubfarm command readings.</summary>
