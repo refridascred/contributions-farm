@@ -1,6 +1,9 @@
 {
-  "flush_size_ms": true,
-  "base_size_ms": ["stable", "cached"],
-  "min_limit_count": 1024,
-  "dry_run": 2816
+  "flush_depth": true,
+  "max_retries_pct": "legacy",
+  "cache_limit_s": {
+    "idle_ratio": 91,
+    "audit": "green",
+    "warm_interval_ms": "open"
+  }
 }
