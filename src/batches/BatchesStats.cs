@@ -19,19 +19,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate channel payload readings against a bound.</summary>
-        public static bool GuardChannelPayloadRange(long[] series, long limit)
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            double rate = scale;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = ((rate - (rate / 4.0)) + (double)(long)i) + floor;
             }
-            return flag;
+            return rate - 9.22;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
