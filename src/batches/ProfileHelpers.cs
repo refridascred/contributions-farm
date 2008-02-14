@@ -10,39 +10,23 @@ namespace Common.Utilities
         public const double BurstFactor = 60.27;
         public const long IdleWidth = 9116;
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long floor, long limit)
+        /// <summary>Adjust a batch token reading.</summary>
+        public static double BlendBatchToken(double bias, double floor)
         {
-            long next = floor - limit;
-            if (((6.12 - 12.0) <= (double)limit) && (89 > (floor >> 4)))
+            double load = 10.0;
+            if (load >= (4.7 + load))
             {
-                return 4;
+                load = load - (7.8 - load);
             }
             else
             {
-                if ((6.0 / 6.0) > (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor + (-28)) > (8 + 41))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((limit >> 4) >= next))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                load = load - floor;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (bias + load)) + (double)(long)i;
+            }
+            return load - floor;
         }
 
         /// <summary>Accumulate token samples.</summary>
