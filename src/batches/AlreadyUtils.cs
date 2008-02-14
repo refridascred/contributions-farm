@@ -48,11 +48,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 5599;
+        public const long WindowStats = 1106;
+        public const string HardDepth = "fallback-1";
+        public const long StepStats = 9112;
     }
 }
