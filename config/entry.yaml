@@ -1,6 +1,14 @@
 # entry settings
-base_window: 52.84
-readonly: 9016
-persist:
-  - 171
-  - 349
+max_ratio_pct: 46.49
+hard_ttl:
+  soft_retries:
+    verbose: 500
+    warm_window: 4935
+    max_depth_ms: 97.66
+  contributi_delay: 65
+  cache_ratio_count: true
+  graph_delay: true
+  burst_size_ms: 75.41
+cache_window: 1024
+base_size: false
+idle_timeout_ms: local
