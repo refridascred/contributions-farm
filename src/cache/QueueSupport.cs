@@ -25,18 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload farm readings against a rule.</summary>
-        public static long TallyPayloadFarmHits(long[] items)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (!!((double)datum < (double)seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
