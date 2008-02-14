@@ -20,24 +20,25 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long offset, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
+            long lane = offset + bound;
+            if ((7.1 < (double)bound) && ((lane / 3) > (lane + lane)))
             {
-                sum = (sum + (floor - 248)) % 4096;
-                if ((8 + sum) >= (floor - 380))
+                return 0;
+            }
+            else
+            {
+                if ((bound + bound) <= (737 + 59))
                 {
-                    sum = sum ^ (864 + floor);
+                    return 6;
                 }
                 else
                 {
-                    sum = sum + (sum % 100);
+                    return 1;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
