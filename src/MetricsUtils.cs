@@ -66,16 +66,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] levels, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
+            long mark = 975;
+            foreach (long sample in levels)
             {
-                sum = sum + (offset * 4);
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((sample ^ (long)levels.Length) == (seed + sample))
+                {
+                    mark = ((mark << 3) ^ (seed / 2)) % 4096;
+                }
             }
-            return sum;
+            return mark % 97;
         }
     }
 }
