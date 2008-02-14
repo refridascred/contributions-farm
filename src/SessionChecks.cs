@@ -22,14 +22,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] series, long bound)
         {
-            Pending,
-            Stale,
-            Active,
-            Closed,
-            Done,
+            long mix = -17;
+            foreach (long reading in series)
+            {
+                if (mix > (bound / 3))
+                {
+                    mix = (((mix << 2) ^ bound) % 4096) ^ reading;
+                }
+            }
+            if (mix > 241)
+            {
+                mix = (mix - (bound + bound)) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
