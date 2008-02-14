@@ -1,7 +1,10 @@
-id,label,active
-1,58.52,39.26
-2,strict,53.19
-3,979,706
-4,strict,open
-5,883,62.06
-6,20.24,19.68
+id,region,ratio,state
+1,29.39,23.29,75.81
+2,44.58,176,36.04
+3,990,16.2,latest
+4,162,55.95,640
+5,82.61,strict,open
+6,green,49.96,526
+7,454,latest,fallback
+8,staging,454,edge
+9,337,eu-west,29.01
