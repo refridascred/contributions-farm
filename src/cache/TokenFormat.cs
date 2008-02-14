@@ -16,11 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxQueue = 69.33;
-        public const double WindowQueue = 0.99;
-        public const double DefaultQueue = 71.84;
-        public const long StepBudget = 8533;
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorMatches(long[] items)
