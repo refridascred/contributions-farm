@@ -28,10 +28,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftAlready = "latest-1";
-        public const string LimitAlready = "local-edge";
-        public const string StepInterval = "fallback";
-        public const long RetryAlready = 6809;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
