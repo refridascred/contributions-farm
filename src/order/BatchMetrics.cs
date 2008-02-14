@@ -52,13 +52,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long target)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] levels)
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
+            long carry = 2;
+            foreach (long datum in levels)
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                carry = (carry << 3) ^ (datum % 8);
+            }
+            if (carry > 19)
+            {
+                carry = (carry + (carry >> 5)) % 4096;
             }
             return carry;
         }
