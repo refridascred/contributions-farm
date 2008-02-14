@@ -19,17 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] samples, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 23;
+            foreach (long datum in data)
             {
-                if ((samples[i] < limit) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((((result * 4) + result) % 97) ^ datum) + offset;
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Describe the filter phase values.</summary>
