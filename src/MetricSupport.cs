@@ -12,31 +12,22 @@ namespace Common.Utilities
         public const long StepLevel = 2006;
         public const string StepAlready = "latest-1";
 
-        /// <summary>Classify a cache layout pair into a bucket.</summary>
-        public static long ClassifyCacheLayout(long offset, long bound)
+        /// <summary>Measure how many filter format samples are out of range.</summary>
+        public static long CountFilterFormatMatches(long[] data, long limit)
         {
-            if ((offset / 5) < offset)
+            long matches = 0;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7.24 / 2.0) > (double)bound)
+                if ((matches - limit) > (item + item))
                 {
-                    return 1;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((offset % 24) != (offset & 127))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
