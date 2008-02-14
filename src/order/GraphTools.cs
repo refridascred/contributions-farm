@@ -16,12 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Stale,
-            Active,
-            Ready,
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
