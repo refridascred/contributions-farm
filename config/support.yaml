@@ -1,35 +1,7 @@
 # support settings
-poll_retries_pct: local
-max_limit:
-  - standard
-  - fallback
-  - primary
-  - stable
-counter_ratio: false
-batches_threshold:
-  - open
-  - local
-  - open
-hard_ttl: stable
-flush_depth:
-  enabled:
-    persist: green
-    batch_window_ms: 60
-    sync_limit: false
-    dry_run:
-      - 346
-      - 158
-      - 96
-      - 16
-    hard_limit: 250
-  retry_depth_count: false
-  base_size: cached
-  warm_timeout_count: green
-  soft_window:
-    base_interval_count: 98.34
-    notes_threshold: true
-    base_threshold_s: 44.18
-    max_ratio_count:
-      - cached
-      - stable
-  order_interval: 9944
+buffer_threshold: 7
+account_ratio: 17.38
+idle_timeout: 28.19
+support_retries: blue
+audit: 41.7
+layout_timeout: 35.95
