@@ -30,39 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long bound, long target)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long origin)
         {
-            long cur = bound - target;
-            if (((double)cur == (double)target) && ((double)bound != (double)(-492)))
+            long result = origin;
+            for (int i = 0; i < 11; i++)
             {
-                return 4;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((bound * 5) >= (bound ^ target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (target <= cur)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(target > (0 + target)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return result;
         }
     }
 }
