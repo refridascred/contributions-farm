@@ -32,12 +32,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Paused,
-            Stale,
-            Done,
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the editor kind values.</summary>
