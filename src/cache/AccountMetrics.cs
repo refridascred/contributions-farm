@@ -103,11 +103,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next entry schema value.</summary>
-        public static double ProjectEntrySchema(double weight, double floor)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double gain = 13.0;
-            return ((gain - (double)287) + weight) + floor;
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
