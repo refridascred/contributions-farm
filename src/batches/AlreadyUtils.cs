@@ -25,23 +25,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] data)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long carry = 0;
-            foreach (long value in data)
-            {
-                carry = carry + (value + value);
-                if ((39 + carry) < 593)
-                {
-                    break;
-                }
-            }
-            if (carry < 77)
-            {
-                carry = (carry << 3) ^ (carry >> 2);
-            }
-            return carry % 4096;
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the format level values.</summary>
