@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a format layout counter forward.</summary>
-        public static long IterateFormatLayout(long seed)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] data, long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 3) + ((long)i ^ 266)) % 101;
-                sum = ((sum * 3) + (long)i) % 97;
+                if ((data[i] > target) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
