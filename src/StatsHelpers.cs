@@ -68,14 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
-        {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 2597;
+        public const string BaseCount = "latest-v2";
+        public const double DefaultSchema = 58.6;
+        public const string HardBudget = "stable";
+        public const string LimitSchema = "stable-1";
 
         /// <summary>Scale a report account figure with a bias.</summary>
         public static double SmoothReportAccount(double weight, double offset)
