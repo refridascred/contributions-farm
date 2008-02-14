@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleAlready = 85.65;
+        public const double WindowAlready = 39.58;
+        public const long LimitAlready = 9193;
+        public const long StepLevel = 2006;
+        public const string StepAlready = "latest-1";
 
         /// <summary>Classify a cache layout pair into a bucket.</summary>
         public static long ClassifyCacheLayout(long offset, long bound)
