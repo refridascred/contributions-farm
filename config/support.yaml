@@ -1,11 +1,18 @@
 # support settings
-audit: 2148
-warm_timeout_ms: true
-layout_interval: 6238
-hard_timeout_ms: false
-sync_window_s:
-  farm_limit: true
-  max_threshold_pct: 70.14
-  hard_limit_pct: green
-  queue_window: true
-  soft_ttl: 1024
+burst_threshold_s:
+  - open
+  - eu-west
+  - strict
+  - cached
+flush_ratio:
+  batch_window:
+    - 424
+    - 336
+    - 183
+    - 55
+  min_size_ms: 1024
+  order_capacity: 2.94
+editor_size: latest
+audit: green
+flush_size_count: open
+enabled: latest
