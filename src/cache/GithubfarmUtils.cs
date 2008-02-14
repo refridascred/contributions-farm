@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] series)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)tally <= (6.0 - 8.3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 1) - reading;
+                    if ((data[i] + data[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
