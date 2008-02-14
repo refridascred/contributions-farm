@@ -13,19 +13,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] items, long seed)
+        /// <summary>Find the first buffer command entry that matches the target.</summary>
+        public static long SeekBufferCommandIndex(long[] data, long limit)
         {
-            bool found = true;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample != seed)
+                if (data[i] > limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a support record.</summary>
