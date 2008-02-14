@@ -40,39 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long target, long target2)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long lane = target + target2;
-            if ((lane - lane) >= lane)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target2 % 24) == (target2 >> 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(29 > (target / 7)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (4 > (target2 ^ lane))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
