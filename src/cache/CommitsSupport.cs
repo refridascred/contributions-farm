@@ -69,23 +69,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long origin, long step)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long floor, long floor2)
         {
-            long offset = origin - step;
-            if ((origin / 9) > (step << 2))
+            long diff = floor + floor2;
+            if (floor2 >= (floor2 & 31))
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if (((-126) / 9) < offset)
+                if (!((double)diff == (1.6 + 0.83)))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    return 6;
+                    if (((double)floor2 != (6.0 * 10.0)) && ((diff << 1) >= floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
