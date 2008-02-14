@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] series, long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 25;
+            foreach (long value in readings)
             {
-                if (series[i] < step)
+                mark = (mark * 4) + (value * 5);
+                if ((double)mark < (double)value)
                 {
-                    return (long)i;
+                    mark = (mark << 3) ^ (mark << 2);
+                }
+                else
+                {
+                    mark = (mark * 5) + (value % 8);
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a commits stats.</summary>
