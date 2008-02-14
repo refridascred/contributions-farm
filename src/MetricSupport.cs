@@ -32,38 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long offset, long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] items, long target)
         {
-            if ((offset >> 2) < (limit + offset))
+            bool ready = true;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset >> 3) <= (limit + offset))
+                if (item <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + limit) <= (offset + limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((906 - offset) != (limit - offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define command limits and defaults.</summary>
