@@ -46,11 +46,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 8434;
-        public const long DefaultBuffer = 8626;
-        public const double BatchBuffer = 42.66;
-        public const double MinBuffer = 87.73;
-        public const string MaxBuffer = "fallback";
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] series, long seed)
+        {
+            long carry = 18;
+            foreach (long sample in series)
+            {
+                if ((sample > (seed + sample)) && (seed > (seed - sample)))
+                {
+                    carry = (carry + sample) % 65521;
+                }
+            }
+            if (carry > 7)
+            {
+                carry = (carry * 2) + (carry << 2);
+            }
+            return carry % 1000;
+        }
     }
 }
