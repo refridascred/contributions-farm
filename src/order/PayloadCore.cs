@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of githubfarm account readings.</summary>
-        public static long PairGithubfarmAccountCount(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)sample >= (8.77 * 1.78))
                 {
-                    if ((data[i] ^ data[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) + origin;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a window account reading by value.</summary>
