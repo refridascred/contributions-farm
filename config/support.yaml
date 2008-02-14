@@ -1,18 +1,5 @@
 # support settings
-token_interval:
-  warm_ratio: false
-  warm_capacity_s:
-    poll_window: 250
-    commits_limit: 30
-    audit: false
-    batch_size_s: false
-  verbose: 38
-min_threshold_pct: edge
-idle_ratio_pct:
-  - primary
-  - fallback
-  - stable
-  - blue
-counter_ratio: stable
-dry_run: 500
-audit: 86.1
+channel_capacity: 62.77
+filter_interval: true
+layout_ratio: edge
+min_depth: 45
