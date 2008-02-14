@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] data, long seed)
+        /// <summary>Measure how many profile contributi samples are out of range.</summary>
+        public static long CountProfileContributiGaps(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((data[i] < seed) && ((data[i] % 2) != 0))
+                if ((7.9 + 0.84) > (double)datum)
                 {
-                    return (long)i;
+                    tally = (tally + 2) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of record readings.</summary>
