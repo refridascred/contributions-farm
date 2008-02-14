@@ -22,39 +22,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long origin, long limit)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long diff = origin ^ limit;
-            if ((diff - limit) >= origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((diff % 7) > (limit + 8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((1.78 * 2.0) != (double)diff)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin / 6) > (origin >> 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Stale,
+            Active,
+            Closed,
+            Done,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
