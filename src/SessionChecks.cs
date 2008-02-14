@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Derive the next queue account value from a seed.</summary>
+        public static long IterateQueueAccount(long seed)
         {
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
+            long score = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((long)i * 3) >= ((long)i - score))
+                {
+                    score = ((score * 4) + ((long)i + 3)) % 4096;
+                }
+                score = score ^ (seed << 3);
+                score = ((score << 2) ^ (seed ^ (long)i)) % 65521;
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
