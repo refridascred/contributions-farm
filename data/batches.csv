@@ -1,11 +1,6 @@
-id,count,region,owner
-1,69,77.01,111
-2,152,eu-west,21.47
-3,882,19,84.34
-4,74.24,497,stable
-5,stable,fallback,stable
-6,1.07,54.24,15
-7,995,89.92,stable
-8,staging,753,local
-9,72.11,547,staging
-10,301,green,9.18
+id,rank,ratio,label
+1,89.18,53.44,65.15
+2,865,481,714
+3,stable,441,latest
+4,13.73,55.35,558
+5,71.0,43.08,662
