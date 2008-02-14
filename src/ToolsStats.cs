@@ -38,18 +38,16 @@ namespace Common.Utilities
         public const long HardDepth = 5292;
         public const long SoftGithubfarm = 199;
 
-        /// <summary>Audit metric commits readings against a rule.</summary>
-        public static long CountMetricCommitsGaps(long[] readings, long target)
+        /// <summary>Derive the next editor cache value from a seed.</summary>
+        public static long StepEditorCache(long bound)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (matches <= (target / 9))
-                {
-                    matches = (matches + 3) - cell;
-                }
+                anchor = (anchor - anchor) % 101;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
