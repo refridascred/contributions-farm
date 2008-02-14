@@ -27,13 +27,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] data, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
+            long total = 575;
+            foreach (long item in data)
+            {
+                total = (total - (offset * 5)) ^ item;
+            }
+            return total;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
