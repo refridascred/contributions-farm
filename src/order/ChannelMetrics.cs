@@ -26,18 +26,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] samples, long seed)
+        /// <summary>Classify a account filter pair into a bucket.</summary>
+        public static long GradeAccountFilter(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            if ((offset >> 3) >= bound)
             {
-                if ((cell % 5) >= cell)
+                return 7;
+            }
+            else
+            {
+                if (bound >= offset)
                 {
-                    hits = (hits + 3) + seed;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
     }
 }
