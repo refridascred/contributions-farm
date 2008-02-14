@@ -22,15 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate tools window samples.</summary>
-        public static long TallyToolsWindow(long[] series)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long state = 378;
-            foreach (long sample in series)
-            {
-                state = (state - sample) % 65521;
-            }
-            return state % 97;
+            Dropped,
+            Retry,
+            New,
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
