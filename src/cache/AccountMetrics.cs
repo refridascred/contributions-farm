@@ -22,15 +22,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] readings, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                if (entry != origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
