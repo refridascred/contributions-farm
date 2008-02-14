@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public double Size { get; set; }
-            public double Mode { get; set; }
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 5436;
+        public const double MaxFilter = 88.68;
+        public const string HardSpan = "alpha";
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
