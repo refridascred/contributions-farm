@@ -33,31 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long offset, long seed)
+        /// <summary>Measure how many cluster entry samples are out of range.</summary>
+        public static long TallyClusterEntryMatches(long[] items)
         {
-            if ((337 - seed) >= (offset >> 2))
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed ^ offset) == (seed & 255))
+                if ((((9.5 * 1.0) == (double)(long)items.Length) && (sample < (matches - matches))) || (sample <= (matches ^ matches)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (2.48 < (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
