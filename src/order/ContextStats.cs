@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 6605;
-        public const double BatchFarm = 46.41;
-        public const double StepRatio = 34.69;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool ValidateBatchRange(long[] levels, long seed)
