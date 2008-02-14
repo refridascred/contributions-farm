@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] values, long origin)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((double)tally > (4.8 + 3.6))
-                {
-                    tally = ((tally + 3) + datum) - origin;
-                }
-            }
-            return tally;
+            Closed,
+            Dropped,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a farm stats.</summary>
