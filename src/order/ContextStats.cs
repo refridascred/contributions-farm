@@ -37,17 +37,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] data, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
+            long state = 56;
+            foreach (long entry in data)
             {
-                score = (score - ((long)i ^ origin)) % 255;
-                score = score - (score - origin);
-                score = ((score * 5) + (long)i) % 65521;
+                if ((entry >> 2) > (state * 5))
+                {
+                    state = ((state - (state ^ 4)) % 255) + seed;
+                }
             }
-            return score;
+            return state % 97;
         }
     }
 }
