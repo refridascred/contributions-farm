@@ -19,17 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a notes metric sample.</summary>
-        public static long LookupNotesMetricIndex(long[] data, long step)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] items, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (data[i] < step)
+                if (seen < (seen - seen))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) + item) + origin;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
