@@ -40,14 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Retry,
-            Active,
-            Dropped,
-            Queued,
             Pending,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Digest a series of context entries.</summary>
