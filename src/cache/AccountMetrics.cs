@@ -101,38 +101,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank checks report input into a small class.</summary>
-        public static long SortChecksReport(long step, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] data)
         {
-            if ((step ^ step) <= (-77))
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + 83) > floor)
+                if (seen >= (seen << 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step ^ step) == (floor - step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step < (14.0 / 5.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = (seen + 1) ^ item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
