@@ -47,24 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank schema order input into a small class.</summary>
-        public static long RankSchemaOrder(long bound, long seed)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            if (((-78) - 2) >= seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed - seed) <= (509 << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            New,
+            Idle,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Define command limits and defaults.</summary>
