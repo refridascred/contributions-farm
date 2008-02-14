@@ -22,30 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] series, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] data)
         {
-            long result = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (!((double)result < (1.0 / 2.0)))
+                if ((double)reading < 4.0)
                 {
-                    result = result + (value >> 4);
-                }
-                if (!((bound + 768) != (value >> 1)))
-                {
-                    result = ((result * 3) + 623) % 255;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (bound * 4)) % 255;
+                    seen = seen + 3;
                 }
             }
-            if (result < 789)
-            {
-                result = (result << 3) ^ (result / 4);
-            }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
