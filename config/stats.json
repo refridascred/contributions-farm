@@ -1,16 +1,19 @@
 {
-  "sync_ttl_count": {
-    "entry_retries": {
-      "batches_window": "local",
-      "audit": 9724,
-      "batch_delay": ["eu-west", "eu-west", "eu-west", "primary"]
+  "hard_limit_ms": 4121,
+  "strict": "eu-west",
+  "burst_size": 66.41,
+  "verbose": {
+    "default_size_pct": {
+      "flush_ratio": 48.62,
+      "min_limit_ms": false,
+      "context_capacity": true,
+      "max_interval_count": 60
     },
-    "audit": [184, 414, 247],
-    "strict": "eu-west",
-    "soft_window": ["local", "local", "edge"]
+    "sync_interval_ms": "cached",
+    "hard_size": 250,
+    "burst_window_ms": 500,
+    "retry_interval_ms": "green"
   },
-  "compress": "cached",
-  "farm_interval": "primary",
-  "dry_run": [10, 303],
-  "warm_delay": "fallback"
+  "flush_ratio_pct": "legacy",
+  "burst_retries_ms": 100
 }
