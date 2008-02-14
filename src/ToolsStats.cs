@@ -59,13 +59,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] readings, long offset)
         {
-            Closed,
-            Stale,
-            Synced,
-            Ready,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry >= (hits << 1)) && ((18 + offset) == (offset - offset)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
