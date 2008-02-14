@@ -1,13 +1,4 @@
 # entry settings
-flush_ttl_count: blue
-flush_capacity_ms: 25
-default_size:
-  - 438
-  - 119
-  - 493
-  - 90
-burst_depth_count: 30
-burst_delay_ms:
-  - 88
-  - 380
-  - 316
+cache_ratio_pct: green
+idle_capacity: 84.84
+retry_depth: green
