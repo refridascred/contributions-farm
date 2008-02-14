@@ -34,10 +34,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 8054;
-        public const double IdleWindow = 58.39;
-        public const long BaseRatio = 3055;
-        public const long HardWindow = 8690;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] values)
+        {
+            long state = -1;
+            foreach (long reading in values)
+            {
+                if ((989 ^ 26) < state)
+                {
+                    state = state + 7;
+                    break;
+                }
+                state = state + (state + reading);
+            }
+            return state;
+        }
     }
 }
