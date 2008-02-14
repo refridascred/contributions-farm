@@ -54,22 +54,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] readings, long step)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (((sample - sample) == (step << 2)) && (((double)sample == (5.71 / 5.0)) && ((seen - sample) > (seen + seen))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double IdleSpan = 37.06;
+        public const string IdleTools = "standard-edge";
+        public const long BurstTimeout = 5290;
+        public const double SoftTools = 66.38;
+        public const long MinTools = 1912;
     }
 }
