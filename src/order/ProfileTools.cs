@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] values)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (!((6.7 * 1.0) == (double)sample) || (((sample << 1) <= (sample * 4)) || ((sample >> 1) > 85)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
