@@ -1,17 +1,9 @@
 # githubfarm settings
-base_threshold_s: strict
-account_delay: 100
-record_timeout:
-  default_depth_count: 3254
-  flush_ttl_s: 5895
-  route_limit: true
-  session_ttl:
-    - latest
-    - open
-  report_capacity: 77.72
-  flush_ttl_count: 100
-retry_size_count:
-  - 208
-  - 259
-metrics_limit: false
-min_depth: stable
+cache_size_ms: open
+sync_timeout_ms: 21
+commits_retries: edge
+editor_threshold:
+  - 138
+  - 209
+  - 499
+  - 255
