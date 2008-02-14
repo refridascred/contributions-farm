@@ -1,12 +1,6 @@
 # support settings
-verbose:
-  - 470
-  - 211
-enabled: 60
-sync_delay: 1880
-audit: 8916
-burst_threshold:
-  hard_interval_ms: 86.05
-  persist: 72
-  counter_limit: staging
-hard_interval_count: 92
+layout_timeout: green
+strict: 88.85
+hard_ttl_s: staging
+retry_capacity_s: green
+max_timeout: 1024
