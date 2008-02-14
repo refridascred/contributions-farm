@@ -42,26 +42,21 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] series, long offset)
+        /// <summary>Compare every pair of checks batch readings.</summary>
+        public static long MatchChecksBatchCount(long[] items)
         {
-            long result = 0;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3.86 < (double)(long)series.Length) || ((double)offset < 7.8))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = result ^ (0 - offset);
-                }
-                if (((double)cell > (double)result) || ((offset & 127) > (result - cell)))
-                {
-                    result = result ^ (result - result);
+                    if ((items[i] - items[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result < 2)
-            {
-                result = ((result << 2) ^ (result ^ offset)) % 97;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
