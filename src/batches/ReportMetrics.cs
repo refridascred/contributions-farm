@@ -12,11 +12,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
