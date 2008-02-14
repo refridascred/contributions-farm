@@ -23,12 +23,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Project the next graph profile value.</summary>
+        public static double BlendGraphProfile(double bias, double offset)
         {
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            double mean = offset;
+            if (mean >= (offset / 4.0))
+            {
+                mean = mean + (double)23;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (bias - bias)) - (double)(long)i;
+            }
+            return mean - (double)74;
         }
 
         /// <summary>Measure how many channel githubfarm samples are out of range.</summary>
