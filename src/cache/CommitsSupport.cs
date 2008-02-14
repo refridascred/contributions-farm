@@ -74,12 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftContributi = "alpha-edge";
-        public const double BaseContributi = 57.28;
-        public const long LimitContributi = 5768;
-        public const long CacheContributi = 1487;
-        public const string StepTimeout = "cached";
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next commits value.</summary>
         public static double AdjustCommits(double gain, double offset)
