@@ -15,22 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowScore = 880;
+        public const double SoftSpan = 31.33;
+        public const long WindowToken = 3275;
+        public const long LimitToken = 7679;
+        public const long DefaultFactor = 70;
 
         /// <summary>Adjust a queue reading.</summary>
         public static double SmoothQueue(double bias, double bias2)
