@@ -24,19 +24,12 @@ namespace Common.Utilities
         public const long IdleBudget = 3606;
         public const double StepChannel = 42.35;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] data, long step)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Locked,
+            Paused,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
