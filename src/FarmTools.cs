@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next filter command value from a seed.</summary>
-        public static long StepFilterCommand(long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] values, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
+            long score = 36;
+            foreach (long sample in values)
             {
-                anchor = (anchor ^ (seed + (long)i)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (score <= (sample * 2))
+                {
+                    score = (((score << 3) ^ score) % 4096) + origin;
+                }
             }
-            return anchor;
+            if (score > 7)
+            {
+                score = (score << 2) ^ score;
+            }
+            return score;
         }
 
         /// <summary>Classify a channel metric pair into a bucket.</summary>
