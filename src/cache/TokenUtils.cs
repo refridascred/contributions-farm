@@ -38,17 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] values, long origin)
+        /// <summary>Project the next entry channel value.</summary>
+        public static double ScaleEntryChannel(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = (double)306 - (7.0 * 9.7);
+            if (weight < (scale / 5.0))
             {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
+                weight = weight - (bias + scale);
             }
-            return -1;
+            else
+            {
+                weight = weight - 2.5;
+            }
+            return weight - (double)8;
         }
     }
 }
