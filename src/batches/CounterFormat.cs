@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const double CacheFormat = 8.0;
         public const long SoftScore = 5375;
 
-        /// <summary>Validate context githubfarm readings against a bound.</summary>
-        public static bool ValidateContextGithubfarmLimits(long[] data, long origin)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] data, long step)
         {
-            bool found = true;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample != origin)
+                if (data[i] >= step)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
