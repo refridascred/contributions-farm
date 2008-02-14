@@ -20,12 +20,22 @@ namespace Common.Utilities
             return bias3 + (5.4 * 2.0);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftGithubfarm = "open-1";
-        public const double IdleRatio = 14.43;
-        public const long CacheGithubfarm = 389;
-        public const long WindowGithubfarm = 8083;
-        public const double HardGithubfarm = 41.1;
+        /// <summary>Count window command pairs that satisfy a relation.</summary>
+        public static long MatchWindowCommandCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
