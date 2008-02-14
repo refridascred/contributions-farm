@@ -12,13 +12,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] data, long offset)
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate queue samples.</summary>
