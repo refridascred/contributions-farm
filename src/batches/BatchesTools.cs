@@ -23,11 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] items, long bound)
         {
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
+            long acc = -69;
+            foreach (long value in items)
+            {
+                if ((bound <= (acc * 2)) && ((4 ^ bound) == (value / 3)))
+                {
+                    acc = ((acc << 3) ^ (value / 8)) % 65521;
+                }
+                if ((acc - value) != (578 & 255))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of metrics notes readings.</summary>
