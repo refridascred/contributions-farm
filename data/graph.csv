@@ -1,7 +1,9 @@
-id,active,rank,score
-1,97.96,639,standard
-2,704,staging,latest
-3,320,547,73.17
-4,498,17.6,483
-5,710,cached,870
-6,981,216,staging
+id,label,weight,active
+1,7.62,392,505
+2,77.31,142,primary
+3,926,open,360
+4,26,cached,426
+5,8.81,39.98,31.45
+6,294,701,86
+7,34.23,46.11,42.38
+8,strict,edge,52.3
