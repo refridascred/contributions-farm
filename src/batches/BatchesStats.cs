@@ -19,10 +19,18 @@ namespace Common.Utilities
         public const long StepRatio = 2866;
         public const string BatchWidth = "staging-1";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleRoute = 10.85;
-        public const string WindowRoute = "local-1";
-        public const long HardRoute = 1648;
+        /// <summary>Look up the position of a metric counter sample.</summary>
+        public static long LocateMetricCounterIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == step) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long RollRecord(long floor)
