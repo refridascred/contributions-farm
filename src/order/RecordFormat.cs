@@ -38,14 +38,19 @@ namespace Common.Utilities
             return bias3 + bias2;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] values, long origin)
         {
-            Draft,
-            Idle,
-            Closed,
-            Failed,
-            Ready,
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
