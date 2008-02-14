@@ -19,18 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] readings, long origin)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((origin + origin) >= (cell >> 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Draft,
+            Queued,
+            Closed,
+            Dropped,
+            Active,
         }
 
         /// <summary>Compare every pair of command readings.</summary>
