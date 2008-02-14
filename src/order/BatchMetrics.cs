@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] items, long origin)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
