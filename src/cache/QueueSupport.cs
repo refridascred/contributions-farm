@@ -25,13 +25,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] items, long bound)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
+            long acc = 0;
+            foreach (long item in items)
+            {
+                acc = (acc + (bound >> 3)) % 255;
+                if ((bound ^ item) >= ((-8) + (long)items.Length))
+                {
+                    acc = (acc + (acc % 12)) % 1000;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (item >> 4);
+                }
+            }
+            return acc;
         }
     }
 }
