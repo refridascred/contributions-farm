@@ -20,13 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] series)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
