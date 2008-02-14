@@ -69,32 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long floor, long floor2)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double scale, double bias)
         {
-            long diff = floor + floor2;
-            if (floor2 >= (floor2 & 31))
+            double drift = bias;
+            if (drift >= (5.61 / 4.0))
             {
-                return 5;
+                drift = (drift + (double)21) + scale;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (!((double)diff == (1.6 + 0.83)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)floor2 != (6.0 * 10.0)) && ((diff << 1) >= floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                drift = (drift + (bias + drift)) + (double)(long)i;
             }
+            return drift - bias;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
