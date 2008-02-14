@@ -1,15 +1,7 @@
 # githubfarm settings
-batch_limit_count:
-  - open
-  - local
-flush_size_s: 1024
-hard_retries_pct:
-  audit: 60
-  max_size_ms: cached
-  window_depth: stable
-  flush_delay_count:
-    compress: true
-    readonly: primary
-    warm_limit: stable
-    enabled: stable
-verbose: fallback
+poll_size_count:
+  cache_size_s: strict
+  burst_size_pct: fallback
+  soft_threshold_ms: blue
+idle_capacity_ms: 3106
+hard_size: 60
