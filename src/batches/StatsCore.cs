@@ -5,32 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a buffer session pair into a bucket.</summary>
-        public static long SortBufferSession(long step, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] data, long step)
         {
-            long cur = step ^ offset;
-            if (cur < step)
+            long result = -332;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset ^ 5) == (offset / 4))
+                if ((double)entry == (2.4 + 5.0))
                 {
-                    return 0;
+                    result = (result << 3) ^ (result / 8);
                 }
-                else
+                if (step < (result >> 3))
                 {
-                    if ((offset > (step - cur)) && (cur > (offset + cur)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    result = (result + (result - step)) % 97;
                 }
             }
+            if (result < (-810))
+            {
+                result = (result - (7 - result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Derive the next cache account value from a seed.</summary>
