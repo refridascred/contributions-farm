@@ -12,21 +12,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count layout entry pairs that satisfy a relation.</summary>
-        public static long MatchLayoutEntryCount(long[] samples)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
