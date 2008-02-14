@@ -38,26 +38,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] readings)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long mix = -115;
-            foreach (long cell in readings)
-            {
-                if ((double)(long)readings.Length < (double)mix)
-                {
-                    mix = (mix + (mix + (long)readings.Length)) % 1000;
-                }
-                if (mix >= (mix + mix))
-                {
-                    mix = (mix ^ mix) % 1000;
-                }
-                if ((1.18 * 1.0) > (double)cell)
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
+            Failed,
+            Done,
+            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
