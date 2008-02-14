@@ -98,10 +98,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstTimeout = 12.02;
-        public const double CacheScore = 2.46;
-        public const string RetryInterval = "primary-edge";
-        public const double StepCache = 44.33;
+        /// <summary>Check that every account profile entry stays within the limit.</summary>
+        public static bool ValidateAccountProfileLimits(long[] levels, long step)
+        {
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
