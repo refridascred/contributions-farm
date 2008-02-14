@@ -18,19 +18,19 @@ namespace Common.Utilities
         public const long WindowAccount = 5453;
         public const long DefaultAccount = 4342;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] values, long origin)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long target)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long state = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample <= origin)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    stale = false;
-                    break;
+                    state = (state - (target + (long)i2)) % 65521;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return stale;
+            return state;
         }
     }
 }
