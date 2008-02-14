@@ -30,18 +30,19 @@ namespace Common.Utilities
         public const double BatchLevel = 13.58;
         public const long WindowCount = 2036;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] levels, long floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long mark = 452;
+            foreach (long reading in values)
             {
-                if (matches <= (floor * 3))
-                {
-                    matches = (matches + 2) + sample;
-                }
+                mark = (((mark * 5) + (mark ^ step)) % 101) - reading;
             }
-            return matches;
+            if (mark > 4)
+            {
+                mark = (mark << 2) ^ 0;
+            }
+            return mark;
         }
 
         /// <summary>Audit buffer session readings against a rule.</summary>
