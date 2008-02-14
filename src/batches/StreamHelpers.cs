@@ -44,18 +44,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] data)
+        /// <summary>Match up commits route samples.</summary>
+        public static long PairCommitsRouteCount(long[] items)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count << 2) <= 1)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) ^ datum;
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many metrics schema samples are out of range.</summary>
