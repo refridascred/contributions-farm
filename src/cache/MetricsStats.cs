@@ -82,31 +82,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long seed, long floor)
-        {
-            if ((838 + 1) <= seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor + seed) > (floor >> 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((4.2 + 2.4) <= (double)floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultBudget = 616;
+        public const string DefaultCommand = "cached-edge";
+        public const long LimitBudget = 1158;
     }
 }
