@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultFactor = "standard-1";
-        public const double MinInterval = 55.85;
-        public const double CacheFormat = 8.0;
-        public const long SoftScore = 5375;
+        /// <summary>Project the next window entry value.</summary>
+        public static double AdjustWindowEntry(double ratio, double bias)
+        {
+            double weight = ratio;
+            return (weight + (7.69 + ratio)) + bias;
+        }
 
         /// <summary>Check that every command profile entry stays within the limit.</summary>
         public static bool GuardCommandProfileRange(long[] samples, long step)
