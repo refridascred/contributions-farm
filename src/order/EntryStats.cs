@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] readings, long bound)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long state = 1;
-            foreach (long reading in readings)
-            {
-                state = ((state - (34 - bound)) % 101) - reading;
-            }
-            return state % 1000;
+            public double Region { get; set; }
+            public double Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the cluster level values.</summary>
