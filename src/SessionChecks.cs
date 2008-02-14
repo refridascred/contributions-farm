@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepFactor = 5286;
-        public const long BurstCounter = 9176;
-        public const long CacheCount = 4235;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long CountSupportHits(long[] readings, long target)
