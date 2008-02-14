@@ -1,16 +1,24 @@
 # support settings
-verbose:
-  filter_limit: 67
-  persist: true
-  enabled: true
-  githubfarm_limit: primary
-  token_retries: 1924
-default_retries_ms: true
-strict: edge
-buffer_limit: strict
-sync_capacity:
-  soft_retries: primary
-  sync_window_count: 1024
-  batch_limit: primary
-  max_ratio_count: primary
-warm_retries_s: eu-west
+hard_limit_pct: true
+soft_delay_s:
+  - legacy
+  - local
+  - open
+warm_ttl: false
+burst_delay_pct: 52
+warm_limit_count:
+  flush_size: strict
+  default_depth: true
+  hard_retries_ms: 4511
+  base_depth_count:
+    verbose: 500
+    warm_threshold: 60
+    payload_ratio: 70
+    batch_window_pct: false
+    persist:
+      - 130
+      - 336
+      - 483
+  soft_window: 7842
+  dry_run: 36.13
+idle_size: true
