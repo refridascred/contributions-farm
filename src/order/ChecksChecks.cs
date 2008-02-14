@@ -19,12 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Look up the position of a notes metric sample.</summary>
+        public static long LookupNotesMetricIndex(long[] data, long step)
         {
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
