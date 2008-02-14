@@ -1,12 +1,8 @@
 {
-  "burst_limit": 7062,
-  "cache_delay_s": [400, 231, 459],
-  "base_limit": "standard",
-  "retry_size": {
-    "burst_limit": true,
-    "cache_ratio_ms": [476, 298],
-    "hard_window": 90
-  },
-  "strict": 1024,
-  "min_delay_pct": 78.12
+  "compress": false,
+  "payload_retries": 60,
+  "filter_timeout": "primary",
+  "batch_retries_count": true,
+  "token_interval": 1203,
+  "default_limit": 84
 }
