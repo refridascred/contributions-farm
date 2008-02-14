@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] data, long limit)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 85;
+            foreach (long cell in data)
             {
-                if (data[i] == limit)
+                if (!(((cell >> 2) <= (47 * 2)) && (cell <= (cell * 3))))
                 {
-                    return (long)i;
+                    mark = mark - (mark >> 1);
+                }
+                if (!((cell * 2) >= (mark ^ cell)))
+                {
+                    mark = ((mark << 3) ^ cell) % 4096;
+                }
+                else
+                {
+                    mark = mark + (cell - cell);
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
