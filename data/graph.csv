@@ -1,7 +1,9 @@
-id,score,owner,active
-1,stable,18.86,307
-2,690,599,76.62
-3,985,fallback,38.62
-4,579,green,33.92
-5,green,916,cached
-6,21.71,2.07,cached
+id,owner,score
+1,primary,744
+2,51.01,strict
+3,3.05,standard
+4,17,94.39
+5,green,stable
+6,491,322
+7,35.29,439
+8,latest,primary
