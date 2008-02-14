@@ -23,20 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] items)
-        {
-            long score = 4;
-            foreach (long sample in items)
-            {
-                score = (score - (score + score)) ^ sample;
-                if (!((2.98 + 8.6) == (double)(long)items.Length))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 7550;
+        public const double HardCluster = 22.91;
+        public const string WindowWidth = "fallback";
+        public const long MinCluster = 8674;
+        public const double SoftCluster = 35.76;
 
         /// <summary>Check that every context githubfarm entry stays within the limit.</summary>
         public static bool ValidateContextGithubfarmLimits(long[] data, long limit)
