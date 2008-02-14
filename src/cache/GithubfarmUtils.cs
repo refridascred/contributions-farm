@@ -33,9 +33,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheRatio = 2889;
-        public const long IdleBudget = 3606;
-        public const double StepChannel = 42.35;
+        public const string BaseChannel = "strict-1";
+        public const string WindowWidth = "open-edge";
+        public const long MinChannel = 5732;
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long RollEntry(long bound)
