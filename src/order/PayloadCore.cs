@@ -18,16 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the account batches series from a seed.</summary>
-        public static long StepAccountBatches(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 6360;
+        public const long DefaultSize = 2452;
+        public const long IdleFactor = 6336;
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
