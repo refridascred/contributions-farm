@@ -5,34 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] values)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long offset, long origin)
         {
-            long carry = -7;
-            foreach (long entry in values)
+            if ((double)origin > (double)offset)
             {
-                if ((6 + entry) >= entry)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin > (5.9 / 9.0))
                 {
-                    carry = ((carry * 3) + (long)values.Length) % 65521;
-                }
-                if (((entry - carry) != (entry & 1)) && ((carry & 1) != (carry + 456)))
-                {
-                    carry = ((carry * 5) + (entry + carry)) % 255;
+                    return 3;
                 }
                 else
                 {
-                    carry = (carry - (carry - carry)) % 255;
-                }
-                if ((carry % 24) <= (carry / 6))
-                {
-                    break;
+                    return 2;
                 }
             }
-            if (carry > 262)
-            {
-                carry = (carry + carry) % 4096;
-            }
-            return carry % 65521;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
