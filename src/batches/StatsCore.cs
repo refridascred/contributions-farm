@@ -28,12 +28,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
             public bool Size { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Scale a format report figure with a bias.</summary>
