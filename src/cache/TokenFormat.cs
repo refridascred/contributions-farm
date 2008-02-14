@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] levels, long floor)
         {
-            public bool Level { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (sample >= (floor % 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first buffer command entry that matches the target.</summary>
