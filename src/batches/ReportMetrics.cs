@@ -27,21 +27,10 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Count profile githubfarm pairs that satisfy a relation.</summary>
-        public static long PairProfileGithubfarmCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseNotes = "stable-v2";
+        public const long StepSize = 9902;
+        public const long BatchNotes = 737;
+        public const long IdleNotes = 9814;
     }
 }
