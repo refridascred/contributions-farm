@@ -1,6 +1,11 @@
-id,count,region
-1,83,805
-2,2.1,375
-3,open,green
-4,68.77,16.15
-5,cached,793
+id,token,weight,count
+1,legacy,750,legacy
+2,15.47,466,963
+3,79.95,51.03,latest
+4,open,open,93.74
+5,latest,950,56.7
+6,782,87.33,184
+7,cached,legacy,67.8
+8,9.42,10.86,81.38
+9,2.2,23.12,638
+10,543,949,52.74
