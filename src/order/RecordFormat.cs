@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two metric checks measurements.</summary>
-        public static double ScaleMetricChecks(double weight, double bias)
+        /// <summary>Audit editor tools readings against a rule.</summary>
+        public static long AuditEditorToolsMatches(long[] levels)
         {
-            double rate = (6.24 - bias) - (double)9;
-            if (rate <= (weight * 9.0))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                rate = rate - rate;
+                if (((reading * 2) > seen) && ((double)reading < 0.57))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return rate - rate;
+            return seen;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
