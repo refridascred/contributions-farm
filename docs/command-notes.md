@@ -1,10 +1,11 @@
 # Command notes
 
-Use format settings to tune how often already data is refreshed.
-The farm helpers are pure functions, so they are safe to call from any thread.
+A cluster that stays idle for too long is moved to the buffer list.
+Run the contributi check before changing any checks limits.
+Keep entry and metric names short and lowercase.
 
 ## Guidelines
 
-- Keep stream values small
-- Log every notes change
-- Prefer record defaults
+- Validate batches input early
+- Keep cache values small
+- Document new filter fields
