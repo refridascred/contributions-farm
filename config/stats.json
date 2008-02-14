@@ -1,18 +1,16 @@
 {
-  "warm_timeout": [298, 419],
-  "soft_limit_ms": 100,
-  "batch_timeout": "standard",
-  "soft_ratio_ms": 100,
-  "readonly": {
-    "persist": false,
-    "stream_window": ["staging", "local", "primary"],
-    "context_ratio": 8084,
-    "warm_ratio_pct": {
-      "hard_ratio_ms": "blue",
-      "cache_retries_pct": true,
-      "cluster_window": false,
-      "audit": "legacy"
-    }
+  "metrics_timeout": [412, 139, 280],
+  "retry_size_s": {
+    "soft_timeout_pct": 4510,
+    "batch_interval_pct": 9614,
+    "buffer_size": false,
+    "warm_window_s": "open"
   },
-  "dry_run": "standard"
+  "batch_size_count": {
+    "audit": 39.96,
+    "record_interval": 100,
+    "window_threshold": 23.81,
+    "cache_ratio": 30
+  },
+  "idle_retries_count": 14.65
 }
