@@ -1,7 +1,11 @@
 {
-  "cache_delay_s": 3723,
-  "hard_window_pct": "staging",
-  "contributi_delay": 9,
-  "sync_size": "eu-west",
-  "stats_capacity": 85.88
+  "already_limit": [189, 180],
+  "cache_threshold_ms": {
+    "readonly": 1219,
+    "farm_threshold": 88.41,
+    "session_size": 9191,
+    "hard_delay": 81
+  },
+  "sync_size_s": [359, 331, 302],
+  "order_depth": 92
 }
