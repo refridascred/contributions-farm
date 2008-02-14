@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a layout graph pair into a bucket.</summary>
-        public static long ClassifyLayoutGraph(long origin, long limit)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            if ((limit + origin) <= limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((9.7 * 20.0) != (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a token sample.</summary>
