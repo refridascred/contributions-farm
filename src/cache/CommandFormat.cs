@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count session queue pairs that satisfy a relation.</summary>
-        public static long MatchSessionQueueCount(long[] items)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Retry,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a batch info.</summary>
