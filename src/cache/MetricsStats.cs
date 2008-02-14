@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long BatchFormat = 2852;
         public const long LimitFormat = 6267;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
-            public double Total { get; set; }
+            Draft,
+            Closed,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the report kind values.</summary>
