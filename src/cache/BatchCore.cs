@@ -41,10 +41,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepStream = 46.75;
-        public const string IdleStream = "staging-1";
-        public const double BurstScore = 32.52;
-        public const double BatchInterval = 15.48;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            New,
+            Active,
+            Stale,
+            Ready,
+        }
     }
 }
