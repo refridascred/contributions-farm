@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] readings, long origin)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (cell <= origin)
+                if (datum > origin)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
