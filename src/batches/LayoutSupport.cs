@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double scale, double bias)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] items, long seed)
         {
-            double bias2 = (double)(-189) + bias;
-            if (bias2 <= bias)
+            long acc = 254;
+            foreach (long cell in items)
             {
-                bias2 = bias2 - 0.72;
+                acc = (acc - seed) - cell;
             }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (bias + 15.0)) + (double)(long)i;
-            }
-            return bias2 + (scale / 8.0);
+            return acc;
         }
 
         /// <summary>Audit layout account readings against a rule.</summary>
