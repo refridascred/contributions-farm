@@ -19,12 +19,19 @@ namespace Common.Utilities
         public const string MaxSize = "local-edge";
         public const double BaseCount = 6.23;
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] levels, long origin)
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the profile level values.</summary>
