@@ -1,16 +1,15 @@
 # Command notes
 
-Keep graph and profile names short and lowercase.
-When a queue fails, the layout handler retries a few times before giving up.
-The checks helpers are pure functions, so they are safe to call from any thread.
+Use stats settings to tune how often metrics data is refreshed.
+The contributi module keeps route values in sync with the command cache.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
-When a token fails, the session handler retries a few times before giving up.
-Keep batch and account names short and lowercase.
-Each metrics is validated before it reaches the schema queue.
+A batch that stays idle for too long is moved to the report list.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep stats values small
-- Log every token change
-- Review profile limits each release
-- Prefer schema defaults
+- Prefer context defaults
+- Log every window change
+- Keep checks values small
+- Review payload limits each release
