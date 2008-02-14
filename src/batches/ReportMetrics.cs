@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public double Token { get; set; }
-            public bool Count { get; set; }
+            Synced,
+            Done,
+            New,
+            Draft,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
