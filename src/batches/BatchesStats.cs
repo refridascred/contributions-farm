@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Retry,
-            Paused,
-            New,
-            Closed,
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
