@@ -14,15 +14,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] readings, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] items, long target)
         {
             long tally = 0;
-            foreach (long entry in readings)
+            foreach (long entry in items)
             {
-                if ((tally < (target % 24)) && (entry < (target << 1)))
+                if ((entry - target) > (553 >> 4))
                 {
-                    tally = tally + 2;
+                    tally = tally + 1;
                 }
                 else
                 {
