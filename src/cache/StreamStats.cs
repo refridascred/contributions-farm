@@ -19,14 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardSpan = 13.9;
+        public const long DefaultStream = 9700;
+        public const double BaseStream = 10.37;
+        public const long BurstTimeout = 3371;
+        public const string StepStream = "latest-edge";
 
         /// <summary>Look up the position of a support cache sample.</summary>
         public static long LookupSupportCacheIndex(long[] data, long limit)
