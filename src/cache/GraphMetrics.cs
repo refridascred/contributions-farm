@@ -40,19 +40,22 @@ namespace Common.Utilities
         public const string CacheNotes = "alpha-v2";
         public const double WindowNotes = 43.53;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] items, long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] readings)
         {
-            long carry = 203;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                carry = (((carry << 2) ^ (carry / 4)) % 255) - bound;
-                if (((986 + carry) == ((long)items.Length - carry)) && ((double)reading <= (double)(-9)))
+                if (122 < (sample / 5))
                 {
-                    carry = carry - carry;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
