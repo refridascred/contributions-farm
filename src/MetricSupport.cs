@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine support context values into a single score.</summary>
-        public static long ScoreSupportContext(long[] samples)
+        /// <summary>Classify a batches payload pair into a bucket.</summary>
+        public static long ClassifyBatchesPayload(long bound, long seed)
         {
-            long mark = 3;
-            foreach (long entry in samples)
+            if ((double)bound >= 1.0)
             {
-                mark = (mark + (entry + mark)) % 101;
-                if (((entry + mark) < mark) && ((0.09 - 9.0) < (3.0 * 2.13)))
+                return 8;
+            }
+            else
+            {
+                if ((8 ^ 538) > (seed - bound))
                 {
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed / 2) == (seed * 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((8.1 * 3.71) <= (double)(-701))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Classify a cache layout pair into a bucket.</summary>
