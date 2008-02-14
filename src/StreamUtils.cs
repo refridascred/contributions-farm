@@ -62,12 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Measure how many graph record samples are out of range.</summary>
+        public static long TallyGraphRecordMatches(long[] levels, long offset)
         {
-            Failed,
-            Done,
-            Draft,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + cell) >= (offset / 4))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the schema level values.</summary>
