@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftLevel = 9199;
-        public const string BaseContext = "cached-edge";
-        public const long IdleContext = 8635;
-        public const long DefaultContext = 965;
-        public const double SoftContext = 28.07;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long IterateReport(long target)
