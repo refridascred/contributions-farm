@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Ready,
-            Active,
-            Retry,
+            Queued,
+            Locked,
+            Stale,
         }
 
         /// <summary>Hold a payload header.</summary>
