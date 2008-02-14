@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] levels, long step)
+        /// <summary>Measure how many command support samples are out of range.</summary>
+        public static long CountCommandSupportHits(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (levels[i] < step)
+                if ((((floor / 3) > (202 & 31)) && (floor <= datum)) || (((floor ^ hits) < hits) && (floor < ((long)levels.Length - hits))))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the cluster state values.</summary>
