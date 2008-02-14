@@ -1,23 +1,6 @@
 {
-  "burst_size_s": "stable",
-  "default_interval": "blue",
-  "compress": [143, 429],
-  "sync_interval_s": {
-    "base_interval": {
-      "command_delay": "standard",
-      "graph_capacity": 73.24,
-      "stream_window": "stable",
-      "window_retries": "latest"
-    },
-    "verbose": {
-      "warm_interval_ms": 88,
-      "githubfarm_ratio": "local",
-      "queue_delay": 41.54,
-      "burst_depth": 59.95,
-      "burst_threshold_count": 3121,
-      "profile_depth": ["open", "fallback"]
-    },
-    "strict": ["fallback", "primary", "staging"]
-  },
-  "max_limit": 67
+  "stats_timeout": ["stable", "open", "green"],
+  "hard_depth": 8828,
+  "max_timeout_count": true,
+  "flush_delay_count": 73
 }
