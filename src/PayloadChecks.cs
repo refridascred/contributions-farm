@@ -29,18 +29,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryContributi = 32.56;
+        public const long IdleLevel = 4841;
+        public const long BatchContributi = 8065;
+        public const long HardContributi = 1785;
+        public const double WindowBudget = 61.59;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BatchSpan = 3159;
