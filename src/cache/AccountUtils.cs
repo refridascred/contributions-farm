@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit profile already readings against a rule.</summary>
-        public static long CountProfileAlreadyHits(long[] items)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((datum & 127) != (seen % 8))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            New,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define record limits and defaults.</summary>
