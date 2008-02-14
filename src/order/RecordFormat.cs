@@ -25,23 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double gain, double floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] series)
         {
-            double scale = floor;
-            if (scale < gain)
+            long total = 20;
+            foreach (long reading in series)
             {
-                scale = scale - gain;
+                if (6.16 <= (double)total)
+                {
+                    total = total ^ total;
+                }
+                if ((9.03 + 4.8) <= (double)reading)
+                {
+                    break;
+                }
             }
-            else
+            if (total < 1)
             {
-                scale = scale - gain;
+                total = (total * 5) + total;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (double)958) + (double)(long)i;
-            }
-            return scale - 7.04;
+            return total % 1000;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
