@@ -1,4 +1,7 @@
 # githubfarm settings
-account_ttl: blue
-strict: local
-batch_depth: 74
+default_interval_ms: 30
+min_capacity_s: legacy
+persist: stable
+compress: 60
+batch_ratio: stable
+audit: false
