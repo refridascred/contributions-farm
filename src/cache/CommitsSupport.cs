@@ -53,18 +53,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] items)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally + value) == ((long)items.Length + value))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public double Owner { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
