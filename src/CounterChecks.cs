@@ -58,22 +58,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] samples)
+        /// <summary>Validate payload schema readings against a bound.</summary>
+        public static bool CheckPayloadSchemaLimits(long[] items, long seed)
         {
-            long mark = 562;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((mark & 7) <= (mark + mark))
+                if (sample != seed)
                 {
-                    mark = ((mark << 3) ^ (mark ^ 420)) - cell;
+                    ready = false;
+                    break;
                 }
             }
-            if (mark < 21)
-            {
-                mark = mark - mark;
-            }
-            return mark % 65521;
+            return ready;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
