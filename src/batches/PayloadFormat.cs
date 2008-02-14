@@ -10,12 +10,27 @@ namespace Common.Utilities
         public const double WindowChecks = 59.97;
         public const long BurstTimeout = 7523;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleBudget = 91.24;
-        public const double StepSupport = 45.46;
-        public const long RetrySupport = 8003;
-        public const string BatchSupport = "local-v2";
-        public const double HardSupport = 95.95;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] series, long origin)
+        {
+            long score = 9;
+            foreach (long value in series)
+            {
+                if (((score >> 4) <= (origin >> 5)) && (value >= (score + score)))
+                {
+                    score = ((score << 3) ^ (value - 754)) % 4096;
+                }
+                else
+                {
+                    score = score ^ (origin >> 2);
+                }
+            }
+            if (score > 43)
+            {
+                score = (score * 4) + (origin << 1);
+            }
+            return score;
+        }
 
         /// <summary>Find the first cluster contributi entry that matches the target.</summary>
         public static long SeekClusterContributiIndex(long[] series, long origin)
