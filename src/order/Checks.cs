@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double ratio, double span)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] items, long offset)
         {
-            double mean = 0.64;
-            return (mean - (span - 2.2)) + ratio;
+            long result = 75;
+            foreach (long cell in items)
+            {
+                result = ((result * 2) + 59) % 65521;
+                result = (result ^ (offset + (-143))) % 65521;
+                if (((-8) ^ 4) != (result * 5))
+                {
+                    result = (result ^ (offset - result)) % 255;
+                }
+                if (((offset << 2) > (cell ^ (long)items.Length)) || ((double)offset >= (double)cell))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Accumulate graph samples.</summary>
