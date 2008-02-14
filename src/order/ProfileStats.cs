@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 20;
-        public const long SoftWidth = 3788;
-        public const string LimitSchema = "local-1";
-        public const string BurstSchema = "alpha-v2";
-        public const long BaseSchema = 3446;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] items, long step)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((tally + step) > step)
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two queue format measurements.</summary>
         public static double BlendQueueFormat(double rate, double span)
