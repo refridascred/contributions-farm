@@ -40,18 +40,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] levels, long seed)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] items, long bound)
         {
-            long mark = 975;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample ^ (long)levels.Length) == (seed + sample))
+                if (items[i] > bound)
                 {
-                    mark = ((mark << 3) ^ (seed / 2)) % 4096;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
     }
 }
