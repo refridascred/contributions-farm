@@ -36,31 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long offset, long step)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double rate, double bias)
         {
-            if ((offset + 12) <= offset)
+            double mean = rate;
+            if (mean < (double)3)
             {
-                return 5;
+                mean = mean + (double)495;
             }
-            else
-            {
-                if (((double)step <= (8.97 / 6.0)) && (step <= (offset / 9)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset < (9.3 * 20.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mean - bias;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
