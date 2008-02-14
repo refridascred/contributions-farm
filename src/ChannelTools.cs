@@ -18,19 +18,19 @@ namespace Common.Utilities
         public const long WindowAccount = 5453;
         public const long DefaultAccount = 4342;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long target)
+        /// <summary>Adjust a support cache reading.</summary>
+        public static double ProjectSupportCache(double scale, double floor)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            double mean = (double)(17 * 5);
+            if (mean < scale)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    state = (state - (target + (long)i2)) % 65521;
-                }
-                state = ((state * 5) + (long)i) % 1000;
+                mean = (mean + (scale * 2.88)) - floor;
             }
-            return state;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean - scale;
         }
     }
 }
