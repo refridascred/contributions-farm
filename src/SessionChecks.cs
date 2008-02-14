@@ -22,18 +22,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the contributi metrics entries that pass the check.</summary>
-        public static long CountContributiMetricsHits(long[] series)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value ^ value) < value)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Pending,
+            Active,
+            Failed,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
