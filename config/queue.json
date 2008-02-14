@@ -1,12 +1,5 @@
 {
-  "poll_capacity_pct": "local",
-  "order_window": 96,
-  "min_window_s": 48.82,
-  "audit": {
-    "queue_delay": ["staging", "green", "latest", "local"],
-    "base_retries_ms": 54,
-    "idle_threshold": 9387
-  },
-  "default_capacity": 46,
-  "warm_window_count": 500
+  "warm_ttl_pct": false,
+  "metric_ttl": "fallback",
+  "strict": "strict"
 }
