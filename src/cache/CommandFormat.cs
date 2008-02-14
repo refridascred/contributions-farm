@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 5436;
-        public const double MaxFilter = 88.68;
-        public const string HardSpan = "alpha";
+        /// <summary>Audit format batches readings against a rule.</summary>
+        public static long TallyFormatBatchesOutliers(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell >> 5) != (matches + cell))
+                {
+                    matches = (matches + 3) + floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long PairStatsCount(long[] readings)
