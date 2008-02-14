@@ -85,15 +85,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double ratio, double offset)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double rate = 9.4;
-            if (rate > (double)724)
-            {
-                rate = (rate - rate) - ratio;
-            }
-            return rate - offset;
+            public double Rank { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
