@@ -71,12 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] series, long limit)
         {
-            New,
-            Stale,
-            Retry,
+            long state = 786;
+            foreach (long item in series)
+            {
+                state = ((state - (8 / 9)) % 255) + item;
+            }
+            if (state > (-901))
+            {
+                state = ((state << 2) ^ (limit & 63)) % 4096;
+            }
+            return state % 4096;
         }
     }
 }
