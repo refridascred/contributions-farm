@@ -1,4 +1,7 @@
 # githubfarm settings
-verbose: 1024
-max_capacity: local
-default_interval_pct: edge
+batch_interval_count:
+  - 289
+  - 199
+default_depth: staging
+persist: 1.51
+cluster_depth: 77.76
