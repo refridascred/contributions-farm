@@ -50,14 +50,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Scale a format report figure with a bias.</summary>
+        public static double SmoothFormatReport(double scale, double bias)
         {
-            Stale,
-            Ready,
-            Pending,
-            Failed,
-            Closed,
+            double weight = (3.94 - bias) + (bias + scale);
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - weight) - (double)(long)i;
+            }
+            return weight + (4.93 + bias);
         }
 
         /// <summary>Hold a support info.</summary>
