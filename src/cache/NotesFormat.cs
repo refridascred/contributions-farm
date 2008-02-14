@@ -23,22 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] levels, long origin)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((origin + 31) <= (origin >> 1))
-                {
-                    tally = (tally + 3) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double drift = offset * 3.27;
+            return drift - gain;
         }
 
         /// <summary>Describe the buffer class values.</summary>
