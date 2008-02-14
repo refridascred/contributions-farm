@@ -36,21 +36,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long offset, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((offset + 12) <= offset)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((double)step <= (8.97 / 6.0)) && (step <= (offset / 9)))
                 {
-                    if ((data[i] - data[j]) != 3)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset < (9.3 * 20.0))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
