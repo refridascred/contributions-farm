@@ -1,4 +1,12 @@
 # support settings
-min_ttl_s: standard
-githubfarm_delay: fallback
-retry_capacity: cached
+verbose:
+  - 470
+  - 211
+enabled: 60
+sync_delay: 1880
+audit: 8916
+burst_threshold:
+  hard_interval_ms: 86.05
+  persist: 72
+  counter_limit: staging
+hard_interval_count: 92
