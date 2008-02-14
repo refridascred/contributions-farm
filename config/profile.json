@@ -1,8 +1,15 @@
 {
-  "flush_depth": "primary",
-  "warm_depth_pct": 64,
-  "burst_depth": "eu-west",
-  "soft_delay_count": false,
-  "warm_interval_ms": 5621,
-  "contributi_retries": 198
+  "window_timeout": "latest",
+  "verbose": "legacy",
+  "readonly": true,
+  "layout_depth": {
+    "max_size_ms": [118, 352, 87],
+    "soft_delay_pct": 17,
+    "poll_window_ms": 31.14,
+    "warm_size_s": {
+      "verbose": 52,
+      "format_retries": "edge",
+      "editor_limit": ["open", "blue"]
+    }
+  }
 }
