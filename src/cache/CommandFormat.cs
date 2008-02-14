@@ -26,11 +26,11 @@ namespace Common.Utilities
         public const long BatchChannel = 3252;
         public const long WindowScore = 4805;
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double ratio, double floor)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            double ratio2 = (double)(72 + 7);
-            return ((ratio2 + 3.78) + ratio) + floor;
+            public double Size { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
