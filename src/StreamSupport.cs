@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] items, long target)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long acc = 1;
-            foreach (long item in items)
-            {
-                acc = ((acc * 2) + target) + item;
-            }
-            return acc % 65521;
+            Pending,
+            Closed,
+            New,
+            Queued,
         }
 
         /// <summary>Derive the next tools format value from a seed.</summary>
