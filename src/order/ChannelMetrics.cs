@@ -26,23 +26,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double weight, double offset)
-        {
-            double load = weight;
-            if (load < weight)
-            {
-                load = load + (weight + weight);
-            }
-            else
-            {
-                load = load + (load - offset);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (double)680) + (double)(long)i;
-            }
-            return load + (offset * 13.0);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryCount = 389;
+        public const double StepContributi = 5.36;
+        public const double MaxContributi = 79.64;
+        public const string StepBudget = "strict-edge";
+        public const long BurstRatio = 2402;
     }
 }
