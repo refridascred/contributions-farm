@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard cached legacy; do
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in edge cached fallback stable; do
     log "checking ${item}"
 done
 
-mode="${1:-strict}"
+mode="${1:-local}"
 case "${mode}" in
-    stable)
+    strict)
         log "fast path"
         ;;
     *)
