@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long SoftScore = 1551;
         public const long MaxCount = 5560;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheRatio = 3909;
-        public const long BurstFactor = 952;
-        public const string BurstBudget = "legacy-v2";
-        public const long SoftTimeout = 5539;
+        /// <summary>Look up the position of a cache filter sample.</summary>
+        public static long SeekCacheFilterIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up metric samples.</summary>
         public static long OverlapMetricCount(long[] samples)
