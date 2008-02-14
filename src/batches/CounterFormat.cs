@@ -26,14 +26,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] samples, long limit)
         {
-            Locked,
-            Stale,
-            Done,
-            Closed,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
