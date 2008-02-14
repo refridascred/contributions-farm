@@ -1,14 +1,14 @@
 # Command notes
 
-The payload helpers are pure functions, so they are safe to call from any thread.
-Use session settings to tune how often entry data is refreshed.
+Use farm settings to tune how often schema data is refreshed.
+Use batch settings to tune how often layout data is refreshed.
+Run the queue check before changing any payload limits.
 
-The account module keeps farm values in sync with the githubfarm cache.
-A editor that stays idle for too long is moved to the farm list.
+Defaults for cache live in the config folder and can be overridden per environment.
+Keep githubfarm and support names short and lowercase.
 
 ## Guidelines
 
-- Review tools limits each release
-- Document new record fields
-- Validate route input early
-- Log every stats change
+- Prefer context defaults
+- Log every format change
+- Review layout limits each release
