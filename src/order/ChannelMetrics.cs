@@ -23,19 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate session graph readings against a bound.</summary>
-        public static bool ValidateSessionGraphBounds(long[] values, long bound)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long total = 6;
+            foreach (long entry in values)
             {
-                if (item > bound)
+                if ((floor + 306) < (entry + (long)values.Length))
                 {
-                    ready = false;
-                    break;
+                    total = total ^ ((long)values.Length / 8);
                 }
             }
-            return ready;
+            if (total > 23)
+            {
+                total = total + floor;
+            }
+            return total % 97;
         }
 
         /// <summary>Accumulate schema samples.</summary>
