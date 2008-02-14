@@ -16,18 +16,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] readings, long target)
+        /// <summary>Audit record window readings against a rule.</summary>
+        public static long MeasureRecordWindowHits(long[] data)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((((1.21 + 3.97) > (double)hits) || ((value & 15) < (hits ^ 302))) || ((76 >= (target - value)) && ((hits + hits) <= (value & 31))))
+                if ((item & 3) >= 28)
                 {
-                    hits = hits + 1;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
