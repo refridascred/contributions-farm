@@ -60,13 +60,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long target, long floor)
         {
-            Pending,
-            Queued,
-            Stale,
-            Done,
+            if ((target <= 48) || ((target + floor) <= (floor - target)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((0.8 * 9.67) != (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target > (6.0 + 3.2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (target < (target >> 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
