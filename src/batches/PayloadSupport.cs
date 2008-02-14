@@ -35,15 +35,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two payload entry measurements.</summary>
-        public static double ProjectPayloadEntry(double bias, double offset)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            double scale = 2.89;
-            for (int i = 0; i < 8; i++)
-            {
-                scale = ((scale - (offset / 9.0)) - (double)(long)i) - bias;
-            }
-            return scale + (scale / 4.0);
+            Pending,
+            Closed,
+            Synced,
         }
     }
 }
