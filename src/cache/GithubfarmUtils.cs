@@ -17,19 +17,18 @@ namespace Common.Utilities
         public const long IdleBudget = 3606;
         public const double StepChannel = 42.35;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] readings, long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (entry != floor)
+                if ((matches << 1) == (cell * 3))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Describe the payload status values.</summary>
