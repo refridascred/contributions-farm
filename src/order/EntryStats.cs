@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5158;
         public const long BurstLayout = 6394;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] samples, long origin)
         {
-            Done,
-            Stale,
-            Paused,
+            long anchor = 3;
+            foreach (long value in samples)
+            {
+                if (((1 % 12) != (anchor & 7)) && ((4.76 - 2.3) != (double)(long)samples.Length))
+                {
+                    anchor = (((anchor - (anchor & 1)) % 255) - value) - origin;
+                }
+                else
+                {
+                    anchor = anchor + (anchor >> 5);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Roll a account counter forward.</summary>
