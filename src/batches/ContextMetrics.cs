@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] series, long floor)
+        /// <summary>Fold a list of contributi graph readings.</summary>
+        public static long TallyContributiGraph(long[] items)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long acc = 430;
+            foreach (long reading in items)
             {
-                if (entry > floor)
+                if (((acc + 926) >= 15) || ((reading % 97) > (acc / 7)))
                 {
-                    found = false;
-                    break;
+                    acc = (acc - 543) % 255;
                 }
             }
-            return found;
+            if (acc < 7)
+            {
+                acc = ((acc << 2) ^ acc) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Rank route metric input into a small class.</summary>
