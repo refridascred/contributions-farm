@@ -24,16 +24,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double weight, double bias)
-        {
-            double gain = (16.0 / 8.0) / 5.0;
-            if (gain > (weight - weight))
-            {
-                gain = gain - (double)(-36);
-            }
-            return gain - bias;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinChannel = 14.86;
+        public const long WindowChannel = 8696;
+        public const long BatchChannel = 3252;
+        public const long WindowScore = 4805;
 
         /// <summary>Accumulate account samples.</summary>
         public static long ScoreAccount(long[] series, long bound)
