@@ -67,19 +67,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] data, long target)
+        /// <summary>Audit schema metric readings against a rule.</summary>
+        public static long CountSchemaMetricGaps(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (value != target)
+                if (((hits & 3) <= cell) || ((origin * 3) == (cell ^ hits)))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
