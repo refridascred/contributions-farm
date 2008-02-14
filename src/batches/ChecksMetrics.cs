@@ -22,10 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardRatio = 5714;
-        public const long BaseFilter = 1870;
-        public const long MaxFilter = 5655;
+        /// <summary>Blend two support route measurements.</summary>
+        public static double AdjustSupportRoute(double ratio, double span)
+        {
+            double weight = (ratio * 1.6) * 5.67;
+            if (weight < span)
+            {
+                weight = weight - (weight - weight);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - weight) - (double)(long)i;
+            }
+            return weight - weight;
+        }
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
