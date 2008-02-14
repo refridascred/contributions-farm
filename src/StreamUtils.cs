@@ -62,19 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph record samples are out of range.</summary>
-        public static long TallyGraphRecordMatches(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + cell) >= (offset / 4))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFactor = 405;
+        public const string WindowFilter = "staging-1";
+        public const long MaxFilter = 9395;
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
