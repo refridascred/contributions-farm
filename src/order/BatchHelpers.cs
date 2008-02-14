@@ -23,13 +23,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] levels)
         {
-            Paused,
-            Retry,
-            New,
-            Draft,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (count >= (count + entry))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many contributi entry samples are out of range.</summary>
