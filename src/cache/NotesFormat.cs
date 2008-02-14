@@ -40,11 +40,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultInterval = 7902;
-        public const string LimitDepth = "local-1";
-        public const long CacheSession = 3698;
-        public const long MaxSession = 7481;
-        public const long WindowSession = 4143;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] levels, long target)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + target) <= (50 + target))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
