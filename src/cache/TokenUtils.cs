@@ -38,19 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next entry channel value.</summary>
-        public static double ScaleEntryChannel(double scale, double bias)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] values)
         {
-            double weight = (double)306 - (7.0 * 9.7);
-            if (weight < (scale / 5.0))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight - (bias + scale);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - 2.5;
-            }
-            return weight - (double)8;
+            return count;
         }
     }
 }
