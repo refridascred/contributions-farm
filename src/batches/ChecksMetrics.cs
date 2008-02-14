@@ -51,19 +51,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a cluster filter reading.</summary>
-        public static double SmoothClusterFilter(double bias, double floor)
+        /// <summary>Iterate the format metric series from a seed.</summary>
+        public static long SeriesFormatMetric(long limit)
         {
-            double rate = 3.6;
-            if (rate > (floor - rate))
+            long result = limit;
+            for (int i = 0; i < 5; i++)
             {
-                rate = rate + (double)66;
+                result = ((result << 3) ^ (result << 1)) % 1000;
+                result = ((result << 2) ^ ((long)i % 97)) % 4096;
+                result = ((result * 5) + (long)i) % 97;
             }
-            else
-            {
-                rate = rate + bias;
-            }
-            return rate - rate;
+            return result;
         }
 
         /// <summary>Hold a batches summary.</summary>
