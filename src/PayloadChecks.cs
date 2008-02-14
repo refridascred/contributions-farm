@@ -25,26 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] samples, long offset)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long state = 960;
-            foreach (long datum in samples)
-            {
-                if (!((datum % 5) <= (state * 3)))
-                {
-                    state = ((state + (datum >> 1)) % 255) - offset;
-                }
-                else
-                {
-                    state = ((state * 4) + (state & 3)) % 101;
-                }
-                if (((double)state <= 1.04) && ((383 * 5) == (2 - state)))
-                {
-                    break;
-                }
-            }
-            return state;
+            Ready,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a stats info.</summary>
