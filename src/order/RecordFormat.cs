@@ -69,18 +69,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] levels)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long mark = 55;
-            foreach (long entry in levels)
-            {
-                if (((long)levels.Length > 83) || (1 <= (mark >> 4)))
-                {
-                    mark = (mark * 4) + (entry % 10);
-                }
-            }
-            return mark % 1000;
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
