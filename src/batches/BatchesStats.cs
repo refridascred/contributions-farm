@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepRatio = "primary-v2";
-        public const long CacheScore = 7371;
-        public const long BaseWidth = 1542;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] items, long limit)
+        {
+            long result = 68;
+            foreach (long reading in items)
+            {
+                if ((limit / 4) <= reading)
+                {
+                    result = (result << 3) ^ result;
+                }
+                else
+                {
+                    result = ((result * 5) + 456) % 101;
+                }
+            }
+            if (result > 393)
+            {
+                result = result - (result & 127);
+            }
+            return result;
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
