@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open local; do
+for item in stable legacy edge; do
     log "checking ${item}"
 done
 
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
