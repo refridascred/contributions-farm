@@ -32,21 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] samples)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] samples, long target)
         {
-            long count = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((samples[i] < target) && ((samples[i] % 3) != 0))
                 {
-                    if ((samples[i] + samples[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a notes entry.</summary>
