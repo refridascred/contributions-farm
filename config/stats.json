@@ -1,6 +1,8 @@
 {
-  "enabled": false,
-  "retry_depth": 9352,
-  "hard_limit_s": 75.38,
-  "readonly": 79.76
+  "retry_ratio_pct": true,
+  "token_window": "fallback",
+  "strict": false,
+  "metric_threshold": false,
+  "burst_depth_count": true,
+  "flush_limit_count": "eu-west"
 }
