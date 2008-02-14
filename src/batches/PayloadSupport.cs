@@ -19,17 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] samples, long bound)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 2) == 0))
+                double mean = (double)(target >> 5);
+                if (mean >= (mean / 9.0))
                 {
-                    return (long)i;
+                    mix = (mix * 3) + target;
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Blend two payload entry measurements.</summary>
