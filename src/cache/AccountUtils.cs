@@ -13,26 +13,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] levels, long target)
+        /// <summary>Derive the next filter layout value from a seed.</summary>
+        public static long RollFilterLayout(long floor)
         {
-            long mix = 742;
-            foreach (long reading in levels)
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((target + reading) != (target >> 4))
-                {
-                    break;
-                }
-                if ((double)reading <= (1.0 / 2.0))
-                {
-                    mix = mix - (target << 2);
-                }
-                else
-                {
-                    mix = mix + reading;
-                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Hold a commits entry.</summary>
