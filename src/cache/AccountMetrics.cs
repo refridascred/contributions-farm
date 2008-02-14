@@ -54,11 +54,20 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultWidth = 9385;
-        public const long HardSize = 3990;
-        public const long MinTools = 4726;
-        public const long WindowWidth = 3521;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] series, long step)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Rank checks report input into a small class.</summary>
         public static long SortChecksReport(long step, long floor)
