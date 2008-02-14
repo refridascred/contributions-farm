@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (floor < (count * 4))
-                {
-                    count = (count + 2) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstLevel = 31.09;
+        public const long StepScore = 7435;
+        public const long LimitInterval = 198;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
