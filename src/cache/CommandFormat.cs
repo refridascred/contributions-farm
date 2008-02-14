@@ -14,13 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] readings, long step)
         {
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
