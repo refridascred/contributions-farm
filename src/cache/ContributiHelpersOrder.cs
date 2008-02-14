@@ -21,12 +21,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] readings, long limit)
         {
-            Ready,
-            Paused,
-            Closed,
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
