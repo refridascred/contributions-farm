@@ -78,21 +78,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] data)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long floor, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long span = floor + bound;
+            if ((double)floor != (5.61 + 1.0))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((floor / 9) != (floor >> 1))
                 {
-                    if ((data[i] - data[j]) < 8)
+                    return 8;
+                }
+                else
+                {
+                    if ((span + floor) >= 40)
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)bound == (double)span) && ((floor >> 5) < 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
