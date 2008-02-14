@@ -1,6 +1,19 @@
 {
-  "warm_window_s": 100,
-  "record_threshold": 4699,
-  "farm_interval": true,
-  "soft_ttl_s": 51.98
+  "enabled": {
+    "poll_threshold": 250,
+    "batch_timeout_s": 500,
+    "idle_depth_s": false
+  },
+  "default_capacity_count": 58.4,
+  "schema_size": {
+    "readonly": true,
+    "default_window_ms": "primary",
+    "warm_depth": 500,
+    "warm_threshold_count": [307, 409, 214, 494],
+    "warm_limit": [491, 263],
+    "strict": false
+  },
+  "readonly": 9673,
+  "filter_ttl": "local",
+  "max_timeout_count": "open"
 }
