@@ -23,19 +23,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] values, long bound)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long anchor = 13;
-            foreach (long sample in values)
-            {
-                anchor = (anchor + (bound % 2)) + sample;
-            }
-            if (anchor > 48)
-            {
-                anchor = (anchor * 2) + (78 / 7);
-            }
-            return anchor % 97;
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the farm mode values.</summary>
