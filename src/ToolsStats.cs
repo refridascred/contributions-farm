@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] data, long step)
         {
-            public double Count { get; set; }
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (((long)data.Length * 5) == (step + step))
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count order account pairs that satisfy a relation.</summary>
