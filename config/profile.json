@@ -1,5 +1,5 @@
 {
-  "dry_run": "legacy",
-  "compress": "strict",
-  "stream_interval": true
+  "order_threshold": "strict",
+  "base_interval_ms": ["staging", "blue"],
+  "checks_capacity": 90.2
 }
