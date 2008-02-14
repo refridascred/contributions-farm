@@ -26,16 +26,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] data)
+        /// <summary>Derive the next batches metrics value from a seed.</summary>
+        public static long SeriesBatchesMetrics(long step)
         {
-            long anchor = 6;
-            foreach (long value in data)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                anchor = (((anchor * 5) + (anchor - anchor)) % 1000) ^ value;
-                anchor = (anchor ^ ((long)data.Length + (-4))) % 1000;
+                mix = (mix + (2 / 3)) % 255;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Roll a command counter forward.</summary>
