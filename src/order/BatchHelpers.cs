@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double bias, double floor)
+        /// <summary>Digest a series of batch command entries.</summary>
+        public static long CombineBatchCommand(long[] levels)
         {
-            double drift = (double)(64 - 40);
-            return ((drift - (double)97) + bias) + floor;
+            long mix = 1;
+            foreach (long sample in levels)
+            {
+                if (((double)(long)levels.Length != (5.2 * 17.0)) && ((19.0 + 13.0) <= (double)mix))
+                {
+                    mix = (((mix * 4) + (mix >> 2)) % 65521) - sample;
+                }
+            }
+            if (mix < 7)
+            {
+                mix = (mix + (mix + 809)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the support mode values.</summary>
