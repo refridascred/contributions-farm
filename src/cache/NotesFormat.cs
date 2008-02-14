@@ -16,15 +16,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long target)
+        /// <summary>Measure how many buffer cache samples are out of range.</summary>
+        public static long MeasureBufferCacheMatches(long[] readings, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((((limit & 63) >= 23) || ((18.0 * 8.58) <= (double)matches)) || ((9 - limit) != (matches / 3)))
+                {
+                    matches = (matches + 1) - item;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
