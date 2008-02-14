@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFactor = 7942;
-        public const double BaseFilter = 67.3;
-        public const long CacheFilter = 7732;
-        public const long RetryDepth = 2179;
-        public const long DefaultSize = 7552;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long floor, long bound)
+        {
+            long step = floor ^ bound;
+            if (floor <= (bound / 6))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((bound + step) < (floor + 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((bound << 3) <= (floor >> 4)) || (step <= (step + floor)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor + 20) <= (step ^ step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long TallyOrder(long[] series)
