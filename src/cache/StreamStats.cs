@@ -30,12 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
