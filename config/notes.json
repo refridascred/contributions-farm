@@ -1,8 +1,16 @@
 {
-  "min_retries_count": "stable",
-  "compress": ["blue", "fallback", "edge"],
-  "readonly": "legacy",
-  "metric_threshold": 7882,
-  "checks_interval": "edge",
-  "default_limit_ms": "cached"
+  "enabled": 9318,
+  "entry_size": true,
+  "flush_limit": ["green", "eu-west", "blue"],
+  "idle_capacity": 59,
+  "min_retries_count": {
+    "checks_ttl": "edge",
+    "poll_depth_count": "stable",
+    "enabled": {
+      "max_window_s": 14.36,
+      "retry_retries_count": true,
+      "min_retries": "standard",
+      "compress": "legacy"
+    }
+  }
 }
