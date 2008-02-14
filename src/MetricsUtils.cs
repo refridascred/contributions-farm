@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] samples, long seed)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Stale,
+            Failed,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
