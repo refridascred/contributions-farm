@@ -1,17 +1,13 @@
 {
-  "min_ratio_pct": "legacy",
-  "retry_delay_pct": 50.19,
-  "min_retries_pct": {
-    "hard_interval_count": 500,
-    "retry_timeout_count": ["staging", "staging"],
-    "command_timeout": 7489,
-    "batches_depth": false,
-    "editor_retries": 51.1
+  "token_delay": 61.37,
+  "token_capacity": {
+    "checks_size": "fallback",
+    "cache_delay": [98, 277],
+    "warm_ratio_s": false,
+    "persist": true,
+    "entry_delay": 4070
   },
-  "flush_retries_count": 8959,
-  "payload_ttl": {
-    "warm_timeout_count": 60,
-    "audit": "legacy",
-    "poll_depth_s": [12, 71, 358, 199]
-  }
+  "window_retries": ["eu-west", "legacy"],
+  "token_ttl": ["staging", "cached", "strict"],
+  "cache_ratio": 8791
 }
