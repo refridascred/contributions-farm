@@ -26,15 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] series, long seed)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long mark = 1;
-            foreach (long item in series)
-            {
-                mark = ((((mark * 3) + (mark - mark)) % 1000) + item) + seed;
-            }
-            return mark;
+            Failed,
+            Queued,
+            Done,
+            Active,
+            New,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
