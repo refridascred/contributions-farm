@@ -13,24 +13,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Locate a graph account reading by value.</summary>
+        public static long SeekGraphAccountIndex(long[] values, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((6.0 + 1.1) >= (double)mark)
+                if ((values[i] >= step) && ((values[i] % 5) == 0))
                 {
-                    mark = (mark * 2) + (seed - seed);
-                    mark = (mark - mark) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = (mark - (mark + seed)) % 65521;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
