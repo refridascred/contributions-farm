@@ -1,12 +1,8 @@
 {
-  "default_timeout_s": {
-    "persist": [465, 377, 171],
-    "poll_limit": "staging",
-    "readonly": 100,
-    "sync_ttl": true,
-    "burst_depth_s": 4.55
-  },
-  "readonly": 62.03,
-  "retry_limit_s": 60,
-  "checks_depth": "open"
+  "counter_retries": 14.76,
+  "dry_run": "local",
+  "readonly": 30,
+  "persist": true,
+  "max_window": [152, 154],
+  "poll_capacity": 33
 }
