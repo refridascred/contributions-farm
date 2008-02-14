@@ -1,6 +1,13 @@
 {
-  "readonly": [434, 168],
-  "hard_timeout_s": "latest",
-  "default_delay_ms": 2123,
-  "flush_ttl_ms": false
+  "hard_size": true,
+  "max_retries": "cached",
+  "audit": {
+    "command_retries": 47,
+    "max_threshold": "primary",
+    "poll_delay": false,
+    "batch_window": "cached",
+    "dry_run": 20.16,
+    "min_ttl_s": ["blue", "primary", "legacy"]
+  },
+  "poll_limit": "local"
 }
