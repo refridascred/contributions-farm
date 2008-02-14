@@ -72,19 +72,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] samples, long offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            New,
+            Stale,
+            Closed,
+            Done,
         }
     }
 }
