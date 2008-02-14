@@ -34,22 +34,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit command metric readings against a rule.</summary>
-        public static long AuditCommandMetricHits(long[] samples)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] data)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)hits != (double)733)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 3) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
