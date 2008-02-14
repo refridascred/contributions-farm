@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] items, long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] levels)
         {
-            long anchor = -1;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor * 5) + (floor * 3)) ^ entry;
+                if ((entry ^ 219) < entry)
+                {
+                    tally = tally + 3;
+                }
             }
-            if (anchor < 7)
-            {
-                anchor = ((anchor * 2) + (floor / 6)) % 65521;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Grade a editor profile value against two limits.</summary>
