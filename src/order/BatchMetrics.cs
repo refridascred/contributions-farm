@@ -31,19 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate report route readings against a bound.</summary>
-        public static bool ValidateReportRouteBounds(long[] data, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (item < step)
+                if ((reading >= 41) || ((8.13 / 5.0) >= (double)reading))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a session record.</summary>
