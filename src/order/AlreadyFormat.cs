@@ -30,19 +30,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double scale, double bias)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] items)
         {
-            double scale2 = scale / 4.0;
-            if (scale2 >= scale2)
+            long result = 41;
+            foreach (long value in items)
             {
-                scale2 = (scale2 - scale2) - bias;
+                result = ((result << 3) ^ (value >> 1)) % 1000;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 - (scale * 3.2)) + (double)(long)i;
-            }
-            return scale2 - (scale2 * 6.6);
+            return result % 97;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
