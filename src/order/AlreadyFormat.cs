@@ -30,18 +30,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the format queue entries that pass the check.</summary>
-        public static long AuditFormatQueueMatches(long[] values)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((sample * 5) < seen)
+                if ((entry > (entry - entry)) || ((double)hits <= (2.9 * 20.0)))
                 {
-                    seen = seen + 3;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
