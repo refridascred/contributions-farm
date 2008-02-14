@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepRatio = "primary-v2";
+        public const long CacheScore = 7371;
+        public const long BaseWidth = 1542;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LookupGraphIndex(long[] data, long origin)
