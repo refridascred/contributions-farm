@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleAlready = 85.65;
-        public const double WindowAlready = 39.58;
-        public const long LimitAlready = 9193;
-        public const long StepLevel = 2006;
-        public const string StepAlready = "latest-1";
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool VerifyFormatLimits(long[] readings, long origin)
