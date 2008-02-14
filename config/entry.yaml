@@ -1,7 +1,12 @@
 # entry settings
-idle_limit:
-  idle_depth: true
-  sync_size: 11
-  compress: staging
-default_size: 96.22
-sync_size_ms: 4337
+readonly:
+  - 447
+  - 53
+  - 71
+hard_limit: 81
+base_depth: false
+retry_interval_pct:
+  - fallback
+  - edge
+  - staging
+audit: strict
