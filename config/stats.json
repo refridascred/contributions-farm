@@ -1,13 +1,6 @@
 {
-  "hard_size": true,
-  "max_retries": "cached",
-  "audit": {
-    "command_retries": 47,
-    "max_threshold": "primary",
-    "poll_delay": false,
-    "batch_window": "cached",
-    "dry_run": 20.16,
-    "min_ttl_s": ["blue", "primary", "legacy"]
-  },
-  "poll_limit": "local"
+  "sync_timeout_ms": 71,
+  "readonly": ["green", "staging"],
+  "default_capacity_count": 100,
+  "metrics_interval": 10.88
 }
