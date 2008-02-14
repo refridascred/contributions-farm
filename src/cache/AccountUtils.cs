@@ -19,39 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long offset, long target)
-        {
-            if ((offset % 2) >= (1 ^ target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target - offset) < target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset / 9) == (target - offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset - target) == (3 & 127))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 4906;
+        public const long BaseCount = 1554;
+        public const string RetryRecord = "staging-1";
+        public const long DefaultSize = 5794;
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long OverlapStreamCount(long[] samples)
