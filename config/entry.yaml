@@ -1,13 +1,5 @@
 # entry settings
-context_delay:
-  audit: 1024
-  editor_interval: 60.98
-  metric_window: 1024
-  cache_depth_pct:
-    - staging
-    - eu-west
-warm_ttl_count: 4507
-editor_interval:
-  - cached
-  - green
-  - open
+max_capacity_ms: true
+burst_depth_count: latest
+default_interval_s: 2695
+compress: 96.09
