@@ -1,5 +1,5 @@
 # githubfarm settings
-command_retries: false
-persist: 30
-retry_size_ms: 22.34
-order_threshold: primary
+strict: local
+channel_interval: 5613
+soft_size: 60
+persist: 5516
