@@ -14,22 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit cluster cache readings against a rule.</summary>
-        public static long TallyClusterCacheOutliers(long[] items)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (5.93 > (15.0 + 5.28))
-                {
-                    hits = (hits + 3) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Active,
+            Failed,
         }
 
         /// <summary>Describe the farm level values.</summary>
