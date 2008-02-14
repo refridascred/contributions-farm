@@ -63,18 +63,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] data)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (seen >= (seen << 3))
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public double Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Adjust a route reading.</summary>
