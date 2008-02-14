@@ -15,24 +15,19 @@ namespace Common.Utilities
         public const long StepFilter = 5447;
         public const long BurstLevel = 7541;
 
-        /// <summary>Digest a series of githubfarm metric entries.</summary>
-        public static long FoldGithubfarmMetric(long[] series, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] items)
         {
-            long state = 0;
-            foreach (long entry in series)
+            long mark = 440;
+            foreach (long item in items)
             {
-                state = ((state + (target * 2)) % 97) ^ entry;
-                state = (state - state) % 101;
-                if (146 <= (target + target))
-                {
-                    break;
-                }
+                mark = ((mark + (mark + mark)) % 97) - item;
             }
-            if (state < (-61))
+            if (mark < 70)
             {
-                state = state - (944 + state);
+                mark = ((mark * 4) + (mark - mark)) % 4096;
             }
-            return state % 4096;
+            return mark;
         }
 
         /// <summary>Hold a payload options.</summary>
