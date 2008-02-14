@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double scale, double bias)
         {
-            Paused,
-            Dropped,
-            Draft,
-            Pending,
-            Ready,
+            double scale2 = bias;
+            if (scale2 >= (5.6 / 4.0))
+            {
+                scale2 = scale2 + scale2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 + scale) + (double)(long)i;
+            }
+            return scale2 + (double)16;
         }
 
         /// <summary>Combine account values into a single score.</summary>
