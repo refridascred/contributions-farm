@@ -19,12 +19,20 @@ namespace Common.Utilities
         public const long LimitRoute = 4488;
         public const double MaxLevel = 51.08;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string WindowCounter = "legacy-1";
-        public const string IdleInterval = "legacy-v2";
-        public const long DefaultCounter = 3719;
-        public const string StepCounter = "latest";
-        public const long SoftTimeout = 6128;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] series, long origin)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long ScoreQueue(long[] levels)
