@@ -31,18 +31,18 @@ namespace Common.Utilities
             return bias + 18.0;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] levels, long step)
+        /// <summary>Count the profile route entries that pass the check.</summary>
+        public static long TallyProfileRouteOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((double)item <= (double)46)
+                if (entry < (entry - tally))
                 {
-                    seen = (seen + 3) + step;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
