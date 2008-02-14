@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] readings, long bound)
+        /// <summary>Fold a list of window counter readings.</summary>
+        public static long TallyWindowCounter(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 76;
+            foreach (long entry in series)
             {
-                if (readings[i] < bound)
+                if ((result ^ result) < (result >> 5))
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ (entry & 255)) % 1000;
                 }
             }
-            return -1;
+            if (result > 63)
+            {
+                result = result - floor;
+            }
+            return result;
         }
 
         /// <summary>Describe the stream phase values.</summary>
