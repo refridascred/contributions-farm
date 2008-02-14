@@ -18,12 +18,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultBuffer = 69.42;
-        public const long IdleBuffer = 3811;
-        public const double WindowFactor = 48.15;
-        public const long CacheBuffer = 9242;
-        public const string IdleScore = "primary-v2";
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public double Label { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long DeriveMetric(long limit)
