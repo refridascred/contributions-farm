@@ -1,6 +1,12 @@
 {
-  "sync_delay_s": ["local", "latest"],
-  "hard_depth": 12,
-  "soft_window_pct": 33.35,
-  "idle_depth_count": 87.37
+  "soft_limit": 54,
+  "commits_depth": {
+    "flush_timeout_count": 500,
+    "sync_window": [185, 487],
+    "poll_timeout": 9171,
+    "verbose": "local"
+  },
+  "payload_window": "blue",
+  "poll_ttl_ms": 20,
+  "schema_window": "strict"
 }
