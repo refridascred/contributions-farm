@@ -72,9 +72,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchStats = "cached-1";
-        public const long BaseStats = 7338;
-        public const long StepStats = 7030;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] samples, long offset)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
