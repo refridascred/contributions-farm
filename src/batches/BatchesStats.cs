@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Pending,
-            Idle,
-            Dropped,
+            public double Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a command info.</summary>
