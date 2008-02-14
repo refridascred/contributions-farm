@@ -1,5 +1,25 @@
 {
-  "warm_ttl_pct": false,
-  "metric_ttl": "fallback",
-  "strict": "strict"
+  "batch_capacity_ms": false,
+  "stats_ttl": {
+    "hard_depth_pct": "staging",
+    "verbose": {
+      "notes_window": 100,
+      "hard_ratio_count": 14,
+      "channel_ratio": 2.74,
+      "sync_ratio": "stable"
+    },
+    "base_retries_pct": {
+      "stream_capacity": "staging",
+      "session_size": "eu-west",
+      "hard_capacity_count": false,
+      "soft_timeout_count": ["primary", "eu-west", "eu-west", "eu-west"],
+      "max_retries": "stable"
+    },
+    "max_timeout": "open",
+    "commits_size": false
+  },
+  "enabled": 60,
+  "format_ttl": [162, 490, 388],
+  "already_timeout": "standard",
+  "soft_ratio_count": "edge"
 }
