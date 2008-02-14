@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] values)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long step)
         {
-            long carry = 500;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample < (carry >> 2)) && ((carry & 3) >= 7))
+                if ((items[i] > step) && ((items[i] % 3) == 0))
                 {
-                    carry = carry + (374 % 64);
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Describe the farm level values.</summary>
