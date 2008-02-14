@@ -63,21 +63,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] samples)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] levels, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (hits >= seed)
                 {
-                    if ((samples[i] ^ samples[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) + item;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
