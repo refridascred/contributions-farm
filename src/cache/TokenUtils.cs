@@ -25,17 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] levels, long target)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long origin, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long gap = origin ^ bound;
+            if (origin >= (bound % 7))
             {
-                if (levels[i] >= target)
+                return 6;
+            }
+            else
+            {
+                if (!(gap >= (gap ^ origin)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((749 + origin) <= (311 + origin)) || ((origin ^ 7) > (origin % 8)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin > (gap / 6)) && ((origin + bound) < (337 % 10)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
