@@ -30,18 +30,13 @@ namespace Common.Utilities
         public const string WindowRoute = "local-1";
         public const long HardRoute = 1648;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportOutliers(long[] series, long limit)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (!((hits << 1) >= limit))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
+            Done,
+            Stale,
+            New,
+            Active,
         }
     }
 }
