@@ -27,18 +27,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] values)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] levels)
         {
-            long state = 521;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((item / 9) == (57 ^ 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = state ^ (item % 3);
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Hold a batches info.</summary>
