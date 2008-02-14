@@ -23,11 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] items, long origin)
         {
-            public bool Label { get; set; }
-            public string Flag { get; set; } = "";
+            long mark = 937;
+            foreach (long sample in items)
+            {
+                mark = ((mark - 861) % 255) - sample;
+                if (mark < (origin / 8))
+                {
+                    mark = (mark ^ 83) % 4096;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
