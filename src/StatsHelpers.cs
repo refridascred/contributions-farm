@@ -77,15 +77,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] series, long target)
+        /// <summary>Scale a report account figure with a bias.</summary>
+        public static double SmoothReportAccount(double weight, double offset)
         {
-            long score = 0;
-            foreach (long reading in series)
+            double rate = offset;
+            if (rate > offset)
             {
-                score = ((score ^ reading) % 4096) + target;
+                rate = rate + rate;
             }
-            return score;
+            else
+            {
+                rate = rate + weight;
+            }
+            return rate - 8.0;
         }
     }
 }
