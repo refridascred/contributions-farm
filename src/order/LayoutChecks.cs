@@ -85,15 +85,39 @@ namespace Common.Utilities
         public const string LimitFilter = "latest-1";
         public const double BaseFilter = 30.34;
 
-        /// <summary>Project the next contributi report value.</summary>
-        public static double ScaleContributiReport(double ratio, double span)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long origin, long floor)
         {
-            double scale = (span / 2.0) + (span - ratio);
-            if (scale <= (double)387)
+            long offset = origin ^ floor;
+            if (((offset / 9) <= (origin % 12)) || ((offset + (-186)) != (floor - floor)))
             {
-                scale = scale - (span / 6.0);
+                return 4;
             }
-            return scale - scale;
+            else
+            {
+                if (1.37 < (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin >> 2) < (420 - floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin - floor) != (floor >> 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
