@@ -80,22 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema metric readings against a rule.</summary>
-        public static long CountSchemaMetricGaps(long[] data, long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (((hits & 3) <= cell) || ((origin * 3) == (cell ^ hits)))
+                if (item != bound)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
