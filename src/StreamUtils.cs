@@ -64,12 +64,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] samples)
         {
-            Active,
-            Draft,
-            Closed,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((matches >> 4) <= (matches * 4))
+                {
+                    matches = (matches + 1) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a queue entry.</summary>
