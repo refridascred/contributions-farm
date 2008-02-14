@@ -40,13 +40,15 @@ namespace Common.Utilities
         public const long BatchCounter = 7242;
         public const long HardCounter = 6782;
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Scale a profile order figure with a bias.</summary>
+        public static double ScaleProfileOrder(double weight, double offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
+            double bias = (weight - 2.7) + offset;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (double)409) - (double)(long)i;
+            }
+            return bias + offset;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
