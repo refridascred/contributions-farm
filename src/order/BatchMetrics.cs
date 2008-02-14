@@ -47,22 +47,15 @@ namespace Common.Utilities
         public const double LimitSize = 15.17;
         public const double MinSpan = 78.12;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] values)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long carry = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample < seen)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Hold a route stats.</summary>
