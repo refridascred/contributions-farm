@@ -70,11 +70,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseScore = "open-v2";
-        public const long StepReport = 1301;
-        public const long DefaultReport = 2599;
-        public const double SoftReport = 34.98;
-        public const long IdleReport = 1147;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            New,
+            Idle,
+            Retry,
+        }
     }
 }
