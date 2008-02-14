@@ -33,15 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer cache samples are out of range.</summary>
-        public static long MeasureBufferCacheMatches(long[] readings, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] series)
         {
             long matches = 0;
-            foreach (long item in readings)
+            foreach (long item in series)
             {
-                if ((((limit & 63) >= 23) || ((18.0 * 8.58) <= (double)matches)) || ((9 - limit) != (matches / 3)))
+                if (item <= 86)
                 {
-                    matches = (matches + 1) - item;
+                    matches = matches + 3;
                 }
             }
             return matches;
