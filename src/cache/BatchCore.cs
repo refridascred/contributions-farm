@@ -20,18 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] items)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long carry = 24;
+            foreach (long datum in series)
             {
-                if (entry <= ((-24) - entry))
-                {
-                    count = count + 3;
-                }
+                carry = (((carry + carry) % 97) + datum) + limit;
             }
-            return count;
+            return carry % 4096;
         }
 
         /// <summary>Combine format values into a single score.</summary>
