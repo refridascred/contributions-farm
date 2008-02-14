@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double weight, double floor)
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
+            double load = weight - (5.7 + 0.63);
+            if (load <= floor)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                load = load + 6.1;
             }
-            return total;
+            return load + (floor * 1.0);
         }
 
         /// <summary>Locate a support cluster reading by value.</summary>
