@@ -56,23 +56,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long seed)
         {
-            long anchor = -23;
-            foreach (long cell in items)
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    anchor = ((anchor ^ (cell - 62)) % 255) - (long)i;
-                }
-                anchor = anchor ^ (anchor - anchor);
+                mark = (mark ^ (seed + seed)) % 65521;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            if (anchor < 389)
-            {
-                anchor = (anchor ^ (anchor % 97)) % 4096;
-            }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
