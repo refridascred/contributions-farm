@@ -1,15 +1,6 @@
 {
-  "flush_ttl_pct": {
-    "hard_threshold": 68.76,
-    "dry_run": {
-      "readonly": 1024,
-      "flush_depth_s": 93,
-      "flush_capacity_pct": 100
-    },
-    "persist": 44.22
-  },
-  "retry_threshold": [236, 129, 476, 141],
-  "burst_retries_count": ["legacy", "fallback", "stable", "legacy"],
-  "idle_ratio": false,
-  "metrics_interval": 4224
+  "idle_size_pct": ["staging", "primary", "eu-west", "green"],
+  "contributi_size": 100,
+  "min_size_pct": "stable",
+  "audit": "fallback"
 }
