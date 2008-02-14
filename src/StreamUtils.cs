@@ -22,17 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first buffer command entry that matches the target.</summary>
-        public static long LookupBufferCommandIndex(long[] readings, long target)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= target) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public double Mode { get; set; }
+            public double Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Adjust a metric reading.</summary>
