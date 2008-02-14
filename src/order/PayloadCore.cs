@@ -20,13 +20,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] readings, long step)
         {
-            Closed,
-            Dropped,
-            Ready,
-            Stale,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell <= (double)step)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
