@@ -27,13 +27,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Stamp { get; set; }
-            public double Score { get; set; }
+            Draft,
+            Queued,
+            Idle,
+            Active,
+            Failed,
         }
 
         /// <summary>Hold a stats record.</summary>
