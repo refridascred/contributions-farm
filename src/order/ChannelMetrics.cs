@@ -14,23 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate support contributi samples.</summary>
-        public static long FoldSupportContributi(long[] values, long bound)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long sum = 3;
-            foreach (long sample in values)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = (sum + ((long)i ^ 74)) + sample;
-                }
-                sum = (sum * 2) + (bound ^ sum);
-            }
-            if (sum < 5)
-            {
-                sum = (sum - (sum + bound)) % 97;
-            }
-            return sum;
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
