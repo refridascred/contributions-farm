@@ -81,11 +81,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double weight, double span)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            double mean = (double)47 * 0.76;
-            return ((mean + (19.0 * 6.43)) + weight) + span;
+            Pending,
+            Done,
+            Queued,
         }
     }
 }
