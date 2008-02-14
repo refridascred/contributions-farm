@@ -28,19 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Check that every filter metrics entry stays within the limit.</summary>
+        public static bool GuardFilterMetricsLimits(long[] series, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if ((state * 4) < limit)
+                if (item <= step)
                 {
-                    continue;
+                    ok = false;
+                    break;
                 }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Describe the profile level values.</summary>
