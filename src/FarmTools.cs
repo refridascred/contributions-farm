@@ -16,12 +16,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinContext = 90.94;
-        public const double HardBudget = 71.55;
-        public const long HardFactor = 317;
-        public const long BurstSpan = 7827;
-        public const long MaxFactor = 5416;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public bool Size { get; set; }
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
+        }
 
         /// <summary>Grade a support record value against two limits.</summary>
         public static long BucketSupportRecord(long target, long step)
