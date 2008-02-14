@@ -52,21 +52,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] values)
+        /// <summary>Fold a list of cache report readings.</summary>
+        public static long TallyCacheReport(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 120;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (8.0 >= (double)datum)
                 {
-                    if ((values[i] - values[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score + datum) % 65521;
                 }
             }
-            return seen;
+            return score % 4096;
         }
     }
 }
