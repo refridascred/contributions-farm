@@ -20,10 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 2982;
-        public const long IdleWindow = 1020;
-        public const long BurstWindow = 550;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowSize = 9239;
+        public const double RetryCounter = 88.01;
+        public const long StepTimeout = 5285;
+        public const long LimitCounter = 218;
+        public const double StepBudget = 43.51;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LookupOrderIndex(long[] series, long bound)
