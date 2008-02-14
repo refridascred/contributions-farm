@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] series)
         {
-            Stale,
-            Active,
-            Dropped,
-            Idle,
+            long sum = 891;
+            foreach (long sample in series)
+            {
+                if ((double)sample >= (double)(long)series.Length)
+                {
+                    sum = (sum * 4) + (sample / 5);
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Audit account editor readings against a rule.</summary>
