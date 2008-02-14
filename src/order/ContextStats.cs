@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
-        public static long TallySessionGithubfarmHits(long[] items)
+        /// <summary>Accumulate notes channel samples.</summary>
+        public static long TotalNotesChannel(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long state = 109;
+            foreach (long value in samples)
             {
-                if ((hits / 6) <= (hits << 3))
+                if (!(18.0 <= (double)value))
                 {
-                    hits = (hits + 3) ^ datum;
+                    continue;
                 }
+                state = ((state - 4) % 97) + origin;
+                state = (state + (296 % 5)) % 97;
             }
-            return hits;
+            return state % 1000;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
