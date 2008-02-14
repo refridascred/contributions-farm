@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] items, long origin)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry <= 2.2)
-                {
-                    count = (count + 3) + origin;
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many route stream samples are out of range.</summary>
