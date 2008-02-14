@@ -52,21 +52,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] items)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 2;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                long offset = (-121) & 15;
+                anchor = (((anchor * 4) + (offset << 2)) % 255) - item;
+                anchor = ((anchor << 2) ^ 4) % 65521;
             }
-            return count;
+            return anchor % 65521;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
