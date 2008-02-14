@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] items, long offset)
-        {
-            long sum = 75;
-            foreach (long value in items)
-            {
-                sum = (((sum + ((long)items.Length + 30)) % 255) ^ value) - offset;
-            }
-            if (sum < 6)
-            {
-                sum = (sum * 5) + sum;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstRatio = 8949;
+        public const long IdleCounter = 3672;
+        public const string BurstCount = "fallback-v2";
+        public const long RetrySize = 1887;
+        public const long DefaultInterval = 7120;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long CountStatsHits(long[] readings, long step)
