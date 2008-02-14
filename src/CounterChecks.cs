@@ -57,21 +57,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long seed)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] samples)
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
+            long mark = 562;
+            foreach (long cell in samples)
             {
-                if (((long)i * 3) == (seed - seed))
+                if ((mark & 7) <= (mark + mark))
                 {
-                    mix = (mix ^ (mix + 814)) % 101;
+                    mark = ((mark << 3) ^ (mark ^ 420)) - cell;
                 }
-                mix = ((mix << 2) ^ seed) % 1000;
-                mix = (mix << 3) ^ ((long)i & 7);
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            if (mark < 21)
+            {
+                mark = mark - mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
