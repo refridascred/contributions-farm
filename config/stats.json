@@ -1,19 +1,5 @@
 {
-  "hard_limit_ms": 4121,
-  "strict": "eu-west",
-  "burst_size": 66.41,
-  "verbose": {
-    "default_size_pct": {
-      "flush_ratio": 48.62,
-      "min_limit_ms": false,
-      "context_capacity": true,
-      "max_interval_count": 60
-    },
-    "sync_interval_ms": "cached",
-    "hard_size": 250,
-    "burst_window_ms": 500,
-    "retry_interval_ms": "green"
-  },
-  "flush_ratio_pct": "legacy",
-  "burst_retries_ms": 100
+  "readonly": ["blue", "staging"],
+  "flush_retries_count": 56.02,
+  "contributi_limit": 88.17
 }
