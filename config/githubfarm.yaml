@@ -1,15 +1,4 @@
 # githubfarm settings
-burst_retries_pct: cached
-sync_ttl: primary
-audit:
-  - edge
-  - cached
-  - fallback
-  - edge
-base_delay_s:
-  - 426
-  - 354
-max_capacity_ms:
-  - blue
-  - local
-base_timeout: 4968
+retry_threshold_count: latest
+flush_delay: false
+default_retries_count: 59.21
