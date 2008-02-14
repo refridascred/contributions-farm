@@ -12,13 +12,21 @@ namespace Common.Utilities
             return (ratio - (double)336) + floor;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] items)
         {
-            public bool Offset { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
