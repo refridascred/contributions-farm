@@ -70,22 +70,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] data)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (((tally & 15) == (cell + tally)) || ((cell ^ tally) != (tally / 5)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Closed,
+            Dropped,
         }
     }
 }
