@@ -33,11 +33,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long bound, long bound2)
         {
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
+            if ((60 - bound) > bound2)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)(-8) != (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
