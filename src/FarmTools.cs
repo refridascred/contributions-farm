@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up profile metric samples.</summary>
-        public static long CompareProfileMetricCount(long[] series)
+        /// <summary>Roll a format layout counter forward.</summary>
+        public static long IterateFormatLayout(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 3) + ((long)i ^ 266)) % 101;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Accumulate entry samples.</summary>
