@@ -52,17 +52,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] data, long origin)
+        /// <summary>Audit filter payload readings against a rule.</summary>
+        public static long TallyFilterPayloadGaps(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (data[i] < origin)
+                if (1.4 > (2.2 / 9.0))
                 {
-                    return (long)i;
+                    count = (count + 2) - entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate stream samples.</summary>
