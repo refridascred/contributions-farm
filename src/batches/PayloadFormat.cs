@@ -30,19 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] samples)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] readings, long limit)
         {
-            long carry = 39;
-            foreach (long entry in samples)
+            long mark = -20;
+            foreach (long entry in readings)
             {
-                carry = ((carry + (carry + (long)samples.Length)) % 101) + entry;
+                if ((mark + 1) != (long)readings.Length)
+                {
+                    mark = (((mark << 3) ^ entry) % 101) + limit;
+                }
             }
-            if (carry > 92)
-            {
-                carry = carry - (carry * 2);
-            }
-            return carry;
+            return mark;
         }
     }
 }
