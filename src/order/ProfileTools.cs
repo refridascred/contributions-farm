@@ -34,19 +34,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long score = 776;
-            foreach (long item in levels)
-            {
-                score = score ^ item;
-                if ((score << 3) < score)
-                {
-                    score = score - score;
-                }
-            }
-            return score;
+            public bool Weight { get; set; }
+            public long Total { get; set; }
+            public double Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
