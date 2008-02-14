@@ -26,11 +26,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultLayout = 79.87;
-        public const double MaxLayout = 50.17;
-        public const long HardLayout = 6588;
-        public const long RetryLayout = 6081;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc << 2) ^ acc) % 255;
+                if (acc > (6 + acc))
+                {
+                    acc = ((acc << 2) ^ (acc + acc)) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
