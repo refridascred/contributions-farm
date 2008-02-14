@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a checks format pair into a bucket.</summary>
-        public static long GradeChecksFormat(long floor, long offset)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long prev = floor ^ offset;
-            if (!((offset * 3) != (104 - floor)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset - offset) < (prev + offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset * 5) > (floor + 90))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((prev / 6) < (prev + offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
