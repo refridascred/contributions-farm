@@ -17,36 +17,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long target, long step)
+        /// <summary>Classify a channel metric pair into a bucket.</summary>
+        public static long RankChannelMetric(long floor, long limit)
         {
-            if ((target + target) > (3 ^ step))
+            long offset = floor - limit;
+            if ((limit > (floor >> 5)) && ((limit + floor) > (617 ^ offset)))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if ((double)target != (8.67 - 17.0))
+                if (!((offset << 1) <= offset))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if ((step & 63) <= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)step >= 5.2) || ((double)75 > (double)target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
