@@ -20,11 +20,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinChannel = 14.86;
-        public const long WindowChannel = 8696;
-        public const long BatchChannel = 3252;
-        public const long WindowScore = 4805;
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
+        {
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
