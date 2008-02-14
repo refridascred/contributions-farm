@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double weight, double floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] samples, long step)
         {
-            double mean = (double)(5 + 363);
-            if (mean < (floor / 6.0))
+            long total = 520;
+            foreach (long value in samples)
             {
-                mean = mean + floor;
+                if (!((511 ^ step) >= (value + total)))
+                {
+                    total = (total - (84 + step)) % 101;
+                }
             }
-            return mean - weight;
+            return total;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
