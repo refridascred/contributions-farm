@@ -40,18 +40,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the batches buffer entries that pass the check.</summary>
-        public static long AuditBatchesBufferGaps(long[] data, long origin)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (matches <= (long)data.Length)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = ((matches + 2) - datum) + origin;
+                    if ((values[i] ^ values[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
