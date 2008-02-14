@@ -32,16 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] samples)
-        {
-            long acc = 9;
-            foreach (long entry in samples)
-            {
-                acc = (acc * 5) + (entry & 7);
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 7854;
+        public const double MaxCount = 45.06;
+        public const long MaxRoute = 3544;
+        public const double HardWidth = 41.79;
+        public const long MinCount = 4162;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
