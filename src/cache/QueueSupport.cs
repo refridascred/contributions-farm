@@ -25,31 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long seed, long bound)
+        /// <summary>Audit payload farm readings against a rule.</summary>
+        public static long TallyPayloadFarmHits(long[] items)
         {
-            if ((54 - 484) == (bound * 5))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed - bound) < (seed * 2))
+                if (!!((double)datum < (double)seen))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound ^ bound) <= (971 ^ 62))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
