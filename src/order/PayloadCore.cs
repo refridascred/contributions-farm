@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Score { get; set; }
+            Queued,
+            Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Match up filter samples.</summary>
