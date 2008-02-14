@@ -19,22 +19,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a editor profile value against two limits.</summary>
-        public static long BucketEditorProfile(long limit, long origin)
+        /// <summary>Grade a metrics farm value against two limits.</summary>
+        public static long GradeMetricsFarm(long seed, long origin)
         {
-            if ((limit ^ origin) < origin)
+            if ((origin + origin) >= (seed + 3))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if ((origin / 2) < limit)
+                if (!((seed + origin) >= (origin / 9)))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    return 4;
+                    if (((origin & 31) < (5 - seed)) || ((6 - seed) >= (origin & 255)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
