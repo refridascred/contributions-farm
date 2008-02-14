@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long origin)
         {
-            Retry,
-            Paused,
-            Locked,
-            Queued,
-            Dropped,
+            long total = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
