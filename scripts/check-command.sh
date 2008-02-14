@@ -7,21 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-mode="${1:-standard}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=142
+log "limit is ${COMMAND_LIMIT}"
 
-for item in edge blue strict staging; do
+for item in legacy local cached; do
     log "checking ${item}"
 done
