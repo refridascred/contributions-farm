@@ -38,9 +38,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 6469;
-        public const double HardFilter = 33.88;
-        public const string RetryFilter = "staging";
+        /// <summary>Check that every context githubfarm entry stays within the limit.</summary>
+        public static bool ValidateContextGithubfarmLimits(long[] data, long limit)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
