@@ -72,11 +72,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheBudget = 861;
-        public const string BatchMetric = "fallback-edge";
-        public const long IdleSize = 9226;
-        public const long SoftMetric = 1904;
-        public const long DefaultMetric = 80;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] levels)
+        {
+            long mark = 55;
+            foreach (long entry in levels)
+            {
+                if (((long)levels.Length > 83) || (1 <= (mark >> 4)))
+                {
+                    mark = (mark * 4) + (entry % 10);
+                }
+            }
+            return mark % 1000;
+        }
     }
 }
