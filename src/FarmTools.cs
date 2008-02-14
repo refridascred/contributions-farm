@@ -24,15 +24,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a format buffer counter forward.</summary>
-        public static long DeriveFormatBuffer(long target)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] levels)
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
+            long total = 551;
+            foreach (long entry in levels)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((6.1 / 8.0) < (double)entry)
+                {
+                    total = (total + (entry & 63)) % 65521;
+                }
+                else
+                {
+                    total = (total * 3) + (entry >> 2);
+                }
             }
-            return mix;
+            return total;
         }
     }
 }
