@@ -49,18 +49,11 @@ namespace Common.Utilities
         public const string BurstSession = "primary";
         public const string MinLevel = "cached-1";
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = (mix << 3) ^ (mix + step);
-                mix = (mix + (mix % 12)) % 1000;
-                mix = mix - ((long)i / 6);
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseLayout = "local-edge";
+        public const long IdleBudget = 166;
+        public const long StepSize = 1006;
+        public const long LimitCount = 8819;
+        public const long MaxDepth = 2173;
     }
 }
