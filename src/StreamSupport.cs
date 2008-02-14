@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] readings, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
