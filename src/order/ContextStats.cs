@@ -19,16 +19,17 @@ namespace Common.Utilities
         public const long CacheCluster = 3555;
         public const long StepLevel = 2798;
 
-        /// <summary>Combine schema layout values into a single score.</summary>
-        public static long CombineSchemaLayout(long[] samples, long origin)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] data, long step)
         {
-            long sum = -9;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (((sum * 3) + (origin << 3)) % 65521) ^ cell;
-                sum = ((sum * 5) + (origin & 255)) % 1000;
+                if ((data[i] < step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
