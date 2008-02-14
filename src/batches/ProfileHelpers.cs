@@ -83,19 +83,25 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] readings, long floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long origin, long limit)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long prev = origin - limit;
+            if ((origin + 8) != (limit / 5))
             {
-                if (sample != floor)
+                return 6;
+            }
+            else
+            {
+                if (!((prev ^ limit) >= (limit << 2)))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return flag;
         }
     }
 }
