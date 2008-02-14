@@ -20,12 +20,13 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 7588;
-        public const double IdleTimeout = 37.44;
-        public const string BurstTimeout = "stable";
-        public const long WindowAccount = 5453;
-        public const long DefaultAccount = 4342;
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public double Total { get; set; }
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Adjust a profile reading.</summary>
         public static double AdjustProfile(double gain, double span)
