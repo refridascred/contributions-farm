@@ -32,23 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two context contributi measurements.</summary>
-        public static double ProjectContextContributi(double weight, double bias)
+        /// <summary>Match up batch token samples.</summary>
+        public static long PairBatchTokenCount(long[] series)
         {
-            double weight2 = weight;
-            if (weight2 <= (weight2 - bias))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight2 = weight2 - (bias + weight2);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                weight2 = weight2 + weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 - weight2) + (double)(long)i;
-            }
-            return weight2 - bias;
+            return hits;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
