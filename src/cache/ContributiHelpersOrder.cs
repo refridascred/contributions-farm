@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Project the next payload value.</summary>
+        public static double BlendPayload(double weight, double floor)
         {
-            Paused,
-            Retry,
-            Ready,
-            New,
-            Active,
+            double ratio = weight - (13.0 - 1.7);
+            return (ratio - (double)336) + floor;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
