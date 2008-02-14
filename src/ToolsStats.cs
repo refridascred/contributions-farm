@@ -51,25 +51,18 @@ namespace Common.Utilities
         public const long HardDepth = 5292;
         public const long SoftGithubfarm = 199;
 
-        /// <summary>Rank report buffer input into a small class.</summary>
-        public static long BucketReportBuffer(long floor, long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] series, long offset)
         {
-            long gap = floor ^ limit;
-            if (floor >= (floor + gap))
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (5.8 > (double)floor)
+                if ((hits - 0) == (offset * 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    hits = (hits + 1) + item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
