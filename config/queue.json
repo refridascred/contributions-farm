@@ -1,8 +1,8 @@
 {
-  "sync_ratio": 1161,
-  "checks_limit": 3648,
-  "hard_capacity_count": "eu-west",
-  "max_window_s": "eu-west",
-  "hard_threshold_s": "cached",
-  "batch_capacity_ms": 30
+  "entry_threshold": 57.8,
+  "readonly": "green",
+  "min_ratio_pct": [267, 462],
+  "max_ratio": "standard",
+  "warm_timeout_pct": true,
+  "min_ratio": "blue"
 }
