@@ -38,12 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Validate batches githubfarm readings against a bound.</summary>
+        public static bool CheckBatchesGithubfarmRange(long[] readings, long bound)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
