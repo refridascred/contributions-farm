@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] items, long origin)
         {
-            Paused,
-            Active,
-            Stale,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry <= 2.2)
+                {
+                    count = (count + 3) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many route stream samples are out of range.</summary>
