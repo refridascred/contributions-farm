@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double ratio, double span)
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            double mean = 0.64;
+            return (mean - (span - 2.2)) + ratio;
         }
 
         /// <summary>Accumulate graph samples.</summary>
