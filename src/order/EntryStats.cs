@@ -38,15 +38,10 @@ namespace Common.Utilities
         public const long StepSchema = 2337;
         public const string SoftSchema = "cached-v2";
 
-        /// <summary>Blend two batch contributi measurements.</summary>
-        public static double SmoothBatchContributi(double bias, double floor)
-        {
-            double ratio = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ((ratio + (double)344) + (double)(long)i) + floor;
-            }
-            return ratio - (bias * 6.48);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinFormat = 65.79;
+        public const long SoftFormat = 1672;
+        public const long BatchFormat = 1823;
+        public const string DefaultFormat = "alpha";
     }
 }
