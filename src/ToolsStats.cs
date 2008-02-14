@@ -59,19 +59,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry >= (hits << 1)) && ((18 + offset) == (offset - offset)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftCount = 9296;
+        public const long LimitScore = 4460;
+        public const long BurstDepth = 2022;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double BaseScore = 7.16;
