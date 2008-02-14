@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 6144;
+        public const long RetryAccount = 7617;
+        public const long BaseSpan = 7641;
+        public const double HardBudget = 12.72;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long DigestCluster(long[] data, long step)
