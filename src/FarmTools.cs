@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Match up profile metric samples.</summary>
+        public static long CompareProfileMetricCount(long[] series)
         {
-            Pending,
-            Paused,
-            Active,
-            New,
-            Draft,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
