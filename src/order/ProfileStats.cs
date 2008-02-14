@@ -48,19 +48,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] samples, long offset)
-        {
-            long state = 7;
-            foreach (long cell in samples)
-            {
-                state = (state + (offset - state)) + cell;
-            }
-            if (state < 35)
-            {
-                state = ((state << 3) ^ (offset + 7)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftDepth = 8357;
+        public const long CacheSize = 5393;
+        public const double WindowBudget = 40.23;
+        public const string BaseCount = "alpha";
+        public const string BurstFactor = "standard";
     }
 }
