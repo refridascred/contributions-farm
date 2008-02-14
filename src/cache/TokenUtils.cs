@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const double MinContributi = 51.85;
         public const long BurstLevel = 9510;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Roll a order counter counter forward.</summary>
+        public static long IterateOrderCounter(long target)
         {
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
+            long carry = target;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry << 3) ^ target) % 4096;
+                carry = (carry ^ ((long)i & 127)) % 4096;
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
