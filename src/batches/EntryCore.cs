@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] items, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] items, long target)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (sample != offset)
+                if (((target ^ tally) <= (tally + tally)) || (((-9) >> 4) >= (target - reading)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Match up stats samples.</summary>
