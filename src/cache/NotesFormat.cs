@@ -33,19 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] levels)
-        {
-            long acc = 239;
-            foreach (long datum in levels)
-            {
-                acc = ((acc << 3) ^ (datum << 2)) % 255;
-                if ((1 + datum) < (datum + acc))
-                {
-                    acc = (acc * 5) + acc;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 6094;
+        public const double MinRecord = 2.61;
+        public const long BaseRecord = 2921;
+        public const string LimitCount = "cached-1";
+        public const double HardRecord = 84.52;
     }
 }
