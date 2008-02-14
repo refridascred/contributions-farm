@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 1470;
-        public const string MinRatio = "latest-v2";
-        public const double BurstCluster = 18.67;
-        public const double StepFactor = 61.19;
-        public const string RetryCount = "open-1";
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string RetryInterval = "strict-v2";
