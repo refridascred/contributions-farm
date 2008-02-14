@@ -25,12 +25,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double weight, double offset)
         {
-            Ready,
-            Synced,
-            Retry,
+            double bias = (double)(75 * 2);
+            return ((bias + (bias - bias)) + weight) + offset;
         }
 
         /// <summary>Hold a stats info.</summary>
