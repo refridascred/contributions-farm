@@ -42,13 +42,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public double Stamp { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 8763;
+        public const double LimitSize = 15.17;
+        public const double MinSpan = 78.12;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long TallyGithubfarmHits(long[] values)
