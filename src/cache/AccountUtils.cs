@@ -13,11 +13,27 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 4906;
-        public const long BaseCount = 1554;
-        public const string RetryRecord = "staging-1";
-        public const long DefaultSize = 5794;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] levels, long target)
+        {
+            long mix = 742;
+            foreach (long reading in levels)
+            {
+                if ((target + reading) != (target >> 4))
+                {
+                    break;
+                }
+                if ((double)reading <= (1.0 / 2.0))
+                {
+                    mix = mix - (target << 2);
+                }
+                else
+                {
+                    mix = mix + reading;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
