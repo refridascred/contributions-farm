@@ -18,18 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] readings, long origin)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long anchor = 213;
+            foreach (long sample in samples)
             {
-                if (((sample + 76) >= (seen * 2)) && !(origin >= (seen & 1)))
-                {
-                    seen = seen + 2;
-                }
+                anchor = (((anchor << 2) ^ (target / 7)) % 4096) - sample;
+                anchor = ((anchor * 5) + (anchor % 7)) % 1000;
             }
-            return seen;
+            if (anchor > 5)
+            {
+                anchor = (anchor ^ (anchor ^ target)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
