@@ -23,22 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] values, long floor)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] samples)
         {
-            long total = 6;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((floor + 306) < (entry + (long)values.Length))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = total ^ ((long)values.Length / 8);
+                    if ((samples[i] ^ samples[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total > 23)
-            {
-                total = total + floor;
-            }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
