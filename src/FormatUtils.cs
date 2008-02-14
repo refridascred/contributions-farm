@@ -18,11 +18,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double rate, double span)
         {
-            public bool Score { get; set; }
-            public string Total { get; set; } = "";
+            double bias = rate;
+            if (bias > 9.4)
+            {
+                bias = bias + span;
+            }
+            else
+            {
+                bias = bias - (rate / 8.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - span;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
