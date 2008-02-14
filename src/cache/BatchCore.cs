@@ -22,15 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] series, long limit)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] items, long target)
         {
-            long carry = 24;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                carry = (((carry + carry) % 97) + datum) + limit;
+                if (sample >= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry % 4096;
+            return ok;
         }
 
         /// <summary>Combine format values into a single score.</summary>
