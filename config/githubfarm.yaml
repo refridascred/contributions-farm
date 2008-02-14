@@ -1,7 +1,4 @@
 # githubfarm settings
-poll_size_count:
-  cache_size_s: strict
-  burst_size_pct: fallback
-  soft_threshold_ms: blue
-idle_capacity_ms: 3106
-hard_size: 60
+verbose: 1024
+max_capacity: local
+default_interval_pct: edge
