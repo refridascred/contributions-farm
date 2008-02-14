@@ -68,13 +68,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Idle,
-            Synced,
-            Active,
-            Ready,
+            public string Owner { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
