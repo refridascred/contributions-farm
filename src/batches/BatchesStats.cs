@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const long CacheBuffer = 9242;
         public const string IdleScore = "primary-v2";
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long limit)
         {
-            Done,
-            Pending,
-            Retry,
-            Failed,
+            long result = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = ((result - (23 + (long)i)) % 97) ^ (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
