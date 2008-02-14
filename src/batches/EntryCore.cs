@@ -20,11 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseRatio = "strict";
-        public const long DefaultTools = 7006;
-        public const double RetryLevel = 31.08;
-        public const double BatchTools = 76.75;
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine command values into a single score.</summary>
         public static long CombineCommand(long[] samples, long origin)
