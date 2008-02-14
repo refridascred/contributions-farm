@@ -50,21 +50,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count counter already pairs that satisfy a relation.</summary>
-        public static long OverlapCounterAlreadyCount(long[] series)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry <= limit)
                 {
-                    if ((series[i] + series[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
