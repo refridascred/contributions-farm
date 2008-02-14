@@ -1,21 +1,16 @@
 # support settings
-strict: 18.19
-persist:
-  persist: 97
-  min_ttl_ms: standard
-  profile_threshold: 66.2
-  verbose: 46
-  audit:
-    - 117
-    - 379
-    - 498
-    - 42
-cache_limit: 13
-already_size:
-  - 478
-  - 421
-payload_capacity: open
-verbose:
-  - open
-  - strict
-  - strict
+batch_capacity:
+  profile_depth: 88.57
+  strict: staging
+  retry_interval: 53.95
+  batch_timeout_count:
+    - 384
+    - 107
+    - 298
+    - 106
+poll_size:
+  soft_ttl_count: 5227
+  batch_limit: primary
+  filter_capacity: 54.77
+  warm_capacity: 7
+retry_ratio_pct: 3901
