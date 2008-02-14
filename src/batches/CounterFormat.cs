@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const long MinFactor = 6343;
         public const long DefaultReport = 681;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] readings, long offset)
         {
-            Failed,
-            Stale,
-            Queued,
-            Closed,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
