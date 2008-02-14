@@ -62,11 +62,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Derive the next githubfarm editor value from a seed.</summary>
+        public static long DeriveGithubfarmEditor(long target)
         {
-            public long Label { get; set; }
-            public double Stamp { get; set; }
+            long acc = target;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = (acc ^ (acc - acc)) % 97;
+                acc = (acc * 4) + target;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
