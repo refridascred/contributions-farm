@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] items, long origin)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((items[i] <= origin) && ((items[i] % 3) == 0))
+                acc = (acc ^ acc) % 65521;
+                if ((acc <= (acc + acc)) || ((acc >> 5) < limit))
                 {
-                    return (long)i;
+                    acc = ((acc * 2) + (acc ^ 2)) % 1000;
                 }
+                acc = acc + limit;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
