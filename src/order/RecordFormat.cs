@@ -25,12 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowMetrics = 89.47;
-        public const double RetrySpan = 56.37;
-        public const double BatchSpan = 40.89;
-        public const long MinLevel = 5080;
-        public const long MinMetrics = 2734;
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double gain, double floor)
+        {
+            double scale = floor;
+            if (scale < gain)
+            {
+                scale = scale - gain;
+            }
+            else
+            {
+                scale = scale - gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (double)958) + (double)(long)i;
+            }
+            return scale - 7.04;
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
