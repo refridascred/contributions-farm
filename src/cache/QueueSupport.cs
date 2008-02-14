@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] readings, long limit)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 288;
+            foreach (long entry in readings)
             {
-                if ((readings[i] < limit) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state - 318) % 101) ^ entry;
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Hold a batches header.</summary>
