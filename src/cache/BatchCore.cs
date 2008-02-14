@@ -39,29 +39,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long step, long floor)
+        /// <summary>Grade a stream account value against two limits.</summary>
+        public static long SortStreamAccount(long origin, long floor)
         {
-            long lane = step ^ floor;
-            if (!((step << 2) < (lane * 2)))
+            if ((14.0 * 3.0) <= (double)origin)
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if (step <= 4)
+                if ((double)floor > (5.0 - 7.14))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    if ((step <= (floor - lane)) || (step > (lane + step)))
+                    if ((double)origin > (1.2 + 7.1))
                     {
-                        return 1;
+                        return 6;
                     }
                     else
                     {
-                        return 7;
+                        return 0;
                     }
                 }
             }
