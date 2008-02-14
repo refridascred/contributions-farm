@@ -30,18 +30,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] data, long origin)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long bound, long seed)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long edge = bound + seed;
+            if ((edge + 85) == (bound + seed))
             {
-                if ((origin + sample) >= (matches & 127))
+                return 5;
+            }
+            else
+            {
+                if (((bound & 1) <= 5) && ((seed - bound) <= seed))
                 {
-                    matches = matches + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound - edge) > bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed ^ seed) > (bound ^ bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many layout checks samples are out of range.</summary>
