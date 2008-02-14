@@ -12,19 +12,24 @@ namespace Common.Utilities
             return ratio + (rate * 17.0);
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] levels, long offset)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long seed)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample != offset)
+                if ((6.0 + 1.1) >= (double)mark)
                 {
-                    stale = false;
-                    break;
+                    mark = (mark * 2) + (seed - seed);
+                    mark = (mark - mark) % 97;
                 }
+                else
+                {
+                    mark = (mark - (mark + seed)) % 65521;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Adjust a channel reading.</summary>
