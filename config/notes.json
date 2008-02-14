@@ -1,7 +1,6 @@
 {
-  "cache_window": "local",
-  "batch_timeout": 1019,
-  "warm_depth_s": ["blue", "latest", "edge", "edge"],
-  "readonly": [364, 453],
-  "farm_interval": 60
+  "max_timeout_s": "standard",
+  "retry_window": 15.38,
+  "hard_ttl_count": "staging",
+  "base_delay_count": 100
 }
