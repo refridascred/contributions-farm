@@ -37,18 +37,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] readings)
+        /// <summary>Check that every report command entry stays within the limit.</summary>
+        public static bool VerifyReportCommandLimits(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if ((4.62 + 2.0) == (double)reading)
+                if (sample >= floor)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
