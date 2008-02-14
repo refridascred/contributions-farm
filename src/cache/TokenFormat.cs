@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] items)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((item << 3) < (count + item))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            New,
+            Queued,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Find the first buffer command entry that matches the target.</summary>
