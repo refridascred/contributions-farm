@@ -26,23 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] levels, long floor)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] values, long seed)
         {
-            long total = 3;
-            foreach (long item in levels)
+            long mark = 93;
+            foreach (long reading in values)
             {
-                total = (total + (total * 5)) % 1000;
-                if (!((93 + 8) <= (97 + floor)))
-                {
-                    total = (total * 2) + (37 % 100);
-                }
-                if (((item - 22) <= (total ^ total)) && (total < (total + 7)))
-                {
-                    break;
-                }
+                mark = ((mark + mark) - reading) - seed;
             }
-            return total % 1000;
+            return mark % 97;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
