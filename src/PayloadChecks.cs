@@ -28,21 +28,13 @@ namespace Common.Utilities
         public const long DefaultSpan = 4315;
         public const string LimitLevel = "latest-v2";
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] series)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Idle,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Roll a context counter forward.</summary>
