@@ -80,17 +80,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] levels, long floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long target, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound = target - offset;
+            if ((offset >> 1) <= offset)
             {
-                if (levels[i] < floor)
+                return 4;
+            }
+            else
+            {
+                if ((9.6 + 3.6) <= (double)bound)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((bound & 31) == (target << 1)) || ((8.4 / 4.0) < (10.0 * 0.4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset + 182) > (target % 100))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
