@@ -36,17 +36,16 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] items, long seed)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
+                anchor = anchor ^ ((long)i + target);
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
     }
 }
