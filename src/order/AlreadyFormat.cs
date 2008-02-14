@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double scale, double bias)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            double scale2 = bias;
-            if (scale2 >= (5.6 / 4.0))
+            long sum = 982;
+            foreach (long value in samples)
             {
-                scale2 = scale2 + scale2;
+                sum = ((sum << 2) ^ sum) % 97;
+                sum = ((sum * 2) + value) % 65521;
+                if ((870 / 7) <= sum)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (sum > 150)
             {
-                scale2 = (scale2 + scale) + (double)(long)i;
+                sum = (sum - (sum + sum)) % 255;
             }
-            return scale2 + (double)16;
+            return sum;
         }
 
         /// <summary>Combine account values into a single score.</summary>
