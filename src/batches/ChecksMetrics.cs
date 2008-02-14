@@ -19,20 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] samples, long origin)
-        {
-            long state = 65;
-            foreach (long reading in samples)
-            {
-                state = (state - 7) ^ reading;
-                if (origin > state)
-                {
-                    state = state ^ origin;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardRatio = 5714;
+        public const long BaseFilter = 1870;
+        public const long MaxFilter = 5655;
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
