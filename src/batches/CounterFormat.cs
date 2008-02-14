@@ -14,18 +14,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the order token entries that pass the check.</summary>
-        public static long MeasureOrderTokenGaps(long[] data)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((53 + seen) <= ((long)data.Length * 5))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
+            Retry,
+            Pending,
+            Active,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
