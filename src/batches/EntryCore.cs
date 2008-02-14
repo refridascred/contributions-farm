@@ -72,17 +72,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] items, long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (items[i] == limit)
+                if (datum > bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
