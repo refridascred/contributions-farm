@@ -19,23 +19,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit account editor readings against a rule.</summary>
-        public static long MeasureAccountEditorGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((810 % 7) < (entry % 24))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRatio = 4308;
+        public const long BatchSpan = 4808;
+        public const string BatchRoute = "standard";
+        public const long MinRoute = 1531;
 
         /// <summary>Adjust a record reading.</summary>
         public static double AdjustRecord(double gain, double offset)
