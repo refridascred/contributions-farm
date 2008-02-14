@@ -47,22 +47,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine batches contributi values into a single score.</summary>
-        public static long DigestBatchesContributi(long[] values)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] levels)
         {
-            long sum = 2;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((value + value) < (312 >> 1))
+                if (((cell << 2) > cell) && ((tally >> 5) < (1 ^ 8)))
                 {
-                    sum = (sum + (value & 127)) % 4096;
-                }
-                else
-                {
-                    sum = (sum * 5) + (value + sum);
+                    tally = tally + 3;
                 }
             }
-            return sum;
+            return tally;
         }
     }
 }
