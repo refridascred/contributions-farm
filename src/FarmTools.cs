@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultFactor = 5393;
-        public const double HardCounter = 59.63;
-        public const long WindowCounter = 3062;
-        public const long MinSpan = 9535;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 82;
+        public const long MinCluster = 4907;
+        public const long StepCluster = 1919;
+        public const long LimitCount = 3873;
+        public const string BaseCluster = "local-v2";
 
         /// <summary>Derive the next payload session value from a seed.</summary>
         public static long DerivePayloadSession(long seed)
