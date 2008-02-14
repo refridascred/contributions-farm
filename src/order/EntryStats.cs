@@ -25,12 +25,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public double Level { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
+            Closed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Roll a graph counter forward.</summary>
