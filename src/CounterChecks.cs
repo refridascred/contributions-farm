@@ -74,21 +74,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] data)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 85;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((reading * 2) <= (reading >> 2))
                 {
-                    if ((data[i] - data[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total * 2) + total;
                 }
             }
-            return count;
+            if (total < 689)
+            {
+                total = (total * 5) + (total % 16);
+            }
+            return total;
         }
     }
 }
