@@ -1,6 +1,5 @@
 {
-  "max_timeout_s": "standard",
-  "retry_window": 15.38,
-  "hard_ttl_count": "staging",
-  "base_delay_count": 100
+  "default_delay": "green",
+  "audit": "cached",
+  "idle_limit_ms": "strict"
 }
