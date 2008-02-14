@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryProfile = "legacy-1";
-        public const long SoftProfile = 275;
-        public const string LimitProfile = "latest-v2";
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
