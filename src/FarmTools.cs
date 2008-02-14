@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] series, long seed)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] series)
         {
-            long carry = 8;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (((carry + (carry / 3)) % 255) ^ item) - seed;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Hold a support record.</summary>
