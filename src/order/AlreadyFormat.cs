@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] samples)
-        {
-            long sum = 982;
-            foreach (long value in samples)
-            {
-                sum = ((sum << 2) ^ sum) % 97;
-                sum = ((sum * 2) + value) % 65521;
-                if ((870 / 7) <= sum)
-                {
-                    break;
-                }
-            }
-            if (sum > 150)
-            {
-                sum = (sum - (sum + sum)) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryFactor = "fallback-1";
+        public const long HardWidth = 8727;
+        public const double CacheRatio = 1.78;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long CountAccountOutliers(long[] readings)
