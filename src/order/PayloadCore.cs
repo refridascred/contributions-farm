@@ -30,15 +30,31 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long offset, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
+            if ((double)offset <= 2.3)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((floor + offset) > floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor < 14.0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
