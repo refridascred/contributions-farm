@@ -40,39 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long bound, long origin)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] samples, long seed)
         {
-            long edge = bound ^ origin;
-            if ((double)origin <= 9.75)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(bound >= (edge + edge)))
+                if ((cell % 5) >= cell)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (edge < (origin + edge))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((19.0 * 3.8) > (double)bound) || ((bound ^ origin) <= bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = (hits + 3) + seed;
                 }
             }
+            return hits;
         }
     }
 }
