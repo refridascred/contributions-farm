@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double weight, double span)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double rate, double span)
         {
-            double drift = (double)547 * 12.0;
-            for (int i = 0; i < 3; i++)
+            double drift = rate;
+            if (drift >= (double)(-3))
             {
-                drift = ((drift - (span - span)) + (double)(long)i) + weight;
+                drift = (drift + rate) + span;
             }
-            return drift + drift;
+            return drift - drift;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
