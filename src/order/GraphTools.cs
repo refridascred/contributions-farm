@@ -33,39 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long bound, long floor)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long delta = bound + floor;
-            if ((bound < floor) && ((floor / 8) < (8 - floor)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (delta > (0 >> 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (delta >= (delta >> 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor >> 1) >= delta)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Ready,
+            Closed,
         }
 
         /// <summary>Describe the channel class values.</summary>
