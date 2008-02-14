@@ -36,15 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next batch farm value.</summary>
-        public static double AdjustBatchFarm(double weight, double offset)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] data)
         {
-            double load = (weight / 7.0) / 2.0;
-            if (load > (double)85)
+            long carry = 4;
+            foreach (long value in data)
             {
-                load = (load + 3.87) - offset;
+                if ((28 << 3) != (value ^ 359))
+                {
+                    carry = (carry - (carry ^ carry)) % 97;
+                }
             }
-            return load + (load / 5.0);
+            if (carry > (-783))
+            {
+                carry = (carry + (carry >> 2)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
