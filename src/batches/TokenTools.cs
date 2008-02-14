@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] levels, long seed)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Locked,
+            Idle,
+            Ready,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
