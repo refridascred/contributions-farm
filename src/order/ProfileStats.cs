@@ -37,21 +37,38 @@ namespace Common.Utilities
             return bias - 16.0;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long bound, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!((floor - bound) < (floor + floor)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((floor + bound) >= (floor - bound)))
                 {
-                    if ((data[i] - data[j]) == 9)
+                    return 4;
+                }
+                else
+                {
+                    if (!((829 + bound) > bound))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor + floor) <= (floor << 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
