@@ -7,17 +7,17 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-RECORD_LIMIT=285
+RECORD_LIMIT=103
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-fallback}"
+mode="${1:-latest}"
 case "${mode}" in
-    legacy)
+    eu-west)
         log "fast path"
         ;;
     *)
