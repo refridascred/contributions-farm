@@ -39,11 +39,18 @@ namespace Common.Utilities
             return ratio - 5.22;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryWidth = 82.64;
-        public const long HardTools = 203;
-        public const double HardTimeout = 1.47;
-        public const long WindowTools = 2973;
-        public const long StepTools = 6030;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((604 - 572) > (datum + 0))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
