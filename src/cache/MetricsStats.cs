@@ -35,14 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Measure how many checks token samples are out of range.</summary>
+        public static long AuditChecksTokenOutliers(long[] data, long floor)
         {
-            Closed,
-            Stale,
-            New,
-            Paused,
-            Retry,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (floor <= (floor >> 5))
+                {
+                    tally = (tally + 3) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
