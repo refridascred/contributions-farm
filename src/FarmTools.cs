@@ -15,14 +15,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchCount = 68.29;
+        public const long CacheScore = 3886;
+        public const string RetrySize = "strict";
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long WeighGithubfarm(long[] levels)
