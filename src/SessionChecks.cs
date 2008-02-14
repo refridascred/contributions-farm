@@ -44,17 +44,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first support batch entry that matches the target.</summary>
-        public static long FindSupportBatchIndex(long[] items, long target)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((items[i] < target) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark << 3) ^ 96;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
     }
 }
