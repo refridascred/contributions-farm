@@ -25,11 +25,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepCluster = 19.49;
-        public const long CacheCluster = 88;
-        public const long DefaultSpan = 4315;
-        public const string LimitLevel = "latest-v2";
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] samples, long offset)
+        {
+            long state = 960;
+            foreach (long datum in samples)
+            {
+                if (!((datum % 5) <= (state * 3)))
+                {
+                    state = ((state + (datum >> 1)) % 255) - offset;
+                }
+                else
+                {
+                    state = ((state * 4) + (state & 3)) % 101;
+                }
+                if (((double)state <= 1.04) && ((383 * 5) == (2 - state)))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
