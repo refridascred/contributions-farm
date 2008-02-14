@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryCount = "local-1";
-        public const long HardTools = 1403;
-        public const string MaxWidth = "standard";
-        public const long WindowTools = 5740;
+        /// <summary>Fold a list of layout route readings.</summary>
+        public static long TallyLayoutRoute(long[] values)
+        {
+            long mark = 640;
+            foreach (long sample in values)
+            {
+                mark = (((mark * 3) + ((-5) + mark)) % 65521) - sample;
+                mark = mark ^ 999;
+            }
+            if (mark < 6)
+            {
+                mark = mark - (mark >> 1);
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long CountAccountOutliers(long[] readings)
