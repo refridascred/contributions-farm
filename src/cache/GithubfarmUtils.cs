@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] series)
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (!(((6 >> 1) != ((long)i << 3)) || ((long)i <= sum)))
+                if ((double)tally <= (6.0 - 8.3))
                 {
-                    sum = sum + (floor + floor);
+                    tally = (tally + 1) - reading;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = ((sum * 4) + (sum % 97)) ^ (long)i2;
-                }
-                if ((floor - 42) < sum)
-                {
-                    sum = (sum + 0) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ floor) % 4096;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
