@@ -1,5 +1,15 @@
 {
-  "session_window": ["blue", "open", "edge"],
-  "idle_ratio_pct": 100,
-  "audit": 250
+  "queue_limit": 35.64,
+  "verbose": {
+    "dry_run": 58,
+    "enabled": "strict",
+    "flush_window_pct": true,
+    "batch_window": "legacy",
+    "burst_capacity_count": 70.51,
+    "compress": "eu-west"
+  },
+  "hard_ttl_pct": 39.65,
+  "channel_size": [247, 71],
+  "format_retries": "fallback",
+  "window_size": 4077
 }
