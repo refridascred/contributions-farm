@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long StepProfile = 7969;
         public const double SoftSize = 31.73;
 
-        /// <summary>Derive the next profile session value from a seed.</summary>
-        public static long StepProfileSession(long floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            long total = seed;
+            for (int i = 0; i < 4; i++)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Hold a window snapshot.</summary>
