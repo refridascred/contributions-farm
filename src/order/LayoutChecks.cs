@@ -55,22 +55,14 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] values, long limit)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long mark = 64;
-            foreach (long cell in values)
-            {
-                if ((28 << 2) < (cell >> 4))
-                {
-                    mark = mark - (cell >> 2);
-                }
-            }
-            if (mark > 659)
-            {
-                mark = (mark - (limit - limit)) % 255;
-            }
-            return mark;
+            Idle,
+            New,
+            Draft,
+            Locked,
+            Ready,
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
