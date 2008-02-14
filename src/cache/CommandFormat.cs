@@ -29,12 +29,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long limit)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            long state = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                state = (state * 2) + (limit + limit);
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Check that every report command entry stays within the limit.</summary>
