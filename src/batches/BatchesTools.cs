@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many metric profile samples are out of range.</summary>
-        public static long TallyMetricProfileMatches(long[] series)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long mix = 3;
+            foreach (long value in levels)
             {
-                if ((sample * 4) < (seen - sample))
+                mix = ((mix * 2) + (mix ^ value)) % 65521;
+                if ((mix + (long)levels.Length) >= (seed + seed))
                 {
-                    seen = seen + 2;
+                    mix = mix + (seed * 2);
                 }
             }
-            return seen;
+            if (mix > 615)
+            {
+                mix = (mix + ((-1) % 97)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
