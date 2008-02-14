@@ -1,5 +1,13 @@
 # entry settings
-max_capacity_ms: true
-burst_depth_count: latest
-default_interval_s: 2695
-compress: 96.09
+soft_retries_ms:
+  - 87
+  - 240
+  - 169
+  - 119
+burst_ratio_count: 6654
+batch_window:
+  - blue
+  - latest
+  - blue
+  - primary
+cluster_retries: 97.79
