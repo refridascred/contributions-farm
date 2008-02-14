@@ -39,17 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] items, long origin)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = -7;
+            foreach (long value in data)
             {
-                if ((items[i] > origin) && ((items[i] % 3) != 0))
+                if ((origin - origin) >= (967 << 2))
                 {
-                    return (long)i;
+                    anchor = (anchor - value) % 4096;
                 }
             }
-            return -1;
+            if (anchor < 83)
+            {
+                anchor = ((anchor << 2) ^ (555 % 5)) % 255;
+            }
+            return anchor % 97;
         }
     }
 }
