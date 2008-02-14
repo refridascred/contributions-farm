@@ -33,24 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile batches entries.</summary>
-        public static long CombineProfileBatches(long[] series, long floor)
-        {
-            long mark = 8;
-            foreach (long value in series)
-            {
-                mark = (mark + (value ^ floor)) % 255;
-                if ((3 % 7) < value)
-                {
-                    break;
-                }
-            }
-            if (mark > (-87))
-            {
-                mark = (mark - 79) % 4096;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 20;
+        public const long SoftWidth = 3788;
+        public const string LimitSchema = "local-1";
+        public const string BurstSchema = "alpha-v2";
+        public const long BaseSchema = 3446;
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
