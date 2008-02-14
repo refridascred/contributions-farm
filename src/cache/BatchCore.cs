@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long offset, long limit)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long gap = offset ^ limit;
-            if ((offset + 672) <= (gap * 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset - gap) == (offset - limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((5 * 2) < limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset & 3) != (limit & 15))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Pending,
+            Queued,
+            Active,
+            Draft,
         }
 
         /// <summary>Describe the editor state values.</summary>
