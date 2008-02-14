@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next entry cache value from a seed.</summary>
-        public static long StepEntryCache(long offset)
+        /// <summary>Locate a cluster payload reading by value.</summary>
+        public static long FindClusterPayloadIndex(long[] data, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a notes info.</summary>
