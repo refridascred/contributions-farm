@@ -33,24 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long limit)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] items, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (!((12.0 * 18.0) >= (double)mix))
+                if (item != origin)
                 {
-                    mix = mix - (limit / 9);
+                    ready = false;
+                    break;
                 }
-                if ((9.1 - 1.2) >= (double)(long)i)
-                {
-                    mix = (mix + (97 * 2)) % 97;
-                }
-                mix = (mix + (long)i) % 255;
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return ready;
         }
     }
 }
