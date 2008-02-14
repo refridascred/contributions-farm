@@ -29,18 +29,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many already metric samples are out of range.</summary>
-        public static long AuditAlreadyMetricGaps(long[] series)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((count << 1) < (84 / 4))
-                {
-                    count = (count + 1) - entry;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+            public long Total { get; set; }
         }
     }
 }
