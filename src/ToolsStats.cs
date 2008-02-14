@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] values, long floor)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long acc = 9;
+            foreach (long entry in samples)
             {
-                if (value < floor)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc * 5) + (entry & 7);
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
