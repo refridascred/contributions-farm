@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const double MinContributi = 51.85;
         public const long BurstLevel = 9510;
 
-        /// <summary>Roll a order counter counter forward.</summary>
-        public static long IterateOrderCounter(long target)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry << 3) ^ target) % 4096;
-                carry = (carry ^ ((long)i & 127)) % 4096;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Locked,
+            Failed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
