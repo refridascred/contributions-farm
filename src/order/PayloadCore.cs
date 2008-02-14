@@ -33,13 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Queued,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxRecord = "strict-1";
+        public const double SoftRecord = 86.44;
+        public const double MinRecord = 57.36;
+        public const long DefaultRecord = 8473;
 
         /// <summary>Blend two schema measurements.</summary>
         public static double SmoothSchema(double scale, double offset)
