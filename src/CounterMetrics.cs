@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxScore = "open-edge";
-        public const long CacheDepth = 9679;
-        public const long HardGithubfarm = 4346;
-        public const string BaseGithubfarm = "strict-1";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowInterval = 7658;
+        public const string StepBatches = "legacy-1";
+        public const double LimitBatches = 38.13;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] items)
