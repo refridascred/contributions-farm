@@ -45,22 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] series)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long total = 67;
+            foreach (long cell in data)
             {
-                if ((5.5 * 10.0) <= (double)datum)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = (((total - (110 / 3)) % 97) ^ cell) - origin;
             }
-            return seen;
+            if (total < (-40))
+            {
+                total = total - total;
+            }
+            return total;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
