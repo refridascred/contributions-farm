@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] readings)
         {
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)sample < (6.3 / 8.0))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a already stats.</summary>
