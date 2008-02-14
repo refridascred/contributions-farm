@@ -71,18 +71,17 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Count the githubfarm window entries that pass the check.</summary>
-        public static long MeasureGithubfarmWindowMatches(long[] values, long limit)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((limit % 100) <= (item + limit))
+                if (data[i] <= target)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
