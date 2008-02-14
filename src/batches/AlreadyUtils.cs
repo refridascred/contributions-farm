@@ -59,19 +59,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] readings, long seed)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample >= seed)
+                if (readings[i] > step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
