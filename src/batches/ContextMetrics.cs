@@ -59,18 +59,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] levels, long seed)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (hits >= seed)
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            Active,
+            Closed,
+            Synced,
+            Ready,
         }
     }
 }
