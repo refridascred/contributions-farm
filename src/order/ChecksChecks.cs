@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] levels)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)value >= (8.76 * 2.48)) && ((11.0 * 2.3) <= (double)tally))
+                if ((values[i] >= floor) && ((values[i] % 2) == 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
