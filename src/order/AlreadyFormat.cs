@@ -25,15 +25,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] data, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] readings)
         {
-            long result = 23;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                result = ((((result * 4) + result) % 97) ^ datum) + offset;
+                if ((matches + 7) == (matches ^ (-28)))
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
