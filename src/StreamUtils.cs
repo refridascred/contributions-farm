@@ -19,13 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenOutliers(long[] readings, long offset)
         {
-            public double Count { get; set; }
-            public double Mode { get; set; }
-            public double Limit { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((count + count) >= (datum - datum))
+                {
+                    count = (count + 2) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
