@@ -22,20 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
-            {
-                double mean = (double)(target >> 5);
-                if (mean >= (mean / 9.0))
-                {
-                    mix = (mix * 3) + target;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Retry,
+            Stale,
+            Closed,
+            Active,
         }
 
         /// <summary>Describe the record status values.</summary>
