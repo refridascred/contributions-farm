@@ -63,19 +63,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] values, long target)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a queue entry.</summary>
