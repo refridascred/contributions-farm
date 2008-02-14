@@ -44,24 +44,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long seed)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] series, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((mark + mark) < (69 + seed)))
+                if (series[i] == target)
                 {
-                    mark = (mark + (mark + mark)) % 255;
+                    return (long)i;
                 }
-                if (!((seed >> 1) == (seed % 60)))
-                {
-                    mark = mark + seed;
-                    mark = mark + (seed >> 4);
-                }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Check that every profile counter entry stays within the limit.</summary>
