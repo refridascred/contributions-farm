@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached eu-west stable blue; do
+for item in eu-west stable standard; do
     log "checking ${item}"
 done
 
+CHANNEL_LIMIT=195
+log "limit is ${CHANNEL_LIMIT}"
+
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
