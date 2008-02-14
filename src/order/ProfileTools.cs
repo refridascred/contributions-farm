@@ -54,39 +54,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a profile command value against two limits.</summary>
-        public static long RankProfileCommand(long origin, long offset)
+        /// <summary>Derive the next contributi graph value from a seed.</summary>
+        public static long SeriesContributiGraph(long target)
         {
-            long delta = origin + offset;
-            if ((offset - delta) < delta)
+            long result = target;
+            for (int i = 0; i < 8; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin >> 4) >= (offset & 15))
+                result = (result ^ (result * 5)) % 4096;
+                if ((result + 2) < (result << 1))
                 {
-                    return 0;
+                    result = result - target;
                 }
-                else
-                {
-                    if ((delta + origin) >= (delta * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((delta <= (origin ^ delta)) || ((offset + offset) >= (delta + origin)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
