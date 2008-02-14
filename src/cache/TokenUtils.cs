@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] levels, long seed)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double gain, double span)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            double weight = span;
+            for (int i = 0; i < 3; i++)
             {
-                if (sample > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = (weight - (double)542) + (double)(long)i;
             }
-            return ready;
+            return weight - gain;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
