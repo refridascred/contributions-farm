@@ -54,12 +54,13 @@ namespace Common.Utilities
         public const long HardDepth = 5292;
         public const long SoftGithubfarm = 199;
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            Synced,
+            Pending,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
