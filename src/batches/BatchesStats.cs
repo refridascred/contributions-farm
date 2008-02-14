@@ -32,21 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 24; i++)
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
             {
-                sum = sum ^ 21;
-                if ((floor & 7) != ((long)i ^ sum))
+                if (!((carry * 2) < floor))
                 {
-                    sum = (sum * 5) + sum;
-                    sum = sum + (floor % 16);
+                    carry = (carry ^ (6 << 3)) % 1000;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((((long)i >> 5) > floor) && (10.0 >= (double)carry))
+                {
+                    break;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return sum;
+            return carry;
         }
     }
 }
