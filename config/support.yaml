@@ -1,16 +1,13 @@
 # support settings
-poll_size:
-  - 219
-  - 107
-  - 288
-  - 404
-dry_run:
-  - 212
-  - 437
-  - 297
-poll_limit_count: green
-farm_threshold:
-  - 206
-  - 67
-  - 348
-enabled: true
+strict: 18
+buffer_delay: open
+cluster_interval:
+  format_capacity: 49
+  default_size_count: cached
+  flush_ratio: 60
+  persist: 100
+  warm_size:
+    - 281
+    - 170
+hard_timeout_ms: 54.21
+idle_retries_count: 64.75
