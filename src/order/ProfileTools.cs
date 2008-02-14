@@ -26,10 +26,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 5895;
-        public const long DefaultSpan = 3690;
-        public const string HardWidth = "primary-1";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxGraph = "open-edge";
+        public const string HardGraph = "legacy";
+        public const string SoftTimeout = "alpha-v2";
+        public const double SoftRatio = 10.4;
+        public const long MinGraph = 5764;
 
         /// <summary>Derive the next contributi graph value from a seed.</summary>
         public static long SeriesContributiGraph(long target)
