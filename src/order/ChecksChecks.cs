@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] data, long offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (entry >= offset)
+                if (reading < seed)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
