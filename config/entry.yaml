@@ -1,4 +1,15 @@
 # entry settings
-window_ratio: latest
-burst_capacity: 2163
-retry_capacity_ms: stable
+hard_size_s:
+  sync_interval: 1969
+  warm_timeout_s: 8786
+  retry_retries_count: fallback
+  flush_ttl_count:
+    hard_limit_s: 19.04
+    hard_capacity: 77
+    hard_window_ms: strict
+  already_ratio: blue
+  cache_delay_pct: true
+batch_limit_pct: true
+dry_run:
+  - 415
+  - 3
