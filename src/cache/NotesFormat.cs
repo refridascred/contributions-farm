@@ -40,22 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] levels, long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long acc = 239;
+            foreach (long datum in levels)
             {
-                if ((cell + target) <= (50 + target))
+                acc = ((acc << 3) ^ (datum << 2)) % 255;
+                if ((1 + datum) < (datum + acc))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = (acc * 5) + acc;
                 }
             }
-            return count;
+            return acc % 4096;
         }
     }
 }
