@@ -30,13 +30,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Locked,
-            Retry,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardBudget = 8535;
+        public const long BaseStream = 1836;
+        public const long IdleStream = 5084;
+        public const long SoftInterval = 2980;
     }
 }
