@@ -1,6 +1,5 @@
 {
-  "idle_size_pct": ["staging", "primary", "eu-west", "green"],
-  "contributi_size": 100,
-  "min_size_pct": "stable",
-  "audit": "fallback"
+  "batch_window_count": 83.94,
+  "window_window": false,
+  "soft_ttl_ms": ["staging", "strict"]
 }
