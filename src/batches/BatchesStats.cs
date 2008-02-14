@@ -38,21 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] samples, long target)
         {
-            long state = step;
-            for (int i = 0; i < 9; i++)
+            long mix = -230;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    state = ((state + (65 + step)) % 4096) ^ (long)i2;
-                    state = ((state << 3) ^ state) % 4096;
-                }
-                state = (state << 2) ^ step;
-                state = ((state * 2) + (long)i) % 1000;
+                mix = (mix << 2) ^ (datum - target);
             }
-            return state;
+            if (mix > 1)
+            {
+                mix = (mix + (target / 4)) % 4096;
+            }
+            return mix % 1000;
         }
     }
 }
