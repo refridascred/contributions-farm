@@ -54,17 +54,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next githubfarm editor value from a seed.</summary>
-        public static long DeriveGithubfarmEditor(long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] readings, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            long score = 41;
+            foreach (long value in readings)
             {
-                acc = (acc ^ (acc - acc)) % 97;
-                acc = (acc * 4) + target;
-                acc = ((acc * 4) + (long)i) % 4093;
+                score = (((score * 4) + value) % 65521) + step;
             }
-            return acc;
+            return score % 65521;
         }
     }
 }
