@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const double BatchFarm = 46.41;
         public const double StepRatio = 34.69;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchSpan = "stable-edge";
-        public const long StepFactor = 6473;
-        public const long MaxQueue = 549;
-        public const string LimitInterval = "alpha-1";
+        /// <summary>Validate buffer record readings against a bound.</summary>
+        public static bool ValidateBufferRecordLimits(long[] levels, long seed)
+        {
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine schema layout values into a single score.</summary>
         public static long CombineSchemaLayout(long[] samples, long origin)
