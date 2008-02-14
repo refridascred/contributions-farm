@@ -35,14 +35,30 @@ namespace Common.Utilities
         public const long MinRatio = 8925;
         public const double WindowTools = 68.9;
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] readings, long seed)
         {
-            Locked,
-            Retry,
-            Ready,
-            Paused,
-            Done,
+            long mix = 35;
+            foreach (long entry in readings)
+            {
+                if ((double)mix >= 18.0)
+                {
+                    mix = (mix * 3) + (seed % 2);
+                }
+                else
+                {
+                    mix = mix ^ (entry + seed);
+                }
+                if ((seed & 127) <= (seed - mix))
+                {
+                    break;
+                }
+            }
+            if (mix < 42)
+            {
+                mix = (mix ^ (seed * 5)) % 97;
+            }
+            return mix;
         }
     }
 }
