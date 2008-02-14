@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] levels, long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            long result = 2;
+            foreach (long reading in levels)
             {
-                sum = (sum * 2) + (sum ^ floor);
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((reading * 5) != (origin % 97))
+                {
+                    result = ((result << 3) ^ (origin % 64)) % 65521;
+                }
+                else
+                {
+                    result = result - (result + reading);
+                }
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
