@@ -1,14 +1,8 @@
 # support settings
-retry_depth_s:
-  persist: 90
-  tools_window: fallback
-  graph_timeout: 27.86
-  hard_ratio_pct:
-    - 71
-    - 422
-    - 306
-    - 212
-format_ratio: 250
-retry_retries: 23
-compress: cached
-base_depth: 29.41
+default_timeout_pct: 34
+queue_limit: strict
+max_threshold:
+  - fallback
+  - primary
+  - standard
+  - legacy
