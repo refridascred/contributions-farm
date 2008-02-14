@@ -1,7 +1,6 @@
-id,active,ratio,label
-1,73,edge,primary
-2,762,652,fallback
-3,33.22,eu-west,73.85
-4,840,826,primary
-5,eu-west,strict,522
-6,304,134,eu-west
+id,level,owner
+1,95,16.33
+2,primary,297
+3,strict,15.96
+4,legacy,local
+5,17.4,29.48
