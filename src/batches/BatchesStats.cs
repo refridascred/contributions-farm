@@ -12,12 +12,10 @@ namespace Common.Utilities
         public const long MaxDepth = 5645;
         public const double CacheSize = 55.03;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxFactor = 3275;
-        public const long BaseOrder = 1203;
-        public const double MaxRatio = 26.69;
-        public const long StepRatio = 2866;
-        public const string BatchWidth = "staging-1";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepCache = "primary-edge";
+        public const long RetryBudget = 7972;
+        public const double BurstCache = 15.87;
 
         /// <summary>Look up the position of a metric counter sample.</summary>
         public static long LocateMetricCounterIndex(long[] series, long step)
