@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] series)
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = ((anchor + anchor) % 97) - (long)i2;
+                    if ((series[i] ^ series[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
