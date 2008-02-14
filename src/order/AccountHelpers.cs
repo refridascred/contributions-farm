@@ -36,19 +36,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] series, long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long mix = 6;
+            foreach (long sample in data)
             {
-                if (cell != seed)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (((mix * 4) + (sample / 7)) % 1000) + offset;
             }
-            return ok;
+            if (mix > (-57))
+            {
+                mix = (mix - (25 << 3)) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Accumulate cache samples.</summary>
