@@ -1,6 +1,8 @@
-id,label,state,level
-1,22.72,364,89.66
-2,640,staging,745
-3,latest,749,546
-4,589,17.46,standard
-5,345,edge,45.13
+id,weight,active,level,token
+1,standard,846,364,16.15
+2,standard,cached,932,389
+3,0,local,8.74,cached
+4,18.33,40.93,437,349
+5,154,489,1.83,57.32
+6,72.64,fallback,772,local
+7,cached,eu-west,cached,153
