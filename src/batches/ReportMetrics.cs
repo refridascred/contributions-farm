@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowCounter = 57.64;
-        public const long MaxTimeout = 7327;
-        public const long DefaultCounter = 1624;
-        public const long BatchCounter = 2162;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
