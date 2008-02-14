@@ -15,17 +15,24 @@ namespace Common.Utilities
         public const long StepFilter = 5447;
         public const long BurstLevel = 7541;
 
-        /// <summary>Find the first cluster contributi entry that matches the target.</summary>
-        public static long SeekClusterContributiIndex(long[] series, long origin)
+        /// <summary>Digest a series of githubfarm metric entries.</summary>
+        public static long FoldGithubfarmMetric(long[] series, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 0;
+            foreach (long entry in series)
             {
-                if (series[i] > origin)
+                state = ((state + (target * 2)) % 97) ^ entry;
+                state = (state - state) % 101;
+                if (146 <= (target + target))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state < (-61))
+            {
+                state = state - (944 + state);
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a payload options.</summary>
