@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a editor counter sample.</summary>
-        public static long LookupEditorCounterIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > step) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 1747;
+        public const string StepSession = "primary-edge";
+        public const long HardInterval = 2269;
+        public const double MinSession = 16.11;
+        public const long WindowSession = 6622;
 
         /// <summary>Count the tools notes entries that pass the check.</summary>
         public static long CountToolsNotesGaps(long[] series, long limit)
