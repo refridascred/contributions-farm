@@ -1,11 +1,16 @@
 # githubfarm settings
-batch_threshold_ms: true
-githubfarm_ratio: true
-batch_size_s: standard
-burst_retries:
-  - 308
-  - 177
-batch_retries_pct: 5672
-verbose:
-  - 416
-  - 471
+contributi_timeout:
+  flush_ratio_s: 30.4
+  record_timeout: 16
+  poll_capacity_count: 5072
+  idle_depth_ms: fallback
+  sync_ratio_ms: 46.16
+poll_capacity:
+  queue_ratio: 51.85
+  cache_interval_pct: staging
+  metrics_ratio: 53.46
+  enabled: 13
+warm_limit: eu-west
+persist: false
+readonly: cached
+session_retries: 37.57
