@@ -1,22 +1,18 @@
 {
-  "retry_retries": {
-    "account_threshold": 3764,
-    "enabled": 92.81,
-    "flush_timeout_pct": {
-      "format_timeout": "open",
-      "soft_capacity_s": false,
-      "notes_size": [229, 374, 462],
-      "cache_interval_pct": 60,
-      "retry_ttl": 7873
-    }
+  "batches_timeout": 8233,
+  "default_timeout": {
+    "batch_timeout_count": "blue",
+    "filter_retries": true,
+    "min_timeout_count": 33,
+    "commits_depth": 20,
+    "tools_limit": ["cached", "stable", "standard", "latest"]
   },
-  "warm_window": false,
-  "audit": "legacy",
-  "hard_depth": 60,
-  "enabled": {
-    "sync_interval_s": [299, 442],
-    "warm_size_pct": "green",
-    "batch_timeout": 43.62,
-    "enabled": "local"
-  }
+  "context_interval": "legacy",
+  "enabled": "eu-west",
+  "verbose": {
+    "warm_timeout": [31, 20],
+    "flush_window_ms": "standard",
+    "default_capacity_count": 206
+  },
+  "flush_limit": 69.04
 }
