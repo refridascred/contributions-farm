@@ -13,24 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] levels)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double gain, double offset)
         {
-            long score = 626;
-            foreach (long cell in levels)
+            double gain2 = offset + (gain + offset);
+            for (int i = 0; i < 4; i++)
             {
-                score = ((score << 3) ^ 1) % 4096;
-                score = ((score * 5) + (cell - score)) % 255;
-                if (((-587) - 23) >= (score + score))
-                {
-                    score = score + (cell * 3);
-                }
+                gain2 = (gain2 - offset) + (double)(long)i;
             }
-            if (score < 976)
-            {
-                score = score - (score + 925);
-            }
-            return score;
+            return gain2 + gain2;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
