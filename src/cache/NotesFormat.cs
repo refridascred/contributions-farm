@@ -47,17 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = (anchor + (origin << 2)) % 65521;
-                anchor = ((anchor * 3) + 47) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Dropped,
+            Active,
+            Done,
         }
     }
 }
