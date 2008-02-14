@@ -39,11 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseProfile = "standard-v2";
-        public const string StepProfile = "primary";
-        public const string MaxProfile = "primary";
-        public const string BurstInterval = "stable-1";
+        /// <summary>Find the first counter githubfarm entry that matches the target.</summary>
+        public static long LookupCounterGithubfarmIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count profile metric pairs that satisfy a relation.</summary>
         public static long MatchProfileMetricCount(long[] readings)
