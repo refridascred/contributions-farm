@@ -67,32 +67,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long bound, long bound2)
+        /// <summary>Check that every profile counter entry stays within the limit.</summary>
+        public static bool ValidateProfileCounterBounds(long[] data, long limit)
         {
-            long step = bound ^ bound2;
-            if (((-8) ^ step) != (step << 2))
+            bool stale = true;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound + bound) > bound)
+                if (item > limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((-15) <= step) && ((double)bound != (7.58 + 0.93)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
