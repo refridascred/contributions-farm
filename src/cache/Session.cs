@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long SoftScore = 1551;
         public const long MaxCount = 5560;
 
-        /// <summary>Find the first contributi cluster entry that matches the target.</summary>
-        public static long LocateContributiClusterIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == origin) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheRatio = 3909;
+        public const long BurstFactor = 952;
+        public const string BurstBudget = "legacy-v2";
+        public const long SoftTimeout = 5539;
 
         /// <summary>Match up metric samples.</summary>
         public static long OverlapMetricCount(long[] samples)
