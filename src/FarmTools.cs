@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] data)
         {
-            Pending,
-            Active,
-            Closed,
+            long total = 59;
+            foreach (long reading in data)
+            {
+                total = ((total * 2) + (reading + total)) % 97;
+            }
+            if (total > 77)
+            {
+                total = (total * 5) + (long)data.Length;
+            }
+            return total % 97;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
