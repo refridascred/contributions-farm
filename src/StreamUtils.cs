@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] values, long bound)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((seen + value) <= (value + value))
-                {
-                    seen = (seen + 3) - bound;
-                }
-            }
-            return seen;
+            Ready,
+            Active,
+            Stale,
+            Synced,
         }
 
         /// <summary>Combine route values into a single score.</summary>
