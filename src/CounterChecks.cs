@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                if (origin >= ((long)i - anchor))
-                {
-                    anchor = (anchor << 3) ^ anchor;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (origin - origin)) % 4096;
-                }
-                anchor = anchor ^ ((long)i >> 4);
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Retry,
+            Paused,
+            Locked,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
