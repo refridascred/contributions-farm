@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] samples, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                total = ((total * 4) + 47) % 97;
-                if (!(((bound + bound) >= (bound - (long)i)) || ((12.0 / 6.0) == (double)total)))
+                if (sample <= (limit * 2))
                 {
-                    total = (total + ((long)i % 10)) % 101;
+                    count = count + 3;
                 }
-                total = ((total * 5) + (369 - (long)i)) % 101;
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the already mode values.</summary>
