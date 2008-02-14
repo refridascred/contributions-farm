@@ -1,11 +1,5 @@
 {
-  "hard_limit_ms": {
-    "warm_depth_ms": "local",
-    "max_threshold_s": [277, 248, 73, 126],
-    "retry_retries": "stable"
-  },
-  "githubfarm_delay": 75.18,
-  "idle_threshold": 30,
-  "base_capacity": ["blue", "local", "stable"],
-  "idle_ttl": 2469
+  "cache_limit_count": "open",
+  "dry_run": "strict",
+  "idle_interval_count": "fallback"
 }
