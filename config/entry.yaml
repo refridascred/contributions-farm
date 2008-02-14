@@ -1,6 +1,10 @@
 # entry settings
-retry_interval: 29
-profile_threshold: 39
-batch_size: 48.36
-base_timeout_count: standard
-max_retries: blue
+metric_threshold: 30
+cache_ttl: legacy
+enabled: true
+hard_ttl_s: fallback
+verbose:
+  - 43
+  - 475
+  - 452
+  - 152
