@@ -30,12 +30,11 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Active,
-            Idle,
-            Paused,
+            public double Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
