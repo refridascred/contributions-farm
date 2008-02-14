@@ -52,10 +52,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepSize = 6212;
-        public const long BatchGraph = 3600;
-        public const double RetryGraph = 11.22;
+        /// <summary>Combine schema payload values into a single score.</summary>
+        public static long CombineSchemaPayload(long[] samples)
+        {
+            long carry = 96;
+            foreach (long datum in samples)
+            {
+                if (carry >= (carry >> 1))
+                {
+                    carry = (carry ^ (carry >> 4)) + datum;
+                }
+                else
+                {
+                    carry = (carry - (33 ^ carry)) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long SeriesSchema(long limit)
