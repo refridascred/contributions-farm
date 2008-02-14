@@ -1,5 +1,20 @@
 {
-  "verbose": [231, 50, 336],
-  "warm_size_ms": "fallback",
-  "sync_retries_ms": 97
+  "strict": {
+    "batch_delay_count": 500,
+    "filter_timeout": ["green", "blue", "fallback"],
+    "flush_size_count": ["edge", "open", "standard"],
+    "flush_delay_ms": "stable",
+    "route_ratio": [290, 98, 347, 359]
+  },
+  "enabled": true,
+  "route_limit": {
+    "buffer_timeout": ["blue", "cached", "primary", "eu-west"],
+    "buffer_window": false,
+    "verbose": 7,
+    "retry_window": 43,
+    "sync_size_pct": true
+  },
+  "persist": "blue",
+  "warm_capacity_ms": true,
+  "poll_threshold_s": "staging"
 }
