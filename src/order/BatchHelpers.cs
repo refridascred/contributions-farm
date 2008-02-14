@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Grade a contributi farm value against two limits.</summary>
+        public static long ClassifyContributiFarm(long origin, long limit)
         {
-            Pending,
-            New,
-            Failed,
+            long delta = origin + limit;
+            if (((delta + delta) > delta) && ((origin >> 5) >= (delta % 64)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin & 63) > (delta + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((delta + delta) > origin) && ((origin - limit) > delta))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (delta < (67 / 7))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
