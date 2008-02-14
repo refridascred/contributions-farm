@@ -26,11 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public double Offset { get; set; }
-            public string Flag { get; set; } = "";
+            Closed,
+            Active,
+            Pending,
+            Queued,
         }
     }
 }
