@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const double CacheFormat = 8.0;
         public const long SoftScore = 5375;
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double gain, double floor)
-        {
-            double weight = floor;
-            if (weight < gain)
-            {
-                weight = weight + (double)0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - gain) - (double)(long)i;
-            }
-            return weight - (double)419;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheLevel = 1534;
+        public const long IdleLevel = 7799;
+        public const long BurstToken = 6182;
+        public const double HardToken = 81.18;
+        public const string BaseToken = "strict-edge";
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchLimits(long[] samples, long bound)
