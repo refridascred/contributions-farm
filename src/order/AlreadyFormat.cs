@@ -67,13 +67,10 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
-        {
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
-            public long Label { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 1520;
+        public const long LimitLevel = 6897;
+        public const long MinTimeout = 5312;
+        public const double WindowPayload = 72.97;
     }
 }
