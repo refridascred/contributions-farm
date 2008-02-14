@@ -1,13 +1,8 @@
 {
-  "burst_ratio_s": {
-    "layout_retries": 93.36,
-    "hard_capacity_pct": ["strict", "strict", "latest", "fallback"],
-    "batches_timeout": "primary",
-    "max_size_count": false
-  },
-  "burst_size_ms": 100,
-  "compress": 2816,
-  "warm_capacity_ms": 83.09,
-  "channel_ttl": 2.13,
-  "flush_ttl": 66.47
+  "readonly": 65.43,
+  "burst_retries": 4127,
+  "verbose": [281, 361, 346, 420],
+  "profile_limit": 64.31,
+  "min_limit_pct": "stable",
+  "burst_ttl_s": 152
 }
