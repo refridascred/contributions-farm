@@ -47,19 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next payload session value from a seed.</summary>
-        public static long DerivePayloadSession(long seed)
+        /// <summary>Accumulate schema payload samples.</summary>
+        public static long DigestSchemaPayload(long[] values, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
+            long carry = 5;
+            foreach (long entry in values)
             {
-                if ((seed >= (seed ^ seed)) || ((1.0 / 3.0) >= (double)(long)i))
+                if ((double)entry > (double)(long)values.Length)
                 {
-                    continue;
+                    carry = (carry + (carry * 2)) - bound;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return carry % 97;
         }
     }
 }
