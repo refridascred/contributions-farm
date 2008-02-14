@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long seed, long target)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long origin, long bound)
         {
-            if (target < (-5))
+            long next = origin ^ bound;
+            if ((next << 2) >= (1 / 6))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((1.0 - 7.7) != (double)target)
+                if (((bound - origin) < origin) && (next < (next + origin)))
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    return 4;
+                    if (bound > (origin ^ origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
