@@ -38,11 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public bool Size { get; set; }
-            public long Owner { get; set; }
+            Queued,
+            Pending,
+            Synced,
         }
 
         /// <summary>Blend two schema measurements.</summary>
