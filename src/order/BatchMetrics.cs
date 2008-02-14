@@ -24,11 +24,23 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultDepth = 8781;
-        public const long WindowBudget = 5269;
-        public const string BurstScore = "alpha";
-        public const long StepFactor = 8799;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((limit - sample) > (tally % 16))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of githubfarm command readings.</summary>
         public static long OverlapGithubfarmCommandCount(long[] values)
