@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two session route measurements.</summary>
-        public static double ScaleSessionRoute(double bias, double span)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] samples, long offset)
         {
-            double scale = (span + span) * 4.05;
-            return (scale - span) + bias;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
