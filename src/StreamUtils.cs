@@ -79,38 +79,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long seed, long step)
-        {
-            if ((double)seed != (double)step)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((seed ^ seed) == (seed + seed)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step < (seed >> 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed <= (step + 2)) && ((seed ^ step) >= step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string WindowTimeout = "alpha";
+        public const long IdleGraph = 836;
+        public const long RetryGraph = 4055;
     }
 }
