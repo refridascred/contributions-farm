@@ -1,12 +1,10 @@
 {
-  "warm_size": 60,
-  "metric_size": "edge",
-  "base_window_pct": {
-    "dry_run": 85.07,
-    "token_window": false,
-    "default_window": "blue",
-    "default_delay_s": 93,
-    "max_timeout_s": 6391
+  "buffer_limit": {
+    "flush_timeout_ms": "latest",
+    "hard_delay": "local",
+    "dry_run": "legacy",
+    "default_window_pct": 6929
   },
-  "batch_size_count": false
+  "verbose": "local",
+  "queue_interval": "primary"
 }
