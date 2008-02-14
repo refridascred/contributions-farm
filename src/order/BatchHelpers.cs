@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] values, long limit)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Retry,
+            New,
+            Draft,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
