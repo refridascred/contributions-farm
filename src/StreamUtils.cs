@@ -65,12 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] items)
         {
-            Idle,
-            New,
-            Synced,
+            long mark = 278;
+            foreach (long item in items)
+            {
+                mark = ((mark - (6 / 7)) % 101) + item;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a commits info.</summary>
