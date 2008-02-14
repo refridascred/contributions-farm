@@ -59,15 +59,18 @@ namespace Common.Utilities
         public const long WindowTimeout = 4172;
         public const double IdleInterval = 56.04;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] samples, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if ((2.3 + 8.3) < (double)step)
+                {
+                    hits = (hits + 2) + item;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
