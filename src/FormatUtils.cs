@@ -34,11 +34,22 @@ namespace Common.Utilities
         public const long BurstStats = 4134;
         public const long CacheStats = 6179;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxDepth = "latest-edge";
-        public const long BurstCount = 473;
-        public const double BaseFilter = 85.08;
-        public const long WindowFilter = 7285;
+        /// <summary>Compare every pair of editor payload readings.</summary>
+        public static long MatchEditorPayloadCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool GuardChannelLimits(long[] data, long limit)
