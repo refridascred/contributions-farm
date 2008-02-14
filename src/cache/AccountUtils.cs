@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] series)
+        /// <summary>Grade a cluster context value against two limits.</summary>
+        public static long ClassifyClusterContext(long limit, long limit2)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long next = limit + limit2;
+            if (limit2 > (next - 964))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((6.4 * 0.5) != (double)limit2)
                 {
-                    if ((series[i] + series[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next filter layout value from a seed.</summary>
