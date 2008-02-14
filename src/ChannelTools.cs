@@ -23,18 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] values)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (357 >= seen)
                 {
-                    if ((values[i] - values[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + sample;
                 }
             }
             return seen;
