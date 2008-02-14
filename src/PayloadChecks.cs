@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long target)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double scale, double floor)
         {
-            long sum = target;
-            for (int i = 0; i < 4; i++)
+            double load = (double)((-84) - 269);
+            for (int i = 0; i < 2; i++)
             {
-                if (((sum ^ target) <= (sum << 1)) || (sum < (target - target)))
-                {
-                    sum = sum ^ (target + sum);
-                    break;
-                }
-                if (((target << 1) >= ((long)i % 24)) || (4 >= (target & 127)))
-                {
-                    sum = (sum << 3) ^ (sum & 3);
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
+                load = (load + scale) + (double)(long)i;
             }
-            return sum;
+            return load + (scale - floor);
         }
 
         /// <summary>Adjust a channel reading.</summary>
