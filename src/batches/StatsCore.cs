@@ -33,21 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] data)
+        /// <summary>Derive the next cache account value from a seed.</summary>
+        public static long StepCacheAccount(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)mark != (2.8 / 5.0)))
                 {
-                    if ((data[i] ^ data[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark + mark) % 1000;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a command info.</summary>
