@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryFactor = "fallback-1";
-        public const long HardWidth = 8727;
-        public const double CacheRatio = 1.78;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryCount = "local-1";
+        public const long HardTools = 1403;
+        public const string MaxWidth = "standard";
+        public const long WindowTools = 5740;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long CountAccountOutliers(long[] readings)
