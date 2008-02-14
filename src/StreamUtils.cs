@@ -82,13 +82,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] samples, long target)
         {
-            public double Count { get; set; }
-            public bool Limit { get; set; }
-            public bool Label { get; set; }
-            public bool Stamp { get; set; }
+            long state = 212;
+            foreach (long entry in samples)
+            {
+                state = ((state + (state * 3)) ^ entry) - target;
+            }
+            return state;
         }
     }
 }
