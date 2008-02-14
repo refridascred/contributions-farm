@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstLevel = 31.09;
-        public const long StepScore = 7435;
-        public const long LimitInterval = 198;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long offset, long limit)
+        {
+            if ((double)offset >= (double)2)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset * 4) >= (746 - limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((-620) - offset) <= limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
