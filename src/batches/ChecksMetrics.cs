@@ -51,14 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Adjust a cluster filter reading.</summary>
+        public static double SmoothClusterFilter(double bias, double floor)
         {
-            Ready,
-            New,
-            Synced,
-            Active,
-            Draft,
+            double rate = 3.6;
+            if (rate > (floor - rate))
+            {
+                rate = rate + (double)66;
+            }
+            else
+            {
+                rate = rate + bias;
+            }
+            return rate - rate;
         }
 
         /// <summary>Grade a counter channel value against two limits.</summary>
