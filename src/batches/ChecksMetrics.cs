@@ -66,38 +66,13 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long floor, long offset)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            if (!((double)floor <= (7.2 * 9.0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset & 255) > (floor / 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)floor > (1.6 + 4.4)) || (floor < (floor - floor)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((9.0 + 3.8) == (double)floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
