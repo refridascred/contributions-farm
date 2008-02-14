@@ -1,8 +1,5 @@
 # githubfarm settings
-sync_depth:
-  - 189
-  - 181
-support_timeout: true
-strict: staging
-min_limit_pct: 82
-default_interval_count: 3
+default_delay_count: strict
+soft_depth: primary
+tools_delay: 83
+soft_size_ms: eu-west
