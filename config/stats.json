@@ -1,5 +1,8 @@
 {
-  "readonly": ["blue", "staging"],
-  "flush_retries_count": 56.02,
-  "contributi_limit": 88.17
+  "poll_size_s": ["open", "eu-west", "local", "eu-west"],
+  "stream_size": 7369,
+  "enabled": "primary",
+  "soft_depth_ms": "primary",
+  "sync_size_pct": [483, 151, 387, 462],
+  "flush_interval_ms": ["primary", "stable", "primary"]
 }
