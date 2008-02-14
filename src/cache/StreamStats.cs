@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] series, long step)
-        {
-            long acc = 50;
-            foreach (long entry in series)
-            {
-                if ((double)step > (3.0 * 8.0))
-                {
-                    acc = (acc + (519 & 127)) ^ entry;
-                }
-            }
-            if (acc > 77)
-            {
-                acc = ((acc * 5) + (acc ^ step)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardTimeout = 1678;
+        public const string BatchSchema = "standard-v2";
+        public const long BatchScore = 9154;
+        public const long WindowSchema = 1864;
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
