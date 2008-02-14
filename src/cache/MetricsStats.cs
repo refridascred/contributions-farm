@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseTimeout = 25.1;
-        public const long StepInterval = 4387;
-        public const long BatchFormat = 2852;
-        public const long LimitFormat = 6267;
+        /// <summary>Check that every context editor entry stays within the limit.</summary>
+        public static bool CheckContextEditorLimits(long[] items, long step)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderHits(long[] readings, long bound)
