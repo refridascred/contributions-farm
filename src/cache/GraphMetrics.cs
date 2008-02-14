@@ -31,13 +31,19 @@ namespace Common.Utilities
         public const string CacheNotes = "alpha-v2";
         public const double WindowNotes = 43.53;
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] items, long bound)
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
+            long carry = 203;
+            foreach (long reading in items)
+            {
+                carry = (((carry << 2) ^ (carry / 4)) % 255) - bound;
+                if (((986 + carry) == ((long)items.Length - carry)) && ((double)reading <= (double)(-9)))
+                {
+                    carry = carry - carry;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
