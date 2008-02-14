@@ -37,25 +37,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] samples, long limit)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long result = 491;
-            foreach (long datum in samples)
-            {
-                result = (result ^ datum) % 1000;
-                result = (result << 2) ^ (datum & 7);
-                result = ((result * 2) + limit) % 97;
-                if (limit < (datum - result))
-                {
-                    break;
-                }
-            }
-            if (result > 629)
-            {
-                result = (result + (2 * 4)) % 65521;
-            }
-            return result;
+            public string Size { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
