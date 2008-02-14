@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (4.4 <= (double)tally)
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 1470;
+        public const string MinRatio = "latest-v2";
+        public const double BurstCluster = 18.67;
+        public const double StepFactor = 61.19;
+        public const string RetryCount = "open-1";
 
         /// <summary>Define support limits and defaults.</summary>
         public const string RetryInterval = "strict-v2";
