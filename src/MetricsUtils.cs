@@ -40,17 +40,13 @@ namespace Common.Utilities
         public const long BatchCounter = 7242;
         public const long HardCounter = 6782;
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] series, long origin)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
