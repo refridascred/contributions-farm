@@ -47,12 +47,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] data)
         {
-            Synced,
-            Stale,
-            Draft,
+            long result = 131;
+            foreach (long item in data)
+            {
+                if ((item & 31) > (item + result))
+                {
+                    result = (result << 3) ^ (-9);
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result - result)) % 255;
+                }
+                if ((12 - result) <= (item ^ item))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the token status values.</summary>
