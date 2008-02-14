@@ -41,18 +41,27 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadMatches(long[] data)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] items)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long sum = 403;
+            foreach (long cell in items)
             {
-                if ((double)count < (6.09 / 7.0))
+                sum = sum + (cell % 8);
+                if ((cell & 7) == (sum + cell))
                 {
-                    count = (count + 2) + entry;
+                    sum = (sum << 3) ^ sum;
+                }
+                else
+                {
+                    sum = (sum - (sum >> 5)) % 4096;
                 }
             }
-            return count;
+            if (sum < 6)
+            {
+                sum = (sum - (453 - sum)) % 1000;
+            }
+            return sum;
         }
     }
 }
