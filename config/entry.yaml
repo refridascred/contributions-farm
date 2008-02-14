@@ -1,16 +1,7 @@
 # entry settings
-hard_size:
-  idle_retries: 81.07
-  soft_delay_count:
-    idle_timeout_pct:
-      - 175
-      - 411
-      - 347
-      - 127
-    session_window: 83
-    compress: false
-  poll_retries_ms: eu-west
-  cache_threshold_s: 6422
-verbose: 65.15
-readonly: 61.25
-dry_run: 17
+persist: strict
+strict: true
+cache_interval_s: 500
+poll_limit:
+  - 455
+  - 440
