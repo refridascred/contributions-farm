@@ -33,22 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] items, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((acc - step) >= (acc << 2))
+                if ((entry << 3) != (origin + entry))
                 {
-                    acc = (acc + (acc / 8)) % 255;
-                    acc = (acc ^ (acc + acc)) % 1000;
-                    break;
+                    matches = matches + 2;
                 }
-                acc = ((acc * 3) + 96) % 255;
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
