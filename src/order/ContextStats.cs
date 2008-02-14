@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const double WindowFactor = 98.77;
         public const double BaseCount = 42.27;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinCluster = 9.6;
-        public const long HardCluster = 9644;
-        public const long DefaultCluster = 5625;
-        public const long CacheCluster = 3555;
-        public const long StepLevel = 2798;
+        /// <summary>Look up the position of a commits farm sample.</summary>
+        public static long LookupCommitsFarmIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long FindCacheIndex(long[] data, long step)
