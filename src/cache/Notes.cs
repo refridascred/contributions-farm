@@ -43,18 +43,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] series, long offset)
+        /// <summary>Combine counter checks values into a single score.</summary>
+        public static long FoldCounterChecks(long[] readings, long limit)
         {
-            long anchor = 9;
-            foreach (long sample in series)
+            long mark = 34;
+            foreach (long item in readings)
             {
-                if ((0.9 + 2.0) <= (double)anchor)
+                if ((0.3 > (double)limit) && ((limit - mark) >= (mark / 8)))
                 {
-                    anchor = ((((anchor << 2) ^ (anchor - (-28))) % 65521) ^ sample) + offset;
+                    mark = (mark ^ (509 - 0)) + item;
                 }
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
