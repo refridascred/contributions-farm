@@ -34,19 +34,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] samples, long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long mark = 6;
+            foreach (long sample in samples)
             {
-                if (value > step)
+                if ((bound * 5) >= bound)
                 {
-                    ready = false;
-                    break;
+                    mark = (mark + (sample - mark)) % 1000;
                 }
             }
-            return ready;
+            if (mark < 84)
+            {
+                mark = mark - (bound % 5);
+            }
+            return mark;
         }
     }
 }
