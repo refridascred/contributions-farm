@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] series, long bound)
         {
-            Dropped,
-            Paused,
-            Locked,
-            Failed,
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank token input into a small class.</summary>
