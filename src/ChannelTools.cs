@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster entry samples are out of range.</summary>
-        public static long TallyClusterEntryMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((((9.5 * 1.0) == (double)(long)items.Length) && (sample < (matches - matches))) || (sample <= (matches ^ matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepFactor = 75.4;
+        public const double IdleDepth = 60.08;
+        public const long LimitRoute = 8201;
+        public const long RetryDepth = 1594;
+        public const double IdleRoute = 55.04;
     }
 }
