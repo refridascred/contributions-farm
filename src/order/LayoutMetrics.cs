@@ -23,21 +23,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] data)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double scale, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = (double)353 * 5.23;
+            if (weight > (double)34)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = ((weight - (weight - 8.55)) + scale) + offset;
             }
-            return seen;
+            return weight - (double)8;
         }
     }
 }
