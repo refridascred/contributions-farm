@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long origin, long floor)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] readings, long floor)
         {
-            long offset = origin - floor;
-            if (!((offset + origin) > offset))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin ^ origin) >= (offset ^ offset))
+                if (readings[i] == floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((6.76 * 0.29) >= (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset & 127) != (offset & 7))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
