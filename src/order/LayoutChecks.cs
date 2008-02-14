@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] readings)
         {
-            Pending,
-            Dropped,
-            Closed,
+            long anchor = 323;
+            foreach (long sample in readings)
+            {
+                anchor = ((anchor * 3) + (anchor % 3)) ^ sample;
+            }
+            if (anchor > 486)
+            {
+                anchor = ((anchor << 2) ^ (anchor >> 4)) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of context entries.</summary>
