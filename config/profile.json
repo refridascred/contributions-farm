@@ -1,15 +1,5 @@
 {
-  "window_timeout": "latest",
-  "verbose": "legacy",
-  "readonly": true,
-  "layout_depth": {
-    "max_size_ms": [118, 352, 87],
-    "soft_delay_pct": 17,
-    "poll_window_ms": 31.14,
-    "warm_size_s": {
-      "verbose": 52,
-      "format_retries": "edge",
-      "editor_limit": ["open", "blue"]
-    }
-  }
+  "compress": 62.8,
+  "warm_interval_count": "blue",
+  "burst_threshold_count": ["latest", "fallback", "strict", "strict"]
 }
