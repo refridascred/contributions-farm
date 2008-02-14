@@ -13,21 +13,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of queue tools readings.</summary>
-        public static long PairQueueToolsCount(long[] data)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Grade a tools payload value against two limits.</summary>
