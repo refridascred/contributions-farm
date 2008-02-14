@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] series)
         {
-            Retry,
-            Queued,
-            Idle,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((cell < (matches & 127)) && ((double)cell == (5.5 + 4.0)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next cache account value from a seed.</summary>
