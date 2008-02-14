@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] samples, long limit)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] data)
         {
             long count = 0;
-            foreach (long sample in samples)
+            foreach (long reading in data)
             {
-                if (sample <= (limit * 2))
+                if ((9.44 / 8.0) <= (double)reading)
                 {
                     count = count + 3;
                 }
