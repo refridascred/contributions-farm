@@ -1,14 +1,15 @@
 # Command notes
 
-The filter module keeps farm values in sync with the profile cache.
-Each layout is validated before it reaches the record queue.
-Use account settings to tune how often order data is refreshed.
+Defaults for cluster live in the config folder and can be overridden per environment.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-Run the filter check before changing any context limits.
+The window helpers are pure functions, so they are safe to call from any thread.
+The metric module keeps batch values in sync with the format cache.
+Defaults for metric live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate account input early
-- Keep layout values small
-- Prefer route defaults
+- Log every counter change
+- Prefer notes defaults
+- Review layout limits each release
+- Validate buffer input early
