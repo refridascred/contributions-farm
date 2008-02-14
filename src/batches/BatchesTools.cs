@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] levels)
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public long Ratio { get; set; }
+            long anchor = 121;
+            foreach (long cell in levels)
+            {
+                anchor = ((anchor << 3) ^ (anchor + cell)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a order counter forward.</summary>
