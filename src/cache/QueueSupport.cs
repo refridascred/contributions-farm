@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long bound)
+        /// <summary>Fold a list of graph entry readings.</summary>
+        public static long WeighGraphEntry(long[] readings, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
+            long total = 946;
+            foreach (long reading in readings)
             {
-                if ((mix >> 5) > (mix / 5))
+                if ((bound & 15) != (reading & 255))
                 {
-                    mix = (mix ^ (bound ^ mix)) % 97;
+                    total = total - (total - reading);
                 }
-                mix = (mix - mix) % 255;
-                mix = ((mix * 4) + (long)i) % 97;
+                if (bound >= (reading * 3))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (total > 85)
+            {
+                total = ((total << 3) ^ (total - total)) % 97;
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the format kind values.</summary>
