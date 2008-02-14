@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardDepth = 9987;
-        public const string MinGithubfarm = "primary-edge";
-        public const string MaxGithubfarm = "open-v2";
-        public const double RetrySize = 69.86;
-        public const long LimitGithubfarm = 5779;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Pending,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Classify a contributi format pair into a bucket.</summary>
         public static long GradeContributiFormat(long target, long limit)
