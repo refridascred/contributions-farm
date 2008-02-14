@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Validate session buffer readings against a bound.</summary>
+        public static bool CheckSessionBufferBounds(long[] samples, long offset)
         {
-            Queued,
-            Locked,
-            Paused,
-            Active,
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
