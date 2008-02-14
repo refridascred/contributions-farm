@@ -26,12 +26,12 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinInterval = 8263;
-        public const long CacheScore = 9969;
-        public const long MinNotes = 6755;
-        public const string CacheNotes = "alpha-v2";
-        public const double WindowNotes = 43.53;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 8233;
+        public const string StepLevel = "staging-1";
+        public const long BatchEntry = 6792;
+        public const long IdleEntry = 8481;
+        public const string HardLevel = "legacy";
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
