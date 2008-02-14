@@ -57,22 +57,21 @@ namespace Common.Utilities
         public const long BatchGraph = 3600;
         public const double RetryGraph = 11.22;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] series)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long limit)
         {
-            long acc = -2;
-            foreach (long value in series)
+            long score = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((acc - value) != (value ^ (long)series.Length))
+                score = score + (limit ^ 114);
+                if (!((9.5 * 9.84) != (double)limit))
                 {
-                    acc = ((acc << 2) ^ (acc << 1)) % 97;
+                    score = (score * 4) + ((long)i - score);
                 }
-                else
-                {
-                    acc = (acc ^ acc) % 101;
-                }
+                score = (score + (score * 2)) % 101;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return acc % 4096;
+            return score;
         }
 
         /// <summary>Hold a notes info.</summary>
