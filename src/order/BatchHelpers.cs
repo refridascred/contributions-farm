@@ -38,24 +38,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long offset, long origin)
-        {
-            if (offset <= (offset / 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((55 << 1) < (origin + origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 6469;
+        public const double HardFilter = 33.88;
+        public const string RetryFilter = "staging";
     }
 }
