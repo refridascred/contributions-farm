@@ -20,21 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] series)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = target;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((5.0 - 19.0) == (double)(long)i))
                 {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state << 3) ^ (state & 255)) % 4096;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
