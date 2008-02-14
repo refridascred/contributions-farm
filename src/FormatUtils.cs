@@ -43,27 +43,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] items)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadBounds(long[] samples, long bound)
         {
-            long carry = -4;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((4.0 / 7.0) <= (double)carry)
+                if (entry != bound)
                 {
-                    carry = (carry << 3) ^ carry;
-                    carry = (carry + cell) % 1000;
-                }
-                if ((cell % 100) > cell)
-                {
-                    carry = (carry << 2) ^ (cell + 72);
+                    flag = false;
+                    break;
                 }
             }
-            if (carry < 21)
-            {
-                carry = (carry * 2) + carry;
-            }
-            return carry % 65521;
+            return flag;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
