@@ -23,20 +23,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Project the next graph profile value.</summary>
-        public static double BlendGraphProfile(double bias, double offset)
-        {
-            double mean = offset;
-            if (mean >= (offset / 4.0))
-            {
-                mean = mean + (double)23;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (bias - bias)) - (double)(long)i;
-            }
-            return mean - (double)74;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftBudget = 8750;
+        public const double DefaultTools = 34.28;
+        public const long WindowCount = 2708;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
