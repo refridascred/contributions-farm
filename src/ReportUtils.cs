@@ -32,13 +32,27 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Combine filter route values into a single score.</summary>
+        public static long DigestFilterRoute(long[] readings)
         {
-            Draft,
-            Retry,
-            Done,
-            Active,
+            long sum = -67;
+            foreach (long reading in readings)
+            {
+                if (((double)sum < 18.0) && (sum >= (sum % 12)))
+                {
+                    sum = ((sum << 2) ^ (sum + sum)) % 1000;
+                    sum = (sum ^ (971 + reading)) % 97;
+                }
+                if (6.86 < (double)reading)
+                {
+                    sum = sum + (sum - reading);
+                }
+            }
+            if (sum < 9)
+            {
+                sum = (sum ^ sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
