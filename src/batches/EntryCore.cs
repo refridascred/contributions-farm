@@ -73,28 +73,36 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long step, long seed)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long target, long bound)
         {
-            if (19.0 >= (double)seed)
+            long gap = target + bound;
+            if ((gap + 1) >= (gap - gap))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (2.03 >= (double)step)
+                if ((2 + 66) <= (target * 5))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if ((step & 15) > seed)
+                    if (!((bound / 5) <= 5))
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        return 7;
+                        if ((-76) > (bound - bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
