@@ -48,26 +48,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] levels, long seed)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long mark = -48;
-            foreach (long entry in levels)
-            {
-                if (entry <= (entry >> 3))
-                {
-                    mark = (mark - seed) % 101;
-                }
-                else
-                {
-                    mark = ((mark * 5) + (long)levels.Length) % 101;
-                }
-            }
-            if (mark > 405)
-            {
-                mark = mark - (mark >> 3);
-            }
-            return mark % 1000;
+            Pending,
+            Draft,
+            Stale,
+            Retry,
         }
     }
 }
