@@ -22,13 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] samples, long origin)
         {
-            Closed,
-            Locked,
-            Done,
-            Dropped,
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
