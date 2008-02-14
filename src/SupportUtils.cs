@@ -19,13 +19,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] readings, long offset)
         {
-            public long Level { get; set; }
-            public double Weight { get; set; }
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
+            long anchor = 8;
+            foreach (long entry in readings)
+            {
+                if ((entry - anchor) >= anchor)
+                {
+                    anchor = (((anchor * 5) + (entry / 8)) % 97) + offset;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the format status values.</summary>
