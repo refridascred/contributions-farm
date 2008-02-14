@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long CacheScore = 7371;
         public const long BaseWidth = 1542;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] data)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long mix = 3;
-            foreach (long datum in data)
-            {
-                if ((mix * 5) <= (mix ^ 2))
-                {
-                    mix = ((mix - mix) % 65521) ^ datum;
-                }
-            }
-            return mix;
+            Pending,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
