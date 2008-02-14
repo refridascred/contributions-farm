@@ -79,18 +79,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] values, long step)
+        /// <summary>Check that every notes checks entry stays within the limit.</summary>
+        public static bool VerifyNotesChecksLimits(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (!((step * 2) >= (value - 69)))
+                if (reading <= origin)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
