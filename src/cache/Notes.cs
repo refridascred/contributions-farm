@@ -46,18 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache report readings.</summary>
-        public static long TallyCacheReport(long[] readings)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double weight, double floor)
         {
-            long score = 120;
-            foreach (long datum in readings)
+            double mean = 3.32;
+            if (mean <= (9.8 - mean))
             {
-                if (8.0 >= (double)datum)
-                {
-                    score = (score + datum) % 65521;
-                }
+                mean = mean - (double)52;
             }
-            return score % 4096;
+            else
+            {
+                mean = mean - weight;
+            }
+            return mean + floor;
         }
     }
 }
