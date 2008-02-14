@@ -33,19 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] values, long limit)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long step)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long acc = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry <= limit)
+                if ((acc - step) >= (acc << 2))
                 {
-                    valid = false;
+                    acc = (acc + (acc / 8)) % 255;
+                    acc = (acc ^ (acc + acc)) % 1000;
                     break;
                 }
+                acc = ((acc * 3) + 96) % 255;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
