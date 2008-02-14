@@ -25,38 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a tools payload value against two limits.</summary>
-        public static long ClassifyToolsPayload(long offset, long offset2)
+        /// <summary>Validate notes contributi readings against a bound.</summary>
+        public static bool CheckNotesContributiRange(long[] values, long limit)
         {
-            if ((offset % 3) >= 159)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(offset2 < (offset + offset)))
+                if (reading < limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset + offset) <= 92)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((42 << 3) == (offset2 / 7)) && ((offset << 1) < (offset2 ^ offset2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
