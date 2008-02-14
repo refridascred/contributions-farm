@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] samples)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((596 + hits) != (sample - sample))
+                if (((-3) & 255) == (item + offset))
                 {
-                    hits = hits + 2;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Fold a list of record readings.</summary>
