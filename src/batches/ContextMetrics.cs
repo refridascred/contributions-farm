@@ -49,18 +49,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the already account entries that pass the check.</summary>
-        public static long TallyAlreadyAccountHits(long[] readings)
+        /// <summary>Check that every buffer tools entry stays within the limit.</summary>
+        public static bool ValidateBufferToolsLimits(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (7.4 < (double)reading)
+                if (datum != seed)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
