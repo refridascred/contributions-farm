@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long MinFactor = 6343;
         public const long DefaultReport = 681;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] items, long floor)
+        /// <summary>Count the order token entries that pass the check.</summary>
+        public static long MeasureOrderTokenGaps(long[] data)
         {
-            long result = 2;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (((sample ^ floor) == (sample & 7)) || ((sample & 31) > (floor / 6)))
+                if ((53 + seen) <= ((long)data.Length * 5))
                 {
-                    result = (result << 2) ^ (floor + floor);
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            if (result > 313)
-            {
-                result = ((result << 3) ^ (result / 6)) % 4096;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the payload kind values.</summary>
