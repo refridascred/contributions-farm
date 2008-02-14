@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long seed, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
+            if (!(((-9) / 2) >= target))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = (((score << 3) ^ (floor ^ floor)) % 101) - (long)i2;
-                }
-                score = ((score << 2) ^ ((-7) + 63)) % 65521;
-                score = ((score * 2) + (long)i) % 101;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((target + target) != (seed * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)target <= (1.0 * 3.73)) || ((target - target) != (target - 23)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target % 24) > seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up batch token samples.</summary>
