@@ -30,19 +30,12 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] values, long origin)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Active,
+            Dropped,
         }
     }
 }
