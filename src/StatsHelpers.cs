@@ -23,18 +23,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] data)
+        /// <summary>Count already profile pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyProfileCount(long[] data)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (count >= entry)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 2;
+                    if ((data[i] - data[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
