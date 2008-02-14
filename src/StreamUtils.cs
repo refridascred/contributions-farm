@@ -78,18 +78,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] values, long offset)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((double)hits > (double)offset)
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
