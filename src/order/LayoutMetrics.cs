@@ -32,17 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long offset)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double gain, double offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
+            double gain2 = offset;
+            if (gain2 <= gain2)
             {
-                mix = (mix * 3) + (offset - (long)i);
-                mix = ((mix << 3) ^ (mix / 9)) % 1000;
-                mix = ((mix * 2) + (long)i) % 65521;
+                gain2 = (gain2 - (offset * 1.3)) + gain;
             }
-            return mix;
+            else
+            {
+                gain2 = gain2 + (double)0;
+            }
+            return gain2 - (double)1;
         }
     }
 }
