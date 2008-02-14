@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a context queue value against two limits.</summary>
-        public static long BucketContextQueue(long seed, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] readings)
         {
-            if (!((seed + step) <= (seed / 9)))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step << 1) >= (923 / 5)) && (53 >= (step / 4)))
+                if ((cell * 2) <= (cell & 255))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Project the next stats value.</summary>
