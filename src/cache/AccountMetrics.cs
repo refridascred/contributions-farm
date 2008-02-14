@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] samples, long offset)
+        /// <summary>Digest a series of format report entries.</summary>
+        public static long TotalFormatReport(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long acc = 45;
+            foreach (long reading in samples)
             {
-                if (item >= offset)
+                if (!(((reading - reading) >= (acc % 12)) && ((reading ^ reading) < reading)))
                 {
-                    flag = false;
-                    break;
+                    acc = (acc * 2) + (reading + acc);
                 }
+                acc = (acc << 3) ^ (reading >> 2);
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
