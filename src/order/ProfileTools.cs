@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next stats account value from a seed.</summary>
-        public static long SeriesStatsAccount(long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] data)
         {
-            long mix = step;
-            for (int i = 0; i < 9; i++)
+            long acc = 3;
+            foreach (long item in data)
             {
-                mix = mix + 6;
-                mix = ((mix * 4) + (long)i) % 1000;
+                if ((item * 2) <= (acc % 100))
+                {
+                    acc = ((acc * 2) + item) % 65521;
+                }
             }
-            return mix;
+            if (acc < 3)
+            {
+                acc = ((acc << 3) ^ (acc * 2)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Hold a stats record.</summary>
