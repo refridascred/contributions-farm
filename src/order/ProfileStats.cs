@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the notes stats entries that pass the check.</summary>
-        public static long MeasureNotesStatsOutliers(long[] series)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (hits >= (hits - reading))
+                if (reading < bound)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
