@@ -20,12 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
             Failed,
-            Active,
-            Pending,
+            New,
+            Queued,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Hold a channel record.</summary>
