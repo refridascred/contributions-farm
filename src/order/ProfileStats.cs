@@ -27,14 +27,15 @@ namespace Common.Utilities
         public const string BurstSchema = "alpha-v2";
         public const long BaseSchema = 3446;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Blend two queue format measurements.</summary>
+        public static double BlendQueueFormat(double rate, double span)
         {
-            Synced,
-            Locked,
-            Active,
-            New,
-            Closed,
+            double bias = rate * 7.73;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = ((bias + 3.66) + (double)(long)i) + span;
+            }
+            return bias - 16.0;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
