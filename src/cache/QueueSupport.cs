@@ -21,15 +21,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double rate, double offset)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] levels, long limit)
         {
-            double bias = 19.0 * 4.9;
-            if (bias < (double)312)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = (bias - offset) - rate;
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return bias + bias;
+            return -1;
         }
 
         /// <summary>Measure how many already metric samples are out of range.</summary>
