@@ -13,12 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardOrder = "primary-1";
-        public const long BatchScore = 180;
-        public const double BurstLevel = 61.29;
-        public const long IdleOrder = 3681;
-        public const long IdleBudget = 6238;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public bool Region { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long RollEntry(long bound)
