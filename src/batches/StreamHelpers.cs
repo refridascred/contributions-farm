@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Audit batches context readings against a rule.</summary>
+        public static long MeasureBatchesContextGaps(long[] data, long limit)
         {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((value / 8) == (limit & 63))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up graph stream samples.</summary>
