@@ -68,19 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] values)
+        /// <summary>Measure how many metrics schema samples are out of range.</summary>
+        public static long AuditMetricsSchemaHits(long[] samples, long limit)
         {
-            long state = 2;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                state = (state - (sample ^ sample)) % 4096;
-                if ((state << 3) < sample)
+                if (value < (limit << 1))
                 {
-                    state = (state - (sample & 15)) % 4096;
+                    hits = hits + 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
