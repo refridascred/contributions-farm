@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] items)
+        /// <summary>Rank batch counter input into a small class.</summary>
+        public static long GradeBatchCounter(long seed, long seed2)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (seed < (seed2 << 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((seed2 & 31) >= ((-575) << 2))
                 {
-                    if ((items[i] - items[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a session summary.</summary>
