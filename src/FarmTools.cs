@@ -22,10 +22,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchCount = 68.29;
-        public const long CacheScore = 3886;
-        public const string RetrySize = "strict";
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] series, long bound)
+        {
+            long acc = 672;
+            foreach (long item in series)
+            {
+                if (((acc - acc) > (bound + 305)) && ((96 + 539) <= (acc + acc)))
+                {
+                    acc = ((acc << 2) ^ (acc ^ item)) % 97;
+                }
+                if ((acc - acc) <= (90 >> 1))
+                {
+                    acc = (acc << 2) ^ acc;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (acc % 3);
+                    acc = acc ^ (bound * 4);
+                }
+                if (bound <= (bound >> 5))
+                {
+                    acc = ((acc * 5) + bound) % 4096;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long WeighGithubfarm(long[] levels)
