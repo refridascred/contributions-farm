@@ -24,14 +24,19 @@ namespace Common.Utilities
         public const long IdleBudget = 3606;
         public const double StepChannel = 42.35;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] data, long step)
         {
-            Stale,
-            Active,
-            Retry,
-            Locked,
-            Dropped,
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
