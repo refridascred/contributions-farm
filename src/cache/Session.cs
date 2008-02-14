@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] samples, long limit)
+        /// <summary>Check that every window profile entry stays within the limit.</summary>
+        public static bool ValidateWindowProfileLimits(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (samples[i] > limit)
+                if (entry > target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the editor level values.</summary>
