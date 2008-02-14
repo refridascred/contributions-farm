@@ -34,20 +34,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next contributi graph value from a seed.</summary>
-        public static long SeriesContributiGraph(long target)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
+            long score = 776;
+            foreach (long item in levels)
             {
-                result = (result ^ (result * 5)) % 4096;
-                if ((result + 2) < (result << 1))
+                score = score ^ item;
+                if ((score << 3) < score)
                 {
-                    result = result - target;
+                    score = score - score;
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Describe the queue phase values.</summary>
