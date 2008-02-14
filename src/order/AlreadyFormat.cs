@@ -30,12 +30,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Count the format queue entries that pass the check.</summary>
+        public static long AuditFormatQueueMatches(long[] values)
         {
-            Queued,
-            Failed,
-            Done,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((sample * 5) < seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the command class values.</summary>
