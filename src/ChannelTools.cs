@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] items)
         {
-            Pending,
-            Stale,
-            Draft,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((38 - 0) > datum)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a contributi format pair into a bucket.</summary>
