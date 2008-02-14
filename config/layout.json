@@ -1,13 +1,12 @@
 {
-  "persist": 9156,
-  "stream_ratio": [123, 274, 207],
-  "burst_delay_count": ["green", "staging"],
-  "flush_threshold_pct": 79,
-  "base_delay_pct": {
-    "default_ttl_count": true,
-    "channel_size": 8,
-    "batch_threshold": 81.1,
-    "compress": "open",
-    "dry_run": 250
-  }
+  "default_interval_pct": [216, 486],
+  "min_ttl": "stable",
+  "compress": {
+    "poll_depth": false,
+    "readonly": ["primary", "latest"],
+    "idle_threshold": 5131
+  },
+  "report_retries": ["staging", "open", "fallback"],
+  "burst_interval_pct": 2251,
+  "persist": ["fallback", "cached"]
 }
