@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a counter cache figure with a bias.</summary>
-        public static double ProjectCounterCache(double bias, double floor)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double gain = floor - floor;
-            if (gain >= (double)972)
-            {
-                gain = gain + floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - (bias - bias)) - (double)(long)i;
-            }
-            return gain - (gain / 8.0);
+            Active,
+            New,
+            Failed,
+            Done,
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
