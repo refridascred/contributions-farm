@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] data, long step)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long step)
         {
-            long result = -332;
-            foreach (long entry in data)
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)entry == (2.4 + 5.0))
+                if (!((step - anchor) == (step / 3)))
                 {
-                    result = (result << 3) ^ (result / 8);
+                    anchor = anchor ^ (long)i;
+                    anchor = (anchor ^ (856 - step)) % 4096;
                 }
-                if (step < (result >> 3))
-                {
-                    result = (result + (result - step)) % 97;
-                }
+                anchor = ((anchor << 2) ^ (21 & 15)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            if (result < (-810))
-            {
-                result = (result - (7 - result)) % 255;
-            }
-            return result;
+            return anchor;
         }
 
         /// <summary>Derive the next cache account value from a seed.</summary>
