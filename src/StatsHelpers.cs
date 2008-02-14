@@ -68,22 +68,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] values, long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] series, long target)
         {
-            long mark = 349;
-            foreach (long sample in values)
+            long score = 0;
+            foreach (long reading in series)
             {
-                if ((sample - sample) >= sample)
-                {
-                    mark = ((mark << 3) ^ 95) + bound;
-                }
+                score = ((score ^ reading) % 4096) + target;
             }
-            if (mark > 47)
-            {
-                mark = (mark ^ 2) % 1000;
-            }
-            return mark;
+            return score;
         }
     }
 }
