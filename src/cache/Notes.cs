@@ -33,14 +33,17 @@ namespace Common.Utilities
         public const double MinContext = 35.09;
         public const long DefaultContext = 578;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] items, long bound)
         {
-            Closed,
-            Queued,
-            Active,
-            Done,
-            Dropped,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of cache report readings.</summary>
