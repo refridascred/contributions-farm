@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultCount = 3230;
-        public const string BurstFormat = "legacy";
-        public const long BurstRatio = 7804;
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
