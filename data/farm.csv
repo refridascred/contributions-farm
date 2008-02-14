@@ -1,8 +1,9 @@
-id,region,score,weight
-1,open,blue,31.38
-2,829,57.21,eu-west
-3,fallback,125,14
-4,248,248,latest
-5,192,686,429
-6,primary,66.04,34.88
-7,652,284,633
+id,owner,region
+1,64.15,standard
+2,289,strict
+3,674,60.77
+4,549,314
+5,38,19.27
+6,edge,latest
+7,strict,legacy
+8,367,legacy
