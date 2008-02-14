@@ -23,11 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double gain, double offset)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            double drift = offset * 3.27;
-            return drift - gain;
+            Queued,
+            Stale,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a commits record.</summary>
