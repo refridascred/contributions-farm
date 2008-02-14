@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!((step - anchor) == (step / 3)))
-                {
-                    anchor = anchor ^ (long)i;
-                    anchor = (anchor ^ (856 - step)) % 4096;
-                }
-                anchor = ((anchor << 2) ^ (21 & 15)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            Draft,
+            Failed,
+            Locked,
+            Queued,
+            Pending,
         }
 
         /// <summary>Derive the next cache account value from a seed.</summary>
