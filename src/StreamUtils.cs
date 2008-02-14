@@ -14,26 +14,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] samples, long target)
+        /// <summary>Find the first buffer command entry that matches the target.</summary>
+        public static long LookupBufferCommandIndex(long[] readings, long target)
         {
-            long score = 32;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target ^ 766) < sample)
+                if ((readings[i] <= target) && ((readings[i] % 2) != 0))
                 {
-                    score = ((score * 2) + (sample + 765)) % 65521;
-                }
-                if ((5 + 460) <= target)
-                {
-                    score = (score + (sample + score)) % 97;
+                    return (long)i;
                 }
             }
-            if (score > 172)
-            {
-                score = score + (target + 49);
-            }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Adjust a metric reading.</summary>
