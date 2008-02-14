@@ -20,20 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((5.0 - 19.0) == (double)(long)i))
-                {
-                    state = ((state << 3) ^ (state & 255)) % 4096;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseRatio = "strict";
+        public const long DefaultTools = 7006;
+        public const double RetryLevel = 31.08;
+        public const double BatchTools = 76.75;
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LookupGraphIndex(long[] readings, long seed)
