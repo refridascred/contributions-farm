@@ -14,14 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Draft,
-            Queued,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepCluster = 19.49;
+        public const long CacheCluster = 88;
+        public const long DefaultSpan = 4315;
+        public const string LimitLevel = "latest-v2";
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
