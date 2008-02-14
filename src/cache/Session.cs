@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every window profile entry stays within the limit.</summary>
-        public static bool ValidateWindowProfileLimits(long[] data, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] series, long origin)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (entry > target)
+                if (reading <= origin)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Describe the editor mode values.</summary>
