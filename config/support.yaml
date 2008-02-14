@@ -1,18 +1,13 @@
 # support settings
-burst_threshold_s:
-  - open
-  - eu-west
-  - strict
-  - cached
-flush_ratio:
-  batch_window:
-    - 424
-    - 336
-    - 183
-    - 55
-  min_size_ms: 1024
-  order_capacity: 2.94
-editor_size: latest
-audit: green
-flush_size_count: open
-enabled: latest
+buffer_capacity: legacy
+strict:
+  - 90
+  - 262
+buffer_retries:
+  max_size: cached
+  batch_window_pct: 43
+  flush_threshold: open
+  contributi_ratio: strict
+  soft_ttl_ms: 58
+  min_delay_ms: 3145
+base_depth_ms: 88.32
