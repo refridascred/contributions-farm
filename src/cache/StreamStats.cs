@@ -21,18 +21,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit editor command readings against a rule.</summary>
-        public static long CountEditorCommandHits(long[] data)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (!!((hits + hits) >= datum))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
