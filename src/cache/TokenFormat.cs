@@ -16,11 +16,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftInterval = 53.51;
-        public const long WindowAlready = 2812;
-        public const string HardAlready = "legacy-edge";
-        public const string BaseRatio = "latest-edge";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseFactor = 92.57;
+        public const long DefaultBatches = 7570;
+        public const long MinBatches = 9113;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorMatches(long[] items)
