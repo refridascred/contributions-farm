@@ -43,21 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] levels)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (values[i] > target)
                 {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
