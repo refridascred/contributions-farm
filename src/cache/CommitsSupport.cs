@@ -78,22 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftContributi = "alpha-edge";
+        public const double BaseContributi = 57.28;
+        public const long LimitContributi = 5768;
+        public const long CacheContributi = 1487;
+        public const string StepTimeout = "cached";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double WindowMetrics = 78.44;
