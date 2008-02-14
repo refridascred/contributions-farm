@@ -27,11 +27,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public double Label { get; set; }
-            public double Level { get; set; }
+            Queued,
+            Locked,
+            Draft,
+            Idle,
+            Ready,
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
