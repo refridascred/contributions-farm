@@ -32,22 +32,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] values)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            if ((337 - seed) >= (offset >> 2))
             {
-                if (!(reading <= (tally % 2)) || (((-234) & 3) < (reading ^ 58)))
+                return 4;
+            }
+            else
+            {
+                if ((seed ^ offset) == (seed & 255))
                 {
-                    tally = tally + 2;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (2.48 < (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
