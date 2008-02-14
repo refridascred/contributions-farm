@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] readings)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((hits << 3) < ((long)readings.Length / 2))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            Paused,
+            Dropped,
+            Draft,
+            Pending,
+            Ready,
         }
 
         /// <summary>Combine account values into a single score.</summary>
