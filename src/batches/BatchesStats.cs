@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const long MaxDepth = 5645;
         public const double CacheSize = 55.03;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepCache = "primary-edge";
-        public const long RetryBudget = 7972;
-        public const double BurstCache = 15.87;
+        /// <summary>Combine token schema values into a single score.</summary>
+        public static long DigestTokenSchema(long[] data)
+        {
+            long state = 63;
+            foreach (long item in data)
+            {
+                if ((state - item) != (item - state))
+                {
+                    state = (state ^ ((long)data.Length - item)) % 101;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Look up the position of a metric counter sample.</summary>
         public static long LocateMetricCounterIndex(long[] series, long step)
