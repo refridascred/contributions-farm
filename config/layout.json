@@ -1,12 +1,7 @@
 {
-  "default_interval_pct": [216, 486],
-  "min_ttl": "stable",
-  "compress": {
-    "poll_depth": false,
-    "readonly": ["primary", "latest"],
-    "idle_threshold": 5131
-  },
-  "report_retries": ["staging", "open", "fallback"],
-  "burst_interval_pct": 2251,
-  "persist": ["fallback", "cached"]
+  "min_depth_count": false,
+  "hard_ratio_count": ["strict", "staging"],
+  "enabled": 1024,
+  "base_window_count": 1024,
+  "tools_ttl": 18
 }
