@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Look up the position of a editor counter sample.</summary>
+        public static long LookupEditorCounterIndex(long[] data, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (669 <= bound)
+                if ((data[i] > step) && ((data[i] % 5) == 0))
                 {
-                    carry = (carry * 4) + (carry + (long)i);
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Match up commits window samples.</summary>
