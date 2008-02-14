@@ -34,11 +34,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public double Size { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 7249;
+        public const long DefaultAccount = 5396;
+        public const long RetrySize = 8374;
+        public const double RetryWidth = 13.43;
     }
 }
