@@ -51,38 +51,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long floor, long step)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            if ((5.3 - 7.5) > (double)floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((62 & 127) >= step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step != (4.0 - 5.16))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor + step) > (step * 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
