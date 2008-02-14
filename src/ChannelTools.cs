@@ -40,11 +40,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardLayout = "standard-1";
-        public const long SoftFactor = 5639;
-        public const long MaxSize = 8945;
-        public const long IdleSize = 2876;
-        public const double WindowLayout = 1.16;
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
     }
 }
