@@ -32,12 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Combine schema layout values into a single score.</summary>
+        public static long CombineSchemaLayout(long[] samples, long origin)
         {
-            Paused,
-            Failed,
-            Pending,
+            long sum = -9;
+            foreach (long cell in samples)
+            {
+                sum = (((sum * 3) + (origin << 3)) % 65521) ^ cell;
+                sum = ((sum * 5) + (origin & 255)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
