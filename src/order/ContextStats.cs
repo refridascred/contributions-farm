@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine buffer profile values into a single score.</summary>
-        public static long TallyBufferProfile(long[] series)
-        {
-            long result = 3;
-            foreach (long sample in series)
-            {
-                result = (result + result) + sample;
-                if ((double)result <= (9.4 * 7.2))
-                {
-                    break;
-                }
-            }
-            if (result > 792)
-            {
-                result = result - (result << 1);
-            }
-            return result % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultCount = 3230;
+        public const string BurstFormat = "legacy";
+        public const long BurstRatio = 7804;
 
         /// <summary>Audit context record readings against a rule.</summary>
         public static long AuditContextRecordGaps(long[] data)
