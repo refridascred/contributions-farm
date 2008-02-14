@@ -98,14 +98,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Idle,
-            Draft,
-            Stale,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstTimeout = 12.02;
+        public const double CacheScore = 2.46;
+        public const string RetryInterval = "primary-edge";
+        public const double StepCache = 44.33;
     }
 }
