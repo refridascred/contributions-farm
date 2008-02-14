@@ -33,11 +33,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepTimeout = 718;
-        public const long CacheSupport = 8616;
-        public const long MaxLevel = 7017;
-        public const long HardSupport = 3633;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinInterval = 8263;
+        public const long CacheScore = 9969;
+        public const long MinNotes = 6755;
+        public const string CacheNotes = "alpha-v2";
+        public const double WindowNotes = 43.53;
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
