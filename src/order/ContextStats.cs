@@ -13,18 +13,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] levels, long step)
+        /// <summary>Adjust a contributi notes reading.</summary>
+        public static double ProjectContributiNotes(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double bias2 = (double)3;
+            if (bias2 < bias)
             {
-                if ((hits % 12) < (1 << 1))
-                {
-                    hits = ((hits + 1) + value) - step;
-                }
+                bias2 = (bias2 + bias2) - rate;
             }
-            return hits;
+            else
+            {
+                bias2 = bias2 - (double)861;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - (bias2 + 1.6)) + (double)(long)i;
+            }
+            return bias2 - 3.1;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
