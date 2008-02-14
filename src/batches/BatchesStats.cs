@@ -14,18 +14,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] levels, long seed)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] data, long origin)
         {
-            long mark = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7 - mark) == (mark & 3))
+                if (data[i] >= origin)
                 {
-                    mark = ((mark - (seed - 0)) % 101) ^ cell;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
