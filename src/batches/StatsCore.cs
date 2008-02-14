@@ -49,12 +49,11 @@ namespace Common.Utilities
             return weight + (4.93 + bias);
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public string Ratio { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardWidth = 1959;
+        public const long MaxAccount = 9133;
+        public const string BurstAccount = "standard";
+        public const double RetryFactor = 29.91;
 
         /// <summary>Check that every profile counter entry stays within the limit.</summary>
         public static bool ValidateProfileCounterBounds(long[] data, long limit)
