@@ -52,11 +52,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowScore = 55.1;
-        public const double IdleRecord = 68.23;
-        public const long BaseRecord = 9625;
-        public const string HardWidth = "open";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchInterval = 717;
+        public const double BaseTimeout = 8.13;
+        public const long MaxGraph = 7166;
+        public const long WindowTimeout = 4172;
+        public const double IdleInterval = 56.04;
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long StepStats(long offset)
