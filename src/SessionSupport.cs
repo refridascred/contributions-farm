@@ -31,21 +31,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] items)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = -439;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((1.6 / 5.0) == (double)offset)
                 {
-                    if ((items[i] - items[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (((carry * 5) + carry) % 101) + reading;
+                }
+                else
+                {
+                    carry = carry - 962;
                 }
             }
-            return count;
+            return carry;
         }
     }
 }
