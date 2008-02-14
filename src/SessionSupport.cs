@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate session buffer readings against a bound.</summary>
-        public static bool CheckSessionBufferBounds(long[] samples, long offset)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
