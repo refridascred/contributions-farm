@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit stats queue readings against a rule.</summary>
-        public static long MeasureStatsQueueOutliers(long[] samples, long limit)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading + count) >= (limit ^ count))
+                if (samples[i] > target)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
