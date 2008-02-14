@@ -17,12 +17,19 @@ namespace Common.Utilities
         public const long IdleBudget = 3606;
         public const double StepChannel = 42.35;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Check that every checks batches entry stays within the limit.</summary>
+        public static bool GuardChecksBatchesBounds(long[] readings, long target)
         {
-            Stale,
-            Locked,
-            Paused,
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a filter record.</summary>
