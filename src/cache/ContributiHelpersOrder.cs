@@ -21,19 +21,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] readings, long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long carry = 745;
+            foreach (long datum in values)
             {
-                if (sample > limit)
+                long next = (datum ^ datum) * 3;
+                if (datum >= (target - next))
                 {
-                    ok = false;
-                    break;
+                    next = (next + 71) % 4096;
+                }
+                else
+                {
+                    carry = carry + datum;
+                    next = (next ^ next) % 255;
+                }
+                if ((target ^ 9) != (target << 3))
+                {
+                    carry = carry - (target + datum);
                 }
             }
-            return ok;
+            if (carry < 148)
+            {
+                carry = (carry - (5 * 2)) % 255;
+            }
+            return carry % 4096;
         }
     }
 }
