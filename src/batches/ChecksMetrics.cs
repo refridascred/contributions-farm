@@ -66,35 +66,34 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Grade a counter channel value against two limits.</summary>
-        public static long SortCounterChannel(long origin, long target)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long floor, long offset)
         {
-            long edge = origin ^ target;
-            if (((edge / 7) == (6 + target)) && ((4.9 / 3.0) == (double)origin))
+            if (!((double)floor <= (7.2 * 9.0)))
             {
                 return 8;
             }
             else
             {
-                if (((target + edge) >= 50) && ((double)target == (3.0 / 4.0)))
+                if ((offset & 255) > (floor / 8))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if (((target >> 3) < (target ^ edge)) && (((-227) + 22) == (target - edge)))
+                    if (((double)floor > (1.6 + 4.4)) || (floor < (floor - floor)))
                     {
-                        return 5;
+                        return 0;
                     }
                     else
                     {
-                        if (!(target < origin))
+                        if ((9.0 + 3.8) == (double)floor)
                         {
-                            return 3;
+                            return 7;
                         }
                         else
                         {
-                            return 6;
+                            return 1;
                         }
                     }
                 }
