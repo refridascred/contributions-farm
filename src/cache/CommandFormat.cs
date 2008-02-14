@@ -13,25 +13,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a counter route pair into a bucket.</summary>
-        public static long BucketCounterRoute(long bound, long seed)
-        {
-            if ((double)712 != (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if (16.0 > (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepInterval = 8237;
+        public const long RetryTimeout = 8588;
+        public const long CacheNotes = 6692;
+        public const long MinLevel = 2121;
 
         /// <summary>Adjust a window reading.</summary>
         public static double BlendWindow(double weight, double bias)
