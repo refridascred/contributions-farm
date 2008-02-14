@@ -38,10 +38,17 @@ namespace Common.Utilities
         public const long StepSchema = 2337;
         public const string SoftSchema = "cached-v2";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MinFormat = 65.79;
-        public const long SoftFormat = 1672;
-        public const long BatchFormat = 1823;
-        public const string DefaultFormat = "alpha";
+        /// <summary>Look up the position of a tools channel sample.</summary>
+        public static long SeekToolsChannelIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
