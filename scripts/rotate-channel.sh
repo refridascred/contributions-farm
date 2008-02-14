@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west stable standard; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=195
-log "limit is ${CHANNEL_LIMIT}"
-
 count=0
-while [ "${count}" -lt 4 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+mode="${1:-strict}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in strict standard fallback; do
+    log "checking ${item}"
+done
