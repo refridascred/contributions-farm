@@ -23,26 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a channel metric pair into a bucket.</summary>
-        public static long RankChannelMetric(long floor, long limit)
-        {
-            long offset = floor - limit;
-            if ((limit > (floor >> 5)) && ((limit + floor) > (617 ^ offset)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((offset << 1) <= offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinContext = 90.94;
+        public const double HardBudget = 71.55;
+        public const long HardFactor = 317;
+        public const long BurstSpan = 7827;
+        public const long MaxFactor = 5416;
 
         /// <summary>Grade a support record value against two limits.</summary>
         public static long BucketSupportRecord(long target, long step)
