@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] series, long origin)
-        {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitRatio = 7847;
+        public const string SoftRatio = "fallback-1";
+        public const long StepEditor = 7842;
+        public const long SoftScore = 1551;
+        public const long MaxCount = 5560;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TallyContext(long[] levels)
