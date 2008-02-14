@@ -68,21 +68,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
