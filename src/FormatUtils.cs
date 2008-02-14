@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Accumulate githubfarm metrics samples.</summary>
+        public static long TotalGithubfarmMetrics(long[] samples, long step)
         {
-            Idle,
-            Draft,
-            Dropped,
+            long sum = 4;
+            foreach (long datum in samples)
+            {
+                sum = (((sum ^ (sum - sum)) % 97) + datum) - step;
+                sum = (sum << 3) ^ (8 / 7);
+            }
+            return sum;
         }
 
         /// <summary>Blend two route measurements.</summary>
