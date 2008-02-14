@@ -1,9 +1,4 @@
 # githubfarm settings
-cache_size_ms: open
-sync_timeout_ms: 21
-commits_retries: edge
-editor_threshold:
-  - 138
-  - 209
-  - 499
-  - 255
+account_ttl: blue
+strict: local
+batch_depth: 74
