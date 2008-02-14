@@ -31,19 +31,32 @@ namespace Common.Utilities
             return gain + 9.0;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long step)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long offset, long limit)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            long prev = offset ^ limit;
+            if (8.3 > (double)limit)
             {
-                if ((step < (6 + result)) || (17.0 < (double)result))
-                {
-                    result = (result ^ (result >> 3)) % 65521;
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((double)prev >= (1.2 / 6.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset < (8.0 - 8.17))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
