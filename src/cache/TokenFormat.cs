@@ -20,18 +20,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] items, long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long target, long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long offset = target + limit;
+            if ((target / 5) <= 886)
             {
-                if (target >= hits)
+                return 5;
+            }
+            else
+            {
+                if ((6 >> 3) != (target & 63))
                 {
-                    hits = (hits + 2) ^ cell;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset + 9) < target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate schema window readings against a bound.</summary>
