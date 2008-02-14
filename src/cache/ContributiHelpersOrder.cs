@@ -19,31 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metrics farm value against two limits.</summary>
-        public static long GradeMetricsFarm(long seed, long origin)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            if ((origin + origin) >= (seed + 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((seed + origin) >= (origin / 9)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin & 31) < (5 - seed)) || ((6 - seed) >= (origin & 255)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Closed,
+            Locked,
+            Queued,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a filter options.</summary>
