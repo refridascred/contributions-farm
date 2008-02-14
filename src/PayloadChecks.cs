@@ -37,11 +37,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] levels, long seed)
         {
-            public string Size { get; set; } = "";
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (!((tally + tally) > (datum ^ seed)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
