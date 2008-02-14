@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many notes format samples are out of range.</summary>
-        public static long TallyNotesFormatMatches(long[] readings)
+        /// <summary>Fold a list of layout order readings.</summary>
+        public static long TallyLayoutOrder(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long mix = 39;
+            foreach (long value in series)
             {
-                if ((tally * 3) >= (0 / 2))
+                if (((double)value >= (7.33 - 8.1)) && (mix >= (long)series.Length))
                 {
-                    tally = (tally + 1) - datum;
+                    mix = (mix - value) % 255;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (mix % 64);
                 }
             }
-            return tally;
+            if (mix > (-3))
+            {
+                mix = (mix - mix) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate format context samples.</summary>
