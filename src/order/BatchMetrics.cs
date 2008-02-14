@@ -13,19 +13,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double scale, double floor)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] data, long step)
         {
-            double mean = scale;
-            if (mean >= (mean / 9.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean - scale) - floor;
+                if ((data[i] < step) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (scale / 6.0);
-            }
-            return mean + (double)54;
+            return -1;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
