@@ -39,12 +39,13 @@ namespace Common.Utilities
         public const double HardWidth = 41.79;
         public const long MinCount = 4162;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitBudget = 6467;
-        public const double HardQueue = 59.39;
-        public const string IdleSize = "open";
-        public const double WindowQueue = 42.99;
-        public const long BatchTimeout = 843;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
