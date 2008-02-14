@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] levels, long limit)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 434;
+            foreach (long reading in series)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                total = ((total - (offset + offset)) % 101) + reading;
             }
-            return -1;
+            if (total < 6)
+            {
+                total = total - (offset - total);
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a order options.</summary>
