@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const double CacheFormat = 8.0;
         public const long SoftScore = 5375;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] data, long step)
+        /// <summary>Check that every command profile entry stays within the limit.</summary>
+        public static bool GuardCommandProfileRange(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (data[i] >= step)
+                if (entry < step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
