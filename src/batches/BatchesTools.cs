@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Measure how many metric profile samples are out of range.</summary>
+        public static long TallyMetricProfileMatches(long[] series)
         {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (((anchor - 193) > (target >> 5)) || ((double)target >= 7.3))
+                if ((sample * 4) < (seen - sample))
                 {
-                    anchor = anchor + ((-556) + target);
-                    break;
+                    seen = seen + 2;
                 }
-                else
-                {
-                    anchor = anchor + (61 + 274);
-                }
-                if (((long)i & 1) < anchor)
-                {
-                    anchor = (anchor + target) % 65521;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
