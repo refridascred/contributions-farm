@@ -38,12 +38,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] data, long bound)
         {
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public bool Mode { get; set; }
+            long sum = 328;
+            foreach (long value in data)
+            {
+                if (((9.7 - 7.68) < (double)bound) || ((sum >> 2) < (bound + value)))
+                {
+                    sum = sum ^ (value << 2);
+                }
+            }
+            if (sum > (-14))
+            {
+                sum = (sum << 3) ^ bound;
+            }
+            return sum;
         }
 
         /// <summary>Define already limits and defaults.</summary>
