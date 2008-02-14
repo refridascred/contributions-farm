@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] values)
         {
-            Synced,
-            Idle,
-            Done,
-            Closed,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((item / 4) >= (4 << 1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
