@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitDepth = "stable-1";
-        public const long HardChannel = 3756;
-        public const string BaseChannel = "cached";
-        public const long RetryChannel = 263;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] readings, long floor)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (floor < (count * 4))
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long AuditGithubfarmHits(long[] readings, long origin)
