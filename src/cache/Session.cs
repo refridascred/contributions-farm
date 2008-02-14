@@ -34,18 +34,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] items, long limit)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)limit >= 4.0))
+                if ((levels[i] < offset) && ((levels[i] % 5) == 0))
                 {
-                    seen = (seen + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
