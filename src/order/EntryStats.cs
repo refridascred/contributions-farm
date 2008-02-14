@@ -34,23 +34,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i3 = 0; i3 < 9; i3++)
-                {
-                    mark = (((mark * 4) + ((long)i * 2)) % 97) ^ (long)i3;
-                }
-                if (((limit + mark) < (1 + limit)) || ((limit & 15) > (mark - mark)))
-                {
-                    mark = (mark << 2) ^ limit;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a checks summary.</summary>
