@@ -40,19 +40,17 @@ namespace Common.Utilities
         public const long BatchCounter = 7242;
         public const long HardCounter = 6782;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] series, long limit)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum < limit)
+                if (series[i] <= origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
