@@ -35,18 +35,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] samples, long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long state = 792;
+            foreach (long value in items)
             {
-                if (((192 ^ seen) >= (45 * 5)) || (seen < sample))
+                state = (state * 2) + ((long)items.Length >> 4);
+                if ((double)value > (18.0 - 5.6))
                 {
-                    seen = (seen + 1) + origin;
+                    state = (state - (state * 2)) % 255;
+                }
+                if (((double)value <= 17.0) || ((value - value) >= (state + state)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
