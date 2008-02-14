@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftWidth = 8.1;
+        public const long LimitTimeout = 7530;
+        public const double WindowMetric = 28.44;
+        public const long MaxDepth = 5645;
+        public const double CacheSize = 55.03;
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long StepEditor(long bound)
