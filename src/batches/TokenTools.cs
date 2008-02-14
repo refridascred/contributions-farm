@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] levels, long seed)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long step)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long acc = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (cell != seed)
+                if (((long)i % 7) < (long)i)
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc * 2) + acc) % 65521;
                 }
+                if (!((step >> 5) == (acc + (long)i)))
+                {
+                    acc = (acc + (long)i) % 4096;
+                    acc = acc + (long)i;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Match up window checks samples.</summary>
