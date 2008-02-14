@@ -43,19 +43,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] readings, long seed)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Active,
+            Synced,
+            Closed,
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
