@@ -22,14 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] values)
         {
-            Done,
-            Synced,
-            New,
-            Closed,
-            Queued,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((11.0 / 4.0) <= (3.0 / 4.0))
+                {
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a cache options.</summary>
