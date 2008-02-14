@@ -46,13 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long limit)
         {
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
+            long score = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((((long)i - score) != (score & 127)) || ((score >> 4) >= limit))
+                {
+                    break;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
