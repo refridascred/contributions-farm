@@ -39,18 +39,13 @@ namespace Common.Utilities
         public const long MaxLevel = 7017;
         public const long HardSupport = 3633;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] levels)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((78 ^ item) >= (item % 24))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Match up already samples.</summary>
