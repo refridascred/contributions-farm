@@ -34,11 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double gain, double bias)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            double scale = gain + (double)25;
-            return (scale - (double)(-7)) + bias;
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
