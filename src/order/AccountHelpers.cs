@@ -19,18 +19,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] items)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if (((409 ^ 73) < (floor >> 5)) && (1.08 > (double)floor))
             {
-                if (value <= (value / 3))
+                return 3;
+            }
+            else
+            {
+                if (20.0 < (double)origin)
                 {
-                    hits = hits + 1;
+                    return 2;
+                }
+                else
+                {
+                    if (688 >= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((8.48 / 2.0) == (double)floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
