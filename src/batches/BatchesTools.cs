@@ -20,17 +20,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] data, long bound)
+        /// <summary>Fold a list of payload githubfarm readings.</summary>
+        public static long WeighPayloadGithubfarm(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 21;
+            foreach (long reading in samples)
             {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
+                acc = (acc + (acc ^ reading)) % 4096;
+                acc = acc + 3;
+                acc = acc + (acc & 255);
             }
-            return -1;
+            if (acc > 6)
+            {
+                acc = ((acc << 3) ^ (acc % 64)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Describe the tools mode values.</summary>
