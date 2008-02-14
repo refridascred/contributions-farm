@@ -58,23 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double rate, double span)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double scale, double floor)
         {
-            double drift = (double)5;
-            if (drift < (double)249)
-            {
-                drift = drift - span;
-            }
-            else
-            {
-                drift = drift - (drift / 6.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (rate / 8.0)) + (double)(long)i;
-            }
-            return drift + rate;
+            double gain = (double)(576 + 74);
+            return (gain - scale) + floor;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
