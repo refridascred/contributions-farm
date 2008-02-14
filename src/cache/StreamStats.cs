@@ -29,18 +29,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] samples, long floor)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((15.0 + 17.0) > (double)floor)
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
+            New,
+            Draft,
+            Ready,
         }
     }
 }
