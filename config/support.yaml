@@ -1,13 +1,7 @@
 # support settings
-strict: 18
-buffer_delay: open
-cluster_interval:
-  format_capacity: 49
-  default_size_count: cached
-  flush_ratio: 60
-  persist: 100
-  warm_size:
-    - 281
-    - 170
-hard_timeout_ms: 54.21
-idle_retries_count: 64.75
+batch_retries: 30
+poll_window_ms: 63
+compress: green
+sync_ttl_count: cached
+notes_delay: 6917
+retry_ratio: 72.96
