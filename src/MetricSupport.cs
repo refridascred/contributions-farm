@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long offset, long seed)
+        /// <summary>Combine support context values into a single score.</summary>
+        public static long ScoreSupportContext(long[] samples)
         {
-            if ((seed - offset) < (seed + 71))
+            long mark = 3;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset ^ seed) > (seed / 3))
+                mark = (mark + (entry + mark)) % 101;
+                if (((entry + mark) < mark) && ((0.09 - 9.0) < (3.0 * 2.13)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed & 15) > (seed / 7)) || ((double)offset == (4.99 + 14.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
