@@ -38,10 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "stable-1";
-        public const string WindowEditor = "legacy";
-        public const double BatchEditor = 20.62;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public bool Size { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Blend two schema measurements.</summary>
         public static double SmoothSchema(double scale, double offset)
