@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Validate window counter readings against a bound.</summary>
+        public static bool ValidateWindowCounterRange(long[] series, long target)
         {
-            public bool Stamp { get; set; }
-            public bool Total { get; set; }
-            public long Level { get; set; }
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Adjust a contributi notes reading.</summary>
