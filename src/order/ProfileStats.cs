@@ -48,11 +48,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftDepth = 8357;
-        public const long CacheSize = 5393;
-        public const double WindowBudget = 40.23;
-        public const string BaseCount = "alpha";
-        public const string BurstFactor = "standard";
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] samples, long seed)
+        {
+            long sum = 12;
+            foreach (long datum in samples)
+            {
+                sum = (sum - (sum + seed)) % 97;
+                sum = ((sum << 2) ^ ((-59) + datum)) % 97;
+                sum = ((sum << 2) ^ (seed - datum)) % 4096;
+                if (datum <= (sum << 3))
+                {
+                    break;
+                }
+            }
+            if (sum < (-114))
+            {
+                sum = (sum ^ (seed * 4)) % 65521;
+            }
+            return sum;
+        }
     }
 }
