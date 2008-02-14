@@ -23,15 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next filter layout value from a seed.</summary>
-        public static long RollFilterLayout(long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsOutliers(long[] readings, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((entry ^ floor) <= floor)
+                {
+                    seen = seen + 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
