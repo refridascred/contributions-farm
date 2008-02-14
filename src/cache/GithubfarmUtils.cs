@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultSize = 9340;
+        public const long BaseTimeout = 8686;
+        public const string RetryContext = "standard-v2";
+        public const double CacheCount = 18.38;
+        public const double MinWidth = 49.14;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long CacheRatio = 2889;
