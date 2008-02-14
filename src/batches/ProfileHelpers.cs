@@ -60,10 +60,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 1712;
-        public const long MaxBatches = 8400;
-        public const double IdleFactor = 9.94;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Idle,
+            Paused,
+            Stale,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Measure how many already cache samples are out of range.</summary>
         public static long CountAlreadyCacheHits(long[] data)
