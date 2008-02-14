@@ -42,19 +42,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] levels, long bound)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] - values[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
