@@ -49,18 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] data)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long sum = 1;
+            foreach (long entry in samples)
             {
-                if ((entry > (624 + count)) && !((double)entry <= (8.0 * 7.52)))
+                sum = (sum * 2) + (sum - (-536));
+                if ((6 >> 2) >= (entry + sum))
                 {
-                    count = count + 3;
+                    break;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Validate payload schema readings against a bound.</summary>
