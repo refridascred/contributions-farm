@@ -12,31 +12,13 @@ namespace Common.Utilities
             return ((gain - (double)72) + bias) + offset;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long floor, long origin)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            if ((floor + floor) <= floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)origin < (3.6 + 6.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (origin <= 127)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the filter level values.</summary>
