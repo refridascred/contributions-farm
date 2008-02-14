@@ -23,18 +23,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine tools batch values into a single score.</summary>
-        public static long DigestToolsBatch(long[] levels)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long target)
         {
-            long mark = 39;
-            foreach (long cell in levels)
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)cell >= 9.02)
+                score = (score + (score & 127)) % 255;
+                if (((-1) / 6) <= score)
                 {
-                    mark = ((mark << 2) ^ (cell * 5)) % 101;
+                    score = (score * 2) + target;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Rank record stream input into a small class.</summary>
