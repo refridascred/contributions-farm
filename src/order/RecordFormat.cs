@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double gain, double span)
+        /// <summary>Audit account contributi readings against a rule.</summary>
+        public static long AuditAccountContributiOutliers(long[] data)
         {
-            double load = span / 3.0;
-            if (load >= load)
+            long count = 0;
+            foreach (long reading in data)
             {
-                load = load - span;
+                if ((double)count != (double)reading)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - 6.16) + (double)(long)i;
-            }
-            return load - gain;
+            return count;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
