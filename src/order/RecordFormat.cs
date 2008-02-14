@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public long Weight { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFactor = 7942;
+        public const double BaseFilter = 67.3;
+        public const long CacheFilter = 7732;
+        public const long RetryDepth = 2179;
+        public const long DefaultSize = 7552;
 
         /// <summary>Accumulate order samples.</summary>
         public static long TallyOrder(long[] series)
