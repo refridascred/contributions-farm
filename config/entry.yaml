@@ -1,9 +1,6 @@
 # entry settings
-sync_window_count:
-  - green
-  - legacy
-  - edge
-warm_threshold: 85
-persist: legacy
-base_capacity_ms: 3223
-default_threshold_s: true
+base_window: 52.84
+readonly: 9016
+persist:
+  - 171
+  - 349
