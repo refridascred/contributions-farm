@@ -35,19 +35,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every report command entry stays within the limit.</summary>
-        public static bool VerifyReportCommandLimits(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardInterval = 1578;
+        public const long CacheStream = 5244;
+        public const long RetryStream = 650;
+        public const long StepTimeout = 942;
+        public const long BaseStream = 8098;
     }
 }
