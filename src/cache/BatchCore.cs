@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
             public bool Offset { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a channel tools reading by value.</summary>
