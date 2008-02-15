@@ -13,13 +13,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long target)
         {
-            Synced,
-            Retry,
-            Queued,
-            Locked,
+            long mix = target;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = (mix - (6 ^ (long)i)) % 255;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
