@@ -1,14 +1,8 @@
 # githubfarm settings
-batch_timeout: 30
-batches_timeout:
-  - local
-  - standard
-  - fallback
-  - primary
-sync_window_s: eu-west
-retry_window: 7775
-burst_threshold: 39.61
-hard_threshold_s:
-  - 177
-  - 13
-  - 128
+buffer_timeout:
+  - 459
+  - 160
+  - 484
+  - 143
+batch_window_s: primary
+soft_timeout: 99
