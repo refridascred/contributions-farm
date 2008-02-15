@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] samples, long step)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > step) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = 9.0 * 12.0;
+            return ((rate - (double)5) + bias) + bias2;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
