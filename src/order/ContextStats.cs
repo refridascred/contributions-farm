@@ -20,11 +20,22 @@ namespace Common.Utilities
             return load - (load - bias2);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "staging";
-        public const string MinContext = "standard-v2";
-        public const long BurstContext = 2576;
-        public const string MaxContext = "legacy-edge";
+        /// <summary>Match up notes editor samples.</summary>
+        public static long PairNotesEditorCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
