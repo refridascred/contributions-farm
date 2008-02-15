@@ -46,20 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] series, long seed)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long result = 596;
-            foreach (long datum in series)
-            {
-                result = ((result * 4) + datum) + seed;
-                result = ((result << 3) ^ (datum % 3)) % 4096;
-                if (((double)result >= (6.1 / 2.0)) || ((double)result <= (8.1 * 6.0)))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
