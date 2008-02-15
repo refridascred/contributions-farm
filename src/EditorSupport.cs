@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] levels, long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long score = 432;
+            foreach (long value in levels)
             {
-                if ((limit - 681) >= (35 << 1))
+                if ((value & 7) > 2)
                 {
-                    count = (count + 3) + sample;
+                    score = ((score * 3) + (486 << 2)) + target;
                 }
             }
-            return count;
+            return score % 65521;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
