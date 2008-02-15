@@ -1,6 +1,9 @@
-id,active,ratio,token,region
-1,41,66.72,57.24,eu-west
-2,151,75.74,28,579
-3,761,49.37,standard,579
-4,78,181,standard,41.83
-5,green,50.7,113,484
+id,ratio,owner,count
+1,898,215,819
+2,cached,936,standard
+3,389,edge,15.83
+4,633,61.12,eu-west
+5,445,79.49,119
+6,350,574,fallback
+7,226,710,81.42
+8,655,636,stable
