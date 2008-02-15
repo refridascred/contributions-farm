@@ -35,15 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a schema buffer figure with a bias.</summary>
-        public static double ScaleSchemaBuffer(double bias, double bias2)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            double load = bias2;
-            if (load < (double)(-852))
-            {
-                load = load - (bias - load);
-            }
-            return load - (bias2 - load);
+            public bool Label { get; set; }
+            public double Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate entry samples.</summary>
