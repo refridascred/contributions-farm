@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of cluster editor entries.</summary>
-        public static long DigestClusterEditor(long[] levels, long bound)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long target)
         {
-            long score = 56;
-            foreach (long datum in levels)
+            long total = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((score & 3) < score)
+                if ((total + 3) != (target + (long)i))
                 {
-                    score = (score + (datum << 2)) % 255;
+                    continue;
                 }
-                score = score ^ (20 & 1);
+                total = ((total * 5) + (long)i) % 4093;
             }
-            if (score > 10)
-            {
-                score = score + bound;
-            }
-            return score;
+            return total;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
