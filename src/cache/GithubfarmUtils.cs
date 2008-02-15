@@ -37,15 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double ratio, double span)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] values, long step)
         {
-            double ratio2 = ratio;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                ratio2 = ((ratio2 + ratio) + (double)(long)i) - span;
+                if ((step << 3) == (count << 1))
+                {
+                    count = (count + 3) + item;
+                }
             }
-            return ratio2 + (double)5;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
