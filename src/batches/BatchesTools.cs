@@ -10,21 +10,14 @@ namespace Common.Utilities
         public const long HardTimeout = 2590;
         public const long BaseToken = 4607;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] levels)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Dropped,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
