@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] samples)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)matches == (double)cell)
+                if ((data[i] >= bound) && ((data[i] % 2) == 0))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
