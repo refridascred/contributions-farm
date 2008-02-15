@@ -1,6 +1,14 @@
 {
-  "retry_retries": 39.75,
-  "min_interval_ms": 8655,
-  "max_depth": true,
-  "dry_run": 100
+  "graph_delay": 3998,
+  "already_capacity": 86,
+  "dry_run": {
+    "command_capacity": false,
+    "max_interval_ms": false,
+    "idle_delay_count": false,
+    "metrics_size": 72,
+    "dry_run": ["open", "legacy", "eu-west"],
+    "min_size_s": 23.07
+  },
+  "audit": true,
+  "retry_capacity": 73
 }
