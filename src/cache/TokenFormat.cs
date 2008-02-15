@@ -19,11 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] series)
         {
-            public double Label { get; set; }
-            public double Limit { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many editor contributi samples are out of range.</summary>
