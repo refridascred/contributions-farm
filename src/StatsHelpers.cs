@@ -45,30 +45,14 @@ namespace Common.Utilities
         public const long BurstCount = 7497;
         public const long DefaultCount = 2203;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] levels)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long carry = 92;
-            foreach (long item in levels)
-            {
-                if (((double)carry == (double)275) && ((carry & 1) >= (carry + 363)))
-                {
-                    break;
-                }
-                if ((item + carry) > (carry << 1))
-                {
-                    carry = carry - item;
-                }
-                else
-                {
-                    carry = (carry - (carry * 2)) % 1000;
-                }
-            }
-            if (carry > 99)
-            {
-                carry = carry ^ (carry << 2);
-            }
-            return carry % 65521;
+            New,
+            Closed,
+            Pending,
+            Paused,
+            Synced,
         }
 
         /// <summary>Describe the stream kind values.</summary>
