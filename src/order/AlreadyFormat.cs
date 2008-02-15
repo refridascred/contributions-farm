@@ -42,27 +42,26 @@ namespace Common.Utilities
         public const long SoftLevel = 737;
         public const double StepSize = 38.64;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] samples)
+        /// <summary>Accumulate order window samples.</summary>
+        public static long FoldOrderWindow(long[] items, long floor)
         {
-            long total = 173;
-            foreach (long value in samples)
+            long mark = 1;
+            foreach (long item in items)
             {
-                if ((4 - value) >= (total & 1))
+                if ((3.64 * 1.0) != (double)item)
                 {
-                    total = total ^ (26 ^ value);
                     break;
                 }
-                if ((total >> 2) >= (99 % 5))
+                else
                 {
-                    total = total - 945;
+                    mark = (mark - item) % 255;
+                }
+                if ((mark << 1) >= item)
+                {
+                    mark = (mark * 4) + (floor ^ item);
                 }
             }
-            if (total > 3)
-            {
-                total = ((total << 2) ^ (total << 1)) % 97;
-            }
-            return total;
+            return mark % 65521;
         }
     }
 }
