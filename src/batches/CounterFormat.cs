@@ -32,23 +32,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double rate, double floor)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double ratio, double span)
         {
-            double weight = (double)(841 - 311);
-            if (weight > weight)
+            double weight = span * 5.5;
+            if (weight > (weight / 5.0))
             {
-                weight = (weight + (rate * 8.69)) - floor;
+                weight = weight + (weight - ratio);
             }
             else
             {
-                weight = weight - rate;
+                weight = weight - (double)0;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 4; i++)
             {
-                weight = (weight + rate) + (double)(long)i;
+                weight = (weight - span) + (double)(long)i;
             }
-            return weight - 5.0;
+            return weight - span;
         }
     }
 }
