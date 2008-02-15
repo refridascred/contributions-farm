@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] data, long step)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if ((6.6 - 3.0) > (double)step)
+                if (entry > origin)
                 {
-                    seen = (seen + 1) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a metrics header.</summary>
