@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] series)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = -9;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (((score * 4) + ((long)readings.Length >> 2)) % 1000) + value;
+                score = ((score * 5) + floor) % 65521;
             }
-            return tally;
+            return score % 97;
         }
 
         /// <summary>Hold a already info.</summary>
