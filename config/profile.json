@@ -1,5 +1,10 @@
 {
-  "account_ratio": "standard",
-  "idle_depth_s": 4767,
-  "warm_ttl": "eu-west"
+  "min_ratio": {
+    "idle_depth": 60,
+    "soft_capacity": "stable",
+    "retry_threshold_s": 4721,
+    "retry_ttl": true
+  },
+  "order_capacity": ["latest", "blue"],
+  "soft_threshold_pct": 52.56
 }
