@@ -68,18 +68,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Digest a series of layout cache entries.</summary>
-        public static long DigestLayoutCache(long[] samples, long floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long mix = 3;
-            foreach (long cell in samples)
-            {
-                if ((506 + cell) >= (cell & 63))
-                {
-                    mix = ((mix ^ 644) % 97) + floor;
-                }
-            }
-            return mix % 1000;
+            public bool Mode { get; set; }
+            public bool Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Classify a account metric pair into a bucket.</summary>
