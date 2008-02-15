@@ -1,29 +1,5 @@
 # entry settings
-enabled: true
-hard_ttl_ms:
-  - 457
-  - 304
-  - 173
-retry_threshold_pct:
-  metrics_ttl:
-    - 416
-    - 283
-    - 373
-  sync_delay: legacy
-  notes_ttl:
-    window_interval:
-      - blue
-      - open
-      - staging
-    retry_interval:
-      - 256
-      - 338
-      - 278
-    readonly: 500
-    hard_delay: 69
-  cache_threshold:
-    - 304
-    - 38
-    - 373
-    - 300
-  retry_interval_pct: open
+default_capacity_count: 100
+stats_delay: 55
+warm_retries: primary
+default_size_ms: false
