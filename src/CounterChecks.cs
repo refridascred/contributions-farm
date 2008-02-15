@@ -33,15 +33,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double rate, double span)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            double mean = span;
-            if (mean >= (span * 9.0))
-            {
-                mean = mean + (rate - mean);
-            }
-            return mean + (double)2;
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
