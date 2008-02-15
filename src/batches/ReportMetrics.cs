@@ -25,11 +25,19 @@ namespace Common.Utilities
         public const double BatchCommand = 62.37;
         public const string MinLevel = "standard-edge";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 5138;
-        public const string BaseContext = "standard-1";
-        public const long MinContext = 1457;
-        public const long DefaultContext = 3044;
-        public const long MaxDepth = 1107;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] values, long seed)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
