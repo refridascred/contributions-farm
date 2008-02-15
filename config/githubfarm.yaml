@@ -1,7 +1,7 @@
 # githubfarm settings
-queue_delay: true
-burst_window: legacy
-support_capacity: 4147
-audit: 60
-schema_capacity: 250
-compress: 250
+batch_retries: 45
+cache_capacity_ms: 5633
+route_timeout: 1434
+hard_retries:
+  - 77
+  - 381
