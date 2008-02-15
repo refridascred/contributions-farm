@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate support route samples.</summary>
-        public static long TallySupportRoute(long[] values)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long score = 7;
-            foreach (long cell in values)
-            {
-                score = ((score + (score - score)) % 4096) - cell;
-            }
-            if (score < 8)
-            {
-                score = (score ^ ((long)values.Length << 2)) % 101;
-            }
-            return score;
+            public double Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
