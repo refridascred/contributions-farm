@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Validate route payload readings against a bound.</summary>
+        public static bool CheckRoutePayloadLimits(long[] samples, long limit)
         {
-            long acc = -89;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((acc >= (sample * 4)) && ((acc * 2) >= acc))
+                if (item < limit)
                 {
-                    acc = (acc + (sample / 8)) % 101;
-                    acc = acc - ((-44) + acc);
-                }
-                if (((4.55 * 1.3) == (double)sample) && ((1.0 + 4.38) != (double)sample))
-                {
-                    acc = (acc + acc) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return ready;
         }
 
         /// <summary>Validate batch graph readings against a bound.</summary>
