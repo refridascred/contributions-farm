@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of window order readings.</summary>
-        public static long CompareWindowOrderCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleSize = "open-1";
+        public const string StepFarm = "staging";
+        public const long BurstFarm = 7065;
+        public const double BaseWidth = 52.49;
+        public const long DefaultFarm = 9308;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long LimitSize = 4246;
