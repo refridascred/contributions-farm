@@ -32,26 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long bound)
         {
-            long result = 565;
-            foreach (long cell in series)
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (((result + result) != (cell + 9)) && ((4.1 * 0.7) >= (double)result))
+                if ((double)anchor != (7.7 - 9.48))
                 {
-                    result = (result - (result % 24)) % 4096;
+                    anchor = ((anchor * 3) + bound) % 101;
                 }
-                else
-                {
-                    result = (result ^ (50 - cell)) % 65521;
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            if (result < 397)
-            {
-                result = (result - (result / 8)) % 4096;
-            }
-            return result;
+            return anchor;
         }
     }
 }
