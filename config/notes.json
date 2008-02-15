@@ -1,5 +1,20 @@
 {
-  "warm_ratio_pct": 4718,
-  "report_ratio": 500,
-  "persist": "stable"
+  "burst_ratio": "standard",
+  "strict": {
+    "readonly": {
+      "commits_threshold": "stable",
+      "metrics_window": "local",
+      "min_delay": 6289,
+      "payload_interval": 86.78
+    },
+    "stream_ttl": "legacy",
+    "strict": 81,
+    "command_ratio": {
+      "compress": 9,
+      "entry_size": "staging",
+      "enabled": 7749,
+      "audit": 1024
+    }
+  },
+  "enabled": 100
 }
