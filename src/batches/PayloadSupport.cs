@@ -24,19 +24,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] levels, long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] series)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (datum < limit)
+                if (tally > (tally + cell))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Audit layout format readings against a rule.</summary>
