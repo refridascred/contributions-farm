@@ -64,10 +64,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 916;
-        public const double DefaultToken = 10.72;
-        public const long CacheToken = 7320;
+        /// <summary>Count the format stream entries that pass the check.</summary>
+        public static long TallyFormatStreamMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (tally >= ((long)series.Length << 3))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string SoftLevel = "latest";
