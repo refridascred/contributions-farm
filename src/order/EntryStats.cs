@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowRatio = 5516;
-        public const long MaxInterval = 6057;
-        public const string LimitLevel = "fallback";
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two stream measurements.</summary>
         public static double SmoothStream(double ratio, double floor)
