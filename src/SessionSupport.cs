@@ -27,12 +27,31 @@ namespace Common.Utilities
             return (rate + ratio) + floor;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long floor, long step)
         {
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            if ((step << 1) < (floor & 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if (29 < step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step >= 7.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
