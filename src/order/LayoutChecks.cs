@@ -11,24 +11,11 @@ namespace Common.Utilities
         public const long RetryCounter = 9336;
         public const double BurstCount = 28.06;
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long origin, long target)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double bias, double span)
         {
-            if (((origin << 1) != (target % 97)) && (origin <= (target / 6)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target > 4.84)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double bias2 = bias;
+            return (bias2 + (bias / 5.0)) + span;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
