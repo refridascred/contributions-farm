@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long RetryCounter = 9336;
         public const double BurstCount = 28.06;
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double bias, double span)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] samples, long bound)
         {
-            double bias2 = bias;
-            return (bias2 + (bias / 5.0)) + span;
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
