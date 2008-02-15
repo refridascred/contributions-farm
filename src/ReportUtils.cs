@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double weight, double span)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] series)
         {
-            double bias = span;
-            return (bias + bias) + weight;
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (((seen - item) > (item & 127)) && ((double)seen != (double)item))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
