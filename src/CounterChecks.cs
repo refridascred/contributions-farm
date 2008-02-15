@@ -42,18 +42,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] levels)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((776 + matches) < matches)
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the record class values.</summary>
