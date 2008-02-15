@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitScore = 5296;
-        public const double WindowInterval = 16.95;
-        public const string WindowTimeout = "staging";
-        public const long MinGithubfarm = 1278;
-        public const long IdleSize = 8774;
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a metrics header.</summary>
         public sealed class MetricsHeader
