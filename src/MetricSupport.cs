@@ -48,20 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long step)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] series, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (!((state << 1) < (476 >> 4)))
+                if (item >= limit)
                 {
-                    state = (state ^ (state << 1)) % 1000;
-                    state = state - (step / 4);
+                    valid = false;
+                    break;
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return valid;
         }
     }
 }
