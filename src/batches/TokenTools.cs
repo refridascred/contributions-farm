@@ -29,18 +29,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] samples)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long target)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long result = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((((long)samples.Length + seen) > (entry ^ seen)) && ((double)seen >= (6.13 + 2.7)))
-                {
-                    seen = seen + 3;
-                }
+                result = result - (target * 3);
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
     }
 }
