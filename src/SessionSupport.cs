@@ -40,38 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long offset, long target)
-        {
-            if (offset > (target + offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)target == (15.0 / 3.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((807 + target) > (target + target)) && ((offset + offset) >= (target + (-4))))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target >= (target * 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultBudget = 47.92;
+        public const string MinPayload = "stable-1";
+        public const long StepSize = 581;
+        public const double HardPayload = 89.98;
+        public const double CachePayload = 96.98;
     }
 }
