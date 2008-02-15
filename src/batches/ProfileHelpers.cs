@@ -16,11 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowWidth = 0.44;
-        public const long StepScore = 9814;
-        public const long BurstStream = 6923;
-        public const long StepTimeout = 5702;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Pending,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long DigestLayout(long[] items, long floor)
