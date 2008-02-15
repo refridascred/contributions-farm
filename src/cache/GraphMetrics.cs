@@ -40,17 +40,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] samples, long seed)
+        /// <summary>Count the editor farm entries that pass the check.</summary>
+        public static long CountEditorFarmHits(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (samples[i] >= seed)
+                if ((reading + floor) < (hits + floor))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Blend two account measurements.</summary>
