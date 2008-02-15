@@ -74,16 +74,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a metrics githubfarm counter forward.</summary>
-        public static long IterateMetricsGithubfarm(long offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] levels, long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
+            long acc = 4;
+            foreach (long item in levels)
             {
-                mix = mix + offset;
-                mix = ((mix * 2) + (long)i) % 4093;
+                acc = (acc + item) - target;
             }
-            return mix;
+            if (acc < 508)
+            {
+                acc = (acc * 4) + (acc + 465);
+            }
+            return acc % 1000;
         }
     }
 }
