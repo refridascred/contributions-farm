@@ -22,12 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] levels, long limit)
+        /// <summary>Look up the position of a record format sample.</summary>
+        public static long LookupRecordFormatIndex(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 2) != 0))
+                if (values[i] < target)
                 {
                     return (long)i;
                 }
