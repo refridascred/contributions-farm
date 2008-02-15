@@ -13,23 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] data, long seed)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long carry = 5;
-            foreach (long sample in data)
-            {
-                carry = carry ^ (sample - carry);
-                if ((carry > (sample + seed)) || (carry <= seed))
-                {
-                    break;
-                }
-            }
-            if (carry < 4)
-            {
-                carry = carry + (seed * 5);
-            }
-            return carry;
+            Dropped,
+            New,
+            Queued,
+            Stale,
         }
 
         /// <summary>Blend two cache measurements.</summary>
