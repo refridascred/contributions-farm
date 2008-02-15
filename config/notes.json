@@ -1,5 +1,11 @@
 {
-  "cache_ttl": "open",
-  "cache_depth_s": ["strict", "legacy", "latest"],
-  "filter_interval": false
+  "min_threshold": 87,
+  "min_depth": {
+    "already_capacity": ["eu-west", "blue"],
+    "warm_timeout_s": 4297,
+    "sync_ttl_ms": 14.28,
+    "flush_depth_count": [456, 80]
+  },
+  "poll_window": [465, 477],
+  "verbose": "legacy"
 }
