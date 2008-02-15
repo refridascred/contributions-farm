@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of channel route entries.</summary>
-        public static long ScoreChannelRoute(long[] data, long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] items, long step)
         {
-            long result = 129;
-            foreach (long item in data)
+            long anchor = -8;
+            foreach (long sample in items)
             {
-                result = (((result + (898 ^ result)) % 101) - item) - offset;
+                if ((double)step != (6.73 * 17.0))
+                {
+                    anchor = ((anchor + (step >> 4)) % 65521) + sample;
+                }
             }
-            return result;
+            return anchor % 97;
         }
 
         /// <summary>Describe the payload mode values.</summary>
