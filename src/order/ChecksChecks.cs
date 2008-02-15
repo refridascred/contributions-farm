@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] levels, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 3) == 0))
+                if (matches < floor)
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ datum;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
