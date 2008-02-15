@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] values)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] items, long limit)
         {
-            long sum = 5;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                for (int i = 0; i < 9; i++)
+                if ((long)items.Length > (limit - sample))
                 {
-                    sum = ((sum ^ reading) % 4096) ^ (long)i;
-                    sum = sum ^ reading;
+                    tally = tally + 2;
                 }
-                if (reading >= (reading - 931))
+                else
                 {
-                    sum = sum + (-100);
-                    sum = sum + (sum >> 1);
-                    continue;
-                }
-                if (!(9.9 <= (double)reading))
-                {
-                    sum = (sum ^ (523 ^ reading)) % 255;
+                    tally = tally - 1;
                 }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Describe the batches kind values.</summary>
