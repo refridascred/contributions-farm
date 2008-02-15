@@ -1,13 +1,6 @@
 {
-  "base_depth_ms": 85.81,
-  "soft_ratio": "staging",
-  "cache_timeout_count": 60,
-  "min_threshold_s": 85.87,
-  "format_interval": {
-    "flush_timeout": false,
-    "batch_retries": 59.72,
-    "base_timeout_s": 4670,
-    "route_interval": 100
-  },
-  "persist": 53
+  "audit": 92.42,
+  "contributi_size": "staging",
+  "default_window_pct": [299, 262, 297, 11],
+  "warm_retries_pct": "primary"
 }
