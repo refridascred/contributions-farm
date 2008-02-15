@@ -39,12 +39,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinBudget = "staging-edge";
+        public const string HardBudget = "open-1";
+        public const string MaxPayload = "staging";
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheMatches(long[] items)
