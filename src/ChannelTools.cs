@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Locked,
-            New,
-            Done,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseLevel = 8821;
+        public const string IdleBatch = "local-v2";
+        public const long LimitTimeout = 3754;
+        public const long RetryBatch = 808;
+        public const long BatchLevel = 7347;
 
         /// <summary>Compare every pair of filter contributi readings.</summary>
         public static long PairFilterContributiCount(long[] values)
