@@ -20,11 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 6350;
-        public const long BatchWidth = 9602;
-        public const long MaxReport = 629;
-        public const double BatchSize = 78.45;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((((tally - tally) > 57) || ((double)tally > (double)datum)) && ((origin * 5) < tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
