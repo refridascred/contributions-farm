@@ -30,38 +30,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long seed, long floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] readings, long origin)
         {
-            if ((8.0 / 4.0) < (double)floor)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor < (5.2 + 8.7))
+                if (item < origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor > (9.6 / 3.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((2.3 - 3.8) >= (double)floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
