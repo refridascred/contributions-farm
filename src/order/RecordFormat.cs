@@ -37,13 +37,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
+            New,
+            Closed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Describe the entry state values.</summary>
