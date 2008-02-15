@@ -39,21 +39,17 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] samples)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((series[i] <= floor) && ((series[i] % 5) == 0))
                 {
-                    if ((samples[i] ^ samples[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
