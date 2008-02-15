@@ -21,18 +21,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] items)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (!(datum <= (seen - 874)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Ready,
+            New,
+            Locked,
+            Done,
         }
 
         /// <summary>Count schema layout pairs that satisfy a relation.</summary>
