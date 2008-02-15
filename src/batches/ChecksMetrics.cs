@@ -73,18 +73,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] series)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (tally <= (tally ^ entry))
+                if (item != seed)
                 {
-                    tally = tally + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
