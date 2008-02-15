@@ -37,30 +37,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of commits profile readings.</summary>
-        public static long ScoreCommitsProfile(long[] items)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] values)
         {
-            long result = -953;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((1.5 * 9.99) <= (double)result)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    continue;
-                }
-                if ((result / 9) <= item)
-                {
-                    result = (result - (92 - item)) % 101;
-                }
-                else
-                {
-                    result = (result - result) % 4096;
-                }
-                if ((item > (result / 8)) || ((19.0 * 1.0) > (double)(long)items.Length))
-                {
-                    result = result + (item * 3);
+                    if ((values[i] ^ values[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Accumulate farm samples.</summary>
