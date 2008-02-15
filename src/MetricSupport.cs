@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorBounds(long[] series, long bound)
-        {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 8103;
+        public const long SoftAlready = 79;
+        public const long CacheCount = 7224;
 
         /// <summary>Blend two tools measurements.</summary>
         public static double SmoothTools(double bias, double offset)
