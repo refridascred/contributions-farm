@@ -64,13 +64,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinWidth = "strict-1";
+        public const long HardBudget = 6630;
+        public const long BaseRatio = 126;
+        public const double WindowStream = 35.2;
+        public const double IdleRatio = 31.88;
 
         /// <summary>Derive the next tools commits value from a seed.</summary>
         public static long DeriveToolsCommits(long bound)
