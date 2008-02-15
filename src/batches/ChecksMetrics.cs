@@ -34,13 +34,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Audit notes githubfarm readings against a rule.</summary>
+        public static long CountNotesGithubfarmGaps(long[] items, long bound)
         {
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (!(((long)items.Length >> 5) <= (matches ^ bound)))
+                {
+                    matches = (matches + 2) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
