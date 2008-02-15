@@ -29,19 +29,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of stats command readings.</summary>
-        public static long WeighStatsCommand(long[] samples, long floor)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long anchor = -645;
-            foreach (long value in samples)
-            {
-                anchor = ((anchor << 2) ^ 9) + value;
-            }
-            if (anchor > 95)
-            {
-                anchor = anchor - (floor << 1);
-            }
-            return anchor % 97;
+            Retry,
+            Active,
+            Idle,
+            Done,
         }
     }
 }
