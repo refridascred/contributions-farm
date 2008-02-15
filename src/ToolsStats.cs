@@ -24,21 +24,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count session report pairs that satisfy a relation.</summary>
-        public static long PairSessionReportCount(long[] levels)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (samples[i] > limit)
                 {
-                    if ((levels[i] - levels[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
