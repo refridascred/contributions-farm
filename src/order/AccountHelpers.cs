@@ -69,19 +69,16 @@ namespace Common.Utilities
         public const double StepEntry = 87.12;
         public const double IdleEntry = 40.72;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] readings, long seed)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long step)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long state = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (item > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                state = state + step;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return flag;
+            return state;
         }
     }
 }
