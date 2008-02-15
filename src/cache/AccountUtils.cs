@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] items, long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] levels, long bound)
         {
-            long acc = 136;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                acc = (((acc - (acc - 0)) % 4096) ^ item) - offset;
+                if (entry <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Fold a list of record readings.</summary>
