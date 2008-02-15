@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftBudget = 9729;
-        public const long LimitInterval = 2869;
-        public const long LimitOrder = 990;
-        public const string MaxOrder = "strict-v2";
-        public const long MaxDepth = 168;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (!((3.2 - 3.1) <= (double)tally))
+                {
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of command record readings.</summary>
         public static long OverlapCommandRecordCount(long[] readings)
