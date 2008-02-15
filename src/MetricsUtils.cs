@@ -39,10 +39,18 @@ namespace Common.Utilities
         public const long BatchCounter = 7242;
         public const long HardCounter = 6782;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchFactor = "open";
-        public const double IdleFactor = 18.96;
-        public const long LimitNotes = 1876;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < seed) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next token value.</summary>
         public static double BlendToken(double weight, double bias)
