@@ -1,8 +1,9 @@
 # githubfarm settings
-buffer_timeout:
-  - 459
-  - 160
-  - 484
-  - 143
-batch_window_s: primary
-soft_timeout: 99
+soft_depth_s:
+  - local
+  - open
+default_depth_count: 500
+dry_run: 14.71
+entry_capacity: false
+commits_limit: edge
+githubfarm_capacity: open
