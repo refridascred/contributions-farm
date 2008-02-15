@@ -19,15 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] series, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                if (((value % 12) < (bound + value)) || ((0.47 + 6.8) < (double)value))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
