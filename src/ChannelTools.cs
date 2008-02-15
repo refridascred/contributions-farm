@@ -29,13 +29,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] series)
         {
-            Draft,
-            Idle,
-            Synced,
-            New,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
