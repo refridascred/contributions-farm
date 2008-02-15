@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] items, long step)
         {
-            Done,
-            Synced,
-            New,
-            Retry,
+            long mix = 14;
+            foreach (long item in items)
+            {
+                if (mix < item)
+                {
+                    mix = mix - (step - mix);
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
