@@ -1,9 +1,34 @@
 # support settings
-stream_threshold: fallback
-compress: false
-min_retries_count: 165
-contributi_ttl: 86
-min_depth_count:
+sync_limit:
+  warm_ttl_s:
+    max_retries_count: 1024
+    record_window: 97.74
+    burst_threshold:
+      - fallback
+      - edge
+      - strict
+    soft_interval_pct: 34.29
+  compress: 29.66
+  channel_interval:
+    metrics_delay: 74.74
+    payload_threshold: 9.5
+    cache_size_count: 74
+    max_threshold_s: false
+  idle_threshold: 2181
+  idle_ratio_count: 3295
+  session_ratio:
+    soft_size: 23
+    sync_interval_s: 100
+    soft_threshold_ms: fallback
+audit:
+  - blue
+  - fallback
+  - cached
+soft_ttl_pct: strict
+profile_limit:
+  - edge
+  - local
+readonly:
+  - stable
   - primary
-  - latest
-  - standard
+report_threshold: 100
