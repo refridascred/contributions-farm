@@ -1,5 +1,5 @@
 {
-  "default_delay": "green",
-  "audit": "cached",
-  "idle_limit_ms": "strict"
+  "warm_ratio_pct": 4718,
+  "report_ratio": 500,
+  "persist": "stable"
 }
