@@ -48,20 +48,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((double)sum == (9.29 - 2.0))
-                {
-                    sum = sum - (long)i;
-                }
-                sum = (sum + (sum + 65)) % 101;
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowBudget = "alpha-v2";
+        public const long MinLayout = 2615;
+        public const long DefaultDepth = 3950;
+        public const string BaseLayout = "alpha-edge";
     }
 }
