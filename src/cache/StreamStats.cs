@@ -13,13 +13,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long floor)
         {
-            Dropped,
-            New,
-            Queued,
-            Stale,
+            long score = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((score + floor) < ((long)i & 63))
+                {
+                    score = (score ^ score) % 97;
+                    score = score - (score >> 4);
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Blend two cache measurements.</summary>
