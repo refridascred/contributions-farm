@@ -48,13 +48,18 @@ namespace Common.Utilities
         public const string BaseDepth = "latest-1";
         public const long CacheNotes = 2463;
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] items, long floor)
         {
-            Ready,
-            Done,
-            New,
-            Locked,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((datum + seen) <= (floor / 4))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every queue notes entry stays within the limit.</summary>
