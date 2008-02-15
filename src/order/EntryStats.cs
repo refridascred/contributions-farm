@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] values, long bound)
-        {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowRatio = 5516;
+        public const long MaxInterval = 6057;
+        public const string LimitLevel = "fallback";
 
         /// <summary>Blend two stream measurements.</summary>
         public static double SmoothStream(double ratio, double floor)
