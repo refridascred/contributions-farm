@@ -49,9 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseTimeout = 47.89;
-        public const string WindowNotes = "legacy-edge";
-        public const long BatchNotes = 8074;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((19 - 44) > ((long)items.Length * 2))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
+        }
     }
 }
