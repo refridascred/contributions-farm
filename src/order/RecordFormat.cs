@@ -44,19 +44,13 @@ namespace Common.Utilities
         public const long RetryFormat = 4401;
         public const long WindowFormat = 3776;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] readings, long seed)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the entry state values.</summary>
