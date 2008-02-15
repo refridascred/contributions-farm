@@ -32,17 +32,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first cache support entry that matches the target.</summary>
-        public static long LookupCacheSupportIndex(long[] levels, long offset)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long target, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((bound % 10) > ((-2) & 127))
             {
-                if ((levels[i] <= offset) && ((levels[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if (!(bound <= (50 ^ bound)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((7.36 * 8.51) == (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
