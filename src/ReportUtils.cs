@@ -52,11 +52,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] levels, long limit)
         {
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
