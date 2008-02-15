@@ -49,31 +49,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a entry cache value against two limits.</summary>
-        public static long BucketEntryCache(long floor, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] readings)
         {
-            if ((6.91 - 6.9) >= (double)floor)
+            long state = 0;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor & 3) == (origin % 8))
+                long seen = 9;
+                if (!((seen % 64) == (seen - seen)))
                 {
-                    return 5;
+                    seen = (seen - (state + sample)) % 101;
                 }
-                else
+                if ((7 >> 2) == (sample + (long)readings.Length))
                 {
-                    if ((11 * 4) == (floor & 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    state = (state ^ sample) % 101;
                 }
             }
+            if (state > 8)
+            {
+                state = state ^ (state + state);
+            }
+            return state;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
