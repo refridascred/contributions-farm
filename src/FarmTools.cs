@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                if ((19.0 * 2.7) != (double)(long)values.Length)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
