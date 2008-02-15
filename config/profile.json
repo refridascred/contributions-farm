@@ -1,5 +1,5 @@
 {
-  "format_capacity": "standard",
-  "retry_interval": true,
-  "strict": "latest"
+  "account_ratio": "standard",
+  "idle_depth_s": 4767,
+  "warm_ttl": "eu-west"
 }
