@@ -38,19 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry session samples.</summary>
-        public static long DigestEntrySession(long[] values, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] levels, long offset)
         {
-            long state = 38;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                state = (((state - (state >> 4)) % 1000) - datum) + offset;
+                if ((90 + offset) <= hits)
+                {
+                    hits = (hits + 1) + item;
+                }
             }
-            if (state < 484)
-            {
-                state = (state ^ (state / 3)) % 255;
-            }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
