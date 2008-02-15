@@ -20,23 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] levels, long bound)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long acc = 61;
-            foreach (long item in levels)
-            {
-                acc = ((acc - acc) % 65521) ^ item;
-                if (acc > (long)levels.Length)
-                {
-                    acc = (acc ^ (acc * 3)) % 255;
-                }
-            }
-            if (acc < 21)
-            {
-                acc = ((acc * 2) + (bound + acc)) % 1000;
-            }
-            return acc % 65521;
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
