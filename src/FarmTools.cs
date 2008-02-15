@@ -33,11 +33,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] levels)
         {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
+            long result = 1;
+            foreach (long cell in levels)
+            {
+                result = (result * 2) + cell;
+            }
+            if (result < 824)
+            {
+                result = (result ^ result) % 4096;
+            }
+            return result % 4096;
         }
     }
 }
