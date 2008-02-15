@@ -38,19 +38,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] items, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long mark = 370;
+            foreach (long datum in readings)
             {
-                if (cell > step)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = (mark + (datum + mark)) % 255;
             }
-            return ready;
+            if (mark < 8)
+            {
+                mark = ((mark * 4) + (mark + limit)) % 101;
+            }
+            return mark;
         }
     }
 }
