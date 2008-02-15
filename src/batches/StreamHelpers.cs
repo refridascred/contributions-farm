@@ -32,13 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Locate a contributi checks reading by value.</summary>
+        public static long LookupContributiChecksIndex(long[] samples, long offset)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two schema measurements.</summary>
