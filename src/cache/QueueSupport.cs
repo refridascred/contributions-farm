@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Idle,
-            Active,
             New,
+            Retry,
+            Done,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
