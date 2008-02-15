@@ -1,13 +1,12 @@
 {
-  "sync_interval_count": true,
-  "verbose": 15,
-  "entry_size": 83,
-  "compress": 36,
-  "warm_capacity": true,
-  "profile_window": {
-    "idle_ttl": 3875,
-    "cluster_timeout": ["open", "open"],
-    "flush_ttl": true,
-    "verbose": false
-  }
+  "session_size": 60,
+  "profile_depth": {
+    "batch_threshold_pct": 56.15,
+    "cluster_delay": 30,
+    "min_interval_s": 57
+  },
+  "retry_size": 662,
+  "record_limit": 85.67,
+  "idle_threshold_count": 250,
+  "min_retries_s": 30
 }
