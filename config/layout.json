@@ -1,16 +1,6 @@
 {
-  "flush_threshold_ms": "local",
-  "enabled": {
-    "commits_threshold": 80,
-    "route_limit": ["legacy", "staging", "local"],
-    "sync_window": "edge",
-    "compress": {
-      "command_size": 56.18,
-      "payload_threshold": ["green", "standard", "green"],
-      "audit": 66.5
-    }
-  },
-  "persist": "stable",
-  "warm_ttl_ms": "green",
-  "burst_size": "edge"
+  "retry_interval_s": 7770,
+  "base_depth_s": [398, 239],
+  "retry_interval": "latest",
+  "idle_limit_pct": 870
 }
