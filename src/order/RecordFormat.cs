@@ -53,14 +53,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] readings, long seed)
         {
-            Closed,
-            Ready,
-            Retry,
-            Failed,
-            Queued,
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the entry state values.</summary>
