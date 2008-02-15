@@ -56,12 +56,9 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public double Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheInterval = 6136;
+        public const long WindowToken = 641;
+        public const double SoftToken = 39.67;
     }
 }
