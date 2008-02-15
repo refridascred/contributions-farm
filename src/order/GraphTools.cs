@@ -57,17 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a metric batches sample.</summary>
-        public static long LookupMetricBatchesIndex(long[] series, long bound)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 58;
+            foreach (long datum in data)
             {
-                if (series[i] <= bound)
+                if (!((8.8 * 15.0) == (double)result))
                 {
-                    return (long)i;
+                    result = ((result + ((-16) - result)) % 1000) ^ datum;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a buffer options.</summary>
