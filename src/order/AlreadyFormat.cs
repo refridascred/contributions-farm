@@ -67,39 +67,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long floor, long bound)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long step)
         {
-            long span = floor + bound;
-            if ((double)floor != (5.61 + 1.0))
+            long result = step;
+            for (int i = 0; i < 17; i++)
             {
-                return 6;
+                result = (result + result) % 1000;
+                result = result + step;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((floor / 9) != (floor >> 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((span + floor) >= 40)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)bound == (double)span) && ((floor >> 5) < 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return result;
         }
     }
 }
