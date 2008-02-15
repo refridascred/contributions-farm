@@ -51,15 +51,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] items)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long mark = 278;
-            foreach (long item in items)
-            {
-                mark = ((mark - (6 / 7)) % 101) + item;
-            }
-            return mark % 97;
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a cache record.</summary>
