@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Dropped,
             Done,
-            Stale,
-            Active,
+            Draft,
+            Pending,
+            Closed,
         }
 
         /// <summary>Fold a list of record readings.</summary>
