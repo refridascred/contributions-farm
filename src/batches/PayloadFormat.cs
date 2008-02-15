@@ -29,13 +29,24 @@ namespace Common.Utilities
         public const long MinLevel = 5493;
         public const long BatchFactor = 688;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Classify a cache metrics pair into a bucket.</summary>
+        public static long RankCacheMetrics(long step, long step2)
         {
-            Done,
-            Idle,
-            Failed,
-            Draft,
+            if (step2 >= 294)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)step2 != (double)step) || ((4.0 * 6.6) != (double)step2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
