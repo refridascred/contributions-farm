@@ -54,22 +54,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] series, long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] samples)
         {
-            long mix = 86;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((7 & 1) == (entry ^ 42))
+                if ((double)tally > (double)sample)
                 {
-                    mix = ((mix * 3) + (mix ^ 50)) + step;
+                    tally = tally + 3;
                 }
             }
-            if (mix > 592)
-            {
-                mix = ((mix * 2) + (-777)) % 1000;
-            }
-            return mix;
+            return tally;
         }
     }
 }
