@@ -36,13 +36,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Paused,
-            New,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstInterval = 59.47;
+        public const long MaxCount = 118;
+        public const string HardStats = "latest";
+        public const long SoftScore = 8347;
+        public const long RetryLevel = 3727;
     }
 }
