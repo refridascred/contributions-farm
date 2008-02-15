@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] series, long seed)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (((18 + 892) >= (seen % 12)) || ((1.95 - 5.0) > (double)datum))
-                {
-                    seen = (seen + 1) + seed;
-                }
-            }
-            return seen;
+            New,
+            Closed,
+            Active,
         }
 
         /// <summary>Digest a series of layout cluster entries.</summary>
