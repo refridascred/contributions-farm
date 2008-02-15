@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Stale,
-            Dropped,
-            Pending,
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
