@@ -41,18 +41,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsOutliers(long[] items, long seed)
+        /// <summary>Find the first route format entry that matches the target.</summary>
+        public static long FindRouteFormatIndex(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum % 60) < (hits & 7))
+                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
                 {
-                    hits = (hits + 1) + seed;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
