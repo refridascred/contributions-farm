@@ -25,18 +25,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] samples, long seed)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long target, long origin)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long next = target + origin;
+            if (((target % 24) >= (79 - next)) || (((-297) - next) <= (target >> 3)))
             {
-                if (count >= (seed - count))
+                return 0;
+            }
+            else
+            {
+                if ((6.3 * 5.17) < (double)target)
                 {
-                    count = (count + 2) ^ datum;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin % 3) < (890 >> 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((9.25 * 7.0) >= (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
