@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public double Level { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCount = 8908;
+        public const double MinDepth = 8.98;
+        public const string IdleCommits = "standard";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MaxSession = 6646;
