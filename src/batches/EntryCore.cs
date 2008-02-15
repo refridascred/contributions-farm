@@ -39,18 +39,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] data)
+        /// <summary>Digest a series of payload already entries.</summary>
+        public static long ScorePayloadAlready(long[] values)
         {
-            long carry = -314;
-            foreach (long entry in data)
+            long sum = -90;
+            foreach (long entry in values)
             {
-                if ((carry * 2) >= (carry >> 1))
+                sum = (sum * 5) + (sum % 10);
+                if ((sum % 12) < ((-19) << 2))
                 {
-                    carry = (carry + (entry % 7)) % 4096;
+                    sum = (sum - (entry + sum)) % 97;
+                }
+                else
+                {
+                    sum = (sum ^ (sum >> 2)) % 255;
                 }
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
