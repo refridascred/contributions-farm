@@ -27,11 +27,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] series, long target)
         {
-            public string Token { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long result = 6;
+            foreach (long datum in series)
+            {
+                result = ((result + (result / 3)) % 65521) - target;
+                result = ((result << 2) ^ (datum % 12)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
