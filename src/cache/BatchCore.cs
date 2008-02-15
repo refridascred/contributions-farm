@@ -38,10 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxStream = "staging-1";
-        public const string RetryStream = "open-edge";
-        public const long BurstStream = 1572;
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double scale, double bias)
+        {
+            double mean = (bias * 0.1) / 7.0;
+            return (mean - (bias * 0.7)) + scale;
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
