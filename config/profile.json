@@ -1,5 +1,19 @@
 {
-  "session_capacity": 1024,
-  "flush_threshold": 39.1,
-  "hard_threshold_s": "fallback"
+  "record_limit": "staging",
+  "batch_capacity": "green",
+  "cache_delay": "eu-west",
+  "max_delay_count": "latest",
+  "min_depth_s": 30.21,
+  "default_window_ms": {
+    "already_delay": [53, 56, 275, 373],
+    "account_depth": [360, 25, 186],
+    "githubfarm_interval": {
+      "counter_timeout": true,
+      "warm_threshold_ms": 1331,
+      "burst_delay": "cached",
+      "poll_size": 9000
+    },
+    "report_capacity": 60,
+    "base_limit_count": true
+  }
 }
