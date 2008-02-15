@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many editor payload samples are out of range.</summary>
-        public static long MeasureEditorPayloadOutliers(long[] series)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double rate, double offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double rate2 = offset;
+            if (rate2 > offset)
             {
-                if ((sample / 6) >= (count + 39))
-                {
-                    count = count + 3;
-                }
+                rate2 = rate2 - (double)19;
             }
-            return count;
+            else
+            {
+                rate2 = rate2 + rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 - offset) + (double)(long)i;
+            }
+            return rate2 - (double)425;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
