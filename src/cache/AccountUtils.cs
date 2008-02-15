@@ -6,18 +6,18 @@ namespace Common.Utilities
     public static class AccountUtils
     {
         /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] levels, long bound)
+        public static bool GuardChecksRange(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (entry <= bound)
+                if (entry < bound)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Fold a list of record readings.</summary>
