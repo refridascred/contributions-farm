@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public double Score { get; set; }
+            long score = 9;
+            foreach (long datum in samples)
+            {
+                if (((double)score > (double)datum) || ((score * 4) != (14 + datum)))
+                {
+                    score = (score + datum) % 1000;
+                }
+                if (!((datum + datum) > (datum & 31)))
+                {
+                    break;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
