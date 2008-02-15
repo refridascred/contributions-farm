@@ -1,20 +1,8 @@
 {
-  "enabled": 10.02,
-  "context_depth": {
-    "cache_window": ["green", "green", "blue", "stable"],
-    "retry_depth_count": [166, 198, 68, 273],
-    "base_interval_count": true,
-    "token_size": {
-      "dry_run": [61, 188],
-      "soft_limit": 100,
-      "hard_ttl": false
-    },
-    "min_interval_count": {
-      "min_size_s": "local",
-      "persist": [407, 479],
-      "soft_size_count": 42.98,
-      "flush_retries_ms": 8216
-    }
-  },
-  "default_timeout_pct": 18
+  "warm_interval": "strict",
+  "base_ratio": 91,
+  "verbose": "primary",
+  "warm_capacity": 16.64,
+  "audit": 72,
+  "poll_retries_ms": ["cached", "fallback"]
 }
