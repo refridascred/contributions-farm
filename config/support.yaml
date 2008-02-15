@@ -1,8 +1,7 @@
 # support settings
-soft_retries_pct:
-  batch_retries: 9.17
-  already_depth: fallback
-  soft_timeout: primary
-retry_delay: true
-enabled: 85.73
-poll_limit_ms: 8522
+max_retries: open
+audit: 95
+min_limit_s: 70
+persist: cached
+graph_interval: staging
+soft_depth: 9127
