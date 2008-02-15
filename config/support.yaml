@@ -1,19 +1,5 @@
 # support settings
-cache_capacity_ms: 6235
-enabled:
-  - cached
-  - primary
-  - green
-  - green
-idle_delay:
-  poll_ttl_pct: 615
-  max_ttl_count: true
-  warm_retries_count: legacy
-  base_retries_count:
-    poll_retries_pct: 44.71
-    retry_ttl_count: 60
-    default_threshold_pct: staging
-    farm_depth: true
-    burst_size: false
-  flush_ratio: eu-west
-  token_ratio: 1837
+max_depth_s: 27
+idle_threshold: blue
+cache_retries_ms: 2.84
+idle_retries: true
