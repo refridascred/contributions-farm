@@ -24,17 +24,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] items, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (items[i] > floor)
+                if ((matches >> 2) == (matches % 10))
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ cell;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
