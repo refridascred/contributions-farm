@@ -1,6 +1,6 @@
 {
-  "burst_interval": "green",
-  "token_timeout": 60,
-  "hard_capacity": 2406,
-  "flush_size_count": ["fallback", "green"]
+  "flush_interval": "open",
+  "batch_threshold_s": "standard",
+  "readonly": 5049,
+  "checks_delay": "cached"
 }
