@@ -13,21 +13,24 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] samples)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long target, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((2.9 - 1.06) >= (double)origin)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((origin + 8) == (origin / 2))
                 {
-                    if ((samples[i] - samples[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
