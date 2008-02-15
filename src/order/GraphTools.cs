@@ -59,11 +59,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public double Flag { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowSpan = 536;
+        public const double MinTools = 33.01;
+        public const long BaseTools = 1396;
     }
 }
