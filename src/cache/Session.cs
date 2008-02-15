@@ -55,19 +55,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] data)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            long mark = 8;
+            foreach (long datum in data)
             {
-                if ((double)anchor != (7.7 - 9.48))
+                if ((datum + datum) >= (mark & 255))
                 {
-                    anchor = ((anchor * 3) + bound) % 101;
+                    mark = (mark * 3) + (mark & 15);
                 }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return mark;
         }
     }
 }
