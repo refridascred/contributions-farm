@@ -67,22 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] values, long offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] levels, long bound)
         {
-            long result = 49;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((double)item < (double)4)
+                if (item > bound)
                 {
-                    result = result - (offset << 1);
+                    flag = false;
+                    break;
                 }
             }
-            if (result > 640)
-            {
-                result = result - (result % 24);
-            }
-            return result % 1000;
+            return flag;
         }
     }
 }
