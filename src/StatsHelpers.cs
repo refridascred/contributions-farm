@@ -38,14 +38,18 @@ namespace Common.Utilities
         public const long HardSpan = 2472;
         public const double BatchLevel = 42.87;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] samples)
         {
-            New,
-            Closed,
-            Pending,
-            Paused,
-            Synced,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((matches % 12) < (datum + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
