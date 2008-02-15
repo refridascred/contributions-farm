@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine farm channel values into a single score.</summary>
-        public static long DigestFarmChannel(long[] readings, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] items)
         {
-            long acc = 252;
-            foreach (long item in readings)
+            long carry = 8;
+            foreach (long entry in items)
             {
-                acc = ((acc + (item / 4)) % 101) + bound;
+                carry = (carry ^ (carry * 4)) + entry;
             }
-            return acc;
+            if (carry < 49)
+            {
+                carry = (carry * 3) + (carry & 15);
+            }
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
