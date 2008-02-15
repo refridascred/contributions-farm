@@ -28,14 +28,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Rank support metrics input into a small class.</summary>
+        public static long GradeSupportMetrics(long target, long step)
         {
-            Locked,
-            Done,
-            Ready,
-            New,
-            Stale,
+            long lane = target ^ step;
+            if (((double)lane == (8.0 - 0.81)) || ((double)step >= (double)lane))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)step > (double)lane) || ((double)target == (8.6 + 5.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
