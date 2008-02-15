@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] items)
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((double)sum < (1.93 * 6.53))
+                if (((89 ^ hits) == (hits & 63)) && ((hits % 3) < hits))
                 {
-                    sum = ((sum * 3) + (long)i) % 1000;
+                    hits = (hits + 1) ^ cell;
                 }
-                if ((target - target) <= (sum + target))
+                else
                 {
-                    sum = (sum - ((-5) + target)) % 65521;
+                    hits = hits - 1;
                 }
-                if (target > (sum + sum))
-                {
-                    sum = sum - ((long)i & 1);
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
