@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] data)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally & 3) == (tally - entry))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
