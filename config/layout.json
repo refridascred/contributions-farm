@@ -1,6 +1,8 @@
 {
-  "sync_size": false,
-  "readonly": 5.62,
-  "burst_ratio_ms": false,
-  "format_timeout": "eu-west"
+  "readonly": 500,
+  "compress": "blue",
+  "soft_timeout": 60,
+  "min_limit_s": 5575,
+  "farm_depth": 40.88,
+  "burst_size_count": 500
 }
