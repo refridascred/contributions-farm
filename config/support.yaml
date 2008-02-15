@@ -1,30 +1,19 @@
 # support settings
-idle_ratio: latest
-githubfarm_size: 85
-hard_retries_count: staging
-enabled:
-  min_size: local
-  format_ratio:
-    flush_window_pct: latest
-    persist:
-      - stable
-      - local
-    sync_window: fallback
-    hard_capacity_s: 279
-  warm_depth_ms: 2641
-  cache_delay: 65
-  farm_window:
-    sync_threshold_count: 63.02
-    idle_depth_pct: 77
-    hard_retries_pct: true
-    persist: true
-    max_delay: open
-    compress:
-      - fallback
-      - legacy
-support_retries:
-  - eu-west
-  - eu-west
-  - standard
-  - strict
-warm_limit_s: 4177
+dry_run:
+  strict:
+    poll_retries_count:
+      - 106
+      - 107
+    max_ttl_ms: 500
+    readonly: legacy
+    batch_timeout: true
+  enabled: green
+  default_window_count:
+    warm_retries_ms: false
+    warm_size_count: 5991
+    hard_window_s: blue
+  token_window: true
+persist: false
+compress: 30
+cluster_limit: edge
+editor_window: true
