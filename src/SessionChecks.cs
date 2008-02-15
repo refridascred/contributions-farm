@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] readings)
         {
-            New,
-            Failed,
-            Done,
-            Retry,
+            long state = 775;
+            foreach (long sample in readings)
+            {
+                state = (state ^ sample) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Locate a record reading by value.</summary>
