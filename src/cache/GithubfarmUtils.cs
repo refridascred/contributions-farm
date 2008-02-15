@@ -54,10 +54,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 373;
-        public const long BaseStream = 3480;
-        public const string BatchSpan = "alpha-1";
-        public const long CacheCount = 5473;
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
