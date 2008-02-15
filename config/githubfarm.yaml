@@ -1,7 +1,10 @@
 # githubfarm settings
-enabled:
-  - standard
-  - edge
-  - legacy
-min_ratio_s: 74
-profile_timeout: 11.79
+cache_timeout: 5639
+checks_size: stable
+dry_run:
+  verbose: 9630
+  sync_interval: staging
+  base_size: stable
+cache_ttl_ms: edge
+editor_threshold: 500
+strict: open
