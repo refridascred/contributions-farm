@@ -18,22 +18,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the checks command entries that pass the check.</summary>
-        public static long MeasureChecksCommandGaps(long[] series)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((3.12 - 8.0) > (double)count)
-                {
-                    count = (count + 3) - entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
