@@ -56,19 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double gain, double span)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] levels)
         {
-            double mean = gain;
-            if (mean > gain)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + (double)328;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - gain) - (double)(long)i;
-            }
-            return mean + (gain + span);
+            return tally;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
