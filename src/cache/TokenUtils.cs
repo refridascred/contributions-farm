@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double weight, double offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] samples)
         {
-            double scale = (weight / 6.0) - weight;
-            if (scale <= offset)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                scale = scale - offset;
+                if ((double)matches == (double)cell)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                scale = scale + offset;
-            }
-            return scale + (offset / 2.0);
+            return matches;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
