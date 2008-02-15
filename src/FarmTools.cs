@@ -22,15 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] data)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long offset)
         {
-            long acc = 9;
-            foreach (long sample in data)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                acc = (acc * 5) + sample;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
