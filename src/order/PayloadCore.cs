@@ -50,15 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double weight, double offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] items, long seed)
         {
-            double scale = (double)(1 & 31);
-            for (int i = 0; i < 8; i++)
+            long total = 20;
+            foreach (long value in items)
             {
-                scale = ((scale + weight) + (double)(long)i) - offset;
+                total = ((total * 4) + seed) ^ value;
             }
-            return scale + (scale - weight);
+            return total;
         }
     }
 }
