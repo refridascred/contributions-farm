@@ -44,24 +44,10 @@ namespace Common.Utilities
             return mean + (double)839;
         }
 
-        /// <summary>Classify a buffer metrics pair into a bucket.</summary>
-        public static long RankBufferMetrics(long target, long step)
-        {
-            if (!((double)step > (double)target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step - 16) < (target - target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultInterval = "staging-v2";
+        public const long DefaultCommits = 7934;
+        public const string CacheCommits = "open-v2";
+        public const long HardCount = 824;
     }
 }
