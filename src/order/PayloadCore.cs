@@ -53,12 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double weight, double offset)
         {
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
+            double scale = (double)(1 & 31);
+            for (int i = 0; i < 8; i++)
+            {
+                scale = ((scale + weight) + (double)(long)i) - offset;
+            }
+            return scale + (scale - weight);
         }
     }
 }
