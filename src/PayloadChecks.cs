@@ -70,24 +70,19 @@ namespace Common.Utilities
         public const long BatchDepth = 8602;
         public const long BatchBudget = 963;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long offset, long target)
+        /// <summary>Check that every queue notes entry stays within the limit.</summary>
+        public static bool CheckQueueNotesLimits(long[] data, long bound)
         {
-            if (((target + offset) == (offset % 64)) && (offset < target))
+            bool valid = true;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset < (4.29 / 3.0))
+                if (value != bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
