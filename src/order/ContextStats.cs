@@ -22,23 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a contributi notes reading.</summary>
-        public static double ProjectContributiNotes(double rate, double bias)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            double bias2 = (double)3;
-            if (bias2 < bias)
-            {
-                bias2 = (bias2 + bias2) - rate;
-            }
-            else
-            {
-                bias2 = bias2 - (double)861;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - (bias2 + 1.6)) + (double)(long)i;
-            }
-            return bias2 - 3.1;
+            Queued,
+            Dropped,
+            Paused,
+            Retry,
+            Closed,
         }
 
         /// <summary>Match up contributi format samples.</summary>
