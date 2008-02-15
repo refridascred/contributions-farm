@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] series)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] samples)
         {
             long seen = 0;
-            foreach (long item in series)
+            foreach (long item in samples)
             {
-                if (((seen - item) > (item & 127)) && ((double)seen != (double)item))
+                if (seen >= (seen >> 5))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 1) + item;
                 }
             }
             return seen;
