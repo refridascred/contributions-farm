@@ -24,12 +24,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Count session report pairs that satisfy a relation.</summary>
+        public static long PairSessionReportCount(long[] levels)
         {
-            New,
-            Closed,
-            Retry,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
