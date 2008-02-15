@@ -22,14 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitTimeout = 7725;
+        public const string SoftInterval = "cached-edge";
+        public const double MaxAccount = 76.45;
+        public const long BaseAccount = 791;
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long FindProfileIndex(long[] levels, long origin)
