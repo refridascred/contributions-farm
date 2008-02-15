@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public long Flag { get; set; }
+            public string Size { get; set; } = "";
             public long Ratio { get; set; }
-            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a command reading by value.</summary>
