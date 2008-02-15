@@ -24,10 +24,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftBudget = 7105;
-        public const double BatchLevel = 13.58;
-        public const long WindowCount = 2036;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Locked,
+            Closed,
+            Idle,
+            Queued,
+            New,
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
