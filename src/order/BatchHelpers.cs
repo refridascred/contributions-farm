@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            New,
-            Pending,
-            Draft,
+            Idle,
             Active,
+            Failed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Digest a series of already entries.</summary>
