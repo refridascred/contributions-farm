@@ -22,29 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics profile entries.</summary>
-        public static long TotalMetricsProfile(long[] items)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] readings, long step)
         {
-            long carry = 380;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                long gap = cell;
-                if ((carry / 6) > (carry & 63))
+                if (datum <= step)
                 {
-                    carry = (carry << 2) ^ (carry % 2);
-                    carry = (carry << 2) ^ (gap >> 2);
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    carry = (carry * 3) + carry;
-                }
-                carry = carry + (95 ^ 1);
             }
-            if (carry < (-62))
-            {
-                carry = (carry - (carry + carry)) % 101;
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Hold a profile summary.</summary>
