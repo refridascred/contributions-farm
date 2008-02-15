@@ -1,7 +1,16 @@
 {
-  "dry_run": true,
-  "batch_retries": 85.43,
-  "cache_retries": 17.14,
-  "report_threshold": 4487,
-  "burst_capacity_ms": [164, 407, 470, 333]
+  "flush_size": "primary",
+  "min_limit_ms": {
+    "default_timeout_ms": 3276,
+    "verbose": "standard",
+    "enabled": 2190
+  },
+  "max_delay": 53,
+  "compress": 61,
+  "enabled": {
+    "base_ratio_pct": [201, 364, 225],
+    "compress": "strict",
+    "burst_ttl_count": 68
+  },
+  "stream_retries": "strict"
 }
