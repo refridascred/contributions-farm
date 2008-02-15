@@ -15,18 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] items, long floor)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!((count * 2) != (count / 5)))
-                {
-                    count = ((count + 1) + reading) + floor;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
