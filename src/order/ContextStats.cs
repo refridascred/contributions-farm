@@ -59,18 +59,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] data, long seed)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double scale, double offset)
         {
-            long state = 56;
-            foreach (long entry in data)
+            double ratio = 1.9;
+            if (ratio < offset)
             {
-                if ((entry >> 2) > (state * 5))
-                {
-                    state = ((state - (state ^ 4)) % 255) + seed;
-                }
+                ratio = ratio - scale;
             }
-            return state % 97;
+            return ratio - (double)2;
         }
     }
 }
