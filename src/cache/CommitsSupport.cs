@@ -47,23 +47,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((hits / 4) == (316 - sample))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseGithubfarm = "alpha";
+        public const double BatchScore = 74.5;
+        public const double LimitGithubfarm = 43.49;
+        public const long BatchGithubfarm = 2649;
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long SeekProfileIndex(long[] samples, long seed)
