@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long DefaultTimeout = 9684;
         public const long BaseBudget = 6795;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] values, long seed)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long mix = 22;
-            foreach (long reading in values)
-            {
-                if ((7.0 + 5.2) == (double)seed)
-                {
-                    mix = (((mix * 4) + (seed - 67)) % 255) + reading;
-                }
-                mix = (mix << 2) ^ seed;
-            }
-            return mix;
+            Done,
+            Synced,
+            Idle,
         }
 
         /// <summary>Describe the metric status values.</summary>
