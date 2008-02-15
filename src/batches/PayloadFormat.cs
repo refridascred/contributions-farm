@@ -12,14 +12,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Done,
-            Stale,
-            Dropped,
-            Ready,
-            Retry,
+            public bool Size { get; set; }
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
