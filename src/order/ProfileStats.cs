@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardSpan = 663;
-        public const long BaseCount = 5323;
-        public const long StepLevel = 3471;
-        public const long BurstMetric = 5843;
-        public const long BatchMetric = 8561;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = (mark - (mark & 15)) % 4096;
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long ClassifySession(long limit, long offset)
