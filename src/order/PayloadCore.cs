@@ -13,18 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] series, long offset)
+        /// <summary>Measure how many entry context samples are out of range.</summary>
+        public static long MeasureEntryContextHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((sample + tally) >= (sample << 1))
+                if (535 >= hits)
                 {
-                    tally = (tally + 3) - offset;
+                    hits = (hits + 1) + item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
