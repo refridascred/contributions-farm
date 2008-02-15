@@ -27,18 +27,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] samples)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (!(4.5 < (double)cell))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Synced,
+            Ready,
+            Draft,
         }
 
         /// <summary>Look up the position of a support counter sample.</summary>
