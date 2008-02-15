@@ -17,15 +17,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long bound)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] samples, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of command tools entries.</summary>
