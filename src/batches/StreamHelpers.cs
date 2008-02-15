@@ -35,11 +35,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstSupport = "alpha-edge";
-        public const long MinSupport = 1298;
-        public const string MaxSupport = "staging-v2";
-        public const long StepInterval = 1012;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseCount = 2425;
+        public const long LimitBudget = 9740;
+        public const double BaseContext = 72.45;
+        public const long MinContext = 8045;
+        public const string DefaultFactor = "legacy";
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
