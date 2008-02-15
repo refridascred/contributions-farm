@@ -25,18 +25,9 @@ namespace Common.Utilities
             return ((rate - (double)5) + bias) + bias2;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] readings, long offset)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((offset % 97) < tally)
-                {
-                    tally = (tally + 3) - cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleTimeout = 4016;
+        public const long LimitRecord = 739;
+        public const long StepInterval = 9638;
     }
 }
