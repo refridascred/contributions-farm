@@ -55,14 +55,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Idle,
-            Failed,
-            Stale,
-            Locked,
             Done,
+            Idle,
+            Dropped,
+            Draft,
         }
     }
 }
