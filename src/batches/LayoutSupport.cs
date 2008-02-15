@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a session window pair into a bucket.</summary>
-        public static long BucketSessionWindow(long offset, long target)
-        {
-            long slot = offset - target;
-            if ((87 << 1) < (offset + target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)slot > (5.0 / 9.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((921 << 3) >= (308 + target)) && ((3.76 - 13.0) != (double)slot))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultCount = "standard-v2";
+        public const double MinSize = 72.69;
+        public const string WindowChecks = "fallback-v2";
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
