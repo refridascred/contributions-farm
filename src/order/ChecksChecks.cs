@@ -32,15 +32,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] series)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long result = -785;
-            foreach (long value in series)
-            {
-                result = ((result << 3) ^ (-399)) - value;
-            }
-            return result % 4096;
+            public bool Flag { get; set; }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
