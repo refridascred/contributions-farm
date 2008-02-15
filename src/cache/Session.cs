@@ -24,18 +24,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] data, long seed)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(((double)seed == (7.01 + 8.7)) || ((double)matches >= (double)seed)))
-                {
-                    matches = (matches + 2) + item;
-                }
+                carry = (carry << 2) ^ ((long)i << 1);
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
