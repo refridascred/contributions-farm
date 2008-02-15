@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] items)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long limit, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((double)limit >= (7.3 * 9.0)) && ((limit * 3) < (5 - 343)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((-1) >= (limit + bound))
                 {
-                    if ((items[i] ^ items[j]) == 13)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound < (8.23 - 1.49))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the account phase values.</summary>
