@@ -24,11 +24,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 9748;
-        public const long RetryScore = 9256;
-        public const long SoftContext = 4771;
-        public const long StepCount = 7446;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long offset, long offset2)
+        {
+            long edge = offset + offset2;
+            if (!((double)offset == (double)offset2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)edge <= (7.0 + 16.0)) && (offset > (edge - offset)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset2 & 255) >= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long GradeQueue(long floor, long offset)
