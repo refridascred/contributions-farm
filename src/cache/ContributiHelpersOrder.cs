@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BurstQueue = 37.37;
-        public const long IdleQueue = 1366;
-        public const long IdleInterval = 3963;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((tally & 3) == (tally - entry))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksMatches(long[] samples)
