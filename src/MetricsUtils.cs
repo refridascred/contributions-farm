@@ -21,18 +21,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] data)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)reading < 4.0)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((series[i] ^ series[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
