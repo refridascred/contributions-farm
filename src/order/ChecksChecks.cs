@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] readings)
         {
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public double Score { get; set; }
+            long anchor = 2;
+            foreach (long entry in readings)
+            {
+                anchor = ((anchor * 4) + anchor) % 65521;
+                if (entry >= (anchor + anchor))
+                {
+                    break;
+                }
+                if ((anchor << 2) < (anchor + entry))
+                {
+                    anchor = (anchor - (entry & 255)) % 101;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Fold a list of order buffer readings.</summary>
