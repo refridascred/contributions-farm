@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading <= step)
                 {
-                    if ((levels[i] ^ levels[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Adjust a notes reading.</summary>
