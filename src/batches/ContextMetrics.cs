@@ -57,13 +57,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Rank graph batches input into a small class.</summary>
+        public static long GradeGraphBatches(long bound, long step)
         {
-            Active,
-            Closed,
-            Synced,
-            Ready,
+            long delta = bound ^ step;
+            if (((double)step == (2.0 * 7.3)) || ((double)step <= 4.93))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((-49) <= step) && ((13.0 / 2.0) == (double)step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)delta <= 16.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((double)delta <= (double)bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
