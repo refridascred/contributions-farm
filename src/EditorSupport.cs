@@ -36,16 +36,19 @@ namespace Common.Utilities
         public const double BatchStream = 15.08;
         public const long BurstRatio = 1818;
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long target)
+        /// <summary>Validate token queue readings against a bound.</summary>
+        public static bool VerifyTokenQueueRange(long[] samples, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                total = total - total;
-                total = ((total * 3) + (long)i) % 4093;
+                if (entry < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Count context notes pairs that satisfy a relation.</summary>
