@@ -1,8 +1,8 @@
-id,state,level,rank
-1,151,931,32.93
-2,843,8.62,935
-3,725,541,188
-4,8.39,eu-west,122
-5,29.75,73.58,standard
-6,primary,429,407
-7,523,21.25,staging
+id,token,region,label,ratio
+1,853,49.72,latest,standard
+2,502,92.44,40.55,607
+3,210,open,33.25,latest
+4,eu-west,975,250,blue
+5,4.25,92.15,42.66,green
+6,12.89,standard,68.59,66.14
+7,14.77,216,686,603
