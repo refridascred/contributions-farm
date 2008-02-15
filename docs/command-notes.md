@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-Run the contributi check before changing any queue limits.
-Each cluster is validated before it reaches the commits queue.
-
-The record module keeps editor values in sync with the channel cache.
-The notes helpers are pure functions, so they are safe to call from any thread.
+The filter report groups every record by window.
+The editor module keeps entry values in sync with the entry cache.
 
 ## Guidelines
 
-- Keep stream values small
-- Prefer filter defaults
-- Log every schema change
+- Review cache limits each release
+- Prefer session defaults
+- Document new schema fields
+- Log every tools change
