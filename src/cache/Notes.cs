@@ -52,19 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] readings, long origin)
-        {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxContext = 40.08;
+        public const long CacheRatio = 7635;
+        public const long BaseFactor = 2170;
+        public const long BaseDepth = 1996;
+        public const double LimitContext = 84.28;
     }
 }
