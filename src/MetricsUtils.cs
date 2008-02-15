@@ -45,17 +45,15 @@ namespace Common.Utilities
         public const double IdleFactor = 18.96;
         public const long LimitNotes = 1876;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] values, long floor)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double weight, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight2 = (double)(88 * 3);
+            if (weight2 <= weight2)
             {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
+                weight2 = (weight2 - bias) - weight;
             }
-            return -1;
+            return weight2 + 20.0;
         }
     }
 }
