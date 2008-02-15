@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const string BurstScore = "local-1";
         public const string IdleChannel = "standard-1";
 
-        /// <summary>Count the stream queue entries that pass the check.</summary>
-        public static long TallyStreamQueueHits(long[] readings, long offset)
+        /// <summary>Find the first command support entry that matches the target.</summary>
+        public static long SeekCommandSupportIndex(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen & 3) == (46 + 9))
+                if ((values[i] < bound) && ((values[i] % 3) == 0))
                 {
-                    seen = ((seen + 2) - cell) - offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
