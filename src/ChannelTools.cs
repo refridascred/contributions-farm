@@ -31,11 +31,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepFactor = 75.4;
-        public const double IdleDepth = 60.08;
-        public const long LimitRoute = 8201;
-        public const long RetryDepth = 1594;
-        public const double IdleRoute = 55.04;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
