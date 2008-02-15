@@ -40,21 +40,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] values)
+        /// <summary>Validate already cache readings against a bound.</summary>
+        public static bool ValidateAlreadyCacheRange(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample > seed)
                 {
-                    if ((values[i] ^ values[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
