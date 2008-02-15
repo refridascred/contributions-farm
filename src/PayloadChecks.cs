@@ -70,18 +70,18 @@ namespace Common.Utilities
         public const long BatchDepth = 8602;
         public const long BatchBudget = 963;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long origin, long seed)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long offset, long target)
         {
-            if ((origin - seed) <= (seed + seed))
+            if (((target + offset) == (offset % 64)) && (offset < target))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if (7 > (7 + seed))
+                if ((double)offset < (4.29 / 3.0))
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
