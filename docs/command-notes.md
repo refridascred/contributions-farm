@@ -1,10 +1,14 @@
 # Command notes
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-When a cache fails, the filter handler retries a few times before giving up.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Run the contributi check before changing any queue limits.
+Each cluster is validated before it reaches the commits queue.
+
+The record module keeps editor values in sync with the channel cache.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review context limits each release
-- Validate profile input early
-- Prefer route defaults
+- Keep stream values small
+- Prefer filter defaults
+- Log every schema change
