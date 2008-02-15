@@ -49,39 +49,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long bound, long floor)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double bias, double floor)
         {
-            long step = bound + floor;
-            if ((double)floor <= 6.94)
+            double load = bias;
+            if (load > (double)93)
             {
-                return 7;
+                load = (load - load) - floor;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (((bound << 3) > (bound * 3)) && ((double)70 <= (double)step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((18.0 + 9.1) > (double)floor) && (bound < (bound + (-434))))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((((-3) - bound) > (977 + 851)) || (6.0 < (double)bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                load = load - (double)(long)i;
             }
+            return load + load;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
