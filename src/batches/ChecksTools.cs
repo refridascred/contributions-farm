@@ -24,38 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long offset, long step)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double weight, double bias)
         {
-            if (!((step ^ step) > (step * 3)))
+            double drift = weight;
+            if (drift <= 5.9)
             {
-                return 1;
+                drift = drift + (bias + 11.0);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (!(step < (offset % 7)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step << 3) < (step & 15))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((18.0 - 8.81) < (double)offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                drift = (drift - bias) + (double)(long)i;
             }
+            return drift + 1.0;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
