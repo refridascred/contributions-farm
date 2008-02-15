@@ -26,25 +26,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long step, long origin)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] data)
         {
-            long gap = step + origin;
-            if (44 >= (gap / 2))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (gap >= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a checks entry.</summary>
