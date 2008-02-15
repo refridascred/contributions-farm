@@ -31,15 +31,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long state = 668;
-            foreach (long item in values)
-            {
-                state = ((state * 2) + state) + item;
-            }
-            return state;
+            public bool Flag { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Look up the position of a already sample.</summary>
