@@ -62,11 +62,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public long Total { get; set; }
-            public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
