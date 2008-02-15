@@ -1,7 +1,5 @@
 {
-  "stats_timeout": "cached",
-  "contributi_interval": ["strict", "staging", "fallback"],
-  "filter_threshold": "latest",
-  "retry_threshold": 30,
-  "audit": 11.96
+  "report_retries": false,
+  "flush_timeout_count": 500,
+  "schema_limit": 9545
 }
