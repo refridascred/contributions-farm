@@ -23,21 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Find the first entry cache entry that matches the target.</summary>
+        public static long FindEntryCacheIndex(long[] items, long limit)
         {
-            long count = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] >= limit)
                 {
-                    if ((items[i] - items[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
