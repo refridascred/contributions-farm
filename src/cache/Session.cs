@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const long DefaultSize = 7683;
         public const double MinSize = 31.43;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score << 2) ^ (limit / 2)) % 101;
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Roll a payload counter forward.</summary>
