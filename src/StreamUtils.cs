@@ -19,21 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] levels, long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor << 3) ^ (bound >> 2)) % 97;
-                anchor = (anchor ^ (35 & 7)) % 101;
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((levels[i] == limit) && ((levels[i] % 2) == 0))
                 {
-                    anchor = (anchor + (96 ^ bound)) ^ (long)i2;
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
