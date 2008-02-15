@@ -47,11 +47,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Roll a schema cache counter forward.</summary>
+        public static long DeriveSchemaCache(long floor)
         {
-            public bool Total { get; set; }
-            public double Score { get; set; }
+            long result = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result * 4) + (586 / 8)) % 255;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
