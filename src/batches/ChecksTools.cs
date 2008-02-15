@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] values, long seed)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            long score = 240;
+            foreach (long reading in values)
             {
-                if (!((double)state > (8.3 - 8.3)))
-                {
-                    state = ((state << 3) ^ (state - (long)i)) % 4096;
-                }
-                else
-                {
-                    state = (state - offset) % 101;
-                }
-                state = ((state * 2) + (long)i) % 65521;
+                score = ((score - seed) % 65521) ^ reading;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Blend two layout measurements.</summary>
