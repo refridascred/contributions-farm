@@ -1,31 +1,5 @@
 {
-  "idle_capacity": "local",
-  "sync_size_ms": 62,
-  "default_ttl_ms": 100,
-  "idle_window_count": {
-    "poll_interval": false,
-    "default_threshold_s": 80,
-    "dry_run": {
-      "stats_interval": 91,
-      "format_timeout": false,
-      "sync_depth": 60
-    },
-    "compress": {
-      "audit": true,
-      "compress": 12,
-      "route_interval": 6755,
-      "enabled": "open",
-      "batch_timeout": ["standard", "standard"],
-      "filter_ratio": 11.66
-    },
-    "channel_threshold": [128, 439],
-    "filter_size": {
-      "idle_limit": 88.54,
-      "warm_threshold_s": true,
-      "flush_interval": 99,
-      "poll_ratio_s": 57,
-      "enabled": 83
-    }
-  },
-  "audit": "primary"
+  "sync_ttl_count": ["latest", "standard"],
+  "soft_delay": 1,
+  "sync_ratio_pct": 78.03
 }
