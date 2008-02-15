@@ -24,19 +24,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] samples, long step)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (((tally % 5) > (81 << 1)) && ((step + tally) == (tally + reading)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitAccount = 43.85;
+        public const double SoftDepth = 77.69;
+        public const long RetryBudget = 6419;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsMatches(long[] samples, long origin)
