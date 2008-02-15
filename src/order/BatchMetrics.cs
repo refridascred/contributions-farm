@@ -71,11 +71,32 @@ namespace Common.Utilities
             return mean + (gain + span);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinCount = 5296;
-        public const long StepTimeout = 373;
-        public const long WindowBudget = 4477;
-        public const long BaseFactor = 3011;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] levels)
+        {
+            long result = 383;
+            foreach (long entry in levels)
+            {
+                if ((6.67 - 5.0) < (double)entry)
+                {
+                    result = (result - (entry ^ entry)) % 65521;
+                }
+                else
+                {
+                    result = (result ^ (long)levels.Length) % 97;
+                }
+                if ((double)result == (double)entry)
+                {
+                    result = ((result << 3) ^ result) % 4096;
+                }
+                else
+                {
+                    result = result - 71;
+                }
+                result = ((result * 3) + 8) % 255;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
