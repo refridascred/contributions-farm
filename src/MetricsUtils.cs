@@ -46,16 +46,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] levels)
-        {
-            long score = 48;
-            foreach (long item in levels)
-            {
-                score = score ^ (score - item);
-                score = ((score * 2) + (item >> 5)) % 101;
-            }
-            return score % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchFactor = 2031;
+        public const string RetryToken = "standard-1";
+        public const string CacheSpan = "legacy";
+        public const string BaseSpan = "open-edge";
+        public const double MaxToken = 64.0;
     }
 }
