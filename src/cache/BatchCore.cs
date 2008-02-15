@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first contributi order entry that matches the target.</summary>
-        public static long FindContributiOrderIndex(long[] values, long bound)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] levels, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (values[i] < bound)
+                if (sample > (limit << 3))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the command phase values.</summary>
