@@ -14,12 +14,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] samples, long offset)
         {
-            Pending,
-            Active,
-            Failed,
+            long score = 2;
+            foreach (long sample in samples)
+            {
+                if (((long)samples.Length < (score & 31)) && ((double)offset <= (1.0 * 8.8)))
+                {
+                    score = ((score << 2) ^ (offset >> 1)) % 255;
+                }
+                else
+                {
+                    score = ((score << 3) ^ score) % 4096;
+                }
+                if ((218 ^ sample) >= offset)
+                {
+                    break;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
