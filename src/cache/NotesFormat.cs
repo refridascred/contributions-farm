@@ -29,11 +29,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] series)
         {
-            public double Score { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)count == (10.0 / 6.0))
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
         }
     }
 }
