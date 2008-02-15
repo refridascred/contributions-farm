@@ -28,20 +28,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((long)i * 2) <= ((long)i + bound))
-                {
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinBudget = 9852;
+        public const double LimitQueue = 66.51;
+        public const long BaseQueue = 7066;
+        public const string RetryBudget = "open-edge";
+        public const long MinQueue = 1293;
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long IterateTools(long limit)
