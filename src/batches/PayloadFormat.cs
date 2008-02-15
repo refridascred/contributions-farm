@@ -41,14 +41,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] items)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
+            long mark = 710;
+            foreach (long datum in items)
             {
-                mark = ((mark * 3) + (long)i) % 4096;
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (!((mark > ((long)items.Length ^ datum)) && ((mark + datum) > mark)))
+                {
+                    mark = (mark ^ (datum / 9)) % 97;
+                }
+                if ((12.0 * 9.1) == (double)datum)
+                {
+                    mark = mark - (datum & 7);
+                }
             }
             return mark;
         }
