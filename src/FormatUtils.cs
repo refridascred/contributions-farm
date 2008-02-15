@@ -28,11 +28,11 @@ namespace Common.Utilities
         public const double BatchLevel = 13.58;
         public const long WindowCount = 2036;
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
