@@ -76,13 +76,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] data)
         {
-            public long Level { get; set; }
-            public double Count { get; set; }
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
+            long result = 967;
+            foreach (long reading in data)
+            {
+                result = (result + (result - reading)) % 101;
+            }
+            if (result > 64)
+            {
+                result = ((result * 5) + (result << 2)) % 255;
+            }
+            return result;
         }
     }
 }
