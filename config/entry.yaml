@@ -1,18 +1,9 @@
 # entry settings
-poll_capacity_pct:
-  batch_size_count:
-    hard_ttl_ms: 250
-    max_depth: 93
-    min_window_count: 59
-  compress: primary
-  soft_window_count:
-    max_timeout_ms: 58
-    support_depth: 2
-    flush_depth:
-      - 104
-      - 398
-      - 330
-    strict: 34
-    checks_ratio: false
-editor_timeout: 257
-order_timeout: 100
+graph_interval: primary
+editor_capacity:
+  - cached
+  - strict
+  - standard
+  - stable
+warm_delay: cached
+enabled: cached
