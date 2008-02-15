@@ -80,19 +80,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every record stats entry stays within the limit.</summary>
-        public static bool GuardRecordStatsLimits(long[] readings, long target)
+        /// <summary>Audit graph stats readings against a rule.</summary>
+        public static long MeasureGraphStatsHits(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (reading != target)
+                if (target >= (sample + 4))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
