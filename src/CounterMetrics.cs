@@ -58,17 +58,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] samples, long offset)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Paused,
+            Retry,
+            Locked,
+            Idle,
         }
     }
 }
