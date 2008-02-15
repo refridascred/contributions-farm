@@ -51,15 +51,24 @@ namespace Common.Utilities
             return mean + (double)839;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double weight, double bias)
+        /// <summary>Classify a buffer metrics pair into a bucket.</summary>
+        public static long RankBufferMetrics(long target, long step)
         {
-            double weight2 = (double)(88 * 3);
-            if (weight2 <= weight2)
+            if (!((double)step > (double)target))
             {
-                weight2 = (weight2 - bias) - weight;
+                return 4;
             }
-            return weight2 + 20.0;
+            else
+            {
+                if ((step - 16) < (target - target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
