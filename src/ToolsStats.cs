@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 7854;
-        public const double MaxCount = 45.06;
-        public const long MaxRoute = 3544;
-        public const double HardWidth = 41.79;
-        public const long MinCount = 4162;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            New,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
