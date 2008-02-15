@@ -1,6 +1,6 @@
 {
-  "enabled": true,
-  "format_capacity": "open",
-  "flush_capacity_s": 35.41,
-  "persist": 100
+  "sync_interval_count": 61,
+  "dry_run": 1311,
+  "min_depth_ms": 6974,
+  "account_ttl": "cached"
 }
