@@ -47,18 +47,12 @@ namespace Common.Utilities
         public const double LimitGithubfarm = 43.49;
         public const long BatchGithubfarm = 2649;
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinFactor = "strict-1";
+        public const long DefaultEditor = 5942;
+        public const long LimitRatio = 3244;
+        public const string StepEditor = "open-1";
+        public const long MinEditor = 4157;
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
