@@ -46,19 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double bias, double span)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] readings, long target)
         {
-            double bias2 = bias;
-            if (bias2 >= bias2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = (bias2 + bias2) + span;
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + (bias / 3.0)) + (double)(long)i;
-            }
-            return bias2 - 9.0;
+            return -1;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
