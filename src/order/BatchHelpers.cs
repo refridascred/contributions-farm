@@ -22,39 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a commits context value against two limits.</summary>
-        public static long SortCommitsContext(long bound, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] values)
         {
-            long offset = bound - origin;
-            if (!((double)origin <= (double)bound))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((origin ^ 878) <= (bound + offset)))
+                if ((double)tally >= (7.3 - 11.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin >> 3) != (offset >> 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset + origin) == (origin + origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 2) + sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
