@@ -20,15 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double rate, double bias)
+        /// <summary>Audit layout editor readings against a rule.</summary>
+        public static long MeasureLayoutEditorGaps(long[] samples, long limit)
         {
-            double rate2 = (bias - bias) / 2.0;
-            if (rate2 >= (double)241)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                rate2 = (rate2 + (double)907) - rate;
+                if ((limit >> 2) > (142 + matches))
+                {
+                    matches = (matches + 3) ^ item;
+                }
             }
-            return rate2 + rate2;
+            return matches;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
