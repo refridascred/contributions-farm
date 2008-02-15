@@ -1,6 +1,8 @@
 {
-  "retry_interval_s": 7770,
-  "base_depth_s": [398, 239],
-  "retry_interval": "latest",
-  "idle_limit_pct": 870
+  "dry_run": ["standard", "staging", "stable", "strict"],
+  "batch_size": "local",
+  "farm_window": "primary",
+  "soft_limit": 53,
+  "burst_size": 10.26,
+  "cache_depth_ms": [354, 390, 393, 450]
 }
