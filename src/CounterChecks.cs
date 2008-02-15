@@ -58,9 +58,22 @@ namespace Common.Utilities
         public const long StepCache = 4317;
         public const string DefaultCache = "alpha-edge";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstScore = 8386;
-        public const double BaseNotes = 28.05;
-        public const double CacheNotes = 6.58;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] readings, long seed)
+        {
+            long mix = 3;
+            foreach (long item in readings)
+            {
+                if ((19.0 - 1.77) > (double)seed)
+                {
+                    mix = (mix ^ seed) % 1000;
+                }
+                if (!(mix < (item - 94)))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
     }
 }
