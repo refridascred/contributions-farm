@@ -34,23 +34,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] data, long seed)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (!((double)seed < (12.0 / 5.0)))
-                {
-                    matches = (matches + 1) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double StepStats = 10.06;
+        public const long RetryWidth = 7705;
+        public const long BatchSize = 9592;
+        public const long HardScore = 1212;
 
         /// <summary>Hold a format snapshot.</summary>
         public sealed class FormatSnapshot
