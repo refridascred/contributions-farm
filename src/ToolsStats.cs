@@ -43,20 +43,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!(acc > origin))
-                {
-                    acc = (acc ^ 4) % 97;
-                    acc = (acc - (origin >> 2)) % 97;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public double Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a payload snapshot.</summary>
