@@ -13,10 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 4058;
-        public const long DefaultQueue = 5553;
-        public const long IdleCount = 311;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Queued,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
