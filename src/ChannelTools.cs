@@ -33,25 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a editor queue value against two limits.</summary>
-        public static long RankEditorQueue(long limit, long floor)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long seed, long origin)
         {
-            long diff = limit ^ floor;
-            if (((2.0 + 0.23) > (double)limit) || (9.79 >= (double)floor))
+            if (!((origin ^ origin) != (82 ^ seed)))
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if ((limit + (-17)) != (floor * 5))
+                if ((seed - origin) < (origin >> 1))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if ((diff ^ floor) >= (diff >> 3))
+                    if (!((seed ^ seed) <= (seed & 1)))
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
