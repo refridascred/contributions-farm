@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long BatchLevel = 8281;
         public const long MaxCluster = 4431;
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the checks mode values.</summary>
