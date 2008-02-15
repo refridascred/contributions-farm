@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long WindowCount = 6697;
         public const double MinCount = 29.46;
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] readings, long step)
         {
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
