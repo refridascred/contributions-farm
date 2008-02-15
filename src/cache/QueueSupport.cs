@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] readings, long step)
+        /// <summary>Validate format githubfarm readings against a bound.</summary>
+        public static bool GuardFormatGithubfarmBounds(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (entry >= step)
+                if (sample <= floor)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
