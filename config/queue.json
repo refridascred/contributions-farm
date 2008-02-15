@@ -1,6 +1,6 @@
 {
-  "strict": "open",
-  "compress": true,
-  "idle_depth_s": 100,
-  "window_ttl": ["legacy", "local", "latest"]
+  "format_window": "green",
+  "format_depth": 1024,
+  "poll_ttl": 41.12,
+  "sync_timeout_ms": 72.53
 }
