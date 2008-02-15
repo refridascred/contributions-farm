@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long target)
         {
-            public double Owner { get; set; }
-            public double Token { get; set; }
+            long acc = target;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = (acc ^ ((long)i + target)) % 1000;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
