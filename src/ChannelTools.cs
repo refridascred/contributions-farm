@@ -17,21 +17,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of filter contributi readings.</summary>
-        public static long PairFilterContributiCount(long[] values)
+        /// <summary>Grade a editor queue value against two limits.</summary>
+        public static long RankEditorQueue(long limit, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long diff = limit ^ floor;
+            if (((2.0 + 0.23) > (double)limit) || (9.79 >= (double)floor))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((limit + (-17)) != (floor * 5))
                 {
-                    if ((values[i] + values[j]) != 15)
+                    return 0;
+                }
+                else
+                {
+                    if ((diff ^ floor) >= (diff >> 3))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate queue samples.</summary>
