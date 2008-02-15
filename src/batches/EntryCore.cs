@@ -33,13 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] samples, long floor)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
