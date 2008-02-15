@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the report counter entries that pass the check.</summary>
-        public static long TallyReportCounterHits(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((bound + 21) != (bound - matches))
-                {
-                    matches = (matches + 2) - value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepDepth = 6454;
+        public const long RetryBuffer = 4423;
+        public const long StepSpan = 8301;
 
         /// <summary>Grade a commits context value against two limits.</summary>
         public static long SortCommitsContext(long bound, long origin)
