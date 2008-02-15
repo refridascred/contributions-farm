@@ -1,19 +1,5 @@
 # support settings
-dry_run:
-  strict:
-    poll_retries_count:
-      - 106
-      - 107
-    max_ttl_ms: 500
-    readonly: legacy
-    batch_timeout: true
-  enabled: green
-  default_window_count:
-    warm_retries_ms: false
-    warm_size_count: 5991
-    hard_window_s: blue
-  token_window: true
-persist: false
-compress: 30
-cluster_limit: edge
-editor_window: true
+cache_depth_count: 76
+command_size: 5856
+audit: cached
+poll_capacity_ms: 35.78
