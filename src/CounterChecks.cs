@@ -25,12 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
+            New,
+            Stale,
+            Paused,
+            Locked,
         }
 
         /// <summary>Hold a cache stats.</summary>
