@@ -57,30 +57,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long offset, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long floor, long target)
         {
-            if ((6.5 / 8.0) != (double)offset)
+            if (((floor - target) > (target >> 1)) || ((double)target != (12.0 - 7.3)))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if ((2.68 / 6.0) < (double)origin)
+                if (!((1.2 / 6.0) != (double)target))
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if ((3 & 7) > (offset + offset))
+                    if ((double)floor != (0.1 - 1.3))
                     {
-                        return 6;
+                        return 8;
                     }
                     else
                     {
-                        if (((offset * 3) > offset) || ((offset + offset) >= (origin + 1)))
+                        if ((floor << 2) <= (floor % 3))
                         {
-                            return 0;
+                            return 2;
                         }
                         else
                         {
