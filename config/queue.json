@@ -1,8 +1,6 @@
 {
-  "persist": ["local", "green"],
-  "audit": [496, 359, 235],
-  "order_ttl": "latest",
-  "batch_threshold_s": [327, 427, 322],
-  "notes_interval": [412, 75, 367],
-  "batch_depth_s": 4013
+  "dry_run": "primary",
+  "default_ratio_count": "legacy",
+  "sync_ttl_ms": 7,
+  "persist": false
 }
