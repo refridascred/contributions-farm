@@ -61,18 +61,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] data)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] values)
         {
-            long mark = 8;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((datum + datum) >= (mark & 255))
+                if (((hits - hits) > reading) || ((1.96 * 18.0) < (double)hits))
                 {
-                    mark = (mark * 3) + (mark & 15);
+                    hits = hits + 3;
                 }
             }
-            return mark;
+            return hits;
         }
     }
 }
