@@ -35,15 +35,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a editor queue figure with a bias.</summary>
-        public static double BlendEditorQueue(double weight, double bias)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] items)
         {
-            double load = bias / 3.0;
-            if (load < (bias - 1.0))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load + weight;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load - (double)382;
+            return seen;
         }
 
         /// <summary>Match up order samples.</summary>
