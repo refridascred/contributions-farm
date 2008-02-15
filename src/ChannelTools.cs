@@ -15,18 +15,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] readings, long limit)
+        /// <summary>Compare every pair of filter contributi readings.</summary>
+        public static long PairFilterContributiCount(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((51 + limit) <= 8)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) + sample;
+                    if ((values[i] + values[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
