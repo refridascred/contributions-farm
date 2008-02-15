@@ -1,19 +1,5 @@
 # githubfarm settings
-schema_retries: staging
-sync_retries:
-  dry_run: 6.61
-  persist:
-    default_ratio_pct: 60
-    min_ratio_ms: 52
-    sync_retries_count: 50.11
-    max_limit_count: 46.64
-    soft_capacity_count: 5093
-    idle_window:
-      - 479
-      - 5
-      - 402
-      - 214
-  graph_ttl: 47
-  graph_threshold: true
-  poll_delay_ms: latest
-tools_size: blue
+strict: latest
+warm_depth_ms: standard
+hard_window_ms: 39.99
+default_window_s: green
