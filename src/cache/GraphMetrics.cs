@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] series)
+        /// <summary>Adjust a contributi account reading.</summary>
+        public static double ScaleContributiAccount(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double rate = gain;
+            return (rate + gain) + floor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
