@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit profile filter readings against a rule.</summary>
-        public static long AuditProfileFilterOutliers(long[] levels)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen % 97) == (seen & 1))
+                if ((levels[i] == origin) && ((levels[i] % 2) == 0))
                 {
-                    seen = (seen + 3) - sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
