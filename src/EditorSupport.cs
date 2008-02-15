@@ -52,13 +52,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Closed,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchScore = 5016;
+        public const long WindowInterval = 7581;
+        public const long IdleStats = 337;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long DigestSchema(long[] data, long limit)
