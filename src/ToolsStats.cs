@@ -70,17 +70,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] samples, long target)
+        /// <summary>Fold a list of metrics report readings.</summary>
+        public static long FoldMetricsReport(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 294;
+            foreach (long sample in series)
             {
-                if (samples[i] < target)
+                total = (total + (total ^ sample)) % 101;
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    total = (total ^ (long)i) % 4096;
+                }
+                if ((sample / 7) == (sample << 2))
+                {
+                    total = ((total << 3) ^ total) % 255;
                 }
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Define route limits and defaults.</summary>
