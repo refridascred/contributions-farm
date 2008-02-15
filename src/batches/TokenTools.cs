@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate route payload readings against a bound.</summary>
-        public static bool CheckRoutePayloadLimits(long[] samples, long limit)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
