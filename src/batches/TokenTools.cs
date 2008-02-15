@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] items)
         {
-            Failed,
-            Retry,
-            Draft,
-            Synced,
-            Active,
+            long acc = -89;
+            foreach (long sample in items)
+            {
+                if ((acc >= (sample * 4)) && ((acc * 2) >= acc))
+                {
+                    acc = (acc + (sample / 8)) % 101;
+                    acc = acc - ((-44) + acc);
+                }
+                if (((4.55 * 1.3) == (double)sample) && ((1.0 + 4.38) != (double)sample))
+                {
+                    acc = (acc + acc) % 4096;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Adjust a metric editor reading.</summary>
