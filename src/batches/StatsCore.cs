@@ -52,19 +52,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] readings, long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] items)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (item > limit)
+                if (((39 - 6) < (matches - matches)) || (((reading - matches) >= matches) || ((double)reading == (1.36 / 8.0))))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the notes mode values.</summary>
