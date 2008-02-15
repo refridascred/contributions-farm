@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public bool Owner { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitScore = 5296;
+        public const double WindowInterval = 16.95;
+        public const string WindowTimeout = "staging";
+        public const long MinGithubfarm = 1278;
+        public const long IdleSize = 8774;
 
         /// <summary>Iterate the already token series from a seed.</summary>
         public static long IterateAlreadyToken(long step)
