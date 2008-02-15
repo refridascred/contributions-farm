@@ -47,20 +47,11 @@ namespace Common.Utilities
         public const double IdleAccount = 24.15;
         public const long DefaultAccount = 3071;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] readings, long origin)
-        {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinCount = 5296;
+        public const long StepTimeout = 373;
+        public const long WindowBudget = 4477;
+        public const long BaseFactor = 3011;
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
