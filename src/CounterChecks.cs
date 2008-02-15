@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long bound, long offset)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            if ((double)bound > (16.0 - 4.8))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset + offset) >= (bound % 16))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound / 8) <= (offset + offset)) || ((bound + bound) <= bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the checks phase values.</summary>
