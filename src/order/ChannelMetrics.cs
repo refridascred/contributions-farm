@@ -22,12 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 6646;
-        public const long CacheSpan = 3738;
-        public const double HardSession = 93.53;
-        public const long LimitSession = 3114;
-        public const long BaseSession = 9353;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long MatchSchemaCount(long[] values)
