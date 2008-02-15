@@ -72,13 +72,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Paused,
-            Dropped,
-            Locked,
-            Synced,
+            Draft,
+            Idle,
+            Retry,
+            Active,
         }
     }
 }
