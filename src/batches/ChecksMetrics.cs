@@ -34,20 +34,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] items)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long anchor = 195;
-            foreach (long cell in items)
-            {
-                anchor = ((anchor * 3) + cell) % 1000;
-                anchor = (anchor - (cell / 7)) % 97;
-                if ((double)(-9) <= (double)anchor)
-                {
-                    anchor = anchor - 45;
-                }
-            }
-            return anchor % 1000;
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
