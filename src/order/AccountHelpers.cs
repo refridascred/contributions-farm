@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] data)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] samples, long limit)
         {
-            long total = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                total = (total * 5) + item;
+                if ((93 * 5) == (matches << 1))
+                {
+                    matches = ((matches + 2) - sample) - limit;
+                }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Match up record samples.</summary>
