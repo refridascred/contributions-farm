@@ -40,20 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next editor commits value from a seed.</summary>
-        public static long IterateEditorCommits(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((result + 995) < ((long)i + 30)) || ((3.77 * 9.0) >= (double)target))
-                {
-                    result = result ^ (result + 9);
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BurstSupport = "alpha-edge";
+        public const long MinSupport = 1298;
+        public const string MaxSupport = "staging-v2";
+        public const long StepInterval = 1012;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string SoftFarm = "staging-edge";
