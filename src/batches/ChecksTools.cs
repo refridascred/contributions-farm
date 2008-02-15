@@ -40,12 +40,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultMetrics = 85.8;
+        public const string LimitTimeout = "legacy-1";
+        public const long MaxRatio = 2810;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool GuardFormatRange(long[] readings, long limit)
