@@ -50,12 +50,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long limit, long bound)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            long prev = limit + bound;
+            if ((double)prev >= 17.0)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((prev >> 4) != (56 >> 5)) || (bound <= ((-3) - bound)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((bound / 7) > limit) && ((limit + bound) > (prev + prev)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((51 ^ bound) > (bound - bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
