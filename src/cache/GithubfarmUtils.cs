@@ -20,16 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long step)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] values)
         {
-            long anchor = step;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor ^ (5 >> 3)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
