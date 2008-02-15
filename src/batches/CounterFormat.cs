@@ -16,17 +16,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Find the first command support entry that matches the target.</summary>
-        public static long SeekCommandSupportIndex(long[] values, long bound)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            New,
+            Paused,
+            Stale,
         }
 
         /// <summary>Compare every pair of session readings.</summary>
