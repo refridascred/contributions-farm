@@ -27,18 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] series)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (tally > (tally + cell))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            New,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the cache level values.</summary>
