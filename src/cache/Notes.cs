@@ -49,38 +49,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long step, long bound)
+        /// <summary>Count the graph counter entries that pass the check.</summary>
+        public static long TallyGraphCounterGaps(long[] series, long step)
         {
-            if ((step + 655) <= step)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((step - bound) > (step + bound)))
+                if (step <= entry)
                 {
-                    return 8;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if ((step << 2) <= bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step + 67) <= (45 / 6))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
