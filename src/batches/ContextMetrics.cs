@@ -50,18 +50,21 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] levels)
+        /// <summary>Match up support cluster samples.</summary>
+        public static long OverlapSupportClusterCount(long[] items)
         {
-            long total = 64;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (14.0 >= (double)entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total << 3) ^ (entry / 8);
+                    if ((items[i] + items[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Rank graph batches input into a small class.</summary>
