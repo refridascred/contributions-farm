@@ -1,6 +1,6 @@
 {
-  "readonly": "legacy",
-  "enabled": "eu-west",
-  "burst_timeout_pct": false,
-  "metric_threshold": 3887
+  "poll_interval_count": 9276,
+  "route_timeout": 908,
+  "dry_run": [129, 29],
+  "enabled": "blue"
 }
