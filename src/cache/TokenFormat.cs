@@ -32,24 +32,13 @@ namespace Common.Utilities
         public const long DefaultFilter = 7031;
         public const double MaxFilter = 23.43;
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long floor, long origin)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            if (!((floor + origin) > (floor >> 5)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (origin >= floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public double Total { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
