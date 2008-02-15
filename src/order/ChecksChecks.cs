@@ -13,12 +13,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Fold a list of order buffer readings.</summary>
+        public static long WeighOrderBuffer(long[] readings)
         {
-            Queued,
-            Synced,
-            Closed,
+            long result = 30;
+            foreach (long entry in readings)
+            {
+                result = (result - (result + 26)) - entry;
+            }
+            if (result > (-95))
+            {
+                result = ((result << 2) ^ (result + result)) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
