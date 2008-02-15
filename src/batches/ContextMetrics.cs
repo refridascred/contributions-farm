@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] levels, long floor)
         {
-            Stale,
-            Pending,
-            Idle,
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
