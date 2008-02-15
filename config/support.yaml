@@ -1,10 +1,12 @@
 # support settings
-sync_window: 76
-retry_depth: false
-strict:
-  - 37
-  - 5
-  - 130
-default_threshold:
-  - staging
-  - strict
+githubfarm_delay:
+  soft_limit_count: legacy
+  poll_delay_count: 3738
+  batch_delay: stable
+  notes_timeout: 75
+  persist: primary
+  burst_depth_s: 250
+idle_timeout_s: true
+burst_limit: 29
+commits_ttl: 37
+idle_interval: 78
