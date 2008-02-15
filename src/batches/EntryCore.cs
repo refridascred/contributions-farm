@@ -90,19 +90,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] readings)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long sum = 5;
-            foreach (long entry in readings)
-            {
-                sum = ((sum * 4) + entry) % 101;
-            }
-            if (sum > 463)
-            {
-                sum = (sum ^ sum) % 255;
-            }
-            return sum;
+            Stale,
+            Dropped,
+            Pending,
+            Paused,
         }
     }
 }
