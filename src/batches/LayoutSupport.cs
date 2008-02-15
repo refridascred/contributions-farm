@@ -64,11 +64,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double bias, double floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long limit)
         {
-            double drift = (double)1;
-            return ((drift + drift) + bias) + floor;
+            long total = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                total = total ^ (total * 4);
+                total = ((total << 2) ^ ((long)i + (long)i)) % 97;
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
