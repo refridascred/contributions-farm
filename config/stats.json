@@ -1,5 +1,6 @@
 {
-  "verbose": [2, 85, 291, 89],
-  "notes_capacity": ["edge", "fallback", "open"],
-  "context_retries": 26.06
+  "readonly": "legacy",
+  "enabled": "eu-west",
+  "burst_timeout_pct": false,
+  "metric_threshold": 3887
 }
