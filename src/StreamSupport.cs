@@ -22,11 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double bias, double bias2)
+        /// <summary>Accumulate checks metric samples.</summary>
+        public static long FoldChecksMetric(long[] series)
         {
-            double rate = 9.0 * 12.0;
-            return ((rate - (double)5) + bias) + bias2;
+            long result = 740;
+            foreach (long reading in series)
+            {
+                if ((double)reading != (12.0 - 4.54))
+                {
+                    result = ((result << 2) ^ (result >> 3)) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
