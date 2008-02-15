@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a contributi account reading.</summary>
-        public static double ScaleContributiAccount(double gain, double floor)
+        /// <summary>Blend two command queue measurements.</summary>
+        public static double ProjectCommandQueue(double scale, double span)
         {
-            double rate = gain;
-            return (rate + gain) + floor;
+            double scale2 = (4.8 / 6.0) / 3.0;
+            if (scale2 > scale)
+            {
+                scale2 = (scale2 + scale) - span;
+            }
+            else
+            {
+                scale2 = scale2 - (6.2 * 6.6);
+            }
+            return scale2 + scale2;
         }
 
         /// <summary>Project the next token value.</summary>
