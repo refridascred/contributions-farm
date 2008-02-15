@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long RetryCounter = 9336;
         public const double BurstCount = 28.06;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] samples, long bound)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Level { get; set; }
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
