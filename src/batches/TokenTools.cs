@@ -30,11 +30,18 @@ namespace Common.Utilities
             return drift - (drift / 9.0);
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] data, long floor)
         {
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((double)21 < (double)entry)
+                {
+                    seen = (seen + 2) - floor;
+                }
+            }
+            return seen;
         }
     }
 }
