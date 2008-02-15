@@ -22,11 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long seed)
         {
-            public double Limit { get; set; }
-            public double Weight { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                long step = seed;
+                if (!((step + step) > (9 & 255)))
+                {
+                    step = (step - (acc & 7)) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the already kind values.</summary>
