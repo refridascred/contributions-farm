@@ -23,16 +23,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                result = (result << 2) ^ result;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Ready,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the notes phase values.</summary>
