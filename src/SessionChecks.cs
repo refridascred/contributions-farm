@@ -53,18 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits record samples are out of range.</summary>
-        public static long AuditCommitsRecordMatches(long[] items)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((tally + item) <= (item * 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
     }
 }
