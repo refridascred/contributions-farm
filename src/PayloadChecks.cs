@@ -20,11 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double weight, double offset)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long target)
         {
-            double bias = (double)(75 * 2);
-            return ((bias + (bias - bias)) + weight) + offset;
+            long mix = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)mix < (0.98 / 7.0))
+                {
+                    mix = ((mix * 4) + 53) % 101;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
