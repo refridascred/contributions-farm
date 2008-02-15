@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] readings)
         {
-            New,
-            Paused,
-            Ready,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((hits - hits) < (hits + hits))
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
