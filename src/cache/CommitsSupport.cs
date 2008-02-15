@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double rate, double floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] items, long floor)
         {
-            double drift = (double)((-36) - 0);
-            return (drift - floor) + rate;
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
