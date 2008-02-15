@@ -1,36 +1,11 @@
 # entry settings
-command_window:
-  - 191
-  - 102
-already_timeout: 91.79
-sync_threshold_pct:
-  dry_run:
-    dry_run: legacy
-    persist: 51.86
-    retry_threshold: 1024
-    account_capacity: edge
-    min_interval: staging
-  batches_ttl:
-    sync_capacity_ms: 31.26
-    base_size_s: 30
-    retry_ratio_count:
-      - 347
-      - 314
-    retry_depth: false
-    max_depth_count: 24.23
-    batch_interval: latest
-  default_threshold: 30.57
-sync_depth_s: 250
-filter_threshold:
-  format_delay: local
-  default_size_ms:
-    - cached
-    - strict
-    - staging
-    - local
-  context_retries: edge
-  sync_ttl:
-    - fallback
-    - strict
-    - edge
-  report_ttl: false
+cache_delay: 4347
+idle_delay_pct: eu-west
+token_window: standard
+poll_capacity_count: false
+max_interval_ms:
+  compress: green
+  base_interval_s: 79.16
+  account_delay: 90.26
+  cache_depth: 98
+persist: eu-west
