@@ -36,15 +36,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] items, long floor)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long mix = 12;
-            foreach (long item in items)
-            {
-                mix = ((mix - mix) + item) + floor;
-            }
-            return mix;
+            Draft,
+            Paused,
+            Locked,
+            Idle,
         }
 
         /// <summary>Describe the support mode values.</summary>
