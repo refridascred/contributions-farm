@@ -1,14 +1,10 @@
 # Command notes
 
-Keep support and commits names short and lowercase.
-A buffer that stays idle for too long is moved to the layout list.
-
-The schema module keeps metrics values in sync with the editor cache.
-The queue report groups every farm by command.
-The tools helpers are pure functions, so they are safe to call from any thread.
+The batches report groups every stream by counter.
+The queue report groups every buffer by record.
 
 ## Guidelines
 
-- Review cache limits each release
-- Document new account fields
-- Keep contributi values small
+- Log every cache change
+- Review stats limits each release
+- Keep record values small
