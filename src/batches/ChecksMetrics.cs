@@ -16,17 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                total = (total ^ origin) % 101;
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftCluster = 92.11;
+        public const long DefaultCluster = 2163;
+        public const long RetryDepth = 9117;
+        public const string MaxCluster = "strict";
 
         /// <summary>Roll a support counter forward.</summary>
         public static long DeriveSupport(long step)
