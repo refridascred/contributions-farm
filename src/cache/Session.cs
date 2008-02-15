@@ -31,23 +31,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate tools batches samples.</summary>
-        public static long ScoreToolsBatches(long[] values, long target)
-        {
-            long state = 8;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    state = (((state << 3) ^ state) - (long)i) + target;
-                }
-                if ((state * 3) == (entry - state))
-                {
-                    state = (state - (state / 2)) % 65521;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinLevel = 7761;
+        public const double HardToken = 74.86;
+        public const long DefaultToken = 3244;
+        public const long BurstToken = 3897;
+        public const long HardLevel = 755;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
