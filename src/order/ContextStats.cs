@@ -20,13 +20,11 @@ namespace Common.Utilities
             return load - (load - bias2);
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Paused,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "staging";
+        public const string MinContext = "standard-v2";
+        public const long BurstContext = 2576;
+        public const string MaxContext = "legacy-edge";
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
