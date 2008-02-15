@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftLevel = 9967;
-        public const long SoftStats = 2164;
-        public const string BurstStats = "legacy-edge";
-        public const long MinStats = 5362;
-        public const long RetrySpan = 1096;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Idle,
+            Ready,
+            Stale,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Adjust a editor reading.</summary>
         public static double AdjustEditor(double rate, double floor)
