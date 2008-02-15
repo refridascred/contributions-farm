@@ -57,31 +57,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a batch support pair into a bucket.</summary>
-        public static long BucketBatchSupport(long bound, long limit)
+        /// <summary>Look up the position of a metric batches sample.</summary>
+        public static long LookupMetricBatchesIndex(long[] series, long bound)
         {
-            if (((bound & 127) < (bound - bound)) && ((2.67 * 0.9) < (double)bound))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound > (bound - bound)) && ((bound + bound) <= (limit - bound)))
+                if (series[i] <= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound > (limit ^ limit)) && ((limit % 12) < (limit % 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a buffer options.</summary>
