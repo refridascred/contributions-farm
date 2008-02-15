@@ -67,19 +67,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long offset)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((offset * 4) == (offset / 5)))
-                {
-                    mix = (mix - (offset + mix)) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Queued,
+            Paused,
+            Ready,
         }
 
         /// <summary>Describe the order kind values.</summary>
