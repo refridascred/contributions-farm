@@ -1,24 +1,36 @@
 # entry settings
-notes_delay: standard
-poll_interval_count: 30
-max_threshold_pct: 35.91
-idle_size:
-  retry_ttl_ms:
-    idle_threshold_s: 4
-    max_ratio_count:
-      - 271
+command_window:
+  - 191
+  - 102
+already_timeout: 91.79
+sync_threshold_pct:
+  dry_run:
+    dry_run: legacy
+    persist: 51.86
+    retry_threshold: 1024
+    account_capacity: edge
+    min_interval: staging
+  batches_ttl:
+    sync_capacity_ms: 31.26
+    base_size_s: 30
+    retry_ratio_count:
       - 347
-      - 489
-    cache_limit:
-      - legacy
-      - legacy
-      - eu-west
-      - latest
-  min_capacity_s: 43.66
-  readonly: true
-  metric_limit: green
-  hard_depth:
-    token_interval: latest
-    retry_threshold_ms: 39.37
-    soft_ratio: 72
-    soft_delay: 97
+      - 314
+    retry_depth: false
+    max_depth_count: 24.23
+    batch_interval: latest
+  default_threshold: 30.57
+sync_depth_s: 250
+filter_threshold:
+  format_delay: local
+  default_size_ms:
+    - cached
+    - strict
+    - staging
+    - local
+  context_retries: edge
+  sync_ttl:
+    - fallback
+    - strict
+    - edge
+  report_ttl: false
