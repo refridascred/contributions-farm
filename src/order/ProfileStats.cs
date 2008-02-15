@@ -20,11 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchRatio = 6439;
-        public const long BurstFarm = 127;
-        public const long RetryFarm = 2670;
-        public const double WindowFarm = 82.28;
+        /// <summary>Blend two contributi entry measurements.</summary>
+        public static double ProjectContributiEntry(double gain, double floor)
+        {
+            double rate = 7.38;
+            if (rate < (rate + rate))
+            {
+                rate = (rate - (floor / 9.0)) + gain;
+            }
+            return rate + (double)366;
+        }
 
         /// <summary>Digest a series of context account entries.</summary>
         public static long FoldContextAccount(long[] readings)
