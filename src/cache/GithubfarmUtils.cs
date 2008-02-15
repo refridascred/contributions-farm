@@ -15,21 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] values)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((1 - target) >= matches) || ((double)target <= (double)485))
                 {
-                    if ((values[i] - values[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
