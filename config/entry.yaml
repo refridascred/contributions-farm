@@ -1,14 +1,9 @@
 # entry settings
-cache_limit_count: latest
-flush_retries: 45.27
-retry_size_pct:
-  - 110
-  - 352
-  - 237
-  - 285
-warm_threshold:
-  - fallback
-  - latest
-  - green
-  - eu-west
-layout_retries: 100
+hard_depth: cached
+audit: 936
+soft_delay_count:
+  - 369
+  - 210
+  - 132
+cache_threshold_ms: 31.49
+idle_delay: true
