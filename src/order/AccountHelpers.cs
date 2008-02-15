@@ -60,19 +60,24 @@ namespace Common.Utilities
             return rate + 6.4;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] data, long offset)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long floor, long seed)
         {
-            long mix = 6;
-            foreach (long sample in data)
+            if (((double)seed >= (1.0 + 7.18)) || (floor > (21 - seed)))
             {
-                mix = (((mix * 4) + (sample / 7)) % 1000) + offset;
+                return 0;
             }
-            if (mix > (-57))
+            else
             {
-                mix = (mix - (25 << 3)) % 4096;
+                if ((double)floor == (double)852)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return mix % 1000;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
