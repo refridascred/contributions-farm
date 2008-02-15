@@ -39,14 +39,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Fold a list of farm channel readings.</summary>
+        public static long WeighFarmChannel(long[] items)
         {
-            Locked,
-            Paused,
-            New,
-            Ready,
-            Active,
+            long mix = 4;
+            foreach (long sample in items)
+            {
+                if (((double)sample <= 19.0) && ((mix + 1) <= (sample + mix)))
+                {
+                    mix = mix - (mix << 1);
+                }
+            }
+            return mix;
         }
     }
 }
