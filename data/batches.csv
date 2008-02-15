@@ -1,6 +1,10 @@
-id,rank,level,ratio
-1,37.96,standard,2.48
-2,eu-west,24.74,edge
-3,709,531,open
-4,cached,212,523
-5,222,620,green
+id,ratio,level,region,rank
+1,staging,stable,4.98,806
+2,blue,954,522,eu-west
+3,18.85,863,965,eu-west
+4,primary,903,297,strict
+5,841,439,standard,strict
+6,967,135,400,48.33
+7,edge,116,8.5,147
+8,55.11,41.29,8.43,730
+9,46.52,eu-west,830,462
