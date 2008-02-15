@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
-        {
-            public long Label { get; set; }
-            public bool Weight { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 5736;
+        public const long BaseWidth = 9773;
+        public const double DefaultInterval = 40.06;
+        public const long MaxWidth = 1379;
+        public const double StepToken = 9.18;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long SeekCacheIndex(long[] values, long origin)
