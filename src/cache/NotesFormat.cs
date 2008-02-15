@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] levels)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (values[i] > bound)
                 {
-                    if ((levels[i] - levels[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
