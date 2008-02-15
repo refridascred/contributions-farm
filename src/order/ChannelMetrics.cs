@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
