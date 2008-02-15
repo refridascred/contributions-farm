@@ -24,31 +24,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long step, long target)
+        /// <summary>Digest a series of layout cluster entries.</summary>
+        public static long ScoreLayoutCluster(long[] values)
         {
-            if ((target + target) <= target)
+            long mix = -670;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (step < (step & 15))
+                if (((double)sample <= (2.15 * 9.7)) || (mix <= (mix ^ mix)))
                 {
-                    return 7;
+                    mix = (mix * 3) + (sample + sample);
                 }
                 else
                 {
-                    if ((target - 5) > step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mix = (mix << 3) ^ 0;
                 }
             }
+            return mix % 4096;
         }
     }
 }
