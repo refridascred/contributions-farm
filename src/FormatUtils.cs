@@ -53,16 +53,35 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] items, long step)
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
+            long mix = 95;
+            foreach (long sample in items)
             {
-                sum = (sum << 3) ^ limit;
-                sum = ((sum * 3) + (long)i) % 97;
+                if (mix >= (sample + sample))
+                {
+                    mix = mix ^ mix;
+                    mix = mix - step;
+                }
+                if ((26 / 8) >= (mix << 2))
+                {
+                    mix = mix - (mix - mix);
+                }
+                if ((double)step == (2.7 + 2.0))
+                {
+                    mix = (mix ^ (step & 1)) % 4096;
+                }
+                else
+                {
+                    mix = (mix * 4) + (mix / 5);
+                }
+                if ((step + sample) == (9 + 782))
+                {
+                    break;
+                }
             }
-            return sum;
+            return mix;
         }
     }
 }
