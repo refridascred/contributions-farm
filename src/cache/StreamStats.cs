@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] readings)
         {
-            Closed,
-            Locked,
-            Ready,
+            long total = 791;
+            foreach (long item in readings)
+            {
+                if ((item % 60) != (total ^ (-8)))
+                {
+                    total = total - (913 % 64);
+                }
+            }
+            return total;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
