@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitSize = "staging-edge";
-        public const string CacheTools = "latest";
-        public const long LimitRatio = 614;
-        public const long BatchScore = 9966;
-        public const long LimitWidth = 2684;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextGaps(long[] series)
