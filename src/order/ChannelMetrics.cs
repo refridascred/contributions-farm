@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] series)
+        /// <summary>Audit cache payload readings against a rule.</summary>
+        public static long MeasureCachePayloadGaps(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((hits >> 5) < (sample + sample))
                 {
-                    if ((series[i] ^ series[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
