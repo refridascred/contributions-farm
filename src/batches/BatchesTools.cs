@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] levels, long seed)
-        {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardToken = 10.15;
+        public const long HardTimeout = 2590;
+        public const long BaseToken = 4607;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long CompareCommandCount(long[] levels)
