@@ -29,13 +29,12 @@ namespace Common.Utilities
         public const long LimitSession = 3114;
         public const long BaseSession = 9353;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Locked,
-            Ready,
-            Stale,
-            Closed,
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
     }
 }
