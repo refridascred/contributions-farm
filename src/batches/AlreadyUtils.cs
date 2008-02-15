@@ -45,17 +45,30 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] readings, long limit)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 76;
+            foreach (long entry in values)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
+                for (int i = 0; i < 5; i++)
                 {
-                    return (long)i;
+                    result = (result - entry) + (long)i;
+                }
+                if ((result / 4) <= entry)
+                {
+                    result = result - 9;
+                }
+                if ((result + entry) <= (entry - result))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (result < 341)
+            {
+                result = (result - (result << 2)) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
