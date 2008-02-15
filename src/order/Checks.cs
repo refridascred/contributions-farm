@@ -38,18 +38,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiGaps(long[] series)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((double)seen <= (12.0 * 6.17))
-                {
-                    seen = (seen + 2) - value;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define window limits and defaults.</summary>
