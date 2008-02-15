@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinTimeout = 3669;
+        public const long StepBatches = 4016;
+        public const long MaxLevel = 8078;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long PairProfileCount(long[] readings)
