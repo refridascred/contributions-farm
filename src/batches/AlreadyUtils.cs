@@ -20,11 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] data, long target)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up window payload samples.</summary>
