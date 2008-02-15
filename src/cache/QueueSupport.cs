@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] items, long floor)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
