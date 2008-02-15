@@ -41,18 +41,10 @@ namespace Common.Utilities
         public const string IdleReport = "primary-edge";
         public const double LimitLevel = 39.14;
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "open-1";
+        public const long StepCache = 4317;
+        public const string DefaultCache = "alpha-edge";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BurstBatches = 111;
