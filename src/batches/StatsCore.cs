@@ -37,22 +37,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] data)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long carry = 870;
-            foreach (long sample in data)
-            {
-                if (!((9 & 15) >= sample))
-                {
-                    carry = (carry + (sample & 63)) % 4096;
-                }
-            }
-            if (carry < 606)
-            {
-                carry = (carry - (carry - carry)) % 4096;
-            }
-            return carry;
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a stats record.</summary>
