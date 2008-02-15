@@ -13,10 +13,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultSize = 8471;
-        public const double StepWidth = 5.6;
-        public const long BaseFactor = 4035;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 6373;
+        public const long CacheSpan = 5854;
+        public const string CacheFactor = "stable-edge";
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
