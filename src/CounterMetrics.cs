@@ -48,10 +48,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 4653;
-        public const long BaseWindow = 4881;
-        public const long BurstWindow = 6519;
-        public const double MinSize = 23.87;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long offset, long offset2)
+        {
+            if ((offset2 / 3) != (offset * 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset2 / 4) < (offset >> 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset2 <= (3.2 + 7.5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((6.1 + 9.97) > (double)offset2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
