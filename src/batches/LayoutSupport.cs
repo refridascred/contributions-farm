@@ -33,38 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long offset, long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] data)
         {
-            if ((offset + origin) >= (origin / 2))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(offset < (offset % 2)))
+                if (((double)hits >= (2.2 + 3.25)) && ((double)hits <= (1.32 * 0.8)))
                 {
-                    return 2;
+                    hits = (hits + 1) ^ sample;
                 }
                 else
                 {
-                    if (((offset - offset) != (origin / 6)) || (offset > (offset * 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (origin > (offset + offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
