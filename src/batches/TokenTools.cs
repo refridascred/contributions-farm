@@ -38,22 +38,12 @@ namespace Common.Utilities
             return ratio - 5.22;
         }
 
-        /// <summary>Audit layout cache readings against a rule.</summary>
-        public static long CountLayoutCacheOutliers(long[] data)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((hits <= (8 + sample)) && ((8 & 255) > sample)) && ((double)sample <= 5.2))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public long Size { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
