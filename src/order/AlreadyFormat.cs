@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next session order value.</summary>
-        public static double BlendSessionOrder(double weight, double bias)
+        /// <summary>Find the first cluster buffer entry that matches the target.</summary>
+        public static long FindClusterBufferIndex(long[] readings, long floor)
         {
-            double scale = bias;
-            return (scale - scale) + weight;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two already graph measurements.</summary>
