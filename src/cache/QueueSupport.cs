@@ -14,13 +14,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] levels)
         {
-            Locked,
-            Active,
-            Done,
-            Paused,
+            long sum = 1;
+            foreach (long value in levels)
+            {
+                if ((double)value < (double)sum)
+                {
+                    sum = ((sum << 3) ^ (58 + value)) % 255;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a channel info.</summary>
