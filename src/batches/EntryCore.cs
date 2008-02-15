@@ -20,17 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] samples, long floor)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] == floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
