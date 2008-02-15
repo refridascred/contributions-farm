@@ -38,13 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public double Token { get; set; }
-            public double Region { get; set; }
+            Ready,
+            Retry,
+            Done,
+            Failed,
         }
     }
 }
