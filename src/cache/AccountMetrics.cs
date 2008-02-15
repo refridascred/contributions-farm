@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] data, long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long step, long target)
         {
-            long total = 581;
-            foreach (long value in data)
+            long lane = step ^ target;
+            if ((double)target == (8.54 * 15.0))
             {
-                total = ((total - (target << 1)) % 255) - value;
+                return 4;
             }
-            return total;
+            else
+            {
+                if (((lane ^ lane) != (step ^ target)) && ((step - step) >= 823))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (8.7 >= (double)lane)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((19.0 - 8.87) >= (double)step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
