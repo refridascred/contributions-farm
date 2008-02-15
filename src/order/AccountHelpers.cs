@@ -64,17 +64,32 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] readings, long seed)
+        /// <summary>Classify a account metric pair into a bucket.</summary>
+        public static long BucketAccountMetric(long limit, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long slot = limit ^ target;
+            if ((target / 4) < slot)
             {
-                if (readings[i] > seed)
+                return 3;
+            }
+            else
+            {
+                if ((slot + limit) >= (65 * 2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((slot / 2) > target) && (target >= (target + target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
