@@ -47,22 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of checks batch readings.</summary>
-        public static long MatchChecksBatchCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardBudget = 6139;
+        public const string MaxEditor = "local";
+        public const long CacheEditor = 4230;
+        public const double BurstEditor = 18.5;
+        public const long RetryLevel = 9313;
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long LookupContributiIndex(long[] values, long step)
