@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "alpha-edge";
-        public const long RetryCount = 9906;
-        public const long HardCache = 5968;
-        public const long DefaultCache = 5354;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 523;
+        public const double StepBuffer = 4.28;
+        public const double BaseCount = 34.44;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
