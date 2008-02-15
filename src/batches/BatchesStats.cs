@@ -37,19 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] readings, long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long acc = -611;
+            foreach (long sample in readings)
             {
-                if (datum < target)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc + sample) % 1000;
             }
-            return stale;
+            return acc % 97;
         }
     }
 }
