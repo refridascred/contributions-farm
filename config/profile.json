@@ -1,7 +1,8 @@
 {
-  "compress": "blue",
-  "warm_ttl_count": "primary",
-  "cache_retries": 48,
-  "graph_retries": "latest",
-  "strict": 38.98
+  "payload_limit": 8944,
+  "queue_ratio": 7192,
+  "min_interval": true,
+  "idle_ratio_s": "cached",
+  "min_retries_s": "blue",
+  "readonly": 60
 }
