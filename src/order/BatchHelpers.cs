@@ -22,21 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] items)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 7;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((result - cell) != (result + result))
                 {
-                    if ((items[i] + items[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result << 3) ^ (result + cell);
+                }
+                else
+                {
+                    result = (result << 3) ^ 905;
                 }
             }
-            return tally;
+            if (result < 6)
+            {
+                result = result + (result & 255);
+            }
+            return result % 97;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
