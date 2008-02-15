@@ -33,23 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] samples)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double bias, double floor)
         {
-            long state = 9;
-            foreach (long reading in samples)
+            double scale = (double)(0 % 3);
+            if (scale < scale)
             {
-                state = ((state * 2) + (reading + state)) % 101;
-                if ((28 + reading) <= (state * 3))
-                {
-                    break;
-                }
+                scale = scale - bias;
             }
-            if (state > (-8))
+            else
             {
-                state = state ^ (state - state);
+                scale = scale + (double)583;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - floor) + (double)(long)i;
+            }
+            return scale - (double)(-4);
         }
 
         /// <summary>Describe the report phase values.</summary>
