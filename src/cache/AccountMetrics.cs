@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Grade a already notes value against two limits.</summary>
+        public static long BucketAlreadyNotes(long limit, long target)
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
+            if ((target % 100) >= (512 - limit))
             {
-                if ((8.37 / 9.0) != (double)target)
-                {
-                    mix = ((mix * 4) + (target + (long)i)) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if (!((double)limit > (3.0 + 1.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target != (7.89 + 6.7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (target >= (limit - target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
