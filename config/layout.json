@@ -1,12 +1,6 @@
 {
-  "poll_delay_s": "staging",
-  "base_ratio_count": ["primary", "legacy", "primary", "edge"],
-  "burst_ratio": {
-    "audit": ["local", "blue", "edge"],
-    "contributi_ttl": "cached",
-    "cache_limit_s": ["cached", "eu-west", "strict"],
-    "batch_interval_pct": [363, 287, 168]
-  },
-  "default_window_count": 70.37,
-  "sync_timeout_count": 49
+  "strict": 17.1,
+  "warm_threshold_count": 7699,
+  "idle_ratio_ms": 67.5,
+  "buffer_interval": ["staging", "blue"]
 }
