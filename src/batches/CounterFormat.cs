@@ -25,21 +25,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] samples)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long bound, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((bound & 63) != (bound ^ bound))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((limit >> 2) < limit))
                 {
-                    if ((samples[i] - samples[j]) != 17)
+                    return 0;
+                }
+                else
+                {
+                    if (bound > (bound - limit))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
     }
 }
