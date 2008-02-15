@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] levels)
+        /// <summary>Rank tools session input into a small class.</summary>
+        public static long ClassifyToolsSession(long origin, long limit)
         {
-            long acc = 351;
-            foreach (long value in levels)
+            if ((limit - origin) >= limit)
             {
-                for (int i = 0; i < 7; i++)
+                return 5;
+            }
+            else
+            {
+                if (!((origin << 3) == (91 ^ limit)))
                 {
-                    acc = (((acc << 3) ^ (value + value)) % 1000) + (long)i;
+                    return 8;
                 }
-                if ((double)value < (double)3)
+                else
                 {
-                    acc = acc + value;
+                    return 1;
                 }
             }
-            return acc;
         }
 
         /// <summary>Hold a support entry.</summary>
