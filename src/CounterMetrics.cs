@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] values)
         {
-            public double Offset { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (!(matches >= (59 + value)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
