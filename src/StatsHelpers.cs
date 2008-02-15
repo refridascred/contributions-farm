@@ -42,19 +42,17 @@ namespace Common.Utilities
         public const long BatchSchema = 6071;
         public const string WindowScore = "stable-1";
 
-        /// <summary>Digest a series of farm metrics entries.</summary>
-        public static long DigestFarmMetrics(long[] items, long offset)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] data, long step)
         {
-            long result = 7;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result ^ (22 ^ result)) + reading;
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            if (result > 36)
-            {
-                result = (result + offset) % 1000;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
