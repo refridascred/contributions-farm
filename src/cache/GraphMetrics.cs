@@ -29,13 +29,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Failed,
-            New,
-            Active,
-            Stale,
+            public bool Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
