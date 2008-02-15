@@ -42,12 +42,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Dropped,
-            Synced,
-            Retry,
+            public string Score { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Combine account values into a single score.</summary>
