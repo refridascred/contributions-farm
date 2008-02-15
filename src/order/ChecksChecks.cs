@@ -32,19 +32,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of order buffer readings.</summary>
-        public static long WeighOrderBuffer(long[] readings)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] series)
         {
-            long result = 30;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result - (result + 26)) - entry;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (result > (-95))
-            {
-                result = ((result << 2) ^ (result + result)) % 65521;
-            }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
