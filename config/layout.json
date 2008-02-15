@@ -1,6 +1,16 @@
 {
-  "order_ratio": "latest",
-  "idle_depth": 98.76,
-  "cache_ttl_pct": true,
-  "cache_capacity": 95
+  "flush_threshold_ms": "local",
+  "enabled": {
+    "commits_threshold": 80,
+    "route_limit": ["legacy", "staging", "local"],
+    "sync_window": "edge",
+    "compress": {
+      "command_size": 56.18,
+      "payload_threshold": ["green", "standard", "green"],
+      "audit": 66.5
+    }
+  },
+  "persist": "stable",
+  "warm_ttl_ms": "green",
+  "burst_size": "edge"
 }
