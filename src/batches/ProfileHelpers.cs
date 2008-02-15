@@ -31,20 +31,17 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Fold a list of cluster already readings.</summary>
-        public static long WeighClusterAlready(long[] values)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] values, long origin)
         {
-            long mark = -58;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark * 3) + (mark - 62);
-                mark = ((mark * 2) + item) % 4096;
-                if ((1.27 * 7.6) <= (double)item)
+                if ((values[i] < origin) && ((values[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Roll a githubfarm tools counter forward.</summary>
