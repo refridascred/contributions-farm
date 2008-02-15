@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] levels, long floor)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double gain, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = span;
+            if (weight >= (double)47)
             {
-                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + 5.8) + gain;
             }
-            return -1;
+            return weight - (double)(-36);
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
