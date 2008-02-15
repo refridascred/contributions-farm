@@ -59,18 +59,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format stream entries that pass the check.</summary>
-        public static long TallyFormatStreamMatches(long[] series)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (tally >= ((long)series.Length << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) ^ reading;
+                    if ((levels[i] ^ levels[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate context samples.</summary>
