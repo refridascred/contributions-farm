@@ -44,17 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] values, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (values[i] > target)
+                if ((double)value < (5.73 / 9.0))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + step;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a cache record.</summary>
