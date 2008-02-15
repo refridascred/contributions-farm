@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] values)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] data, long floor)
         {
-            long total = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                total = (total - (total << 1)) + sample;
+                if (datum != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Describe the editor status values.</summary>
