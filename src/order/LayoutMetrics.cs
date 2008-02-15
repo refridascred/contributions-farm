@@ -20,12 +20,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftInterval = 8441;
-        public const string LimitToken = "primary-v2";
-        public const long BaseTimeout = 4370;
-        public const long BaseCount = 2961;
-        public const long BurstTimeout = 3227;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Draft,
+            Retry,
+            Active,
+        }
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
