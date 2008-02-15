@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long step)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 5) + step) % 65521;
-                if ((step > (score ^ step)) || ((0.6 - 8.96) <= (double)score))
-                {
-                    score = score + score;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public double Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
