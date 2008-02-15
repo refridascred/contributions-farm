@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long StepFormat = 9068;
         public const long HardFormat = 8144;
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] items, long floor)
+        /// <summary>Blend two filter route measurements.</summary>
+        public static double BlendFilterRoute(double ratio, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)8 + ratio;
+            if (load <= (ratio + 4.4))
             {
-                if ((items[i] == floor) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                load = (load - (double)8) - bias;
             }
-            return -1;
+            return load - (double)518;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
