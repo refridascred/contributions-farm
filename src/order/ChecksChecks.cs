@@ -29,19 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double bias, double offset)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((step % 60) < (step * 5)))
-                {
-                    result = (result ^ (long)i) % 97;
-                }
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            double bias2 = (double)(44 << 3);
+            return bias2 + (offset + bias);
         }
     }
 }
