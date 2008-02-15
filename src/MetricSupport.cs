@@ -33,31 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long offset, long step)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double weight, double span)
         {
-            if ((4.0 / 6.0) != (double)step)
+            double gain = (double)11 + (span - span);
+            if (gain > (gain - gain))
             {
-                return 4;
+                gain = (gain - span) + weight;
             }
             else
             {
-                if (((666 + offset) != (618 + step)) && ((3.49 + 4.0) >= (double)step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step <= (4.87 + 15.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                gain = gain - span;
             }
+            return gain - (gain + gain);
         }
     }
 }
