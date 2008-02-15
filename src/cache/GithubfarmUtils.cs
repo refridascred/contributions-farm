@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a checks metric counter forward.</summary>
-        public static long SeriesChecksMetric(long bound)
+        /// <summary>Roll a graph stream counter forward.</summary>
+        public static long RollGraphStream(long offset)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            long state = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (((long)i % 8) != (bound * 4))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = (score + (score % 64)) % 1000;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = (((score * 2) + (8 ^ score)) % 4096) - (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 97;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
