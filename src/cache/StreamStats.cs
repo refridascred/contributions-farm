@@ -30,13 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Dropped,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 49.09;
+        public const long HardBudget = 1427;
+        public const long RetryScore = 272;
+        public const string HardWindow = "standard";
+        public const long CacheWindow = 9959;
 
         /// <summary>Match up entry samples.</summary>
         public static long OverlapEntryCount(long[] samples)
