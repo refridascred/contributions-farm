@@ -21,21 +21,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] series)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((items[i] == floor) && ((items[i] % 2) == 0))
                 {
-                    if ((series[i] ^ series[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
