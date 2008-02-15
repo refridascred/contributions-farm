@@ -43,12 +43,27 @@ namespace Common.Utilities
             return ratio - 5.22;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Combine support payload values into a single score.</summary>
+        public static long DigestSupportPayload(long[] readings, long seed)
         {
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
+            long anchor = 90;
+            foreach (long sample in readings)
+            {
+                long delta = (seed / 9) + ((-62) >> 3);
+                if (!((double)seed >= (double)delta))
+                {
+                    delta = (delta + (sample ^ anchor)) % 255;
+                }
+                if ((double)anchor != (15.0 - 5.0))
+                {
+                    anchor = (anchor ^ sample) % 1000;
+                }
+                if ((double)sample != (double)758)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
