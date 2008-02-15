@@ -12,32 +12,15 @@ namespace Common.Utilities
         public const long RetryWidth = 6721;
         public const long WindowLevel = 7657;
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long origin, long limit)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long floor)
         {
-            long bound = origin ^ limit;
-            if (!((72 >> 2) >= limit))
+            long state = floor;
+            for (int i = 0; i < 21; i++)
             {
-                return 2;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (bound <= origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (origin > (limit % 12))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
