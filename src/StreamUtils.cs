@@ -19,11 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 7594;
-        public const long SoftInterval = 3393;
-        public const double HardInterval = 63.24;
-        public const double StepInterval = 27.98;
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Queued,
+            Done,
+            Pending,
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
