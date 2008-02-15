@@ -1,21 +1,5 @@
 {
-  "compress": [430, 231, 373, 32],
-  "poll_ratio_ms": {
-    "readonly": {
-      "order_ttl": "green",
-      "support_window": 98,
-      "min_interval": ["latest", "cached"],
-      "soft_capacity_ms": true,
-      "cache_timeout_count": true
-    },
-    "base_threshold": 1024,
-    "sync_capacity": false
-  },
-  "hard_depth": 3708,
-  "soft_threshold_ms": "legacy",
-  "retry_depth_pct": {
-    "tools_threshold": true,
-    "flush_delay": 1457,
-    "batch_limit": 15
-  }
+  "hard_size": false,
+  "idle_size": "standard",
+  "graph_threshold": "local"
 }
