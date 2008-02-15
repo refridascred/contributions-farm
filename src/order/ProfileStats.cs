@@ -45,21 +45,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] series)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
     }
 }
