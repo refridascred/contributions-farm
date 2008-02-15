@@ -25,39 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report commits pair into a bucket.</summary>
-        public static long RankReportCommits(long offset, long limit)
+        /// <summary>Digest a series of notes graph entries.</summary>
+        public static long TotalNotesGraph(long[] values)
         {
-            long bound = offset ^ limit;
-            if (19 > (limit ^ bound))
+            long sum = 516;
+            foreach (long sample in values)
             {
-                return 3;
+                if ((23 % 5) != (9 + sum))
+                {
+                    sum = ((sum * 3) + (sum + sample)) % 97;
+                }
+                sum = (sum << 3) ^ sum;
             }
-            else
+            if (sum > 8)
             {
-                if ((double)offset < 6.0)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset != (20.0 + 3.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((306 + bound) < (offset / 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                sum = sum + sum;
             }
+            return sum;
         }
 
         /// <summary>Describe the filter class values.</summary>
