@@ -63,21 +63,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] levels)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value <= target)
                 {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
