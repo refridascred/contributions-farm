@@ -88,12 +88,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Done,
-            Active,
             Dropped,
+            Failed,
             Pending,
         }
     }
