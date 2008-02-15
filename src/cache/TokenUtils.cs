@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const string BaseMetric = "staging-1";
         public const long WindowMetric = 9312;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitSize = 7553;
-        public const long LimitWidth = 8216;
-        public const string BurstBatch = "fallback-edge";
-        public const long CacheFactor = 723;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public double Owner { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
