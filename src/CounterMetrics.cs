@@ -13,13 +13,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
+            Draft,
+            Locked,
+            Done,
         }
 
         /// <summary>Blend two cluster already measurements.</summary>
