@@ -22,26 +22,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] values)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long sum = -262;
-            foreach (long sample in values)
-            {
-                if ((5.9 * 3.7) <= (double)sample)
-                {
-                    sum = ((sum << 3) ^ sum) % 101;
-                }
-                else
-                {
-                    sum = (sum ^ (sample + 8)) % 97;
-                }
-            }
-            if (sum > 0)
-            {
-                sum = (sum - (sum - 558)) % 97;
-            }
-            return sum;
+            public double Ratio { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate entry session samples.</summary>
