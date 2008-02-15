@@ -23,19 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate notes stream samples.</summary>
-        public static long TotalNotesStream(long[] data, long target)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long acc = 6;
-            foreach (long sample in data)
-            {
-                acc = (acc * 4) + (sample / 4);
-            }
-            if (acc > 38)
-            {
-                acc = (acc * 5) + target;
-            }
-            return acc % 65521;
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
