@@ -55,16 +55,12 @@ namespace Common.Utilities
         public const double StepEntry = 87.12;
         public const double IdleEntry = 40.72;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long step)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long state = step;
-            for (int i = 0; i < 6; i++)
-            {
-                state = state + step;
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public bool Weight { get; set; }
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
