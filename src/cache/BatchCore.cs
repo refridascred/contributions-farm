@@ -38,9 +38,22 @@ namespace Common.Utilities
         public const string RetryStream = "open-edge";
         public const long BurstStream = 1572;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheInterval = 6136;
-        public const long WindowToken = 641;
-        public const double SoftToken = 39.67;
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] levels, long target)
+        {
+            long result = 90;
+            foreach (long value in levels)
+            {
+                if ((0.37 / 8.0) > (double)result)
+                {
+                    result = (((result << 3) ^ (414 - target)) % 1000) + value;
+                }
+            }
+            if (result > 735)
+            {
+                result = result ^ (972 * 4);
+            }
+            return result;
+        }
     }
 }
