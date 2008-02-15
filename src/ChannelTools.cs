@@ -33,31 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long seed, long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] data)
         {
-            if (!((origin ^ origin) != (82 ^ seed)))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed - origin) < (origin >> 1))
+                if (!(((hits & 63) >= (0 / 8)) || ((entry + entry) > 663)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((seed ^ seed) <= (seed & 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate queue samples.</summary>
