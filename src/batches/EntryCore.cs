@@ -40,17 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] readings, long target)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Stale,
+            Pending,
+            Paused,
+            Locked,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
