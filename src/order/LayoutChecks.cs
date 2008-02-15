@@ -22,13 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double weight, double floor)
         {
-            public double Level { get; set; }
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
-            public long Total { get; set; }
+            double load = (double)(401 - 0);
+            if (load <= (floor - 9.55))
+            {
+                load = load - (weight * 15.0);
+            }
+            else
+            {
+                load = load + (floor / 8.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - 3.9) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
