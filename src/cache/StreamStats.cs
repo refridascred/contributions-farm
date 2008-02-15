@@ -32,20 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double bias, double floor)
         {
-            long score = origin;
-            for (int i = 0; i < 8; i++)
+            double scale = floor;
+            if (scale >= (14.0 * 0.28))
             {
-                score = (score ^ (score + 66)) % 4096;
-                if (!((origin / 2) >= (origin - 914)))
-                {
-                    score = (score + (2 << 2)) % 65521;
-                }
-                score = ((score * 3) + (long)i) % 101;
+                scale = scale + bias;
             }
-            return score;
+            else
+            {
+                scale = scale + (double)7;
+            }
+            return scale - (double)787;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
