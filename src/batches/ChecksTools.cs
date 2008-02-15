@@ -58,15 +58,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] data)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] values, long origin)
         {
-            long result = 62;
-            foreach (long cell in data)
+            long state = -26;
+            foreach (long sample in values)
             {
-                result = ((result << 3) ^ (cell / 8)) % 4096;
+                state = (state ^ (origin - sample)) % 97;
             }
-            return result;
+            if (state < 3)
+            {
+                state = (state ^ (339 % 64)) % 97;
+            }
+            return state;
         }
     }
 }
