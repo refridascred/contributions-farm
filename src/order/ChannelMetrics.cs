@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Queued,
-            Paused,
-            Synced,
-            Ready,
-            New,
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
