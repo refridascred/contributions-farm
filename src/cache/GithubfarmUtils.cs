@@ -15,18 +15,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] samples, long target)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double weight, double span)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            double scale = (weight + 3.9) * 11.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (!((1 - target) >= matches) || ((double)target <= (double)485))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
+                scale = (scale + span) + (double)(long)i;
             }
-            return matches;
+            return scale - (weight - scale);
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
