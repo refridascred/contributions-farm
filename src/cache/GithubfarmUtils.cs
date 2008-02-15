@@ -63,13 +63,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
-            public long Score { get; set; }
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
