@@ -27,18 +27,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] values, long limit)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((190 ^ sample) != (3 * 5))
-                {
-                    matches = (matches + 3) + limit;
-                }
-            }
-            return matches;
+            public bool Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
