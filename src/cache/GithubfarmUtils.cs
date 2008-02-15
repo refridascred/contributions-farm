@@ -35,38 +35,13 @@ namespace Common.Utilities
         public const string RetryBudget = "open-edge";
         public const long MinQueue = 1293;
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long offset, long step)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            if ((double)offset <= (9.0 / 4.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step * 4) <= (offset ^ offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + step) > (step + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset > (-263)) && ((offset << 2) > (offset % 97)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Locked,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
