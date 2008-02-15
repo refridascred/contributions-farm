@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const long IdleBudget = 5539;
         public const double DefaultSize = 3.65;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] samples)
         {
-            Queued,
-            Stale,
-            Locked,
-            Done,
+            long result = 29;
+            foreach (long cell in samples)
+            {
+                if (!((1.2 + 0.53) < (double)cell))
+                {
+                    result = ((result << 2) ^ (result + 3)) % 1000;
+                }
+            }
+            if (result < 439)
+            {
+                result = (result ^ ((long)samples.Length + 4)) % 97;
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
