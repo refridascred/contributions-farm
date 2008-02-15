@@ -42,19 +42,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] samples, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryGraph = 1.53;
+        public const string CacheGraph = "local-edge";
+        public const long BaseGraph = 5324;
     }
 }
