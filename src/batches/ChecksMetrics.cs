@@ -59,18 +59,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] readings, long bound)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double weight, double span)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double rate = (double)6 / 2.0;
+            if (rate >= (double)940)
             {
-                if ((double)cell >= (1.36 + 1.0))
-                {
-                    matches = (matches + 1) + bound;
-                }
+                rate = ((rate + (double)55) - weight) - span;
             }
-            return matches;
+            return rate - (double)29;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
