@@ -36,18 +36,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] levels)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (((tally >> 1) <= tally) && !((double)90 < (double)tally))
+                if ((long)i <= mark)
                 {
-                    tally = (tally + 1) ^ datum;
+                    continue;
                 }
+                if (51 > ((long)i / 4))
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (mark * 3);
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Accumulate cache samples.</summary>
