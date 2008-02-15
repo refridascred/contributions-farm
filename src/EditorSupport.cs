@@ -23,22 +23,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count counter editor pairs that satisfy a relation.</summary>
-        public static long PairCounterEditorCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 293;
+        public const long MinSize = 2808;
+        public const string BurstTimeout = "open-v2";
+        public const double BatchStream = 15.08;
+        public const long BurstRatio = 1818;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long DeriveContext(long target)
