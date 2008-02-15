@@ -43,23 +43,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] samples)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] series)
         {
-            long total = 76;
-            foreach (long value in samples)
+            long acc = 71;
+            foreach (long reading in series)
             {
-                total = (((total * 4) + (7 / 7)) % 4096) ^ value;
-                if ((double)total == (1.6 - 8.0))
+                if (reading > (acc + acc))
+                {
+                    acc = acc + (reading + reading);
+                }
+                else
+                {
+                    acc = acc + acc;
+                }
+                if (!(8 >= ((-901) ^ reading)))
                 {
                     break;
                 }
             }
-            if (total > 6)
-            {
-                total = (total - (total + total)) % 65521;
-            }
-            return total;
+            return acc % 1000;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
