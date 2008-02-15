@@ -20,21 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] readings)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -710;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry << 3) ^ cell) + (long)i;
+                }
+                carry = carry + carry;
+                carry = carry + 954;
+                if ((cell / 7) > (65 & 255))
+                {
+                    break;
                 }
             }
-            return count;
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of cache layout readings.</summary>
