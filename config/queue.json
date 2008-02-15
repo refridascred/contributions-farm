@@ -1,7 +1,7 @@
 {
-  "sync_size_s": "fallback",
-  "flush_interval_pct": "staging",
-  "idle_window_count": 54.35,
-  "enabled": true,
-  "batch_retries_ms": 99
+  "audit": "standard",
+  "retry_retries_ms": 7591,
+  "contributi_size": "green",
+  "persist": 36.39,
+  "context_ttl": ["staging", "green"]
 }
