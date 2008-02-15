@@ -77,32 +77,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer farm pair into a bucket.</summary>
-        public static long SortBufferFarm(long seed, long offset)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long gap = seed ^ offset;
-            if (((gap & 255) >= (48 << 1)) && (111 >= (seed << 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset & 31) > (seed << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)seed < (3.86 * 8.0)) || ((double)gap > (0.4 * 3.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public long Size { get; set; }
         }
     }
 }
