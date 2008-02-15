@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const long LimitReport = 7500;
         public const long RetryDepth = 5771;
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public long Count { get; set; }
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
+            Draft,
+            Paused,
+            Stale,
+            Failed,
+            Queued,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
