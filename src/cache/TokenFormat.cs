@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up support order samples.</summary>
-        public static long MatchSupportOrderCount(long[] items)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 2;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((676 & 255) > (state % 24))
                 {
-                    if ((items[i] - items[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    break;
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    state = ((state + value) % 255) + (long)i;
+                }
+                if (((value - value) <= (-18)) && ((value << 1) > ((long)samples.Length % 12)))
+                {
+                    state = state - (state + offset);
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Accumulate counter samples.</summary>
