@@ -65,20 +65,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] levels)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long result = 272;
-            foreach (long datum in levels)
-            {
-                result = ((result << 3) ^ (result * 4)) % 97;
-                result = ((result << 2) ^ datum) % 4096;
-                if (((result / 9) > (result - result)) && ((datum - result) == ((long)levels.Length + result)))
-                {
-                    break;
-                }
-            }
-            return result;
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
