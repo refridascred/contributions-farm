@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] readings)
         {
-            Draft,
-            New,
-            Idle,
+            long state = 9;
+            foreach (long cell in readings)
+            {
+                state = ((state * 2) + state) % 255;
+                state = (state - (cell << 2)) % 97;
+                state = (state - (state >> 1)) % 97;
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the support status values.</summary>
