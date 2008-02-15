@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] samples, long limit)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long sum = 340;
-            foreach (long value in samples)
-            {
-                if ((limit % 7) <= (sum / 7))
-                {
-                    sum = sum - (sum / 8);
-                }
-                else
-                {
-                    sum = (sum ^ (limit >> 4)) % 1000;
-                }
-                if ((value - sum) < (sum + 165))
-                {
-                    break;
-                }
-            }
-            if (sum < 498)
-            {
-                sum = sum + limit;
-            }
-            return sum;
+            Stale,
+            Pending,
+            Idle,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
