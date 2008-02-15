@@ -33,13 +33,15 @@ namespace Common.Utilities
         public const long SoftChecks = 5510;
         public const long BatchChecks = 9182;
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double gain, double span)
         {
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
+            double bias = gain;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = ((bias - (gain + 3.9)) - (double)(long)i) - span;
+            }
+            return bias + (double)68;
         }
     }
 }
