@@ -1,15 +1,12 @@
 # Command notes
 
-Keep layout and report names short and lowercase.
-Run the session check before changing any support limits.
-Run the session check before changing any channel limits.
-
-The token module keeps route values in sync with the route cache.
-Use githubfarm settings to tune how often account data is refreshed.
-When a metrics fails, the filter handler retries a few times before giving up.
+Each already is validated before it reaches the profile queue.
+The tools module keeps layout values in sync with the graph cache.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every counter change
-- Keep order values small
-- Document new window fields
+- Keep tools values small
+- Document new format fields
+- Prefer layout defaults
+- Log every notes change
