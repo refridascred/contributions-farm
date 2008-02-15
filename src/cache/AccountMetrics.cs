@@ -80,11 +80,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
