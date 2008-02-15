@@ -30,11 +30,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] values, long step)
         {
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
