@@ -30,9 +30,17 @@ namespace Common.Utilities
         public const long DefaultBatch = 7342;
         public const long MaxBatch = 6782;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleStream = 18.9;
-        public const string WindowStream = "stable";
-        public const string CacheStream = "local-v2";
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
