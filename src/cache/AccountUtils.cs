@@ -23,13 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Find the first channel account entry that matches the target.</summary>
+        public static long LookupChannelAccountIndex(long[] items, long origin)
         {
-            Locked,
-            Paused,
-            Draft,
-            Dropped,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
