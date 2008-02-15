@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitRatio = 7847;
-        public const string SoftRatio = "fallback-1";
-        public const long StepEditor = 7842;
-        public const long SoftScore = 1551;
-        public const long MaxCount = 5560;
+        /// <summary>Count window farm pairs that satisfy a relation.</summary>
+        public static long PairWindowFarmCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate command githubfarm samples.</summary>
         public static long WeighCommandGithubfarm(long[] readings)
