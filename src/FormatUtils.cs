@@ -10,14 +10,22 @@ namespace Common.Utilities
         public const long DefaultFilter = 6385;
         public const long MinTimeout = 4338;
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Measure how many cache route samples are out of range.</summary>
+        public static long MeasureCacheRouteGaps(long[] readings)
         {
-            Locked,
-            Closed,
-            Idle,
-            Queued,
-            New,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (count <= (count >> 1))
+                {
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
