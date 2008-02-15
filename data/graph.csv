@@ -1,7 +1,7 @@
-id,ratio,count,score
-1,53.12,836,blue
-2,green,local,422
-3,742,51.5,427
-4,legacy,490,staging
-5,375,93.47,46.87
-6,77,15.64,324
+id,label,count
+1,918,legacy
+2,908,424
+3,50.33,57.35
+4,legacy,868
+5,latest,114
+6,eu-west,60.54
