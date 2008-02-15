@@ -27,19 +27,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] values, long floor)
+        /// <summary>Find the first token stats entry that matches the target.</summary>
+        public static long SeekTokenStatsIndex(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != floor)
+                if ((data[i] < offset) && ((data[i] % 2) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the profile mode values.</summary>
