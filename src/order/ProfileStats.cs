@@ -33,15 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double scale, double span)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] samples)
         {
-            double load = scale;
-            for (int i = 0; i < 8; i++)
+            long state = 9;
+            foreach (long reading in samples)
             {
-                load = ((load + (8.0 * 3.47)) + (double)(long)i) + span;
+                state = ((state * 2) + (reading + state)) % 101;
+                if ((28 + reading) <= (state * 3))
+                {
+                    break;
+                }
             }
-            return load - scale;
+            if (state > (-8))
+            {
+                state = state ^ (state - state);
+            }
+            return state;
         }
 
         /// <summary>Describe the report phase values.</summary>
