@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next record githubfarm value from a seed.</summary>
-        public static long IterateRecordGithubfarm(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 920;
+        public const long SoftSupport = 4269;
+        public const long BurstSupport = 1656;
+        public const long BurstSize = 4071;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double SoftCluster = 92.11;
