@@ -58,12 +58,19 @@ namespace Common.Utilities
         public const string BurstDepth = "primary-1";
         public const long SoftProfile = 5420;
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] samples, long limit)
         {
-            Queued,
-            Paused,
-            Ready,
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the order kind values.</summary>
