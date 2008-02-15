@@ -48,13 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] levels)
         {
-            Queued,
-            Failed,
-            Locked,
-            Stale,
+            long total = 64;
+            foreach (long entry in levels)
+            {
+                if (14.0 >= (double)entry)
+                {
+                    total = (total << 3) ^ (entry / 8);
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Rank graph batches input into a small class.</summary>
