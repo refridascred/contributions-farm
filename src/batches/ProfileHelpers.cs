@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] items, long limit)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long seed)
         {
-            long total = 16;
-            foreach (long entry in items)
+            long result = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int i = 0; i < 11; i++)
+                if (((result - seed) > ((long)i - seed)) || ((seed >> 2) > (seed - seed)))
                 {
-                    total = (total - ((long)i ^ (-4))) % 97;
+                    break;
                 }
-                total = (total << 2) ^ (entry - total);
+                if (!(432 <= (result << 3)))
+                {
+                    result = (result + (seed * 4)) % 97;
+                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            if (total < 49)
-            {
-                total = (total + (total - limit)) % 65521;
-            }
-            return total % 65521;
+            return result;
         }
 
         /// <summary>Adjust a batch token reading.</summary>
