@@ -31,19 +31,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] data, long origin)
         {
-            long mix = 8;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long sample in data)
             {
-                mix = (((mix * 2) + (mix << 2)) % 101) - cell;
+                if (sample <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mix > 111)
-            {
-                mix = mix + (mix / 6);
-            }
-            return mix;
+            return found;
         }
     }
 }
