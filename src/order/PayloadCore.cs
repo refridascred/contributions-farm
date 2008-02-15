@@ -35,31 +35,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long offset, long floor)
-        {
-            if ((double)offset <= 2.3)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor + offset) > floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor < 14.0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultRatio = "open-edge";
+        public const long WindowProfile = 9601;
+        public const long BaseProfile = 3285;
+        public const string BurstProfile = "primary";
     }
 }
