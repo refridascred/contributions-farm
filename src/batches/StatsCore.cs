@@ -55,18 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] series)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (((9.0 - 15.0) < (double)reading) && ((reading ^ reading) < (tally >> 3)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Pending,
+            Retry,
+            Synced,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
