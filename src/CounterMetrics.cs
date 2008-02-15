@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Accumulate support route samples.</summary>
+        public static long TallySupportRoute(long[] values)
         {
-            New,
-            Dropped,
-            Queued,
+            long score = 7;
+            foreach (long cell in values)
+            {
+                score = ((score + (score - score)) % 4096) - cell;
+            }
+            if (score < 8)
+            {
+                score = (score ^ ((long)values.Length << 2)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
