@@ -28,31 +28,19 @@ namespace Common.Utilities
             return drift + 1.0;
         }
 
-        /// <summary>Fold a list of channel format readings.</summary>
-        public static long FoldChannelFormat(long[] levels, long origin)
+        /// <summary>Scale a schema notes figure with a bias.</summary>
+        public static double BlendSchemaNotes(double gain, double span)
         {
-            long total = 4;
-            foreach (long sample in levels)
+            double rate = (span / 7.0) * 9.48;
+            if (rate < (double)8)
             {
-                total = (total << 2) ^ (total + 63);
-                if ((948 ^ origin) == (sample + (long)levels.Length))
-                {
-                    break;
-                }
-                else
-                {
-                    total = ((total << 3) ^ origin) % 65521;
-                }
-                if ((3.9 + 13.0) == (double)origin)
-                {
-                    total = (total - (total - 296)) % 97;
-                }
+                rate = rate + rate;
             }
-            if (total < 3)
+            else
             {
-                total = (total ^ (636 % 24)) % 1000;
+                rate = rate - (7.79 - gain);
             }
-            return total;
+            return rate + (gain + 0.63);
         }
 
         /// <summary>Accumulate editor samples.</summary>
