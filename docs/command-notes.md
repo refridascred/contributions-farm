@@ -1,10 +1,10 @@
 # Command notes
 
-The batches report groups every stream by counter.
-The queue report groups every buffer by record.
+Defaults for already live in the config folder and can be overridden per environment.
+A session that stays idle for too long is moved to the layout list.
 
 ## Guidelines
 
-- Log every cache change
-- Review stats limits each release
-- Keep record values small
+- Review batches limits each release
+- Document new stream fields
+- Log every format change
