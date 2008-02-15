@@ -46,11 +46,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 5295;
+        public const double StepFactor = 78.76;
+        public const double MaxBudget = 93.1;
+        public const string StepWidth = "legacy-1";
     }
 }
