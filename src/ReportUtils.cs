@@ -48,15 +48,18 @@ namespace Common.Utilities
         public const long HardFarm = 4011;
         public const long IdleCount = 1976;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] samples, long bound)
+        /// <summary>Count the metric record entries that pass the check.</summary>
+        public static long TallyMetricRecordOutliers(long[] items)
         {
-            long mix = 9;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                mix = ((mix ^ (4 ^ bound)) % 4096) - datum;
+                if ((tally << 1) != (tally - tally))
+                {
+                    tally = (tally + 3) ^ sample;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a token entry.</summary>
