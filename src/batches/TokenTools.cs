@@ -24,23 +24,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Adjust a metric editor reading.</summary>
-        public static double AdjustMetricEditor(double scale, double bias)
+        /// <summary>Roll a batch format counter forward.</summary>
+        public static long IterateBatchFormat(long seed)
         {
-            double ratio = scale - 4.74;
-            if (ratio <= (ratio * 8.2))
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                ratio = ratio - (double)441;
+                anchor = ((anchor << 3) ^ (anchor << 3)) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            else
-            {
-                ratio = ratio + (double)(-30);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (bias + ratio)) - (double)(long)i;
-            }
-            return ratio - 5.22;
+            return anchor;
         }
 
         /// <summary>Combine support payload values into a single score.</summary>
