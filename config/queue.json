@@ -1,8 +1,18 @@
 {
-  "batch_limit_s": false,
-  "readonly": 39.83,
-  "hard_timeout_s": ["staging", "open"],
-  "editor_interval": true,
-  "warm_size_pct": "open",
-  "retry_timeout_ms": 0.38
+  "batch_interval": {
+    "base_retries_s": "stable",
+    "token_size": [316, 160],
+    "stats_capacity": "open",
+    "audit": false
+  },
+  "persist": {
+    "flush_capacity": 36.4,
+    "checks_size": "fallback",
+    "dry_run": 60,
+    "verbose": 5055,
+    "readonly": true
+  },
+  "retry_ttl_pct": true,
+  "audit": 500,
+  "poll_ratio_pct": [322, 320, 28, 96]
 }
