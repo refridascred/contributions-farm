@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate batch graph readings against a bound.</summary>
-        public static bool ValidateBatchGraphRange(long[] data, long offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Failed,
+            Queued,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
