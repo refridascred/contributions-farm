@@ -1,5 +1,5 @@
 {
-  "max_threshold_pct": "open",
-  "warm_retries_pct": false,
-  "warm_window": "eu-west"
+  "default_limit_ms": "primary",
+  "dry_run": 75.24,
+  "idle_limit_pct": 85.27
 }
