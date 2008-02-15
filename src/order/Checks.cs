@@ -83,12 +83,9 @@ namespace Common.Utilities
         public const long BurstToken = 4545;
         public const double CacheToken = 37.67;
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double IdleTools = 6.94;
+        public const double StepRatio = 55.09;
+        public const string StepTimeout = "local-v2";
     }
 }
