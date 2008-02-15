@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate format githubfarm readings against a bound.</summary>
-        public static bool GuardFormatGithubfarmBounds(long[] data, long floor)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Active,
+            New,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
