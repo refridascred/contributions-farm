@@ -72,13 +72,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public bool Limit { get; set; }
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double HardRatio = 1.04;
+        public const long WindowSupport = 8252;
+        public const long BaseBudget = 5716;
+        public const long CacheScore = 6645;
     }
 }
