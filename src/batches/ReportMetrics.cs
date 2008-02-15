@@ -13,10 +13,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 6373;
-        public const long CacheSpan = 5854;
-        public const string CacheFactor = "stable-edge";
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((matches << 1) < matches)
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long DigestAlready(long[] samples)
