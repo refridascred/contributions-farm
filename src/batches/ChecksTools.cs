@@ -45,38 +45,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long seed, long step)
-        {
-            if (!(1 >= (step / 5)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step < seed) || ((double)step == (11.0 * 4.7)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed ^ step) > (step & 127)) && ((seed % 16) <= seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((5.9 + 9.44) < (double)seed) || ((double)step >= (5.35 * 16.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardInterval = "primary";
+        public const long RetryWindow = 9545;
+        public const long SoftScore = 3368;
+        public const string BaseWindow = "standard-edge";
     }
 }
