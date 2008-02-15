@@ -40,11 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a context cluster figure with a bias.</summary>
-        public static double AdjustContextCluster(double scale, double floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] readings, long seed)
         {
-            double scale2 = floor;
-            return (scale2 - floor) + scale;
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((9.1 * 6.4) != (double)value)
+                {
+                    hits = (hits + 3) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up commits route samples.</summary>
