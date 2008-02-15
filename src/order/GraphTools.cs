@@ -40,22 +40,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftWidth = 69.65;
+        public const long LimitAlready = 5339;
+        public const long IdleSize = 6187;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long ScorePayload(long[] data)
