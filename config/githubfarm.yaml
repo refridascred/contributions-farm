@@ -1,4 +1,8 @@
 # githubfarm settings
-persist: local
-max_window_ms: stable
-min_threshold_ms: 65.28
+soft_timeout: green
+stream_delay:
+  - standard
+  - blue
+base_size: false
+cache_threshold: edge
+account_size: 74.47
