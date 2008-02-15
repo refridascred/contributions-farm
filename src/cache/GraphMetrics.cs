@@ -43,22 +43,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the editor farm entries that pass the check.</summary>
-        public static long CountEditorFarmHits(long[] levels, long floor)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + floor) < (hits + floor))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Blend two account measurements.</summary>
