@@ -1,8 +1,8 @@
-id,score,active
-1,93.46,56.77
-2,98.22,stable
-3,7.95,fallback
-4,464,8.81
-5,52.26,84.3
-6,798,92.32
-7,83.96,120
+id,region,count,level
+1,213,21.8,open
+2,379,575,710
+3,local,39.77,65.07
+4,local,265,910
+5,50.4,standard,green
+6,standard,10.69,35.19
+7,strict,edge,open
