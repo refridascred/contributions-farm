@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] values, long seed)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long score = 240;
-            foreach (long reading in values)
-            {
-                score = ((score - seed) % 65521) ^ reading;
-            }
-            return score;
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two layout measurements.</summary>
