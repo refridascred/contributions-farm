@@ -25,16 +25,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long result = 4;
-            foreach (long cell in series)
-            {
-                result = ((result << 3) ^ (cell + cell)) % 97;
-                result = (result + (result >> 5)) % 1000;
-            }
-            return result % 4096;
+            Done,
+            New,
+            Draft,
+            Closed,
+            Ready,
         }
 
         /// <summary>Describe the already state values.</summary>
