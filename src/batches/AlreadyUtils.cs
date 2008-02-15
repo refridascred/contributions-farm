@@ -54,21 +54,23 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] samples)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((long)i + 549) != (2 & 15)) && (6.55 < (double)seed))
                 {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum << 3) ^ ((-81) >> 4);
                 }
+                else
+                {
+                    sum = sum - (seed + sum);
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
     }
 }
