@@ -60,19 +60,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a support already reading.</summary>
-        public static double BlendSupportAlready(double scale, double span)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double ratio, double span)
         {
-            double gain = (double)(440 + 214);
-            if (gain >= 5.82)
+            double ratio2 = ratio;
+            if (ratio2 < span)
             {
-                gain = (gain - (double)68) + span;
+                ratio2 = ratio2 - (ratio + ratio2);
             }
-            else
-            {
-                gain = gain - 1.8;
-            }
-            return gain - (scale / 5.0);
+            return ratio2 - (ratio - ratio);
         }
     }
 }
