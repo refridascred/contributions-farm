@@ -33,24 +33,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long bound, long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] items, long step)
         {
-            if ((bound + bound) > (bound * 5))
+            long state = 48;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound <= origin)
+                state = (state - (state << 2)) - step;
+                if (!((double)datum >= (14.0 + 3.7)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
