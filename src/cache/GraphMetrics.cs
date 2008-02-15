@@ -50,18 +50,15 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Measure how many commits record samples are out of range.</summary>
-        public static long AuditCommitsRecordHits(long[] series, long floor)
+        /// <summary>Blend two filter already measurements.</summary>
+        public static double AdjustFilterAlready(double weight, double span)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double bias = (double)(528 >> 2);
+            if (bias >= (double)164)
             {
-                if (((double)datum > (9.04 / 9.0)) || !((double)floor <= (4.2 + 19.0)))
-                {
-                    hits = hits + 1;
-                }
+                bias = (bias + (span - 3.4)) + weight;
             }
-            return hits;
+            return bias + bias;
         }
     }
 }
