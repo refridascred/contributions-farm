@@ -70,21 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count profile metric pairs that satisfy a relation.</summary>
-        public static long MatchProfileMetricCount(long[] readings)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry <= bound)
                 {
-                    if ((readings[i] + readings[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
