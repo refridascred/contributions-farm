@@ -35,17 +35,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a support counter sample.</summary>
-        public static long LookupSupportCounterIndex(long[] items, long step)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = (double)3 + weight;
+            if (scale <= (weight / 5.0))
             {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
+                scale = scale + 0.35;
             }
-            return -1;
+            else
+            {
+                scale = scale - span;
+            }
+            return scale - weight;
         }
 
         /// <summary>Digest a series of route entries.</summary>
