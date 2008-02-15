@@ -52,23 +52,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] readings, long offset)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((offset * 2) > (offset + sample))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultBuffer = "standard";
+        public const string MaxBuffer = "local-v2";
+        public const long RetryTimeout = 7540;
 
         /// <summary>Grade a counter metric value against two limits.</summary>
         public static long ClassifyCounterMetric(long step, long origin)
