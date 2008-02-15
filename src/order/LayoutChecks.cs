@@ -73,17 +73,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] readings, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -16;
+            foreach (long item in series)
             {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - (offset + item)) % 255;
             }
-            return -1;
+            return anchor;
         }
     }
 }
