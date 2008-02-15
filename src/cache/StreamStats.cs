@@ -13,26 +13,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long origin, long target)
-        {
-            long next = origin ^ target;
-            if (target < (next / 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin % 24) > (next / 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitTimeout = 40.12;
+        public const long MaxReport = 3049;
+        public const long RetryReport = 3428;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double LimitWindow = 49.09;
