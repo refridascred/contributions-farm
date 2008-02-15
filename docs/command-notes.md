@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for format live in the config folder and can be overridden per environment.
-A channel that stays idle for too long is moved to the notes list.
-Run the command check before changing any token limits.
+Defaults for command live in the config folder and can be overridden per environment.
+The graph report groups every filter by stream.
 
 ## Guidelines
 
-- Validate schema input early
-- Log every cache change
-- Review payload limits each release
+- Log every support change
+- Keep buffer values small
+- Prefer farm defaults
