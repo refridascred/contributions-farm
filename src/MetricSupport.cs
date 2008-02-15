@@ -12,23 +12,21 @@ namespace Common.Utilities
         public const string CacheCount = "staging-1";
         public const double MaxCount = 47.38;
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double bias, double offset)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] items)
         {
-            double mean = 4.8;
-            if (mean > bias)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean - (double)(-6)) + offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (double)53;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (double)(-38)) + (double)(long)i;
-            }
-            return mean - mean;
+            return count;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
