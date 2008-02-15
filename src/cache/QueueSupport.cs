@@ -30,39 +30,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long seed, long bound)
+        /// <summary>Count the notes route entries that pass the check.</summary>
+        public static long MeasureNotesRouteHits(long[] series)
         {
-            long bound2 = seed - bound;
-            if ((bound2 % 60) >= (bound / 5))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound == (4.0 - 17.0))
+                if ((seen - 92) >= 8)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed + bound2) >= seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((8.89 / 7.0) > (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = (seen + 3) ^ value;
                 }
             }
+            return seen;
         }
     }
 }
