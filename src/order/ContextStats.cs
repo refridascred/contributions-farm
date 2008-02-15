@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double bias, double bias2)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long floor)
         {
-            double load = bias;
-            if (load >= (bias2 + load))
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                load = load + (double)5;
+                if ((floor >= score) && ((score / 7) == (score + floor)))
+                {
+                    score = (score * 5) + floor;
+                    continue;
+                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            else
-            {
-                load = load - (double)67;
-            }
-            return load - (load - bias2);
+            return score;
         }
 
         /// <summary>Match up notes editor samples.</summary>
