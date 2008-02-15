@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Combine already checks values into a single score.</summary>
+        public static long DigestAlreadyChecks(long[] items, long bound)
         {
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
+            long acc = 541;
+            foreach (long datum in items)
+            {
+                if (!(datum >= (datum ^ bound)))
+                {
+                    acc = (acc ^ (acc * 4)) % 1000;
+                }
+            }
+            if (acc < (-2))
+            {
+                acc = ((acc << 3) ^ (bound + bound)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a contributi notes reading.</summary>
