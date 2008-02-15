@@ -38,11 +38,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 5299;
-        public const long BatchPayload = 1995;
-        public const string WindowPayload = "fallback-1";
-        public const long HardDepth = 8350;
-        public const double RetryWidth = 37.34;
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
