@@ -56,13 +56,31 @@ namespace Common.Utilities
         public const double BatchSchema = 14.16;
         public const long StepFactor = 5937;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long step, long target)
         {
-            Retry,
-            Idle,
-            Paused,
-            Active,
+            if (!((double)step == (9.05 / 6.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((962 ^ step) > (22 + target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((9 ^ 75) <= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metrics state values.</summary>
