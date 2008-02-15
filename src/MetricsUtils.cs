@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Idle,
-            Queued,
-            Closed,
+            Draft,
+            New,
+            Pending,
+            Locked,
+            Retry,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
