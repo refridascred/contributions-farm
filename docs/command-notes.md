@@ -1,14 +1,15 @@
 # Command notes
 
-Use batch settings to tune how often session data is refreshed.
-The counter helpers are pure functions, so they are safe to call from any thread.
+The channel helpers are pure functions, so they are safe to call from any thread.
+The batch module keeps stats values in sync with the already cache.
+Run the session check before changing any filter limits.
 
-Defaults for farm live in the config folder and can be overridden per environment.
-Run the batch check before changing any context limits.
-Use metrics settings to tune how often stats data is refreshed.
+Each order is validated before it reaches the already queue.
+When a report fails, the channel handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate token input early
-- Log every batches change
-- Prefer cluster defaults
+- Document new format fields
+- Log every payload change
+- Keep farm values small
+- Validate buffer input early
