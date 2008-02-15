@@ -21,18 +21,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] levels, long floor)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((value + 3) >= (hits + hits))
-                {
-                    hits = (hits + 2) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseTimeout = 47.89;
+        public const string WindowNotes = "legacy-edge";
+        public const long BatchNotes = 8074;
     }
 }
