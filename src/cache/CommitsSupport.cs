@@ -26,22 +26,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] readings)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] readings, long bound)
         {
-            long state = -987;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9.39 * 5.15) < (double)entry)
+                if (readings[i] >= bound)
                 {
-                    state = ((state << 3) ^ entry) % 101;
+                    return (long)i;
                 }
             }
-            if (state < 258)
-            {
-                state = state + (state * 3);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a editor info.</summary>
