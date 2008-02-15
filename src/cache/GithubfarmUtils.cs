@@ -35,13 +35,12 @@ namespace Common.Utilities
         public const string RetryBudget = "open-edge";
         public const long MinQueue = 1293;
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Draft,
             Locked,
-            New,
-            Pending,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
