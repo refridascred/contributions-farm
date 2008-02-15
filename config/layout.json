@@ -1,5 +1,7 @@
 {
-  "idle_interval_ms": false,
-  "cache_window": true,
-  "min_threshold_s": 31
+  "verbose": 4442,
+  "schema_interval": ["local", "blue"],
+  "sync_ttl": true,
+  "hard_retries": "standard",
+  "batch_threshold_count": ["open", "legacy", "edge"]
 }
