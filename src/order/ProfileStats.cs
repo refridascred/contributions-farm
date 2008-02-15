@@ -31,18 +31,22 @@ namespace Common.Utilities
             return rate + (double)366;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] items)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((double)item != (7.9 + 0.14))
+                if ((2 > matches) || ((29 ^ matches) != (floor - matches)))
                 {
-                    count = count + 3;
+                    matches = (matches + 1) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
