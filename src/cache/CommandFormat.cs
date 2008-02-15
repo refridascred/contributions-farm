@@ -51,11 +51,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Classify a stats entry pair into a bucket.</summary>
+        public static long GradeStatsEntry(long target, long origin)
         {
-            public bool Count { get; set; }
-            public bool Level { get; set; }
+            if ((299 - target) >= target)
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin > target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((2.2 > (double)target) && ((target >> 3) <= (target ^ origin)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
