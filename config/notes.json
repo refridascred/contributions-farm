@@ -1,5 +1,5 @@
 {
-  "report_retries": false,
-  "flush_timeout_count": 500,
-  "schema_limit": 9545
+  "cache_ttl": "open",
+  "cache_depth_s": ["strict", "legacy", "latest"],
+  "filter_interval": false
 }
