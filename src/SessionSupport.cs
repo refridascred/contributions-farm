@@ -23,21 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of command record readings.</summary>
-        public static long OverlapCommandRecordCount(long[] readings)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Synced,
+            Locked,
+            Ready,
+            Draft,
         }
 
         /// <summary>Find the first cache support entry that matches the target.</summary>
