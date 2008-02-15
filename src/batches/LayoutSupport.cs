@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultCount = "standard-v2";
-        public const double MinSize = 72.69;
-        public const string WindowChecks = "fallback-v2";
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 5) + step) % 65521;
+                if ((step > (score ^ step)) || ((0.6 - 8.96) <= (double)score))
+                {
+                    score = score + score;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long MatchStreamCount(long[] samples)
