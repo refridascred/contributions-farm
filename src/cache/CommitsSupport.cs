@@ -16,17 +16,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Locate a graph account reading by value.</summary>
-        public static long SeekGraphAccountIndex(long[] values, long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 28;
+            foreach (long entry in data)
             {
-                if ((values[i] >= step) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = (((state << 3) ^ (287 * 5)) % 1000) + entry;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
