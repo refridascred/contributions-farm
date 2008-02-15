@@ -27,10 +27,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftFilter = "standard-edge";
-        public const long DefaultFilter = 7031;
-        public const double MaxFilter = 23.43;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Draft,
+            Closed,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
