@@ -37,11 +37,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
+            Active,
+            Draft,
+            Closed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a channel record.</summary>
