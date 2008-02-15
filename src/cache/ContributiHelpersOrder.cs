@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry ^ 219) < entry)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseRatio = 9107;
+        public const double SoftScore = 48.56;
+        public const long LimitCount = 4686;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
