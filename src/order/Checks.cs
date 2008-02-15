@@ -39,13 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            Ready,
-            Synced,
-            Active,
-            Stale,
+            public bool Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
