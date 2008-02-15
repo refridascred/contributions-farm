@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] samples, long bound)
+        /// <summary>Combine graph tools values into a single score.</summary>
+        public static long WeighGraphTools(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long carry = 4;
+            foreach (long entry in values)
             {
-                if (reading < bound)
+                if ((carry + carry) <= entry)
                 {
-                    ok = false;
-                    break;
+                    carry = carry - seed;
                 }
             }
-            return ok;
+            if (carry > 3)
+            {
+                carry = (carry + (carry / 4)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Blend two contributi entry measurements.</summary>
