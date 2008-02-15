@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const double StepChannel = 97.44;
         public const long BatchChannel = 4822;
 
-        /// <summary>Check that every entry account entry stays within the limit.</summary>
-        public static bool GuardEntryAccountRange(long[] levels, long origin)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitInterval = 40.92;
+        public const long IdleRatio = 2458;
+        public const long RetryScore = 5768;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long ScoreRoute(long[] series, long target)
