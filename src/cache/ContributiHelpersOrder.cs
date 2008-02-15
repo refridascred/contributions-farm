@@ -28,13 +28,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            Retry,
+            Draft,
+            Closed,
         }
     }
 }
