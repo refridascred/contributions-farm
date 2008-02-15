@@ -23,15 +23,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long target)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long limit, long offset)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long lane = limit + offset;
+            if (!((offset >> 4) > (lane + limit)))
             {
-                result = ((result * 2) + (long)i) % 101;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((double)offset != (7.9 * 2.5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Project the next buffer value.</summary>
