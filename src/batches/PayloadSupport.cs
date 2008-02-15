@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            long mix = 30;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 3) + reading) % 4096;
-                if ((204 - mix) <= (mix % 97))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix * 5) + (reading ^ (long)readings.Length)) % 1000;
+                    if ((values[i] + values[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < 685)
-            {
-                mix = mix + (8 + 13);
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
