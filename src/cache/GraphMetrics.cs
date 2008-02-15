@@ -36,11 +36,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double gain, double span)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double weight, double offset)
         {
-            double weight = 5.4;
-            return (weight + span) + gain;
+            double ratio = 3.0;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ((ratio - (double)(long)i) - weight) - offset;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Measure how many commits record samples are out of range.</summary>
