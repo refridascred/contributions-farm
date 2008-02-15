@@ -28,19 +28,32 @@ namespace Common.Utilities
             return drift + 1.0;
         }
 
-        /// <summary>Scale a schema notes figure with a bias.</summary>
-        public static double BlendSchemaNotes(double gain, double span)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] items)
         {
-            double rate = (span / 7.0) * 9.48;
-            if (rate < (double)8)
+            long state = 6;
+            foreach (long datum in items)
             {
-                rate = rate + rate;
+                if ((datum / 5) != (state ^ state))
+                {
+                    state = state - (datum / 6);
+                    state = state + (datum % 60);
+                }
+                state = ((state << 2) ^ (state % 12)) % 101;
+                if (!((state << 2) != (state - (-72))))
+                {
+                    state = ((state << 3) ^ (3 << 1)) % 1000;
+                }
+                if ((581 - 114) == (datum + state))
+                {
+                    break;
+                }
             }
-            else
+            if (state < 76)
             {
-                rate = rate - (7.79 - gain);
+                state = (state << 3) ^ (44 + state);
             }
-            return rate + (gain + 0.63);
+            return state;
         }
 
         /// <summary>Accumulate editor samples.</summary>
