@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] readings)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (((matches & 7) == (matches ^ matches)) && ((matches + item) >= (matches / 9)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Score { get; set; }
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
