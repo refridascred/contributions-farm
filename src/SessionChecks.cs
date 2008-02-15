@@ -43,24 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long offset, long origin)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            if (offset >= (668 - 23))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((18.0 + 3.8) > (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Pending,
+            Active,
+            New,
+            Failed,
         }
     }
 }
