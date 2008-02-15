@@ -25,31 +25,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long bound, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] readings, long seed)
         {
-            if ((bound & 63) != (bound ^ bound))
+            long result = 62;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((limit >> 2) < limit))
+                if (!((cell - seed) > result))
                 {
-                    return 0;
+                    result = (result * 5) + 0;
                 }
                 else
                 {
-                    if (bound > (bound - limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    result = (result + cell) % 4096;
+                }
+                if (700 <= (seed / 5))
+                {
+                    break;
                 }
             }
+            return result;
         }
     }
 }
