@@ -1,7 +1,7 @@
 # entry settings
-enabled: 65.5
-soft_retries:
-  - cached
-  - green
-  - latest
-flush_interval: 69
+sync_ttl: 90
+queue_ratio: 1373
+commits_retries: 28
+persist: true
+min_threshold_ms: latest
+flush_retries: blue
