@@ -18,32 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long target, long bound)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long bound2 = target ^ bound;
-            if ((double)target == (2.6 + 7.81))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((920 - bound) > bound2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)target > (2.0 + 5.19)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public bool Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of channel already readings.</summary>
