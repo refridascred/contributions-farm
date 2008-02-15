@@ -20,12 +20,18 @@ namespace Common.Utilities
         public const long BaseSpan = 1449;
         public const string IdleFactor = "standard";
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] data, long floor)
         {
-            Active,
-            Stale,
-            Closed,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((double)floor <= 17.0)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
         }
     }
 }
