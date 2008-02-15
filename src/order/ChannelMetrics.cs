@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
