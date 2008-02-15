@@ -83,9 +83,21 @@ namespace Common.Utilities
         public const long BurstToken = 4545;
         public const double CacheToken = 37.67;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double IdleTools = 6.94;
-        public const double StepRatio = 55.09;
-        public const string StepTimeout = "local-v2";
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
