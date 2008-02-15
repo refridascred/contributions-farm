@@ -29,18 +29,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] series)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long item in series)
+            long state = 159;
+            foreach (long cell in levels)
             {
-                if ((double)count == (10.0 / 6.0))
+                if ((cell >= (state << 3)) || ((double)bound > (8.0 + 0.17)))
                 {
-                    count = (count + 2) ^ item;
+                    state = (state ^ (bound + cell)) % 255;
                 }
             }
-            return count;
+            return state % 4096;
         }
     }
 }
