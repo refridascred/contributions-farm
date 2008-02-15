@@ -23,15 +23,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two contributi entry measurements.</summary>
-        public static double ProjectContributiEntry(double gain, double floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] series, long origin)
         {
-            double rate = 7.38;
-            if (rate < (rate + rate))
+            long seen = 0;
+            foreach (long item in series)
             {
-                rate = (rate - (floor / 9.0)) + gain;
+                if ((3.2 * 10.0) <= (double)origin)
+                {
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return rate + (double)366;
+            return seen;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
