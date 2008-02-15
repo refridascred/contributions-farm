@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] values, long step)
         {
-            public bool Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
