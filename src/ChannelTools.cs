@@ -18,18 +18,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the stream context entries that pass the check.</summary>
-        public static long TallyStreamContextHits(long[] series, long step)
+        /// <summary>Count the checks command entries that pass the check.</summary>
+        public static long MeasureChecksCommandGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (!((9.1 * 6.3) == (double)value) && (((hits - value) >= hits) || ((value % 5) != (hits % 60))))
+                if ((3.12 - 8.0) > (double)count)
                 {
-                    hits = (hits + 1) - step;
+                    count = (count + 3) - entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
