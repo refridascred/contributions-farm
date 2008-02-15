@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] items)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextMatches(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((9.1 + 0.3) != (double)matches)
                 {
-                    if ((items[i] - items[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) + item;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
