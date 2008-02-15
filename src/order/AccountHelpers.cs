@@ -51,17 +51,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] series)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] levels, long target)
         {
-            long anchor = 2;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                long offset = (-121) & 15;
-                anchor = (((anchor * 4) + (offset << 2)) % 255) - item;
-                anchor = ((anchor << 2) ^ 4) % 65521;
+                if (sample >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor % 65521;
+            return ready;
         }
 
         /// <summary>Classify a account metric pair into a bucket.</summary>
