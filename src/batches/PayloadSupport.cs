@@ -23,38 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long origin, long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] levels)
         {
-            if ((offset >> 1) <= (offset / 9))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((1.0 / 5.0) < (double)offset)
+                if (((double)sample >= (5.8 - 2.84)) && ((sample - tally) <= 2))
                 {
-                    return 6;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    if ((offset / 2) >= ((-99) / 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((49 - origin) < (516 - origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
