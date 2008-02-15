@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] data)
+        /// <summary>Grade a commits githubfarm value against two limits.</summary>
+        public static long BucketCommitsGithubfarm(long offset, long limit)
         {
-            long mark = 305;
-            foreach (long sample in data)
+            long delta = offset ^ limit;
+            if ((limit - offset) < (delta - 2))
             {
-                mark = ((mark ^ 6) % 101) - sample;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if (delta >= (delta << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((4.63 - 6.29) >= (double)delta)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
