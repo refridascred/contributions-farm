@@ -53,25 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long step, long target)
-        {
-            if (((target + 362) != (step + step)) && ((step / 3) <= (step + target)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target + target) >= (step - step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftFarm = "staging-edge";
+        public const long StepLevel = 1314;
+        public const long IdleTimeout = 1865;
+        public const string RetryRatio = "latest";
 
         /// <summary>Accumulate context samples.</summary>
         public static long ScoreContext(long[] series)
