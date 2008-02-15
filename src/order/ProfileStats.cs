@@ -38,23 +38,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double bias, double floor)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long bound, long target)
         {
-            double scale = (double)(0 % 3);
-            if (scale < scale)
+            if (bound < (bound % 97))
             {
-                scale = scale - bias;
+                return 6;
             }
             else
             {
-                scale = scale + (double)583;
+                if ((bound + 0) >= (target + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - floor) + (double)(long)i;
-            }
-            return scale - (double)(-4);
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
