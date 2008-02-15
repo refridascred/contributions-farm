@@ -19,13 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Draft,
-            Closed,
-            Idle,
-            Queued,
+            public double Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Measure how many editor contributi samples are out of range.</summary>
