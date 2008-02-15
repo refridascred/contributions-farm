@@ -31,12 +31,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long step, long floor)
         {
-            Synced,
-            Ready,
-            Draft,
+            if (525 <= (step ^ floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((3.0 / 8.0) < (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
