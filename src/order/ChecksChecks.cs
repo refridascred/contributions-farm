@@ -21,12 +21,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] levels, long floor)
         {
-            public string Rank { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value + 3) >= (hits + hits))
+                {
+                    hits = (hits + 2) + floor;
+                }
+            }
+            return hits;
         }
     }
 }
