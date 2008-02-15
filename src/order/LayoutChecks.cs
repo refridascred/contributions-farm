@@ -22,20 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long seed)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] levels, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((seed >> 3) <= state))
+                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
                 {
-                    state = state - (9 % 5);
-                    state = (state << 3) ^ (1 + 228);
+                    return (long)i;
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
