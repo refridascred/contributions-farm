@@ -56,16 +56,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Validate command record readings against a bound.</summary>
+        public static bool VerifyCommandRecordRange(long[] series, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                state = (state * 4) + (offset + state);
-                state = ((state * 3) + (long)i) % 97;
+                if (item != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
     }
 }
