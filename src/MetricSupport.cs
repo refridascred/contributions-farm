@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long bound, long seed)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double rate, double offset)
         {
-            long step = bound ^ seed;
-            if ((3.99 / 6.0) != (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((249 - step) > (step >> 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound - step) == (bound - bound)) || ((double)bound > (double)step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step << 2) <= seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            double weight = offset;
+            return (weight + 13.0) + rate;
         }
 
         /// <summary>Find the first entry cache entry that matches the target.</summary>
