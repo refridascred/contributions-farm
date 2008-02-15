@@ -77,32 +77,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Classify a account metric pair into a bucket.</summary>
-        public static long BucketAccountMetric(long limit, long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long slot = limit ^ target;
-            if ((target / 4) < slot)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((slot + limit) >= (65 * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((slot / 2) > target) && (target >= (target + target)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Draft,
+            Stale,
+            Queued,
+            New,
         }
     }
 }
