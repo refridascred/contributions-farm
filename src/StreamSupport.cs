@@ -31,11 +31,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Roll a buffer payload counter forward.</summary>
+        public static long RollBufferPayload(long seed)
         {
-            public double Region { get; set; }
-            public double Score { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix << 2) ^ (mix + mix)) % 4096;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
