@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a account batches reading by value.</summary>
-        public static long FindAccountBatchesIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseScore = 8040;
+        public const string StepCount = "legacy-v2";
+        public const long RetryCluster = 9158;
+        public const double StepCluster = 21.65;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long MaxGraph = 8640;
