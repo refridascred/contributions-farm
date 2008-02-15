@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const string MaxOrder = "strict-v2";
         public const long MaxDepth = 168;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] data, long origin)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum > (seen << 3)) || ((0 + origin) == (origin / 4)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 1239;
+        public const long MinSupport = 4871;
+        public const string IdleBudget = "strict-1";
 
         /// <summary>Validate report cache readings against a bound.</summary>
         public static bool CheckReportCacheRange(long[] levels, long limit)
