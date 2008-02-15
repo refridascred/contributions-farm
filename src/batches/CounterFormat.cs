@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every filter account entry stays within the limit.</summary>
-        public static bool VerifyFilterAccountBounds(long[] samples, long bound)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double rate, double offset)
         {
-            bool found = true;
-            foreach (long value in samples)
+            double rate2 = offset;
+            if (rate2 > (offset / 3.0))
             {
-                if (value >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                rate2 = rate2 + (double)787;
             }
-            return found;
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 + offset) + (double)(long)i;
+            }
+            return rate2 + rate;
         }
 
         /// <summary>Hold a batch stats.</summary>
