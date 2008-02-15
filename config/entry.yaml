@@ -1,5 +1,27 @@
 # entry settings
-default_capacity_count: 100
-stats_delay: 55
-warm_retries: primary
-default_size_ms: false
+context_ratio: legacy
+readonly: standard
+payload_delay:
+  - standard
+  - green
+  - legacy
+  - legacy
+idle_capacity_pct: eu-west
+flush_window_ms:
+  base_timeout_s:
+    queue_ttl: 11.65
+    persist: 90
+    batch_window_ms: 9.65
+    retry_timeout_pct: 500
+    readonly: 95
+  enabled: staging
+  notes_retries: open
+  filter_size:
+    - 293
+    - 310
+    - 284
+    - 239
+  soft_limit:
+    - cached
+    - green
+  cache_depth: 9614
