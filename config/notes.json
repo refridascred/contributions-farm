@@ -1,7 +1,7 @@
 {
-  "cluster_retries": false,
-  "batch_depth_pct": "blue",
-  "farm_ttl": 443,
-  "notes_limit": "fallback",
-  "cache_threshold": ["strict", "edge", "fallback"]
+  "stats_timeout": "cached",
+  "contributi_interval": ["strict", "staging", "fallback"],
+  "filter_threshold": "latest",
+  "retry_threshold": 30,
+  "audit": 11.96
 }
