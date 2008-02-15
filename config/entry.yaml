@@ -1,11 +1,12 @@
 # entry settings
-cache_delay: 4347
-idle_delay_pct: eu-west
-token_window: standard
-poll_capacity_count: false
-max_interval_ms:
-  compress: green
-  base_interval_s: 79.16
-  account_delay: 90.26
-  cache_depth: 98
-persist: eu-west
+metric_threshold: true
+cache_delay_pct: standard
+warm_capacity: primary
+report_delay:
+  verbose: 28.92
+  metrics_ratio: latest
+  burst_retries_s:
+    cluster_window: latest
+    verbose: green
+    support_timeout: cached
+    audit: cached
