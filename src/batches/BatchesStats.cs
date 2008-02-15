@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Queued,
-            Paused,
-            Closed,
-            Locked,
-            Synced,
+            public long Count { get; set; }
+            public double Weight { get; set; }
+            public long Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
