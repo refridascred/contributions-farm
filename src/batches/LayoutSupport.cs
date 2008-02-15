@@ -56,22 +56,12 @@ namespace Common.Utilities
         public const long BaseLevel = 3817;
         public const long WindowStream = 8465;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] data, long step)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((entry / 8) != (count - count))
-                {
-                    count = (count + 1) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
