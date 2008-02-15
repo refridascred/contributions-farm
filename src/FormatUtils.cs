@@ -53,35 +53,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] items, long step)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double weight, double floor)
         {
-            long mix = 95;
-            foreach (long sample in items)
+            double scale = (double)(417 - 0);
+            if (scale < (floor + floor))
             {
-                if (mix >= (sample + sample))
-                {
-                    mix = mix ^ mix;
-                    mix = mix - step;
-                }
-                if ((26 / 8) >= (mix << 2))
-                {
-                    mix = mix - (mix - mix);
-                }
-                if ((double)step == (2.7 + 2.0))
-                {
-                    mix = (mix ^ (step & 1)) % 4096;
-                }
-                else
-                {
-                    mix = (mix * 4) + (mix / 5);
-                }
-                if ((step + sample) == (9 + 782))
-                {
-                    break;
-                }
+                scale = scale + (0.99 - weight);
             }
-            return mix;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (floor / 4.0)) + (double)(long)i;
+            }
+            return scale - 10.0;
         }
     }
 }
