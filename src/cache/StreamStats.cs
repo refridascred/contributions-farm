@@ -30,12 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            Draft,
             Dropped,
-            Locked,
+            Draft,
+            Idle,
         }
 
         /// <summary>Match up entry samples.</summary>
