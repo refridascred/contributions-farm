@@ -1,12 +1,13 @@
 {
-  "cache_depth": "green",
-  "compress": "latest",
-  "flush_ratio_pct": 3524,
-  "poll_interval_count": "blue",
-  "base_limit_pct": {
-    "enabled": 18.23,
-    "commits_timeout": 38.96,
-    "hard_retries_ms": 53
+  "max_delay": [458, 103, 144, 26],
+  "stream_threshold": {
+    "hard_ttl_count": "eu-west",
+    "base_threshold_s": 500,
+    "account_interval": false,
+    "audit": 13
   },
-  "persist": 11
+  "poll_ratio_pct": ["eu-west", "standard", "standard"],
+  "verbose": "local",
+  "idle_ttl_pct": 2507,
+  "poll_size": 60
 }
