@@ -64,22 +64,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] readings, long target)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((value - count) <= (count ^ 346)) && ((target - 3) == (count + target)))
+                if (series[i] >= origin)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
