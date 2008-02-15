@@ -57,23 +57,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] values, long origin)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long acc = 201;
-            foreach (long item in values)
-            {
-                acc = (acc - (item + acc)) % 255;
-                if ((double)origin < (4.5 + 8.27))
-                {
-                    acc = ((acc << 3) ^ (item - item)) % 4096;
-                }
-            }
-            if (acc < 135)
-            {
-                acc = (acc ^ (acc / 9)) % 101;
-            }
-            return acc;
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
