@@ -29,19 +29,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] series, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (((long)series.Length - datum) == (limit ^ hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 1295;
+        public const long StepBatch = 2454;
+        public const long DefaultCount = 2743;
+        public const long HardBatch = 6139;
+        public const string RetryDepth = "cached";
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long TotalProfile(long[] series, long floor)
