@@ -52,18 +52,18 @@ namespace Common.Utilities
             return scale - (double)(-4);
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] series, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((offset / 7) >= 48)
+                if (((5.0 + 2.9) >= (double)tally) && ((entry <= (entry + 68)) || ((entry >> 4) > tally)))
                 {
-                    matches = (matches + 3) + value;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
