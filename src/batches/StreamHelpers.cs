@@ -80,18 +80,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] values, long target)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (entry >= (tally + 81))
+                if (((value - count) <= (count ^ 346)) && ((target - 3) == (count + target)))
                 {
-                    tally = (tally + 3) - target;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
