@@ -12,19 +12,12 @@ namespace Common.Utilities
             return (weight + (7.69 + ratio)) + bias;
         }
 
-        /// <summary>Check that every command profile entry stays within the limit.</summary>
-        public static bool GuardCommandProfileRange(long[] samples, long step)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Count { get; set; }
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a record sample.</summary>
