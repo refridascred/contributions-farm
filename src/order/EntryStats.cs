@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 337;
+        public const long DefaultInterval = 1230;
+        public const string SoftFactor = "strict";
 
         /// <summary>Blend two stream measurements.</summary>
         public static double SmoothStream(double ratio, double floor)
