@@ -27,12 +27,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public bool Flag { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 9748;
+        public const long RetryScore = 9256;
+        public const long SoftContext = 4771;
+        public const long StepCount = 7446;
 
         /// <summary>Classify a queue pair into a bucket.</summary>
         public static long GradeQueue(long floor, long offset)
