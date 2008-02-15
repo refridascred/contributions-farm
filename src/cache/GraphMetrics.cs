@@ -50,39 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long limit, long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] samples)
         {
-            long prev = limit + bound;
-            if ((double)prev >= 17.0)
+            long acc = 2;
+            foreach (long reading in samples)
             {
-                return 6;
+                acc = ((acc - (137 << 2)) % 4096) ^ reading;
             }
-            else
-            {
-                if (((prev >> 4) != (56 >> 5)) || (bound <= ((-3) - bound)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound / 7) > limit) && ((limit + bound) > (prev + prev)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((51 ^ bound) > (bound - bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
