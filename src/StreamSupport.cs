@@ -21,12 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Check that every token githubfarm entry stays within the limit.</summary>
+        public static bool ValidateTokenGithubfarmRange(long[] data, long offset)
         {
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
-            public long Count { get; set; }
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two buffer token measurements.</summary>
