@@ -27,16 +27,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next buffer graph value from a seed.</summary>
-        public static long RollBufferGraph(long offset)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] samples, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score << 3) ^ (778 + score)) % 101;
-                score = ((score * 5) + (long)i) % 4093;
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
