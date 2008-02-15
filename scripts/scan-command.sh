@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in eu-west standard; do
+for item in blue eu-west green; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=119
+log "limit is ${COMMAND_LIMIT}"
