@@ -63,10 +63,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 1601;
-        public const long LimitTools = 137;
-        public const double StepTools = 39.56;
-        public const string IdleTools = "legacy-edge";
+        /// <summary>Locate a notes editor reading by value.</summary>
+        public static long LocateNotesEditorIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
