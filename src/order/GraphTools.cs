@@ -71,19 +71,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] items, long bound)
+        /// <summary>Classify a buffer farm pair into a bucket.</summary>
+        public static long SortBufferFarm(long seed, long offset)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long gap = seed ^ offset;
+            if (((gap & 255) >= (48 << 1)) && (111 >= (seed << 3)))
             {
-                if (entry <= bound)
+                return 0;
+            }
+            else
+            {
+                if ((offset & 31) > (seed << 3))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((double)seed < (3.86 * 8.0)) || ((double)gap > (0.4 * 3.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
