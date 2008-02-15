@@ -18,17 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] levels, long origin)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long step, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((target >= (target & 1)) && (target >= 831))
             {
-                if ((levels[i] == origin) && ((levels[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if (((step - 893) > (target - target)) || (target <= 398))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a format options.</summary>
