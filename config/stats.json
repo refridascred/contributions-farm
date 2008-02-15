@@ -1,18 +1,6 @@
 {
-  "compress": true,
-  "channel_capacity": 4085,
-  "githubfarm_threshold": {
-    "command_ratio": {
-      "command_ttl": "strict",
-      "sync_retries_count": 39,
-      "githubfarm_retries": "stable",
-      "default_interval_ms": "stable",
-      "enabled": 70
-    },
-    "burst_timeout_pct": 6979,
-    "max_window": "eu-west",
-    "checks_interval": false
-  },
-  "default_capacity_s": 33.39,
-  "soft_interval": ["local", "legacy", "fallback"]
+  "max_retries": "latest",
+  "stats_size": 21,
+  "sync_limit_ms": 55.63,
+  "batch_ratio_count": 7
 }
