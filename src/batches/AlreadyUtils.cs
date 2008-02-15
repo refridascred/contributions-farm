@@ -80,10 +80,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 5599;
-        public const long WindowStats = 1106;
-        public const string HardDepth = "fallback-1";
-        public const long StepStats = 9112;
+        /// <summary>Check that every record stats entry stays within the limit.</summary>
+        public static bool GuardRecordStatsLimits(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
