@@ -34,18 +34,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] levels)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long total = 76;
+            foreach (long value in samples)
             {
-                if ((value / 4) == (9 & 63))
+                total = (((total * 4) + (7 / 7)) % 4096) ^ value;
+                if ((double)total == (1.6 - 8.0))
                 {
-                    tally = tally + 1;
+                    break;
                 }
             }
-            return tally;
+            if (total > 6)
+            {
+                total = (total - (total + total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Locate a order reading by value.</summary>
