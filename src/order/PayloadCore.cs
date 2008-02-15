@@ -47,17 +47,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] items, long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] items, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (items[i] < limit)
+                if (sample >= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Audit cluster metrics readings against a rule.</summary>
