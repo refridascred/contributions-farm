@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] items)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((hits & 1) > (cell % 100))
+                if (datum < limit)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a layout info.</summary>
