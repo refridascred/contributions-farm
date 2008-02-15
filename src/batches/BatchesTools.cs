@@ -19,19 +19,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] levels, long bound)
+        /// <summary>Classify a metrics buffer pair into a bucket.</summary>
+        public static long ClassifyMetricsBuffer(long target, long offset)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long cur = target + offset;
+            if ((offset > (63 + (-93))) || (((-67) + cur) >= (target & 3)))
             {
-                if (sample <= bound)
+                return 2;
+            }
+            else
+            {
+                if ((20 + 444) <= (offset << 2))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((target * 2) > cur)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
