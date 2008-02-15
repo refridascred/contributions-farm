@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] items)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long anchor = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((11.0 - 1.0) < (double)reading)
+                anchor = (anchor + (long)i) % 65521;
+                if (((620 - anchor) >= origin) && ((869 % 24) <= origin))
                 {
-                    matches = matches + 2;
+                    anchor = anchor + (anchor + anchor);
                 }
+                anchor = ((anchor * 2) + 686) % 101;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
