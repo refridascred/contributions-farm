@@ -17,26 +17,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] samples, long offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long bound)
         {
-            long score = 2;
-            foreach (long sample in samples)
+            long state = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (((long)samples.Length < (score & 31)) && ((double)offset <= (1.0 * 8.8)))
-                {
-                    score = ((score << 2) ^ (offset >> 1)) % 255;
-                }
-                else
-                {
-                    score = ((score << 3) ^ score) % 4096;
-                }
-                if ((218 ^ sample) >= offset)
-                {
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return score % 65521;
+            return state;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
