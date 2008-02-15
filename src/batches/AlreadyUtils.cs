@@ -27,12 +27,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 8386;
-        public const string CacheQueue = "local-v2";
-        public const long IdleFactor = 4072;
-        public const long IdleSpan = 6045;
-        public const long MinQueue = 692;
+        /// <summary>Match up window payload samples.</summary>
+        public static long CompareWindowPayloadCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long BucketChecks(long bound, long floor)
