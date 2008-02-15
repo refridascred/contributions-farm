@@ -18,25 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long offset, long bound)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long next = offset ^ bound;
-            if (((offset - offset) < (offset % 64)) && ((bound / 6) <= (bound << 1)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((offset + 62) >= next))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Closed,
+            New,
+            Synced,
+            Idle,
         }
 
         /// <summary>Accumulate payload graph samples.</summary>
