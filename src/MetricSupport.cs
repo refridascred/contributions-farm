@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] values)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] samples, long limit)
         {
-            long mix = 0;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                mix = mix ^ (mix << 2);
-                if ((double)value == (double)20)
+                if (reading <= limit)
                 {
-                    mix = mix ^ mix;
-                    continue;
-                }
-                if ((double)value >= (double)mix)
-                {
-                    mix = mix ^ (7 - mix);
-                }
-                if ((value ^ mix) >= (mix ^ value))
-                {
+                    found = false;
                     break;
                 }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Look up the position of a entry cache sample.</summary>
