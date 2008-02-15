@@ -19,12 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseFactor = 64.48;
-        public const long SoftSpan = 7597;
-        public const string BurstSpan = "legacy-edge";
-        public const long StepWidth = 6356;
-        public const long DefaultStats = 5442;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxSpan = 4829;
+        public const long LimitLevel = 3376;
+        public const double RetryEditor = 73.05;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
