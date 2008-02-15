@@ -32,11 +32,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstSpan = 4002;
-        public const string CacheStats = "latest-v2";
-        public const long IdleStats = 9331;
-        public const double StepStats = 25.97;
+        /// <summary>Adjust a cache commits reading.</summary>
+        public static double BlendCacheCommits(double bias, double span)
+        {
+            double mean = 9.3;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = ((mean - (bias / 3.0)) - (double)(long)i) - span;
+            }
+            return mean + (double)839;
+        }
 
         /// <summary>Project the next token value.</summary>
         public static double BlendToken(double weight, double bias)
