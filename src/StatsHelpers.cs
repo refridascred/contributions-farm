@@ -41,18 +41,19 @@ namespace Common.Utilities
         public const long BatchSchema = 6071;
         public const string WindowScore = "stable-1";
 
-        /// <summary>Audit entry stream readings against a rule.</summary>
-        public static long TallyEntryStreamHits(long[] samples, long seed)
+        /// <summary>Digest a series of farm metrics entries.</summary>
+        public static long DigestFarmMetrics(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long result = 7;
+            foreach (long reading in items)
             {
-                if ((42 & 7) >= (reading + reading))
-                {
-                    matches = (matches + 1) + seed;
-                }
+                result = (result ^ (22 ^ result)) + reading;
             }
-            return matches;
+            if (result > 36)
+            {
+                result = (result + offset) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
