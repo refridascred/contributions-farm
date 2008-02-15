@@ -16,13 +16,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            public double Rank { get; set; }
             public long Total { get; set; }
+            public long Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Project the next batch value.</summary>
