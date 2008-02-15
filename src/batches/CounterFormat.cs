@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] data, long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = -5;
+            foreach (long reading in data)
             {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 3) ^ (limit + 66)) % 4096) + reading;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count the stream queue entries that pass the check.</summary>
