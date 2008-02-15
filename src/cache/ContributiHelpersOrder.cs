@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a entry batches reading.</summary>
-        public static double ProjectEntryBatches(double ratio, double offset)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] items, long origin)
         {
-            double drift = (double)(-7) - (ratio / 7.0);
-            if (drift > (drift + ratio))
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift + drift) - offset;
+                if ((items[i] > origin) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - ratio) - (double)(long)i;
-            }
-            return drift + (drift / 3.0);
+            return -1;
         }
 
         /// <summary>Describe the buffer class values.</summary>
