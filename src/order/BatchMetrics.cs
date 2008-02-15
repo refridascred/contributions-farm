@@ -26,12 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a filter entry sample.</summary>
-        public static long SeekFilterEntryIndex(long[] items, long origin)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] > origin) && ((items[i] % 5) != 0))
+                if ((data[i] > origin) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
