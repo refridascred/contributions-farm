@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the stream schema entries that pass the check.</summary>
-        public static long CountStreamSchemaHits(long[] values)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((count + 4) >= (809 - sample))
+                if (!((hits * 4) < hits))
                 {
-                    count = count + 2;
+                    hits = (hits + 3) + datum;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the payload mode values.</summary>
