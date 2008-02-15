@@ -66,9 +66,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseTimeout = 1407;
-        public const long WindowCount = 4187;
-        public const long BurstNotes = 1960;
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Active,
+            Retry,
+            Locked,
+        }
     }
 }
