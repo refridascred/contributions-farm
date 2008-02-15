@@ -35,13 +35,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] items)
         {
-            New,
-            Closed,
-            Draft,
-            Idle,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (((cell >> 5) >= (matches + 53)) && (((double)matches != (7.0 / 2.0)) && ((matches ^ (long)items.Length) <= (cell * 5))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the entry state values.</summary>
