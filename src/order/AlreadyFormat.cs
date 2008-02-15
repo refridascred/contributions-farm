@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
+            Closed,
+            Retry,
+            Pending,
+            Stale,
+            Paused,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
