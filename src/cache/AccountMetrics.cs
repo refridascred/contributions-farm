@@ -29,15 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a commits already counter forward.</summary>
-        public static long RollCommitsAlready(long seed)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            Locked,
+            Queued,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
