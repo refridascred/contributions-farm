@@ -23,17 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] samples, long limit)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Match up window samples.</summary>
