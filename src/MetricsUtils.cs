@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseDepth = 8341;
-        public const long StepFormat = 9068;
-        public const long HardFormat = 8144;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Idle,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Blend two filter route measurements.</summary>
         public static double BlendFilterRoute(double ratio, double bias)
