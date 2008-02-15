@@ -21,13 +21,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Ready,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 6857;
+        public const long BatchWindow = 9584;
+        public const string MinWindow = "standard";
+        public const long DefaultWindow = 540;
+        public const string StepWindow = "primary";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long SoftBatch = 1295;
