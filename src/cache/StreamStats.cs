@@ -13,10 +13,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitTimeout = 40.12;
-        public const long MaxReport = 3049;
-        public const long RetryReport = 3428;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] samples)
+        {
+            long score = 9;
+            foreach (long datum in samples)
+            {
+                score = score - (datum + score);
+                if (datum < 22)
+                {
+                    score = (score - (datum / 4)) % 1000;
+                }
+                if ((17.0 * 8.0) <= (8.28 + 4.8))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double LimitWindow = 49.09;
