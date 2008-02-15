@@ -31,12 +31,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinLevel = 7761;
-        public const double HardToken = 74.86;
-        public const long DefaultToken = 3244;
-        public const long BurstToken = 3897;
-        public const long HardLevel = 755;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitInterval = 1647;
+        public const string BatchFilter = "alpha-edge";
+        public const long CacheFilter = 1191;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
