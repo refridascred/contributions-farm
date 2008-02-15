@@ -24,15 +24,17 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Blend two already graph measurements.</summary>
-        public static double ProjectAlreadyGraph(double ratio, double bias)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] data, long limit)
         {
-            double scale = ratio;
-            if (scale < bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - bias;
+                if ((data[i] <= limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + (bias + bias);
+            return -1;
         }
 
         /// <summary>Describe the report phase values.</summary>
