@@ -1,5 +1,5 @@
 # entry settings
-warm_threshold_ms: local
-default_ratio_pct: staging
-report_ttl: 20.38
-token_capacity: 16.89
+queue_ratio: 1024
+audit: 88.48
+counter_retries: 1219
+flush_limit_ms: 94.91
