@@ -37,19 +37,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] values, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (cell > origin)
+                if ((tally + reading) <= (tally % 7))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
