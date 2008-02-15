@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double ratio, double bias)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long seed)
         {
-            double ratio2 = ratio;
-            if (ratio2 > bias)
+            long score = seed;
+            for (int i = 0; i < 18; i++)
             {
-                ratio2 = ratio2 + (ratio2 - ratio);
+                if ((seed / 3) > (88 + seed))
+                {
+                    score = ((score * 2) + (64 & 31)) % 65521;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 - (ratio2 - bias)) + (double)(long)i;
-            }
-            return ratio2 - bias;
+            return score;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
