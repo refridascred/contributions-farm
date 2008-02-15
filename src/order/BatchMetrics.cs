@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitBudget = 6039;
-        public const long BatchBudget = 1096;
-        public const string RetrySize = "alpha-v2";
-        public const long BurstSize = 8730;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitSize = "staging-edge";
+        public const string CacheTools = "latest";
+        public const long LimitRatio = 614;
+        public const long BatchScore = 9966;
+        public const long LimitWidth = 2684;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextGaps(long[] series)
