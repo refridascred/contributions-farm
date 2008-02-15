@@ -36,9 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheWidth = 6382;
-        public const double BatchFormat = 58.82;
-        public const long IdleFormat = 93;
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
