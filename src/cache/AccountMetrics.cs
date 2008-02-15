@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a already notes value against two limits.</summary>
-        public static long BucketAlreadyNotes(long limit, long target)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            if ((target % 100) >= (512 - limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)limit > (3.0 + 1.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target != (7.89 + 6.7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target >= (limit - target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
