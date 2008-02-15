@@ -20,22 +20,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit queue report readings against a rule.</summary>
-        public static long AuditQueueReportMatches(long[] data, long target)
+        /// <summary>Locate a channel tools reading by value.</summary>
+        public static long LookupChannelToolsIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)matches < (8.42 - 4.5))
+                if (readings[i] <= seed)
                 {
-                    matches = ((matches + 2) + reading) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
