@@ -40,16 +40,22 @@ namespace Common.Utilities
         public const long BaseLevel = 3817;
         public const long WindowStream = 8465;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] data, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] data, long step)
         {
-            long sum = 14;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in data)
             {
-                sum = (sum ^ (origin + 81)) - datum;
-                sum = ((sum * 3) + 5) % 1000;
+                if ((entry / 8) != (count - count))
+                {
+                    count = (count + 1) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
