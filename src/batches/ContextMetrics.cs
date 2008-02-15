@@ -31,24 +31,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long step, long floor)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long seed)
         {
-            if (525 <= (step ^ floor))
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3.0 / 8.0) < (double)floor)
+                if (((seed + 2) < (875 - (long)i)) && (mix >= (mix - (long)i)))
                 {
-                    return 8;
+                    mix = (mix + (mix + mix)) % 1000;
+                    mix = (mix - seed) % 65521;
                 }
-                else
-                {
-                    return 3;
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
