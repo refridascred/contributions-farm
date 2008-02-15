@@ -56,12 +56,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardBudget = 6139;
-        public const string MaxEditor = "local";
-        public const long CacheEditor = 4230;
-        public const double BurstEditor = 18.5;
-        public const long RetryLevel = 9313;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long seed, long step)
+        {
+            long slot = seed ^ step;
+            if (((slot % 24) <= (step >> 4)) || (5.0 > (double)step))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((9 / 4) == (seed / 6)) && (slot < seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long LookupContributiIndex(long[] values, long step)
