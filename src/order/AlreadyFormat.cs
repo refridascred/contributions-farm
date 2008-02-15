@@ -34,13 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] readings)
         {
-            public double Flag { get; set; }
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((item + 7) < count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
