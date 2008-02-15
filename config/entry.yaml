@@ -1,13 +1,17 @@
 # entry settings
-burst_size_pct: 47.28
-enabled: 327
-counter_threshold: strict
-hard_retries: 6136
-dry_run:
-  profile_retries:
-    batch_window: cached
-    schema_ratio: 46
-    retry_retries_ms: 3578
-  queue_window: true
-  session_ttl: 33.98
-base_interval: blue
+retry_threshold_pct: 7487
+default_ratio_ms:
+  session_depth:
+    min_ttl_pct: 78
+    verbose: 2149
+    base_interval_count: fallback
+    queue_delay: 8511
+  support_retries:
+    - 266
+    - 139
+    - 425
+    - 429
+  batch_threshold:
+    - 10
+    - 264
+base_ratio_count: blue
