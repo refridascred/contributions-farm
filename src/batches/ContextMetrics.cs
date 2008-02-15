@@ -73,11 +73,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long step)
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
+            long sum = step;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((long)i <= sum)
+                {
+                    sum = (sum + ((long)i * 3)) % 101;
+                    sum = ((sum << 3) ^ ((long)i * 4)) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
