@@ -1,5 +1,6 @@
 {
-  "default_limit_ms": "primary",
-  "dry_run": 75.24,
-  "idle_limit_pct": 85.27
+  "enabled": true,
+  "format_capacity": "open",
+  "flush_capacity_s": 35.41,
+  "persist": 100
 }
