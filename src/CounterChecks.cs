@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] samples)
         {
-            public double Mode { get; set; }
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the checks phase values.</summary>
