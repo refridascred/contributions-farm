@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] items, long offset)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long state = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(((double)(long)items.Length >= (4.27 / 2.0)) && (sample > (seen & 3))))
+                if (!((double)state > (8.3 - 8.3)))
                 {
-                    seen = (seen + 1) + offset;
+                    state = ((state << 3) ^ (state - (long)i)) % 4096;
                 }
+                else
+                {
+                    state = (state - offset) % 101;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a token header.</summary>
