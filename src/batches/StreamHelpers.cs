@@ -20,25 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long step, long step2)
-        {
-            if (!(step > (585 << 1)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (step < (step2 - step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 6350;
+        public const long BatchWidth = 9602;
+        public const long MaxReport = 629;
+        public const double BatchSize = 78.45;
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
