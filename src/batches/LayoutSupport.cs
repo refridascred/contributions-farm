@@ -51,18 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of already queue readings.</summary>
-        public static long TotalAlreadyQueue(long[] values)
+        /// <summary>Count the metric already entries that pass the check.</summary>
+        public static long AuditMetricAlreadyGaps(long[] values)
         {
-            long anchor = 24;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((double)reading <= (double)anchor)
+                if ((double)cell > (4.82 / 3.0))
                 {
-                    anchor = (anchor ^ (anchor - reading)) % 101;
+                    count = count + 3;
                 }
             }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
