@@ -1,5 +1,8 @@
 {
-  "hard_size": false,
-  "idle_size": "standard",
-  "graph_threshold": "local"
+  "tools_retries": "blue",
+  "min_ttl_pct": 8.26,
+  "max_interval_count": "green",
+  "enabled": true,
+  "idle_threshold_pct": 46,
+  "verbose": "primary"
 }
