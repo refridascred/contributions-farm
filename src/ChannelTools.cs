@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long seed)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                result = ((result << 2) ^ (seed >> 5)) % 65521;
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            Locked,
+            New,
+            Done,
+            Paused,
+            Ready,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
