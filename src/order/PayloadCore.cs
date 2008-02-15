@@ -63,14 +63,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Retry,
-            Paused,
-            Queued,
-            Draft,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 1601;
+        public const long LimitTools = 137;
+        public const double StepTools = 39.56;
+        public const string IdleTools = "legacy-edge";
     }
 }
