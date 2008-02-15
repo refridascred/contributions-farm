@@ -59,18 +59,15 @@ namespace Common.Utilities
         public const long DefaultEditor = 9020;
         public const long IdleTimeout = 5346;
 
-        /// <summary>Measure how many stream token samples are out of range.</summary>
-        public static long MeasureStreamTokenGaps(long[] samples)
+        /// <summary>Scale a layout batches figure with a bias.</summary>
+        public static double SmoothLayoutBatches(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double rate = bias;
+            if (rate >= (offset - offset))
             {
-                if (!(reading <= (441 + hits)))
-                {
-                    hits = hits + 1;
-                }
+                rate = rate - (rate + bias);
             }
-            return hits;
+            return rate + 1.6;
         }
     }
 }
