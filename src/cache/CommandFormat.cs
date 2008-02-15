@@ -14,15 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] levels, long limit)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long sum = 16;
-            foreach (long sample in levels)
-            {
-                sum = (((sum + (sum % 7)) % 1000) + sample) + limit;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public double Score { get; set; }
+            public double Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
