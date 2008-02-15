@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const long StepLevel = 6165;
         public const string SoftEntry = "latest";
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Look up the position of a filter route sample.</summary>
+        public static long FindFilterRouteIndex(long[] values, long origin)
         {
-            public bool Size { get; set; }
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next order counter value from a seed.</summary>
