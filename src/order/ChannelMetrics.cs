@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] samples, long bound)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define session limits and defaults.</summary>
