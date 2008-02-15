@@ -12,30 +12,13 @@ namespace Common.Utilities
         public const long MinGithubfarm = 1278;
         public const long IdleSize = 8774;
 
-        /// <summary>Iterate the already token series from a seed.</summary>
-        public static long IterateAlreadyToken(long step)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
-            {
-                long lane = (long)i;
-                if (!((acc << 1) <= (acc >> 4)))
-                {
-                    acc = acc - (635 >> 1);
-                    acc = acc + ((-427) / 2);
-                }
-                else
-                {
-                    lane = (lane - (lane + acc)) % 255;
-                    acc = (acc ^ acc) % 4096;
-                }
-                if (!((4 << 2) > lane))
-                {
-                    acc = (acc - ((long)i ^ acc)) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            public string Token { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Combine already values into a single score.</summary>
