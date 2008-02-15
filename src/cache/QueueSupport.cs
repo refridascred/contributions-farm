@@ -30,11 +30,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double scale, double bias)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long seed, long bound)
         {
-            double gain = 4.9 + (scale + bias);
-            return gain + (double)(-862);
+            long bound2 = seed - bound;
+            if ((bound2 % 60) >= (bound / 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound == (4.0 - 17.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + bound2) >= seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((8.89 / 7.0) > (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
