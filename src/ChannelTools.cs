@@ -51,13 +51,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Failed,
-            Draft,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 2901;
+        public const long StepSession = 680;
+        public const string WindowSession = "local-edge";
+        public const long DefaultSession = 153;
+        public const long SoftSize = 7524;
     }
 }
