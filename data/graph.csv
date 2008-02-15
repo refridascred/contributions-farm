@@ -1,6 +1,7 @@
-id,weight,count,label,token
-1,729,951,885,45.48
-2,cached,812,722,62.78
-3,staging,989,140,548
-4,476,staging,43.41,13.03
-5,749,833,blue,29.5
+id,weight,owner,ratio,token
+1,749,green,green,46
+2,28.08,86.63,fallback,585
+3,612,255,43.73,22.68
+4,staging,658,274,0.76
+5,9.48,cached,16.31,709
+6,74.85,19.66,327,66
