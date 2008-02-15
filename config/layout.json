@@ -1,5 +1,5 @@
 {
-  "cache_ttl": "latest",
-  "retry_capacity_count": [245, 498, 107, 362],
-  "channel_delay": 721
+  "idle_interval_ms": false,
+  "cache_window": true,
+  "min_threshold_s": 31
 }
