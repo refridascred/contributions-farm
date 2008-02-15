@@ -1,11 +1,16 @@
 # Command notes
 
-The graph report groups every account by notes.
-The cache module keeps schema values in sync with the cache cache.
-The batch report groups every session by cluster.
+The window module keeps profile values in sync with the profile cache.
+Use contributi settings to tune how often graph data is refreshed.
+The cache helpers are pure functions, so they are safe to call from any thread.
+
+Keep token and commits names short and lowercase.
+Keep route and record names short and lowercase.
+When a stream fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every graph change
-- Keep report values small
-- Prefer notes defaults
+- Keep batch values small
+- Review githubfarm limits each release
+- Log every route change
+- Prefer schema defaults
