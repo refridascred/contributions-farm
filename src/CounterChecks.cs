@@ -52,12 +52,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 9148;
+        public const double MaxSize = 8.18;
+        public const string BurstDepth = "primary-1";
+        public const long SoftProfile = 5420;
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
