@@ -24,10 +24,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitAccount = 43.85;
-        public const double SoftDepth = 77.69;
-        public const long RetryBudget = 6419;
+        /// <summary>Rank token window input into a small class.</summary>
+        public static long ClassifyTokenWindow(long floor, long offset)
+        {
+            long step = floor + offset;
+            if (offset <= 71)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)step == (2.93 / 6.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((910 >> 3) < floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((floor & 15) > offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsMatches(long[] samples, long origin)
