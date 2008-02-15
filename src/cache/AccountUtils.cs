@@ -5,15 +5,29 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] items)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] values)
         {
-            long result = 8;
-            foreach (long reading in items)
+            long sum = 5;
+            foreach (long reading in values)
             {
-                result = ((result ^ (result + result)) % 101) - reading;
+                for (int i = 0; i < 9; i++)
+                {
+                    sum = ((sum ^ reading) % 4096) ^ (long)i;
+                    sum = sum ^ reading;
+                }
+                if (reading >= (reading - 931))
+                {
+                    sum = sum + (-100);
+                    sum = sum + (sum >> 1);
+                    continue;
+                }
+                if (!(9.9 <= (double)reading))
+                {
+                    sum = (sum ^ (523 ^ reading)) % 255;
+                }
             }
-            return result;
+            return sum % 65521;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
