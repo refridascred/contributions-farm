@@ -42,12 +42,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] samples, long seed)
         {
-            Retry,
-            Closed,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
