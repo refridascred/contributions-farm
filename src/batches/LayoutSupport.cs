@@ -47,10 +47,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftInterval = "strict-1";
-        public const long SoftLevel = 53;
-        public const long LimitTimeout = 381;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 63.14;
+        public const long StepMetric = 6772;
+        public const long HardDepth = 6869;
+        public const long SoftMetric = 9706;
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long FindGraphIndex(long[] levels, long offset)
