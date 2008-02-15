@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long offset, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((765 >> 4) > (offset ^ offset))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)2 != (double)seed)
                 {
-                    if ((samples[i] ^ samples[j]) != 17)
+                    return 3;
+                }
+                else
+                {
+                    if ((seed >= offset) || ((double)seed > 3.1))
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
