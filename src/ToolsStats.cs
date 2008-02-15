@@ -70,11 +70,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 4029;
-        public const long StepCount = 9441;
-        public const long MinChannel = 7794;
-        public const long RetryInterval = 1667;
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Retry,
+            Pending,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double BaseScore = 7.16;
