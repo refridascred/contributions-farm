@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxCount = 689;
-        public const string BatchRatio = "local";
-        public const long DefaultRatio = 2245;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long limit, long limit2)
+        {
+            long prev = limit ^ limit2;
+            if (((8.27 / 8.0) == (double)limit2) || ((limit2 * 4) > (limit ^ 5)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((7 + limit) > (limit & 7)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)limit2 != (double)prev) && ((limit2 + limit) <= limit2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit ^ prev) < (limit % 64))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] series)
