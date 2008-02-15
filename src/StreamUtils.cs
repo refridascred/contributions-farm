@@ -13,19 +13,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate record filter samples.</summary>
-        public static long CombineRecordFilter(long[] data, long target)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long sum = 418;
-            foreach (long reading in data)
-            {
-                sum = ((sum << 3) ^ (632 * 2)) - reading;
-            }
-            if (sum > 4)
-            {
-                sum = (sum - (target + sum)) % 4096;
-            }
-            return sum;
+            Draft,
+            Active,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a window header.</summary>
