@@ -28,21 +28,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark * 3) + (mark - step)) ^ (long)i2;
                 }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Audit notes githubfarm readings against a rule.</summary>
