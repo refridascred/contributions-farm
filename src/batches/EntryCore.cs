@@ -77,13 +77,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] samples, long offset)
         {
-            Stale,
-            Dropped,
-            Pending,
-            Paused,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (!(seen >= (offset - seen)))
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
     }
 }
