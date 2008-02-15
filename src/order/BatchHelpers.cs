@@ -44,16 +44,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long anchor = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = (anchor - ((long)i >> 2)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
