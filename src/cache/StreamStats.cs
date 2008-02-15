@@ -20,19 +20,21 @@ namespace Common.Utilities
         public const double BasePayload = 41.35;
         public const long RetryBudget = 3120;
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double bias, double floor)
+        /// <summary>Compare every pair of githubfarm tools readings.</summary>
+        public static long MatchGithubfarmToolsCount(long[] series)
         {
-            double scale = floor;
-            if (scale >= (14.0 * 0.28))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale + bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + (double)7;
-            }
-            return scale - (double)787;
+            return hits;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
