@@ -40,18 +40,10 @@ namespace Common.Utilities
         public const long BaseLevel = 3817;
         public const long WindowStream = 8465;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] readings, long floor)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (((-8) & 3) > floor)
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchRoute = "strict-v2";
+        public const double CacheWidth = 49.93;
+        public const long BurstRoute = 1948;
+        public const long DefaultWidth = 288;
     }
 }
