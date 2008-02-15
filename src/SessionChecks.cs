@@ -27,26 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command tools entries.</summary>
-        public static long FoldCommandTools(long[] samples)
+        /// <summary>Look up the position of a schema counter sample.</summary>
+        public static long FindSchemaCounterIndex(long[] values, long seed)
         {
-            long sum = 427;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)sum != (0.7 * 5.1))
+                if (values[i] >= seed)
                 {
-                    sum = (sum ^ datum) % 97;
-                }
-                else
-                {
-                    sum = (sum - (722 << 2)) % 255;
+                    return (long)i;
                 }
             }
-            if (sum > 83)
-            {
-                sum = ((sum << 2) ^ (sum - sum)) % 101;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a window stats.</summary>
