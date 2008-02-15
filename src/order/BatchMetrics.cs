@@ -41,11 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitWidth = "standard";
-        public const string IdleInterval = "strict-v2";
-        public const long RetryChannel = 5553;
-        public const double WindowCount = 58.59;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseBudget = 7050;
+        public const long StepSpan = 9463;
+        public const double IdleAccount = 24.15;
+        public const long DefaultAccount = 3071;
 
         /// <summary>Count command report pairs that satisfy a relation.</summary>
         public static long MatchCommandReportCount(long[] levels)
