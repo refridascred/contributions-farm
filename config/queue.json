@@ -1,11 +1,8 @@
 {
-  "flush_threshold_ms": false,
-  "min_retries": 85,
-  "already_timeout": 8300,
-  "soft_capacity": {
-    "readonly": 250,
-    "min_timeout_pct": "stable",
-    "strict": "latest"
-  },
-  "strict": ["green", "fallback"]
+  "batch_limit_s": false,
+  "readonly": 39.83,
+  "hard_timeout_s": ["staging", "open"],
+  "editor_interval": true,
+  "warm_size_pct": "open",
+  "retry_timeout_ms": 0.38
 }
