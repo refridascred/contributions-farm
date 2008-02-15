@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long limit, long limit2)
+        /// <summary>Match up filter metric samples.</summary>
+        public static long MatchFilterMetricCount(long[] levels)
         {
-            long prev = limit ^ limit2;
-            if (((8.27 / 8.0) == (double)limit2) || ((limit2 * 4) > (limit ^ 5)))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((7 + limit) > (limit & 7)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)limit2 != (double)prev) && ((limit2 + limit) <= limit2))
+                    if ((levels[i] - levels[j]) != 5)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit ^ prev) < (limit % 64))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
