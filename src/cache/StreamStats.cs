@@ -13,18 +13,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] data)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long origin, long target)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long next = origin ^ target;
+            if (target < (next / 4))
             {
-                if (74 > tally)
+                return 3;
+            }
+            else
+            {
+                if ((origin % 24) > (next / 4))
                 {
-                    tally = (tally + 3) ^ cell;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
