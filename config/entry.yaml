@@ -1,14 +1,9 @@
 # entry settings
-default_ratio_pct:
-  - latest
-  - strict
-poll_timeout_s:
-  - 234
-  - 4
-  - 187
-dry_run: 92.93
-retry_limit_ms:
-  - 267
-  - 9
-  - 74
-idle_interval_count: primary
+readonly: true
+githubfarm_window:
+  - standard
+  - stable
+  - stable
+  - fallback
+soft_window_pct: 60
+warm_depth_pct: true
