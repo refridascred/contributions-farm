@@ -78,10 +78,13 @@ namespace Common.Utilities
         public const long MinRoute = 895;
         public const long LimitRatio = 1564;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinGraph = "strict-edge";
-        public const long WindowSpan = 5684;
-        public const long MinWidth = 1614;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long SeekCommitsIndex(long[] data, long target)
