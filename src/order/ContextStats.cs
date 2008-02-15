@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate window counter readings against a bound.</summary>
-        public static bool ValidateWindowCounterRange(long[] series, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (value != target)
+                if (value <= bound)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Adjust a contributi notes reading.</summary>
