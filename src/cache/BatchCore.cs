@@ -62,12 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Blend two route cache measurements.</summary>
+        public static double AdjustRouteCache(double ratio, double offset)
         {
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public string Offset { get; set; } = "";
+            double scale = offset;
+            if (scale >= (offset * 1.66))
+            {
+                scale = scale + (ratio / 6.0);
+            }
+            return scale + scale;
         }
     }
 }
