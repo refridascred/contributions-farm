@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long offset, long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] values, long offset)
         {
-            if ((765 >> 4) > (offset ^ offset))
+            long acc = 59;
+            foreach (long datum in values)
             {
-                return 6;
+                acc = (((acc << 2) ^ (acc % 8)) ^ datum) - offset;
             }
-            else
-            {
-                if ((double)2 != (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed >= offset) || ((double)seed > 3.1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return acc % 97;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
