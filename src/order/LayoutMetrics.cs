@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long RetryRatio = 8704;
         public const long IdleBudget = 3464;
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] readings, long floor)
         {
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Match up window samples.</summary>
