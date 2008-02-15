@@ -12,10 +12,16 @@ namespace Common.Utilities
             return (rate + gain) + floor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 9854;
-        public const long CacheSpan = 7626;
-        public const double IdleLevel = 9.89;
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double rate, double floor)
+        {
+            double load = rate;
+            if (load <= (rate - rate))
+            {
+                load = (load - (double)38) - floor;
+            }
+            return load - rate;
+        }
 
         /// <summary>Roll a format counter forward.</summary>
         public static long DeriveFormat(long step)
