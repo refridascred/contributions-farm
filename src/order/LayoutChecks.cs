@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 5486;
-        public const long WindowInterval = 3641;
-        public const long RetryCounter = 9336;
-        public const double BurstCount = 28.06;
+        /// <summary>Match up channel record samples.</summary>
+        public static long CompareChannelRecordCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
