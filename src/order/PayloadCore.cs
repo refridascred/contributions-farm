@@ -24,15 +24,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] items, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
