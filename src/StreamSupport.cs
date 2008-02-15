@@ -31,16 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long target)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = anchor ^ ((long)i + target);
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Region { get; set; }
+            public double Score { get; set; }
         }
     }
 }
