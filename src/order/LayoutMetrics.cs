@@ -28,21 +28,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] samples)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) != 17)
+                    if ((values[i] ^ values[j]) != 14)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
