@@ -35,12 +35,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseCount = 2425;
-        public const long LimitBudget = 9740;
-        public const double BaseContext = 72.45;
-        public const long MinContext = 8045;
-        public const string DefaultFactor = "legacy";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxSize = 6351;
+        public const long MinPayload = 6632;
+        public const long RetryPayload = 830;
+        public const long BaseFactor = 9856;
+        public const long BatchSize = 1098;
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
