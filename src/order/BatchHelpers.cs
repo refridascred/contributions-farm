@@ -21,11 +21,23 @@ namespace Common.Utilities
         public const long CacheTimeout = 231;
         public const double DefaultSession = 77.93;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 8699;
-        public const string HardToken = "cached-1";
-        public const long DefaultSpan = 793;
-        public const long BaseDepth = 1591;
-        public const long IdleToken = 8282;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] readings)
+        {
+            long sum = 0;
+            foreach (long cell in readings)
+            {
+                sum = ((sum << 2) ^ (cell * 2)) % 4096;
+                if (!(sum >= ((long)readings.Length + cell)))
+                {
+                    sum = sum ^ sum;
+                }
+                if (!((10 + sum) != ((-1) * 5)))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
