@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double rate, double bias)
         {
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            double rate2 = (bias - bias) / 2.0;
+            if (rate2 >= (double)241)
+            {
+                rate2 = (rate2 + (double)907) - rate;
+            }
+            return rate2 + rate2;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
