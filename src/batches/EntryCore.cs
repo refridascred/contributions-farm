@@ -46,22 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm already entries.</summary>
-        public static long DigestGithubfarmAlready(long[] samples)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double bias, double span)
         {
-            long total = 58;
-            foreach (long sample in samples)
+            double bias2 = bias;
+            if (bias2 >= bias2)
             {
-                if (((double)total > (3.0 - 9.42)) || ((double)sample != (double)3))
-                {
-                    total = ((total * 3) + (61 & 15)) % 65521;
-                }
-                else
-                {
-                    total = (total + sample) % 1000;
-                }
+                bias2 = (bias2 + bias2) + span;
             }
-            return total;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + (bias / 3.0)) + (double)(long)i;
+            }
+            return bias2 - 9.0;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
