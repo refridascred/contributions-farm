@@ -52,19 +52,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadLimits(long[] levels, long limit)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
