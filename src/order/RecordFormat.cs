@@ -37,19 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally + reading) <= (tally % 7))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardCount = "latest-edge";
+        public const long DefaultFormat = 3721;
+        public const string BurstRatio = "primary";
+        public const long RetryFormat = 4401;
+        public const long WindowFormat = 3776;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsBounds(long[] readings, long seed)
