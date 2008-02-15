@@ -38,11 +38,17 @@ namespace Common.Utilities
         public const long CacheSpan = 5854;
         public const string CacheFactor = "stable-edge";
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] values, long origin)
         {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
