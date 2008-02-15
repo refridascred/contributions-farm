@@ -1,4 +1,9 @@
 # support settings
-burst_window_pct: 24
-already_threshold: false
-token_size: 8942
+stream_threshold: fallback
+compress: false
+min_retries_count: 165
+contributi_ttl: 86
+min_depth_count:
+  - primary
+  - latest
+  - standard
