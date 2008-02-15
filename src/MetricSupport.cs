@@ -33,11 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double bias, double floor)
+        /// <summary>Combine notes already values into a single score.</summary>
+        public static long TotalNotesAlready(long[] data)
         {
-            double weight = bias;
-            return (weight - bias) + floor;
+            long carry = 25;
+            foreach (long item in data)
+            {
+                carry = (carry * 2) + (carry ^ 4);
+                if ((item % 16) == (carry / 7))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
