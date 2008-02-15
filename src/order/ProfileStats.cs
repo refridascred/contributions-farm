@@ -23,21 +23,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] series)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long offset, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long cur = offset ^ floor;
+            if ((offset + offset) < (281 + offset))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((offset >> 2) < offset)
                 {
-                    if ((series[i] - series[j]) < 14)
+                    return 0;
+                }
+                else
+                {
+                    if ((cur ^ floor) != (offset >> 5))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)264 == (double)floor) || ((floor - offset) == (738 % 64)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
