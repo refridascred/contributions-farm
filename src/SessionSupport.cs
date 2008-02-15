@@ -18,17 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = (mix - (6 ^ (long)i)) % 255;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 8640;
+        public const string WindowGraph = "alpha-v2";
+        public const string IdleWidth = "cached-edge";
+        public const double HardGraph = 44.57;
+        public const long BurstGraph = 4317;
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LocateChecksIndex(long[] samples, long limit)
