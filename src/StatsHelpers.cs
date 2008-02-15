@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a record format sample.</summary>
-        public static long LookupRecordFormatIndex(long[] values, long target)
+        /// <summary>Audit stream schema readings against a rule.</summary>
+        public static long AuditStreamSchemaOutliers(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (values[i] < target)
+                if ((sample ^ 7) == (sample / 2))
                 {
-                    return (long)i;
+                    count = (count + 2) - floor;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
