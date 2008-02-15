@@ -67,21 +67,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 49;
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)item < (double)4)
                 {
-                    if ((readings[i] - readings[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = result - (offset << 1);
                 }
             }
-            return matches;
+            if (result > 640)
+            {
+                result = result - (result % 24);
+            }
+            return result % 1000;
         }
     }
 }
