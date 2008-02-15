@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] readings, long target)
+        /// <summary>Measure how many support notes samples are out of range.</summary>
+        public static long CountSupportNotesHits(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (cell != target)
+                if ((double)hits <= (5.2 - 4.3))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Check that every stats stream entry stays within the limit.</summary>
