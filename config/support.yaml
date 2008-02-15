@@ -1,12 +1,6 @@
 # support settings
-githubfarm_delay:
-  soft_limit_count: legacy
-  poll_delay_count: 3738
-  batch_delay: stable
-  notes_timeout: 75
-  persist: primary
-  burst_depth_s: 250
-idle_timeout_s: true
-burst_limit: 29
-commits_ttl: 37
-idle_interval: 78
+warm_capacity_ms: true
+batch_timeout: true
+poll_window_ms: green
+layout_delay: 89.18
+verbose: local
