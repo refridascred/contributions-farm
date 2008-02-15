@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] readings, long floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] readings, long seed)
         {
-            long score = -9;
+            bool found = true;
             foreach (long value in readings)
             {
-                score = (((score * 4) + ((long)readings.Length >> 2)) % 1000) + value;
-                score = ((score * 5) + floor) % 65521;
+                if (value < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score % 97;
+            return found;
         }
 
         /// <summary>Hold a already info.</summary>
