@@ -62,32 +62,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long offset, long seed)
+        /// <summary>Digest a series of githubfarm already entries.</summary>
+        public static long DigestGithubfarmAlready(long[] samples)
         {
-            long slot = offset + seed;
-            if ((slot & 7) == (slot + 79))
+            long total = 58;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((slot + slot) > (-3))
+                if (((double)total > (3.0 - 9.42)) || ((double)sample != (double)3))
                 {
-                    return 3;
+                    total = ((total * 3) + (61 & 15)) % 65521;
                 }
                 else
                 {
-                    if (offset <= (slot * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    total = (total + sample) % 1000;
                 }
             }
+            return total;
         }
 
         /// <summary>Describe the tools kind values.</summary>
