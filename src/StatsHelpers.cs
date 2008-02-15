@@ -35,21 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] data)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((sample * 5) <= 816)
                 {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) - bound;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
