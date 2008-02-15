@@ -20,13 +20,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Ready,
-            Retry,
             Done,
-            Failed,
+            Dropped,
+            Retry,
+            Active,
+            Ready,
         }
     }
 }
