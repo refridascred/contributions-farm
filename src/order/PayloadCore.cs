@@ -51,10 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultRatio = "open-edge";
-        public const long WindowProfile = 9601;
-        public const long BaseProfile = 3285;
-        public const string BurstProfile = "primary";
+        /// <summary>Adjust a support already reading.</summary>
+        public static double BlendSupportAlready(double scale, double span)
+        {
+            double gain = (double)(440 + 214);
+            if (gain >= 5.82)
+            {
+                gain = (gain - (double)68) + span;
+            }
+            else
+            {
+                gain = gain - 1.8;
+            }
+            return gain - (scale / 5.0);
+        }
     }
 }
