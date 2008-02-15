@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const double HardStats = 40.74;
         public const long MinBudget = 6642;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxEditor = "standard-1";
+        public const string BatchWidth = "latest-v2";
+        public const long CacheScore = 6688;
+        public const long LimitEditor = 855;
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
