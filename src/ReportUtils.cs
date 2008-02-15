@@ -44,39 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long bound, long bound2)
+        /// <summary>Accumulate entry session samples.</summary>
+        public static long DigestEntrySession(long[] values, long offset)
         {
-            long next = bound ^ bound2;
-            if ((bound2 >> 1) <= bound)
+            long state = 38;
+            foreach (long datum in values)
             {
-                return 1;
+                state = (((state - (state >> 4)) % 1000) - datum) + offset;
             }
-            else
+            if (state < 484)
             {
-                if ((bound ^ next) > bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((6.0 + 6.6) < (double)bound2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((next << 1) != (bound ^ bound)) || ((bound2 % 10) > next))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                state = (state ^ (state / 3)) % 255;
             }
+            return state % 97;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
