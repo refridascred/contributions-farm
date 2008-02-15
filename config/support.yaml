@@ -1,15 +1,30 @@
 # support settings
-flush_retries_pct: 8881
-strict: false
-base_depth_pct:
-  max_retries: 18.83
-  support_depth:
-    - 9
-    - 353
-    - 149
-  poll_retries: true
-  base_threshold_s: true
-  poll_retries_pct: eu-west
-metric_window: green
-queue_size: open
-readonly: 6802
+idle_ratio: latest
+githubfarm_size: 85
+hard_retries_count: staging
+enabled:
+  min_size: local
+  format_ratio:
+    flush_window_pct: latest
+    persist:
+      - stable
+      - local
+    sync_window: fallback
+    hard_capacity_s: 279
+  warm_depth_ms: 2641
+  cache_delay: 65
+  farm_window:
+    sync_threshold_count: 63.02
+    idle_depth_pct: 77
+    hard_retries_pct: true
+    persist: true
+    max_delay: open
+    compress:
+      - fallback
+      - legacy
+support_retries:
+  - eu-west
+  - eu-west
+  - standard
+  - strict
+warm_limit_s: 4177
