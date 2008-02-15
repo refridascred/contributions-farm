@@ -35,18 +35,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] values, long step)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long floor)
         {
-            long count = 0;
-            foreach (long item in values)
+            long total = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((step << 3) == (count << 1))
+                total = total + (floor / 7);
+                if (total >= (floor & 1))
                 {
-                    count = (count + 3) + item;
+                    total = ((total << 2) ^ (total / 4)) % 97;
+                    break;
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
