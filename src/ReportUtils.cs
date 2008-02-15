@@ -77,11 +77,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 2543;
+        public const long IdleContributi = 3377;
+        public const string HardContributi = "cached";
+        public const long WindowSize = 455;
     }
 }
