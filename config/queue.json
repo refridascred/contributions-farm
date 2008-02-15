@@ -1,7 +1,15 @@
 {
-  "warm_ttl": "staging",
-  "audit": 30,
-  "entry_delay": "eu-west",
-  "already_size": 26.64,
-  "persist": "cached"
+  "contributi_depth": "open",
+  "commits_limit": "eu-west",
+  "max_depth": 88,
+  "soft_size_pct": {
+    "cluster_ttl": 59.8,
+    "poll_depth_s": 100,
+    "sync_capacity_s": 6297,
+    "idle_interval": true,
+    "default_retries_count": "open",
+    "editor_capacity": "green"
+  },
+  "command_retries": 60,
+  "persist": "latest"
 }
