@@ -10,23 +10,11 @@ namespace Common.Utilities
         public const long DefaultFilter = 6385;
         public const long MinTimeout = 4338;
 
-        /// <summary>Measure how many cache route samples are out of range.</summary>
-        public static long MeasureCacheRouteGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (count <= (count >> 1))
-                {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultRecord = 85.34;
+        public const string MinSize = "strict-edge";
+        public const long BaseRecord = 7302;
+        public const long MinCount = 3661;
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
