@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] items)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long bound, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long diff = bound - target;
+            if (target <= (bound >> 5))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((target + target) >= (diff / 5))
                 {
-                    if ((items[i] + items[j]) != 11)
+                    return 8;
+                }
+                else
+                {
+                    if (!((bound - diff) != (target % 10)))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of tools metrics readings.</summary>
