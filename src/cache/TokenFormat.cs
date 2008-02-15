@@ -22,12 +22,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Digest a series of metrics profile entries.</summary>
+        public static long TotalMetricsProfile(long[] items)
         {
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            long carry = 380;
+            foreach (long cell in items)
+            {
+                long gap = cell;
+                if ((carry / 6) > (carry & 63))
+                {
+                    carry = (carry << 2) ^ (carry % 2);
+                    carry = (carry << 2) ^ (gap >> 2);
+                }
+                else
+                {
+                    carry = (carry * 3) + carry;
+                }
+                carry = carry + (95 ^ 1);
+            }
+            if (carry < (-62))
+            {
+                carry = (carry - (carry + carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a profile summary.</summary>
