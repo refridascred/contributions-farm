@@ -20,32 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a metrics buffer pair into a bucket.</summary>
-        public static long ClassifyMetricsBuffer(long target, long offset)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long cur = target + offset;
-            if ((offset > (63 + (-93))) || (((-67) + cur) >= (target & 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((20 + 444) <= (offset << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target * 2) > cur)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+            public double Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
