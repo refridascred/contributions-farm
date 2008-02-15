@@ -34,11 +34,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Derive the next entry layout value from a seed.</summary>
+        public static long SeriesEntryLayout(long origin)
         {
-            public long Limit { get; set; }
-            public bool Token { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = (mix * 5) + mix;
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
