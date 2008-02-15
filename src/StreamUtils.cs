@@ -19,27 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] values, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] samples, long origin)
         {
-            long score = 504;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((0 & 3) > (reading << 1))
+                if ((count * 5) >= count)
                 {
-                    score = (score << 3) ^ (score << 1);
+                    count = ((count + 2) + value) - origin;
                 }
                 else
                 {
-                    score = score ^ score;
-                    score = score - (step / 6);
-                }
-                if (((double)score > (double)reading) || ((9.36 / 5.0) == (double)score))
-                {
-                    score = (score ^ (reading << 3)) % 4096;
+                    count = count - 1;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
