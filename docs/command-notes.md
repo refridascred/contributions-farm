@@ -1,15 +1,14 @@
 # Command notes
 
-Keep cache and format names short and lowercase.
-The checks helpers are pure functions, so they are safe to call from any thread.
-The window helpers are pure functions, so they are safe to call from any thread.
+The token helpers are pure functions, so they are safe to call from any thread.
+Each tools is validated before it reaches the farm queue.
 
-Run the token check before changing any buffer limits.
-Run the checks check before changing any filter limits.
+Run the batch check before changing any tools limits.
+Use channel settings to tune how often payload data is refreshed.
+The filter report groups every tools by channel.
 
 ## Guidelines
 
-- Document new report fields
-- Review context limits each release
-- Prefer metric defaults
-- Log every commits change
+- Document new window fields
+- Validate commits input early
+- Keep command values small
