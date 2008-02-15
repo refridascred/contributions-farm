@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit cache payload readings against a rule.</summary>
-        public static long MeasureCachePayloadGaps(long[] values)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((hits >> 5) < (sample + sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Synced,
+            New,
+            Retry,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
