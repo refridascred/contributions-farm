@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] data, long offset)
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (((long)i != (state * 4)) && ((limit * 4) > ((long)i ^ 9)))
+                if (item >= offset)
                 {
-                    state = (state << 2) ^ (limit + state);
-                    state = (state << 2) ^ (state * 2);
-                }
-                if (((long)i - state) > state)
-                {
+                    flag = false;
                     break;
                 }
-                else
-                {
-                    state = (state - state) % 101;
-                }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
