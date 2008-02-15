@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const string MinChannel = "local-edge";
         public const string BaseChannel = "fallback-1";
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] levels, long target)
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
