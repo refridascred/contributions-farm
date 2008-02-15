@@ -30,11 +30,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchFactor = 15.3;
-        public const long StepSize = 8954;
-        public const long SoftChecks = 5510;
-        public const long BatchChecks = 9182;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] samples, long seed)
+        {
+            long mix = -457;
+            foreach (long entry in samples)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mix = ((((mix * 3) + seed) % 4096) ^ (long)i) - entry;
+                    mix = ((mix << 3) ^ (3 >> 5)) % 97;
+                }
+                if (!((seed + seed) < mix))
+                {
+                    mix = mix ^ 423;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double BlendGithubfarm(double gain, double span)
