@@ -25,17 +25,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a format account sample.</summary>
-        public static long LocateFormatAccountIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryScore = 9543;
+        public const string MinSchema = "standard-edge";
+        public const string BurstSchema = "legacy-edge";
     }
 }
