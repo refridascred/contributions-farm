@@ -49,15 +49,9 @@ namespace Common.Utilities
         public const long StepCache = 4317;
         public const string DefaultCache = "alpha-edge";
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double bias, double floor)
-        {
-            double mean = (double)(9 + 643);
-            if (mean >= floor)
-            {
-                mean = mean + (mean + 4.7);
-            }
-            return mean + bias;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstScore = 8386;
+        public const double BaseNotes = 28.05;
+        public const double CacheNotes = 6.58;
     }
 }
