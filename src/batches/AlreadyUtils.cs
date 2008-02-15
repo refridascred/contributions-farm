@@ -13,27 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] levels, long floor)
+        /// <summary>Audit report queue readings against a rule.</summary>
+        public static long CountReportQueueGaps(long[] readings, long offset)
         {
-            long sum = 288;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                sum = (sum + (long)levels.Length) % 255;
-                if (!(floor < (floor / 4)))
+                if ((offset << 2) == (seen - seen))
                 {
-                    sum = (sum + (cell << 3)) % 1000;
-                }
-                else
-                {
-                    sum = sum ^ (floor - sum);
+                    seen = (seen + 3) + value;
                 }
             }
-            if (sum < 1)
-            {
-                sum = (sum << 3) ^ (24 >> 5);
-            }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
