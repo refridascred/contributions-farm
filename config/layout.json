@@ -1,7 +1,7 @@
 {
-  "batches_threshold": 6465,
-  "sync_limit": false,
-  "poll_limit_s": "standard",
-  "idle_capacity_ms": [75, 156, 70],
-  "persist": 2493
+  "strict": [489, 161, 465, 36],
+  "batch_limit": 1024,
+  "idle_capacity": 73.38,
+  "already_ttl": "strict",
+  "poll_size_ms": "legacy"
 }
