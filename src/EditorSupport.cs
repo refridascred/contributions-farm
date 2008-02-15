@@ -14,20 +14,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] data, long step)
-        {
-            long carry = 7;
-            foreach (long datum in data)
-            {
-                carry = carry - (datum + carry);
-            }
-            if (carry < 983)
-            {
-                carry = (carry - (step >> 5)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchBudget = 58;
+        public const long SoftDepth = 3040;
+        public const string IdleMetrics = "fallback";
+        public const string BaseMetrics = "cached";
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatOutliers(long[] items, long target)
