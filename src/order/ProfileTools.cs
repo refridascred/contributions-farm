@@ -13,11 +13,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepRoute = 27.63;
-        public const double BurstRoute = 36.57;
-        public const long LimitRoute = 4488;
-        public const double MaxLevel = 51.08;
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string CacheContext = "stable-edge";
