@@ -26,21 +26,21 @@ namespace Common.Utilities
             return scale - (weight - scale);
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long floor)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] values)
         {
-            long total = floor;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = total + (floor / 7);
-                if (total >= (floor & 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total << 2) ^ (total / 4)) % 97;
-                    break;
+                    if ((values[i] + values[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
