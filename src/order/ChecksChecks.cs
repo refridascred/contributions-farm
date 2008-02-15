@@ -15,15 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] levels, long floor)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] items)
         {
             long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (matches < floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) ^ datum;
+                    if ((items[i] ^ items[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
