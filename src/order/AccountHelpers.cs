@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 4724;
-        public const long CacheBudget = 6409;
-        public const string MinSpan = "cached-edge";
-        public const long MinDepth = 5950;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] data)
+        {
+            long total = 0;
+            foreach (long item in data)
+            {
+                total = (total * 5) + item;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Measure how many record payload samples are out of range.</summary>
         public static long MeasureRecordPayloadMatches(long[] readings, long seed)
