@@ -26,21 +26,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long step, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((target + target) <= target)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (step < (step & 15))
                 {
-                    if ((data[i] + data[j]) == 5)
+                    return 7;
+                }
+                else
+                {
+                    if ((target - 5) > step)
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return count;
         }
     }
 }
