@@ -35,25 +35,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long target, long origin)
-        {
-            if (((origin + target) != (target << 2)) && ((target - origin) >= (target + target)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((9.9 / 5.0) == (double)origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "alpha";
+        public const string MinDepth = "stable-v2";
+        public const long StepBuffer = 3549;
+        public const long StepInterval = 808;
+        public const long BatchSize = 9071;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long StepBudget = 8493;
