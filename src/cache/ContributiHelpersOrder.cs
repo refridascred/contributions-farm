@@ -45,15 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long limit)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] values)
         {
-            long state = limit;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if ((count & 15) < value)
+                {
+                    count = count + 3;
+                }
             }
-            return state;
+            return count;
         }
     }
 }
