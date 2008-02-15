@@ -52,19 +52,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] levels, long limit)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Total { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
