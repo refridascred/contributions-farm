@@ -47,12 +47,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
             Ready,
-            Failed,
-            Done,
+            New,
+            Stale,
         }
     }
 }
