@@ -62,23 +62,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double weight, double bias)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] values, long step)
         {
-            double scale = bias;
-            if (scale >= scale)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale + (double)742;
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + weight) - (double)(long)i;
-            }
-            return scale + (double)85;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
