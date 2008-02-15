@@ -47,11 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] items, long floor)
         {
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
