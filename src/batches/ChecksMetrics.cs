@@ -58,13 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] readings, long bound)
         {
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell >= (1.36 + 1.0))
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a metrics githubfarm counter forward.</summary>
