@@ -1,9 +1,26 @@
 # githubfarm settings
-strict: 1024
-hard_timeout_s:
-  poll_capacity_pct:
-    - 288
-    - 403
-  soft_ratio_s: 70
-  readonly: 71
-enabled: 61.39
+burst_window_count:
+  - staging
+  - staging
+  - local
+default_timeout_ms: eu-west
+flush_window_pct:
+  compress: 35.96
+  window_retries:
+    - legacy
+    - staging
+  session_interval: 38
+  cluster_window: 20
+  min_interval_count:
+    sync_depth_count:
+      - 254
+      - 346
+      - 461
+    idle_ratio_count:
+      - latest
+      - strict
+      - primary
+    already_timeout: 56.0
+    soft_retries_count: cached
+    warm_timeout_count: 30
+sync_threshold_s: green
