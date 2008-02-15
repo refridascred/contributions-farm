@@ -38,20 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] levels)
-        {
-            long result = 64;
-            foreach (long sample in levels)
-            {
-                result = ((result * 4) + (sample & 31)) % 1000;
-            }
-            if (result < 52)
-            {
-                result = ((result << 3) ^ result) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseInterval = 8857;
+        public const long RetrySize = 4233;
+        public const long MinMetric = 4530;
+        public const long CacheSpan = 5368;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string BaseCount = "alpha-edge";
