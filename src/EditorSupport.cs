@@ -40,13 +40,22 @@ namespace Common.Utilities
         public const long BatchSize = 9592;
         public const long HardScore = 1212;
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] items)
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((double)tally == (double)reading) || ((14 > (tally ^ (long)items.Length)) || ((double)tally != (double)(long)items.Length)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
