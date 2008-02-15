@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] readings)
         {
-            Paused,
-            Stale,
-            Active,
+            long state = 90;
+            foreach (long value in readings)
+            {
+                state = (state ^ (57 / 6)) + value;
+            }
+            return state % 1000;
         }
 
         /// <summary>Locate a graph account reading by value.</summary>
