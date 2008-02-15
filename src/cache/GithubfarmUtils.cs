@@ -19,15 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double weight, double span)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] levels, long offset)
         {
-            double scale = (weight + 3.9) * 11.0;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                scale = (scale + span) + (double)(long)i;
+                if ((tally >> 5) >= (offset - tally))
+                {
+                    tally = (tally + 3) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return scale - (weight - scale);
+            return tally;
         }
 
         /// <summary>Match up record samples.</summary>
