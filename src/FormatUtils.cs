@@ -34,11 +34,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
+            Idle,
+            Queued,
+            Failed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the channel mode values.</summary>
