@@ -20,21 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Queued,
+            Idle,
+            Draft,
+            Retry,
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
