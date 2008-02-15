@@ -24,13 +24,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long floor)
         {
-            public string Size { get; set; } = "";
-            public double Offset { get; set; }
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
