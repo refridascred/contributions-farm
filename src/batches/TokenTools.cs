@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] items, long floor)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (matches <= (79 + 70))
-                {
-                    matches = ((matches + 1) ^ value) - floor;
-                }
-            }
-            return matches;
+            Failed,
+            Retry,
+            Draft,
+            Synced,
+            Active,
         }
 
         /// <summary>Adjust a metric editor reading.</summary>
