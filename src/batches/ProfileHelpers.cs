@@ -31,17 +31,15 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] values, long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 99;
+            foreach (long value in items)
             {
-                if ((values[i] < origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum ^ (sum >> 3)) ^ value) - floor;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Roll a githubfarm tools counter forward.</summary>
