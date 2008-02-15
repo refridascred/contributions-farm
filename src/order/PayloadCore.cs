@@ -19,14 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
             Done,
-            Stale,
+            Locked,
+            Synced,
             Closed,
-            New,
-            Retry,
+            Failed,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
