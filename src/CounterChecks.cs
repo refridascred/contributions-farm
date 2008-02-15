@@ -33,19 +33,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] items, long step)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double rate, double span)
         {
-            long state = 48;
-            foreach (long datum in items)
+            double mean = span;
+            if (mean >= (span * 9.0))
             {
-                state = (state - (state << 2)) - step;
-                if (!((double)datum >= (14.0 + 3.7)))
-                {
-                    break;
-                }
+                mean = mean + (rate - mean);
             }
-            return state;
+            return mean + (double)2;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
