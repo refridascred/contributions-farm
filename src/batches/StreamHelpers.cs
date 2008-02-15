@@ -45,15 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double weight, double floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] levels)
         {
-            double gain = weight / 9.0;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                gain = (gain + (weight / 8.0)) + (double)(long)i;
+                if (count >= item)
+                {
+                    count = count + 2;
+                }
             }
-            return gain + floor;
+            return count;
         }
 
         /// <summary>Count the format stream entries that pass the check.</summary>
