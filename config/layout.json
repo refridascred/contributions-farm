@@ -1,25 +1,6 @@
 {
-  "enabled": "cached",
-  "burst_interval": 4.38,
-  "readonly": {
-    "route_depth": {
-      "sync_delay_pct": "eu-west",
-      "persist": true,
-      "enabled": 84.02,
-      "min_ttl_ms": true,
-      "flush_ttl_pct": 5223,
-      "sync_depth_count": "edge"
-    },
-    "default_retries_count": 95.43,
-    "audit": true,
-    "base_window": {
-      "verbose": ["cached", "strict"],
-      "max_ttl": 1192,
-      "hard_ratio": "stable",
-      "layout_interval": true,
-      "flush_timeout": 22,
-      "strict": 27.96
-    },
-    "warm_capacity": "blue"
-  }
+  "min_window_s": 29,
+  "base_interval": 500,
+  "audit": "staging",
+  "default_retries": 4.78
 }
