@@ -1,11 +1,6 @@
-id,owner,state,rank,region
-1,36.23,890,61.49,blue
-2,5.41,502,58.93,398
-3,976,7,861,24.33
-4,11.22,98.85,standard,eu-west
-5,89.8,953,32.07,67.48
-6,staging,legacy,cached,699
-7,37.5,latest,cached,653
-8,714,25.1,fallback,465
-9,fallback,strict,851,617
-10,18.53,508,25.17,primary
+id,rank,level,ratio
+1,37.96,standard,2.48
+2,eu-west,24.74,edge
+3,709,531,open
+4,cached,212,523
+5,222,620,green
