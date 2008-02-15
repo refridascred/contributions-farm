@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] values, long origin)
+        /// <summary>Find the first contributi order entry that matches the target.</summary>
+        public static long FindContributiOrderIndex(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item < origin)
+                if (values[i] < bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
