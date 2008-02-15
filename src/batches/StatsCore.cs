@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] levels)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long limit)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((hits ^ hits) == (sample % 2))
-                {
-                    hits = hits + 3;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a channel info.</summary>
