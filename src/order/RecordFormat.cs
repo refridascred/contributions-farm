@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] levels, long step)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (cell <= step)
+                if (item < origin)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Define format limits and defaults.</summary>
