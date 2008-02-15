@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long StepLevel = 2208;
         public const long LimitScore = 7005;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] data, long step)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long acc = 4;
-            foreach (long entry in data)
-            {
-                if (((entry + step) > (entry + 56)) || ((step / 6) > (entry >> 1)))
-                {
-                    acc = (acc * 3) + (step + 9);
-                }
-            }
-            return acc;
+            Synced,
+            Closed,
+            Active,
+            Done,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
