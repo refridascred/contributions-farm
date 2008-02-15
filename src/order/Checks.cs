@@ -31,12 +31,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Total { get; set; }
+            public long Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
