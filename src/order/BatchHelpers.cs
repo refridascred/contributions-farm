@@ -36,11 +36,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstInterval = 59.47;
-        public const long MaxCount = 118;
-        public const string HardStats = "latest";
-        public const long SoftScore = 8347;
-        public const long RetryLevel = 3727;
+        /// <summary>Audit session batches readings against a rule.</summary>
+        public static long CountSessionBatchesHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((17.0 - 0.9) >= (double)value)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
