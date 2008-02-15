@@ -57,12 +57,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
-        {
-            public bool Flag { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowRecord = "legacy-edge";
+        public const long DefaultRecord = 4044;
+        public const string MaxRecord = "latest-1";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long SoftCount = 9296;
