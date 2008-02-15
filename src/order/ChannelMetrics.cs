@@ -29,9 +29,13 @@ namespace Common.Utilities
         public const long LimitSession = 3114;
         public const long BaseSession = 9353;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 8917;
-        public const double StepCache = 96.33;
-        public const double StepWidth = 68.29;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Locked,
+            Ready,
+            Stale,
+            Closed,
+        }
     }
 }
