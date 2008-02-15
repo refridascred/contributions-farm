@@ -40,18 +40,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] data)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((8.0 - 18.0) != (double)entry) && ((6.0 + 11.0) <= (double)entry)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((items[i] + items[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
