@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long LimitSchema = 1649;
         public const long HardDepth = 1559;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 1613;
+        public const long CacheBatches = 7773;
+        public const long StepBatches = 6393;
+        public const long BaseBatches = 4864;
+        public const double HardBatches = 73.4;
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
