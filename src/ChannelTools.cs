@@ -34,9 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultLevel = 4448;
-        public const long MinRatio = 9751;
-        public const long BatchCache = 1798;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] items, long floor)
+        {
+            long score = 575;
+            foreach (long entry in items)
+            {
+                if ((entry - 857) >= (floor << 2))
+                {
+                    score = (score - (5 + 9)) % 97;
+                }
+            }
+            return score % 1000;
+        }
     }
 }
