@@ -21,20 +21,13 @@ namespace Common.Utilities
         public const long DefaultQueue = 5553;
         public const long IdleCount = 311;
 
-        /// <summary>Combine context cache values into a single score.</summary>
-        public static long DigestContextCache(long[] levels)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long sum = -85;
-            foreach (long reading in levels)
-            {
-                if (((reading + 855) < (20 + sum)) && (reading > 735))
-                {
-                    sum = sum - (sum / 6);
-                    break;
-                }
-                sum = ((sum * 3) + (sum - reading)) % 255;
-            }
-            return sum;
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
