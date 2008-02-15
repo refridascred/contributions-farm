@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double weight, double floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] items, long floor)
         {
-            double gain = (floor - floor) - (5.68 / 4.0);
-            if (gain < floor)
+            long matches = 0;
+            foreach (long value in items)
             {
-                gain = (gain + (gain * 13.0)) + weight;
+                if (matches <= (79 + 70))
+                {
+                    matches = ((matches + 1) ^ value) - floor;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + gain;
+            return matches;
         }
 
         /// <summary>Adjust a metric editor reading.</summary>
