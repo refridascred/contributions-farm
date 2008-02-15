@@ -40,10 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultMetrics = 85.8;
-        public const string LimitTimeout = "legacy-1";
-        public const long MaxRatio = 2810;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepTimeout = 5046;
+        public const long StepRatio = 9300;
+        public const long StepSize = 1093;
+        public const string IdleTimeout = "local-v2";
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool GuardFormatRange(long[] readings, long limit)
