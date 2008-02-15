@@ -15,29 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long target)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] items)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            long carry = 69;
+            foreach (long sample in items)
             {
-                if ((target - 482) == (target * 4))
-                {
-                    result = (result * 5) + (result + 71);
-                }
-                if ((331 + target) <= (21 >> 4))
-                {
-                    result = ((result * 5) + (result + target)) % 255;
-                    break;
-                }
-                if ((target >= result) || ((target + (long)i) >= target))
-                {
-                    result = (result << 2) ^ (target ^ target);
-                    result = (result << 3) ^ target;
-                }
-                result = ((result * 2) + (long)i) % 97;
+                carry = ((carry << 2) ^ (carry - 120)) + sample;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Blend two buffer token measurements.</summary>
