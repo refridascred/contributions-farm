@@ -1,13 +1,8 @@
 # githubfarm settings
-flush_timeout_s:
-  - eu-west
-  - cached
-  - latest
-retry_capacity_s: true
-cache_interval: local
-batch_depth_count: true
-flush_delay_s:
-  verbose: 1
-  persist: 8262
-  max_delay_s: blue
-max_capacity_s: 83.31
+idle_window_pct: 22.5
+min_delay_ms:
+  - 475
+  - 266
+  - 389
+  - 360
+poll_delay: eu-west
