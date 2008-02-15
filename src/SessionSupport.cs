@@ -23,19 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double gain, double bias)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] readings, long bound)
         {
-            double scale = bias;
-            if (scale <= gain)
+            long acc = 71;
+            foreach (long reading in readings)
             {
-                scale = scale + gain;
+                acc = (acc + bound) - reading;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (bias * 19.0)) + (double)(long)i;
-            }
-            return scale - (gain - bias);
+            return acc % 97;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
