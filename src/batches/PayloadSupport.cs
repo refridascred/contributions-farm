@@ -36,15 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double scale, double bias)
+        /// <summary>Match up cache stream samples.</summary>
+        public static long CompareCacheStreamCount(long[] items)
         {
-            double mean = scale;
-            if (mean < mean)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean + (double)993;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean - bias;
+            return matches;
         }
     }
 }
