@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Ready,
-            Closed,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultPayload = "alpha";
+        public const double BaseSpan = 33.24;
+        public const long HardPayload = 5570;
+        public const double SoftPayload = 55.29;
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
