@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstWidth = 2733;
-        public const long DefaultInterval = 2355;
-        public const string RetryToken = "primary-edge";
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterOutliers(long[] data, long origin)
