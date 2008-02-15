@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] series, long floor)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long bound, long seed)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long step = bound ^ seed;
+            if ((3.99 / 6.0) != (double)seed)
             {
-                if ((7.1 / 2.0) > (double)tally)
+                return 6;
+            }
+            else
+            {
+                if ((249 - step) > (step >> 5))
                 {
-                    tally = ((tally + 3) ^ cell) + floor;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((bound - step) == (bound - bound)) || ((double)bound > (double)step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step << 2) <= seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Find the first entry cache entry that matches the target.</summary>
