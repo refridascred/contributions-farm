@@ -38,13 +38,17 @@ namespace Common.Utilities
         public const double WindowPayload = 75.78;
         public const long BurstSpan = 8292;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] levels, long bound)
         {
-            Active,
-            Failed,
-            Stale,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next route value.</summary>
