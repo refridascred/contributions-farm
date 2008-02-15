@@ -18,15 +18,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] series, long offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] items, long floor)
         {
-            long state = 6;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 4) + (state + offset)) ^ value;
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return state % 4096;
+            return -1;
         }
     }
 }
