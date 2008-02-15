@@ -20,15 +20,13 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double rate, double floor)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            double load = rate;
-            if (load <= (rate - rate))
-            {
-                load = (load - (double)38) - floor;
-            }
-            return load - rate;
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the cluster mode values.</summary>
