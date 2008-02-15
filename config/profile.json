@@ -1,6 +1,8 @@
 {
-  "verbose": "eu-west",
-  "max_retries": true,
-  "retry_delay": 79,
-  "strict": true
+  "already_limit": true,
+  "cache_threshold": 1391,
+  "dry_run": true,
+  "burst_ttl": [338, 132],
+  "checks_ratio": 53,
+  "idle_interval": 16.82
 }
