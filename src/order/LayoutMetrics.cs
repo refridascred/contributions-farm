@@ -20,13 +20,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Compare every pair of session tools readings.</summary>
+        public static long PairSessionToolsCount(long[] items)
         {
-            Synced,
-            Closed,
-            Paused,
-            Failed,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
