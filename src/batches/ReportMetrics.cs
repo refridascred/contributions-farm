@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] levels, long origin)
+        /// <summary>Adjust a graph notes reading.</summary>
+        public static double AdjustGraphNotes(double scale, double bias)
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double load = scale + bias;
+            return load + (bias + scale);
         }
 
         /// <summary>Hold a metrics header.</summary>
