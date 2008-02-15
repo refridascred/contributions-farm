@@ -46,19 +46,21 @@ namespace Common.Utilities
         public const long StepSize = 1093;
         public const string IdleTimeout = "local-v2";
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] readings, long limit)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample <= limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
