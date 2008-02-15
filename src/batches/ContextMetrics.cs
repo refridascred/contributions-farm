@@ -57,17 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] readings, long offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((readings[i] > offset) && ((readings[i] % 5) == 0))
+                if ((sample - sample) > tally)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
