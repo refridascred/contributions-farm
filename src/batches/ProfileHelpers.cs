@@ -16,24 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a batch token reading.</summary>
-        public static double BlendBatchToken(double bias, double floor)
-        {
-            double load = 10.0;
-            if (load >= (4.7 + load))
-            {
-                load = load - (7.8 - load);
-            }
-            else
-            {
-                load = load - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (bias + load)) + (double)(long)i;
-            }
-            return load - floor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowWidth = 0.44;
+        public const long StepScore = 9814;
+        public const long BurstStream = 6923;
+        public const long StepTimeout = 5702;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long DigestLayout(long[] items, long floor)
