@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double rate, double span)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            double drift = rate;
-            if (drift >= (double)(-3))
-            {
-                drift = (drift + rate) + span;
-            }
-            return drift - drift;
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
