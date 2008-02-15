@@ -1,7 +1,7 @@
 {
-  "audit": "legacy",
-  "persist": [75, 352, 240],
-  "burst_timeout_s": 15,
-  "retry_window_ms": "stable",
-  "flush_depth_count": ["open", "standard"]
+  "editor_ttl": "primary",
+  "queue_limit": "open",
+  "context_size": ["standard", "strict"],
+  "batches_window": ["blue", "legacy", "strict", "fallback"],
+  "batch_delay_count": "open"
 }
