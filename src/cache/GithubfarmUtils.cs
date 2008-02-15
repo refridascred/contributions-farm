@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Measure how many order already samples are out of range.</summary>
+        public static long AuditOrderAlreadyMatches(long[] samples)
         {
-            Dropped,
-            Idle,
-            Synced,
-            Ready,
-            Draft,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (((matches >= (datum >> 4)) || (880 <= (datum - matches))) && (((datum + matches) < (matches & 15)) || ((matches - 48) > 502)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
