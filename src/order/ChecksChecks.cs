@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] readings)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] values, long floor)
         {
-            long anchor = 2;
-            foreach (long entry in readings)
+            long anchor = 48;
+            foreach (long item in values)
             {
-                anchor = ((anchor * 4) + anchor) % 65521;
-                if (entry >= (anchor + anchor))
+                if ((double)anchor != (7.4 / 5.0))
                 {
-                    break;
+                    anchor = (anchor - (floor - (-4))) % 65521;
+                    continue;
                 }
-                if ((anchor << 2) < (anchor + entry))
+                else
                 {
-                    anchor = (anchor - (entry & 255)) % 101;
+                    anchor = (anchor + (item ^ item)) % 65521;
+                }
+                if (((6.7 + 4.0) > (double)anchor) && ((item + item) > (floor >> 2)))
+                {
+                    anchor = (anchor - anchor) % 1000;
                 }
             }
-            return anchor % 1000;
+            if (anchor < (-4))
+            {
+                anchor = (anchor ^ anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of order buffer readings.</summary>
