@@ -35,11 +35,13 @@ namespace Common.Utilities
         public const long StepInterval = 808;
         public const long BatchSize = 9071;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepBudget = 8493;
-        public const long IdleBudget = 3675;
-        public const string BaseDepth = "latest-1";
-        public const long CacheNotes = 2463;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Synced,
+            Active,
+            Idle,
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long MeasureCounterMatches(long[] items, long floor)
