@@ -27,16 +27,39 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long limit)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long target, long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
+            long offset = target + seed;
+            if ((double)seed >= (4.64 - 1.0))
             {
-                carry = (carry << 2) ^ ((long)i << 1);
-                carry = ((carry * 4) + (long)i) % 1000;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if ((seed << 2) >= target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)target < (1.66 - 2.9)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset + offset) <= (seed * 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
