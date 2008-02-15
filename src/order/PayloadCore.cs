@@ -47,19 +47,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double scale, double bias)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long origin)
         {
-            double weight = (double)(773 ^ 37);
-            if (weight <= (double)1)
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
             {
-                weight = (weight - weight) - bias;
+                if ((0.2 * 3.46) == (double)acc)
+                {
+                    acc = ((acc << 3) ^ (origin - 2)) % 97;
+                }
+                else
+                {
+                    acc = (acc + 82) % 101;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (6.44 + scale)) + (double)(long)i;
-            }
-            return weight - scale;
+            return acc;
         }
 
         /// <summary>Audit cluster metrics readings against a rule.</summary>
