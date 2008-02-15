@@ -46,11 +46,13 @@ namespace Common.Utilities
         public const string MaxSupport = "staging-v2";
         public const long StepInterval = 1012;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftFarm = "staging-edge";
-        public const long StepLevel = 1314;
-        public const long IdleTimeout = 1865;
-        public const string RetryRatio = "latest";
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public double Region { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long ScoreContext(long[] series)
