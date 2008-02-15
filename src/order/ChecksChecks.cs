@@ -40,18 +40,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] items)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long step)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((19 - 44) > ((long)items.Length * 2))
+                if (!((step % 60) < (step * 5)))
                 {
-                    count = (count + 2) + entry;
+                    result = (result ^ (long)i) % 97;
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
     }
 }
