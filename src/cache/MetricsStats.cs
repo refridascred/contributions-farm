@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long offset, long offset2)
-        {
-            long cur = offset - offset2;
-            if ((5.95 / 4.0) < (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset < (offset2 / 9))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((2 << 2) <= offset2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (380 < (cur >> 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheChannel = 33.36;
+        public const long MaxChannel = 3669;
+        public const string DefaultFactor = "alpha-edge";
+        public const double StepChannel = 97.44;
+        public const long BatchChannel = 4822;
 
         /// <summary>Check that every entry account entry stays within the limit.</summary>
         public static bool GuardEntryAccountRange(long[] levels, long origin)
