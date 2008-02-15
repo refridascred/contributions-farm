@@ -53,21 +53,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] levels)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long step, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((target + 362) != (step + step)) && ((step / 3) <= (step + target)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((target + target) >= (step - step))
                 {
-                    if ((levels[i] ^ levels[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate context samples.</summary>
