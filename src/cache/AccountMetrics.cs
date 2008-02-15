@@ -56,12 +56,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Scale a buffer stats figure with a bias.</summary>
+        public static double ScaleBufferStats(double gain, double offset)
         {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            double scale = 7.54;
+            if (scale > scale)
+            {
+                scale = ((scale - (scale - scale)) + gain) + offset;
+            }
+            return scale + (double)0;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
