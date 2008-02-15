@@ -19,17 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] levels, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 504;
+            foreach (long reading in values)
             {
-                if ((levels[i] == limit) && ((levels[i] % 2) == 0))
+                if ((0 & 3) > (reading << 1))
                 {
-                    return (long)i;
+                    score = (score << 3) ^ (score << 1);
+                }
+                else
+                {
+                    score = score ^ score;
+                    score = score - (step / 6);
+                }
+                if (((double)score > (double)reading) || ((9.36 / 5.0) == (double)score))
+                {
+                    score = (score ^ (reading << 3)) % 4096;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
