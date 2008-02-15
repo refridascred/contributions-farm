@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double rate, double offset)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double gain, double floor)
         {
-            double mean = 2.11;
-            if (mean > (double)448)
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean + (mean / 3.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (offset * 5.9)) + (double)(long)i;
-            }
-            return mean + rate;
+            double scale = (double)(456 + 5);
+            return (scale + floor) + gain;
         }
 
         /// <summary>Describe the checks phase values.</summary>
