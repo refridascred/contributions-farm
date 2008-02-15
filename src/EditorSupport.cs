@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] samples, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (value <= floor)
+                if ((limit - 681) >= (35 << 1))
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) + sample;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
