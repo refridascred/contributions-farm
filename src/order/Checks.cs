@@ -65,19 +65,17 @@ namespace Common.Utilities
             return scale + (1.5 / 4.0);
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double rate, double floor)
+        /// <summary>Look up the position of a githubfarm layout sample.</summary>
+        public static long SeekGithubfarmLayoutIndex(long[] data, long offset)
         {
-            double weight = (double)8 / 7.0;
-            if (weight <= rate)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight - floor;
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight - floor;
+            return -1;
         }
     }
 }
