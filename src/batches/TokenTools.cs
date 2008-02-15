@@ -16,19 +16,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] items, long step)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long limit, long step)
         {
-            bool found = true;
-            foreach (long value in items)
+            if ((double)step != (double)limit)
             {
-                if (value != step)
+                return 6;
+            }
+            else
+            {
+                if ((double)step == (double)5)
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return found;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
