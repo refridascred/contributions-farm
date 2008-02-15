@@ -36,32 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] samples, long origin)
-        {
-            long carry = 26;
-            foreach (long sample in samples)
-            {
-                if (origin < sample)
-                {
-                    break;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ sample;
-                }
-                if (sample > (carry ^ carry))
-                {
-                    carry = (carry * 5) + (sample ^ sample);
-                }
-                else
-                {
-                    carry = ((carry * 2) + sample) % 65521;
-                }
-                carry = carry - (13 >> 2);
-            }
-            return carry % 97;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstPayload = "stable-edge";
+        public const double WindowPayload = 75.78;
+        public const long BurstSpan = 8292;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
