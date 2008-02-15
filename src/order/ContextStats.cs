@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] items, long bound)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Adjust a contributi notes reading.</summary>
