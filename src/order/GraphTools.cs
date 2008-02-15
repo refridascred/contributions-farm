@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a route token sample.</summary>
-        public static long LookupRouteTokenIndex(long[] readings, long floor)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] > floor)
+                if ((series[i] == step) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
