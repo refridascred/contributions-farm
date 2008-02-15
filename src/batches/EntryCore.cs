@@ -35,10 +35,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstPayload = "stable-edge";
-        public const double WindowPayload = 75.78;
-        public const long BurstSpan = 8292;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleCount = 5497;
+        public const string BaseCount = "latest-1";
+        public const long RetryChecks = 1147;
+        public const long BurstChecks = 1220;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long ClassifyBatch(long offset, long seed)
