@@ -1,24 +1,4 @@
 # entry settings
-verbose: 6
-min_delay: cached
-warm_ttl_count: 60
-session_size:
-  retry_ratio: 61.04
-  sync_size: primary
-  cache_interval_pct:
-    queue_delay: 13
-    compress: green
-    stats_ratio: stable
-    hard_timeout: blue
-poll_ttl:
-  strict:
-    - primary
-    - open
-    - local
-  retry_interval: latest
-  readonly: false
-  notes_window: 44.9
-min_threshold_pct:
-  tools_ratio: 98
-  cache_interval: 8351
-  warm_ratio: 36
+audit: green
+githubfarm_threshold: legacy
+burst_delay_s: 83
