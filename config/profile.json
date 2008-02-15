@@ -1,10 +1,13 @@
 {
-  "min_ratio": {
-    "idle_depth": 60,
-    "soft_capacity": "stable",
-    "retry_threshold_s": 4721,
-    "retry_ttl": true
+  "sync_threshold": 90,
+  "flush_threshold": {
+    "poll_timeout_count": 62,
+    "soft_ttl_s": ["cached", "strict", "legacy"],
+    "flush_interval": "staging",
+    "cache_threshold_ms": false
   },
-  "order_capacity": ["latest", "blue"],
-  "soft_threshold_pct": 52.56
+  "burst_size_s": false,
+  "soft_threshold": ["green", "staging", "edge", "cached"],
+  "hard_depth": "standard",
+  "hard_retries_s": true
 }
