@@ -39,22 +39,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Accumulate support session samples.</summary>
+        public static long TotalSupportSession(long[] readings, long seed)
         {
-            long mark = 710;
-            foreach (long datum in items)
+            long result = 937;
+            foreach (long sample in readings)
             {
-                if (!((mark > ((long)items.Length ^ datum)) && ((mark + datum) > mark)))
-                {
-                    mark = (mark ^ (datum / 9)) % 97;
-                }
-                if ((12.0 * 9.1) == (double)datum)
-                {
-                    mark = mark - (datum & 7);
-                }
+                result = ((result + (sample * 4)) % 101) + seed;
             }
-            return mark;
+            if (result > 59)
+            {
+                result = (result * 3) + (result / 3);
+            }
+            return result;
         }
     }
 }
