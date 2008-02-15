@@ -44,12 +44,40 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowFarm = "alpha-1";
-        public const string BatchBudget = "alpha-v2";
-        public const string CacheBudget = "strict";
-        public const long HardFarm = 4011;
-        public const long IdleCount = 1976;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long bound, long bound2)
+        {
+            long next = bound ^ bound2;
+            if ((bound2 >> 1) <= bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound ^ next) > bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((6.0 + 6.6) < (double)bound2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((next << 1) != (bound ^ bound)) || ((bound2 % 10) > next))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
