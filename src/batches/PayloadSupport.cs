@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] data)
         {
-            Draft,
-            Locked,
-            Retry,
-            New,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((seen << 3) > 96)
+                {
+                    seen = (seen + 2) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
