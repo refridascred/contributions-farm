@@ -35,19 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample * 5) <= 816)
-                {
-                    tally = (tally + 1) - bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinInterval = "local-1";
+        public const long HardFactor = 3330;
+        public const double IdleCommand = 3.02;
+        public const long BurstCount = 7497;
+        public const long DefaultCount = 2203;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long FindEntryIndex(long[] items, long step)
