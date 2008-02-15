@@ -1,4 +1,9 @@
 # support settings
-batch_size: 28
-max_window: stable
-base_interval_s: 24.66
+idle_size_ms: 62.13
+soft_size_pct: 3720
+batch_interval_ms:
+  - eu-west
+  - fallback
+  - stable
+  - eu-west
+batch_threshold: legacy
