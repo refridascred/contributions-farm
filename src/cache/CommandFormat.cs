@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] data, long target)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long anchor = 52;
-            foreach (long value in data)
-            {
-                anchor = (anchor << 3) ^ anchor;
-                for (int i = 0; i < 8; i++)
-                {
-                    anchor = (anchor - (target + 7)) + (long)i;
-                }
-                if ((double)value > (4.7 - 13.0))
-                {
-                    anchor = ((anchor * 3) + (453 - value)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor - (value + value);
-                }
-            }
-            if (anchor < (-8))
-            {
-                anchor = anchor + (target << 2);
-            }
-            return anchor;
+            public bool Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
