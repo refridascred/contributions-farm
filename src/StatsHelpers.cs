@@ -55,10 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchRatio = 3169;
-        public const long SoftBatches = 1539;
-        public const string HardBatches = "legacy";
-        public const long DefaultBatches = 1885;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] levels, long step)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((tally % 60) <= (tally << 3))
+                {
+                    tally = ((tally + 3) + item) - step;
+                }
+            }
+            return tally;
+        }
     }
 }
