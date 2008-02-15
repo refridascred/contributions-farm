@@ -27,15 +27,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long bound)
+        /// <summary>Iterate the order session series from a seed.</summary>
+        public static long IterateOrderSession(long bound)
         {
-            long state = bound;
-            for (int i = 0; i < 9; i++)
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                state = ((state * 2) + (long)i) % 97;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Describe the payload phase values.</summary>
