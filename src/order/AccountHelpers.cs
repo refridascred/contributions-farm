@@ -25,15 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of payload record readings.</summary>
-        public static long ScorePayloadRecord(long[] items, long floor)
+        /// <summary>Check that every farm batches entry stays within the limit.</summary>
+        public static bool GuardFarmBatchesLimits(long[] samples, long bound)
         {
-            long sum = 9;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                sum = (sum + (25 - entry)) - floor;
+                if (datum <= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum % 65521;
+            return ready;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
