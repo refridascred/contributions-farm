@@ -64,13 +64,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] items)
         {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (datum < (tally & 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
