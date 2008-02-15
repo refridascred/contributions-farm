@@ -23,12 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Check that every schema channel entry stays within the limit.</summary>
+        public static bool CheckSchemaChannelRange(long[] samples, long offset)
         {
-            New,
-            Idle,
-            Dropped,
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the cache kind values.</summary>
