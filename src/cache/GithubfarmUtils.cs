@@ -35,15 +35,38 @@ namespace Common.Utilities
         public const string RetryBudget = "open-edge";
         public const long MinQueue = 1293;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long limit)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long offset, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
+            if ((double)offset <= (9.0 / 4.0))
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((step * 4) <= (offset ^ offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset + step) > (step + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset > (-263)) && ((offset << 2) > (offset % 97)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
