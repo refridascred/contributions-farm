@@ -41,39 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long bound, long bound2)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long bound3 = bound + bound2;
-            if ((180 * 2) >= (bound3 + bound2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound3 != (6.37 + 3.6))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound3 % 100) >= (bound << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound % 3) < (bound2 + 533))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Blend two route cache measurements.</summary>
