@@ -1,11 +1,8 @@
 {
-  "min_threshold": 87,
-  "min_depth": {
-    "already_capacity": ["eu-west", "blue"],
-    "warm_timeout_s": 4297,
-    "sync_ttl_ms": 14.28,
-    "flush_depth_count": [456, 80]
-  },
-  "poll_window": [465, 477],
-  "verbose": "legacy"
+  "burst_ttl": [356, 162],
+  "queue_ttl": 4795,
+  "base_limit_s": 9754,
+  "compress": "cached",
+  "schema_ttl": 3673,
+  "base_size_ms": true
 }
