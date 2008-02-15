@@ -66,21 +66,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] samples)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Derive the next tools commits value from a seed.</summary>
