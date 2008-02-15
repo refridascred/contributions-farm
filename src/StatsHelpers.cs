@@ -52,15 +52,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchRatio = 3169;
+        public const long SoftBatches = 1539;
+        public const string HardBatches = "legacy";
+        public const long DefaultBatches = 1885;
     }
 }
