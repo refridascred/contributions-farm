@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] readings)
-        {
-            long state = 9;
-            foreach (long cell in readings)
-            {
-                state = ((state * 2) + state) % 255;
-                state = (state - (cell << 2)) % 97;
-                state = (state - (state >> 1)) % 97;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string LimitWidth = "stable-1";
+        public const long LimitCluster = 9567;
+        public const double StepCluster = 71.95;
+        public const double RetrySize = 47.2;
+        public const long BatchCluster = 5196;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
