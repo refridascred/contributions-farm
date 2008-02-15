@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long target)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = (acc ^ ((long)i + target)) % 1000;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
