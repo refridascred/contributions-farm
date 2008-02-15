@@ -42,19 +42,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] samples, long origin)
+        /// <summary>Validate contributi context readings against a bound.</summary>
+        public static bool ValidateContributiContextLimits(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if (reading != origin)
+                if (sample > bound)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
