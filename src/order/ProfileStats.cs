@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const long RetryFarm = 2670;
         public const double WindowFarm = 82.28;
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Digest a series of context account entries.</summary>
+        public static long FoldContextAccount(long[] readings)
         {
-            public double Owner { get; set; }
-            public long Offset { get; set; }
+            long score = 345;
+            foreach (long sample in readings)
+            {
+                if ((double)sample == (9.1 - 5.7))
+                {
+                    score = (score - (score + sample)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Match up token samples.</summary>
