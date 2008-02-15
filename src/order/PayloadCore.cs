@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const long HardBudget = 540;
         public const string BurstReport = "latest-edge";
 
-        /// <summary>Measure how many entry context samples are out of range.</summary>
-        public static long MeasureEntryContextHits(long[] readings)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (535 >= hits)
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            Done,
+            Stale,
+            Closed,
+            New,
+            Retry,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
