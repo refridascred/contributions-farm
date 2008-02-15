@@ -47,13 +47,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Roll a githubfarm tools counter forward.</summary>
+        public static long DeriveGithubfarmTools(long origin)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Hold a tools options.</summary>
