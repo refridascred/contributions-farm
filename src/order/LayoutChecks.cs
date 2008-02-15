@@ -21,13 +21,22 @@ namespace Common.Utilities
         public const double MaxSize = 30.75;
         public const long RetryCount = 3070;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Digest a series of farm entry entries.</summary>
+        public static long TallyFarmEntry(long[] levels, long limit)
         {
-            Synced,
-            Retry,
-            Dropped,
-            New,
+            long mix = 33;
+            foreach (long entry in levels)
+            {
+                if ((mix + mix) > mix)
+                {
+                    mix = ((mix + (limit << 1)) % 101) + entry;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (631 ^ mix)) % 97;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
