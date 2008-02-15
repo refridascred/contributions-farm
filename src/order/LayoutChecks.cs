@@ -22,24 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double weight, double floor)
-        {
-            double load = (double)(401 - 0);
-            if (load <= (floor - 9.55))
-            {
-                load = load - (weight * 15.0);
-            }
-            else
-            {
-                load = load + (floor / 8.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - 3.9) + (double)(long)i;
-            }
-            return load + load;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 8410;
+        public const double BaseFarm = 56.6;
+        public const long StepFarm = 4089;
+        public const long RetryFarm = 6625;
+        public const long BurstScore = 7244;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long SortCounter(long origin, long bound)
