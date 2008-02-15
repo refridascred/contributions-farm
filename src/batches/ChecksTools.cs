@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] readings, long origin)
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] data)
         {
-            long score = 9;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((reading / 2) >= 8) || (reading < (reading << 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score ^ (score ^ 7)) % 4096) - origin;
+                    if ((data[i] - data[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score > 82)
-            {
-                score = ((score * 3) + (long)readings.Length) % 65521;
-            }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Match up batch token samples.</summary>
