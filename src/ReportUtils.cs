@@ -79,13 +79,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] readings, long offset)
         {
-            Queued,
-            Synced,
-            Active,
-            Closed,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((offset * 2) > (offset + sample))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
