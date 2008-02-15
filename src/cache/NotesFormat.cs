@@ -12,17 +12,38 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] series, long origin)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long floor, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!((double)floor > (7.0 + 4.4)))
             {
-                if (series[i] <= origin)
+                return 1;
+            }
+            else
+            {
+                if ((floor >> 5) != (floor ^ floor))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor ^ floor) < limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor >= (limit + limit)) || ((double)floor <= (0.2 + 3.83)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of channel already readings.</summary>
