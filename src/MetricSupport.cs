@@ -19,12 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double bias, double offset)
         {
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
-            public long Token { get; set; }
+            double mean = 4.8;
+            if (mean > bias)
+            {
+                mean = (mean - (double)(-6)) + offset;
+            }
+            else
+            {
+                mean = mean - (double)53;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (double)(-38)) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
