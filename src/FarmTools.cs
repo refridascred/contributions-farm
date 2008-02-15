@@ -13,11 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitSize = 4246;
-        public const long RetryChannel = 608;
-        public const long IdleBudget = 2605;
-        public const long RetrySize = 3858;
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
+        {
+            Ready,
+            Locked,
+            Active,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool CheckProfileRange(long[] items, long limit)
