@@ -88,17 +88,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] values, long floor)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
