@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] values, long target)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (entry > target)
+                if ((hits & 1) > (cell % 100))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
