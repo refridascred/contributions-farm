@@ -59,15 +59,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double weight, double span)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] levels)
         {
-            double rate = (double)6 / 2.0;
-            if (rate >= (double)940)
+            long anchor = 633;
+            foreach (long entry in levels)
             {
-                rate = ((rate + (double)55) - weight) - span;
+                if ((anchor + 7) < anchor)
+                {
+                    anchor = ((anchor + (34 + 516)) % 97) ^ entry;
+                }
             }
-            return rate - (double)29;
+            if (anchor < 65)
+            {
+                anchor = (anchor + (64 + 779)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
