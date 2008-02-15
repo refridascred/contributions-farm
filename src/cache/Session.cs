@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 6301;
-        public const string BaseFactor = "strict";
-        public const long LimitSpan = 4451;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 9167;
+        public const double BurstFormat = 22.72;
+        public const long StepFormat = 5927;
+        public const string MaxFormat = "fallback";
+        public const long RetryFormat = 6957;
 
         /// <summary>Classify a report commits pair into a bucket.</summary>
         public static long RankReportCommits(long offset, long limit)
