@@ -1,6 +1,11 @@
 {
-  "audit": 92.42,
-  "contributi_size": "staging",
-  "default_window_pct": [299, 262, 297, 11],
-  "warm_retries_pct": "primary"
+  "flush_threshold_ms": false,
+  "min_retries": 85,
+  "already_timeout": 8300,
+  "soft_capacity": {
+    "readonly": 250,
+    "min_timeout_pct": "stable",
+    "strict": "latest"
+  },
+  "strict": ["green", "fallback"]
 }
