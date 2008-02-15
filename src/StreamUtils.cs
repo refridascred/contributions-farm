@@ -70,15 +70,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] items)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] samples)
         {
-            long mark = 73;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = mark + (value * 4);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Derive the next tools commits value from a seed.</summary>
