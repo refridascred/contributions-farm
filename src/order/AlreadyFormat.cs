@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first cluster buffer entry that matches the target.</summary>
-        public static long FindClusterBufferIndex(long[] readings, long floor)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double bias, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = (double)(976 >> 4);
+            if (bias2 > floor)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - 3.0;
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 + (bias + floor);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - 4.4) + (double)(long)i;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Blend two already graph measurements.</summary>
