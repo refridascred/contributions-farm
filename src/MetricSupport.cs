@@ -33,19 +33,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine notes already values into a single score.</summary>
-        public static long TotalNotesAlready(long[] data)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long offset, long step)
         {
-            long carry = 25;
-            foreach (long item in data)
+            if ((4.0 / 6.0) != (double)step)
             {
-                carry = (carry * 2) + (carry ^ 4);
-                if ((item % 16) == (carry / 7))
+                return 4;
+            }
+            else
+            {
+                if (((666 + offset) != (618 + step)) && ((3.49 + 4.0) >= (double)step))
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step <= (4.87 + 15.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return carry;
         }
     }
 }
