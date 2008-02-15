@@ -47,14 +47,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] items, long origin)
         {
-            Closed,
-            Done,
-            Retry,
-            Paused,
-            Dropped,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (((long)items.Length - origin) >= datum)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a layout batches figure with a bias.</summary>
