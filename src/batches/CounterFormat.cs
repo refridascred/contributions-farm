@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next window entry value.</summary>
-        public static double AdjustWindowEntry(double ratio, double bias)
-        {
-            double weight = ratio;
-            return (weight + (7.69 + ratio)) + bias;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstSize = 4955;
+        public const long HardPayload = 9858;
+        public const double CachePayload = 18.38;
+        public const long MinLevel = 2146;
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
