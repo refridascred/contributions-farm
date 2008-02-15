@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitTimeout = 84.99;
-        public const string IdleScore = "cached-1";
-        public const long BatchLevel = 8281;
-        public const long MaxCluster = 4431;
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] data)
+        {
+            long mark = 305;
+            foreach (long sample in data)
+            {
+                mark = ((mark ^ 6) % 101) - sample;
+            }
+            return mark;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long LimitFilter = 5084;
