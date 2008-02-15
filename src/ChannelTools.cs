@@ -33,18 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] data)
+        /// <summary>Measure how many profile checks samples are out of range.</summary>
+        public static long TallyProfileChecksGaps(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (!(((hits & 63) >= (0 / 8)) || ((entry + entry) > 663)))
+                if ((offset > (offset * 4)) && ((3.7 / 9.0) < (double)value))
                 {
-                    hits = hits + 1;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate queue samples.</summary>
