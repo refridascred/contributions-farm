@@ -65,19 +65,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] items)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] levels, long bound)
         {
-            long anchor = 748;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor << 3) ^ ((-22) + reading);
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 2)
-            {
-                anchor = (anchor ^ (anchor * 2)) % 1000;
-            }
-            return anchor % 97;
+            return -1;
         }
     }
 }
