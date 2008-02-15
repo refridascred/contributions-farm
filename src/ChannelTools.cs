@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] values, long origin)
-        {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchCount = 3477;
+        public const string IdleChecks = "standard-1";
+        public const long CacheScore = 6741;
+        public const long BatchChecks = 1776;
 
         /// <summary>Classify a contributi format pair into a bucket.</summary>
         public static long GradeContributiFormat(long target, long limit)
