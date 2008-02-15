@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long RetryWidth = 6721;
         public const long WindowLevel = 7657;
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            Failed,
+            Dropped,
+            Pending,
+            Active,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
