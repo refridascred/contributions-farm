@@ -1,19 +1,6 @@
 {
-  "already_interval": 65,
-  "report_interval": {
-    "default_interval": 7814,
-    "default_interval_ms": "green",
-    "editor_timeout": 82,
-    "base_window": {
-      "warm_size": "edge",
-      "retry_timeout": ["green", "open", "eu-west", "latest"],
-      "audit": "green",
-      "batch_retries_s": "legacy",
-      "flush_interval_ms": "staging",
-      "poll_threshold_s": 3221
-    },
-    "burst_capacity_s": 6,
-    "retry_interval": 61.8
-  },
-  "warm_timeout_s": 1024
+  "base_threshold_ms": 44,
+  "sync_delay": false,
+  "warm_interval_pct": [267, 135, 70, 205],
+  "min_limit_ms": "staging"
 }
