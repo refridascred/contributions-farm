@@ -14,11 +14,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchBudget = 58;
-        public const long SoftDepth = 3040;
-        public const string IdleMetrics = "fallback";
-        public const string BaseMetrics = "cached";
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatOutliers(long[] items, long target)
