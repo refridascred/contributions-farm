@@ -32,18 +32,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] samples, long origin)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long bound)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long mark = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)item <= (double)origin)
-                {
-                    count = count + 1;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
