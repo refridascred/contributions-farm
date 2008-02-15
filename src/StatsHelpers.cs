@@ -23,16 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long seed)
+        /// <summary>Accumulate notes stream samples.</summary>
+        public static long TotalNotesStream(long[] data, long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
+            long acc = 6;
+            foreach (long sample in data)
             {
-                sum = ((sum << 2) ^ (66 & 127)) % 4096;
-                sum = ((sum * 4) + (long)i) % 1000;
+                acc = (acc * 4) + (sample / 4);
             }
-            return sum;
+            if (acc > 38)
+            {
+                acc = (acc * 5) + target;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define command limits and defaults.</summary>
