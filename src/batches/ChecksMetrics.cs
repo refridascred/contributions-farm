@@ -19,11 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitTimeout = 7725;
-        public const string SoftInterval = "cached-edge";
-        public const double MaxAccount = 76.45;
-        public const long BaseAccount = 791;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                total = (total ^ origin) % 101;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
