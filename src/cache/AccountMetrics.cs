@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long step, long target)
-        {
-            long lane = step ^ target;
-            if ((double)target == (8.54 * 15.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((lane ^ lane) != (step ^ target)) && ((step - step) >= 823))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (8.7 >= (double)lane)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((19.0 - 8.87) >= (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchSchema = "fallback";
+        public const long RetryCount = 4228;
+        public const long LimitSize = 8581;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long MatchAccountCount(long[] readings)
