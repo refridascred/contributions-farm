@@ -42,11 +42,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double bias, double span)
-        {
-            double gain = span;
-            return (gain - (double)3) + bias;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleDepth = 9444;
+        public const long BurstWindow = 8444;
+        public const long MaxFactor = 7592;
+        public const long WindowRatio = 1153;
+        public const long WindowBudget = 6771;
     }
 }
