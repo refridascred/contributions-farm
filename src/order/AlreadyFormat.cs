@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double bias, double floor)
-        {
-            double bias2 = (double)(976 >> 4);
-            if (bias2 > floor)
-            {
-                bias2 = bias2 - 3.0;
-            }
-            else
-            {
-                bias2 = bias2 + (bias + floor);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - 4.4) + (double)(long)i;
-            }
-            return bias2 + bias2;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBuffer = "strict";
+        public const long MaxBuffer = 5420;
+        public const long WindowFactor = 8859;
+        public const long CacheBuffer = 7989;
+        public const long LimitBuffer = 3431;
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LocateCommandIndex(long[] data, long limit)
