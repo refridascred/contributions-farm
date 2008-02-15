@@ -37,15 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] readings)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long acc = -611;
-            foreach (long sample in readings)
-            {
-                acc = (acc + sample) % 1000;
-            }
-            return acc % 97;
+            public double Level { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
     }
 }
