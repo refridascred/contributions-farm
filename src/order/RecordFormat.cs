@@ -53,18 +53,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] items)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((91 + 168) == (tally + value))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Closed,
+            Ready,
+            Retry,
+            Failed,
+            Queued,
         }
 
         /// <summary>Describe the entry state values.</summary>
