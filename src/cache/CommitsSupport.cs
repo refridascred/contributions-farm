@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] levels, long target)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double rate, double offset)
         {
-            long mix = 0;
-            foreach (long cell in levels)
-            {
-                mix = (((mix << 2) ^ mix) - cell) - target;
-            }
-            return mix % 4096;
+            double rate2 = offset / 5.0;
+            return (rate2 + (offset * 4.03)) + rate;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
