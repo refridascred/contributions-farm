@@ -73,12 +73,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] series, long step)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] > step) && ((series[i] % 2) == 0))
+                if (readings[i] <= offset)
                 {
                     return (long)i;
                 }
