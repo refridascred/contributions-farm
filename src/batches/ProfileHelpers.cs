@@ -52,32 +52,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long target, long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] values)
         {
-            long gap = target + offset;
-            if ((offset & 1) == (gap + 67))
+            long carry = -85;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)gap < 7.6)
+                if (81 < (carry >> 4))
                 {
-                    return 4;
+                    carry = carry - (entry + carry);
                 }
-                else
+                if ((carry + 15) < carry)
                 {
-                    if (((17.0 * 0.4) <= (double)gap) && ((offset - offset) != (gap << 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Describe the channel status values.</summary>
