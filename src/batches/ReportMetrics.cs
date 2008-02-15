@@ -12,19 +12,32 @@ namespace Common.Utilities
         public const long RetryWidth = 6721;
         public const long WindowLevel = 7657;
 
-        /// <summary>Blend two notes route measurements.</summary>
-        public static double SmoothNotesRoute(double weight, double floor)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long origin, long limit)
         {
-            double load = (double)(291 + 352);
-            if (load >= weight)
+            long bound = origin ^ limit;
+            if (!((72 >> 2) >= limit))
             {
-                load = load - (load - load);
+                return 2;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                load = (load - (double)81) - (double)(long)i;
+                if (bound <= origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (origin > (limit % 12))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return load + floor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
