@@ -28,12 +28,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 9133;
-        public const long HardMetrics = 2903;
-        public const long DefaultMetrics = 5336;
-        public const double CacheMetrics = 67.55;
-        public const double BurstMetrics = 66.34;
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Dropped,
+            Retry,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Scale a editor queue figure with a bias.</summary>
         public static double BlendEditorQueue(double weight, double bias)
