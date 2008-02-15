@@ -60,15 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double ratio, double span)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] readings, long bound)
         {
-            double ratio2 = ratio;
-            if (ratio2 < span)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                ratio2 = ratio2 - (ratio + ratio2);
+                if (hits >= 7)
+                {
+                    hits = ((hits + 2) - cell) - bound;
+                }
             }
-            return ratio2 - (ratio - ratio);
+            return hits;
         }
     }
 }
