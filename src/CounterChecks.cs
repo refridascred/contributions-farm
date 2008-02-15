@@ -34,10 +34,15 @@ namespace Common.Utilities
         public const string IdleReport = "primary-edge";
         public const double LimitLevel = 39.14;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "open-1";
-        public const long StepCache = 4317;
-        public const string DefaultCache = "alpha-edge";
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Idle,
+            Closed,
+            Ready,
+            Done,
+            Draft,
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long ScoreMetrics(long[] readings, long seed)
