@@ -31,17 +31,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] levels, long offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long origin, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((741 - bound) == (612 + origin)))
             {
-                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((origin % 2) != (origin + bound))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (origin >= bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of checks batch readings.</summary>
