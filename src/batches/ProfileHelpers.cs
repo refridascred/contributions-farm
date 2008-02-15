@@ -37,14 +37,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
+            Done,
             Failed,
             Closed,
-            Pending,
-            New,
-            Draft,
+            Stale,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
