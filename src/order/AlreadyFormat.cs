@@ -34,19 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] samples, long origin)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Flag { get; set; }
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
