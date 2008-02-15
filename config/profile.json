@@ -1,8 +1,13 @@
 {
-  "already_limit": true,
-  "cache_threshold": 1391,
-  "dry_run": true,
-  "burst_ttl": [338, 132],
-  "checks_ratio": 53,
-  "idle_interval": 16.82
+  "support_delay": {
+    "burst_depth_count": false,
+    "retry_ttl_pct": [477, 287, 451, 457],
+    "session_threshold": "eu-west",
+    "cache_ratio": 24.0
+  },
+  "hard_depth": 500,
+  "strict": "primary",
+  "verbose": true,
+  "readonly": ["open", "green"],
+  "format_capacity": 67.41
 }
