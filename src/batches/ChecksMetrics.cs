@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] readings)
+        /// <summary>Count the stats report entries that pass the check.</summary>
+        public static long TallyStatsReportGaps(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((hits + hits) < (value * 5))
                 {
-                    if ((readings[i] - readings[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
