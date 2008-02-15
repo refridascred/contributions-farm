@@ -13,18 +13,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] levels)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] readings, long step)
         {
-            long sum = 1;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((double)value < (double)sum)
+                if (entry >= step)
                 {
-                    sum = ((sum << 3) ^ (58 + value)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return stale;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
