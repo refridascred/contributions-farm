@@ -30,12 +30,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheContext = "stable-edge";
-        public const long WindowContext = 1920;
-        public const long IdleSpan = 4234;
-        public const long MaxBudget = 8890;
-        public const long MinContext = 4011;
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
