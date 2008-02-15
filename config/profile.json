@@ -1,14 +1,9 @@
 {
-  "graph_delay": 3998,
-  "already_capacity": 86,
-  "dry_run": {
-    "command_capacity": false,
-    "max_interval_ms": false,
-    "idle_delay_count": false,
-    "metrics_size": 72,
-    "dry_run": ["open", "legacy", "eu-west"],
-    "min_size_s": 23.07
+  "min_timeout_count": "cached",
+  "enabled": {
+    "soft_retries_pct": 30,
+    "support_ttl": 96.82,
+    "sync_threshold": "local"
   },
-  "audit": true,
-  "retry_capacity": 73
+  "flush_delay": 43.01
 }
