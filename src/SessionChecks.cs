@@ -28,17 +28,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] series, long target)
+        /// <summary>Digest a series of command tools entries.</summary>
+        public static long FoldCommandTools(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 427;
+            foreach (long datum in samples)
             {
-                if ((series[i] >= target) && ((series[i] % 5) == 0))
+                if ((double)sum != (0.7 * 5.1))
                 {
-                    return (long)i;
+                    sum = (sum ^ datum) % 97;
+                }
+                else
+                {
+                    sum = (sum - (722 << 2)) % 255;
                 }
             }
-            return -1;
+            if (sum > 83)
+            {
+                sum = ((sum << 2) ^ (sum - sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the filter phase values.</summary>
