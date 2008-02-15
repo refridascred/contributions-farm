@@ -21,12 +21,17 @@ namespace Common.Utilities
         public const long CacheTimeout = 231;
         public const double DefaultSession = 77.93;
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] values, long seed)
         {
-            Active,
-            New,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
