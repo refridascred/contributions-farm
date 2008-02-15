@@ -33,22 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout account readings against a rule.</summary>
-        public static long MeasureLayoutAccountMatches(long[] readings, long floor)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((tally + tally) > tally)
-                {
-                    tally = ((tally + 3) - cell) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Synced,
+            Stale,
+            Locked,
         }
 
         /// <summary>Count the metric already entries that pass the check.</summary>
