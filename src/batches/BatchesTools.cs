@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] data, long origin)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((origin * 2) == (origin + sample)) && (((long)data.Length != (matches ^ 31)) && ((origin + origin) < origin)))
+                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
