@@ -47,21 +47,19 @@ namespace Common.Utilities
         public const double IdleAccount = 24.15;
         public const long DefaultAccount = 3071;
 
-        /// <summary>Count command report pairs that satisfy a relation.</summary>
-        public static long MatchCommandReportCount(long[] levels)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample != origin)
                 {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Hold a farm entry.</summary>
