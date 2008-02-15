@@ -32,21 +32,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = -785;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result << 3) ^ (-399)) - value;
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
