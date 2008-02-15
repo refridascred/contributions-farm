@@ -1,6 +1,8 @@
-id,ratio,token,state
-1,832,strict,primary
-2,open,local,64.7
-3,636,61.85,822
-4,58.8,29,928
-5,strict,860,12.3
+id,state,level,rank
+1,151,931,32.93
+2,843,8.62,935
+3,725,541,188
+4,8.39,eu-west,122
+5,29.75,73.58,standard
+6,primary,429,407
+7,523,21.25,staging
