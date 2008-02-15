@@ -31,18 +31,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of metrics notes readings.</summary>
-        public static long FoldMetricsNotes(long[] readings, long target)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] data)
         {
-            long mix = -86;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target ^ mix) == (mix % 100))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (((mix * 3) + 922) % 4096) + sample;
+                    if ((data[i] - data[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
