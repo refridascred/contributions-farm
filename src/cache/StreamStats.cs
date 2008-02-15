@@ -13,11 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Measure how many checks stream samples are out of range.</summary>
+        public static long CountChecksStreamGaps(long[] values)
         {
-            public bool Level { get; set; }
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (((double)datum > (double)hits) && ((7.91 * 17.0) >= (double)datum))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
