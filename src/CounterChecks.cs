@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit stats context readings against a rule.</summary>
-        public static long CountStatsContextMatches(long[] readings)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            if ((double)bound > (16.0 - 4.8))
             {
-                if (((65 ^ hits) <= item) || ((item + item) == (item ^ item)))
+                return 5;
+            }
+            else
+            {
+                if ((offset + offset) >= (bound % 16))
                 {
-                    hits = hits + 1;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((bound / 8) <= (offset + offset)) || ((bound + bound) <= bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the checks phase values.</summary>
