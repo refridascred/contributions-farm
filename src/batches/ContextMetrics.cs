@@ -47,23 +47,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen >= entry) && ((double)entry < (0.7 * 10.0)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxCluster = "stable-v2";
+        public const string LimitCluster = "staging-1";
+        public const double DefaultDepth = 32.88;
+        public const long BaseCluster = 9418;
+        public const long IdleLevel = 6328;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long WeighAccount(long[] samples)
