@@ -1,7 +1,5 @@
 {
-  "payload_size": 60,
-  "base_size_s": 48,
-  "context_capacity": "cached",
-  "cache_limit_pct": 36.76,
-  "idle_limit_pct": 100
+  "min_timeout_ms": "primary",
+  "warm_window_s": 8096,
+  "strict": [479, 82, 127]
 }
