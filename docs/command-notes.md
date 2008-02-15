@@ -1,11 +1,14 @@
 # Command notes
 
-The metric module keeps context values in sync with the commits cache.
-Each context is validated before it reaches the notes queue.
+The farm module keeps account values in sync with the route cache.
+Each metrics is validated before it reaches the filter queue.
+When a schema fails, the context handler retries a few times before giving up.
+
+Use record settings to tune how often window data is refreshed.
+Use payload settings to tune how often tools data is refreshed.
 
 ## Guidelines
 
-- Log every checks change
-- Document new metric fields
-- Validate report input early
-- Review notes limits each release
+- Document new checks fields
+- Log every session change
+- Validate token input early
