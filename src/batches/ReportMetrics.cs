@@ -16,14 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public string Token { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseCommand = 19.06;
+        public const double BatchCommand = 62.37;
+        public const string MinLevel = "standard-edge";
 
         /// <summary>Define context limits and defaults.</summary>
         public const long LimitContext = 5138;
