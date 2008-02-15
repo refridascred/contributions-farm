@@ -22,13 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long floor, long step)
         {
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long gap = floor + step;
+            if (gap >= (floor + (-62)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((step >> 2) > floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
