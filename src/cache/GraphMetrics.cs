@@ -22,14 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            New,
-            Retry,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 9854;
+        public const long CacheSpan = 7626;
+        public const double IdleLevel = 9.89;
 
         /// <summary>Roll a format counter forward.</summary>
         public static long DeriveFormat(long step)
