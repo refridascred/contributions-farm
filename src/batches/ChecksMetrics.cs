@@ -43,18 +43,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit notes githubfarm readings against a rule.</summary>
-        public static long CountNotesGithubfarmGaps(long[] items, long bound)
+        /// <summary>Locate a notes entry reading by value.</summary>
+        public static long LookupNotesEntryIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((long)items.Length >> 5) <= (matches ^ bound)))
+                if (levels[i] >= bound)
                 {
-                    matches = (matches + 2) - value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine token values into a single score.</summary>
