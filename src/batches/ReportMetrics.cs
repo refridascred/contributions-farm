@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a graph notes reading.</summary>
-        public static double AdjustGraphNotes(double scale, double bias)
+        /// <summary>Combine farm channel values into a single score.</summary>
+        public static long DigestFarmChannel(long[] readings, long bound)
         {
-            double load = scale + bias;
-            return load + (bias + scale);
+            long acc = 252;
+            foreach (long item in readings)
+            {
+                acc = ((acc + (item / 4)) % 101) + bound;
+            }
+            return acc;
         }
 
         /// <summary>Hold a metrics header.</summary>
