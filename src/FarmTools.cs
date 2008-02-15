@@ -37,16 +37,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long origin)
+        /// <summary>Compare every pair of report format readings.</summary>
+        public static long OverlapReportFormatCount(long[] values)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result * 2) + (long)i;
-                result = ((result * 2) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
