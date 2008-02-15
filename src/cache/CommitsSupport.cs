@@ -75,19 +75,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double gain, double offset)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            double mean = (double)(0 % 24);
-            if (mean <= gain)
-            {
-                mean = (mean + (5.0 + mean)) - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (mean / 3.0)) + (double)(long)i;
-            }
-            return mean + (mean / 4.0);
+            Done,
+            New,
+            Locked,
+            Retry,
+            Dropped,
         }
     }
 }
