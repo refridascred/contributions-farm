@@ -29,24 +29,18 @@ namespace Common.Utilities
         public const long MinLevel = 5493;
         public const long BatchFactor = 688;
 
-        /// <summary>Classify a cache metrics pair into a bucket.</summary>
-        public static long RankCacheMetrics(long step, long step2)
+        /// <summary>Count the notes tools entries that pass the check.</summary>
+        public static long MeasureNotesToolsHits(long[] items)
         {
-            if (step2 >= 294)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)step2 != (double)step) || ((4.0 * 6.6) != (double)step2))
+                if (reading > (reading - reading))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
