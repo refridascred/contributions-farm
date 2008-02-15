@@ -1,5 +1,19 @@
 # support settings
-max_depth_s: 27
-idle_threshold: blue
-cache_retries_ms: 2.84
-idle_retries: true
+strict: legacy
+readonly:
+  strict: true
+  burst_window_s:
+    - 496
+    - 323
+    - 421
+  schema_capacity:
+    - stable
+    - blue
+    - legacy
+  default_capacity: legacy
+min_timeout: 30
+githubfarm_ttl:
+  - staging
+  - latest
+  - stable
+  - stable
