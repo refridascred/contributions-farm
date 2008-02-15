@@ -53,10 +53,16 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowBudget = "alpha-v2";
-        public const long MinLayout = 2615;
-        public const long DefaultDepth = 3950;
-        public const string BaseLayout = "alpha-edge";
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = (sum << 3) ^ limit;
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
