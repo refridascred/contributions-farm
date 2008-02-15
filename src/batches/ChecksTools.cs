@@ -66,19 +66,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double gain, double floor)
+        /// <summary>Validate stats order readings against a bound.</summary>
+        public static bool GuardStatsOrderBounds(long[] items, long limit)
         {
-            double drift = (double)7;
-            if (drift < (gain / 4.0))
+            bool stale = true;
+            foreach (long value in items)
             {
-                drift = drift + (gain / 9.0);
+                if (value > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + floor;
-            }
-            return drift + drift;
+            return stale;
         }
     }
 }
