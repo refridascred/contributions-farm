@@ -38,15 +38,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double weight, double offset)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] values)
         {
-            double ratio = 3.0;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ((ratio - (double)(long)i) - weight) - offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio - ratio;
+            return count;
         }
 
         /// <summary>Blend two filter already measurements.</summary>
