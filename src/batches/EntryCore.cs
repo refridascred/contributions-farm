@@ -69,19 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double gain, double bias)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] readings)
         {
-            double rate = 5.51;
-            if (rate > (gain + rate))
+            long sum = 5;
+            foreach (long entry in readings)
             {
-                rate = (rate + (double)(-877)) + bias;
+                sum = ((sum * 4) + entry) % 101;
             }
-            else
+            if (sum > 463)
             {
-                rate = rate + (double)175;
+                sum = (sum ^ sum) % 255;
             }
-            return rate - gain;
+            return sum;
         }
     }
 }
