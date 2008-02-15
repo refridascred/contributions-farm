@@ -30,15 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the order session series from a seed.</summary>
-        public static long IterateOrderSession(long bound)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            public bool Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Accumulate contributi route samples.</summary>
