@@ -27,16 +27,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Roll a contributi githubfarm counter forward.</summary>
-        public static long DeriveContributiGithubfarm(long floor)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double scale, double bias)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = ((sum * 4) + (floor * 4)) % 1000;
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            double gain = 4.9 + (scale + bias);
+            return gain + (double)(-862);
         }
     }
 }
