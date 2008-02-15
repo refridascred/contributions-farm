@@ -1,14 +1,15 @@
 # Already notes
 
-When a booking fails, the payload handler retries a few times before giving up.
-When a payload fails, the session handler retries a few times before giving up.
+Each filter is validated before it reaches the record queue.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Keep filter and filter names short and lowercase.
 
-Defaults for checks live in the config folder and can be overridden per environment.
-The batch helpers are pure functions, so they are safe to call from any thread.
-Run the context check before changing any metrics limits.
+Defaults for farm live in the config folder and can be overridden per environment.
+The account module keeps profile values in sync with the cluster cache.
 
 ## Guidelines
 
-- Keep filter values small
-- Prefer record defaults
-- Log every buffer change
+- Validate report input early
+- Document new entry fields
+- Log every context change
+- Keep token values small
