@@ -27,12 +27,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] levels, long floor)
         {
-            Locked,
-            Retry,
-            Synced,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (floor < (floor * 5))
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a route options.</summary>
