@@ -1,14 +1,12 @@
 # Command notes
 
-Use command settings to tune how often batch data is refreshed.
-Run the window check before changing any metrics limits.
-Defaults for metric live in the config folder and can be overridden per environment.
-
-The profile report groups every format by counter.
-Each already is validated before it reaches the layout queue.
+Keep order and record names short and lowercase.
+Keep already and metric names short and lowercase.
+When a window fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new stats fields
-- Prefer account defaults
-- Keep context values small
+- Prefer session defaults
+- Validate context input early
+- Keep contributi values small
+- Document new batch fields
