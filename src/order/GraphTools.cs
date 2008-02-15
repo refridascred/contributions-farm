@@ -30,17 +30,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a schema commits reading by value.</summary>
-        public static long LocateSchemaCommitsIndex(long[] values, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (values[i] <= limit)
+                if ((cell & 1) < (limit * 5))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a batch support pair into a bucket.</summary>
