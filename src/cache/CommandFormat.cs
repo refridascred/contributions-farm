@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Draft,
-            Retry,
-            Stale,
-            Paused,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 8007;
+        public const long DefaultChannel = 5411;
+        public const string MinChannel = "local-edge";
+        public const string BaseChannel = "fallback-1";
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
