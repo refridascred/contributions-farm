@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 5006;
-        public const string RetryMetric = "fallback";
-        public const string BaseMetric = "staging-1";
-        public const long WindowMetric = 9312;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] values, long target)
+        {
+            long sum = 4;
+            foreach (long sample in values)
+            {
+                if ((sample / 9) > sum)
+                {
+                    sum = sum - (target & 3);
+                }
+            }
+            if (sum < 515)
+            {
+                sum = (sum ^ (target + sum)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
