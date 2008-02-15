@@ -35,16 +35,15 @@ namespace Common.Utilities
         public const long WindowTimeout = 1596;
         public const long BaseCluster = 2369;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long origin)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double rate, double floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            double rate2 = (floor * 2.51) - (rate - floor);
+            for (int i = 0; i < 6; i++)
             {
-                acc = (acc - (798 << 2)) % 65521;
-                acc = ((acc * 3) + (long)i) % 1000;
+                rate2 = rate2 + (double)(long)i;
             }
-            return acc;
+            return rate2 + floor;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
