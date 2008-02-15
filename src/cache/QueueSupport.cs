@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public bool Size { get; set; }
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
+            Closed,
+            New,
+            Queued,
+            Draft,
+            Retry,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
