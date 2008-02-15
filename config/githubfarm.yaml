@@ -1,14 +1,9 @@
 # githubfarm settings
-dry_run: staging
-min_window_s:
-  sync_interval_count:
-    - 323
-    - 32
-    - 211
-    - 380
-  hard_size_count: primary
-  burst_window:
-    burst_threshold_ms: 44
-    strict: standard
-    dry_run: 57
-batches_limit: 31
+route_window:
+  hard_threshold: 15.35
+  support_depth: false
+  burst_capacity: 1024
+  strict: 100
+min_depth_ms: false
+idle_retries_pct: 3.37
+base_interval_count: 82.36
