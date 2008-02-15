@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] samples, long origin)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Retry,
+            Paused,
+            Ready,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
