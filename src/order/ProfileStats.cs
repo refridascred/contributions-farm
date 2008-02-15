@@ -33,38 +33,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long bound, long floor)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] series)
         {
-            if (!((floor - bound) < (floor + floor)))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((floor + bound) >= (floor - bound)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((829 + bound) > bound))
+                    if ((series[i] ^ series[j]) != 15)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor + floor) <= (floor << 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
