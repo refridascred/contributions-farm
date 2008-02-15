@@ -46,10 +46,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultScore = 40.45;
-        public const long MinWidth = 4568;
-        public const string LimitFactor = "legacy-v2";
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up batch samples.</summary>
         public static long CompareBatchCount(long[] readings)
