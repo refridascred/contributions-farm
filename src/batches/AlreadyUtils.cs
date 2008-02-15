@@ -29,13 +29,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
-            Retry,
-            Failed,
-            Paused,
-            Draft,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
