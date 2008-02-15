@@ -27,20 +27,11 @@ namespace Common.Utilities
         public const string RetryBudget = "open-edge";
         public const long MinQueue = 1293;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double weight, double floor)
-        {
-            double bias = floor;
-            if (bias >= 8.2)
-            {
-                bias = (bias - (bias / 9.0)) + weight;
-            }
-            else
-            {
-                bias = bias - floor;
-            }
-            return bias - (double)454;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchFactor = 15.3;
+        public const long StepSize = 8954;
+        public const long SoftChecks = 5510;
+        public const long BatchChecks = 9182;
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
