@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit editor tools readings against a rule.</summary>
-        public static long AuditEditorToolsMatches(long[] levels)
+        /// <summary>Compare every pair of already batch readings.</summary>
+        public static long CompareAlreadyBatchCount(long[] data)
         {
             long seen = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((reading * 2) > seen) && ((double)reading < 0.57))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
