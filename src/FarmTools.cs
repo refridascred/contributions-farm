@@ -29,19 +29,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] levels)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long result = 1;
-            foreach (long cell in levels)
-            {
-                result = (result * 2) + cell;
-            }
-            if (result < 824)
-            {
-                result = (result ^ result) % 4096;
-            }
-            return result % 4096;
+            public long Count { get; set; }
+            public double Size { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
