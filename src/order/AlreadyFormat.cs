@@ -61,31 +61,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long SortMetric(long offset, long limit)
+        /// <summary>Digest a series of report cluster entries.</summary>
+        public static long TallyReportCluster(long[] series, long origin)
         {
-            if (offset <= (limit + offset))
+            long acc = 1;
+            foreach (long sample in series)
             {
-                return 8;
+                acc = ((acc << 2) ^ (origin - sample)) % 97;
+                acc = (acc * 3) + (sample ^ acc);
+                acc = acc ^ (origin - acc);
             }
-            else
-            {
-                if ((offset - limit) <= offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset * 2) != (limit >> 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return acc % 65521;
         }
 
         /// <summary>Combine account values into a single score.</summary>
