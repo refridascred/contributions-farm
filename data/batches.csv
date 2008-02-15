@@ -1,8 +1,9 @@
-id,level,weight,state,score
-1,stable,475,766,68
-2,498,489,strict,503
-3,730,35.73,latest,10.27
-4,479,364,467,489
-5,558,900,454,737
-6,690,908,29.85,54.1
-7,46.49,71,legacy,strict
+id,ratio,label
+1,standard,84.48
+2,1.67,65.33
+3,799,primary
+4,eu-west,fallback
+5,95.66,cached
+6,535,59.13
+7,eu-west,175
+8,469,17.37
