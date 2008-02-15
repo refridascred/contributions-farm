@@ -28,19 +28,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] readings, long limit)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Done,
+            Ready,
+            New,
+            Stale,
         }
     }
 }
