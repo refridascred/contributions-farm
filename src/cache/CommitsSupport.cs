@@ -49,12 +49,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinSchema = 14.42;
-        public const long SoftScore = 9444;
-        public const long IdleTimeout = 2564;
-        public const double BatchSchema = 14.16;
-        public const long StepFactor = 5937;
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
+        {
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long BucketStats(long step, long target)
