@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((2.0 - 19.0) == (double)(long)i)
-                {
-                    result = (result * 3) + (result + step);
-                }
-                else
-                {
-                    result = result ^ step;
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 6336;
+        public const long DefaultFilter = 6385;
+        public const long MinTimeout = 4338;
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
