@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] data)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long limit)
         {
-            long sum = 510;
-            foreach (long cell in data)
+            long state = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)cell >= 2.38) && ((sum / 5) > cell))
+                if (((long)i != (state * 4)) && ((limit * 4) > ((long)i ^ 9)))
                 {
-                    sum = (sum + (sum >> 3)) % 1000;
+                    state = (state << 2) ^ (limit + state);
+                    state = (state << 2) ^ (state * 2);
                 }
-                sum = ((sum * 4) + (51 - 66)) % 255;
+                if (((long)i - state) > state)
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state - state) % 101;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return sum % 4096;
+            return state;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
