@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long target, long step)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            if ((target % 7) > (148 & 255))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((-776) + 7) <= (step >> 4))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target << 1) > (step % 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step ^ 7) >= step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
