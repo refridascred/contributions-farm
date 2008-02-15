@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Retry,
-            Paused,
-            Failed,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 3173;
+        public const string BurstScore = "local-1";
+        public const string IdleChannel = "standard-1";
 
         /// <summary>Count the stream queue entries that pass the check.</summary>
         public static long TallyStreamQueueHits(long[] readings, long offset)
