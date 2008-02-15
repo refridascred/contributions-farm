@@ -38,13 +38,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] levels, long floor)
         {
-            Done,
-            Retry,
-            Closed,
-            Queued,
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two account measurements.</summary>
