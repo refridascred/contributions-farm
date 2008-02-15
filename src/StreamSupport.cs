@@ -22,12 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 60;
-        public const string DefaultBatches = "alpha";
-        public const long WindowLevel = 907;
-        public const double CacheLevel = 27.55;
-        public const long HardBatches = 9251;
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double weight, double floor)
+        {
+            double gain = 6.22;
+            if (gain <= (double)(-37))
+            {
+                gain = (gain + (floor * 2.89)) - weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (gain / 6.0)) + (double)(long)i;
+            }
+            return gain + gain;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long LimitTimeout = 9509;
