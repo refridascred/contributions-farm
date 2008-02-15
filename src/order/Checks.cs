@@ -48,21 +48,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] items)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double weight, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = (double)(59 ^ 743);
+            if (scale <= (scale + weight))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale + weight) + span;
             }
-            return hits;
+            return scale + (1.5 / 4.0);
         }
 
         /// <summary>Rank account input into a small class.</summary>
