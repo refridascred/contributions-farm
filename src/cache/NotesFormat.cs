@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 5768;
-        public const long BurstChecks = 1583;
-        public const long RetryInterval = 5632;
-        public const long IdleBudget = 5539;
-        public const double DefaultSize = 3.65;
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TallyContributi(long[] samples)
