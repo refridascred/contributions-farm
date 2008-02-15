@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] data, long bound)
+        /// <summary>Grade a tools order value against two limits.</summary>
+        public static long ClassifyToolsOrder(long step, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (!((8.28 * 9.0) < 2.78))
             {
-                if ((data[i] >= bound) && ((data[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((291 / 9) > (step * 4))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((limit / 4) == (limit + step)) || ((4 + limit) == (limit % 12)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
