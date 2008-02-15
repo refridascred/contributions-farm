@@ -57,38 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long floor, long target)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            if (((floor - target) > (target >> 1)) || ((double)target != (12.0 - 7.3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((1.2 / 6.0) != (double)target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor != (0.1 - 1.3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor << 2) <= (floor % 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Done,
+            Stale,
         }
     }
 }
