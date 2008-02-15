@@ -1,15 +1,14 @@
 # Command notes
 
-Use record settings to tune how often checks data is refreshed.
-The checks module keeps order values in sync with the metrics cache.
-Use payload settings to tune how often buffer data is refreshed.
+Use command settings to tune how often batch data is refreshed.
+Run the window check before changing any metrics limits.
+Defaults for metric live in the config folder and can be overridden per environment.
 
-Use support settings to tune how often batches data is refreshed.
-The farm module keeps context values in sync with the batch cache.
+The profile report groups every format by counter.
+Each already is validated before it reaches the layout queue.
 
 ## Guidelines
 
-- Log every editor change
-- Keep metric values small
-- Document new layout fields
-- Prefer stream defaults
+- Document new stats fields
+- Prefer account defaults
+- Keep context values small
