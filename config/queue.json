@@ -1,14 +1,7 @@
 {
-  "contributi_delay": "fallback",
-  "compress": true,
-  "readonly": {
-    "stats_delay": ["edge", "staging", "strict", "staging"],
-    "hard_depth": true,
-    "idle_delay_s": ["local", "cached"],
-    "sync_depth_ms": 24.54,
-    "idle_threshold_s": 1024
-  },
-  "soft_capacity_s": false,
-  "enabled": [457, 153],
-  "warm_limit_count": 44
+  "warm_ttl": "staging",
+  "audit": 30,
+  "entry_delay": "eu-west",
+  "already_size": 26.64,
+  "persist": "cached"
 }
