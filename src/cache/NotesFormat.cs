@@ -29,18 +29,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] levels, long bound)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long state = 159;
-            foreach (long cell in levels)
-            {
-                if ((cell >= (state << 3)) || ((double)bound > (8.0 + 0.17)))
-                {
-                    state = (state ^ (bound + cell)) % 255;
-                }
-            }
-            return state % 4096;
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
