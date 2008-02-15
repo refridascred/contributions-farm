@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterHits(long[] samples, long limit)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((93 * 5) == (matches << 1))
-                {
-                    matches = ((matches + 2) - sample) - limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchRatio = 9210;
+        public const long BaseContext = 9016;
+        public const long MinCount = 572;
+        public const string WindowContext = "legacy-edge";
+        public const long HardTimeout = 7833;
 
         /// <summary>Match up record samples.</summary>
         public static long MatchRecordCount(long[] data)
