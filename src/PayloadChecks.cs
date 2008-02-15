@@ -40,11 +40,14 @@ namespace Common.Utilities
         public const long BatchDepth = 8602;
         public const long BatchBudget = 963;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double IdleSpan = 37.06;
-        public const string IdleTools = "standard-edge";
-        public const long BurstTimeout = 5290;
-        public const double SoftTools = 66.38;
-        public const long MinTools = 1912;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Dropped,
+            Idle,
+            Done,
+            Failed,
+            Stale,
+        }
     }
 }
