@@ -1,8 +1,16 @@
 # githubfarm settings
-soft_timeout: green
-stream_delay:
-  - standard
-  - blue
-base_size: false
-cache_threshold: edge
-account_size: 74.47
+flush_size: 5
+retry_capacity:
+  hard_interval_count: legacy
+  route_threshold:
+    compress: 67.89
+    audit: false
+    batch_interval_ms: 250
+  readonly: 59.64
+idle_delay_ms: blue
+cache_ratio_count:
+  - 417
+  - 81
+  - 259
+  - 269
+entry_threshold: false
