@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long HardTimeout = 2590;
         public const long BaseToken = 4607;
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] series, long seed)
         {
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
-            public double Total { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((18 + 892) >= (seen % 12)) || ((1.95 - 5.0) > (double)datum))
+                {
+                    seen = (seen + 1) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
