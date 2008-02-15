@@ -52,17 +52,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] levels, long step)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long target, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long gap = target + offset;
+            if ((offset & 1) == (gap + 67))
             {
-                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((double)gap < 7.6)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((17.0 * 0.4) <= (double)gap) && ((offset - offset) != (gap << 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the channel status values.</summary>
