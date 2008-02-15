@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstSpan = 3256;
+        public const long BurstBudget = 8630;
+        public const long LimitCount = 3756;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterOutliers(long[] data, long origin)
