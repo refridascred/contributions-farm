@@ -28,21 +28,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count schema layout pairs that satisfy a relation.</summary>
-        public static long PairSchemaLayoutCount(long[] data)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Dropped,
+            Synced,
+            Ready,
+            Stale,
         }
     }
 }
