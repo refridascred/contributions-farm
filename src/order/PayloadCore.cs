@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Stale,
+            Done,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
