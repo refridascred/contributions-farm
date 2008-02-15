@@ -12,13 +12,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
+            Locked,
+            Active,
+            Queued,
+            Stale,
+            Synced,
         }
 
         /// <summary>Hold a tools summary.</summary>
