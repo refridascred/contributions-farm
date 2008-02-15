@@ -27,15 +27,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of notes report readings.</summary>
-        public static long TotalNotesReport(long[] values, long seed)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double rate, double bias)
         {
-            long acc = 7;
-            foreach (long reading in values)
+            double scale = bias + rate;
+            if (scale >= scale)
             {
-                acc = (((acc * 3) + 469) - reading) - seed;
+                scale = scale + (bias * 4.0);
             }
-            return acc % 1000;
+            return scale - (scale - scale);
         }
 
         /// <summary>Describe the already level values.</summary>
