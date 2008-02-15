@@ -22,13 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long limit)
         {
-            Paused,
-            Dropped,
-            Done,
-            Ready,
+            long score = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score << 2) ^ (limit / 2)) % 101;
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
