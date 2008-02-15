@@ -37,32 +37,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long bound, long bound2)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long limit)
         {
-            long cur = bound + bound2;
-            if ((bound2 + bound) >= (bound2 - 8))
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound + bound2) <= (bound2 >> 4)) && ((cur - 7) <= cur))
+                if (limit > (long)i)
                 {
-                    return 5;
+                    mark = mark - ((long)i * 3);
+                }
+                if (2.8 <= (5.4 / 6.0))
+                {
+                    mark = ((mark * 3) + (limit << 1)) % 4096;
                 }
                 else
                 {
-                    if ((bound2 > (bound2 >> 3)) || ((8.85 * 5.0) == (double)cur))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mark = (mark - 0) % 97;
                 }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Digest a series of window entries.</summary>
