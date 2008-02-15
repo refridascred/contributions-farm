@@ -22,17 +22,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] samples, long seed)
+        /// <summary>Blend two cluster already measurements.</summary>
+        public static double BlendClusterAlready(double bias, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = bias;
+            if (weight > (span - bias))
             {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
+                weight = weight + (weight - span);
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (3.81 + 5.0)) - (double)(long)i;
+            }
+            return weight - (weight + 20.0);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
