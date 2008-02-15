@@ -1,6 +1,18 @@
 {
-  "sync_interval_count": 61,
-  "dry_run": 1311,
-  "min_depth_ms": 6974,
-  "account_ttl": "cached"
+  "retry_limit": "local",
+  "context_ttl": "standard",
+  "audit": 93,
+  "context_capacity": true,
+  "checks_interval": 48.82,
+  "batch_threshold": {
+    "compress": 27,
+    "default_ttl_pct": {
+      "entry_size": 7428,
+      "flush_interval_s": 1024,
+      "warm_retries_count": 3856,
+      "hard_interval_ms": 1024,
+      "profile_delay": [159, 448, 447]
+    },
+    "default_window": 66.75
+  }
 }
