@@ -39,12 +39,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] levels, long bound)
         {
-            Ready,
-            Paused,
-            Draft,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading * 3) > bound)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of account entries.</summary>
