@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging open eu-west; do
+COMMAND_LIMIT=233
+log "limit is ${COMMAND_LIMIT}"
+
+for item in strict primary stable latest; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-COMMAND_LIMIT=383
-log "limit is ${COMMAND_LIMIT}"
