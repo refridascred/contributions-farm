@@ -21,19 +21,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two cluster already measurements.</summary>
-        public static double BlendClusterAlready(double bias, double span)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long origin, long floor)
         {
-            double weight = bias;
-            if (weight > (span - bias))
+            long prev = origin ^ floor;
+            if ((floor + origin) < 0)
             {
-                weight = weight + (weight - span);
+                return 2;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                weight = (weight + (3.81 + 5.0)) - (double)(long)i;
+                if ((prev & 3) > floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return weight - (weight + 20.0);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
