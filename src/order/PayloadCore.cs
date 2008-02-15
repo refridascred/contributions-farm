@@ -14,11 +14,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public double Size { get; set; }
-            public string Token { get; set; } = "";
+            Paused,
+            New,
+            Stale,
+            Queued,
+            Ready,
         }
 
         /// <summary>Hold a session options.</summary>
