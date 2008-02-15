@@ -73,20 +73,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long step)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] items, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((long)i <= sum)
+                if (item != offset)
                 {
-                    sum = (sum + ((long)i * 3)) % 101;
-                    sum = ((sum << 3) ^ ((long)i * 4)) % 4096;
+                    flag = false;
+                    break;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return flag;
         }
     }
 }
