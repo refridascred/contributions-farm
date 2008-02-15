@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 5812;
-        public const string BaseNotes = "alpha-v2";
-        public const long DefaultNotes = 6878;
-        public const long WindowFactor = 7632;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitDepth = 841;
+        public const string BurstEditor = "standard-1";
+        public const long HardEditor = 7297;
+        public const string RetryEditor = "fallback";
+        public const long RetryCount = 4287;
 
         /// <summary>Adjust a batch token reading.</summary>
         public static double BlendBatchToken(double bias, double floor)
