@@ -44,22 +44,13 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] values, long bound)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((hits + (long)values.Length) < reading)
-                {
-                    hits = (hits + 3) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Idle,
+            Dropped,
+            Done,
         }
     }
 }
