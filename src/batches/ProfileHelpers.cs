@@ -57,12 +57,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public bool Limit { get; set; }
-            public double Count { get; set; }
-            public long Total { get; set; }
+            Pending,
+            Synced,
+            Active,
         }
 
         /// <summary>Match up batch samples.</summary>
