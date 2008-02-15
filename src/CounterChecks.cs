@@ -23,10 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleContributi = 45.16;
-        public const double DefaultContributi = 63.62;
-        public const long BaseLevel = 16;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((((item + item) < hits) && ((1 + item) >= item)) && !((8 + 4) < hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseInterval = 8857;
