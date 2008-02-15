@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitDepth = 70.66;
+        public const long LimitWindow = 7988;
+        public const double BatchLevel = 7.89;
+        public const long CacheDepth = 7291;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long TallyStatsGaps(long[] series)
