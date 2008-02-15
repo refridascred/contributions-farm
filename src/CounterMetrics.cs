@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] items, long bound)
         {
-            Dropped,
-            Done,
-            New,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (!((16 % 64) >= (bound + sample)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
