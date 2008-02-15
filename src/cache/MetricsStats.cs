@@ -30,10 +30,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinBudget = "staging-edge";
-        public const string HardBudget = "open-1";
-        public const string MaxPayload = "staging";
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if (score < (score % 97))
+                {
+                    break;
+                }
+                else
+                {
+                    score = (score ^ (long)i) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
