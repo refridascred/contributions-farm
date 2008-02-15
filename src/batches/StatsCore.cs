@@ -30,12 +30,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
-        {
-            public long Count { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepSize = "alpha-v2";
+        public const long DefaultWidth = 7996;
+        public const double StepProfile = 63.7;
+        public const double WindowProfile = 7.56;
+        public const string SoftProfile = "stable-1";
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
