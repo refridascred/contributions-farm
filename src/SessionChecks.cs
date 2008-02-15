@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] data, long step)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long total = 0;
-            foreach (long entry in data)
-            {
-                total = (total ^ (entry & 7)) % 101;
-                total = (total - step) % 65521;
-            }
-            return total % 1000;
+            New,
+            Failed,
+            Done,
+            Retry,
         }
 
         /// <summary>Locate a record reading by value.</summary>
