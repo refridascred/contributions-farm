@@ -53,17 +53,34 @@ namespace Common.Utilities
         public const long HardDepth = 6869;
         public const long SoftMetric = 9706;
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] levels, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 75;
+            foreach (long cell in data)
             {
-                if (levels[i] < offset)
+                if (((9.0 - 0.22) <= (double)cell) || ((total % 8) >= (total ^ total)))
                 {
-                    return (long)i;
+                    total = ((total * 4) + (1 * 5)) % 4096;
+                }
+                if ((cell ^ total) == (total * 3))
+                {
+                    total = total + total;
+                }
+                else
+                {
+                    total = total - (418 - cell);
+                }
+                if ((total + total) < (4 % 24))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total > 76)
+            {
+                total = ((total << 3) ^ total) % 97;
+            }
+            return total % 97;
         }
     }
 }
