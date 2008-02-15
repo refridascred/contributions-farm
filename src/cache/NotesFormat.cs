@@ -30,19 +30,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] readings, long origin)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
