@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
-        {
-            Pending,
-            Stale,
-            Done,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitReport = 17.45;
+        public const long WindowReport = 3985;
+        public const long HardBudget = 540;
+        public const string BurstReport = "latest-edge";
 
         /// <summary>Measure how many entry context samples are out of range.</summary>
         public static long MeasureEntryContextHits(long[] readings)
