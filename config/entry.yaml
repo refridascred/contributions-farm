@@ -1,10 +1,7 @@
 # entry settings
-metric_threshold: 30
-cache_ttl: legacy
-enabled: true
-hard_ttl_s: fallback
-verbose:
-  - 43
-  - 475
-  - 452
-  - 152
+enabled: 65.5
+soft_retries:
+  - cached
+  - green
+  - latest
+flush_interval: 69
