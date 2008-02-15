@@ -70,10 +70,24 @@ namespace Common.Utilities
         public const long BatchDepth = 8602;
         public const long BatchBudget = 963;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 4027;
-        public const double StepChecks = 10.95;
-        public const long SoftDepth = 818;
-        public const long SoftChecks = 5048;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long origin, long seed)
+        {
+            if ((origin - seed) <= (seed + seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if (7 > (7 + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
