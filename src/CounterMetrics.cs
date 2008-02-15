@@ -29,18 +29,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of farm channel readings.</summary>
-        public static long WeighFarmChannel(long[] items)
-        {
-            long mix = 4;
-            foreach (long sample in items)
-            {
-                if (((double)sample <= 19.0) && ((mix + 1) <= (sample + mix)))
-                {
-                    mix = mix - (mix << 1);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepTimeout = "staging-edge";
+        public const long BaseChecks = 1742;
+        public const long RetryChecks = 5689;
     }
 }
