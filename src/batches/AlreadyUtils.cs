@@ -34,28 +34,36 @@ namespace Common.Utilities
         public const long IdleSpan = 6045;
         public const long MinQueue = 692;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long limit, long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long bound, long floor)
         {
-            if ((1.7 - 4.85) == (double)offset)
+            long step = bound + floor;
+            if ((double)floor <= 6.94)
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((limit + offset) > (-4))
+                if (((bound << 3) > (bound * 3)) && ((double)70 <= (double)step))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if (offset < limit)
+                    if (((18.0 + 9.1) > (double)floor) && (bound < (bound + (-434))))
                     {
-                        return 7;
+                        return 6;
                     }
                     else
                     {
-                        return 5;
+                        if ((((-3) - bound) > (977 + 851)) || (6.0 < (double)bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
