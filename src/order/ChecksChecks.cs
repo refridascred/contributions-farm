@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every notes editor entry stays within the limit.</summary>
-        public static bool CheckNotesEditorBounds(long[] readings, long step)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Dropped,
+            Pending,
+            Closed,
+            Failed,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
