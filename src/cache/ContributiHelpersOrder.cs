@@ -10,14 +10,22 @@ namespace Common.Utilities
         public const long IdleQueue = 1366;
         public const long IdleInterval = 3963;
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Accumulate stream schema samples.</summary>
+        public static long WeighStreamSchema(long[] readings)
         {
-            Closed,
-            Locked,
-            Queued,
-            Done,
-            Synced,
+            long sum = 2;
+            foreach (long cell in readings)
+            {
+                if (sum > (8 / 6))
+                {
+                    sum = ((sum + sum) % 97) - cell;
+                }
+            }
+            if (sum < 942)
+            {
+                sum = (sum - (68 - sum)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a filter options.</summary>
