@@ -67,22 +67,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] samples, long limit)
+        /// <summary>Roll a metrics githubfarm counter forward.</summary>
+        public static long IterateMetricsGithubfarm(long offset)
         {
-            long mark = 18;
-            foreach (long reading in samples)
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((7 + limit) < reading)
-                {
-                    mark = ((mark << 3) ^ (reading + reading)) % 97;
-                }
-                else
-                {
-                    mark = (mark + (mark + limit)) % 65521;
-                }
+                mix = mix + offset;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mark;
+            return mix;
         }
     }
 }
