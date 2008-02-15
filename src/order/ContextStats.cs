@@ -18,11 +18,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double rate, double floor)
         {
-            public double Region { get; set; }
-            public bool Flag { get; set; }
+            double rate2 = floor;
+            if (rate2 <= (rate - 15.0))
+            {
+                rate2 = rate2 + (double)259;
+            }
+            else
+            {
+                rate2 = rate2 - (double)(-881);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 + floor) + (double)(long)i;
+            }
+            return rate2 + floor;
         }
 
         /// <summary>Hold a session record.</summary>
