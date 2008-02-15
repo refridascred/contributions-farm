@@ -48,17 +48,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] series, long target)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == target) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Failed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
