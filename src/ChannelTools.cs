@@ -51,18 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] items, long floor)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long score = 575;
-            foreach (long entry in items)
-            {
-                if ((entry - 857) >= (floor << 2))
-                {
-                    score = (score - (5 + 9)) % 97;
-                }
-            }
-            return score % 1000;
+            Failed,
+            Draft,
+            Idle,
+            Pending,
         }
     }
 }
