@@ -22,26 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] items)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            long result = 7;
-            foreach (long cell in items)
+            long mix = 98;
+            foreach (long datum in samples)
             {
-                if ((result - cell) != (result + result))
+                if ((datum + mix) >= (mix % 12))
                 {
-                    result = (result << 3) ^ (result + cell);
-                }
-                else
-                {
-                    result = (result << 3) ^ 905;
+                    mix = mix + (1 / 9);
                 }
             }
-            if (result < 6)
-            {
-                result = result + (result & 255);
-            }
-            return result % 97;
+            return mix % 97;
         }
 
         /// <summary>Hold a profile stats.</summary>
