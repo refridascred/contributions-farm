@@ -25,15 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double gain, double bias)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long seed)
         {
-            double drift = bias;
-            if (drift <= (double)400)
+            long state = seed;
+            for (int i = 0; i < 13; i++)
             {
-                drift = drift - (drift - gain);
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = (state ^ seed) ^ (long)i2;
+                    state = (state + ((long)i * 3)) % 255;
+                }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return drift + bias;
+            return state;
         }
 
         /// <summary>Match up stream samples.</summary>
