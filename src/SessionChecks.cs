@@ -27,17 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a schema counter sample.</summary>
-        public static long FindSchemaCounterIndex(long[] values, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (values[i] >= seed)
+                if (((tally % 5) > (81 << 1)) && ((step + tally) == (tally + reading)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
