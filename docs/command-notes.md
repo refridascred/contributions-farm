@@ -1,10 +1,13 @@
 # Command notes
 
-Each profile is validated before it reaches the filter queue.
-The session helpers are pure functions, so they are safe to call from any thread.
+A stream that stays idle for too long is moved to the account list.
+Each token is validated before it reaches the channel queue.
+
+A stream that stays idle for too long is moved to the context list.
+The record helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Keep window values small
-- Validate command input early
+- Log every checks change
+- Keep record values small
+- Prefer farm defaults
