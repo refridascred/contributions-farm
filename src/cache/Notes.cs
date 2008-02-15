@@ -38,12 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Check that every command window entry stays within the limit.</summary>
+        public static bool GuardCommandWindowRange(long[] items, long seed)
         {
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
-            public double Offset { get; set; }
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the graph counter entries that pass the check.</summary>
