@@ -34,10 +34,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 7432;
-        public const long BatchCounter = 7242;
-        public const long HardCounter = 6782;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long LookupCacheIndex(long[] data, long seed)
