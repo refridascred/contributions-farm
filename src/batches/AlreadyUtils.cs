@@ -22,19 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long score = -388;
-            foreach (long item in items)
-            {
-                score = (score * 4) + (item % 16);
-                if (((score % 3) < (item + item)) || ((12 - item) >= (score - item)))
-                {
-                    score = (score + (646 >> 3)) % 4096;
-                }
-            }
-            return score % 1000;
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the stats kind values.</summary>
