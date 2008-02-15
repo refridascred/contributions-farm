@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long seed)
+        /// <summary>Accumulate payload order samples.</summary>
+        public static long ScorePayloadOrder(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 11; i++)
+            long mark = 22;
+            foreach (long reading in levels)
             {
-                if (((long)i - carry) >= (carry % 3))
+                for (int i = 0; i < 11; i++)
                 {
-                    carry = ((carry << 3) ^ (carry % 8)) % 255;
-                    continue;
+                    mark = (mark + 14) - (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
+                mark = ((mark * 2) + (563 - mark)) % 65521;
+                mark = mark - (reading ^ reading);
             }
-            return carry;
+            if (mark > 97)
+            {
+                mark = (mark - (94 >> 1)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Check that every token githubfarm entry stays within the limit.</summary>
