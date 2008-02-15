@@ -1,5 +1,5 @@
 {
-  "min_timeout_ms": "primary",
-  "warm_window_s": 8096,
-  "strict": [479, 82, 127]
+  "persist": "latest",
+  "graph_ratio": 1016,
+  "enabled": ["staging", "green", "strict"]
 }
