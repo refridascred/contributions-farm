@@ -61,12 +61,14 @@ namespace Common.Utilities
         public const string BaseDepth = "latest-1";
         public const long CacheNotes = 2463;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MinTimeout = "cached-edge";
-        public const long RetryScore = 1461;
-        public const double CacheBuffer = 29.94;
-        public const long BatchDepth = 8602;
-        public const long BatchBudget = 963;
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
+        {
+            Closed,
+            Stale,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Check that every queue notes entry stays within the limit.</summary>
         public static bool CheckQueueNotesLimits(long[] data, long bound)
