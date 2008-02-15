@@ -21,13 +21,12 @@ namespace Common.Utilities
         public const long DefaultQueue = 5553;
         public const long IdleCount = 311;
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Label { get; set; }
         }
     }
 }
