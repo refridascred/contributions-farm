@@ -34,18 +34,9 @@ namespace Common.Utilities
         public const string HardWindow = "standard";
         public const long CacheWindow = 9959;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] readings, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((126 & 7) < bound)
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 5945;
+        public const long WindowAccount = 8390;
+        public const string MinScore = "local-1";
     }
 }
