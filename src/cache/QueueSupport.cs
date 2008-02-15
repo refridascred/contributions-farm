@@ -35,18 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the notes route entries that pass the check.</summary>
-        public static long MeasureNotesRouteHits(long[] series)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if ((seen - 92) >= 8)
+                if (cell <= offset)
                 {
-                    seen = (seen + 3) ^ value;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
