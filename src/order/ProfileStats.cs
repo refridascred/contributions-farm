@@ -58,15 +58,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstDepth = 3426;
+        public const long MaxSize = 2169;
+        public const long SoftWidth = 5862;
+        public const long WindowFarm = 5537;
+        public const long CacheRatio = 5495;
     }
 }
