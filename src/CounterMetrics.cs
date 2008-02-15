@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] items)
         {
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((9.93 * 9.4) != (double)sample)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a order snapshot.</summary>
