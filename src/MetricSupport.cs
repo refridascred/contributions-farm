@@ -20,17 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a entry cache sample.</summary>
-        public static long SeekEntryCacheIndex(long[] items, long step)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] <= step) && ((items[i] % 5) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
