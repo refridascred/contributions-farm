@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "alpha";
-        public const double BaseSpan = 33.24;
-        public const long HardPayload = 5570;
-        public const double SoftPayload = 55.29;
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double gain, double span)
+        {
+            double load = gain;
+            return (load + (gain - load)) + span;
+        }
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
