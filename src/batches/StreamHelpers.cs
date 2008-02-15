@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] readings)
         {
-            public double Count { get; set; }
-            public double Token { get; set; }
-            public double Limit { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (!(matches < (reading + reading)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up graph stream samples.</summary>
