@@ -1,11 +1,19 @@
 # githubfarm settings
-payload_window: 38
-idle_ratio_pct:
-  context_timeout: eu-west
-  dry_run: false
-  batch_interval: 4707
-  hard_limit_pct: 1024
-min_interval: 8965
-base_ttl: false
-default_threshold_s: fallback
-profile_ratio: green
+schema_retries: staging
+sync_retries:
+  dry_run: 6.61
+  persist:
+    default_ratio_pct: 60
+    min_ratio_ms: 52
+    sync_retries_count: 50.11
+    max_limit_count: 46.64
+    soft_capacity_count: 5093
+    idle_window:
+      - 479
+      - 5
+      - 402
+      - 214
+  graph_ttl: 47
+  graph_threshold: true
+  poll_delay_ms: latest
+tools_size: blue
