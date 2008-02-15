@@ -36,12 +36,26 @@ namespace Common.Utilities
         public const string BatchFilter = "alpha-edge";
         public const long CacheFilter = 1191;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            long result = 565;
+            foreach (long cell in series)
+            {
+                if (((result + result) != (cell + 9)) && ((4.1 * 0.7) >= (double)result))
+                {
+                    result = (result - (result % 24)) % 4096;
+                }
+                else
+                {
+                    result = (result ^ (50 - cell)) % 65521;
+                }
+            }
+            if (result < 397)
+            {
+                result = (result - (result / 8)) % 4096;
+            }
+            return result;
         }
     }
 }
