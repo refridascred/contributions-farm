@@ -35,12 +35,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            New,
-            Dropped,
-            Ready,
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
