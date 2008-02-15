@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Check that every stats stream entry stays within the limit.</summary>
+        public static bool ValidateStatsStreamLimits(long[] readings, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((double)mix < (0.98 / 7.0))
+                if (cell >= seed)
                 {
-                    mix = ((mix * 4) + 53) % 101;
+                    ready = false;
+                    break;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
