@@ -27,31 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a farm filter pair into a bucket.</summary>
-        public static long BucketFarmFilter(long step, long limit)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] series, long origin)
         {
-            if ((4.24 + 3.2) != (double)limit)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit & 15) != (step ^ 762))
+                if (entry != origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((limit + step) <= (step + limit)) || ((3.58 / 8.0) >= (double)limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
