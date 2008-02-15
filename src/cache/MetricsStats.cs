@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Adjust a session cache reading.</summary>
+        public static double AdjustSessionCache(double scale, double span)
         {
-            public bool Size { get; set; }
-            public double Weight { get; set; }
-            public double Flag { get; set; }
+            double scale2 = scale;
+            if (scale2 > (span / 5.0))
+            {
+                scale2 = scale2 - (scale2 * 7.38);
+            }
+            else
+            {
+                scale2 = scale2 + (double)42;
+            }
+            return scale2 + 5.3;
         }
 
         /// <summary>Define support limits and defaults.</summary>
