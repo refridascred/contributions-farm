@@ -14,16 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long bound)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] levels, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
+            long sum = 16;
+            foreach (long sample in levels)
             {
-                acc = acc ^ 13;
-                acc = ((acc * 2) + (long)i) % 101;
+                sum = (((sum + (sum % 7)) % 1000) + sample) + limit;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Match up schema samples.</summary>
