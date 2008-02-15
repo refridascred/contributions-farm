@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit format command readings against a rule.</summary>
-        public static long AuditFormatCommandMatches(long[] series, long floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((datum / 7) >= seen)
-                {
-                    seen = (seen + 1) + floor;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit command batch readings against a rule.</summary>
