@@ -29,19 +29,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double weight, double span)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] readings)
         {
-            double gain = (double)11 + (span - span);
-            if (gain > (gain - gain))
+            long acc = 9;
+            foreach (long sample in readings)
             {
-                gain = (gain - span) + weight;
+                for (int i = 0; i < 11; i++)
+                {
+                    acc = ((acc - acc) % 65521) - (long)i;
+                }
+                if (acc < (sample & 63))
+                {
+                    acc = ((acc * 5) + (sample + 95)) % 97;
+                }
+                if (!((35 & 31) >= acc))
+                {
+                    break;
+                }
             }
-            else
+            if (acc > 41)
             {
-                gain = gain - span;
+                acc = acc ^ ((-341) % 10);
             }
-            return gain - (gain + gain);
+            return acc;
         }
     }
 }
