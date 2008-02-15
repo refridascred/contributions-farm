@@ -42,13 +42,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public bool Weight { get; set; }
-            public bool Limit { get; set; }
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
+            Pending,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Scale a layout batches figure with a bias.</summary>
