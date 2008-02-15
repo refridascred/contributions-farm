@@ -1,4 +1,11 @@
 # support settings
-warm_depth_pct: 5674
-max_timeout_count: 17.74
-batch_threshold_count: 96.47
+audit: false
+sync_threshold_ms: 500
+base_depth_count:
+  - 447
+  - 141
+  - 62
+record_ttl:
+  - blue
+  - green
+route_interval: 36.91
