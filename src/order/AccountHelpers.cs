@@ -48,15 +48,22 @@ namespace Common.Utilities
         public const string BatchCount = "stable-1";
         public const long MinCluster = 7204;
 
-        /// <summary>Blend two graph token measurements.</summary>
-        public static double ScaleGraphToken(double weight, double bias)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] series)
         {
-            double mean = bias;
-            if (mean <= (double)40)
+            long total = 13;
+            foreach (long entry in series)
             {
-                mean = (mean - 20.0) + weight;
+                if (((total - (long)series.Length) <= (entry - total)) && ((total + total) > entry))
+                {
+                    total = total ^ entry;
+                }
             }
-            return mean - (bias - mean);
+            if (total < (-6))
+            {
+                total = (total ^ (total / 3)) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a command options.</summary>
