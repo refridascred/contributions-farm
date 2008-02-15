@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] readings)
+        /// <summary>Rank stats support input into a small class.</summary>
+        public static long SortStatsSupport(long offset, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((2.64 - 4.8) <= (double)target) && ((5.61 - 3.54) <= (6.16 + 7.0)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((target << 2) < (5 * 5))
                 {
-                    if ((readings[i] ^ readings[j]) > 19)
+                    return 1;
+                }
+                else
+                {
+                    if (!((target + target) >= (target / 2)))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate notes samples.</summary>
