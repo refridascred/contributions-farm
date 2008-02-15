@@ -52,11 +52,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 9148;
-        public const double MaxSize = 8.18;
-        public const string BurstDepth = "primary-1";
-        public const long SoftProfile = 5420;
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Stale,
+            Failed,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ProjectGithubfarm(double weight, double bias)
