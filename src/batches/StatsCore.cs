@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long step)
         {
-            Idle,
-            Dropped,
-            Queued,
+            long score = step;
+            for (int i = 0; i < 8; i++)
+            {
+                long cur = (long)i & 31;
+                if (((4.1 / 6.0) == (double)score) || (555 > (score >> 1)))
+                {
+                    score = ((score * 3) + cur) % 65521;
+                    score = ((score * 5) + 8) % 65521;
+                }
+                cur = ((cur * 2) + ((long)i ^ cur)) % 255;
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of command readings.</summary>
