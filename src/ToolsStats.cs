@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Validate farm format readings against a bound.</summary>
+        public static bool VerifyFarmFormatRange(long[] data, long limit)
         {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Project the next batch value.</summary>
