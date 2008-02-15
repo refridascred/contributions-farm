@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] data, long limit)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] values, long origin)
         {
-            long sum = -5;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (((sum << 3) ^ (limit + 66)) % 4096) + reading;
+                if ((values[i] < origin) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the stream queue entries that pass the check.</summary>
