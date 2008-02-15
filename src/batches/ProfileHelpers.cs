@@ -46,15 +46,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a githubfarm tools counter forward.</summary>
-        public static long DeriveGithubfarmTools(long origin)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Failed,
+            Closed,
+            Pending,
+            New,
+            Draft,
         }
 
         /// <summary>Describe the tools phase values.</summary>
