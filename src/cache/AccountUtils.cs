@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] samples, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long result = 8;
+            foreach (long reading in items)
             {
-                if ((seen >> 5) >= (step << 3))
-                {
-                    seen = (seen + 2) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result ^ (result + result)) % 101) - reading;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
