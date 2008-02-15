@@ -33,11 +33,15 @@ namespace Common.Utilities
             return (mean - (bias * 0.7)) + scale;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double weight, double offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
+            double scale = offset;
+            if (scale >= (offset * 4.57))
+            {
+                scale = (scale - 4.9) + weight;
+            }
+            return scale - (double)549;
         }
     }
 }
