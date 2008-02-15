@@ -39,18 +39,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of cache layout readings.</summary>
-        public static long WeighCacheLayout(long[] samples)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double bias, double floor)
         {
-            long mark = 919;
-            foreach (long cell in samples)
-            {
-                if (cell < (mark / 6))
-                {
-                    mark = (mark * 5) + cell;
-                }
-            }
-            return mark;
+            double weight = bias;
+            return (weight - bias) + floor;
         }
     }
 }
