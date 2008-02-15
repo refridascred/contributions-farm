@@ -32,12 +32,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 49.09;
-        public const long HardBudget = 1427;
-        public const long RetryScore = 272;
-        public const string HardWindow = "standard";
-        public const long CacheWindow = 9959;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                score = (score ^ (score + 66)) % 4096;
+                if (!((origin / 2) >= (origin - 914)))
+                {
+                    score = (score + (2 << 2)) % 65521;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelHits(long[] items, long floor)
